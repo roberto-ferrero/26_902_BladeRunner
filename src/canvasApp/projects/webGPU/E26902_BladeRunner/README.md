@@ -45,6 +45,8 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `tests/phase1.test.mjs` | Seis comprobaciones de integración y recurso |
 | `tests/phase2.test.mjs` | Tres pruebas de captura, conservación del visor y recuperación ante fallos |
 | `docs/phase2/CAPTURA_REFERENCIA.md` | Entrega parcial de fase 2 y evidencia para revisión |
+| `scripts/audit-model.py` | Auditoría de geometría con Blender en segundo plano, sin guardar los archivos fuente |
+| `docs/phase2/FIDELIDAD_MODELO.md` | Columnas, juntas, sillones, celosías y exterior; capturas CAM 01–04 y siguiente revisión |
 | `docs/phase1/VALIDACION.md` | Evidencia y límites de la entrega |
 | `docs/phase1/manifest.json` | Procedencia, tamaño y SHA-256 del modelo |
 
@@ -66,4 +68,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-Pausa para revisar [la captura de referencia de fase 2](docs/phase2/CAPTURA_REFERENCIA.md). Después: comparar plano general, mesa y lateral con los renders de Blender; revisar las 18 columnas, juntas y orientaciones, sillas, celosías y edificio exterior. Registrar defectos del modelo antes de calibrar materiales, luz, reflejos y atmósfera.
+Pausa para revisar [la auditoría del modelo de fase 2](docs/phase2/FIDELIDAD_MODELO.md). Columnas, juntas, inversiones, sillas, celosías y exterior comprobados; siguiente punto: caras ausentes, normales, tangentes, escalas, transparencias y colisiones visuales. La calibración de materiales, luz, reflejos y atmósfera sigue pendiente.
