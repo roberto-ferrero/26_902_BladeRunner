@@ -2,6 +2,8 @@
 
 Fases 1 y 2 cerradas: cámaras, capturas exactas de 1920 × 800 y fidelidad geométrica revisadas. El visor utiliza una copia del GLB con limpieza de índices, conservando posiciones, UV, materiales y cámaras. La iluminación es provisional; materiales, atmósfera y recorrido libre continúan en las siguientes fases de [PLAN.md](PLAN.md). Evidencia y límites en [el cierre de fase 2](docs/phase2/CIERRE.md).
 
+**3.1 completado:** [mapas, canales y conexiones validados](docs/phase3/3.1/MAPAS.md). Las tres imágenes de [referencia de acabado e iluminación](<docs/reference images/README.md>) orientan las próximas entregas. El diagnóstico incluye una auditoría de los mapas realmente cargados, sin modificar los materiales.
+
 ## Ejecutar
 
 Desde la raíz del repositorio, con Node.js 24.14.0 (versión utilizada en la validación):
@@ -28,7 +30,7 @@ Abrir `http://localhost:8081` para producción. Tras una nueva compilación hay 
 - **Calidad:** Baja usa resolución interna ×0,75 y sombras 1024; Media ×1 y sombras 2048; Alta ×1,5 y sombras 2048. Son multiplicadores del tamaño CSS, independientes del DPR del equipo. Todos conservan la misma geometría.
 - **Encuadre 2,4:1:** activa bandas para mantener el aspecto de referencia. Al desactivarlo se utiliza el contenedor completo y cambia el campo horizontal visible, conservando el FOV vertical.
 - **Captura 1920 × 800:** genera un PNG sin interfaz, con encuadre 2,4:1 y la pose/FOV de la cámara seleccionada, incluso si la ventana es pequeña o están desactivadas las bandas. Conserva la calidad de sombras elegida; para comparar imágenes usar siempre la misma calidad (Media como base). Restaura tamaño, calidad y cámara del visor al terminar. El nombre incluye cámara y resolución.
-- **Diagnóstico:** muestra y permite descargar JSON con backend, adaptador disponible, cámara, carga y métricas.
+- **Diagnóstico:** muestra y permite descargar JSON con backend, adaptador disponible, cámara, carga y métricas. Incluye `materialAudit`: espacios de color, canales, tamaño de imágenes, UV y posibles problemas de conexión. No evalúa por sí solo la fidelidad artística.
 
 Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60 fotogramas de calentamiento y ventana móvil de hasta 120 muestras. FPS, media y percentil 95 corresponden a intervalos RAF e incluyen presentación; no miden tiempo GPU. Las llamadas y triángulos del renderer incluyen pasadas adicionales. Las cantidades de geometrías y texturas son contadores, no memoria en bytes. La carga medida incluye descarga y parseo, pero no toda la preparación GPU hasta la primera imagen.
 
@@ -45,6 +47,9 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `tests/phase1.test.mjs` | Seis comprobaciones de integración y recurso |
 | `tests/phase2.test.mjs` | Tres pruebas de captura, conservación del visor y recuperación ante fallos |
 | `tests/phase2-mesh.test.mjs` | Integridad de atributos/recursos y conservación de caras con área significativa |
+| `TyrellMaterialAudit.js` | Inspección de materiales cargados sin modificar texturas ni recursos compartidos |
+| `scripts/audit-textures.py`, `scripts/audit-blender-materials.py` | Inspección de píxeles/canales/UV del GLB y conexiones del Blender fuente |
+| `tests/phase3-materials.test.mjs` | GLTFLoader real y detección de errores de conexión/UV sin mutaciones |
 | `scripts/prepare-phase2.mjs` | Generación determinista de la copia de ejecución, modificando sólo índices |
 | `scripts/inspect-surfaces.py` | Auditoría de superficies/contactos y cuatro vistas neutras de Blender |
 | `docs/phase2/CIERRE.md` | Cierre, recurso activo, evidencias, reproducción y límites de fase 2 |
@@ -72,4 +77,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-Revisar [el cierre de fase 2](docs/phase2/CIERRE.md). Siguiente punto recomendado: comenzar fase 3 validando mapas de color/datos y fijando una referencia de gestión de color y exposición antes de ajustar piedra, cuero, madera y cristal.
+Revisar [la entrega 3.1](docs/phase3/3.1/MAPAS.md). Siguiente punto: **3.2, gestión de color y exposición de referencia**, usando las tres nuevas referencias. Después se ajustarán piedra, cuero, madera y cristal.

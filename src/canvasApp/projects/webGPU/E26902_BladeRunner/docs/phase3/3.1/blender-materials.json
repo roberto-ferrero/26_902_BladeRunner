@@ -1,0 +1,1082 @@
+{
+  "source": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Blender\\BladeRunner_5_6_High_v3.blend",
+  "sha256": "272ecb19032a8d3e3c4d6a64857b96ae1626449e1d6acf92c48586eaf5fb8e3b",
+  "materials": [
+    {
+      "name": "Black glazed ceramic",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Brass | polished highlights",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Bronze | patinated",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Bronze | patinated_color",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Bronze | patinated_roughness",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Bronze | patinated_normal",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.6499999761581421
+        }
+      ]
+    },
+    {
+      "name": "Burl walnut | table rim",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Burl walnut | table rim_color",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Burl walnut | table rim_roughness",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Burl walnut | table rim_normal",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.6499999761581421
+        }
+      ]
+    },
+    {
+      "name": "Cielo | nubes ambar",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "amber_clouds.png",
+          "space": "sRGB",
+          "size": [
+            1774,
+            887
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Emission Color"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Crystal",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Foliage 0",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Foliage 1",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Foliage 2",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Foliage 3",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Ivory paper",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Leather | oxblood",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Leather | oxblood_color",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Leather | oxblood_roughness",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Leather | oxblood_normal",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.6499999761581421
+        }
+      ]
+    },
+    {
+      "name": "PBR | Aciculas de pino",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "PBR | Bronce patinado",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Bronze_patinated_color.png",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Bronze_patinated_roughness.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Bronze_patinated_normal.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.25
+        }
+      ]
+    },
+    {
+      "name": "PBR | Caliza aristas claras",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Limestone_worn_edges_color.png",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Limestone_worn_edges_roughness.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Limestone_worn_edges_normal.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.4000000059604645
+        }
+      ]
+    },
+    {
+      "name": "PBR | Caliza ocre envejecida",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Limestone_aged_honey_color.png",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Limestone_aged_honey_roughness.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Limestone_aged_honey_normal.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.47999998927116394
+        }
+      ]
+    },
+    {
+      "name": "PBR | Cuero oscuro",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Leather_oxblood_color.png",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Leather_oxblood_roughness.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Leather_oxblood_normal.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.30000001192092896
+        }
+      ]
+    },
+    {
+      "name": "PBR | Hormigon exterior",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Exterior_weathered_concrete_color.png",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Exterior_weathered_concrete_roughness.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Exterior_weathered_concrete_normal.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.30000001192092896
+        }
+      ]
+    },
+    {
+      "name": "PBR | Juntas y cavidades",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "PBR | Laton envejecido",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "PBR | Nogal oscuro",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Walnut_quarter_sawn_color.png",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Walnut_quarter_sawn_roughness.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Walnut_quarter_sawn_normal.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.20000000298023224
+        }
+      ]
+    },
+    {
+      "name": "PBR | Piedra negra pulida",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Obsidian_polished_and_scuffed_color.png",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Obsidian_polished_and_scuffed_roughness.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Obsidian_polished_and_scuffed_normal.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.03500000014901161
+        }
+      ]
+    },
+    {
+      "name": "PBR | Raiz de nogal",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Burl_walnut_table_rim_color.png",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Burl_walnut_table_rim_roughness.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Burl_walnut_table_rim_normal.png",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.20000000298023224
+        }
+      ]
+    },
+    {
+      "name": "Polvo | volumen exclusivo Cycles",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled Volume",
+          "output": "Volume",
+          "to": "Material Output",
+          "input": "Volume"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Recesses | charcoal",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Soil",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Sol | disco emisivo",
+      "images": [],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        }
+      ],
+      "normalMaps": []
+    },
+    {
+      "name": "Walnut | quarter sawn",
+      "images": [
+        {
+          "node": "Image Texture",
+          "image": "Walnut | quarter sawn_color",
+          "space": "sRGB",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.001",
+          "image": "Walnut | quarter sawn_roughness",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        },
+        {
+          "node": "Image Texture.002",
+          "image": "Walnut | quarter sawn_normal",
+          "space": "Non-Color",
+          "size": [
+            1024,
+            1024
+          ]
+        }
+      ],
+      "links": [
+        {
+          "from": "Principled BSDF",
+          "output": "BSDF",
+          "to": "Material Output",
+          "input": "Surface"
+        },
+        {
+          "from": "Image Texture",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Base Color"
+        },
+        {
+          "from": "Image Texture.001",
+          "output": "Color",
+          "to": "Principled BSDF",
+          "input": "Roughness"
+        },
+        {
+          "from": "Image Texture.002",
+          "output": "Color",
+          "to": "Normal Map",
+          "input": "Color"
+        },
+        {
+          "from": "Normal Map",
+          "output": "Normal",
+          "to": "Principled BSDF",
+          "input": "Normal"
+        }
+      ],
+      "normalMaps": [
+        {
+          "node": "Normal Map",
+          "space": "TANGENT",
+          "strength": 0.6499999761581421
+        }
+      ]
+    }
+  ]
+}

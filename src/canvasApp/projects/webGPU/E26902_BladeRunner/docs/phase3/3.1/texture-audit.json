@@ -1,0 +1,1570 @@
+{
+  "assetSha256": "bf2108bbe13d32df23bfa34e598c1d98085e2322e859fbf62354240f7e6b8fa2",
+  "images": [
+    {
+      "index": 0,
+      "name": "Limestone_aged_honey_normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "b2d442a7c36b76d192e98d78525dd8848f6a9702bcffdabe5ee25d01f9247b08",
+      "channelsMin": [
+        0.47058823704719543,
+        0.47058823704719543,
+        1.0
+      ],
+      "channelsMax": [
+        0.529411792755127,
+        0.529411792755127,
+        1.0
+      ],
+      "channelsMean": [
+        0.5000096559524536,
+        0.500016450881958,
+        1.0
+      ],
+      "normalLengthRange": [
+        1.000015377998352,
+        1.001920461654663
+      ],
+      "normalNegativeZPixels": 0
+    },
+    {
+      "index": 1,
+      "name": "Limestone_aged_honey_color",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "1437614cc71b87909a0a5a99f468e76389b28f944b5762c8458365338d2e9c5e",
+      "channelsMin": [
+        0.21176470816135406,
+        0.16862745583057404,
+        0.10588235408067703
+      ],
+      "channelsMax": [
+        0.3176470696926117,
+        0.250980406999588,
+        0.1568627506494522
+      ],
+      "channelsMean": [
+        0.26617780327796936,
+        0.21202607452869415,
+        0.13132688403129578
+      ]
+    },
+    {
+      "index": 2,
+      "name": "Limestone_aged_honey_roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "587e5cd0dbf8560231a35a60f1866619a515feaade93fcc8e737c80fe1e586a1",
+      "channelsMin": [
+        1.0,
+        0.5333333611488342,
+        1.0
+      ],
+      "channelsMax": [
+        1.0,
+        0.7137255072593689,
+        1.0
+      ],
+      "channelsMean": [
+        1.0,
+        0.6125602722167969,
+        1.0
+      ]
+    },
+    {
+      "index": 3,
+      "name": "Limestone_worn_edges_normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "047ba593722236f6c33e173ed4a7a4f3ee7eea325b9d138c919f5f9c2a24f1e8",
+      "channelsMin": [
+        0.47058823704719543,
+        0.47058823704719543,
+        1.0
+      ],
+      "channelsMax": [
+        0.529411792755127,
+        0.529411792755127,
+        1.0
+      ],
+      "channelsMean": [
+        0.4999938905239105,
+        0.4999862313270569,
+        1.0
+      ],
+      "normalLengthRange": [
+        1.000015377998352,
+        1.0019205808639526
+      ],
+      "normalNegativeZPixels": 0
+    },
+    {
+      "index": 4,
+      "name": "Limestone_worn_edges_color",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "a35301ddb7991796988ea4088120ad048bb5e603027e097120535dc50452ba18",
+      "channelsMin": [
+        0.2705882489681244,
+        0.21960784494876862,
+        0.13725490868091583
+      ],
+      "channelsMax": [
+        0.4000000059604645,
+        0.32156863808631897,
+        0.2078431397676468
+      ],
+      "channelsMean": [
+        0.33770012855529785,
+        0.272537499666214,
+        0.17429988086223602
+      ]
+    },
+    {
+      "index": 5,
+      "name": "Limestone_worn_edges_roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "e97800df149091277c1f2e56197290e3da16447996798eb53973aef575106045",
+      "channelsMin": [
+        1.0,
+        0.5137255191802979,
+        1.0
+      ],
+      "channelsMax": [
+        1.0,
+        0.6901960968971252,
+        1.0
+      ],
+      "channelsMean": [
+        1.0,
+        0.5924301147460938,
+        1.0
+      ]
+    },
+    {
+      "index": 6,
+      "name": "Obsidian_polished_and_scuffed_normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "f447062e0ed0929d08948d35683bb2c2d1395f4943cececc8c433b5038514445",
+      "channelsMin": [
+        0.46666666865348816,
+        0.46666666865348816,
+        1.0
+      ],
+      "channelsMax": [
+        0.5333333611488342,
+        0.5333333611488342,
+        1.0
+      ],
+      "channelsMean": [
+        0.4999905228614807,
+        0.4999942183494568,
+        1.0
+      ],
+      "normalLengthRange": [
+        1.000015377998352,
+        1.0026569366455078
+      ],
+      "normalNegativeZPixels": 0
+    },
+    {
+      "index": 7,
+      "name": "Obsidian_polished_and_scuffed_color",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "92481ea079ce1852ab246fd807c27289103c28420e1db9211513cf1031160e90",
+      "channelsMin": [
+        0.019607843831181526,
+        0.0235294122248888,
+        0.019607843831181526
+      ],
+      "channelsMax": [
+        0.0313725508749485,
+        0.03529411926865578,
+        0.027450980618596077
+      ],
+      "channelsMean": [
+        0.02512800320982933,
+        0.029208160936832428,
+        0.024021362885832787
+      ]
+    },
+    {
+      "index": 8,
+      "name": "Obsidian_polished_and_scuffed_roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "442316d354773c3c86b198482beb57e39bc57b65d80a9dd30a114f1cc6890498",
+      "channelsMin": [
+        1.0,
+        0.11372549086809158,
+        1.0
+      ],
+      "channelsMax": [
+        1.0,
+        0.45098039507865906,
+        1.0
+      ],
+      "channelsMean": [
+        1.0,
+        0.1904551237821579,
+        1.0
+      ]
+    },
+    {
+      "index": 9,
+      "name": "Walnut_quarter_sawn_normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "7ab517c3d3b92959bf2cdf893039be12bd3b4614a6c24c710c729012a33595ae",
+      "channelsMin": [
+        0.45490196347236633,
+        0.45490196347236633,
+        0.9960784316062927
+      ],
+      "channelsMax": [
+        0.545098066329956,
+        0.5490196347236633,
+        1.0
+      ],
+      "channelsMean": [
+        0.4995092749595642,
+        0.5000113248825073,
+        1.0
+      ],
+      "normalLengthRange": [
+        0.9959471821784973,
+        1.004128336906433
+      ],
+      "normalNegativeZPixels": 0
+    },
+    {
+      "index": 10,
+      "name": "Walnut_quarter_sawn_color",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "be95cee2e7974368e6dfd31b921fe3a8179fec395103485aead161cbb5060281",
+      "channelsMin": [
+        0.054901961237192154,
+        0.019607843831181526,
+        0.007843137718737125
+      ],
+      "channelsMax": [
+        0.09019608050584793,
+        0.0313725508749485,
+        0.01568627543747425
+      ],
+      "channelsMean": [
+        0.07250192761421204,
+        0.026462236419320107,
+        0.011647816747426987
+      ]
+    },
+    {
+      "index": 11,
+      "name": "Walnut_quarter_sawn_roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "c89714ce449bfa61f848404fc654d1d5b37224a24df4f6d47b5305705033bb38",
+      "channelsMin": [
+        1.0,
+        0.21176470816135406,
+        1.0
+      ],
+      "channelsMax": [
+        1.0,
+        0.41960784792900085,
+        1.0
+      ],
+      "channelsMean": [
+        1.0,
+        0.30301663279533386,
+        1.0
+      ]
+    },
+    {
+      "index": 12,
+      "name": "Burl_walnut_table_rim_normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "e5cec8d73fb1088113745de09b3c8e514b1675f786573730728c44317823f6ec",
+      "channelsMin": [
+        0.45098039507865906,
+        0.4470588266849518,
+        0.9960784316062927
+      ],
+      "channelsMax": [
+        0.545098066329956,
+        0.5490196347236633,
+        1.0
+      ],
+      "channelsMean": [
+        0.49953392148017883,
+        0.5000436305999756,
+        0.9999999403953552
+      ],
+      "normalLengthRange": [
+        0.99588543176651,
+        1.0042508840560913
+      ],
+      "normalNegativeZPixels": 0
+    },
+    {
+      "index": 13,
+      "name": "Burl_walnut_table_rim_color",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "b7545ed7e5655b7d18c71c4f89bbe0beccae89bc9aa4af0cfcab87dbcefdca53",
+      "channelsMin": [
+        0.14509804546833038,
+        0.062745101749897,
+        0.019607843831181526
+      ],
+      "channelsMax": [
+        0.22745098173618317,
+        0.09803921729326248,
+        0.027450980618596077
+      ],
+      "channelsMean": [
+        0.18482200801372528,
+        0.08100227266550064,
+        0.02345910109579563
+      ]
+    },
+    {
+      "index": 14,
+      "name": "Burl_walnut_table_rim_roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "f3f17cc7387d0a533987e4e4fbbc9d09a8847e95c84b198f1bc81787f629ed83",
+      "channelsMin": [
+        1.0,
+        0.1725490242242813,
+        1.0
+      ],
+      "channelsMax": [
+        1.0,
+        0.3686274588108063,
+        1.0
+      ],
+      "channelsMean": [
+        1.0,
+        0.2590557634830475,
+        1.0
+      ]
+    },
+    {
+      "index": 15,
+      "name": "Leather_oxblood_normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "518eecde39773707c0b55119c87a9d44ec0d0f6db671d423af3a1046a63204c6",
+      "channelsMin": [
+        0.47058823704719543,
+        0.47058823704719543,
+        1.0
+      ],
+      "channelsMax": [
+        0.529411792755127,
+        0.529411792755127,
+        1.0
+      ],
+      "channelsMean": [
+        0.4999832510948181,
+        0.4999924898147583,
+        1.0
+      ],
+      "normalLengthRange": [
+        1.000015377998352,
+        1.0023502111434937
+      ],
+      "normalNegativeZPixels": 0
+    },
+    {
+      "index": 16,
+      "name": "Leather_oxblood_color",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "abf4b79e7de11dec85a696143c69fd3eb0f11476175c98ecc1bfa9937bc8f0e1",
+      "channelsMin": [
+        0.027450980618596077,
+        0.0117647061124444,
+        0.007843137718737125
+      ],
+      "channelsMax": [
+        0.03921568766236305,
+        0.01568627543747425,
+        0.007843137718737125
+      ],
+      "channelsMean": [
+        0.032160598784685135,
+        0.011733036488294601,
+        0.007818185724318027
+      ]
+    },
+    {
+      "index": 17,
+      "name": "Leather_oxblood_roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "f0bf8d5fbba5630558806ba6cd09ad7b8ad4206658261445c89aec9ee536d05a",
+      "channelsMin": [
+        1.0,
+        0.30588236451148987,
+        1.0
+      ],
+      "channelsMax": [
+        1.0,
+        0.4745098054409027,
+        1.0
+      ],
+      "channelsMean": [
+        1.0,
+        0.3784889876842499,
+        1.0
+      ]
+    },
+    {
+      "index": 18,
+      "name": "Bronze_patinated_normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "c1c1d6a497c993519319bc2678add28f8b5ce9d50a78b96262d77b6c8f776588",
+      "channelsMin": [
+        0.47058823704719543,
+        0.47058823704719543,
+        1.0
+      ],
+      "channelsMax": [
+        0.529411792755127,
+        0.529411792755127,
+        1.0
+      ],
+      "channelsMean": [
+        0.5000055432319641,
+        0.4999958276748657,
+        1.0
+      ],
+      "normalLengthRange": [
+        1.000015377998352,
+        1.0019205808639526
+      ],
+      "normalNegativeZPixels": 0
+    },
+    {
+      "index": 19,
+      "name": "Bronze_patinated_color",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "8754cdba7f6cbe00b47f11f62ec6f9b5c8d46827ff02e7299637e350964a2fbb",
+      "channelsMin": [
+        0.12156862765550613,
+        0.07450980693101883,
+        0.027450980618596077
+      ],
+      "channelsMax": [
+        0.18039216101169586,
+        0.10980392247438431,
+        0.03921568766236305
+      ],
+      "channelsMean": [
+        0.1553574949502945,
+        0.09314631670713425,
+        0.03292688727378845
+      ]
+    },
+    {
+      "index": 20,
+      "name": "Bronze_patinated_roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "98c82d6b27dfaca97a31af1b0967ada61f2fa39395bb707c1baf246eb8aa75d8",
+      "channelsMin": [
+        1.0,
+        0.27450981736183167,
+        1.0
+      ],
+      "channelsMax": [
+        1.0,
+        0.4470588266849518,
+        1.0
+      ],
+      "channelsMean": [
+        1.0,
+        0.3569472134113312,
+        1.0
+      ]
+    },
+    {
+      "index": 21,
+      "name": "Exterior_weathered_concrete_normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "f027f18c157764ba31c438760e47e078799a873d72c02972f5df45389efa406b",
+      "channelsMin": [
+        0.47058823704719543,
+        0.47058823704719543,
+        1.0
+      ],
+      "channelsMax": [
+        0.529411792755127,
+        0.529411792755127,
+        1.0
+      ],
+      "channelsMean": [
+        0.5000002980232239,
+        0.500028669834137,
+        1.0
+      ],
+      "normalLengthRange": [
+        1.000015377998352,
+        1.0019205808639526
+      ],
+      "normalNegativeZPixels": 0
+    },
+    {
+      "index": 22,
+      "name": "Exterior_weathered_concrete_color",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "90e9e23c8256b459d27ef413d0aceb951069b32376a142c19b855c735752f481",
+      "channelsMin": [
+        0.2078431397676468,
+        0.16470588743686676,
+        0.09019608050584793
+      ],
+      "channelsMax": [
+        0.3019607961177826,
+        0.23529411852359772,
+        0.13333334028720856
+      ],
+      "channelsMean": [
+        0.2582150101661682,
+        0.20155289769172668,
+        0.11379985511302948
+      ]
+    },
+    {
+      "index": 23,
+      "name": "Exterior_weathered_concrete_roughness",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "39576907b6fa562238ccc2eb1b3d8b26a0895e90a542dfb411d8d7f4a06e7ee3",
+      "channelsMin": [
+        1.0,
+        0.6627451181411743,
+        1.0
+      ],
+      "channelsMax": [
+        1.0,
+        0.8274509906768799,
+        1.0
+      ],
+      "channelsMean": [
+        1.0,
+        0.7359591722488403,
+        1.0
+      ]
+    },
+    {
+      "index": 24,
+      "name": "amber_clouds",
+      "size": [
+        1774,
+        887
+      ],
+      "mode": "RGB",
+      "sha256": "d0f54b4974b5eb81324cf05e35f6254215e827c3b63830151a37f7bd0fa786aa",
+      "channelsMin": [
+        0.06666667014360428,
+        0.07450980693101883,
+        0.04313725605607033
+      ],
+      "channelsMax": [
+        1.0,
+        0.9333333373069763,
+        0.6941176652908325
+      ],
+      "channelsMean": [
+        0.6589530110359192,
+        0.4389267563819885,
+        0.22702333331108093
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "index": 0,
+      "name": "PBR | Caliza ocre envejecida",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 0.47999998927116394,
+      "maps": {
+        "baseColor": {
+          "texture": 1,
+          "image": 1,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 0,
+          "image": 0,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 2,
+          "image": 2,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 2,
+          "image": 2,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.5333333611488342,
+        0.7137255072593689
+      ],
+      "metallicEffectiveRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "index": 1,
+      "name": "PBR | Caliza aristas claras",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 0.4000000059604645,
+      "maps": {
+        "baseColor": {
+          "texture": 4,
+          "image": 4,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 3,
+          "image": 3,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 5,
+          "image": 5,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 5,
+          "image": 5,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.5137255191802979,
+        0.6901960968971252
+      ],
+      "metallicEffectiveRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "index": 2,
+      "name": "PBR | Piedra negra pulida",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 0.03500000014901161,
+      "maps": {
+        "baseColor": {
+          "texture": 7,
+          "image": 7,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 6,
+          "image": 6,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 8,
+          "image": 8,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 8,
+          "image": 8,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.11372549086809158,
+        0.45098039507865906
+      ],
+      "metallicEffectiveRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "index": 3,
+      "name": "PBR | Juntas y cavidades",
+      "metallicFactor": 0,
+      "roughnessFactor": 0.8500000238418579,
+      "normalScale": 1,
+      "maps": {}
+    },
+    {
+      "index": 4,
+      "name": "PBR | Nogal oscuro",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 0.20000000298023224,
+      "maps": {
+        "baseColor": {
+          "texture": 10,
+          "image": 10,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 9,
+          "image": 9,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 11,
+          "image": 11,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 11,
+          "image": 11,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.21176470816135406,
+        0.41960784792900085
+      ],
+      "metallicEffectiveRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "index": 5,
+      "name": "PBR | Raiz de nogal",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 0.20000000298023224,
+      "maps": {
+        "baseColor": {
+          "texture": 13,
+          "image": 13,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 12,
+          "image": 12,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 14,
+          "image": 14,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 14,
+          "image": 14,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.1725490242242813,
+        0.3686274588108063
+      ],
+      "metallicEffectiveRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "index": 6,
+      "name": "Walnut | quarter sawn",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 0.6499999761581421,
+      "maps": {
+        "baseColor": {
+          "texture": 16,
+          "image": 10,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 15,
+          "image": 9,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 17,
+          "image": 11,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 17,
+          "image": 11,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.21176470816135406,
+        0.41960784792900085
+      ],
+      "metallicEffectiveRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "index": 7,
+      "name": "Leather | oxblood",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 0.6499999761581421,
+      "maps": {
+        "baseColor": {
+          "texture": 19,
+          "image": 16,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 18,
+          "image": 15,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 20,
+          "image": 17,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 20,
+          "image": 17,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.30588236451148987,
+        0.4745098054409027
+      ],
+      "metallicEffectiveRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "index": 8,
+      "name": "Burl walnut | table rim",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 0.6499999761581421,
+      "maps": {
+        "baseColor": {
+          "texture": 22,
+          "image": 13,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 21,
+          "image": 12,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 23,
+          "image": 14,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 23,
+          "image": 14,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.1725490242242813,
+        0.3686274588108063
+      ],
+      "metallicEffectiveRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "index": 9,
+      "name": "Brass | polished highlights",
+      "metallicFactor": 0.8199999928474426,
+      "roughnessFactor": 0.23999999463558197,
+      "normalScale": 1,
+      "maps": {}
+    },
+    {
+      "index": 10,
+      "name": "Bronze | patinated",
+      "metallicFactor": 0.7200000286102295,
+      "roughnessFactor": 1,
+      "normalScale": 0.6499999761581421,
+      "maps": {
+        "baseColor": {
+          "texture": 25,
+          "image": 19,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 24,
+          "image": 18,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 26,
+          "image": 20,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 26,
+          "image": 20,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.27450981736183167,
+        0.4470588266849518
+      ],
+      "metallicEffectiveRange": [
+        0.7200000286102295,
+        0.7200000286102295
+      ]
+    },
+    {
+      "index": 11,
+      "name": "Recesses | charcoal",
+      "metallicFactor": 0,
+      "roughnessFactor": 0.7200000286102295,
+      "normalScale": 1,
+      "maps": {}
+    },
+    {
+      "index": 12,
+      "name": "PBR | Cuero oscuro",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 0.30000001192092896,
+      "maps": {
+        "baseColor": {
+          "texture": 28,
+          "image": 16,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 27,
+          "image": 15,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 29,
+          "image": 17,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 29,
+          "image": 17,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.30588236451148987,
+        0.4745098054409027
+      ],
+      "metallicEffectiveRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "index": 13,
+      "name": "PBR | Laton envejecido",
+      "metallicFactor": 0.800000011920929,
+      "roughnessFactor": 0.30000001192092896,
+      "normalScale": 1,
+      "maps": {}
+    },
+    {
+      "index": 14,
+      "name": "PBR | Bronce patinado",
+      "metallicFactor": 0.699999988079071,
+      "roughnessFactor": 1,
+      "normalScale": 0.25,
+      "maps": {
+        "baseColor": {
+          "texture": 31,
+          "image": 19,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 30,
+          "image": 18,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 32,
+          "image": 20,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 32,
+          "image": 20,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.27450981736183167,
+        0.4470588266849518
+      ],
+      "metallicEffectiveRange": [
+        0.699999988079071,
+        0.699999988079071
+      ]
+    },
+    {
+      "index": 15,
+      "name": "Crystal",
+      "metallicFactor": 0,
+      "roughnessFactor": 0.07500000298023224,
+      "normalScale": 1,
+      "maps": {}
+    },
+    {
+      "index": 16,
+      "name": "Ivory paper",
+      "metallicFactor": 0,
+      "roughnessFactor": 0.7799999713897705,
+      "normalScale": 1,
+      "maps": {}
+    },
+    {
+      "index": 17,
+      "name": "PBR | Hormigon exterior",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 0.30000001192092896,
+      "maps": {
+        "baseColor": {
+          "texture": 34,
+          "image": 22,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "normal": {
+          "texture": 33,
+          "image": 21,
+          "space": "data",
+          "channel": "RGB",
+          "uvSet": 0
+        },
+        "roughness": {
+          "texture": 35,
+          "image": 23,
+          "space": "data",
+          "channel": "G",
+          "uvSet": 0
+        },
+        "metallic": {
+          "texture": 35,
+          "image": 23,
+          "space": "data",
+          "channel": "B",
+          "uvSet": 0
+        }
+      },
+      "roughnessEffectiveRange": [
+        0.6627451181411743,
+        0.8274509906768799
+      ],
+      "metallicEffectiveRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "index": 18,
+      "name": "Cielo | nubes ambar",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 1,
+      "maps": {
+        "emissive": {
+          "texture": 36,
+          "image": 24,
+          "space": "sRGB",
+          "channel": "RGB",
+          "uvSet": 0
+        }
+      }
+    },
+    {
+      "index": 19,
+      "name": "Sol | disco emisivo",
+      "metallicFactor": 0,
+      "roughnessFactor": 1,
+      "normalScale": 1,
+      "maps": {}
+    }
+  ],
+  "issues": [],
+  "uv": {
+    "texturedPrimitives": 114,
+    "collapsedUVTriangles": 236,
+    "collapsedDetails": [
+      {
+        "mesh": 0,
+        "name": "Mesh.1670",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 2,
+        "areaSumM2": 0.0009634897933210596,
+        "areaMaxM2": 0.0007320135755435331
+      },
+      {
+        "mesh": 3,
+        "name": "Mesh.1860",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 1,
+        "areaSumM2": 1.670769957388336e-10,
+        "areaMaxM2": 1.670769957388336e-10
+      },
+      {
+        "mesh": 5,
+        "name": "Mesh.2588",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 59,
+        "areaSumM2": 5.470686400744277e-05,
+        "areaMaxM2": 1.9540191415361174e-06
+      },
+      {
+        "mesh": 6,
+        "name": "Mesh.2601",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 3,
+        "areaSumM2": 0.0009635165351653541,
+        "areaMaxM2": 0.0007319263168028556
+      },
+      {
+        "mesh": 7,
+        "name": "Mesh.2648",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 2,
+        "areaSumM2": 9.38764608907236e-10,
+        "areaMaxM2": 4.960071033984485e-10
+      },
+      {
+        "mesh": 10,
+        "name": "Columna 01 | perfil original y 24 hiladas",
+        "primitive": 1,
+        "material": 1,
+        "triangles": 11,
+        "areaSumM2": 2.7717222022204745e-05,
+        "areaMaxM2": 1.2828602279191583e-05
+      },
+      {
+        "mesh": 11,
+        "name": "Columna 02 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 7,
+        "areaSumM2": 1.019890721766581e-05,
+        "areaMaxM2": 3.6507306260839613e-06
+      },
+      {
+        "mesh": 12,
+        "name": "Columna 03 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 9,
+        "areaSumM2": 4.0573404066786194e-05,
+        "areaMaxM2": 1.0398859012251824e-05
+      },
+      {
+        "mesh": 13,
+        "name": "Columna 04 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 1,
+        "areaSumM2": 5.509289006796418e-07,
+        "areaMaxM2": 5.509289006796418e-07
+      },
+      {
+        "mesh": 14,
+        "name": "Columna 05 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 1,
+        "areaSumM2": 1.3702947209338638e-07,
+        "areaMaxM2": 1.3702947209338638e-07
+      },
+      {
+        "mesh": 15,
+        "name": "Columna 06 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 11,
+        "areaSumM2": 4.089552777340161e-05,
+        "areaMaxM2": 1.4074428912991274e-05
+      },
+      {
+        "mesh": 16,
+        "name": "Columna 07 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 4,
+        "areaSumM2": 6.153412739381811e-07,
+        "areaMaxM2": 3.1481918925697707e-07
+      },
+      {
+        "mesh": 17,
+        "name": "Columna 08 | perfil original y 24 hiladas",
+        "primitive": 1,
+        "material": 1,
+        "triangles": 10,
+        "areaSumM2": 3.4081692771702405e-05,
+        "areaMaxM2": 9.957792430603257e-06
+      },
+      {
+        "mesh": 18,
+        "name": "Columna 09 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 2,
+        "areaSumM2": 1.677513779657473e-09,
+        "areaMaxM2": 9.240896796439803e-10
+      },
+      {
+        "mesh": 19,
+        "name": "Columna 10 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 11,
+        "areaSumM2": 0.00011536762552516321,
+        "areaMaxM2": 6.7849500325559e-05
+      },
+      {
+        "mesh": 20,
+        "name": "Columna 11 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 9,
+        "areaSumM2": 2.307939542949419e-05,
+        "areaMaxM2": 9.987895310814565e-06
+      },
+      {
+        "mesh": 21,
+        "name": "Columna 12 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 10,
+        "areaSumM2": 1.7296291296869508e-05,
+        "areaMaxM2": 9.987895843721617e-06
+      },
+      {
+        "mesh": 22,
+        "name": "Columna 13 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 2,
+        "areaSumM2": 9.482578626971666e-06,
+        "areaMaxM2": 9.482002420334178e-06
+      },
+      {
+        "mesh": 23,
+        "name": "Columna 14 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 12,
+        "areaSumM2": 0.00018321712919336776,
+        "areaMaxM2": 6.784959145657613e-05
+      },
+      {
+        "mesh": 24,
+        "name": "Columna 15 | perfil original y 24 hiladas",
+        "primitive": 1,
+        "material": 1,
+        "triangles": 11,
+        "areaSumM2": 0.0001584915271739895,
+        "areaMaxM2": 6.788500554302626e-05
+      },
+      {
+        "mesh": 25,
+        "name": "Columna 16 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 8,
+        "areaSumM2": 3.626091091823929e-05,
+        "areaMaxM2": 1.2794059360281005e-05
+      },
+      {
+        "mesh": 26,
+        "name": "Columna 17 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 11,
+        "areaSumM2": 0.00011551720364381898,
+        "areaMaxM2": 6.79381042143805e-05
+      },
+      {
+        "mesh": 27,
+        "name": "Columna 18 | perfil original y 24 hiladas",
+        "primitive": 0,
+        "material": 0,
+        "triangles": 3,
+        "areaSumM2": 7.591421853655571e-06,
+        "areaMaxM2": 7.584753481051409e-06
+      },
+      {
+        "mesh": 64,
+        "name": "Mesh.2065",
+        "primitive": 0,
+        "material": 4,
+        "triangles": 2,
+        "areaSumM2": 7.567482307457851e-09,
+        "areaMaxM2": 3.783741153728926e-09
+      },
+      {
+        "mesh": 65,
+        "name": "Mesh.2501",
+        "primitive": 0,
+        "material": 5,
+        "triangles": 7,
+        "areaSumM2": 8.229943474078153e-05,
+        "areaMaxM2": 5.60994138058993e-05
+      },
+      {
+        "mesh": 66,
+        "name": "Mesh.2542",
+        "primitive": 0,
+        "material": 4,
+        "triangles": 2,
+        "areaSumM2": 7.567482307457851e-09,
+        "areaMaxM2": 3.783741153728926e-09
+      },
+      {
+        "mesh": 68,
+        "name": "Mesa | campo de cuero",
+        "primitive": 0,
+        "material": 12,
+        "triangles": 8,
+        "areaSumM2": 1.4200806752739936e-08,
+        "areaMaxM2": 2.099201035221654e-09
+      },
+      {
+        "mesh": 98,
+        "name": "Leather folio",
+        "primitive": 0,
+        "material": 6,
+        "triangles": 11,
+        "areaSumM2": 4.803090294898265e-09,
+        "areaMaxM2": 6.454065615280058e-10
+      },
+      {
+        "mesh": 104,
+        "name": "Mesh.1804",
+        "primitive": 0,
+        "material": 17,
+        "triangles": 6,
+        "areaSumM2": 0.0001668158182408893,
+        "areaMaxM2": 0.0001463113585487008
+      }
+    ],
+    "range": [
+      -34.69065475463867,
+      35.69065475463867
+    ],
+    "note": "UVs outside 0..1 are intentional tiling; collapsed UVs need visual review, not automatic geometry edits. Areas are local-space, unique mesh triangles."
+  },
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "summary": {
+    "materials": 20,
+    "images": 25,
+    "colorImages": 9,
+    "dataImages": 16,
+    "issues": 0
+  }
+}

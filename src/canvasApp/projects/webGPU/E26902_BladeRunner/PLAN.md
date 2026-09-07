@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **fases 1 y 2 completadas**. Instrucciones en [README.md](README.md); cierre de fase 1 en [VALIDACION.md](docs/phase1/VALIDACION.md) y cierre actual en [CIERRE.md](docs/phase2/CIERRE.md). Siguiente entrega: fase 3, materiales y respuesta al color.
+Estado: **fases 1, 2 y punto 3.1 completados**. Instrucciones en [README.md](README.md), cierre de fase 2 en [CIERRE.md](docs/phase2/CIERRE.md) y validación de mapas en [MAPAS.md](docs/phase3/3.1/MAPAS.md). Siguiente entrega: **3.2, gestión de color y exposición de referencia**.
 
 ## Objetivo
 
@@ -16,6 +16,7 @@ Trabajar por entregas pequeñas, en el orden de esta lista. Cada entrega actuali
 - El código específico de Tyrell permanecerá en esta carpeta; los cambios en `core` serán pequeños y necesarios para integrarlo.
 - Recursos originales, fuera del repositorio: `../../_Blender/BladeRunner_5_6_High_v3.blend` y `.glb`, respecto a la raíz del repositorio.
 - Renders de referencia: `../../_Blender/v3_renders/v3_general.png` y `v3_detalle.png`.
+- Referencias de acabado e iluminación añadidas por el usuario en fase 3.1: `docs/reference images/Screenshot_1.jpg`, `Screenshot_2.jpg`, `Screenshot_3.jpg`. Aplicar [sus criterios visuales](<docs/reference images/README.md>) en las siguientes entregas de materiales, luz, reflejos y atmósfera.
 - Datos de exportación: `../../_Blender/v3_assets/validation.json` y `export_report.json`.
 - Destino previsto para los recursos de ejecución: `static/glbs/E26902_BladeRunner/`, con referencias de revisión en una carpeta separada.
 - El módulo anterior `../../_Blender/tyrell-threejs.mjs` se hizo para WebGLRenderer. Sirve como referencia de parámetros, pero necesita adaptación para WebGPU.
@@ -70,12 +71,12 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 ## 3 · Materiales y respuesta al color
 
-- [ ] Validar los mapas de color, normales y rugosidad; separar correctamente texturas de color y de datos.
-- [ ] Establecer gestión de color, AgX y exposición de referencia antes de calibrar las luces.
-- [ ] Ajustar piedra, cuero, nogal, bronce, suelo y cristalería con el GLB como punto de partida.
-- [ ] Comprobar que el suelo conserva juntas y desgaste y que la normal no produce un aspecto de agua.
-- [ ] Usar materiales estándar cuando sean suficientes y materiales de nodos donde lo exija un efecto concreto.
-- [ ] Conservar los recursos compartidos entre sillas y evitar clonar materiales innecesariamente.
+- [x] **3.1** Validar los mapas de color, normales y rugosidad; separar correctamente texturas de color y de datos. 25 imágenes auditadas, 20 materiales contrastados con Blender y conexiones comprobadas con GLTFLoader y WebGPU. No se encontraron errores de espacio de color; informe y límites en `docs/phase3/3.1/`.
+- [ ] **3.2** Establecer gestión de color, AgX y exposición de referencia antes de calibrar las luces.
+- [ ] **3.3** Ajustar piedra, cuero, nogal, bronce, suelo y cristalería con el GLB como punto de partida y las tres referencias visuales. Revisar las UV colapsadas localizadas en 3.1 si aparecen estiramientos en las superficies al calibrar los materiales.
+- [ ] **3.4** Comprobar que el suelo conserva juntas y desgaste y que la normal no produce un aspecto de agua.
+- [ ] **3.5** Usar materiales estándar cuando sean suficientes y materiales de nodos donde lo exija un efecto concreto.
+- [ ] **3.6** Conservar los recursos compartidos entre sillas y evitar clonar materiales innecesariamente.
 
 **Resultado comprobable:** detalle de la mesa y piedra coherentes con Blender bajo un esquema de luz controlado.
 
