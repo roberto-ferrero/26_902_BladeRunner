@@ -1,0 +1,1052 @@
+{
+  "input": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Repo\\26_902_BladeRunner\\static\\glbs\\E26902_BladeRunner\\BladeRunner_5_6_High_v3_edited.glb",
+  "inputSha256": "7b860e4fa93da9380d7cdc3f38116d6905f5907d68086c1fd36c6ba895ba334c",
+  "method": "Index-only: discard triangles of area <=1e-10 m2 (local coordinates, float64 or float32 cross product); reverse winding where normalized mean exported normal dot face normal < -0.1. No position/normal/UV/material/camera edits.",
+  "meshes": [
+    {
+      "meshIndex": 0,
+      "primitiveIndex": 0,
+      "name": "Mesh.1670",
+      "inputTriangles": 216,
+      "removed": 4,
+      "reversed": 1
+    },
+    {
+      "meshIndex": 1,
+      "primitiveIndex": 0,
+      "name": "Mesh.1781",
+      "inputTriangles": 68,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 2,
+      "primitiveIndex": 0,
+      "name": "Mesh.1791",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 3,
+      "primitiveIndex": 0,
+      "name": "Mesh.1860",
+      "inputTriangles": 204,
+      "removed": 12,
+      "reversed": 18
+    },
+    {
+      "meshIndex": 4,
+      "primitiveIndex": 0,
+      "name": "Mesh.1886",
+      "inputTriangles": 124,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 5,
+      "primitiveIndex": 0,
+      "name": "Mesh.2588",
+      "inputTriangles": 148,
+      "removed": 36,
+      "reversed": 1
+    },
+    {
+      "meshIndex": 6,
+      "primitiveIndex": 0,
+      "name": "Mesh.2601",
+      "inputTriangles": 488,
+      "removed": 4,
+      "reversed": 1
+    },
+    {
+      "meshIndex": 7,
+      "primitiveIndex": 0,
+      "name": "Mesh.2648",
+      "inputTriangles": 204,
+      "removed": 15,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 8,
+      "primitiveIndex": 0,
+      "name": "Mesh.2751",
+      "inputTriangles": 1124,
+      "removed": 2,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 9,
+      "primitiveIndex": 0,
+      "name": "Alfeizar | canto de piedra pulida",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 10,
+      "primitiveIndex": 0,
+      "name": "Columna 01 | perfil original y 24 hiladas",
+      "inputTriangles": 7316,
+      "removed": 3,
+      "reversed": 1
+    },
+    {
+      "meshIndex": 10,
+      "primitiveIndex": 1,
+      "name": "Columna 01 | perfil original y 24 hiladas",
+      "inputTriangles": 1525,
+      "removed": 20,
+      "reversed": 19
+    },
+    {
+      "meshIndex": 11,
+      "primitiveIndex": 0,
+      "name": "Columna 02 | perfil original y 24 hiladas",
+      "inputTriangles": 7056,
+      "removed": 26,
+      "reversed": 23
+    },
+    {
+      "meshIndex": 11,
+      "primitiveIndex": 1,
+      "name": "Columna 02 | perfil original y 24 hiladas",
+      "inputTriangles": 1108,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 12,
+      "primitiveIndex": 0,
+      "name": "Columna 03 | perfil original y 24 hiladas",
+      "inputTriangles": 7232,
+      "removed": 24,
+      "reversed": 18
+    },
+    {
+      "meshIndex": 12,
+      "primitiveIndex": 1,
+      "name": "Columna 03 | perfil original y 24 hiladas",
+      "inputTriangles": 932,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 13,
+      "primitiveIndex": 0,
+      "name": "Columna 04 | perfil original y 24 hiladas",
+      "inputTriangles": 5837,
+      "removed": 946,
+      "reversed": 5
+    },
+    {
+      "meshIndex": 13,
+      "primitiveIndex": 1,
+      "name": "Columna 04 | perfil original y 24 hiladas",
+      "inputTriangles": 948,
+      "removed": 152,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 14,
+      "primitiveIndex": 0,
+      "name": "Columna 05 | perfil original y 24 hiladas",
+      "inputTriangles": 7076,
+      "removed": 1311,
+      "reversed": 14
+    },
+    {
+      "meshIndex": 14,
+      "primitiveIndex": 1,
+      "name": "Columna 05 | perfil original y 24 hiladas",
+      "inputTriangles": 1108,
+      "removed": 200,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 15,
+      "primitiveIndex": 0,
+      "name": "Columna 06 | perfil original y 24 hiladas",
+      "inputTriangles": 7482,
+      "removed": 25,
+      "reversed": 17
+    },
+    {
+      "meshIndex": 15,
+      "primitiveIndex": 1,
+      "name": "Columna 06 | perfil original y 24 hiladas",
+      "inputTriangles": 1360,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 16,
+      "primitiveIndex": 0,
+      "name": "Columna 07 | perfil original y 24 hiladas",
+      "inputTriangles": 7376,
+      "removed": 1359,
+      "reversed": 10
+    },
+    {
+      "meshIndex": 16,
+      "primitiveIndex": 1,
+      "name": "Columna 07 | perfil original y 24 hiladas",
+      "inputTriangles": 1472,
+      "removed": 264,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 17,
+      "primitiveIndex": 0,
+      "name": "Columna 08 | perfil original y 24 hiladas",
+      "inputTriangles": 7310,
+      "removed": 2,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 17,
+      "primitiveIndex": 1,
+      "name": "Columna 08 | perfil original y 24 hiladas",
+      "inputTriangles": 1526,
+      "removed": 28,
+      "reversed": 17
+    },
+    {
+      "meshIndex": 18,
+      "primitiveIndex": 0,
+      "name": "Columna 09 | perfil original y 24 hiladas",
+      "inputTriangles": 4399,
+      "removed": 5,
+      "reversed": 7
+    },
+    {
+      "meshIndex": 18,
+      "primitiveIndex": 1,
+      "name": "Columna 09 | perfil original y 24 hiladas",
+      "inputTriangles": 620,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 19,
+      "primitiveIndex": 0,
+      "name": "Columna 10 | perfil original y 24 hiladas",
+      "inputTriangles": 7682,
+      "removed": 35,
+      "reversed": 25
+    },
+    {
+      "meshIndex": 19,
+      "primitiveIndex": 1,
+      "name": "Columna 10 | perfil original y 24 hiladas",
+      "inputTriangles": 1156,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 20,
+      "primitiveIndex": 0,
+      "name": "Columna 11 | perfil original y 24 hiladas",
+      "inputTriangles": 7264,
+      "removed": 27,
+      "reversed": 20
+    },
+    {
+      "meshIndex": 20,
+      "primitiveIndex": 1,
+      "name": "Columna 11 | perfil original y 24 hiladas",
+      "inputTriangles": 900,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 21,
+      "primitiveIndex": 0,
+      "name": "Columna 12 | perfil original y 24 hiladas",
+      "inputTriangles": 7312,
+      "removed": 21,
+      "reversed": 19
+    },
+    {
+      "meshIndex": 21,
+      "primitiveIndex": 1,
+      "name": "Columna 12 | perfil original y 24 hiladas",
+      "inputTriangles": 852,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 22,
+      "primitiveIndex": 0,
+      "name": "Columna 13 | perfil original y 24 hiladas",
+      "inputTriangles": 5769,
+      "removed": 10,
+      "reversed": 4
+    },
+    {
+      "meshIndex": 22,
+      "primitiveIndex": 1,
+      "name": "Columna 13 | perfil original y 24 hiladas",
+      "inputTriangles": 1019,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 23,
+      "primitiveIndex": 0,
+      "name": "Columna 14 | perfil original y 24 hiladas",
+      "inputTriangles": 6702,
+      "removed": 21,
+      "reversed": 25
+    },
+    {
+      "meshIndex": 23,
+      "primitiveIndex": 1,
+      "name": "Columna 14 | perfil original y 24 hiladas",
+      "inputTriangles": 1472,
+      "removed": 16,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 24,
+      "primitiveIndex": 0,
+      "name": "Columna 15 | perfil original y 24 hiladas",
+      "inputTriangles": 7312,
+      "removed": 17,
+      "reversed": 2
+    },
+    {
+      "meshIndex": 24,
+      "primitiveIndex": 1,
+      "name": "Columna 15 | perfil original y 24 hiladas",
+      "inputTriangles": 1526,
+      "removed": 18,
+      "reversed": 24
+    },
+    {
+      "meshIndex": 25,
+      "primitiveIndex": 0,
+      "name": "Columna 16 | perfil original y 24 hiladas",
+      "inputTriangles": 7933,
+      "removed": 25,
+      "reversed": 23
+    },
+    {
+      "meshIndex": 25,
+      "primitiveIndex": 1,
+      "name": "Columna 16 | perfil original y 24 hiladas",
+      "inputTriangles": 900,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 26,
+      "primitiveIndex": 0,
+      "name": "Columna 17 | perfil original y 24 hiladas",
+      "inputTriangles": 7682,
+      "removed": 33,
+      "reversed": 26
+    },
+    {
+      "meshIndex": 26,
+      "primitiveIndex": 1,
+      "name": "Columna 17 | perfil original y 24 hiladas",
+      "inputTriangles": 1156,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 27,
+      "primitiveIndex": 0,
+      "name": "Columna 18 | perfil original y 24 hiladas",
+      "inputTriangles": 4461,
+      "removed": 4,
+      "reversed": 3
+    },
+    {
+      "meshIndex": 27,
+      "primitiveIndex": 1,
+      "name": "Columna 18 | perfil original y 24 hiladas",
+      "inputTriangles": 556,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 28,
+      "primitiveIndex": 0,
+      "name": "Mesh.003",
+      "inputTriangles": 4400,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 29,
+      "primitiveIndex": 0,
+      "name": "Mesh.004",
+      "inputTriangles": 3696,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 30,
+      "primitiveIndex": 0,
+      "name": "Mesh.020",
+      "inputTriangles": 4400,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 31,
+      "primitiveIndex": 0,
+      "name": "Mesh.023",
+      "inputTriangles": 4400,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 32,
+      "primitiveIndex": 0,
+      "name": "Mesh.033",
+      "inputTriangles": 4400,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 33,
+      "primitiveIndex": 0,
+      "name": "Mesh.036",
+      "inputTriangles": 4400,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 34,
+      "primitiveIndex": 0,
+      "name": "Mesh.038",
+      "inputTriangles": 3344,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 35,
+      "primitiveIndex": 0,
+      "name": "Mesh.039",
+      "inputTriangles": 1408,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 36,
+      "primitiveIndex": 0,
+      "name": "Mesh.042",
+      "inputTriangles": 4400,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 37,
+      "primitiveIndex": 0,
+      "name": "Mesh.043",
+      "inputTriangles": 3608,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 38,
+      "primitiveIndex": 0,
+      "name": "Mesh.048",
+      "inputTriangles": 4400,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 39,
+      "primitiveIndex": 0,
+      "name": "Mesh.050",
+      "inputTriangles": 3520,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 40,
+      "primitiveIndex": 0,
+      "name": "Mesh.1460",
+      "inputTriangles": 880,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 41,
+      "primitiveIndex": 0,
+      "name": "Mesh.1471",
+      "inputTriangles": 1760,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 42,
+      "primitiveIndex": 0,
+      "name": "Mesh.1494",
+      "inputTriangles": 1760,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 43,
+      "primitiveIndex": 0,
+      "name": "Mesh.1510",
+      "inputTriangles": 1936,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 44,
+      "primitiveIndex": 0,
+      "name": "Mesh.1534",
+      "inputTriangles": 880,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 45,
+      "primitiveIndex": 0,
+      "name": "Mesh.1640",
+      "inputTriangles": 352,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 46,
+      "primitiveIndex": 0,
+      "name": "Mesh.1672",
+      "inputTriangles": 880,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 47,
+      "primitiveIndex": 0,
+      "name": "Mesh.1706",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 48,
+      "primitiveIndex": 0,
+      "name": "Mesh.1925",
+      "inputTriangles": 352,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 49,
+      "primitiveIndex": 0,
+      "name": "Mortero bajo pavimento",
+      "inputTriangles": 12,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 50,
+      "primitiveIndex": 0,
+      "name": "Mesh.037",
+      "inputTriangles": 21792,
+      "removed": 17,
+      "reversed": 3564
+    },
+    {
+      "meshIndex": 51,
+      "primitiveIndex": 0,
+      "name": "Mesh.040",
+      "inputTriangles": 2270,
+      "removed": 0,
+      "reversed": 370
+    },
+    {
+      "meshIndex": 52,
+      "primitiveIndex": 0,
+      "name": "Mesh.1459",
+      "inputTriangles": 6356,
+      "removed": 0,
+      "reversed": 1050
+    },
+    {
+      "meshIndex": 53,
+      "primitiveIndex": 0,
+      "name": "Mesh.1484",
+      "inputTriangles": 6810,
+      "removed": 0,
+      "reversed": 1110
+    },
+    {
+      "meshIndex": 54,
+      "primitiveIndex": 0,
+      "name": "Mesh.1505",
+      "inputTriangles": 6810,
+      "removed": 0,
+      "reversed": 1110
+    },
+    {
+      "meshIndex": 55,
+      "primitiveIndex": 0,
+      "name": "Mesh.1575",
+      "inputTriangles": 6810,
+      "removed": 0,
+      "reversed": 1125
+    },
+    {
+      "meshIndex": 56,
+      "primitiveIndex": 0,
+      "name": "Mesh.1614",
+      "inputTriangles": 4994,
+      "removed": 0,
+      "reversed": 814
+    },
+    {
+      "meshIndex": 57,
+      "primitiveIndex": 0,
+      "name": "Mesh.1618",
+      "inputTriangles": 6356,
+      "removed": 0,
+      "reversed": 1036
+    },
+    {
+      "meshIndex": 58,
+      "primitiveIndex": 0,
+      "name": "Mesh.1731",
+      "inputTriangles": 454,
+      "removed": 0,
+      "reversed": 74
+    },
+    {
+      "meshIndex": 59,
+      "primitiveIndex": 0,
+      "name": "Mesh.2022",
+      "inputTriangles": 454,
+      "removed": 0,
+      "reversed": 75
+    },
+    {
+      "meshIndex": 60,
+      "primitiveIndex": 0,
+      "name": "Mesh.2131",
+      "inputTriangles": 454,
+      "removed": 0,
+      "reversed": 74
+    },
+    {
+      "meshIndex": 61,
+      "primitiveIndex": 0,
+      "name": "Mesh.044",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 62,
+      "primitiveIndex": 0,
+      "name": "Mesh.1783",
+      "inputTriangles": 288,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 63,
+      "primitiveIndex": 0,
+      "name": "Mesh.1878",
+      "inputTriangles": 288,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 64,
+      "primitiveIndex": 0,
+      "name": "Mesh.2065",
+      "inputTriangles": 300,
+      "removed": 0,
+      "reversed": 3
+    },
+    {
+      "meshIndex": 65,
+      "primitiveIndex": 0,
+      "name": "Mesh.2501",
+      "inputTriangles": 268,
+      "removed": 15,
+      "reversed": 16
+    },
+    {
+      "meshIndex": 66,
+      "primitiveIndex": 0,
+      "name": "Mesh.2542",
+      "inputTriangles": 300,
+      "removed": 0,
+      "reversed": 3
+    },
+    {
+      "meshIndex": 67,
+      "primitiveIndex": 0,
+      "name": "Scalloped carved back",
+      "inputTriangles": 794,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 67,
+      "primitiveIndex": 1,
+      "name": "Scalloped carved back",
+      "inputTriangles": 656,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 67,
+      "primitiveIndex": 2,
+      "name": "Scalloped carved back",
+      "inputTriangles": 1282,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 67,
+      "primitiveIndex": 3,
+      "name": "Scalloped carved back",
+      "inputTriangles": 358,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 67,
+      "primitiveIndex": 4,
+      "name": "Scalloped carved back",
+      "inputTriangles": 2164,
+      "removed": 96,
+      "reversed": 7
+    },
+    {
+      "meshIndex": 67,
+      "primitiveIndex": 5,
+      "name": "Scalloped carved back",
+      "inputTriangles": 1170,
+      "removed": 320,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 68,
+      "primitiveIndex": 0,
+      "name": "Mesa | campo de cuero",
+      "inputTriangles": 44,
+      "removed": 8,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 69,
+      "primitiveIndex": 0,
+      "name": "Mesa | filete de laton",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 70,
+      "primitiveIndex": 0,
+      "name": "Mesa | faldon tallado",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 71,
+      "primitiveIndex": 0,
+      "name": "Mesa | filete de laton.001",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 72,
+      "primitiveIndex": 0,
+      "name": "Mesa | faldon tallado.001",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 73,
+      "primitiveIndex": 0,
+      "name": "Mesa | filete transversal",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 74,
+      "primitiveIndex": 0,
+      "name": "Mesa | filete transversal.001",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 75,
+      "primitiveIndex": 0,
+      "name": "Mesa | remate del soporte",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 76,
+      "primitiveIndex": 0,
+      "name": "Mesa | remate del soporte.001",
+      "inputTriangles": 44,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 77,
+      "primitiveIndex": 0,
+      "name": "Mesh.1504",
+      "inputTriangles": 404,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 78,
+      "primitiveIndex": 0,
+      "name": "Mesh.1549",
+      "inputTriangles": 58,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 79,
+      "primitiveIndex": 0,
+      "name": "Mesh.1562",
+      "inputTriangles": 1720,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 80,
+      "primitiveIndex": 0,
+      "name": "Mesh.1762",
+      "inputTriangles": 60,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 81,
+      "primitiveIndex": 0,
+      "name": "Mesh.1772",
+      "inputTriangles": 140,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 82,
+      "primitiveIndex": 0,
+      "name": "Mesh.1789",
+      "inputTriangles": 1478,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 83,
+      "primitiveIndex": 0,
+      "name": "Mesh.1832",
+      "inputTriangles": 144,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 84,
+      "primitiveIndex": 0,
+      "name": "Mesh.1859",
+      "inputTriangles": 144,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 85,
+      "primitiveIndex": 0,
+      "name": "Mesh.1869",
+      "inputTriangles": 1020,
+      "removed": 3,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 86,
+      "primitiveIndex": 0,
+      "name": "Mesh.1990",
+      "inputTriangles": 248,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 87,
+      "primitiveIndex": 0,
+      "name": "Mesh.2047",
+      "inputTriangles": 1478,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 88,
+      "primitiveIndex": 0,
+      "name": "Mesh.2073",
+      "inputTriangles": 248,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 89,
+      "primitiveIndex": 0,
+      "name": "Mesh.2163",
+      "inputTriangles": 58,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 90,
+      "primitiveIndex": 0,
+      "name": "Mesh.2242",
+      "inputTriangles": 1020,
+      "removed": 3,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 91,
+      "primitiveIndex": 0,
+      "name": "Mesh.2432",
+      "inputTriangles": 404,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 92,
+      "primitiveIndex": 0,
+      "name": "Mesh.2699",
+      "inputTriangles": 1720,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 93,
+      "primitiveIndex": 0,
+      "name": "Mesh.2799",
+      "inputTriangles": 140,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 94,
+      "primitiveIndex": 0,
+      "name": "Cut crystal decanter",
+      "inputTriangles": 832,
+      "removed": 64,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 95,
+      "primitiveIndex": 0,
+      "name": "Crystal stopper",
+      "inputTriangles": 256,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 96,
+      "primitiveIndex": 0,
+      "name": "Crystal tumbler",
+      "inputTriangles": 560,
+      "removed": 80,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 97,
+      "primitiveIndex": 0,
+      "name": "Crystal tumbler.001",
+      "inputTriangles": 560,
+      "removed": 80,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 98,
+      "primitiveIndex": 0,
+      "name": "Leather folio",
+      "inputTriangles": 188,
+      "removed": 21,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 99,
+      "primitiveIndex": 0,
+      "name": "Paper on folio",
+      "inputTriangles": 188,
+      "removed": 24,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 100,
+      "primitiveIndex": 0,
+      "name": "Instrument case",
+      "inputTriangles": 300,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 101,
+      "primitiveIndex": 0,
+      "name": "Instrument lid",
+      "inputTriangles": 188,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 102,
+      "primitiveIndex": 0,
+      "name": "Instrument clasp",
+      "inputTriangles": 188,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 103,
+      "primitiveIndex": 0,
+      "name": "Instrument clasp.001",
+      "inputTriangles": 188,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 104,
+      "primitiveIndex": 0,
+      "name": "Mesh.1804",
+      "inputTriangles": 39654,
+      "removed": 0,
+      "reversed": 59
+    },
+    {
+      "meshIndex": 105,
+      "primitiveIndex": 0,
+      "name": "Cielo | fondo a 900 m",
+      "inputTriangles": 2,
+      "removed": 0,
+      "reversed": 0
+    },
+    {
+      "meshIndex": 106,
+      "primitiveIndex": 0,
+      "name": "Sol | disco a 650 m",
+      "inputTriangles": 64,
+      "removed": 0,
+      "reversed": 0
+    }
+  ],
+  "output": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Repo\\26_902_BladeRunner\\static\\glbs\\E26902_BladeRunner\\BladeRunner_5_6_High_v3_phase2.glb",
+  "outputBytes": 40552456,
+  "outputSha256": "bf2108bbe13d32df23bfa34e598c1d98085e2322e859fbf62354240f7e6b8fa2",
+  "removedUniqueTriangles": 5396,
+  "reversedUniqueTriangles": 10813
+}

@@ -1,5 +1,5 @@
 """Read-only model audit. Run with Blender --background --factory-startup --disable-autoexec --python this_file."""
-import bpy, json, struct, hashlib, math
+import bpy, json, struct, hashlib, math, sys
 from pathlib import Path
 from mathutils import Vector, Matrix, Quaternion
 from mathutils.kdtree import KDTree
@@ -8,6 +8,7 @@ PROJECT = Path(__file__).resolve().parents[1]
 REPO = PROJECT.parents[4]
 BLENDER = REPO.parents[1] / '_Blender'
 OUT = PROJECT / 'docs/phase2/model-audit'
+if '--processed' in sys.argv: OUT = OUT / 'clean'
 OUT.mkdir(parents=True, exist_ok=True)
 
 def glb(path):
@@ -79,6 +80,7 @@ def compare(a,b):
             'sameQuantizedTriangleSignature':fingerprint(a)==fingerprint(b)}
 
 active=REPO/'static/glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_edited.glb'
+if '--processed' in sys.argv: active=active.with_name('BladeRunner_5_6_High_v3_phase2.glb')
 raw,j,objects=glb(active)
 _,_,baseline=glb(REPO/'static/glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3.glb')
 source=BLENDER/'Plantilla de referencia.blend'

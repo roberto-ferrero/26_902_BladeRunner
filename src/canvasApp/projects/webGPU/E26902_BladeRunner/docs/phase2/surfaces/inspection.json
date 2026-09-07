@@ -1,0 +1,3717 @@
+{
+  "asset": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Repo\\26_902_BladeRunner\\static\\glbs\\E26902_BladeRunner\\BladeRunner_5_6_High_v3_edited.glb",
+  "meshAttributes": [
+    {
+      "mesh": 0,
+      "name": "Mesh.1670",
+      "triangles": 216,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 4,
+      "opposingNormalTriangles": 1
+    },
+    {
+      "mesh": 1,
+      "name": "Mesh.1781",
+      "triangles": 68,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 2,
+      "name": "Mesh.1791",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 3,
+      "name": "Mesh.1860",
+      "triangles": 204,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 12,
+      "opposingNormalTriangles": 18
+    },
+    {
+      "mesh": 4,
+      "name": "Mesh.1886",
+      "triangles": 124,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 5,
+      "name": "Mesh.2588",
+      "triangles": 148,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 36,
+      "opposingNormalTriangles": 1
+    },
+    {
+      "mesh": 6,
+      "name": "Mesh.2601",
+      "triangles": 488,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 4,
+      "opposingNormalTriangles": 1
+    },
+    {
+      "mesh": 7,
+      "name": "Mesh.2648",
+      "triangles": 204,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 15,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 8,
+      "name": "Mesh.2751",
+      "triangles": 1124,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 2,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 9,
+      "name": "Alfeizar | canto de piedra pulida",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 10,
+      "name": "Columna 01 | perfil original y 24 hiladas",
+      "triangles": 8841,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 23,
+      "opposingNormalTriangles": 20
+    },
+    {
+      "mesh": 11,
+      "name": "Columna 02 | perfil original y 24 hiladas",
+      "triangles": 8164,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 26,
+      "opposingNormalTriangles": 23
+    },
+    {
+      "mesh": 12,
+      "name": "Columna 03 | perfil original y 24 hiladas",
+      "triangles": 8164,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 24,
+      "opposingNormalTriangles": 18
+    },
+    {
+      "mesh": 13,
+      "name": "Columna 04 | perfil original y 24 hiladas",
+      "triangles": 6785,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 1098,
+      "opposingNormalTriangles": 5
+    },
+    {
+      "mesh": 14,
+      "name": "Columna 05 | perfil original y 24 hiladas",
+      "triangles": 8184,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 1511,
+      "opposingNormalTriangles": 14
+    },
+    {
+      "mesh": 15,
+      "name": "Columna 06 | perfil original y 24 hiladas",
+      "triangles": 8842,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 25,
+      "opposingNormalTriangles": 17
+    },
+    {
+      "mesh": 16,
+      "name": "Columna 07 | perfil original y 24 hiladas",
+      "triangles": 8848,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 1623,
+      "opposingNormalTriangles": 10
+    },
+    {
+      "mesh": 17,
+      "name": "Columna 08 | perfil original y 24 hiladas",
+      "triangles": 8836,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 30,
+      "opposingNormalTriangles": 17
+    },
+    {
+      "mesh": 18,
+      "name": "Columna 09 | perfil original y 24 hiladas",
+      "triangles": 5019,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 5,
+      "opposingNormalTriangles": 7
+    },
+    {
+      "mesh": 19,
+      "name": "Columna 10 | perfil original y 24 hiladas",
+      "triangles": 8838,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 35,
+      "opposingNormalTriangles": 25
+    },
+    {
+      "mesh": 20,
+      "name": "Columna 11 | perfil original y 24 hiladas",
+      "triangles": 8164,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 27,
+      "opposingNormalTriangles": 20
+    },
+    {
+      "mesh": 21,
+      "name": "Columna 12 | perfil original y 24 hiladas",
+      "triangles": 8164,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 21,
+      "opposingNormalTriangles": 19
+    },
+    {
+      "mesh": 22,
+      "name": "Columna 13 | perfil original y 24 hiladas",
+      "triangles": 6788,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 10,
+      "opposingNormalTriangles": 4
+    },
+    {
+      "mesh": 23,
+      "name": "Columna 14 | perfil original y 24 hiladas",
+      "triangles": 8174,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 37,
+      "opposingNormalTriangles": 25
+    },
+    {
+      "mesh": 24,
+      "name": "Columna 15 | perfil original y 24 hiladas",
+      "triangles": 8838,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 35,
+      "opposingNormalTriangles": 26
+    },
+    {
+      "mesh": 25,
+      "name": "Columna 16 | perfil original y 24 hiladas",
+      "triangles": 8833,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 25,
+      "opposingNormalTriangles": 23
+    },
+    {
+      "mesh": 26,
+      "name": "Columna 17 | perfil original y 24 hiladas",
+      "triangles": 8838,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 33,
+      "opposingNormalTriangles": 26
+    },
+    {
+      "mesh": 27,
+      "name": "Columna 18 | perfil original y 24 hiladas",
+      "triangles": 5017,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 2,
+      "degenerateTriangles": 4,
+      "opposingNormalTriangles": 3
+    },
+    {
+      "mesh": 28,
+      "name": "Mesh.003",
+      "triangles": 4400,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 29,
+      "name": "Mesh.004",
+      "triangles": 3696,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 30,
+      "name": "Mesh.020",
+      "triangles": 4400,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 31,
+      "name": "Mesh.023",
+      "triangles": 4400,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 32,
+      "name": "Mesh.033",
+      "triangles": 4400,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 33,
+      "name": "Mesh.036",
+      "triangles": 4400,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 34,
+      "name": "Mesh.038",
+      "triangles": 3344,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 35,
+      "name": "Mesh.039",
+      "triangles": 1408,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 36,
+      "name": "Mesh.042",
+      "triangles": 4400,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 37,
+      "name": "Mesh.043",
+      "triangles": 3608,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 38,
+      "name": "Mesh.048",
+      "triangles": 4400,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 39,
+      "name": "Mesh.050",
+      "triangles": 3520,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 40,
+      "name": "Mesh.1460",
+      "triangles": 880,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 41,
+      "name": "Mesh.1471",
+      "triangles": 1760,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 42,
+      "name": "Mesh.1494",
+      "triangles": 1760,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 43,
+      "name": "Mesh.1510",
+      "triangles": 1936,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 44,
+      "name": "Mesh.1534",
+      "triangles": 880,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 45,
+      "name": "Mesh.1640",
+      "triangles": 352,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 46,
+      "name": "Mesh.1672",
+      "triangles": 880,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 47,
+      "name": "Mesh.1706",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 48,
+      "name": "Mesh.1925",
+      "triangles": 352,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 49,
+      "name": "Mortero bajo pavimento",
+      "triangles": 12,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 50,
+      "name": "Mesh.037",
+      "triangles": 21792,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 17,
+      "opposingNormalTriangles": 3564
+    },
+    {
+      "mesh": 51,
+      "name": "Mesh.040",
+      "triangles": 2270,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 370
+    },
+    {
+      "mesh": 52,
+      "name": "Mesh.1459",
+      "triangles": 6356,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 1050
+    },
+    {
+      "mesh": 53,
+      "name": "Mesh.1484",
+      "triangles": 6810,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 1110
+    },
+    {
+      "mesh": 54,
+      "name": "Mesh.1505",
+      "triangles": 6810,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 1110
+    },
+    {
+      "mesh": 55,
+      "name": "Mesh.1575",
+      "triangles": 6810,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 1125
+    },
+    {
+      "mesh": 56,
+      "name": "Mesh.1614",
+      "triangles": 4994,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 814
+    },
+    {
+      "mesh": 57,
+      "name": "Mesh.1618",
+      "triangles": 6356,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 1036
+    },
+    {
+      "mesh": 58,
+      "name": "Mesh.1731",
+      "triangles": 454,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 74
+    },
+    {
+      "mesh": 59,
+      "name": "Mesh.2022",
+      "triangles": 454,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 75
+    },
+    {
+      "mesh": 60,
+      "name": "Mesh.2131",
+      "triangles": 454,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 74
+    },
+    {
+      "mesh": 61,
+      "name": "Mesh.044",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 62,
+      "name": "Mesh.1783",
+      "triangles": 288,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 63,
+      "name": "Mesh.1878",
+      "triangles": 288,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 64,
+      "name": "Mesh.2065",
+      "triangles": 300,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 3
+    },
+    {
+      "mesh": 65,
+      "name": "Mesh.2501",
+      "triangles": 268,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 15,
+      "opposingNormalTriangles": 16
+    },
+    {
+      "mesh": 66,
+      "name": "Mesh.2542",
+      "triangles": 300,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 3
+    },
+    {
+      "mesh": 67,
+      "name": "Scalloped carved back",
+      "triangles": 6424,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 4,
+      "degenerateTriangles": 416,
+      "opposingNormalTriangles": 7
+    },
+    {
+      "mesh": 68,
+      "name": "Mesa | campo de cuero",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 8,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 69,
+      "name": "Mesa | filete de laton",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 70,
+      "name": "Mesa | faldon tallado",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 71,
+      "name": "Mesa | filete de laton.001",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 72,
+      "name": "Mesa | faldon tallado.001",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 73,
+      "name": "Mesa | filete transversal",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 74,
+      "name": "Mesa | filete transversal.001",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 75,
+      "name": "Mesa | remate del soporte",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 76,
+      "name": "Mesa | remate del soporte.001",
+      "triangles": 44,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 77,
+      "name": "Mesh.1504",
+      "triangles": 404,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 78,
+      "name": "Mesh.1549",
+      "triangles": 58,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 79,
+      "name": "Mesh.1562",
+      "triangles": 1720,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 80,
+      "name": "Mesh.1762",
+      "triangles": 60,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 81,
+      "name": "Mesh.1772",
+      "triangles": 140,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 82,
+      "name": "Mesh.1789",
+      "triangles": 1478,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 83,
+      "name": "Mesh.1832",
+      "triangles": 144,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 84,
+      "name": "Mesh.1859",
+      "triangles": 144,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 85,
+      "name": "Mesh.1869",
+      "triangles": 1020,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 3,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 86,
+      "name": "Mesh.1990",
+      "triangles": 248,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 87,
+      "name": "Mesh.2047",
+      "triangles": 1478,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 88,
+      "name": "Mesh.2073",
+      "triangles": 248,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 89,
+      "name": "Mesh.2163",
+      "triangles": 58,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 90,
+      "name": "Mesh.2242",
+      "triangles": 1020,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 3,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 91,
+      "name": "Mesh.2432",
+      "triangles": 404,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 92,
+      "name": "Mesh.2699",
+      "triangles": 1720,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 93,
+      "name": "Mesh.2799",
+      "triangles": 140,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 94,
+      "name": "Cut crystal decanter",
+      "triangles": 832,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 64,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 95,
+      "name": "Crystal stopper",
+      "triangles": 256,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 96,
+      "name": "Crystal tumbler",
+      "triangles": 560,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 80,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 97,
+      "name": "Crystal tumbler.001",
+      "triangles": 560,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 80,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 98,
+      "name": "Leather folio",
+      "triangles": 188,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 21,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 99,
+      "name": "Paper on folio",
+      "triangles": 188,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 24,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 100,
+      "name": "Instrument case",
+      "triangles": 300,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 101,
+      "name": "Instrument lid",
+      "triangles": 188,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 102,
+      "name": "Instrument clasp",
+      "triangles": 188,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 103,
+      "name": "Instrument clasp.001",
+      "triangles": 188,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 104,
+      "name": "Mesh.1804",
+      "triangles": 39654,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 1,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 59
+    },
+    {
+      "mesh": 105,
+      "name": "Cielo | fondo a 900 m",
+      "triangles": 2,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    },
+    {
+      "mesh": 106,
+      "name": "Sol | disco a 650 m",
+      "triangles": 64,
+      "nonFinite": 0,
+      "badNormalLengths": 0,
+      "missingNormals": 0,
+      "normalMappedWithoutUV": 0,
+      "normalMappedWithoutTangents": 0,
+      "degenerateTriangles": 0,
+      "opposingNormalTriangles": 0
+    }
+  ],
+  "objects": [
+    {
+      "name": "Wall_Side_R",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          8.905135154724121,
+          -7.980706214904785,
+          -9.642300256018643e-07
+        ],
+        [
+          9.556492805480957,
+          12.775613784790039,
+          5.800000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Parapet",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -8.5,
+          14.402381896972656,
+          -1.2008746352876187e-06
+        ],
+        [
+          8.5,
+          15.908698081970215,
+          0.9999988675117493
+        ]
+      ]
+    },
+    {
+      "name": "Lintel",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -8.41878604888916,
+          12.90965747833252,
+          5.473803997039795
+        ],
+        [
+          8.418818473815918,
+          13.69999885559082,
+          5.7994842529296875
+        ]
+      ]
+    },
+    {
+      "name": "Wing_R",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.423144340515137,
+          5.400000095367432,
+          -2.384185791015625e-07
+        ],
+        [
+          -9.373143196105957,
+          6.200000286102295,
+          3.8399996757507324
+        ]
+      ]
+    },
+    {
+      "name": "Ceiling_Slab",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.0,
+          -12.09999942779541,
+          5.7999982833862305
+        ],
+        [
+          9.0,
+          13.199999809265137,
+          6.800000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Podest",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          4.799999237060547,
+          2.465000629425049,
+          -1.1002000519511057e-06
+        ],
+        [
+          9.27912425994873,
+          8.3057222366333,
+          0.36000025272369385
+        ]
+      ]
+    },
+    {
+      "name": "Wall_Side_L",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.556492805480957,
+          -7.980706214904785,
+          -9.642300256018643e-07
+        ],
+        [
+          -8.905135154724121,
+          12.775613784790039,
+          5.800000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Wing_L",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.42314338684082,
+          4.599999904632568,
+          -2.384185791015625e-07
+        ],
+        [
+          -9.373144149780273,
+          5.400000095367432,
+          3.8399996757507324
+        ]
+      ]
+    },
+    {
+      "name": "Door_Frame",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.398143768310547,
+          4.302088737487793,
+          -4.4051625991414767e-07
+        ],
+        [
+          -9.248143196105957,
+          6.4979119300842285,
+          4.139888763427734
+        ]
+      ]
+    },
+    {
+      "name": "Alfeizar | canto de piedra pulida",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -8.5,
+          14.260000228881836,
+          0.9800000190734863
+        ],
+        [
+          8.5,
+          14.440000534057617,
+          1.0399999618530273
+        ]
+      ]
+    },
+    {
+      "name": "Columna 01 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -3.7257556915283203,
+          -8.827259063720703,
+          -3.51735288859345e-05
+        ],
+        [
+          -2.274235725402832,
+          -7.375739097595215,
+          5.800000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Columna 02 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -3.7257556915283203,
+          -0.7257594466209412,
+          -4.494271266253236e-08
+        ],
+        [
+          -2.274235725402832,
+          0.725760281085968,
+          5.80003547668457
+        ]
+      ]
+    },
+    {
+      "name": "Columna 03 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -3.7257556915283203,
+          4.674241065979004,
+          -4.526313261976611e-07
+        ],
+        [
+          -2.274235725402832,
+          6.125760078430176,
+          5.800034999847412
+        ]
+      ]
+    },
+    {
+      "name": "Columna 04 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -3.725757122039795,
+          12.474238395690918,
+          -2.9480781904567266e-06
+        ],
+        [
+          -2.2742342948913574,
+          15.910064697265625,
+          5.799998760223389
+        ]
+      ]
+    },
+    {
+      "name": "Columna 05 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.725757598876953,
+          -8.827260971069336,
+          -5.475457101056236e-07
+        ],
+        [
+          -8.274234771728516,
+          -7.37573766708374,
+          5.800000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Columna 06 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.72575569152832,
+          -3.427259683609009,
+          -3.5501823731465265e-05
+        ],
+        [
+          -8.274236679077148,
+          -1.9757399559020996,
+          5.800000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Columna 07 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.725757598876953,
+          1.9727386236190796,
+          -1.3629202157972031e-06
+        ],
+        [
+          -8.274234771728516,
+          3.4242610931396484,
+          5.799999713897705
+        ]
+      ]
+    },
+    {
+      "name": "Columna 08 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.72575569152832,
+          7.375739097595215,
+          -3.629724960774183e-05
+        ],
+        [
+          -8.274236679077148,
+          8.827259063720703,
+          5.799999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Columna 09 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.595285415649414,
+          12.474239349365234,
+          -3.71160167560447e-05
+        ],
+        [
+          -8.274236679077148,
+          15.910053253173828,
+          5.799998760223389
+        ]
+      ]
+    },
+    {
+      "name": "Columna 10 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          2.274245023727417,
+          -8.827249526977539,
+          -0.0002424367849016562
+        ],
+        [
+          3.7257463932037354,
+          -7.375748634338379,
+          5.800000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Columna 11 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          2.274235725402832,
+          -0.7257594466209412,
+          -4.494271266253236e-08
+        ],
+        [
+          3.7257556915283203,
+          0.725760281085968,
+          5.80003547668457
+        ]
+      ]
+    },
+    {
+      "name": "Columna 12 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          2.274235725402832,
+          4.674241065979004,
+          -4.526313261976611e-07
+        ],
+        [
+          3.7257556915283203,
+          6.125760078430176,
+          5.800034999847412
+        ]
+      ]
+    },
+    {
+      "name": "Columna 13 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          2.274235725402832,
+          12.474239349365234,
+          -3.49259571521543e-05
+        ],
+        [
+          3.7257556915283203,
+          15.910053253173828,
+          5.799998760223389
+        ]
+      ]
+    },
+    {
+      "name": "Columna 14 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          8.274245262145996,
+          -8.827249526977539,
+          -0.00024243679945357144
+        ],
+        [
+          9.725747108459473,
+          -7.375748634338379,
+          5.800000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Columna 15 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          8.274245262145996,
+          -3.427250623703003,
+          -0.00024297137861140072
+        ],
+        [
+          9.725747108459473,
+          -1.9757492542266846,
+          5.800000190734863
+        ]
+      ]
+    },
+    {
+      "name": "Columna 16 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          8.274236679077148,
+          1.9727401733398438,
+          -3.5892604500986636e-05
+        ],
+        [
+          9.72575569152832,
+          3.424259662628174,
+          5.799999713897705
+        ]
+      ]
+    },
+    {
+      "name": "Columna 17 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          8.274245262145996,
+          7.375748634338379,
+          -0.00024397722154390067
+        ],
+        [
+          9.725747108459473,
+          8.827249526977539,
+          5.799999237060547
+        ]
+      ]
+    },
+    {
+      "name": "Columna 18 | perfil original y 24 hiladas",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          8.274237632751465,
+          12.474241256713867,
+          -7.528809510404244e-05
+        ],
+        [
+          9.595253944396973,
+          15.910039901733398,
+          5.799998760223389
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (3, 1)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          1.7999958992004395,
+          -6.0,
+          -0.029999999329447746
+        ],
+        [
+          7.7999958992004395,
+          2.9802322387695312e-08,
+          4.5262277126312256e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (1, 2)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.600004196166992,
+          -2.9802322387695312e-08,
+          -0.03000045195221901
+        ],
+        [
+          -4.200003623962402,
+          6.000000476837158,
+          -9.313225746154785e-10
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (3, 3)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          1.7999958992004395,
+          6.0,
+          -0.030000906437635422
+        ],
+        [
+          7.7999958992004395,
+          12.0,
+          -4.5355409383773804e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (2, 1)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -4.2000041007995605,
+          -6.0,
+          -0.029999999329447746
+        ],
+        [
+          1.79999577999115,
+          2.9802322387695312e-08,
+          4.5262277126312256e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (3, 2)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          1.7999958992004395,
+          -2.9802322387695312e-08,
+          -0.03000045195221901
+        ],
+        [
+          7.7999958992004395,
+          6.000000476837158,
+          -9.313225746154785e-10
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (2, 3)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -4.2000041007995605,
+          6.0,
+          -0.030000906437635422
+        ],
+        [
+          1.79999577999115,
+          12.0,
+          -4.5355409383773804e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (3, 0)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          1.7999958992004395,
+          -11.999999046325684,
+          -0.029999546706676483
+        ],
+        [
+          7.7999958992004395,
+          -5.999999523162842,
+          9.052455425262451e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (1, 4)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.000003814697266,
+          12.0,
+          -0.030001085251569748
+        ],
+        [
+          -4.200003623962402,
+          14.40000057220459,
+          -9.061768651008606e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (2, 2)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -4.2000041007995605,
+          -2.9802322387695312e-08,
+          -0.03000045195221901
+        ],
+        [
+          1.79999577999115,
+          6.000000476837158,
+          -9.313225746154785e-10
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (1, 3)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.600004196166992,
+          6.0,
+          -0.030000906437635422
+        ],
+        [
+          -4.200003623962402,
+          12.0,
+          -4.5355409383773804e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (2, 0)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -4.2000041007995605,
+          -11.999999046325684,
+          -0.029999546706676483
+        ],
+        [
+          1.79999577999115,
+          -5.999999523162842,
+          9.052455425262451e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (1, 1)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.000003814697266,
+          -6.0,
+          -0.029999999329447746
+        ],
+        [
+          -4.200003623962402,
+          2.9802322387695312e-08,
+          4.5262277126312256e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (4, 3)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          7.799995422363281,
+          6.0,
+          -0.030000906437635422
+        ],
+        [
+          8.999996185302734,
+          12.0,
+          -4.5355409383773804e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (2, 4)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -4.2000041007995605,
+          12.0,
+          -0.030001085251569748
+        ],
+        [
+          1.79999577999115,
+          14.40000057220459,
+          -9.061768651008606e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (3, 4)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          1.7999958992004395,
+          12.0,
+          -0.030001085251569748
+        ],
+        [
+          7.7999958992004395,
+          14.40000057220459,
+          -9.061768651008606e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (1, 0)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.000003814697266,
+          -11.999999046325684,
+          -0.029999546706676483
+        ],
+        [
+          -4.200003623962402,
+          -5.999999523162842,
+          9.052455425262451e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (4, 1)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          7.799995422363281,
+          -6.0,
+          -0.029999999329447746
+        ],
+        [
+          8.999996185302734,
+          2.9802322387695312e-08,
+          4.5262277126312256e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (4, 4)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          7.799995422363281,
+          12.0,
+          -0.030001085251569748
+        ],
+        [
+          8.999996185302734,
+          14.40000057220459,
+          -9.061768651008606e-07
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (4, 2)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          7.799995422363281,
+          -2.9802322387695312e-08,
+          -0.03000045195221901
+        ],
+        [
+          8.999996185302734,
+          6.000000476837158,
+          -9.313225746154785e-10
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (0, 2)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -13.600004196166992,
+          2.9802322387695312e-08,
+          -0.030000021681189537
+        ],
+        [
+          -13.000003814697266,
+          0.6000000238418579,
+          2.2351741790771484e-08
+        ]
+      ]
+    },
+    {
+      "name": "Pavimento | sector (4, 0)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          7.799995422363281,
+          -8.399999618530273,
+          -0.029999546706676483
+        ],
+        [
+          8.999996185302734,
+          -5.999999523162842,
+          6.332993507385254e-07
+        ]
+      ]
+    },
+    {
+      "name": "Mortero bajo pavimento",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -13.75,
+          -12.300000190734863,
+          -0.050999999046325684
+        ],
+        [
+          9.75,
+          14.699999809265137,
+          -0.03100000135600567
+        ]
+      ]
+    },
+    {
+      "name": "Relieves y celosias | sector (1, 3)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.378143310546875,
+          4.737839698791504,
+          0.10798582434654236
+        ],
+        [
+          -9.318142890930176,
+          6.062160491943359,
+          3.7079858779907227
+        ]
+      ]
+    },
+    {
+      "name": "Relieves y celosias | sector (2, 4)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -2.4000000953674316,
+          12.80965805053711,
+          5.484549522399902
+        ],
+        [
+          -0.8999998569488525,
+          12.909658432006836,
+          5.784549713134766
+        ]
+      ]
+    },
+    {
+      "name": "Relieves y celosias | sector (1, 2)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.2379732131958,
+          -1.9494197368621826,
+          2.0521368980407715
+        ],
+        [
+          -9.137972831726074,
+          2.250580310821533,
+          2.352137565612793
+        ]
+      ]
+    },
+    {
+      "name": "Relieves y celosias | sector (5, 4)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          9.139056205749512,
+          8.400701522827148,
+          2.052136182785034
+        ],
+        [
+          9.239056587219238,
+          12.900701522827148,
+          2.3521368503570557
+        ]
+      ]
+    },
+    {
+      "name": "Relieves y celosias | sector (5, 3)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          9.139056205749512,
+          3.1505801677703857,
+          2.0521364212036133
+        ],
+        [
+          9.239056587219238,
+          7.650580406188965,
+          2.3521370887756348
+        ]
+      ]
+    },
+    {
+      "name": "Relieves y celosias | sector (1, 4)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.2379732131958,
+          8.400701522827148,
+          2.052136182785034
+        ],
+        [
+          -9.137972831726074,
+          12.900701522827148,
+          2.3521368503570557
+        ]
+      ]
+    },
+    {
+      "name": "Relieves y celosias | sector (3, 4)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -0.8999999165534973,
+          12.80965805053711,
+          5.484549522399902
+        ],
+        [
+          2.3999998569488525,
+          12.909658432006836,
+          5.784549713134766
+        ]
+      ]
+    },
+    {
+      "name": "Relieves y celosias | sector (5, 2)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          9.139056205749512,
+          -1.9494197368621826,
+          2.0521368980407715
+        ],
+        [
+          9.239056587219238,
+          2.250580310821533,
+          2.352137565612793
+        ]
+      ]
+    },
+    {
+      "name": "Relieves y celosias | sector (5, 1)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          9.139056205749512,
+          -2.249419927597046,
+          2.0521373748779297
+        ],
+        [
+          9.239056587219238,
+          -1.9494198560714722,
+          2.352137565612793
+        ]
+      ]
+    },
+    {
+      "name": "Relieves y celosias | sector (1, 1)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -9.2379732131958,
+          -2.249419927597046,
+          2.0521373748779297
+        ],
+        [
+          -9.137972831726074,
+          -1.9494198560714722,
+          2.352137565612793
+        ]
+      ]
+    },
+    {
+      "name": "Relieves y celosias | sector (0, 2)",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -15.555835723876953,
+          -0.05542804300785065,
+          1.9738878011703491
+        ],
+        [
+          -15.455835342407227,
+          0.2445719689130783,
+          2.273887872695923
+        ]
+      ]
+    },
+    {
+      "name": "Beam",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -1.5,
+          9.979999542236328,
+          0.5903140306472778
+        ],
+        [
+          1.5,
+          10.420000076293945,
+          0.6599992513656616
+        ]
+      ]
+    },
+    {
+      "name": "Base_3",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          6.002739906311035,
+          11.035080909729004,
+          -9.040150530381652e-07
+        ],
+        [
+          6.702739715576172,
+          11.735081672668457,
+          0.029999148100614548
+        ]
+      ]
+    },
+    {
+      "name": "Foot_3",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          6.2327399253845215,
+          11.265081405639648,
+          0.029999136924743652
+        ],
+        [
+          6.4727396965026855,
+          11.505081176757812,
+          0.7399991154670715
+        ]
+      ]
+    },
+    {
+      "name": "Foot_5",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -2.0999999046325684,
+          9.90000057220459,
+          -7.77091031523014e-07
+        ],
+        [
+          -1.5,
+          10.500000953674316,
+          0.6599991917610168
+        ]
+      ]
+    },
+    {
+      "name": "Table_Slab",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -2.5,
+          9.19997501373291,
+          0.6599993109703064
+        ],
+        [
+          2.5,
+          11.19997501373291,
+          0.7399992942810059
+        ]
+      ]
+    },
+    {
+      "name": "Foot_4",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          1.5,
+          9.90000057220459,
+          -7.77091031523014e-07
+        ],
+        [
+          2.0999999046325684,
+          10.500000953674316,
+          0.6599991917610168
+        ]
+      ]
+    },
+    {
+      "name": "Sillon 01 | frente",
+      "scale": [
+        0.7400000095367432,
+        0.7400000095367432,
+        0.7400000095367432
+      ],
+      "determinant": 0.4052240252494812,
+      "bounds": [
+        [
+          -0.32195520401000977,
+          8.135970115661621,
+          7.83991563366726e-05
+        ],
+        [
+          0.621330738067627,
+          8.964284896850586,
+          1.525504469871521
+        ]
+      ]
+    },
+    {
+      "name": "Sillon 02 | fondo",
+      "scale": [
+        0.7400000095367432,
+        0.7400000095367432,
+        0.7400000095367432
+      ],
+      "determinant": 0.4052240252494812,
+      "bounds": [
+        [
+          -0.3213306665420532,
+          11.305715560913086,
+          7.83991563366726e-05
+        ],
+        [
+          0.621955156326294,
+          12.13403034210205,
+          1.525504469871521
+        ]
+      ]
+    },
+    {
+      "name": "Sillon 03 | izquierda",
+      "scale": [
+        0.7400000095367432,
+        0.7400000095367432,
+        0.7400000095367432
+      ],
+      "determinant": 0.4052240550518036,
+      "bounds": [
+        [
+          -3.5340301990509033,
+          9.728669166564941,
+          7.83991563366726e-05
+        ],
+        [
+          -2.705714702606201,
+          10.671955108642578,
+          1.525504469871521
+        ]
+      ]
+    },
+    {
+      "name": "Sillon 04 | derecha",
+      "scale": [
+        0.7400000095367432,
+        0.7400000095367432,
+        0.7400000095367432
+      ],
+      "determinant": 0.4052240550518036,
+      "bounds": [
+        [
+          2.705714702606201,
+          9.728044509887695,
+          7.83991563366726e-05
+        ],
+        [
+          3.5340301990509033,
+          10.671330451965332,
+          1.525504469871521
+        ]
+      ]
+    },
+    {
+      "name": "Mesa | campo de cuero",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -2.259999990463257,
+          9.414999961853027,
+          0.7400000095367432
+        ],
+        [
+          2.259999990463257,
+          10.984999656677246,
+          0.7519999742507935
+        ]
+      ]
+    },
+    {
+      "name": "Mesa | filete de laton",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -2.434999942779541,
+          9.229000091552734,
+          0.7510000467300415
+        ],
+        [
+          2.434999942779541,
+          9.240999221801758,
+          0.7630000114440918
+        ]
+      ]
+    },
+    {
+      "name": "Mesa | faldon tallado",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -2.375,
+          9.20300006866455,
+          0.5339999794960022
+        ],
+        [
+          2.375,
+          9.266999244689941,
+          0.6539999842643738
+        ]
+      ]
+    },
+    {
+      "name": "Mesa | filete de laton.001",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -2.434999942779541,
+          11.159000396728516,
+          0.7510000467300415
+        ],
+        [
+          2.434999942779541,
+          11.170999526977539,
+          0.7630000114440918
+        ]
+      ]
+    },
+    {
+      "name": "Mesa | faldon tallado.001",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -2.375,
+          11.133000373840332,
+          0.5339999794960022
+        ],
+        [
+          2.375,
+          11.196999549865723,
+          0.6539999842643738
+        ]
+      ]
+    },
+    {
+      "name": "Mesa | filete transversal",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -2.4560000896453857,
+          9.229999542236328,
+          0.7510000467300415
+        ],
+        [
+          -2.444000005722046,
+          11.170000076293945,
+          0.7630000114440918
+        ]
+      ]
+    },
+    {
+      "name": "Mesa | filete transversal.001",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          2.444000005722046,
+          9.229999542236328,
+          0.7510000467300415
+        ],
+        [
+          2.4560000896453857,
+          11.170000076293945,
+          0.7630000114440918
+        ]
+      ]
+    },
+    {
+      "name": "Mesa | remate del soporte",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -2.180000066757202,
+          9.769999504089355,
+          0.10500000417232513
+        ],
+        [
+          -1.8799999952316284,
+          10.630000114440918,
+          0.17499999701976776
+        ]
+      ]
+    },
+    {
+      "name": "Mesa | remate del soporte.001",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          1.8799999952316284,
+          9.769999504089355,
+          0.10500000417232513
+        ],
+        [
+          2.180000066757202,
+          10.630000114440918,
+          0.17499999701976776
+        ]
+      ]
+    },
+    {
+      "name": "Base_7",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          2.8949661254882812,
+          11.962969779968262,
+          1.1466156244277954
+        ],
+        [
+          3.1032934188842773,
+          12.171298027038574,
+          1.2966643571853638
+        ]
+      ]
+    },
+    {
+      "name": "Base_2",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          2.7920448780059814,
+          -6.989808082580566,
+          1.6000003814697266
+        ],
+        [
+          3.1955244541168213,
+          -6.590094566345215,
+          1.6650949716567993
+        ]
+      ]
+    },
+    {
+      "name": "Vase_Big_2",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -7.749894142150879,
+          7.250110626220703,
+          0.8500639200210571
+        ],
+        [
+          -7.250114440917969,
+          7.749889850616455,
+          1.650147557258606
+        ]
+      ]
+    },
+    {
+      "name": "Stand",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          6.554470539093018,
+          8.424261093139648,
+          -6.767829177078966e-07
+        ],
+        [
+          7.094470500946045,
+          8.964262008666992,
+          1.4603866338729858
+        ]
+      ]
+    },
+    {
+      "name": "Base_5",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -7.794529438018799,
+          7.205474853515625,
+          -5.884801339561818e-07
+        ],
+        [
+          -7.205479145050049,
+          7.794525146484375,
+          0.8499994277954102
+        ]
+      ]
+    },
+    {
+      "name": "Postament",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -3.2400407791137695,
+          11.944855690002441,
+          -0.0003660802321974188
+        ],
+        [
+          -2.7600252628326416,
+          12.425110816955566,
+          1.1499990224838257
+        ]
+      ]
+    },
+    {
+      "name": "Zylinder_2",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          6.8119707107543945,
+          8.681761741638184,
+          1.452797293663025
+        ],
+        [
+          6.836970329284668,
+          8.706761360168457,
+          1.702797293663025
+        ]
+      ]
+    },
+    {
+      "name": "Zylinder_1",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          6.8094706535339355,
+          8.56926155090332,
+          1.6877973079681396
+        ],
+        [
+          6.839470386505127,
+          8.81926155090332,
+          1.7177972793579102
+        ]
+      ]
+    },
+    {
+      "name": "Sphere",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -3.15415358543396,
+          -6.944080829620361,
+          1.6556804180145264
+        ],
+        [
+          -2.845088243484497,
+          -6.63501501083374,
+          1.7619301080703735
+        ]
+      ]
+    },
+    {
+      "name": "Foot",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -3.287710428237915,
+          -7.018219947814941,
+          4.985951136404765e-07
+        ],
+        [
+          -2.7122809886932373,
+          -6.572962284088135,
+          1.6000003814697266
+        ]
+      ]
+    },
+    {
+      "name": "Postament_2",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          2.7589614391326904,
+          11.826977729797363,
+          -0.00036586335045285523
+        ],
+        [
+          3.239330530166626,
+          12.307332992553711,
+          1.1499990224838257
+        ]
+      ]
+    },
+    {
+      "name": "Foot_2",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          2.712285280227661,
+          -7.018219947814941,
+          4.985951136404765e-07
+        ],
+        [
+          3.287714719772339,
+          -6.572962284088135,
+          1.6000003814697266
+        ]
+      ]
+    },
+    {
+      "name": "Base",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -3.2079508304595947,
+          -6.989808082580566,
+          1.6000003814697266
+        ],
+        [
+          -2.804471254348755,
+          -6.590094566345215,
+          1.6650949716567993
+        ]
+      ]
+    },
+    {
+      "name": "Sphere_2",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          2.845842123031616,
+          -6.944080829620361,
+          1.6556804180145264
+        ],
+        [
+          3.154907464981079,
+          -6.63501501083374,
+          1.7619301080703735
+        ]
+      ]
+    },
+    {
+      "name": "Base_6",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -3.104163646697998,
+          12.080765724182129,
+          1.1466156244277954
+        ],
+        [
+          -2.895836353302002,
+          12.289093971252441,
+          1.2966643571853638
+        ]
+      ]
+    },
+    {
+      "name": "Vase_Big",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -7.754291534423828,
+          3.050110340118408,
+          0.8500221967697144
+        ],
+        [
+          -7.254512786865234,
+          3.54988956451416,
+          1.650154948234558
+        ]
+      ]
+    },
+    {
+      "name": "Base_4",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -7.798927307128906,
+          3.0054750442504883,
+          -2.606545876915334e-07
+        ],
+        [
+          -7.209877014160156,
+          3.59452486038208,
+          0.849999725818634
+        ]
+      ]
+    },
+    {
+      "name": "Cut crystal decanter",
+      "scale": [
+        0.7200000286102295,
+        0.7200000286102295,
+        0.7200000286102295
+      ],
+      "determinant": 0.37324801087379456,
+      "bounds": [
+        [
+          1.277999997138977,
+          10.117199897766113,
+          0.7519999742507935
+        ],
+        [
+          1.4724000692367554,
+          10.311600685119629,
+          1.0615999698638916
+        ]
+      ]
+    },
+    {
+      "name": "Crystal stopper",
+      "scale": [
+        0.04320000112056732,
+        0.04320000112056732,
+        0.046799998730421066
+      ],
+      "determinant": 8.734003495192155e-05,
+      "bounds": [
+        [
+          1.3320000171661377,
+          10.1712007522583,
+          1.0435999631881714
+        ],
+        [
+          1.4184000492095947,
+          10.257599830627441,
+          1.1371999979019165
+        ]
+      ]
+    },
+    {
+      "name": "Crystal tumbler",
+      "scale": [
+        0.7200000286102295,
+        0.7200000286102295,
+        0.7200000286102295
+      ],
+      "determinant": 0.37324801087379456,
+      "bounds": [
+        [
+          1.0576798915863037,
+          9.911279678344727,
+          0.7519999742507935
+        ],
+        [
+          1.1743199825286865,
+          10.02791976928711,
+          0.8815999627113342
+        ]
+      ]
+    },
+    {
+      "name": "Crystal tumbler.001",
+      "scale": [
+        0.7200000286102295,
+        0.7200000286102295,
+        0.7200000286102295
+      ],
+      "determinant": 0.37324801087379456,
+      "bounds": [
+        [
+          1.540079951286316,
+          9.911279678344727,
+          0.7519999742507935
+        ],
+        [
+          1.6567200422286987,
+          10.02791976928711,
+          0.8815999627113342
+        ]
+      ]
+    },
+    {
+      "name": "Leather folio",
+      "scale": [
+        0.7200000286102295,
+        0.7200000286102295,
+        0.7200000286102295
+      ],
+      "determinant": 0.37324801087379456,
+      "bounds": [
+        [
+          -1.1591999530792236,
+          9.75719928741455,
+          0.7523599863052368
+        ],
+        [
+          -0.6407999992370605,
+          10.109999656677246,
+          0.7718000411987305
+        ]
+      ]
+    },
+    {
+      "name": "Paper on folio",
+      "scale": [
+        0.7200000286102295,
+        0.7200000286102295,
+        0.7200000286102295
+      ],
+      "determinant": 0.37324801087379456,
+      "bounds": [
+        [
+          -1.1339999437332153,
+          9.775199890136719,
+          0.7735999822616577
+        ],
+        [
+          -0.6660000085830688,
+          10.091999053955078,
+          0.7779200077056885
+        ]
+      ]
+    },
+    {
+      "name": "Instrument case",
+      "scale": [
+        0.7200000286102295,
+        0.7200000286102295,
+        0.7200000286102295
+      ],
+      "determinant": 0.37324801087379456,
+      "bounds": [
+        [
+          0.2303999960422516,
+          10.225199699401855,
+          0.7555999159812927
+        ],
+        [
+          0.8208000659942627,
+          10.65000057220459,
+          0.9211999773979187
+        ]
+      ]
+    },
+    {
+      "name": "Instrument lid",
+      "scale": [
+        0.7200000286102295,
+        0.7200000286102295,
+        0.7200000286102295
+      ],
+      "determinant": 0.37324801087379456,
+      "bounds": [
+        [
+          0.21959999203681946,
+          10.214400291442871,
+          0.913640022277832
+        ],
+        [
+          0.8316000699996948,
+          10.660799980163574,
+          0.9532400369644165
+        ]
+      ]
+    },
+    {
+      "name": "Instrument clasp",
+      "scale": [
+        0.7200000286102295,
+        0.7200000286102295,
+        0.7200000286102295
+      ],
+      "determinant": 0.37324801087379456,
+      "bounds": [
+        [
+          0.32760000228881836,
+          10.198200225830078,
+          0.8297600150108337
+        ],
+        [
+          0.37800002098083496,
+          10.21619987487793,
+          0.8902400135993958
+        ]
+      ]
+    },
+    {
+      "name": "Instrument clasp.001",
+      "scale": [
+        0.7200000286102295,
+        0.7200000286102295,
+        0.7200000286102295
+      ],
+      "determinant": 0.37324801087379456,
+      "bounds": [
+        [
+          0.6659999489784241,
+          10.198200225830078,
+          0.8297600150108337
+        ],
+        [
+          0.7163999676704407,
+          10.21619987487793,
+          0.8902400135993958
+        ]
+      ]
+    },
+    {
+      "name": "Tyrell_Corporation_Pyramid",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -141.41505432128906,
+          172.65457153320312,
+          -24.21087074279785
+        ],
+        [
+          42.94364547729492,
+          356.90655517578125,
+          37.59683609008789
+        ]
+      ]
+    },
+    {
+      "name": "Cielo | fondo a 900 m",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "determinant": 1.0,
+      "bounds": [
+        [
+          -500.0,
+          900.0,
+          -240.0
+        ],
+        [
+          500.0,
+          900.0,
+          260.0
+        ]
+      ]
+    },
+    {
+      "name": "Sol | disco a 650 m",
+      "scale": [
+        0.7777777910232544,
+        0.7777777910232544,
+        0.7777777910232544
+      ],
+      "determinant": 0.47050756216049194,
+      "bounds": [
+        [
+          -5.0,
+          650.0,
+          39.0
+        ],
+        [
+          9.0,
+          650.0,
+          53.0
+        ]
+      ]
+    }
+  ],
+  "contacts": [
+    {
+      "name": "Sillon 01 | frente",
+      "minZ": 7.83991563366726e-05,
+      "bottomProbes": 1,
+      "hits": 1,
+      "gapMin": 7.90250051068142e-05,
+      "gapMax": 7.90250051068142e-05
+    },
+    {
+      "name": "Sillon 02 | fondo",
+      "minZ": 7.83991563366726e-05,
+      "bottomProbes": 1,
+      "hits": 1,
+      "gapMin": 7.931557775009423e-05,
+      "gapMax": 7.931557775009423e-05
+    },
+    {
+      "name": "Sillon 03 | izquierda",
+      "minZ": 7.83991563366726e-05,
+      "bottomProbes": 1,
+      "hits": 1,
+      "gapMin": 7.919636846054345e-05,
+      "gapMax": 7.919636846054345e-05
+    },
+    {
+      "name": "Sillon 04 | derecha",
+      "minZ": 7.83991563366726e-05,
+      "bottomProbes": 1,
+      "hits": 1,
+      "gapMin": 7.915911555755883e-05,
+      "gapMax": 7.915911555755883e-05
+    },
+    {
+      "name": "Cut crystal decanter",
+      "minZ": 0.7519999742507935,
+      "bottomProbes": 64,
+      "hits": 64,
+      "gapMin": 0.0,
+      "gapMax": 0.0
+    },
+    {
+      "name": "Crystal tumbler",
+      "minZ": 0.7519999742507935,
+      "bottomProbes": 80,
+      "hits": 80,
+      "gapMin": 0.0,
+      "gapMax": 0.0
+    },
+    {
+      "name": "Crystal tumbler.001",
+      "minZ": 0.7519999742507935,
+      "bottomProbes": 80,
+      "hits": 80,
+      "gapMin": 0.0,
+      "gapMax": 0.0
+    },
+    {
+      "name": "Leather folio",
+      "minZ": 0.7523599863052368,
+      "bottomProbes": 4,
+      "hits": 4,
+      "gapMin": 0.0003600120544433594,
+      "gapMax": 0.0003600120544433594
+    },
+    {
+      "name": "Instrument case",
+      "minZ": 0.7555999159812927,
+      "bottomProbes": 4,
+      "hits": 4,
+      "gapMin": 0.0035999417304992676,
+      "gapMax": 0.0035999417304992676
+    }
+  ],
+  "chairTableSurfaceIntersections": [
+    {
+      "name": "Sillon 01 | frente",
+      "trianglePairs": 0
+    },
+    {
+      "name": "Sillon 02 | fondo",
+      "trianglePairs": 0
+    },
+    {
+      "name": "Sillon 03 | izquierda",
+      "trianglePairs": 0
+    },
+    {
+      "name": "Sillon 04 | derecha",
+      "trianglePairs": 0
+    }
+  ],
+  "glassMaterials": [
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_transmission": {
+          "transmissionFactor": 1
+        },
+        "KHR_materials_ior": {
+          "ior": 1.4600000381469727
+        }
+      },
+      "name": "Crystal",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.9200000166893005,
+          0.9599999785423279,
+          0.9599999785423279,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.07500000298023224
+      }
+    }
+  ]
+}

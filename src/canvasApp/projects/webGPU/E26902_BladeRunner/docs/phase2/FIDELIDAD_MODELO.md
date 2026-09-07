@@ -1,6 +1,6 @@
 # Fase 2 · Columnas, mobiliario, celosías y exterior
 
-07/09/2026. **Punto de comprobación completado.** Se detiene la entrega para revisión; el siguiente punto de caras, normales, tangentes, escalas, transparencias y colisiones visuales permanece abierto.
+07/09/2026. **Registro histórico del export `_edited.glb`.** El punto de superficies se ha completado después, con una copia de ejecución corregida. Consultar [CIERRE.md](CIERRE.md) para el estado final y las cifras actuales; los datos siguientes conservan la evidencia anterior a esa limpieza.
 
 ## Resultado
 

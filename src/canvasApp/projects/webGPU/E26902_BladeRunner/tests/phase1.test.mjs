@@ -103,11 +103,11 @@ test('Required WebGPU reports failure and removes fallback canvas; legacy projec
         assert.equal(render.app.TYPE, required ? 'WEBGPU_APP' : 'WEBGL_APP')
     }
 })
-test('Model copy matches the edited authored export and retains all cameras/resources', async () => {
+test('Active model matches its reviewed revision and retains all cameras/resources', async () => {
     const crypto = await import('node:crypto')
-    const bytes = fs.readFileSync('static/glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_edited.glb')
+    const bytes = fs.readFileSync(path.join('static', TYRELL.asset.split('?')[0]))
     assert.equal(bytes.length, TYRELL.assetBytes)
-    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), '7b860e4fa93da9380d7cdc3f38116d6905f5907d68086c1fd36c6ba895ba334c')
+    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), 'bf2108bbe13d32df23bfa34e598c1d98085e2322e859fbf62354240f7e6b8fa2')
     const json = JSON.parse(bytes.subarray(20, 20 + bytes.readUInt32LE(12)))
     assert.equal(json.cameras.length, 10)
     assert.equal(json.images.length, 25)

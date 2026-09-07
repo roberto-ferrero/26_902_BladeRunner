@@ -1,0 +1,98 @@
+[
+  {
+    "level": "log",
+    "message": "secure true",
+    "timestamp": "2026-09-07T21:05:47.988Z",
+    "url": "http://localhost:8081/bundle.ac16dc66d941730a.js"
+  },
+  {
+    "level": "log",
+    "message": "gpu true",
+    "timestamp": "2026-09-07T21:05:47.988Z",
+    "url": "http://localhost:8081/bundle.ac16dc66d941730a.js"
+  },
+  {
+    "level": "log",
+    "message": "shaderStage true",
+    "timestamp": "2026-09-07T21:05:47.989Z",
+    "url": "http://localhost:8081/bundle.ac16dc66d941730a.js"
+  },
+  {
+    "level": "log",
+    "message": "(Platform.CONSTRUCTOR):  [object]",
+    "timestamp": "2026-09-07T21:05:47.989Z",
+    "url": "http://localhost:8081/bundle.ac16dc66d941730a.js"
+  },
+  {
+    "level": "log",
+    "message": "(CanvasApp._build)!",
+    "timestamp": "2026-09-07T21:05:47.989Z",
+    "url": "http://localhost:8081/bundle.ac16dc66d941730a.js"
+  },
+  {
+    "level": "log",
+    "message": "(AppState.activate)(undefined): ACTIVE = true",
+    "timestamp": "2026-09-07T21:05:47.989Z",
+    "url": "http://localhost:8081/bundle.ac16dc66d941730a.js"
+  },
+  {
+    "level": "log",
+    "message": "(AppState.deactivate)(undefined): ACTIVE = false",
+    "timestamp": "2026-09-07T21:05:47.989Z",
+    "url": "http://localhost:8081/bundle.ac16dc66d941730a.js"
+  },
+  {
+    "level": "log",
+    "message": "(AppState.activate)(undefined): ACTIVE = true",
+    "timestamp": "2026-09-07T21:05:47.989Z",
+    "url": "http://localhost:8081/bundle.ac16dc66d941730a.js"
+  },
+  {
+    "level": "log",
+    "message": "(AppState.deactivate)(undefined): ACTIVE = false",
+    "timestamp": "2026-09-07T21:05:47.989Z",
+    "url": "http://localhost:8081/bundle.ac16dc66d941730a.js"
+  },
+  {
+    "level": "log",
+    "message": "(AppState.activate)(undefined): ACTIVE = true",
+    "timestamp": "2026-09-07T21:05:47.989Z",
+    "url": "http://localhost:8081/bundle.ac16dc66d941730a.js"
+  },
+  {
+    "level": "log",
+    "message": "secure true",
+    "timestamp": "2026-09-07T21:08:48.794Z",
+    "url": "http://localhost:8081/bundle.eadbc2f0cf430eab.js"
+  },
+  {
+    "level": "log",
+    "message": "gpu true",
+    "timestamp": "2026-09-07T21:08:48.796Z",
+    "url": "http://localhost:8081/bundle.eadbc2f0cf430eab.js"
+  },
+  {
+    "level": "log",
+    "message": "shaderStage true",
+    "timestamp": "2026-09-07T21:08:48.796Z",
+    "url": "http://localhost:8081/bundle.eadbc2f0cf430eab.js"
+  },
+  {
+    "level": "log",
+    "message": "(Platform.CONSTRUCTOR):  [object]",
+    "timestamp": "2026-09-07T21:08:48.797Z",
+    "url": "http://localhost:8081/bundle.eadbc2f0cf430eab.js"
+  },
+  {
+    "level": "log",
+    "message": "(CanvasApp._build)!",
+    "timestamp": "2026-09-07T21:08:49.841Z",
+    "url": "http://localhost:8081/bundle.eadbc2f0cf430eab.js"
+  },
+  {
+    "level": "log",
+    "message": "(AppState.activate)(undefined): ACTIVE = true",
+    "timestamp": "2026-09-07T21:08:49.850Z",
+    "url": "http://localhost:8081/bundle.eadbc2f0cf430eab.js"
+  }
+]

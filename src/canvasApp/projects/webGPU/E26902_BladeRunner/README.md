@@ -1,6 +1,6 @@
 # Oficinas Tyrell · Visor WebGPU
 
-Fase 1 cerrada; fase 2 iniciada con capturas de referencia exactas de 1920 × 800. El visor carga el GLB completo, conserva sus cámaras y materiales y permite comparar perfiles de resolución. La iluminación es provisional; la fidelidad cinematográfica y el recorrido libre continúan en las siguientes fases de [PLAN.md](PLAN.md).
+Fases 1 y 2 cerradas: cámaras, capturas exactas de 1920 × 800 y fidelidad geométrica revisadas. El visor utiliza una copia del GLB con limpieza de índices, conservando posiciones, UV, materiales y cámaras. La iluminación es provisional; materiales, atmósfera y recorrido libre continúan en las siguientes fases de [PLAN.md](PLAN.md). Evidencia y límites en [el cierre de fase 2](docs/phase2/CIERRE.md).
 
 ## Ejecutar
 
@@ -44,6 +44,10 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `TyrellUI.js`, `tyrell.css` | Interfaz de revisión y estados de carga/error |
 | `tests/phase1.test.mjs` | Seis comprobaciones de integración y recurso |
 | `tests/phase2.test.mjs` | Tres pruebas de captura, conservación del visor y recuperación ante fallos |
+| `tests/phase2-mesh.test.mjs` | Integridad de atributos/recursos y conservación de caras con área significativa |
+| `scripts/prepare-phase2.mjs` | Generación determinista de la copia de ejecución, modificando sólo índices |
+| `scripts/inspect-surfaces.py` | Auditoría de superficies/contactos y cuatro vistas neutras de Blender |
+| `docs/phase2/CIERRE.md` | Cierre, recurso activo, evidencias, reproducción y límites de fase 2 |
 | `docs/phase2/CAPTURA_REFERENCIA.md` | Entrega parcial de fase 2 y evidencia para revisión |
 | `scripts/audit-model.py` | Auditoría de geometría con Blender en segundo plano, sin guardar los archivos fuente |
 | `docs/phase2/FIDELIDAD_MODELO.md` | Columnas, juntas, sillones, celosías y exterior; capturas CAM 01–04 y siguiente revisión |
@@ -58,14 +62,14 @@ El GLB conserva metros y ejes glTF (Y arriba). No se escala la escena para adapt
 
 1. Exportar desde el Blender fuente conservando cámaras, materiales, texturas y recursos compartidos.
 2. Copiar el resultado a `static/glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_edited.glb` desde la raíz del repositorio.
-3. Obtener tamaño y SHA-256 con `Get-Item` y `Get-FileHash -Algorithm SHA256`.
-4. Actualizar `config.js` (`asset` y `assetBytes`) y las expectativas de la prueba de integridad cuando el cambio sea intencionado. El manifiesto de `docs/phase1` es histórico y no debe sobrescribirse.
-5. Ejecutar pruebas, compilar, recargar y guardar nuevas capturas y diagnósticos desde las mismas cámaras, resolución y calidad.
+3. Ejecutar `node src/canvasApp/projects/webGPU/E26902_BladeRunner/scripts/prepare-phase2.mjs`. Genera `_phase2.glb` y `docs/phase2/surfaces/cleanup.json`; no modifica el export `_edited.glb`. Revisar el informe y las vistas neutras: la corrección presupone que las normales exportadas expresan la orientación deseada de la superficie.
+4. Obtener tamaño y SHA-256, actualizar `config.js` (`asset`, revisión de caché y `assetBytes`) y las expectativas de las pruebas sólo cuando el cambio sea intencionado. El manifiesto de `docs/phase1` y las evidencias de entregas anteriores son históricas.
+5. Repetir las auditorías indicadas en el cierre de fase 2, ejecutar pruebas, compilar, recargar y guardar nuevas capturas y diagnósticos desde las mismas cámaras, resolución y calidad.
 
-La copia actual ocupa 40.549.528 bytes, contiene 25 imágenes, 107 recursos mesh y 10 cámaras. Excluye los objetos ocultos tanto en visor como en render y el volumen `Atmosfera | polvo en haces de luz`, que es exclusivo de Cycles. Esta fase no modifica el `.blend` original.
+La copia activa `_phase2.glb` ocupa **40.552.456 bytes**, contiene 25 imágenes, 107 recursos mesh, 10 cámaras y **339.381 triángulos contando instancias**. Procede del export `_edited.glb` de 40.549.528 bytes. La pequeña diferencia de tamaño se debe a índices separados para primitivas que requieren distinta orientación; no se ha compactado el binario. Excluye los objetos ocultos tanto en visor como en render y el volumen `Atmosfera | polvo en haces de luz`, exclusivo de Cycles. El `.blend` original y el export de entrada se conservan intactos.
 
 En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)**, activar **Objetos visibles** y **Objetos renderizables**, y conservar **Cámaras**, **Luces**, **Materiales: Exportar**, **Imágenes: Automático**, **UVs**, **Normales**, **Animaciones** y **+Y arriba**. Mantener desactivados **Compresión Draco**, **Tangentes** y **Aplicar modificadores/transformaciones** para reproducir este asset. Antes de exportar, ocultar en visor y render `Atmosfera | polvo en haces de luz`: su material de volumen es exclusivo de Cycles y en glTF se vuelve opaco. Las luces de área no son compatibles directamente con glTF; el proyecto aporta sus rellenos en tiempo de ejecución.
 
 ## Próxima entrega
 
-Pausa para revisar [la auditoría del modelo de fase 2](docs/phase2/FIDELIDAD_MODELO.md). Columnas, juntas, inversiones, sillas, celosías y exterior comprobados; siguiente punto: caras ausentes, normales, tangentes, escalas, transparencias y colisiones visuales. La calibración de materiales, luz, reflejos y atmósfera sigue pendiente.
+Revisar [el cierre de fase 2](docs/phase2/CIERRE.md). Siguiente punto recomendado: comenzar fase 3 validando mapas de color/datos y fijando una referencia de gestión de color y exposición antes de ajustar piedra, cuero, madera y cristal.

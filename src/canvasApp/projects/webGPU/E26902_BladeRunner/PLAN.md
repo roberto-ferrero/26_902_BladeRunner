@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado (07/09/2026): **fase 1 completada**; **fase 2, inventario y perfiles del modelo comprobados**. Instrucciones en [README.md](README.md); cierre técnico en [VALIDACION.md](docs/phase1/VALIDACION.md), captura fija en [CAPTURA_REFERENCIA.md](docs/phase2/CAPTURA_REFERENCIA.md) y revisión actual en [FIDELIDAD_MODELO.md](docs/phase2/FIDELIDAD_MODELO.md).
+Estado: **fases 1 y 2 completadas**. Instrucciones en [README.md](README.md); cierre de fase 1 en [VALIDACION.md](docs/phase1/VALIDACION.md) y cierre actual en [CIERRE.md](docs/phase2/CIERRE.md). Siguiente entrega: fase 3, materiales y respuesta al color.
 
 ## Objetivo
 
@@ -59,14 +59,14 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 - [x] Recuperar la cámara general y la de detalle del GLB sin perder su posición, orientación ni campo de visión (infraestructura adelantada en fase 1).
 - [x] Añadir captura de comparación de 1920 × 800 y encuadre 2,4:1, independiente del tamaño de la ventana. Conserva pose y FOV; restaura el visor y reinicia métricas.
-- [x] Exponer CAM 04 como tercera vista lateral estable; su comparación visual detallada sigue pendiente.
+- [x] Exponer CAM 04 como tercera vista lateral estable y revisar su geometría junto a CAM 01–03 con material neutro y en WebGPU.
 - [x] Comprobar las 18 columnas y sus juntas, las orientaciones invertidas, las cuatro sillas, las celosías y el edificio exterior con paralaje. Perfiles contrastados con la plantilla, geometría inspeccionada y evidencia desde CAM 01–04.
-- [ ] Revisar caras ausentes, normales, tangentes, escalas, transparencias y colisiones visuales del mobiliario.
+- [x] Revisar caras ausentes, normales, tangentes, escalas, transparencias y colisiones visuales del mobiliario. Copia de ejecución con limpieza de índices, atributos y recursos originales conservados; evidencia y límites en `docs/phase2/CIERRE.md`.
 - [x] Guardar capturas base 1920 × 800 y diagnósticos del visor desde CAM 01–04; resolución de medición 757 × 315, Media. Evidencia en `docs/phase2/model-audit/`.
 
 **Resultado comprobable:** composición y siluetas comparables con Blender; la iluminación aún puede ser provisional.
 
-**Entrega parcial actual:** 18 columnas con 24 hiladas y 23 juntas de 6 mm; inversiones 02/03/11/12 verificadas en 24 secciones por columna contra la plantilla; cuatro sillones con malla compartida; 11 grupos de celosías y exterior conservados. Capturas y mediciones de cuatro cámaras documentadas. Se pausa para revisión. Siguiente punto: caras ausentes, normales, tangentes, escalas, transparencias y colisiones visuales. Aún no se valida la iluminación ni la atmósfera final.
+**Cierre de fase 2:** 18 columnas con 24 hiladas y 23 juntas de 6 mm; inversiones 02/03/11/12 verificadas contra la plantilla; cuatro sillones con malla compartida; 11 grupos de celosías y exterior conservados. Limpieza de 5.396 caras degeneradas únicas y corrección de orientación de 10.813 caras sin mover vértices: 339.381 triángulos contando instancias. Cámaras, capturas, superficies y contactos revisados. Se pausa para revisión antes de fase 3. La equivalencia de materiales con Blender y la atmósfera cinematográfica se validarán en las fases correspondientes.
 
 ## 3 · Materiales y respuesta al color
 
