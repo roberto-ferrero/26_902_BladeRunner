@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado (07/09/2026): **fase 1 completada**, base WebGPU y carga de la escena. Próxima entrega: **fase 2, cámaras y fidelidad del modelo**. Instrucciones en [README.md](README.md); resultados, evidencia y límites en [VALIDACION.md](docs/phase1/VALIDACION.md).
+Estado (07/09/2026): **fase 1 completada**; **fase 2, captura de referencia completada y en pausa para revisión**. Instrucciones en [README.md](README.md); cierre técnico en [VALIDACION.md](docs/phase1/VALIDACION.md) y entrega actual en [CAPTURA_REFERENCIA.md](docs/phase2/CAPTURA_REFERENCIA.md).
 
 ## Objetivo
 
@@ -58,13 +58,15 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 ## 2 · Cámaras y fidelidad del modelo
 
 - [x] Recuperar la cámara general y la de detalle del GLB sin perder su posición, orientación ni campo de visión (infraestructura adelantada en fase 1).
-- [ ] Añadir un modo de comparación de 1920 × 800 y encuadre 2,4:1, independiente del tamaño de la ventana.
+- [x] Añadir captura de comparación de 1920 × 800 y encuadre 2,4:1, independiente del tamaño de la ventana. Conserva pose y FOV; restaura el visor y reinicia métricas.
 - [x] Exponer CAM 04 como tercera vista lateral estable; su comparación visual detallada sigue pendiente.
 - [ ] Comprobar las 18 columnas y sus juntas, las orientaciones invertidas, las cuatro sillas, las celosías y el edificio exterior con paralaje.
 - [ ] Revisar caras ausentes, normales, tangentes, escalas, transparencias y colisiones visuales del mobiliario.
 - [ ] Guardar una captura base y métricas de render desde las cámaras de comparación.
 
 **Resultado comprobable:** composición y siluetas comparables con Blender; la iluminación aún puede ser provisional.
+
+**Entrega parcial actual:** botón de captura fija y PNG general de muestra, pruebas y procedimiento documentados. Se pausa aquí para revisión del usuario. La auditoría de geometría y la comparación de todas las cámaras siguen pendientes; esta entrega no da por validada la fidelidad con Blender.
 
 ## 3 · Materiales y respuesta al color
 

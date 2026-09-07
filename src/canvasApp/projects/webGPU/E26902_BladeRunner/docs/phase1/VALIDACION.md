@@ -50,6 +50,7 @@ Plano general, calidad Media, exposición 1,07:
 | --- | --- | --- | --- | --- | --- |
 | [Medición inicial](general-1280.json) | 1280 × 533 | 59,9 | 16,71 ms | 18,5 ms | 120 |
 | [Producción final](produccion-general-1280.json) | 1280 × 533 | 59,7 | 16,74 ms | 19,2 ms | 120 |
+| [Producción final](produccion-general-1920.json) | 1920 × 800 | 59,7 | 16,76 ms | 18,3 ms | 120 |
 
 En la producción final a 1280: 328 llamadas, 655.927 triángulos contando pasadas, 158 geometrías y 34 texturas reportadas por el renderer. La escena contiene 175 objetos mesh y 378.164 triángulos contando repeticiones. La carga local registrada fue 602,8 ms con recursos potencialmente cacheados; no es una medición de descarga en frío ni de tiempo hasta primera imagen.
 

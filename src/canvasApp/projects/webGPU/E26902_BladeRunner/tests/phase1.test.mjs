@@ -103,13 +103,21 @@ test('Required WebGPU reports failure and removes fallback canvas; legacy projec
         assert.equal(render.app.TYPE, required ? 'WEBGPU_APP' : 'WEBGL_APP')
     }
 })
-test('Model copy matches the authored export and retains all cameras/resources', async () => {
+test('Model copy matches the edited authored export and retains all cameras/resources', async () => {
     const crypto = await import('node:crypto')
-    const bytes = fs.readFileSync('static/glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3.glb')
+    const bytes = fs.readFileSync('static/glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_edited.glb')
     assert.equal(bytes.length, TYRELL.assetBytes)
-    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), '21f28ad9297badf397d457879b12e3858c2fbe8ab9e3ad926a60afee09a1fbb3')
+    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), '7b860e4fa93da9380d7cdc3f38116d6905f5907d68086c1fd36c6ba895ba334c')
     const json = JSON.parse(bytes.subarray(20, 20 + bytes.readUInt32LE(12)))
     assert.equal(json.cameras.length, 10)
     assert.equal(json.images.length, 25)
-    assert.equal(json.meshes.length, 117)
+    assert.equal(json.meshes.length, 107)
+    const excludedNodes = [
+        'Zylinder', 'Eagle_2', 'Eagle', 'Bonsai | pino y ceramica L',
+        'Bonsai | pino y ceramica R', 'Consola | sobre podio original',
+        'Antique urn', 'Antique urn.001', 'Pino | follaje L', 'Pino | follaje R',
+        'Atmosfera | polvo en haces de luz'
+    ]
+    const names = new Set(json.nodes.map(node => node.name))
+    for (const name of excludedNodes) assert.equal(names.has(name), false, `El GLB no debe incluir ${name}`)
 })

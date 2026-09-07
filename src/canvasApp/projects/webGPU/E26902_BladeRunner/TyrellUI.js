@@ -13,7 +13,7 @@ export default class TyrellUI {
                 <label>Cámara <select aria-label="Cámara"></select></label>
                 <label>Calidad <select aria-label="Calidad"><option>Baja</option><option selected>Media</option><option>Alta</option></select></label>
                 <label class="tyrell-check"><input type="checkbox" checked> Encuadre 2,4:1</label>
-                <button type="button" data-action="capture">Captura</button>
+                <button type="button" data-action="capture">Captura 1920 × 800</button>
                 <button type="button" data-action="report">Diagnóstico</button>
             </div><p class="tyrell-note">Luz provisional · Cámaras originales de Blender · Recorrido libre en una próxima fase</p>
             <p class="tyrell-metrics">Preparando la primera imagen…</p></footer>`
