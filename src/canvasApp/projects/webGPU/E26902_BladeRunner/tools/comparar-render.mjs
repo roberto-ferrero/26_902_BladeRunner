@@ -4,21 +4,22 @@
 //   node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/comparar-render.mjs [--recortes]
 //
 // With --recortes it also writes a side-by-side sheet per region: Blender on the left, the
-// viewer in the middle, the same frame without the look on the right.
+// current viewer in the middle, the previous phase on the right.
 //
 // Both images must be the same size; the comparison frame renders at 1920 x 800, which is what
-// Blender rendered too. Writes docs/phase3/comparacion.json.
+// Blender rendered too. Writes docs/phase4/comparacion.json.
 //
-// The reference was traced in Cycles with full indirect light and a dust volume, and the viewer
-// still runs the provisional lights of phase 1. A gap is expected: what this tool gives is where
-// the gap is and how large, not a pass or fail.
+// The reference was traced in Cycles with full indirect light and a dust volume, which the viewer
+// does not have. A gap is expected: what this tool gives is where the gap is and how large, not a
+// pass or fail.
 import fs from 'node:fs'
 import path from 'node:path'
 import { decodePNG, channelStats, crop, sideBySide, encodePNG, srgbToLinear, luminance } from './lib/png.mjs'
 
-const OUT = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase3/comparacion.json'
+const OUT = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase4/comparacion.json'
 const PHASE3 = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase3'
 const PHASE2 = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase2'
+const PHASE4 = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase4'
 const BLENDER = '../../_Blender/v3_renders'
 
 // Regions are in pixels of the 1920 x 800 comparison frame, chosen to sit inside one surface.
@@ -26,8 +27,8 @@ const SHOTS = [
     {
         camera: 'CAM 01',
         reference: `${BLENDER}/v3_general.png`,
-        current: `${PHASE3}/fase3-cam01-comparacion.png`,
-        baseline: `${PHASE2}/base-cam01-comparacion.png`,
+        current: `${PHASE4}/fase4-cam01-comparacion.png`,
+        baseline: `${PHASE3}/fase3-cam01-comparacion.png`,
         regions: {
             'suelo centro': { x: 780, y: 600, width: 380, height: 170 },
             'suelo lateral izquierdo': { x: 210, y: 650, width: 240, height: 130 },
@@ -41,8 +42,8 @@ const SHOTS = [
     {
         camera: 'CAM 02',
         reference: `${BLENDER}/v3_detalle.png`,
-        current: `${PHASE3}/fase3-cam02-comparacion.png`,
-        baseline: `${PHASE2}/base-cam02-comparacion.png`,
+        current: `${PHASE4}/fase4-cam02-comparacion.png`,
+        baseline: `${PHASE3}/fase3-cam02-comparacion.png`,
         regions: {
             'campo de cuero': { x: 700, y: 470, width: 380, height: 110 },
             'licorera de cristal': { x: 1600, y: 430, width: 90, height: 180 },
@@ -93,14 +94,14 @@ for (const shot of SHOTS) {
         return {
             name, rect,
             referencia: r.displayLuminance, actual: c.displayLuminance,
-            sinLook: b ? b.displayLuminance : null,
+            anterior: b ? b.displayLuminance : null,
             razonLineal: ratio === null ? null : +ratio.toFixed(2),
             evDeDiferencia: ratio ? +Math.log2(ratio).toFixed(2) : null,
-            detalle: { referencia: r, actual: c, sinLook: b }
+            detalle: { referencia: r, actual: c, anterior: b }
         }
     })
     // Whole-frame agreement, as a single number to watch across phases.
-    const whole = { referencia: measure(reference, null), actual: measure(current, null), sinLook: baseline ? measure(baseline, null) : null }
+    const whole = { referencia: measure(reference, null), actual: measure(current, null), anterior: baseline ? measure(baseline, null) : null }
     let sum = 0
     for (let i = 0; i < reference.pixels.length; i += 4) {
         for (let c = 0; c < 3; c++) sum += (reference.pixels[i + c] - current.pixels[i + c]) ** 2
@@ -111,10 +112,10 @@ for (const shot of SHOTS) {
         for (let i = 0; i < reference.pixels.length; i += 4) {
             for (let c = 0; c < 3; c++) base += (reference.pixels[i + c] - baseline.pixels[i + c]) ** 2
         }
-        whole.rmsDisplaySinLook = +Math.sqrt(base / (reference.width * reference.height * 3)).toFixed(4)
+        whole.rmsDisplayAnterior = +Math.sqrt(base / (reference.width * reference.height * 3)).toFixed(4)
     }
     if (CROPS) {
-        const dir = path.join(PHASE3, 'recortes')
+        const dir = path.join(PHASE4, 'recortes')
         fs.mkdirSync(dir, { recursive: true })
         for (const [name, rect] of Object.entries(shot.regions)) {
             const panels = [crop(reference, rect, CROP_SCALE), crop(current, rect, CROP_SCALE)]
@@ -123,7 +124,7 @@ for (const shot of SHOTS) {
             const file = path.join(dir, `${slug}.png`)
             fs.writeFileSync(file, encodePNG(sideBySide(panels)))
             report.crops = report.crops || []
-            report.crops.push({ camera: shot.camera, region: name, file, order: baseline ? ['Blender', 'visor', 'sin look'] : ['Blender', 'visor'] })
+            report.crops.push({ camera: shot.camera, region: name, file, order: baseline ? ['Blender', 'visor', 'fase anterior'] : ['Blender', 'visor'] })
         }
     }
     report.shots.push({ camera: shot.camera, reference: shot.reference, current: shot.current, size: [reference.width, reference.height], whole, regions })
@@ -135,12 +136,12 @@ fs.writeFileSync(OUT, JSON.stringify(report, null, 2))
 for (const shot of report.shots) {
     console.log(`\n${shot.camera}  ${shot.size.join(' x ')}`)
     console.log(`  error cuadrático medio del fotograma frente a Blender: ${shot.whole.rmsDisplay}` +
-        (shot.whole.rmsDisplaySinLook !== undefined ? ` (sin el look era ${shot.whole.rmsDisplaySinLook})` : ''))
+        (shot.whole.rmsDisplayAnterior !== undefined ? ` (sin el look era ${shot.whole.rmsDisplayAnterior})` : ''))
     console.log(`  luminancia media del fotograma: Blender ${shot.whole.referencia.displayLuminance}, visor ${shot.whole.actual.displayLuminance}` +
-        (shot.whole.sinLook ? `, sin look ${shot.whole.sinLook.displayLuminance}` : ''))
-    console.log('  region                        Blender   visor  sin look   razon   EV')
+        (shot.whole.anterior ? `, fase anterior ${shot.whole.anterior.displayLuminance}` : ''))
+    console.log('  region                        Blender   visor  fase anterior   razon   EV')
     for (const region of shot.regions) {
-        console.log(`    ${region.name.padEnd(26)}${String(region.referencia).padStart(7)}${String(region.actual).padStart(8)}${String(region.sinLook ?? '-').padStart(10)}${String(region.razonLineal ?? '-').padStart(8)}${String(region.evDeDiferencia ?? '-').padStart(6)}`)
+        console.log(`    ${region.name.padEnd(26)}${String(region.referencia).padStart(7)}${String(region.actual).padStart(8)}${String(region.anterior ?? '-').padStart(10)}${String(region.razonLineal ?? '-').padStart(8)}${String(region.evDeDiferencia ?? '-').padStart(6)}`)
     }
 }
 console.log(`\nInforme: ${OUT}`)

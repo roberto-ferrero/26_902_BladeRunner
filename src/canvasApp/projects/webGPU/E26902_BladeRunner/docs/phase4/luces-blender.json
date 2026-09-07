@@ -1,0 +1,226 @@
+{
+  "blend": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Blender\\BladeRunner_5_6_High_v3.blend",
+  "blender": "5.1.1",
+  "unit": "METRIC",
+  "scaleLength": 1.0,
+  "note": "Posiciones y direcciones en ejes glTF (Y arriba, metros). Blender es Z arriba y la conversion es (x, y, z) -> (x, z, -y).",
+  "view": {
+    "transform": "AgX",
+    "look": "AgX - Medium High Contrast",
+    "exposure": 0.10000000149011612,
+    "gamma": 1.0
+  },
+  "world": {
+    "strength": 0.05000000074505806,
+    "color": [
+      0.2,
+      0.25,
+      0.23
+    ],
+    "colorLinked": false
+  },
+  "lights": [
+    {
+      "name": "L01 | Sol rasante",
+      "type": "SUN",
+      "energy": 2.25,
+      "color": [
+        1.0,
+        0.69,
+        0.34
+      ],
+      "positionBlender": [
+        0.3,
+        100.0,
+        7.2
+      ],
+      "position": [
+        0.3,
+        7.2,
+        -100.0
+      ],
+      "directionBlender": [
+        -0.002992,
+        -0.997414,
+        -0.071814
+      ],
+      "direction": [
+        -0.002992,
+        -0.071814,
+        0.997414
+      ],
+      "target": [
+        0.285039,
+        6.84093,
+        -95.012932
+      ],
+      "visible": true,
+      "angle": 0.02007128670811653,
+      "luxIfExported": 1536.75
+    },
+    {
+      "name": "L02 | Cielo por ventanal",
+      "type": "AREA",
+      "energy": 170.0,
+      "color": [
+        1.0,
+        0.72,
+        0.41
+      ],
+      "positionBlender": [
+        0.0,
+        13.8,
+        4.2
+      ],
+      "position": [
+        0.0,
+        4.2,
+        -13.8
+      ],
+      "directionBlender": [
+        0.0,
+        -0.958798,
+        -0.284088
+      ],
+      "direction": [
+        0.0,
+        -0.284088,
+        0.958798
+      ],
+      "target": [
+        1e-06,
+        2.779558,
+        -9.00601
+      ],
+      "visible": true,
+      "shape": "DISK",
+      "sizeX": 6.0,
+      "sizeY": 6.0,
+      "areaM2": 36.0,
+      "radiance": 1.50313
+    },
+    {
+      "name": "L03 | Rebote frontal frio",
+      "type": "AREA",
+      "energy": 60.0,
+      "color": [
+        0.48,
+        0.59,
+        0.63
+      ],
+      "positionBlender": [
+        0.0,
+        -7.0,
+        4.5
+      ],
+      "position": [
+        0.0,
+        4.5,
+        7.0
+      ],
+      "directionBlender": [
+        0.0,
+        0.991836,
+        -0.127522
+      ],
+      "direction": [
+        0.0,
+        -0.127522,
+        -0.991836
+      ],
+      "target": [
+        0.0,
+        3.862391,
+        2.040821
+      ],
+      "visible": true,
+      "shape": "DISK",
+      "sizeX": 7.0,
+      "sizeY": 7.0,
+      "areaM2": 49.0,
+      "radiance": 0.389767
+    },
+    {
+      "name": "L04 | Rebote piedra izquierda",
+      "type": "AREA",
+      "energy": 70.0,
+      "color": [
+        1.0,
+        0.67,
+        0.32
+      ],
+      "positionBlender": [
+        -7.7,
+        3.4,
+        4.3
+      ],
+      "position": [
+        -7.7,
+        4.3,
+        -3.4
+      ],
+      "directionBlender": [
+        0.858958,
+        0.292411,
+        -0.420341
+      ],
+      "direction": [
+        0.858958,
+        -0.420341,
+        -0.292411
+      ],
+      "target": [
+        -3.405209,
+        2.198295,
+        -4.862056
+      ],
+      "visible": true,
+      "shape": "DISK",
+      "sizeX": 4.0,
+      "sizeY": 4.0,
+      "areaM2": 16.0,
+      "radiance": 1.392606
+    },
+    {
+      "name": "L05 | Rebote piedra derecha",
+      "type": "AREA",
+      "energy": 80.0,
+      "color": [
+        1.0,
+        0.7,
+        0.39
+      ],
+      "positionBlender": [
+        7.7,
+        7.2,
+        4.1
+      ],
+      "position": [
+        7.7,
+        4.1,
+        -7.2
+      ],
+      "directionBlender": [
+        -0.902491,
+        0.126666,
+        -0.411663
+      ],
+      "direction": [
+        -0.902491,
+        -0.411663,
+        -0.126666
+      ],
+      "target": [
+        3.187545,
+        2.041687,
+        -7.833328
+      ],
+      "visible": true,
+      "shape": "DISK",
+      "sizeX": 4.0,
+      "sizeY": 4.0,
+      "areaM2": 16.0,
+      "radiance": 1.591549
+    }
+  ]
+}

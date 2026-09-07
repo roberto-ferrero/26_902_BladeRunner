@@ -1,0 +1,291 @@
+{
+  "generated": "2026-09-07T18:30:37.551Z",
+  "blend": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Blender\\BladeRunner_5_6_High_v3.blend",
+  "blender": "5.1.1",
+  "note": "El .blend maestro manda. El GLB sólo transporta el sol y algunos de sus valores están desfasados.",
+  "findings": [
+    {
+      "severity": "alta",
+      "area": "sol",
+      "text": "El GLB declara 683 lux, que son 1.000 W/m², cuando el maestro tiene 2.25. El sol del GLB está desfasado y no debe usarse."
+    },
+    {
+      "severity": "alta",
+      "area": "sol",
+      "text": "El color del sol del GLB es [1,1,1] y el del maestro [1,0.69,0.34]."
+    },
+    {
+      "severity": "alta",
+      "area": "rellenos",
+      "text": "El GLB no lleva ninguna luz de área: las 4 del maestro nunca se exportaron, así que el visor tiene que reconstruirlas desde este informe."
+    }
+  ],
+  "sun": {
+    "master": {
+      "energyWattsPerM2": 2.25,
+      "color": [
+        1,
+        0.69,
+        0.34
+      ],
+      "position": [
+        0.3,
+        7.2,
+        -100
+      ],
+      "direction": [
+        -0.002992,
+        -0.071814,
+        0.997414
+      ],
+      "angularDiameterDeg": 1.15
+    },
+    "gltf": {
+      "intensityLux": 683,
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "position": [
+        0.30000001192092896,
+        7.199999809265137,
+        -100
+      ],
+      "direction": [
+        -0.002992,
+        -0.071814,
+        0.997414
+      ]
+    },
+    "conversion": {
+      "rule": "intensidad de Three = W/m² de Blender = lux del glTF / 683",
+      "fromMaster": 2.25,
+      "fromGltf": 1,
+      "expectedLuxForMaster": 1536.75
+    },
+    "directionDriftDeg": 0,
+    "disc": {
+      "position": [
+        2,
+        46,
+        -650
+      ],
+      "distance": 651.6,
+      "emissiveFactor": [
+        1,
+        0.7099999785423279,
+        0.3100000023841858
+      ],
+      "emissiveStrength": 12,
+      "driftFromSunDeg": 0.07
+    },
+    "sky": {
+      "emissiveFactor": [
+        0.6000000238418579,
+        0.6000000238418579,
+        0.6000000238418579
+      ],
+      "emissiveStrength": 1,
+      "note": "El maestro pone la emisión del cielo en 0,6, que es lo que trae el GLB."
+    }
+  },
+  "areaLights": [
+    {
+      "name": "L02 | Cielo por ventanal",
+      "shape": "DISK",
+      "powerWatts": 170,
+      "sizeBlender": [
+        6,
+        6
+      ],
+      "areaM2": 28.2743,
+      "equivalentSquareSide": 5.3174,
+      "radiance": 1.9138,
+      "color": [
+        1,
+        0.72,
+        0.41
+      ],
+      "position": [
+        0,
+        4.2,
+        -13.8
+      ],
+      "direction": [
+        0,
+        -0.284088,
+        0.958798
+      ],
+      "target": [
+        0.000001,
+        2.779558,
+        -9.00601
+      ],
+      "visible": true
+    },
+    {
+      "name": "L03 | Rebote frontal frio",
+      "shape": "DISK",
+      "powerWatts": 60,
+      "sizeBlender": [
+        7,
+        7
+      ],
+      "areaM2": 38.4845,
+      "equivalentSquareSide": 6.2036,
+      "radiance": 0.4963,
+      "color": [
+        0.48,
+        0.59,
+        0.63
+      ],
+      "position": [
+        0,
+        4.5,
+        7
+      ],
+      "direction": [
+        0,
+        -0.127522,
+        -0.991836
+      ],
+      "target": [
+        0,
+        3.862391,
+        2.040821
+      ],
+      "visible": true
+    },
+    {
+      "name": "L04 | Rebote piedra izquierda",
+      "shape": "DISK",
+      "powerWatts": 70,
+      "sizeBlender": [
+        4,
+        4
+      ],
+      "areaM2": 12.5664,
+      "equivalentSquareSide": 3.5449,
+      "radiance": 1.7731,
+      "color": [
+        1,
+        0.67,
+        0.32
+      ],
+      "position": [
+        -7.7,
+        4.3,
+        -3.4
+      ],
+      "direction": [
+        0.858958,
+        -0.420341,
+        -0.292411
+      ],
+      "target": [
+        -3.405209,
+        2.198295,
+        -4.862056
+      ],
+      "visible": true
+    },
+    {
+      "name": "L05 | Rebote piedra derecha",
+      "shape": "DISK",
+      "powerWatts": 80,
+      "sizeBlender": [
+        4,
+        4
+      ],
+      "areaM2": 12.5664,
+      "equivalentSquareSide": 3.5449,
+      "radiance": 2.0264,
+      "color": [
+        1,
+        0.7,
+        0.39
+      ],
+      "position": [
+        7.7,
+        4.1,
+        -7.2
+      ],
+      "direction": [
+        -0.902491,
+        -0.411663,
+        -0.126666
+      ],
+      "target": [
+        3.187545,
+        2.041687,
+        -7.833328
+      ],
+      "visible": true
+    }
+  ],
+  "world": {
+    "blender": {
+      "strength": 0.05000000074505806,
+      "color": [
+        0.2,
+        0.25,
+        0.23
+      ],
+      "colorLinked": false
+    },
+    "radiance": [
+      0.01,
+      0.0125,
+      0.0115
+    ],
+    "ambient": {
+      "color": [
+        0.2,
+        0.25,
+        0.23
+      ],
+      "intensity": 0.15708,
+      "rule": "intensidad de AmbientLight = pi * fuerza del mundo, con el color del mundo"
+    },
+    "note": "Una luz ambiente sólo alimenta el difuso. El mundo de Blender también aporta especular, y eso pertenece al punto de iluminación indirecta."
+  },
+  "shadow": {
+    "fittedWidth": 25.39,
+    "fittedHeight": 8.865,
+    "fittedDepth": 28.705,
+    "fittedTexelMetresLightSpace": 0.0124,
+    "areaRatioAgainstCurrent": 0.261,
+    "interiorBoundsMin": [
+      -15.556,
+      -0.051,
+      -15.91
+    ],
+    "interiorBoundsMax": [
+      9.75,
+      6.8,
+      12.3
+    ],
+    "interiorSize": [
+      25.306,
+      6.851,
+      28.21
+    ],
+    "interiorCentre": [
+      -2.903,
+      3.375,
+      -1.805
+    ],
+    "boundingRadius": 19.256,
+    "current": {
+      "halfWidth": 18,
+      "halfHeight": 12,
+      "near": 0.1,
+      "far": 150,
+      "mapSize": 2048
+    },
+    "currentTexelMetres": 0.01758,
+    "fittedTexelMetres": 0.0188,
+    "note": "Ajustar el frustum a la esfera que envuelve el interior deja el mismo mapa cubriendo menos metros, así que cada texel mide menos y el sesgo puede bajar."
+  }
+}

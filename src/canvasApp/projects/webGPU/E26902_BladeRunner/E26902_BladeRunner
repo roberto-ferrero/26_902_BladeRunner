@@ -6,6 +6,7 @@ import { loadTyrell, disposeScene } from './TyrellAssets'
 import TyrellCameraRig from './TyrellCameraRig'
 import TyrellUI from './TyrellUI'
 import { agxLookToneMapping, setLookEnabled } from './TyrellToneMapping'
+import { createWorldLight, createAreaFills, applySunFromMaster, fitSunShadow } from './TyrellLighting'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -87,7 +88,7 @@ export default class E26902_BladeRunner {
             // A parse/build failure must leave retry without a duplicate scene.
             disposeScene(this.asset?.gltf.scene)
             this.asset = null
-            this.fill?.removeFromParent()
+            this.world?.removeFromParent()
             this.ui.error(error)
         }
     }
@@ -96,6 +97,7 @@ export default class E26902_BladeRunner {
         this.scene.add(this.world3D)
         this.world3D.updateMatrixWorld(true)
         this.cameras = []
+        this.shadowCasters = []
         this.modelStats = { meshes: 0, triangles: 0, cameras: 0 }
         this.world3D.traverse(object => {
             if (object.isPerspectiveCamera) this.cameras.push(object)
@@ -103,38 +105,26 @@ export default class E26902_BladeRunner {
                 this.modelStats.meshes++
                 this.modelStats.triangles += (object.geometry.index?.count || object.geometry.attributes.position.count) / 3
                 object.receiveShadow = true
-                // Keep the distant pyramid/sky out of the room's shadow pass.
+                // Keep the distant pyramid, the sky and the sun disc out of the room's shadow
+                // pass: they sit hundreds of metres away and would swallow the whole frustum.
                 object.getWorldPosition(_position)
-                object.castShadow = _position.length() < 50
+                object.castShadow = _position.length() < 50 && !FAR_AWAY.test(object.name)
+                if (object.castShadow) this.shadowCasters.push(object)
             }
-            if (object.isDirectionalLight) {
-                this.sun = object
-                object.userData.exportedIntensity = object.intensity
-                object.intensity = TYRELL.sunIntensity
-                object.castShadow = true
-                Object.assign(object.shadow.camera, { left: -18, right: 18, top: 12, bottom: -12, near: 0.1, far: 150 })
-                object.shadow.bias = -0.00015
-                object.shadow.normalBias = 0.025
-                object.shadow.camera.updateProjectionMatrix()
-            }
+            if (object.isDirectionalLight) this.sun = applySunFromMaster(object)
         })
         this.applyCrystalThickness()
         this.cameras.sort((a, b) => a.name.localeCompare(b.name))
         this.modelStats.cameras = this.cameras.length
         if (!this.cameras.length) throw new Error('El GLB no contiene cámaras de perspectiva.')
-        this.fill = new THREE.HemisphereLight(0xffdab0, 0x797e8a, TYRELL.hemisphereIntensity)
-        this.fill.name = 'Tyrell / relleno provisional'
-        this.scene.add(this.fill)
+        this.world = createWorldLight()
+        this.scene.add(this.world)
+        // The LTC tables have to exist before the first rect-area light is shaded on WebGPU.
         if (ltcUsers++ === 0) RectAreaLightNode.setLTC(RectAreaLightTexturesLib.init())
         this.usesLTC = true
-        this.areaLights = TYRELL.areaFills.map(({ position, target, color, intensity, size }) => {
-            const light = new THREE.RectAreaLight(color, intensity, size, size)
-            light.name = 'Tyrell / área provisional'
-            light.position.set(...position)
-            light.lookAt(new THREE.Vector3(...target))
-            this.scene.add(light)
-            return light
-        })
+        this.areaLights = createAreaFills()
+        for (const light of this.areaLights) this.scene.add(light)
+        this.shadowFit = fitSunShadow(this.sun, this.shadowCasters)
         this.selectCamera(Math.max(0, this.cameras.findIndex(camera => camera.name.startsWith(TYRELL.initialCamera.replaceAll(' ', '_')) || camera.name.startsWith(TYRELL.initialCamera))))
         this.setQuality(this.quality)
         this.built = true
@@ -209,6 +199,8 @@ export default class E26902_BladeRunner {
             previous.removeFromParent()
             previous.dispose()
             this.sun = replacement
+            // The bias is expressed in texels, so a new map size needs the fit run again.
+            if (this.shadowCasters?.length) this.shadowFit = fitSunShadow(this.sun, this.shadowCasters)
         }
         this.resetMetrics()
     }
@@ -256,7 +248,7 @@ export default class E26902_BladeRunner {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 2, date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 4, date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
             benchmarkOnStart: false, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
@@ -264,11 +256,25 @@ export default class E26902_BladeRunner {
             crystal: this.crystalThickness || null,
             toneMapping: { transform: 'AgX', look: this.look ? 'AgX - Medium High Contrast (ajustado)' : 'ninguno', ...TYRELL.look, lookApplied: this.look },
             shadowMapSize: this.sun?.shadow.mapSize.x ?? null,
+            lighting: this.sun ? {
+                source: 'BladeRunner_5_6_High_v3.blend, leído por tools/blender/leer_luces.py',
+                sun: {
+                    intensity: this.sun.intensity, color: this.sun.color.toArray().map(v => +v.toFixed(4)),
+                    gltf: { intensity: this.sun.userData.gltfIntensity ?? null, color: this.sun.userData.gltfColor?.map(v => +v.toFixed(4)) ?? null },
+                    note: 'El GLB trae 683 lux y blanco, ambos desfasados; en uso van los 2,25 W/m² y el ámbar del maestro.'
+                },
+                world: this.world ? { intensity: this.world.intensity, color: this.world.color.toArray().map(v => +v.toFixed(4)) } : null,
+                areaFills: this.areaLights?.map(light => ({
+                    name: light.name, intensity: light.intensity, watts: light.userData.watts,
+                    size: [light.width, light.height], color: light.color.toArray().map(v => +v.toFixed(4))
+                })) ?? null,
+                shadow: this.shadowFit || null
+            } : null,
             model: this.modelStats, asset: { path: TYRELL.asset, bytes: this.asset?.bytes, loadMs: this.asset?.loadMs },
             camera: camera ? { name: camera.name, position: camera.position.toArray(), quaternion: camera.quaternion.toArray(), fov: camera.fov, aspect: camera.aspect, near: camera.near, far: camera.far } : null,
             metrics: this.metrics || null,
             metricNote: 'Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.',
-            pending: ['Materiales y luz definitiva', 'Reflejos del suelo', 'Atmósfera', 'Recorrido libre']
+            pending: ['Iluminación indirecta', 'Reflejos del suelo', 'Atmósfera', 'Recorrido libre']
         }
     }
     downloadReport() {
@@ -284,8 +290,8 @@ export default class E26902_BladeRunner {
         if (this.resizeListener) this.app.emitter.off('onAppSizeUpdate', this.resizeListener)
         document.removeEventListener('visibilitychange', this.visibilityListener)
         disposeScene(this.world3D)
-        this.fill?.removeFromParent()
-        this.fill?.dispose()
+        this.world?.removeFromParent()
+        this.world?.dispose()
         this.areaLights?.forEach(light => { light.removeFromParent(); light.dispose() })
         if (this.usesLTC && --ltcUsers === 0) {
             for (const name of ['LTC_FLOAT_1', 'LTC_FLOAT_2', 'LTC_HALF_1', 'LTC_HALF_2']) RectAreaLightTexturesLib[name].dispose()
@@ -294,6 +300,8 @@ export default class E26902_BladeRunner {
         document.body.classList.remove('tyrell-viewer', 'tyrell-reference', 'tyrell-compare')
     }
 }
+// Everything past the room walls: hundreds of metres away, never a shadow caster.
+const FAR_AWAY = /^(Tyrell_Corporation|Cielo[_ ]|Sol[_ ])/
 const _position = new THREE.Vector3()
 const _size = new THREE.Vector3()
 const _box = new THREE.Box3()
