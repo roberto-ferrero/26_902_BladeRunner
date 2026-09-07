@@ -1,0 +1,87 @@
+import * as THREE from 'three'
+import * as THREE_GPU from 'three/webgpu'
+import * as TSL from 'three/tsl'
+
+import AssetLoader from '../../../core/AssetLoder/AssetLoader'
+import StageOrtoCamera from "../../../core/cameras/StageOrtoCamera"
+import OrtoResponsiveFrame from '../../../core/utils/OrtoResponsiveFrame'
+
+
+class E26902_BladeRunner {
+    constructor() {
+        console.log("(E26902_BladeRunner.CONSTRUCTOR)!")
+        this.type = "WEBGPU_APP"
+
+    }
+
+    init(app) {
+        console.log("(E26902_BladeRunner.init)!")
+        this.app = app
+        this.scene = this.app.render.scene
+
+
+        //---------------------
+        // SET PERFORMANCE FOR POSSIBLE LOD:
+        let tier = this.app.render.performanceData.tier
+        tier = "Low"
+        switch (tier) {
+            case 'Low':
+                break
+                case 'Mid':
+                    break
+                    case 'High':
+                        break
+            default:
+                break
+        }
+        //---------------------
+        
+        //---------------------
+        // STAGE CAMERA:
+        this.stageCamera = new StageOrtoCamera({
+            app: this.app,
+            project: this,
+            parent3D: this.scene,
+            size: this.app.size.CURRENT
+        })
+        this.app.render.set_stageCamera(this.stageCamera.get_camera())
+        //---------------------
+
+        //---------------------
+        // LOAD ASSETS:
+        this.loader = new AssetLoader({
+            app: this.app,
+            pathPrefix: this.app.pathPrefix
+        })
+        //this.loader.add_texture("mars", this.app.pathPrefix + "img/mars_1.jpg")
+        
+        this.loader.emitter.on("onCompleted", () => {
+            console.log("ALL ASSETS LOADED!")
+            this.app.emitter.emit("onProjectLoaded", {})
+        })
+        this.loader.start()
+        //---------------------
+    }
+
+    build() {
+        console.log("(E26902_BladeRunner.build)!")
+
+        this.world3D = new THREE.Object3D()
+        this.scene.add(this.world3D)
+
+        this.frame = new OrtoResponsiveFrame({
+            app: this.app,
+            project: this,
+            itemRef: this.world3D,
+            refWidth: this.app.size.REF.width,
+            refHeight: this.app.size.REF.height,
+            MODE: "COVER",
+            SCALE_FACTOR: 1.0
+        })
+
+    }
+
+    
+}
+
+export default E26902_BladeRunner
