@@ -2,8 +2,16 @@ export const TYRELL = {
     asset: 'glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3.glb',
     assetBytes: 56526524,
     referenceAspect: 2.4,
+    // Blender renders v3_general.png and v3_detalle.png at this exact size.
+    compareSize: { width: 1920, height: 800 },
+    compareCameras: ['CAM 01', 'CAM 02', 'CAM 04'],
     initialCamera: 'CAM 01',
-    exposure: 1.07,
+    // Blender rendered the references at +0,1 EV, which is this linear factor.
+    exposure: 1.0718,
+    // "AgX - Medium High Contrast" reproduced inside Three's AgX. Fitted against a measured
+    // Blender ramp by tools/calibrar-color.mjs; the fit recovers 1,198 against the 1,2 the OCIO
+    // config declares. Residual against Blender: RMS 0,0091, máximo 0,0223.
+    look: { contrast: 1.198, pivot: 0.691 },
     quality: 'Media',
     // Resolution budgets, not an inferred GPU ranking. Geometry is unchanged.
     profiles: {
@@ -11,6 +19,13 @@ export const TYRELL = {
         Media: { pixelRatio: 1, shadowSize: 2048 },
         Alta: { pixelRatio: 1.5, shadowSize: 2048 }
     },
+    // The GLB carries KHR_materials_transmission but not KHR_materials_volume, so every
+    // transmissive material arrives with thickness 0. A zero thickness gives a zero-length
+    // refraction ray: the glass then shows exactly what is behind it, undistorted, and reads as
+    // frosted plastic instead of glass. The thickness is taken from the pieces themselves at
+    // build time, as the median of their smallest world dimension times this factor, so it stays
+    // right if the model changes. Set to 0 to keep the file's own value.
+    crystalThicknessFactor: 0.5,
     sunIntensity: 2.25,
     hemisphereIntensity: 0.35,
     // Provisional fills in glTF coordinates (metres, Y up). Calibrate in phase 4.

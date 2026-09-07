@@ -6,11 +6,17 @@ export default class TyrellCameraRig {
         this.app = app
         this.camera = new PerspectiveCamera(23, TYRELL.referenceAspect, 0.03, 2500)
         this.camera.position.set(-0.12, 1.55, 10.3)
+        this.forcedAspect = null
         this.resize = () => {
-            this.camera.aspect = this.app.size.CURRENT.aspect
+            // A pinned aspect keeps comparison frames identical whatever the window does.
+            this.camera.aspect = this.forcedAspect || this.app.size.CURRENT.aspect
             this.camera.updateProjectionMatrix()
         }
         app.emitter.on('onAppSizeUpdate', this.resize)
+    }
+    setAspect(aspect) {
+        this.forcedAspect = aspect || null
+        this.resize()
     }
     setSource(source) {
         source.updateWorldMatrix(true, false)

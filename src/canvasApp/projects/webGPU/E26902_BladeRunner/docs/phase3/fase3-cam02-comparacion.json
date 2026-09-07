@@ -1,0 +1,87 @@
+{
+  "phase": 2,
+  "date": "2026-09-07T17:47:16.097Z",
+  "backend": "WebGPU",
+  "three": "182",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+  "secureContext": true,
+  "adapter": {
+    "vendor": "nvidia",
+    "architecture": "turing",
+    "device": "",
+    "description": ""
+  },
+  "benchmarkOnStart": false,
+  "quality": "Media",
+  "exposure": 1.0718,
+  "compare": {
+    "width": 1920,
+    "height": 800,
+    "pixelRatio": 1
+  },
+  "crystal": [
+    {
+      "material": "Crystal",
+      "pieces": 4,
+      "medianSpan": 0.1166,
+      "thickness": 0.0583
+    }
+  ],
+  "toneMapping": {
+    "transform": "AgX",
+    "look": "AgX - Medium High Contrast (ajustado)",
+    "contrast": 1.198,
+    "pivot": 0.691,
+    "lookApplied": true
+  },
+  "shadowMapSize": 2048,
+  "model": {
+    "meshes": 175,
+    "triangles": 378164,
+    "cameras": 10
+  },
+  "asset": {
+    "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3.glb",
+    "bytes": 56526524,
+    "loadMs": 1625.6000000238419
+  },
+  "camera": {
+    "name": "CAM_02_|_mesa_y_juntas",
+    "position": [
+      1.899999976158142,
+      1.6200000047683716,
+      -7
+    ],
+    "quaternion": [
+      -0.07395983694909083,
+      0.2723234660486248,
+      0.02099927769581201,
+      0.9591292419423805
+    ],
+    "fov": 27.20108524234708,
+    "aspect": 2.4,
+    "near": 0.029999999329447746,
+    "far": 2500
+  },
+  "metrics": {
+    "fps": 59.7,
+    "frameMeanMs": 16.76,
+    "frameP95Ms": 18.4,
+    "samples": 120,
+    "resolution": [
+      1920,
+      800
+    ],
+    "drawCalls": 262,
+    "renderedTriangles": 475700,
+    "geometries": 158,
+    "textures": 34
+  },
+  "metricNote": "Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.",
+  "pending": [
+    "Materiales y luz definitiva",
+    "Reflejos del suelo",
+    "Atmósfera",
+    "Recorrido libre"
+  ]
+}

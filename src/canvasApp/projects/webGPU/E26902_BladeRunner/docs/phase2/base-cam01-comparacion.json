@@ -1,0 +1,79 @@
+{
+  "phase": 2,
+  "date": "2026-09-07T17:29:38.027Z",
+  "backend": "WebGPU",
+  "three": "182",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+  "secureContext": true,
+  "adapter": {
+    "vendor": "nvidia",
+    "architecture": "turing",
+    "device": "",
+    "description": ""
+  },
+  "benchmarkOnStart": false,
+  "quality": "Media",
+  "exposure": 1.0718,
+  "compare": {
+    "width": 1920,
+    "height": 800,
+    "pixelRatio": 1
+  },
+  "toneMapping": {
+    "transform": "AgX",
+    "look": "ninguno",
+    "contrast": 1.198,
+    "pivot": 0.691,
+    "lookApplied": false
+  },
+  "shadowMapSize": 2048,
+  "model": {
+    "meshes": 175,
+    "triangles": 378164,
+    "cameras": 10
+  },
+  "asset": {
+    "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3.glb",
+    "bytes": 56526524,
+    "loadMs": 844.9000000357628
+  },
+  "camera": {
+    "name": "CAM_01_|_fotograma_general",
+    "position": [
+      -0.11999999731779099,
+      1.550000786781311,
+      10.300000190734863
+    ],
+    "quaternion": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "fov": 22.91750563177261,
+    "aspect": 2.4,
+    "near": 0.029999999329447746,
+    "far": 2500
+  },
+  "metrics": {
+    "fps": 59.9,
+    "frameMeanMs": 16.69,
+    "frameP95Ms": 19.8,
+    "samples": 120,
+    "resolution": [
+      1920,
+      800
+    ],
+    "drawCalls": 328,
+    "renderedTriangles": 655927,
+    "geometries": 158,
+    "textures": 34
+  },
+  "metricNote": "Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.",
+  "pending": [
+    "Materiales y luz definitiva",
+    "Reflejos del suelo",
+    "Atmósfera",
+    "Recorrido libre"
+  ]
+}

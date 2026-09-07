@@ -12,7 +12,9 @@ export default class TyrellUI {
             <footer hidden><div class="tyrell-controls">
                 <label>Cámara <select aria-label="Cámara"></select></label>
                 <label>Calidad <select aria-label="Calidad"><option>Baja</option><option selected>Media</option><option>Alta</option></select></label>
-                <label class="tyrell-check"><input type="checkbox" checked> Encuadre 2,4:1</label>
+                <label class="tyrell-check"><input type="checkbox" data-action="frame" checked> Encuadre 2,4:1</label>
+                <label class="tyrell-check"><input type="checkbox" data-action="compare"> Comparación 1920 × 800</label>
+                <label class="tyrell-check"><input type="checkbox" data-action="look" checked> Look AgX de Blender</label>
                 <button type="button" data-action="capture">Captura</button>
                 <button type="button" data-action="report">Diagnóstico</button>
             </div><p class="tyrell-note">Luz provisional · Cámaras originales de Blender · Recorrido libre en una próxima fase</p>
@@ -25,7 +27,10 @@ export default class TyrellUI {
         this.cameraSelect = this.root.querySelector('[aria-label="Cámara"]')
         this.cameraSelect.onchange = () => actions.camera(Number(this.cameraSelect.value))
         this.root.querySelector('[aria-label="Calidad"]').onchange = event => actions.quality(event.target.value)
-        this.root.querySelector('input').onchange = event => actions.frame(event.target.checked)
+        this.frameCheck = this.root.querySelector('[data-action="frame"]')
+        this.frameCheck.onchange = event => actions.frame(event.target.checked)
+        this.root.querySelector('[data-action="compare"]').onchange = event => actions.compare(event.target.checked)
+        this.root.querySelector('[data-action="look"]').onchange = event => actions.look(event.target.checked)
         this.retry.onclick = () => actions.retry()
         this.root.querySelector('[data-action="capture"]').onclick = () => actions.capture()
         this.root.querySelector('[data-action="report"]').onclick = () => actions.report()
@@ -49,6 +54,12 @@ export default class TyrellUI {
         this.retry.textContent = renderer ? 'Recargar página' : 'Reintentar carga'
     }
     setBackend(text) { this.root.querySelector('.tyrell-backend').textContent = text }
+    // 1920 x 800 is already 2.4:1, so the letterbox is implied and must not be switched off.
+    lockFrame(locked) {
+        this.frameCheck.disabled = locked
+        if (locked) this.frameCheck.checked = true
+        this.frameCheck.closest('label').classList.toggle('tyrell-disabled', locked)
+    }
     ready(cameras, activeIndex) {
         this.statusBox.hidden = true
         this.root.querySelector('footer').hidden = false

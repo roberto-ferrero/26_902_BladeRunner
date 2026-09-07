@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado (07/09/2026): **fase 1 completada**, base WebGPU y carga de la escena. Próxima entrega: **fase 2, cámaras y fidelidad del modelo**. Instrucciones en [README.md](README.md); resultados, evidencia y límites en [VALIDACION.md](docs/phase1/VALIDACION.md).
+Estado (07/09/2026): **fases 1, 2 y 3 completadas**. Próxima entrega: **fase 4, iluminación y sombras**. Instrucciones en [README.md](README.md). Evidencia y límites en [fase 1](docs/phase1/VALIDACION.md), [fase 2](docs/phase2/VALIDACION.md) y [fase 3](docs/phase3/VALIDACION.md). Objetivo artístico de luz y atmósfera en [REFERENCIAS.md](docs/REFERENCIAS.md).
 
 ## Objetivo
 
@@ -15,7 +15,8 @@ Trabajar por entregas pequeñas, en el orden de esta lista. Cada entrega actuali
 - Ciclo del andamiaje: `onRendererReady` → `project.init(app)` → carga → `onProjectLoaded` → `project.build()` → `update_RAF()`.
 - El código específico de Tyrell permanecerá en esta carpeta; los cambios en `core` serán pequeños y necesarios para integrarlo.
 - Recursos originales, fuera del repositorio: `../../_Blender/BladeRunner_5_6_High_v3.blend` y `.glb`, respecto a la raíz del repositorio.
-- Renders de referencia: `../../_Blender/v3_renders/v3_general.png` y `v3_detalle.png`.
+- Renders de referencia: `../../_Blender/v3_renders/v3_general.png` y `v3_detalle.png`, ambos a 1920 × 800.
+- Fotogramas de la película en `movie_screenshots/`, aportados por el usuario el 07/09/2026 como objetivo de atmósfera e iluminación. Su lectura y reparto por fases está en [docs/REFERENCIAS.md](docs/REFERENCIAS.md). Los renders mandan en la forma; los fotogramas mandan en el acabado.
 - Datos de exportación: `../../_Blender/v3_assets/validation.json` y `export_report.json`.
 - Destino previsto para los recursos de ejecución: `static/glbs/E26902_BladeRunner/`, con referencias de revisión en una carpeta separada.
 - El módulo anterior `../../_Blender/tyrell-threejs.mjs` se hizo para WebGLRenderer. Sirve como referencia de parámetros, pero necesita adaptación para WebGPU.
@@ -58,24 +59,40 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 ## 2 · Cámaras y fidelidad del modelo
 
 - [x] Recuperar la cámara general y la de detalle del GLB sin perder su posición, orientación ni campo de visión (infraestructura adelantada en fase 1).
-- [ ] Añadir un modo de comparación de 1920 × 800 y encuadre 2,4:1, independiente del tamaño de la ventana.
+- [x] Añadir un modo de comparación de 1920 × 800 y encuadre 2,4:1, independiente del tamaño de la ventana. Comprobado en dos ventanas distintas: mismo búfer y mismo peso de imagen.
 - [x] Exponer CAM 04 como tercera vista lateral estable; su comparación visual detallada sigue pendiente.
-- [ ] Comprobar las 18 columnas y sus juntas, las orientaciones invertidas, las cuatro sillas, las celosías y el edificio exterior con paralaje.
-- [ ] Revisar caras ausentes, normales, tangentes, escalas, transparencias y colisiones visuales del mobiliario.
-- [ ] Guardar una captura base y métricas de render desde las cámaras de comparación.
+- [x] Comprobar las 18 columnas y sus juntas, las orientaciones invertidas, las cuatro sillas, las celosías y el edificio exterior con paralaje. Auditoría reproducible en `tools/auditar-modelo.mjs`.
+- [x] Revisar caras ausentes, normales, tangentes, escalas, transparencias y colisiones visuales del mobiliario.
+- [x] Guardar una captura base y métricas de render desde las cámaras de comparación, tomadas en Chrome real sobre WebGPU.
 
-**Resultado comprobable:** composición y siluetas comparables con Blender; la iluminación aún puede ser provisional.
+**Resultado:** composición, siluetas y encuadre coinciden con Blender en CAM 01, CAM 02 y CAM 04. Las diferencias restantes son de luz y material y quedan repartidas entre las fases 3 a 6. Evidencia y hallazgos en [docs/phase2/VALIDACION.md](docs/phase2/VALIDACION.md).
+
+Abierto al cerrar la fase, para resolver donde corresponda:
+
+- La auditoría no encuentra ninguna columna que sea el reflejo vertical de otra, sino tres perfiles distintos. Contradice al modelo documentado y al nombre de CAM 03. Confirmar mirando CAM 03 contra Blender antes de la fase 4.
+- La consola flota 40 mm sobre el podio.
+- Los 27 materiales son de doble cara; decidir el descarte de caras traseras en la fase 4.
+- La cristalería con transmisión sale lechosa y opaca; resolver en la fase 3.
 
 ## 3 · Materiales y respuesta al color
 
-- [ ] Validar los mapas de color, normales y rugosidad; separar correctamente texturas de color y de datos.
-- [ ] Establecer gestión de color, AgX y exposición de referencia antes de calibrar las luces.
-- [ ] Ajustar piedra, cuero, nogal, bronce, suelo y cristalería con el GLB como punto de partida.
-- [ ] Comprobar que el suelo conserva juntas y desgaste y que la normal no produce un aspecto de agua.
-- [ ] Usar materiales estándar cuando sean suficientes y materiales de nodos donde lo exija un efecto concreto.
-- [ ] Conservar los recursos compartidos entre sillas y evitar clonar materiales innecesariamente.
+- [x] Validar los mapas de color, normales y rugosidad; separar correctamente texturas de color y de datos. Ninguna imagen alimenta a la vez una ranura de color y una de datos, y las 37 texturas piden mipmaps.
+- [x] Establecer gestión de color, AgX y exposición de referencia antes de calibrar las luces. Medido contra una rampa del propio Blender; el aspecto «AgX - Medium High Contrast» que faltaba está reproducido con residuo 0,0091.
+- [x] Ajustar piedra, cuero, nogal, bronce, suelo y cristalería con el GLB como punto de partida. Los materiales del archivo resultan correctos; el único ajuste necesario es el grosor de la cristalería.
+- [x] Comprobar que el suelo conserva juntas y desgaste y que la normal no produce un aspecto de agua. Albedo de luminancia lineal 0,0022, desgaste en el mapa de rugosidad entre 0,11 y 0,45, normal de ±0,03 escalada a 0,035.
+- [x] Usar materiales estándar cuando sean suficientes y materiales de nodos donde lo exija un efecto concreto. 171 mallas con material estándar y sólo las 4 piezas de cristal con material físico.
+- [x] Conservar los recursos compartidos entre sillas y evitar clonar materiales innecesariamente. 175 mallas con 27 materiales, 157 geometrías y 25 texturas, exactamente los recursos del archivo.
+- [x] Resolver la cristalería. El material llega bien pero el GLB no trae `KHR_materials_volume`, así que el grosor llegaba a 0 y no había refracción. Ahora se calcula de la propia geometría.
+- [x] Bajar el cuero de la mesa y cerrar las negras de la sala. El aspecto de color las cierra; lo que queda por encima es luz provisional.
 
-**Resultado comprobable:** detalle de la mesa y piedra coherentes con Blender bajo un esquema de luz controlado.
+**Resultado:** la curva de tono coincide con la de Blender dentro de 0,0091 y los materiales del GLB quedan verificados uno a uno. El error del fotograma frente a Blender baja de 0,1254 a 0,1133 en CAM 02. Evidencia en [docs/phase3/VALIDACION.md](docs/phase3/VALIDACION.md).
+
+Lo que esta fase deja medido para la fase 4:
+
+- El suelo brilla porque los cuatro rellenos provisionales se reflejan en piedra pulida: apagándolos cae 109 veces, de 0,429 a 0,0040 de luminancia lineal.
+- Sin iluminación indirecta las sombras se pasan de cerradas: la columna izquierda queda 2,15 EV por debajo de Blender y el lateral del suelo 3,03 EV.
+- Las zonas que reciben los rellenos quedan por encima: friso +1,16 EV, suelo centro +0,90 EV, cuero +1,65 EV.
+- El beneficio del grosor de la cristalería no se demuestra todavía y hay que volver a medirlo con la luz definitiva.
 
 ## 4 · Iluminación y sombras
 
@@ -85,6 +102,8 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 - [ ] Ajustar sombras solares, sesgos, resolución y cobertura de la sala sin desperdiciar resolución en todo el exterior lejano.
 - [ ] Comparar soluciones de iluminación indirecta: entorno/sondas y, si hace falta, luz estática horneada desde Blender. Incorporar horneado sólo si mejora la comparación y su coste está justificado.
 - [ ] Medir y corregir fugas de luz, contactos del mobiliario y pérdida de detalle en sombras.
+- [ ] Devolver el friso superior a la penumbra que tiene en el render y en los fotogramas; hoy sale plenamente iluminado.
+- [ ] Decidir el descarte de caras traseras: los 27 materiales del GLB son de doble cara, lo que encarece el relleno y obliga a más sesgo de sombra.
 
 **Resultado comprobable:** contraluz y lectura de volúmenes cercanos al render de referencia, con atmósfera y bloom desactivados.
 
@@ -106,8 +125,10 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 - [ ] Añadir bloom contenido y ajuste final del color con el sistema de posprocesado WebGPU.
 - [ ] Mantener controles para activar/desactivar cada efecto y comparar su aportación y coste.
 - [ ] Valorar grano, viñeta o profundidad de campo sólo si aportan fidelidad a las referencias y no ocultan defectos del modelo o la luz.
+- [ ] Sustituir el disco solar recortado por un núcleo difuso con halo. El GLB trae un disco emisivo de 14 m a 650 m que hoy se recorta con borde duro; en los tres fotogramas de la película el sol no tiene borde.
+- [ ] Añadir perspectiva aérea al exterior: en los fotogramas lo lejano se aclara y pierde contraste, y hoy las pirámides se recortan contra el cielo.
 
-**Resultado comprobable:** comparación lado a lado del plano general, el detalle y la vista lateral. Registrar las diferencias restantes con Blender y con los fotogramas de la película.
+**Resultado comprobable:** comparación lado a lado del plano general, el detalle y la vista lateral contra las capturas base de la fase 2, los renders de Blender y los fotogramas de la película.
 
 ## 7 · Navegación y presentación
 

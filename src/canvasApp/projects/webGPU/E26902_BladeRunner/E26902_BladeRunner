@@ -5,6 +5,7 @@ import { TYRELL } from './config'
 import { loadTyrell, disposeScene } from './TyrellAssets'
 import TyrellCameraRig from './TyrellCameraRig'
 import TyrellUI from './TyrellUI'
+import { agxLookToneMapping, setLookEnabled } from './TyrellToneMapping'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -12,8 +13,15 @@ export default class E26902_BladeRunner {
         this.rendererOptions = { requireWebGPU: true, benchmarkOnStart: false, powerPreference: 'high-performance' }
         this.ownsMetrics = true
         this.quality = TYRELL.quality
+        this.compare = false
+        this.look = true
         this.samples = []
         this.disposed = false
+    }
+    // AppRender asks for this before every resize; null keeps the container size.
+    get_renderSize() {
+        if (!this.compare) return null
+        return { ...TYRELL.compareSize, updateStyle: false }
     }
     mount(app) {
         if (this.ui) return
@@ -22,6 +30,8 @@ export default class E26902_BladeRunner {
         this.ui = new TyrellUI({
             camera: index => this.selectCamera(index), quality: name => this.setQuality(name),
             frame: enabled => { document.body.classList.toggle('tyrell-reference', enabled); app.size.update(); this.resetMetrics() },
+            compare: enabled => this.setCompare(enabled),
+            look: enabled => this.setLook(enabled),
             retry: () => this.rendererError ? location.reload() : this.load(),
             capture: () => { this.captureRequested = true }, report: () => this.downloadReport()
         })
@@ -40,7 +50,9 @@ export default class E26902_BladeRunner {
         this.scene = app.render.scene
         this.stageCamera = new TyrellCameraRig(app)
         this.renderer = app.render.renderer
-        this.renderer.toneMapping = THREE.AgXToneMapping
+        // Three's stock AgX has no look; register the one Blender rendered the references with.
+        this.renderer.library.addToneMapping(agxLookToneMapping, THREE.CustomToneMapping)
+        this.renderer.toneMapping = THREE.CustomToneMapping
         this.renderer.toneMappingExposure = TYRELL.exposure
         this.renderer.outputColorSpace = THREE.SRGBColorSpace
         this.renderer.shadowMap.enabled = true
@@ -106,6 +118,7 @@ export default class E26902_BladeRunner {
                 object.shadow.camera.updateProjectionMatrix()
             }
         })
+        this.applyCrystalThickness()
         this.cameras.sort((a, b) => a.name.localeCompare(b.name))
         this.modelStats.cameras = this.cameras.length
         if (!this.cameras.length) throw new Error('El GLB no contiene cámaras de perspectiva.')
@@ -128,6 +141,31 @@ export default class E26902_BladeRunner {
         this.ui.ready(this.cameras, this.activeCameraIndex)
         this.resetMetrics()
     }
+    // Materials are shared between the decanter, its stopper and the tumblers, so the thickness
+    // is written once per material and nothing is cloned.
+    applyCrystalThickness() {
+        const factor = TYRELL.crystalThicknessFactor
+        if (!factor) return
+        const spans = new Map()
+        this.world3D.traverse(object => {
+            if (!object.isMesh) return
+            for (const material of [].concat(object.material)) {
+                if (!(material.transmission > 0) || material.thickness > 0) continue
+                object.geometry.computeBoundingBox()
+                _box.copy(object.geometry.boundingBox).applyMatrix4(object.matrixWorld)
+                _box.getSize(_size)
+                if (!spans.has(material)) spans.set(material, [])
+                spans.get(material).push(Math.min(_size.x, _size.y, _size.z))
+            }
+        })
+        this.crystalThickness = []
+        for (const [material, sizes] of spans) {
+            sizes.sort((a, b) => a - b)
+            const median = sizes[Math.floor(sizes.length / 2)]
+            material.thickness = median * factor
+            this.crystalThickness.push({ material: material.name, pieces: sizes.length, medianSpan: +median.toFixed(4), thickness: +material.thickness.toFixed(4) })
+        }
+    }
     selectCamera(index) {
         if (!this.cameras?.[index]) return
         this.activeCameraIndex = index
@@ -136,11 +174,29 @@ export default class E26902_BladeRunner {
         this.app.dev.hide_dev_camera()
         this.resetMetrics()
     }
+    setCompare(enabled) {
+        this.compare = enabled
+        document.body.classList.toggle('tyrell-compare', enabled)
+        if (enabled) document.body.classList.add('tyrell-reference')
+        this.ui.lockFrame(enabled)
+        const { width, height } = TYRELL.compareSize
+        this.stageCamera?.setAspect(enabled ? width / height : null)
+        // setQuality reapplies the pixel ratio and resizes the render target.
+        this.setQuality(this.quality)
+        this.app.size.update()
+    }
+    // Contrast 1 turns the look into the identity, which is stock AgX; no shader is rebuilt.
+    setLook(enabled) {
+        this.look = enabled
+        setLookEnabled(enabled)
+        this.resetMetrics()
+    }
     setQuality(name) {
         const profile = TYRELL.profiles[name]
         if (!profile) return
         this.quality = name
-        this.renderer?.setPixelRatio(profile.pixelRatio)
+        // Comparison frames are pinned to 1920 x 800, so the profile only drives shadows there.
+        this.renderer?.setPixelRatio(this.compare ? 1 : profile.pixelRatio)
         this.app.render?.update_resize()
         if (this.sun && this.sun.shadow.mapSize.x !== profile.shadowSize) {
             // A new light identity rebuilds r182's cached shadow nodes and bindings.
@@ -186,18 +242,28 @@ export default class E26902_BladeRunner {
         }
         if (this.captureRequested) {
             this.captureRequested = false
-            const camera = this.activeCameraIndex + 1
-            this.renderer.domElement.toBlob(blob => { if (blob && !this.disposed) this.ui.showOutput(blob, `tyrell-camara-${camera}.png`) })
+            this.renderer.domElement.toBlob(blob => { if (blob && !this.disposed) this.ui.showOutput(blob, this.captureName('png')) })
         }
+    }
+    // Evidence files must say which camera, profile and frame produced them.
+    captureName(extension) {
+        const camera = (this.cameras?.[this.activeCameraIndex]?.name || `camara-${this.activeCameraIndex + 1}`)
+            .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+        const size = this.metrics?.resolution?.join('x') || 'sin-medir'
+        return `tyrell-${camera}-${this.quality.toLowerCase()}-${this.compare ? 'comparacion' : 'ventana'}-${this.look ? 'look' : 'sinlook'}-${size}.${extension}`
     }
     getDiagnostics() {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 1, date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 2, date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
             benchmarkOnStart: false, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
+            compare: this.compare ? { ...TYRELL.compareSize, pixelRatio: 1 } : false,
+            crystal: this.crystalThickness || null,
+            toneMapping: { transform: 'AgX', look: this.look ? 'AgX - Medium High Contrast (ajustado)' : 'ninguno', ...TYRELL.look, lookApplied: this.look },
+            shadowMapSize: this.sun?.shadow.mapSize.x ?? null,
             model: this.modelStats, asset: { path: TYRELL.asset, bytes: this.asset?.bytes, loadMs: this.asset?.loadMs },
             camera: camera ? { name: camera.name, position: camera.position.toArray(), quaternion: camera.quaternion.toArray(), fov: camera.fov, aspect: camera.aspect, near: camera.near, far: camera.far } : null,
             metrics: this.metrics || null,
@@ -207,7 +273,7 @@ export default class E26902_BladeRunner {
     }
     downloadReport() {
         const text = JSON.stringify(this.getDiagnostics(), null, 2)
-        this.ui.showOutput(new Blob([text], { type: 'application/json' }), 'tyrell-diagnostico.json', text)
+        this.ui.showOutput(new Blob([text], { type: 'application/json' }), this.captureName('json'), text)
     }
     dispose() {
         if (this.disposed) return
@@ -225,8 +291,10 @@ export default class E26902_BladeRunner {
             for (const name of ['LTC_FLOAT_1', 'LTC_FLOAT_2', 'LTC_HALF_1', 'LTC_HALF_2']) RectAreaLightTexturesLib[name].dispose()
         }
         this.ui?.dispose()
-        document.body.classList.remove('tyrell-viewer', 'tyrell-reference')
+        document.body.classList.remove('tyrell-viewer', 'tyrell-reference', 'tyrell-compare')
     }
 }
 const _position = new THREE.Vector3()
+const _size = new THREE.Vector3()
+const _box = new THREE.Box3()
 let ltcUsers = 0

@@ -1,0 +1,20 @@
+{
+  "samples": 1024,
+  "minEV": -14.0,
+  "maxEV": 6.0,
+  "blender": "5.1.1",
+  "displayDevice": "sRGB",
+  "looks": [
+    "Standard / None",
+    "AgX / None",
+    "AgX / AgX - Base Contrast",
+    "AgX / AgX - Medium High Contrast"
+  ],
+  "files": {
+    "Standard / None": "src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase3/rampa_Standard_None.png",
+    "AgX / None": "src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase3/rampa_AgX_None.png",
+    "AgX / AgX - Base Contrast": "src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase3/rampa_AgX_AgX_Base_Contrast.png",
+    "AgX / AgX - Medium High Contrast": "src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase3/rampa_AgX_AgX_Medium_High_Contrast.png"
+  },
+  "note": "Cada columna i del PNG codifica el valor lineal 2**(minEV + i*(maxEV-minEV)/(samples-1))."
+}

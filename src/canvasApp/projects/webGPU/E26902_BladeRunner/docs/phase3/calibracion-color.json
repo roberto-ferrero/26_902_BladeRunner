@@ -1,0 +1,148 @@
+{
+  "generated": "2026-09-07T17:53:24.216Z",
+  "blender": "5.1.1",
+  "samples": 1024,
+  "evRange": [
+    -14,
+    6
+  ],
+  "checks": {
+    "harness": {
+      "note": "Si la vista Standard no coincide con la curva sRGB, el banco de medida no es fiable y el resto sobra.",
+      "rms": 0,
+      "max": 0.00001,
+      "maxAtEV": -8.45,
+      "greyStaysGrey": 0
+    },
+    "agxBaseVsThree": {
+      "note": "Three.js r182 implementa AgX base con una aproximación polinómica del sigmoide; Blender usa su LUT. Ésta es la diferencia que queda aunque el look se reproduzca perfecto.",
+      "rms": 0.02185,
+      "max": 0.05459,
+      "maxAtEV": -3.54
+    },
+    "blenderLookSpread": {
+      "note": "Cuánto cambia la imagen el look que usó el render de referencia, frente a no usar ninguno.",
+      "mediumHighVsNone": {
+        "rms": 0.02568,
+        "max": 0.04515,
+        "maxAtEV": 0.72
+      },
+      "baseContrastVsNone": {
+        "rms": 0,
+        "max": 0.00002,
+        "maxAtEV": -7.92
+      }
+    },
+    "lookFit": {
+      "note": "Contraste y pivote que mejor reproducen \"AgX - Medium High Contrast\" cuando se insertan en el AgX de Three.js, sobre el valor logarítmico normalizado y antes del sigmoide.",
+      "contrast": 1.198,
+      "pivot": 0.691,
+      "residual": {
+        "rms": 0.00914,
+        "max": 0.02233,
+        "maxAtEV": -6.41
+      },
+      "withoutLook": {
+        "rms": 0.03224,
+        "max": 0.08299,
+        "maxAtEV": -4.11
+      }
+    },
+    "exposure": {
+      "note": "Los renders de referencia se hicieron con exposición +0,1 EV en Blender, que es el factor lineal que debe llevar el visor.",
+      "blenderEV": 0.1,
+      "linearFactor": 1.0718,
+      "configured": 1.07
+    }
+  },
+  "curve": [
+    {
+      "ev": -8,
+      "linear": 0.00391,
+      "blenderMediumHigh": 0.0088,
+      "blenderNoLook": 0.0253,
+      "threeAgX": 0.0139,
+      "threeAgXWithFittedLook": 0.0026
+    },
+    {
+      "ev": -6,
+      "linear": 0.01563,
+      "blenderMediumHigh": 0.0696,
+      "blenderNoLook": 0.1042,
+      "threeAgX": 0.115,
+      "threeAgXWithFittedLook": 0.0508
+    },
+    {
+      "ev": -5,
+      "linear": 0.03125,
+      "blenderMediumHigh": 0.1333,
+      "blenderNoLook": 0.1686,
+      "threeAgX": 0.2033,
+      "threeAgXWithFittedLook": 0.1327
+    },
+    {
+      "ev": -4,
+      "linear": 0.0625,
+      "blenderMediumHigh": 0.23,
+      "blenderNoLook": 0.2602,
+      "threeAgX": 0.3115,
+      "threeAgXWithFittedLook": 0.2466
+    },
+    {
+      "ev": -3,
+      "linear": 0.125,
+      "blenderMediumHigh": 0.3696,
+      "blenderNoLook": 0.3847,
+      "threeAgX": 0.4335,
+      "threeAgXWithFittedLook": 0.3858
+    },
+    {
+      "ev": -2,
+      "linear": 0.25,
+      "blenderMediumHigh": 0.5466,
+      "blenderNoLook": 0.5327,
+      "threeAgX": 0.5609,
+      "threeAgXWithFittedLook": 0.5376
+    },
+    {
+      "ev": -1,
+      "linear": 0.5,
+      "blenderMediumHigh": 0.6991,
+      "blenderNoLook": 0.6653,
+      "threeAgX": 0.6837,
+      "threeAgXWithFittedLook": 0.6854
+    },
+    {
+      "ev": 0,
+      "linear": 1,
+      "blenderMediumHigh": 0.8136,
+      "blenderNoLook": 0.7708,
+      "threeAgX": 0.7919,
+      "threeAgXWithFittedLook": 0.8121
+    },
+    {
+      "ev": 1,
+      "linear": 2,
+      "blenderMediumHigh": 0.8962,
+      "blenderNoLook": 0.8515,
+      "threeAgX": 0.8773,
+      "threeAgXWithFittedLook": 0.9047
+    },
+    {
+      "ev": 2,
+      "linear": 4,
+      "blenderMediumHigh": 0.9567,
+      "blenderNoLook": 0.9133,
+      "threeAgX": 0.9362,
+      "threeAgXWithFittedLook": 0.9599
+    },
+    {
+      "ev": 3,
+      "linear": 8,
+      "blenderMediumHigh": 1,
+      "blenderNoLook": 0.962,
+      "threeAgX": 0.9717,
+      "threeAgXWithFittedLook": 0.9924
+    }
+  ]
+}

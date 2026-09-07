@@ -199,7 +199,9 @@ class AppRender{
         if(!this.renderer){
             return
         }
-        this.renderer.setSize( this.app.size.CURRENT.width, this.app.size.CURRENT.height );
+        // A project may pin its own render size; updateStyle:false lets CSS scale the canvas.
+        const size = this.app.project?.get_renderSize?.(this.app) || this.app.size.CURRENT
+        this.renderer.setSize( size.width, size.height, size.updateStyle !== false );
     }
     get_activeCamera(){
         if(!this.app.dev.SHOW_DEV_CAMERA && this.stageCamera){

@@ -3,7 +3,12 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "webpack --config ./bundler/webpack.prod.js",
-    "test:tyrell": "node --test --test-isolation=none src/canvasApp/projects/webGPU/E26902_BladeRunner/tests/phase1.test.mjs",
+    "test:tyrell": "node --test --test-isolation=none src/canvasApp/projects/webGPU/E26902_BladeRunner/tests/*.test.mjs",
+    "tyrell:audit": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/auditar-modelo.mjs",
+    "tyrell:materials": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/auditar-materiales.mjs",
+    "tyrell:color": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/calibrar-color.mjs",
+    "tyrell:compare": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/comparar-render.mjs --recortes",
+    "tyrell:capture": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/capturar-comparacion.mjs",
     "dev": "webpack serve --config ./bundler/webpack.dev.js",
     "dev:local": "webpack serve --config ./bundler/webpack.dev.js --env local"
   },

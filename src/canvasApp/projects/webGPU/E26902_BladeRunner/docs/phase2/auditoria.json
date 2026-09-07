@@ -1,0 +1,2491 @@
+{
+  "generated": "2026-09-07T17:07:08.862Z",
+  "source": "static/glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3.glb",
+  "bytes": 56526524,
+  "checks": {
+    "totals": {
+      "meshNodes": 120,
+      "triangles": 378164,
+      "degenerate": 3846,
+      "flipped": 17125,
+      "boundary": 9418,
+      "nonManifold": 18583,
+      "notUnitNormals": 0,
+      "zeroNormals": 0,
+      "missingNormals": 0
+    },
+    "columns": {
+      "count": 18,
+      "expected": 18,
+      "orientations": {
+        "0°": 18
+      },
+      "mirroredByTransform": 0,
+      "profileFamilies": [
+        {
+          "family": 0,
+          "upright": 10,
+          "inverted": 0,
+          "uprightNames": [
+            "Columna 01 | perfil original y 24 hiladas",
+            "Columna 05 | perfil original y 24 hiladas",
+            "Columna 06 | perfil original y 24 hiladas",
+            "Columna 07 | perfil original y 24 hiladas",
+            "Columna 08 | perfil original y 24 hiladas",
+            "Columna 10 | perfil original y 24 hiladas",
+            "Columna 14 | perfil original y 24 hiladas",
+            "Columna 15 | perfil original y 24 hiladas",
+            "Columna 16 | perfil original y 24 hiladas",
+            "Columna 17 | perfil original y 24 hiladas"
+          ],
+          "invertedNames": []
+        },
+        {
+          "family": 1,
+          "upright": 4,
+          "inverted": 0,
+          "uprightNames": [
+            "Columna 02 | perfil original y 24 hiladas",
+            "Columna 03 | perfil original y 24 hiladas",
+            "Columna 11 | perfil original y 24 hiladas",
+            "Columna 12 | perfil original y 24 hiladas"
+          ],
+          "invertedNames": []
+        },
+        {
+          "family": 2,
+          "upright": 4,
+          "inverted": 0,
+          "uprightNames": [
+            "Columna 04 | perfil original y 24 hiladas",
+            "Columna 09 | perfil original y 24 hiladas",
+            "Columna 13 | perfil original y 24 hiladas",
+            "Columna 18 | perfil original y 24 hiladas"
+          ],
+          "invertedNames": []
+        }
+      ],
+      "familyDistances": [
+        {
+          "pair": "0-1",
+          "upright": 0.1797,
+          "reversed": 0.1398
+        },
+        {
+          "pair": "0-2",
+          "upright": 0.109,
+          "reversed": 0.2211
+        },
+        {
+          "pair": "1-0",
+          "upright": 0.1797,
+          "reversed": 0.1398
+        },
+        {
+          "pair": "1-2",
+          "upright": 0.1671,
+          "reversed": 0.1824
+        },
+        {
+          "pair": "2-0",
+          "upright": 0.109,
+          "reversed": 0.2211
+        },
+        {
+          "pair": "2-1",
+          "upright": 0.1671,
+          "reversed": 0.1824
+        }
+      ],
+      "selfSymmetry": [
+        {
+          "name": "Columna 01 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2371
+        },
+        {
+          "name": "Columna 02 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2021
+        },
+        {
+          "name": "Columna 03 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2021
+        },
+        {
+          "name": "Columna 04 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.1787
+        },
+        {
+          "name": "Columna 05 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2366
+        },
+        {
+          "name": "Columna 06 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2371
+        },
+        {
+          "name": "Columna 07 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2371
+        },
+        {
+          "name": "Columna 08 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2371
+        },
+        {
+          "name": "Columna 09 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.1756
+        },
+        {
+          "name": "Columna 10 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2371
+        },
+        {
+          "name": "Columna 11 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2021
+        },
+        {
+          "name": "Columna 12 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2021
+        },
+        {
+          "name": "Columna 13 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.1787
+        },
+        {
+          "name": "Columna 14 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2366
+        },
+        {
+          "name": "Columna 15 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2371
+        },
+        {
+          "name": "Columna 16 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2371
+        },
+        {
+          "name": "Columna 17 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.2371
+        },
+        {
+          "name": "Columna 18 | perfil original y 24 hiladas",
+          "distanceToOwnReverse": 0.1756
+        }
+      ],
+      "invertedProfiles": 0,
+      "withJoints": 18,
+      "jointNote": "La banda medida incluye el microbisel de la hilada superior, la junta y el microbisel de la inferior, así que su anchura supera los 6 mm de la junta pura. El paso se mide, no se supone, porque las hiladas ocupan el fuste y no la columna entera.",
+      "pitchRange": [
+        0.2424,
+        0.245
+      ],
+      "jointCountRange": [
+        13,
+        20
+      ],
+      "regularity": [
+        "6/18",
+        "6/13",
+        "6/13",
+        "10/20",
+        "6/13",
+        "6/18",
+        "6/18",
+        "6/18",
+        "8/16",
+        "6/18",
+        "6/13",
+        "6/13",
+        "10/20",
+        "6/13",
+        "6/18",
+        "6/18",
+        "6/18",
+        "8/16"
+      ],
+      "jointBandRange": [
+        22,
+        31
+      ],
+      "jointWidthRangeMm": [
+        22.18,
+        34.5
+      ],
+      "heightRange": [
+        5.8,
+        5.8002
+      ],
+      "items": [
+        {
+          "name": "Columna 01 | perfil original y 24 hiladas",
+          "triangles": 8837,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 28,
+          "jointWidthMm": 28.04,
+          "jointDepthMm": 37.76,
+          "pitchM": 0.2446,
+          "regularJoints": 6,
+          "totalJoints": 18,
+          "coursedSpan": [
+            0.2525,
+            1.4755
+          ],
+          "jointCentresM": [
+            0.2525,
+            0.4975,
+            0.7425,
+            0.9875,
+            1.2325,
+            1.4755,
+            2.2235,
+            2.4578,
+            2.541,
+            2.665,
+            2.8015,
+            2.9368,
+            3.137,
+            4.7615,
+            4.8815,
+            5.1035,
+            5.3115,
+            5.441
+          ],
+          "profileFamily": 0,
+          "inverted": false,
+          "centre": [
+            -3,
+            2.9,
+            8.101
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 155,
+          "nonManifoldEdges": 462,
+          "flippedTriangles": 2
+        },
+        {
+          "name": "Columna 02 | perfil original y 24 hiladas",
+          "triangles": 8162,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 22,
+          "jointWidthMm": 22.18,
+          "jointDepthMm": 36.66,
+          "pitchM": 0.245,
+          "regularJoints": 6,
+          "totalJoints": 13,
+          "coursedSpan": [
+            4.4015,
+            5.6265
+          ],
+          "jointCentresM": [
+            0.3575,
+            0.4885,
+            0.698,
+            1.032,
+            3.2795,
+            3.4213,
+            4.2645,
+            4.4015,
+            4.6465,
+            4.8915,
+            5.1365,
+            5.3815,
+            5.6265
+          ],
+          "profileFamily": 1,
+          "inverted": false,
+          "centre": [
+            -3,
+            2.9,
+            0
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 61,
+          "nonManifoldEdges": 477,
+          "flippedTriangles": 0
+        },
+        {
+          "name": "Columna 03 | perfil original y 24 hiladas",
+          "triangles": 8158,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 22,
+          "jointWidthMm": 22.18,
+          "jointDepthMm": 36.66,
+          "pitchM": 0.245,
+          "regularJoints": 6,
+          "totalJoints": 13,
+          "coursedSpan": [
+            4.4015,
+            5.6265
+          ],
+          "jointCentresM": [
+            0.3575,
+            0.4885,
+            0.698,
+            1.032,
+            3.2795,
+            3.4213,
+            4.2645,
+            4.4015,
+            4.6465,
+            4.8915,
+            5.1365,
+            5.3815,
+            5.6265
+          ],
+          "profileFamily": 1,
+          "inverted": false,
+          "centre": [
+            -3,
+            2.9,
+            -5.4
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 56,
+          "nonManifoldEdges": 470,
+          "flippedTriangles": 0
+        },
+        {
+          "name": "Columna 04 | perfil original y 24 hiladas",
+          "triangles": 6785,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            3.4358
+          ],
+          "jointBands": 24,
+          "jointWidthMm": 34.5,
+          "jointDepthMm": 40.91,
+          "pitchM": 0.245,
+          "regularJoints": 10,
+          "totalJoints": 20,
+          "coursedSpan": [
+            0.2635,
+            2.4685
+          ],
+          "jointCentresM": [
+            0.2635,
+            0.5085,
+            0.7535,
+            0.9985,
+            1.2435,
+            1.4985,
+            1.7335,
+            1.9785,
+            2.2235,
+            2.4685,
+            2.541,
+            2.6765,
+            2.8015,
+            2.9288,
+            3.137,
+            4.7615,
+            4.8815,
+            5.1035,
+            5.3115,
+            5.441
+          ],
+          "profileFamily": 2,
+          "inverted": false,
+          "centre": [
+            -3,
+            2.9,
+            -14.192
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 202,
+          "nonManifoldEdges": 194,
+          "flippedTriangles": 0
+        },
+        {
+          "name": "Columna 05 | perfil original y 24 hiladas",
+          "triangles": 8179,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 23,
+          "jointWidthMm": 22.35,
+          "jointDepthMm": 46.38,
+          "pitchM": 0.2446,
+          "regularJoints": 6,
+          "totalJoints": 13,
+          "coursedSpan": [
+            0.2525,
+            1.4753
+          ],
+          "jointCentresM": [
+            0.2525,
+            0.4975,
+            0.7425,
+            0.9875,
+            1.2325,
+            1.4753,
+            2.223,
+            2.4833,
+            4.7615,
+            4.8913,
+            5.103,
+            5.3115,
+            5.441
+          ],
+          "profileFamily": 0,
+          "inverted": false,
+          "centre": [
+            -9,
+            2.9,
+            8.101
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 0,
+          "nonManifoldEdges": 267,
+          "flippedTriangles": 0
+        },
+        {
+          "name": "Columna 06 | perfil original y 24 hiladas",
+          "triangles": 8838,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 28,
+          "jointWidthMm": 28.04,
+          "jointDepthMm": 37.74,
+          "pitchM": 0.2446,
+          "regularJoints": 6,
+          "totalJoints": 18,
+          "coursedSpan": [
+            0.2525,
+            1.4755
+          ],
+          "jointCentresM": [
+            0.2525,
+            0.4975,
+            0.7425,
+            0.9875,
+            1.2325,
+            1.4755,
+            2.2235,
+            2.4578,
+            2.541,
+            2.665,
+            2.8015,
+            2.9368,
+            3.137,
+            4.7615,
+            4.8815,
+            5.1035,
+            5.3115,
+            5.441
+          ],
+          "profileFamily": 0,
+          "inverted": false,
+          "centre": [
+            -9,
+            2.9,
+            2.701
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 69,
+          "nonManifoldEdges": 480,
+          "flippedTriangles": 1
+        },
+        {
+          "name": "Columna 07 | perfil original y 24 hiladas",
+          "triangles": 8846,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 23,
+          "jointWidthMm": 34.3,
+          "jointDepthMm": 43.81,
+          "pitchM": 0.2424,
+          "regularJoints": 6,
+          "totalJoints": 18,
+          "coursedSpan": [
+            0.2635,
+            1.4755
+          ],
+          "jointCentresM": [
+            0.2635,
+            0.5085,
+            0.7535,
+            0.9985,
+            1.2435,
+            1.4755,
+            2.2235,
+            2.4578,
+            2.541,
+            2.665,
+            2.8015,
+            2.9368,
+            3.137,
+            4.7615,
+            4.8815,
+            5.1005,
+            5.3105,
+            5.44
+          ],
+          "profileFamily": 0,
+          "inverted": false,
+          "centre": [
+            -9,
+            2.9,
+            -2.698
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 0,
+          "nonManifoldEdges": 272,
+          "flippedTriangles": 1
+        },
+        {
+          "name": "Columna 08 | perfil original y 24 hiladas",
+          "triangles": 8832,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 28,
+          "jointWidthMm": 28.04,
+          "jointDepthMm": 37.74,
+          "pitchM": 0.2446,
+          "regularJoints": 6,
+          "totalJoints": 18,
+          "coursedSpan": [
+            0.2525,
+            1.4755
+          ],
+          "jointCentresM": [
+            0.2525,
+            0.4975,
+            0.7425,
+            0.9875,
+            1.2325,
+            1.4755,
+            2.2235,
+            2.4578,
+            2.541,
+            2.665,
+            2.8015,
+            2.9368,
+            3.137,
+            4.7615,
+            4.8815,
+            5.1035,
+            5.3115,
+            5.441
+          ],
+          "profileFamily": 0,
+          "inverted": false,
+          "centre": [
+            -9,
+            2.9,
+            -8.101
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 131,
+          "nonManifoldEdges": 468,
+          "flippedTriangles": 1
+        },
+        {
+          "name": "Columna 09 | perfil original y 24 hiladas",
+          "triangles": 5019,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.321,
+            3.4358
+          ],
+          "jointBands": 25,
+          "jointWidthMm": 25.8,
+          "jointDepthMm": 32.38,
+          "pitchM": 0.2446,
+          "regularJoints": 8,
+          "totalJoints": 16,
+          "coursedSpan": [
+            0.2635,
+            1.976
+          ],
+          "jointCentresM": [
+            0.2635,
+            0.5085,
+            0.7425,
+            0.9875,
+            1.2325,
+            1.4985,
+            1.7225,
+            1.976,
+            2.0685,
+            2.2235,
+            2.4575,
+            4.7615,
+            4.8815,
+            5.1035,
+            5.3115,
+            5.441
+          ],
+          "profileFamily": 2,
+          "inverted": false,
+          "centre": [
+            -8.935,
+            2.9,
+            -14.192
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 16,
+          "nonManifoldEdges": 116,
+          "flippedTriangles": 0
+        },
+        {
+          "name": "Columna 10 | perfil original y 24 hiladas",
+          "triangles": 8827,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8002,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 28,
+          "jointWidthMm": 28.07,
+          "jointDepthMm": 37.75,
+          "pitchM": 0.2446,
+          "regularJoints": 6,
+          "totalJoints": 18,
+          "coursedSpan": [
+            0.2525,
+            1.4756
+          ],
+          "jointCentresM": [
+            0.2525,
+            0.4975,
+            0.7425,
+            0.9875,
+            1.2326,
+            1.4756,
+            2.2236,
+            2.4579,
+            2.5416,
+            2.6651,
+            2.8016,
+            2.9369,
+            3.1371,
+            4.7617,
+            4.8817,
+            5.1037,
+            5.3117,
+            5.4412
+          ],
+          "profileFamily": 0,
+          "inverted": false,
+          "centre": [
+            3,
+            2.9,
+            8.101
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 54,
+          "nonManifoldEdges": 474,
+          "flippedTriangles": 0
+        },
+        {
+          "name": "Columna 11 | perfil original y 24 hiladas",
+          "triangles": 8163,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 22,
+          "jointWidthMm": 22.18,
+          "jointDepthMm": 36.66,
+          "pitchM": 0.245,
+          "regularJoints": 6,
+          "totalJoints": 13,
+          "coursedSpan": [
+            4.4015,
+            5.6265
+          ],
+          "jointCentresM": [
+            0.3575,
+            0.4885,
+            0.698,
+            1.032,
+            3.2795,
+            3.4213,
+            4.2645,
+            4.4015,
+            4.6465,
+            4.8915,
+            5.1365,
+            5.3815,
+            5.6265
+          ],
+          "profileFamily": 1,
+          "inverted": false,
+          "centre": [
+            3,
+            2.9,
+            0
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 54,
+          "nonManifoldEdges": 485,
+          "flippedTriangles": 0
+        },
+        {
+          "name": "Columna 12 | perfil original y 24 hiladas",
+          "triangles": 8155,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 22,
+          "jointWidthMm": 22.18,
+          "jointDepthMm": 36.66,
+          "pitchM": 0.245,
+          "regularJoints": 6,
+          "totalJoints": 13,
+          "coursedSpan": [
+            4.4015,
+            5.6265
+          ],
+          "jointCentresM": [
+            0.3575,
+            0.4885,
+            0.698,
+            1.032,
+            3.2795,
+            3.4213,
+            4.2645,
+            4.4015,
+            4.6465,
+            4.8915,
+            5.1365,
+            5.3815,
+            5.6265
+          ],
+          "profileFamily": 1,
+          "inverted": false,
+          "centre": [
+            3,
+            2.9,
+            -5.4
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 54,
+          "nonManifoldEdges": 478,
+          "flippedTriangles": 0
+        },
+        {
+          "name": "Columna 13 | perfil original y 24 hiladas",
+          "triangles": 6786,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            3.4358
+          ],
+          "jointBands": 31,
+          "jointWidthMm": 26.77,
+          "jointDepthMm": 38.33,
+          "pitchM": 0.2438,
+          "regularJoints": 10,
+          "totalJoints": 20,
+          "coursedSpan": [
+            0.2635,
+            2.4578
+          ],
+          "jointCentresM": [
+            0.2635,
+            0.5085,
+            0.7425,
+            0.9875,
+            1.2325,
+            1.4985,
+            1.7225,
+            1.9675,
+            2.2235,
+            2.4578,
+            2.541,
+            2.6765,
+            2.8015,
+            2.9288,
+            3.137,
+            4.7615,
+            4.8815,
+            5.1035,
+            5.3115,
+            5.441
+          ],
+          "profileFamily": 2,
+          "inverted": false,
+          "centre": [
+            3,
+            2.9,
+            -14.192
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 305,
+          "nonManifoldEdges": 235,
+          "flippedTriangles": 1
+        },
+        {
+          "name": "Columna 14 | perfil original y 24 hiladas",
+          "triangles": 8164,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8002,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 22,
+          "jointWidthMm": 23.27,
+          "jointDepthMm": 36.68,
+          "pitchM": 0.2446,
+          "regularJoints": 6,
+          "totalJoints": 13,
+          "coursedSpan": [
+            0.2525,
+            1.4756
+          ],
+          "jointCentresM": [
+            0.2525,
+            0.4975,
+            0.7425,
+            0.9875,
+            1.2326,
+            1.4756,
+            2.2236,
+            2.4834,
+            4.7617,
+            4.8817,
+            5.1037,
+            5.3117,
+            5.4412
+          ],
+          "profileFamily": 0,
+          "inverted": false,
+          "centre": [
+            9,
+            2.9,
+            8.101
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 51,
+          "nonManifoldEdges": 482,
+          "flippedTriangles": 0
+        },
+        {
+          "name": "Columna 15 | perfil original y 24 hiladas",
+          "triangles": 8831,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8002,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 28,
+          "jointWidthMm": 28.07,
+          "jointDepthMm": 37.73,
+          "pitchM": 0.2446,
+          "regularJoints": 6,
+          "totalJoints": 18,
+          "coursedSpan": [
+            0.2525,
+            1.4756
+          ],
+          "jointCentresM": [
+            0.2525,
+            0.4975,
+            0.7425,
+            0.9875,
+            1.2326,
+            1.4756,
+            2.2236,
+            2.4579,
+            2.5416,
+            2.6651,
+            2.8016,
+            2.9369,
+            3.1371,
+            4.7617,
+            4.8817,
+            5.1037,
+            5.3117,
+            5.4412
+          ],
+          "profileFamily": 0,
+          "inverted": false,
+          "centre": [
+            9,
+            2.9,
+            2.701
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 129,
+          "nonManifoldEdges": 464,
+          "flippedTriangles": 0
+        },
+        {
+          "name": "Columna 16 | perfil original y 24 hiladas",
+          "triangles": 8828,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 28,
+          "jointWidthMm": 28.04,
+          "jointDepthMm": 37.74,
+          "pitchM": 0.2446,
+          "regularJoints": 6,
+          "totalJoints": 18,
+          "coursedSpan": [
+            0.2525,
+            1.4755
+          ],
+          "jointCentresM": [
+            0.2525,
+            0.4975,
+            0.7425,
+            0.9875,
+            1.2325,
+            1.4755,
+            2.2235,
+            2.4578,
+            2.541,
+            2.665,
+            2.8015,
+            2.9368,
+            3.137,
+            4.7615,
+            4.8815,
+            5.1035,
+            5.3115,
+            5.441
+          ],
+          "profileFamily": 0,
+          "inverted": false,
+          "centre": [
+            9,
+            2.9,
+            -2.698
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 61,
+          "nonManifoldEdges": 475,
+          "flippedTriangles": 2
+        },
+        {
+          "name": "Columna 17 | perfil original y 24 hiladas",
+          "triangles": 8833,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8002,
+          "footprint": [
+            1.4515,
+            1.4515
+          ],
+          "jointBands": 28,
+          "jointWidthMm": 28.07,
+          "jointDepthMm": 37.73,
+          "pitchM": 0.2446,
+          "regularJoints": 6,
+          "totalJoints": 18,
+          "coursedSpan": [
+            0.2525,
+            1.4756
+          ],
+          "jointCentresM": [
+            0.2525,
+            0.4975,
+            0.7425,
+            0.9875,
+            1.2326,
+            1.4756,
+            2.2236,
+            2.4579,
+            2.5416,
+            2.6651,
+            2.8016,
+            2.9369,
+            3.1371,
+            4.7617,
+            4.8817,
+            5.1037,
+            5.3117,
+            5.4412
+          ],
+          "profileFamily": 0,
+          "inverted": false,
+          "centre": [
+            9,
+            2.9,
+            -8.101
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 53,
+          "nonManifoldEdges": 478,
+          "flippedTriangles": 1
+        },
+        {
+          "name": "Columna 18 | perfil original y 24 hiladas",
+          "triangles": 5017,
+          "primitives": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "height": 5.8001,
+          "footprint": [
+            1.321,
+            3.4358
+          ],
+          "jointBands": 26,
+          "jointWidthMm": 24.81,
+          "jointDepthMm": 31.95,
+          "pitchM": 0.2446,
+          "regularJoints": 8,
+          "totalJoints": 16,
+          "coursedSpan": [
+            0.2635,
+            1.976
+          ],
+          "jointCentresM": [
+            0.2635,
+            0.4975,
+            0.7425,
+            0.9875,
+            1.2325,
+            1.4985,
+            1.7225,
+            1.976,
+            2.0685,
+            2.2235,
+            2.4575,
+            4.7616,
+            4.8816,
+            5.1036,
+            5.3116,
+            5.4411
+          ],
+          "profileFamily": 2,
+          "inverted": false,
+          "centre": [
+            8.935,
+            2.9,
+            -14.192
+          ],
+          "yawDegrees": 0,
+          "mirrored": false,
+          "boundaryEdges": 22,
+          "nonManifoldEdges": 115,
+          "flippedTriangles": 0
+        }
+      ]
+    },
+    "chairs": {
+      "count": 4,
+      "expected": 4,
+      "sharedMeshResources": 1,
+      "items": [
+        {
+          "name": "Sillon 01 | frente",
+          "mesh": 68,
+          "scale": [
+            0.74,
+            0.74,
+            0.74
+          ],
+          "yawDegrees": -180,
+          "centre": [
+            0.15,
+            0.763,
+            -8.55
+          ],
+          "floorGap": null
+        },
+        {
+          "name": "Sillon 02 | fondo",
+          "mesh": 68,
+          "scale": [
+            0.74,
+            0.74,
+            0.74
+          ],
+          "yawDegrees": 0,
+          "centre": [
+            0.15,
+            0.763,
+            -11.72
+          ],
+          "floorGap": null
+        },
+        {
+          "name": "Sillon 03 | izquierda",
+          "mesh": 68,
+          "scale": [
+            0.74,
+            0.74,
+            0.74
+          ],
+          "yawDegrees": 90,
+          "centre": [
+            -3.12,
+            0.763,
+            -10.2
+          ],
+          "floorGap": null
+        },
+        {
+          "name": "Sillon 04 | derecha",
+          "mesh": 68,
+          "scale": [
+            0.74,
+            0.74,
+            0.74
+          ],
+          "yawDegrees": -90,
+          "centre": [
+            3.12,
+            0.763,
+            -10.2
+          ],
+          "floorGap": null
+        }
+      ]
+    },
+    "lattices": {
+      "count": 11,
+      "triangles": 63560,
+      "sectors": [
+        "(0, 2)",
+        "(1, 1)",
+        "(1, 2)",
+        "(1, 3)",
+        "(1, 4)",
+        "(2, 4)",
+        "(3, 4)",
+        "(5, 1)",
+        "(5, 2)",
+        "(5, 3)",
+        "(5, 4)"
+      ],
+      "boundaryEdges": 0,
+      "items": [
+        {
+          "name": "Relieves y celosias | sector (1, 3)",
+          "triangles": 21792,
+          "box": [
+            -9.38,
+            0.11,
+            -6.06,
+            -9.32,
+            3.71,
+            -4.74
+          ]
+        },
+        {
+          "name": "Relieves y celosias | sector (2, 4)",
+          "triangles": 2270,
+          "box": [
+            -2.4,
+            5.48,
+            -12.91,
+            -0.9,
+            5.78,
+            -12.81
+          ]
+        },
+        {
+          "name": "Relieves y celosias | sector (1, 2)",
+          "triangles": 6356,
+          "box": [
+            -9.24,
+            2.05,
+            -2.25,
+            -9.14,
+            2.35,
+            1.95
+          ]
+        },
+        {
+          "name": "Relieves y celosias | sector (5, 4)",
+          "triangles": 6810,
+          "box": [
+            9.14,
+            2.05,
+            -12.9,
+            9.24,
+            2.35,
+            -8.4
+          ]
+        },
+        {
+          "name": "Relieves y celosias | sector (5, 3)",
+          "triangles": 6810,
+          "box": [
+            9.14,
+            2.05,
+            -7.65,
+            9.24,
+            2.35,
+            -3.15
+          ]
+        },
+        {
+          "name": "Relieves y celosias | sector (1, 4)",
+          "triangles": 6810,
+          "box": [
+            -9.24,
+            2.05,
+            -12.9,
+            -9.14,
+            2.35,
+            -8.4
+          ]
+        },
+        {
+          "name": "Relieves y celosias | sector (3, 4)",
+          "triangles": 4994,
+          "box": [
+            -0.9,
+            5.48,
+            -12.91,
+            2.4,
+            5.78,
+            -12.81
+          ]
+        },
+        {
+          "name": "Relieves y celosias | sector (5, 2)",
+          "triangles": 6356,
+          "box": [
+            9.14,
+            2.05,
+            -2.25,
+            9.24,
+            2.35,
+            1.95
+          ]
+        },
+        {
+          "name": "Relieves y celosias | sector (5, 1)",
+          "triangles": 454,
+          "box": [
+            9.14,
+            2.05,
+            1.95,
+            9.24,
+            2.35,
+            2.25
+          ]
+        },
+        {
+          "name": "Relieves y celosias | sector (1, 1)",
+          "triangles": 454,
+          "box": [
+            -9.24,
+            2.05,
+            1.95,
+            -9.14,
+            2.35,
+            2.25
+          ]
+        },
+        {
+          "name": "Relieves y celosias | sector (0, 2)",
+          "triangles": 454,
+          "box": [
+            -15.56,
+            1.97,
+            -0.24,
+            -15.46,
+            2.27,
+            0.06
+          ]
+        }
+      ]
+    },
+    "exterior": {
+      "items": [
+        {
+          "name": "Tyrell_Corporation_Pyramid",
+          "present": true,
+          "triangles": 39652,
+          "size": [
+            184.36,
+            61.81,
+            184.25
+          ],
+          "centre": [
+            -49.24,
+            6.69,
+            -264.78
+          ],
+          "distanceFromOrigin": 269.4,
+          "flat": false,
+          "withinCameraFar": true,
+          "projection": {
+            "CAM 01": {
+              "x": -0.367,
+              "y": 0.0922,
+              "distance": 27508.06
+            },
+            "CAM 02": {
+              "x": 0.6531,
+              "y": 0.7288,
+              "distance": 242.5
+            },
+            "CAM 04": {
+              "x": -0.5281,
+              "y": -0.0086,
+              "distance": 262.99
+            }
+          }
+        },
+        {
+          "name": "Cielo | fondo a 900 m",
+          "present": true,
+          "triangles": 2,
+          "size": [
+            1000,
+            500,
+            0
+          ],
+          "centre": [
+            0,
+            10,
+            -900
+          ],
+          "distanceFromOrigin": 900.06,
+          "flat": true,
+          "withinCameraFar": true,
+          "projection": {
+            "CAM 01": {
+              "x": 0.0003,
+              "y": 0.0458,
+              "distance": 91030.01
+            },
+            "CAM 02": {
+              "x": 1.0732,
+              "y": 0.688,
+              "distance": 750.48
+            },
+            "CAM 04": {
+              "x": -0.2022,
+              "y": -0.0508,
+              "distance": 899.58
+            }
+          }
+        },
+        {
+          "name": "Sol | disco a 650 m",
+          "present": true,
+          "triangles": 64,
+          "size": [
+            14,
+            14,
+            0
+          ],
+          "centre": [
+            2,
+            46,
+            -650
+          ],
+          "distanceFromOrigin": 651.63,
+          "flat": true,
+          "withinCameraFar": true,
+          "projection": {
+            "CAM 01": {
+              "x": 0.0066,
+              "y": 0.3321,
+              "distance": 66030.01
+            },
+            "CAM 02": {
+              "x": 1.0906,
+              "y": 0.9891,
+              "distance": 533.74
+            },
+            "CAM 04": {
+              "x": -0.195,
+              "y": 0.1997,
+              "distance": 652.29
+            }
+          }
+        }
+      ],
+      "parallax": {
+        "note": "Desplazamiento del centro de la pirámide en coordenadas normalizadas de dispositivo entre las cámaras de comparación. Un fondo pegado a la cámara daría cero.",
+        "ndcSpreadX": 1.1812,
+        "cameras": 3
+      }
+    },
+    "tangents": {
+      "meshesWithNormalMap": 135,
+      "missing": []
+    },
+    "surfaces": {
+      "note": "Aristas de contorno tras soldar posiciones a 0,01 mm. Un valor alto sólo es defecto en sólidos cerrados; planos, cartelas de follaje y fondos están abiertos por diseño.",
+      "meshesWithBoundary": 33,
+      "meshesClosed": 87,
+      "degenerateTriangles": 3846,
+      "flippedTriangles": 17125,
+      "nonManifoldEdges": 18583,
+      "missingNormalAttribute": 0,
+      "nonUnitNormals": 0,
+      "zeroNormals": 0,
+      "worstByBoundary": [
+        {
+          "name": "Bonsai | pino y ceramica L",
+          "boundaryEdges": 2478,
+          "triangles": 5104,
+          "nonManifold": 16
+        },
+        {
+          "name": "Bonsai | pino y ceramica R",
+          "boundaryEdges": 2446,
+          "triangles": 5104,
+          "nonManifold": 19
+        },
+        {
+          "name": "Tyrell_Corporation_Pyramid",
+          "boundaryEdges": 1675,
+          "triangles": 39652,
+          "nonManifold": 1794
+        },
+        {
+          "name": "Eagle",
+          "boundaryEdges": 524,
+          "triangles": 4195,
+          "nonManifold": 47
+        },
+        {
+          "name": "Eagle_2",
+          "boundaryEdges": 518,
+          "triangles": 4195,
+          "nonManifold": 47
+        },
+        {
+          "name": "Columna 13 | perfil original y 24 hiladas",
+          "boundaryEdges": 305,
+          "triangles": 6786,
+          "nonManifold": 235
+        },
+        {
+          "name": "Columna 04 | perfil original y 24 hiladas",
+          "boundaryEdges": 202,
+          "triangles": 6785,
+          "nonManifold": 194
+        },
+        {
+          "name": "Columna 01 | perfil original y 24 hiladas",
+          "boundaryEdges": 155,
+          "triangles": 8837,
+          "nonManifold": 462
+        },
+        {
+          "name": "Columna 08 | perfil original y 24 hiladas",
+          "boundaryEdges": 131,
+          "triangles": 8832,
+          "nonManifold": 468
+        },
+        {
+          "name": "Columna 15 | perfil original y 24 hiladas",
+          "boundaryEdges": 129,
+          "triangles": 8831,
+          "nonManifold": 464
+        },
+        {
+          "name": "Table_Slab",
+          "boundaryEdges": 88,
+          "triangles": 268,
+          "nonManifold": 0
+        },
+        {
+          "name": "Columna 06 | perfil original y 24 hiladas",
+          "boundaryEdges": 69,
+          "triangles": 8838,
+          "nonManifold": 480
+        },
+        {
+          "name": "Sol | disco a 650 m",
+          "boundaryEdges": 64,
+          "triangles": 64,
+          "nonManifold": 0
+        },
+        {
+          "name": "Columna 02 | perfil original y 24 hiladas",
+          "boundaryEdges": 61,
+          "triangles": 8162,
+          "nonManifold": 477
+        },
+        {
+          "name": "Columna 16 | perfil original y 24 hiladas",
+          "boundaryEdges": 61,
+          "triangles": 8828,
+          "nonManifold": 475
+        }
+      ],
+      "flippedNote": "Normal de vértice promediada frente a la normal del devanado. Una cartela de doble cara declara la mitad de sus triángulos como invertidos por definición y no es un defecto.",
+      "meshesWithFlipped": 37,
+      "worstByFlipped": [
+        {
+          "name": "Relieves y celosias | sector (1, 3)",
+          "flipped": 5574,
+          "triangles": 21792,
+          "share": 0.256
+        },
+        {
+          "name": "Relieves y celosias | sector (5, 4)",
+          "flipped": 1890,
+          "triangles": 6810,
+          "share": 0.278
+        },
+        {
+          "name": "Relieves y celosias | sector (5, 3)",
+          "flipped": 1868,
+          "triangles": 6810,
+          "share": 0.274
+        },
+        {
+          "name": "Relieves y celosias | sector (5, 2)",
+          "flipped": 1742,
+          "triangles": 6356,
+          "share": 0.274
+        },
+        {
+          "name": "Relieves y celosias | sector (1, 4)",
+          "flipped": 1573,
+          "triangles": 6810,
+          "share": 0.231
+        },
+        {
+          "name": "Relieves y celosias | sector (1, 2)",
+          "flipped": 1479,
+          "triangles": 6356,
+          "share": 0.233
+        },
+        {
+          "name": "Relieves y celosias | sector (3, 4)",
+          "flipped": 1374,
+          "triangles": 4994,
+          "share": 0.275
+        },
+        {
+          "name": "Relieves y celosias | sector (2, 4)",
+          "flipped": 623,
+          "triangles": 2270,
+          "share": 0.274
+        },
+        {
+          "name": "Bonsai | pino y ceramica R",
+          "flipped": 224,
+          "triangles": 5104,
+          "share": 0.044
+        },
+        {
+          "name": "Bonsai | pino y ceramica L",
+          "flipped": 215,
+          "triangles": 5104,
+          "share": 0.042
+        },
+        {
+          "name": "Relieves y celosias | sector (5, 1)",
+          "flipped": 128,
+          "triangles": 454,
+          "share": 0.282
+        },
+        {
+          "name": "Relieves y celosias | sector (0, 2)",
+          "flipped": 125,
+          "triangles": 454,
+          "share": 0.275
+        },
+        {
+          "name": "Relieves y celosias | sector (1, 1)",
+          "flipped": 105,
+          "triangles": 454,
+          "share": 0.231
+        },
+        {
+          "name": "Tyrell_Corporation_Pyramid",
+          "flipped": 64,
+          "triangles": 39652,
+          "share": 0.002
+        },
+        {
+          "name": "Eagle_2",
+          "flipped": 23,
+          "triangles": 4195,
+          "share": 0.005
+        }
+      ]
+    },
+    "scales": {
+      "nonUniform": [
+        {
+          "name": "Crystal stopper",
+          "scale": [
+            0.0432,
+            0.0468,
+            0.0432
+          ],
+          "uniform": false,
+          "negative": false
+        }
+      ],
+      "negative": [],
+      "distinctScales": [
+        "0.0432×0.0468×0.0432",
+        "0.55×0.55×0.55",
+        "0.64×0.64×0.64",
+        "0.72×0.72×0.72",
+        "0.74×0.74×0.74",
+        "0.7778×0.7778×0.7778",
+        "1×1×1"
+      ]
+    },
+    "transparency": {
+      "materials": 27,
+      "doubleSided": 27,
+      "blended": [],
+      "masked": [],
+      "transmissive": [
+        {
+          "name": "Crystal",
+          "transmission": 1,
+          "ior": 1.4600000381469727
+        }
+      ],
+      "emissive": [
+        {
+          "name": "Sol | disco emisivo",
+          "strength": 12
+        }
+      ],
+      "items": [
+        {
+          "index": 0,
+          "name": "PBR | Caliza ocre envejecida",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 1,
+          "name": "PBR | Caliza aristas claras",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 2,
+          "name": "PBR | Piedra negra pulida",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 3,
+          "name": "PBR | Juntas y cavidades",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 4,
+          "name": "PBR | Nogal oscuro",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 5,
+          "name": "PBR | Raiz de nogal",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 6,
+          "name": "Walnut | quarter sawn",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 7,
+          "name": "Leather | oxblood",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 8,
+          "name": "Burl walnut | table rim",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 9,
+          "name": "Brass | polished highlights",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 10,
+          "name": "Bronze | patinated",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 11,
+          "name": "Recesses | charcoal",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 12,
+          "name": "PBR | Cuero oscuro",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 13,
+          "name": "PBR | Laton envejecido",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 14,
+          "name": "PBR | Bronce patinado",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 15,
+          "name": "Black glazed ceramic",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 16,
+          "name": "Soil",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 17,
+          "name": "Foliage 0",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 18,
+          "name": "Foliage 1",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 19,
+          "name": "Foliage 2",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 20,
+          "name": "Foliage 3",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 21,
+          "name": "Crystal",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": 1,
+          "ior": 1.4600000381469727,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 22,
+          "name": "Ivory paper",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 23,
+          "name": "PBR | Aciculas de pino",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 24,
+          "name": "PBR | Hormigon exterior",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 25,
+          "name": "Cielo | nubes ambar",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": null,
+          "baseColorAlpha": 1
+        },
+        {
+          "index": 26,
+          "name": "Sol | disco emisivo",
+          "alphaMode": "OPAQUE",
+          "doubleSided": true,
+          "transmission": null,
+          "ior": null,
+          "emissiveStrength": 12,
+          "baseColorAlpha": 1
+        }
+      ]
+    },
+    "contacts": {
+      "note": "Las piezas cuyas cajas distan menos de 30 mm se agrupan en un conjunto y el conjunto se mide contra el pavimento. Las cajas están alineadas a los ejes, así que esto señala dónde mirar y no sustituye la revisión en pantalla.",
+      "clusterToleranceMm": 30,
+      "contactToleranceMm": 5,
+      "floorTopY": 0,
+      "assemblies": 15,
+      "items": [
+        {
+          "assembly": "Base_7",
+          "parts": 2,
+          "partNames": [
+            "Base_7",
+            "Postament_2"
+          ],
+          "restsOn": "Pavimento | sector (3, 3)",
+          "supportTopY": 0,
+          "bottomY": -0.0004,
+          "gap": -0.0004,
+          "gapToFloor": -0.0004,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Base_6",
+          "parts": 2,
+          "partNames": [
+            "Postament",
+            "Base_6"
+          ],
+          "restsOn": "Pavimento | sector (2, 3)",
+          "supportTopY": 0,
+          "bottomY": -0.0004,
+          "gap": -0.0004,
+          "gapToFloor": -0.0004,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Podest",
+          "parts": 1,
+          "partNames": [
+            "Podest"
+          ],
+          "restsOn": "Pavimento | sector (3, 2)",
+          "supportTopY": 0,
+          "bottomY": 0,
+          "gap": 0,
+          "gapToFloor": 0,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Base_3",
+          "parts": 3,
+          "partNames": [
+            "Base_3",
+            "Foot_3",
+            "Zylinder"
+          ],
+          "restsOn": "Pavimento | sector (3, 3)",
+          "supportTopY": 0,
+          "bottomY": 0,
+          "gap": 0,
+          "gapToFloor": 0,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Bonsai | pino y ceramica L",
+          "parts": 26,
+          "partNames": [
+            "Foot_5",
+            "Table_Slab",
+            "Foot_4",
+            "Mesa | campo de cuero",
+            "Mesa | filete de laton",
+            "Mesa | faldon tallado",
+            "Mesa | filete de laton.001",
+            "Mesa | faldon tallado.001",
+            "Mesa | filete transversal",
+            "Mesa | filete transversal.001",
+            "Mesa | remate del soporte",
+            "Mesa | remate del soporte.001",
+            "Bonsai | pino y ceramica L",
+            "Bonsai | pino y ceramica R",
+            "Cut crystal decanter",
+            "Crystal stopper",
+            "Crystal tumbler",
+            "Crystal tumbler.001",
+            "Leather folio",
+            "Paper on folio",
+            "Instrument case",
+            "Instrument lid",
+            "Instrument clasp",
+            "Instrument clasp.001",
+            "Pino | follaje L",
+            "Pino | follaje R"
+          ],
+          "restsOn": "Pavimento | sector (3, 3)",
+          "supportTopY": 0,
+          "bottomY": 0,
+          "gap": 0,
+          "gapToFloor": 0,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Base_2",
+          "parts": 4,
+          "partNames": [
+            "Base_2",
+            "Foot_2",
+            "Sphere_2",
+            "Eagle_2"
+          ],
+          "restsOn": "Pavimento | sector (3, 0)",
+          "supportTopY": 0,
+          "bottomY": 0,
+          "gap": 0,
+          "gapToFloor": 0,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Base_5",
+          "parts": 2,
+          "partNames": [
+            "Vase_Big_2",
+            "Base_5"
+          ],
+          "restsOn": "Pavimento | sector (1, 3)",
+          "supportTopY": 0,
+          "bottomY": 0,
+          "gap": 0,
+          "gapToFloor": 0,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Stand",
+          "parts": 3,
+          "partNames": [
+            "Stand",
+            "Zylinder_2",
+            "Zylinder_1"
+          ],
+          "restsOn": "Pavimento | sector (3, 3)",
+          "supportTopY": 0,
+          "bottomY": 0,
+          "gap": 0,
+          "gapToFloor": 0,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Base",
+          "parts": 4,
+          "partNames": [
+            "Sphere",
+            "Foot",
+            "Base",
+            "Eagle"
+          ],
+          "restsOn": "Pavimento | sector (2, 0)",
+          "supportTopY": 0,
+          "bottomY": 0,
+          "gap": 0,
+          "gapToFloor": 0,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Base_4",
+          "parts": 2,
+          "partNames": [
+            "Vase_Big",
+            "Base_4"
+          ],
+          "restsOn": "Pavimento | sector (1, 2)",
+          "supportTopY": 0,
+          "bottomY": 0,
+          "gap": 0,
+          "gapToFloor": 0,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Sillon 01 | frente",
+          "parts": 1,
+          "partNames": [
+            "Sillon 01 | frente"
+          ],
+          "restsOn": "Pavimento | sector (2, 3)",
+          "supportTopY": 0,
+          "bottomY": 0.0001,
+          "gap": 0.0001,
+          "gapToFloor": 0.0001,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Sillon 02 | fondo",
+          "parts": 1,
+          "partNames": [
+            "Sillon 02 | fondo"
+          ],
+          "restsOn": "Pavimento | sector (2, 3)",
+          "supportTopY": 0,
+          "bottomY": 0.0001,
+          "gap": 0.0001,
+          "gapToFloor": 0.0001,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Sillon 03 | izquierda",
+          "parts": 1,
+          "partNames": [
+            "Sillon 03 | izquierda"
+          ],
+          "restsOn": "Pavimento | sector (2, 3)",
+          "supportTopY": 0,
+          "bottomY": 0.0001,
+          "gap": 0.0001,
+          "gapToFloor": 0.0001,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Sillon 04 | derecha",
+          "parts": 1,
+          "partNames": [
+            "Sillon 04 | derecha"
+          ],
+          "restsOn": "Pavimento | sector (3, 3)",
+          "supportTopY": 0,
+          "bottomY": 0.0001,
+          "gap": 0.0001,
+          "gapToFloor": 0.0001,
+          "verdict": "apoyado"
+        },
+        {
+          "assembly": "Antique urn",
+          "parts": 3,
+          "partNames": [
+            "Consola | sobre podio original",
+            "Antique urn",
+            "Antique urn.001"
+          ],
+          "restsOn": "Podest",
+          "supportTopY": 0.36,
+          "bottomY": 0.4,
+          "gap": 0.04,
+          "gapToFloor": 0.4,
+          "verdict": "flotando"
+        }
+      ],
+      "floating": [
+        {
+          "assembly": "Antique urn",
+          "gap": 0.04,
+          "restsOn": "Podest",
+          "parts": 3
+        }
+      ],
+      "sunken": []
+    },
+    "overlaps": {
+      "note": "Cribado por cajas alineadas a los ejes entre conjuntos distintos. Una silla recogida bajo la mesa solapa de forma legítima; sólo indica dónde comprobar la malla real.",
+      "pairs": 0,
+      "deep": 0,
+      "worst": []
+    },
+    "cameras": [
+      {
+        "node": "CAM 01 | fotograma general",
+        "glTFName": "Camera.001",
+        "fovDegrees": 22.918,
+        "aspectRatio": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500,
+        "position": [
+          -0.12,
+          1.55,
+          10.3
+        ],
+        "displayScale": 0.01,
+        "comparison": true
+      },
+      {
+        "node": "CAM 02 | mesa y juntas",
+        "glTFName": "Mesa y juntas",
+        "fovDegrees": 27.201,
+        "aspectRatio": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500,
+        "position": [
+          1.9,
+          1.62,
+          -7
+        ],
+        "displayScale": 1,
+        "comparison": true
+      },
+      {
+        "node": "CAM 03 | perfiles invertidos",
+        "glTFName": "CAM 03 | perfiles invertidos",
+        "fovDegrees": 28.072,
+        "aspectRatio": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500,
+        "position": [
+          -0.8,
+          1.8,
+          2.8
+        ],
+        "displayScale": 1,
+        "comparison": false
+      },
+      {
+        "node": "CAM 04 | recorrido lateral",
+        "glTFName": "CAM 04 | recorrido lateral",
+        "fovDegrees": 26.381,
+        "aspectRatio": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500,
+        "position": [
+          -1.9,
+          1.65,
+          5.4
+        ],
+        "displayScale": 1,
+        "comparison": true
+      },
+      {
+        "node": "Camera_B",
+        "glTFName": "Camera.002",
+        "fovDegrees": 17.062,
+        "aspectRatio": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500,
+        "position": [
+          1.057,
+          1.8,
+          -13.178
+        ],
+        "displayScale": 0.01,
+        "comparison": false
+      },
+      {
+        "node": "Camera_C",
+        "glTFName": "Camera.003",
+        "fovDegrees": 31.048,
+        "aspectRatio": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500,
+        "position": [
+          8.955,
+          1.868,
+          -10.74
+        ],
+        "displayScale": 0.01,
+        "comparison": false
+      },
+      {
+        "node": "Camera_D",
+        "glTFName": "Camera.004",
+        "fovDegrees": 29.99,
+        "aspectRatio": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500,
+        "position": [
+          -7.353,
+          1.45,
+          -5.332
+        ],
+        "displayScale": 0.01,
+        "comparison": false
+      },
+      {
+        "node": "Camera_E",
+        "glTFName": "Camera.005",
+        "fovDegrees": 22.33,
+        "aspectRatio": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500,
+        "position": [
+          0.005,
+          1.435,
+          -3.149
+        ],
+        "displayScale": 0.01,
+        "comparison": false
+      },
+      {
+        "node": "Camera_F",
+        "glTFName": "Camera.006",
+        "fovDegrees": 25.609,
+        "aspectRatio": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500,
+        "position": [
+          9.068,
+          1.278,
+          -0.053
+        ],
+        "displayScale": 0.01,
+        "comparison": false
+      },
+      {
+        "node": "Camera_free",
+        "glTFName": "Camera.007",
+        "fovDegrees": 23.537,
+        "aspectRatio": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500,
+        "position": [
+          1.076,
+          3.193,
+          3.637
+        ],
+        "displayScale": 0.01,
+        "comparison": false
+      }
+    ]
+  },
+  "findings": [
+    {
+      "severity": "media",
+      "area": "columnas",
+      "text": "Ninguna columna es el reflejo vertical de otra: hay 3 familias de perfil distintas (10 + 4 + 4) y ninguna coincide con otra invertida. La documentación del modelo y el nombre de CAM 03 hablan de perfiles invertidos, así que conviene confirmarlo mirando CAM 03 contra Blender."
+    },
+    {
+      "severity": "media",
+      "area": "normales",
+      "text": "17125 triángulos con normal opuesta a su devanado, repartidos en 37 mallas."
+    },
+    {
+      "severity": "baja",
+      "area": "geometria",
+      "text": "3846 triángulos degenerados."
+    },
+    {
+      "severity": "media",
+      "area": "materiales",
+      "text": "Los 27 materiales son doubleSided. Sin descarte de caras traseras se paga relleno de más y las sombras necesitan más sesgo."
+    },
+    {
+      "severity": "media",
+      "area": "mobiliario",
+      "text": "1 conjuntos quedan separados de su apoyo más de 5 mm: Antique urn (40 mm sobre Podest)."
+    }
+  ]
+}
