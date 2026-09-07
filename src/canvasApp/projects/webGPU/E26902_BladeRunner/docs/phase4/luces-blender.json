@@ -55,6 +55,23 @@
         -95.012932
       ],
       "visible": true,
+      "diffuse_factor": 1.0,
+      "specular_factor": 1.0,
+      "volume_factor": 1.0,
+      "useShadow": true,
+      "cycles": {
+        "use_multiple_importance_sampling": true,
+        "max_bounces": 1024,
+        "is_caustics_light": false
+      },
+      "visibility": {
+        "camera": false,
+        "diffuse": true,
+        "glossy": true,
+        "transmission": true,
+        "volumeScatter": true,
+        "shadow": true
+      },
       "angle": 0.02007128670811653,
       "luxIfExported": 1536.75
     },
@@ -93,6 +110,23 @@
         -9.00601
       ],
       "visible": true,
+      "diffuse_factor": 1.0,
+      "specular_factor": 1.0,
+      "volume_factor": 1.0,
+      "useShadow": true,
+      "cycles": {
+        "use_multiple_importance_sampling": true,
+        "max_bounces": 1024,
+        "is_caustics_light": false
+      },
+      "visibility": {
+        "camera": false,
+        "diffuse": true,
+        "glossy": true,
+        "transmission": true,
+        "volumeScatter": true,
+        "shadow": true
+      },
       "shape": "DISK",
       "sizeX": 6.0,
       "sizeY": 6.0,
@@ -134,6 +168,23 @@
         2.040821
       ],
       "visible": true,
+      "diffuse_factor": 1.0,
+      "specular_factor": 1.0,
+      "volume_factor": 1.0,
+      "useShadow": true,
+      "cycles": {
+        "use_multiple_importance_sampling": true,
+        "max_bounces": 1024,
+        "is_caustics_light": false
+      },
+      "visibility": {
+        "camera": false,
+        "diffuse": true,
+        "glossy": true,
+        "transmission": true,
+        "volumeScatter": true,
+        "shadow": true
+      },
       "shape": "DISK",
       "sizeX": 7.0,
       "sizeY": 7.0,
@@ -175,6 +226,23 @@
         -4.862056
       ],
       "visible": true,
+      "diffuse_factor": 1.0,
+      "specular_factor": 1.0,
+      "volume_factor": 1.0,
+      "useShadow": true,
+      "cycles": {
+        "use_multiple_importance_sampling": true,
+        "max_bounces": 1024,
+        "is_caustics_light": false
+      },
+      "visibility": {
+        "camera": false,
+        "diffuse": true,
+        "glossy": true,
+        "transmission": true,
+        "volumeScatter": true,
+        "shadow": true
+      },
       "shape": "DISK",
       "sizeX": 4.0,
       "sizeY": 4.0,
@@ -216,6 +284,23 @@
         -7.833328
       ],
       "visible": true,
+      "diffuse_factor": 1.0,
+      "specular_factor": 1.0,
+      "volume_factor": 1.0,
+      "useShadow": true,
+      "cycles": {
+        "use_multiple_importance_sampling": true,
+        "max_bounces": 1024,
+        "is_caustics_light": false
+      },
+      "visibility": {
+        "camera": false,
+        "diffuse": true,
+        "glossy": true,
+        "transmission": true,
+        "volumeScatter": true,
+        "shadow": true
+      },
       "shape": "DISK",
       "sizeX": 4.0,
       "sizeY": 4.0,

@@ -39,6 +39,24 @@ for obj in bpy.data.objects:
         'target': to_gltf_point(matrix.translation + direction * 5.0),
         'visible': not obj.hide_render,
     }
+    # A lamp can be told to contribute less to the specular than to the diffuse, which would
+    # explain a floor that is right in diffuse and too bright in reflection.
+    for factor in ('diffuse_factor', 'specular_factor', 'volume_factor'):
+        if hasattr(data, factor):
+            entry[factor] = getattr(data, factor)
+    entry['useShadow'] = getattr(data, 'use_shadow', None)
+    cycles = getattr(data, 'cycles', None)
+    if cycles is not None:
+        entry['cycles'] = {key: getattr(cycles, key) for key in
+                           ('cast_shadow', 'use_multiple_importance_sampling', 'max_bounces', 'is_caustics_light')
+                           if hasattr(cycles, key)}
+    visibility = getattr(obj, 'visible_camera', None)
+    entry['visibility'] = {
+        'camera': obj.visible_camera, 'diffuse': obj.visible_diffuse,
+        'glossy': obj.visible_glossy, 'transmission': obj.visible_transmission,
+        'volumeScatter': obj.visible_volume_scatter, 'shadow': obj.visible_shadow
+    } if visibility is not None else None
+
     if data.type == 'AREA':
         entry['shape'] = data.shape
         entry['sizeX'] = data.size

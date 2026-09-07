@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07T18:30:37.551Z",
+  "generated": "2026-09-07T22:48:19.043Z",
   "blend": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Blender\\BladeRunner_5_6_High_v3.blend",
   "blender": "5.1.1",
   "note": "El .blend maestro manda. El GLB sólo transporta el sol y algunos de sus valores están desfasados.",
@@ -18,6 +18,11 @@
       "severity": "alta",
       "area": "rellenos",
       "text": "El GLB no lleva ninguna luz de área: las 4 del maestro nunca se exportaron, así que el visor tiene que reconstruirlas desde este informe."
+    },
+    {
+      "severity": "media",
+      "area": "rellenos",
+      "text": "4 rellenos proyectan sombra en Blender y Three.js no puede hacerlo desde una luz de área. Su luz llega al pavimento sin recortar, que es parte de por qué el suelo sale más claro que la referencia."
     }
   ],
   "sun": {
@@ -287,5 +292,40 @@
     "currentTexelMetres": 0.01758,
     "fittedTexelMetres": 0.0188,
     "note": "Ajustar el frustum a la esfera que envuelve el interior deja el mismo mapa cubriendo menos metros, así que cada texel mide menos y el sesgo puede bajar."
+  },
+  "areaLightLimits": {
+    "blenderCastsShadow": [
+      "L02 | Cielo por ventanal",
+      "L03 | Rebote frontal frio",
+      "L04 | Rebote piedra izquierda",
+      "L05 | Rebote piedra derecha"
+    ],
+    "factors": [
+      {
+        "name": "L02 | Cielo por ventanal",
+        "diffuse": 1,
+        "specular": 1,
+        "visibleToCamera": false
+      },
+      {
+        "name": "L03 | Rebote frontal frio",
+        "diffuse": 1,
+        "specular": 1,
+        "visibleToCamera": false
+      },
+      {
+        "name": "L04 | Rebote piedra izquierda",
+        "diffuse": 1,
+        "specular": 1,
+        "visibleToCamera": false
+      },
+      {
+        "name": "L05 | Rebote piedra derecha",
+        "diffuse": 1,
+        "specular": 1,
+        "visibleToCamera": false
+      }
+    ],
+    "note": "Three.js no proyecta sombras desde una RectAreaLight. En Blender estos rellenos sí las proyectan, así que en el visor llegan al suelo sin que las columnas los corten."
   }
 }

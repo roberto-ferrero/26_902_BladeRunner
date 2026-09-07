@@ -76,7 +76,7 @@ function measure(image, rect) {
 const CROPS = process.argv.includes('--recortes')
 const CROP_SCALE = 2
 
-const report = { generated: new Date().toISOString(), note: 'La referencia es Cycles con luz indirecta completa y volumen de polvo; el visor sigue con las luces provisionales de la fase 1. La diferencia es esperada y lo que aquí se mide es dónde está y cuánta es.', shots: [] }
+const report = { generated: new Date().toISOString(), note: 'La referencia es Cycles con luz indirecta completa y volumen de polvo, que el visor no tiene. La diferencia es esperada y lo que aquí se mide es dónde está y cuánta es.', shots: [] }
 
 for (const shot of SHOTS) {
     const reference = read(shot.reference), current = read(shot.current), baseline = read(shot.baseline)
@@ -136,7 +136,7 @@ fs.writeFileSync(OUT, JSON.stringify(report, null, 2))
 for (const shot of report.shots) {
     console.log(`\n${shot.camera}  ${shot.size.join(' x ')}`)
     console.log(`  error cuadrático medio del fotograma frente a Blender: ${shot.whole.rmsDisplay}` +
-        (shot.whole.rmsDisplayAnterior !== undefined ? ` (sin el look era ${shot.whole.rmsDisplayAnterior})` : ''))
+        (shot.whole.rmsDisplayAnterior !== undefined ? ` (en la fase anterior era ${shot.whole.rmsDisplayAnterior})` : ''))
     console.log(`  luminancia media del fotograma: Blender ${shot.whole.referencia.displayLuminance}, visor ${shot.whole.actual.displayLuminance}` +
         (shot.whole.anterior ? `, fase anterior ${shot.whole.anterior.displayLuminance}` : ''))
     console.log('  region                        Blender   visor  fase anterior   razon   EV')

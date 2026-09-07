@@ -132,6 +132,20 @@ for (const light of rig.lights.filter(l => l.type === 'AREA')) {
 if (!gltfLights.some(l => l.type !== 'directional')) {
     finding('alta', 'rellenos', `El GLB no lleva ninguna luz de área: las ${report.areaLights.length} del maestro nunca se exportaron, así que el visor tiene que reconstruirlas desde este informe.`)
 }
+// Every factor at 1 and every visibility flag on means the fills contribute fully in Blender,
+// diffuse and glossy alike. That rules out the easy explanation for a floor that comes out too
+// bright, and leaves the one Three cannot avoid.
+const shadowing = rig.lights.filter(l => l.type === 'AREA' && l.useShadow)
+report.areaLightLimits = {
+    blenderCastsShadow: shadowing.map(l => l.name),
+    factors: rig.lights.filter(l => l.type === 'AREA').map(l => ({
+        name: l.name, diffuse: l.diffuse_factor, specular: l.specular_factor, visibleToCamera: l.visibility?.camera
+    })),
+    note: 'Three.js no proyecta sombras desde una RectAreaLight. En Blender estos rellenos sí las proyectan, así que en el visor llegan al suelo sin que las columnas los corten.'
+}
+if (shadowing.length) {
+    finding('media', 'rellenos', `${shadowing.length} rellenos proyectan sombra en Blender y Three.js no puede hacerlo desde una luz de área. Su luz llega al pavimento sin recortar, que es parte de por qué el suelo sale más claro que la referencia.`)
+}
 
 // ---------------------------------------------------------------- 3. the world
 

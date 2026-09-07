@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado (07/09/2026): **fases 1, 2 y 3 completadas**. Próxima entrega: **fase 4, iluminación y sombras**. Instrucciones en [README.md](README.md). Evidencia y límites en [fase 1](docs/phase1/VALIDACION.md), [fase 2](docs/phase2/VALIDACION.md) y [fase 3](docs/phase3/VALIDACION.md). Objetivo artístico de luz y atmósfera en [REFERENCIAS.md](docs/REFERENCIAS.md).
+Estado (08/09/2026): **fases 1, 2 y 3 completadas; de la fase 4 van los cuatro primeros puntos**. Próximo paso: **el quinto punto de la fase 4, iluminación indirecta**. Instrucciones en [README.md](README.md). Evidencia y límites en [fase 1](docs/phase1/VALIDACION.md), [fase 2](docs/phase2/VALIDACION.md), [fase 3](docs/phase3/VALIDACION.md) y [fase 4](docs/phase4/VALIDACION.md). Objetivo artístico de luz y atmósfera en [REFERENCIAS.md](docs/REFERENCIAS.md).
 
 ## Objetivo
 
@@ -96,16 +96,23 @@ Lo que esta fase deja medido para la fase 4:
 
 ## 4 · Iluminación y sombras
 
-- [ ] Igualar dirección del sol, disco solar, cielo y contraste interior/exterior.
-- [ ] Calibrar intensidades en Three.js; no trasladar sin comprobar los valores fotométricos exportados.
-- [ ] Reconstruir los rellenos de área con la inicialización apropiada para WebGPU.
-- [ ] Ajustar sombras solares, sesgos, resolución y cobertura de la sala sin desperdiciar resolución en todo el exterior lejano.
-- [ ] Comparar soluciones de iluminación indirecta: entorno/sondas y, si hace falta, luz estática horneada desde Blender. Incorporar horneado sólo si mejora la comparación y su coste está justificado.
+- [x] Igualar dirección del sol, disco solar, cielo y contraste interior/exterior. La dirección del GLB reproduce la del maestro con 0,000° de desvío y el disco emisivo cae a 0,07° de la luz. La pirámide del fondo pasa de 1,76 a 1,02 veces la luminancia de Blender.
+- [x] Calibrar intensidades en Three.js; no trasladar sin comprobar los valores fotométricos exportados. **El GLB resultó inservible como fuente**: declara 683 lux, que son 1,0 W/m², donde el maestro tiene 2,25, y blanco donde el maestro tiene ámbar. Todo sale ahora del `.blend`, con la conversión de cada magnitud escrita junto al dato.
+- [x] Reconstruir los rellenos de área con la inicialización apropiada para WebGPU. Las cuatro luces del maestro no viajan en el GLB; se reconstruyen con su potencia real de 170, 60, 70 y 80 W, convertida a radiancia, y con colores lineales.
+- [x] Ajustar sombras solares, sesgos, resolución y cobertura de la sala sin desperdiciar resolución en todo el exterior lejano. El frustum se ajusta al interior en el espacio del sol: 26,89 × 10,37 m frente a 36 × 24, y 83,1 a 113,3 m de profundidad frente a 0,1 a 150. Los sesgos se expresan en texels.
+- [ ] Comparar soluciones de iluminación indirecta: entorno/sondas y, si hace falta, luz estática horneada desde Blender. Incorporar horneado sólo si mejora la comparación y su coste está justificado. **Es lo que falta ahora:** sin rebotes, las zonas en sombra quedan hasta 3,8 EV por debajo de Blender.
 - [ ] Medir y corregir fugas de luz, contactos del mobiliario y pérdida de detalle en sombras.
 - [ ] Devolver el friso superior a la penumbra que tiene en el render y en los fotogramas; hoy sale plenamente iluminado.
 - [ ] Decidir el descarte de caras traseras: los 27 materiales del GLB son de doble cara, lo que encarece el relleno y obliga a más sesgo de sombra.
 
 **Resultado comprobable:** contraluz y lectura de volúmenes cercanos al render de referencia, con atmósfera y bloom desactivados.
+
+Al cerrar los cuatro primeros puntos, el error del fotograma frente a Blender baja de 0,1100 a 0,0943 en CAM 01 y de 0,1133 a 0,0948 en CAM 02. Evidencia en [docs/phase4/VALIDACION.md](docs/phase4/VALIDACION.md).
+
+Medido y pendiente para los puntos que quedan:
+
+- Las zonas en sombra salen hasta 3,8 EV por debajo de Blender por falta de rebotes.
+- El pavimento queda 0,69 EV y el friso 1,07 EV por encima. La causa está comprobada: en Blender los cuatro rellenos proyectan sombra y una `RectAreaLight` de Three.js no puede hacerlo, así que su luz llega al suelo sin que las columnas la corten. No es un problema de calibración; los factores de contribución del maestro están todos a 1.
 
 ## 5 · Reflejos del pavimento y materiales pulidos
 
