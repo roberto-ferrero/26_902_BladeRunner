@@ -6,7 +6,8 @@ import { loadTyrell, disposeScene } from './TyrellAssets'
 import TyrellCameraRig from './TyrellCameraRig'
 import TyrellUI from './TyrellUI'
 import { agxLookToneMapping, setLookEnabled } from './TyrellToneMapping'
-import { createWorldLight, createAreaFills, applySunFromMaster, fitSunShadow } from './TyrellLighting'
+import { createAreaFills, applySunFromMaster, fitSunShadow, createIndirect, INDIRECT_MODES } from './TyrellLighting'
+import { applyBackfaceCulling } from './TyrellSurfaces'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -16,6 +17,7 @@ export default class E26902_BladeRunner {
         this.quality = TYRELL.quality
         this.compare = false
         this.look = true
+        this.indirect = TYRELL.lighting.indirect.mode
         this.samples = []
         this.disposed = false
     }
@@ -33,6 +35,7 @@ export default class E26902_BladeRunner {
             frame: enabled => { document.body.classList.toggle('tyrell-reference', enabled); app.size.update(); this.resetMetrics() },
             compare: enabled => this.setCompare(enabled),
             look: enabled => this.setLook(enabled),
+            indirect: mode => this.setIndirect(mode),
             retry: () => this.rendererError ? location.reload() : this.load(),
             capture: () => { this.captureRequested = true }, report: () => this.downloadReport()
         })
@@ -88,7 +91,7 @@ export default class E26902_BladeRunner {
             // A parse/build failure must leave retry without a duplicate scene.
             disposeScene(this.asset?.gltf.scene)
             this.asset = null
-            this.world?.removeFromParent()
+            this.indirectBuild?.dispose()
             this.ui.error(error)
         }
     }
@@ -114,17 +117,18 @@ export default class E26902_BladeRunner {
             if (object.isDirectionalLight) this.sun = applySunFromMaster(object)
         })
         this.applyCrystalThickness()
+        this.culling = applyBackfaceCulling(this.world3D)
         this.cameras.sort((a, b) => a.name.localeCompare(b.name))
         this.modelStats.cameras = this.cameras.length
         if (!this.cameras.length) throw new Error('El GLB no contiene cámaras de perspectiva.')
-        this.world = createWorldLight()
-        this.scene.add(this.world)
         // The LTC tables have to exist before the first rect-area light is shaded on WebGPU.
         if (ltcUsers++ === 0) RectAreaLightNode.setLTC(RectAreaLightTexturesLib.init())
         this.usesLTC = true
         this.areaLights = createAreaFills()
         for (const light of this.areaLights) this.scene.add(light)
         this.shadowFit = fitSunShadow(this.sun, this.shadowCasters)
+        // The scene capture has to see the direct lights already in place, so this comes last.
+        this.setIndirect(this.indirect)
         this.selectCamera(Math.max(0, this.cameras.findIndex(camera => camera.name.startsWith(TYRELL.initialCamera.replaceAll(' ', '_')) || camera.name.startsWith(TYRELL.initialCamera))))
         this.setQuality(this.quality)
         this.built = true
@@ -174,6 +178,23 @@ export default class E26902_BladeRunner {
         // setQuality reapplies the pixel ratio and resizes the render target.
         this.setQuality(this.quality)
         this.app.size.update()
+    }
+    // Each option is torn down before the next is built, so the room never lights itself twice
+    // and no render target is left behind.
+    setIndirect(mode) {
+        if (!INDIRECT_MODES.includes(mode)) return
+        this.indirectBuild?.dispose()
+        this.indirectBuild = null
+        this.scene.environment = null
+        this.indirect = mode
+        const centre = this.shadowFit
+            ? new THREE.Vector3().fromArray(this.shadowFit.boundsMin).add(new THREE.Vector3().fromArray(this.shadowFit.boundsMax)).multiplyScalar(0.5)
+            : null
+        this.indirectBuild = createIndirect(mode, { renderer: this.renderer, scene: this.scene, centre })
+        if (this.indirectBuild.ambient) this.scene.add(this.indirectBuild.ambient)
+        this.scene.environment = this.indirectBuild.environment
+        this.resetMetrics()
+        return this.indirectBuild
     }
     // Contrast 1 turns the look into the identity, which is stock AgX; no shader is rebuilt.
     setLook(enabled) {
@@ -242,7 +263,7 @@ export default class E26902_BladeRunner {
         const camera = (this.cameras?.[this.activeCameraIndex]?.name || `camara-${this.activeCameraIndex + 1}`)
             .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
         const size = this.metrics?.resolution?.join('x') || 'sin-medir'
-        return `tyrell-${camera}-${this.quality.toLowerCase()}-${this.compare ? 'comparacion' : 'ventana'}-${this.look ? 'look' : 'sinlook'}-${size}.${extension}`
+        return `tyrell-${camera}-${this.quality.toLowerCase()}-${this.compare ? 'comparacion' : 'ventana'}-${this.look ? 'look' : 'sinlook'}-${this.indirect}-${size}.${extension}`
     }
     getDiagnostics() {
         const camera = this.stageCamera?.get_camera()
@@ -254,6 +275,7 @@ export default class E26902_BladeRunner {
             benchmarkOnStart: false, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
             compare: this.compare ? { ...TYRELL.compareSize, pixelRatio: 1 } : false,
             crystal: this.crystalThickness || null,
+            backfaceCulling: this.culling || null,
             toneMapping: { transform: 'AgX', look: this.look ? 'AgX - Medium High Contrast (ajustado)' : 'ninguno', ...TYRELL.look, lookApplied: this.look },
             shadowMapSize: this.sun?.shadow.mapSize.x ?? null,
             lighting: this.sun ? {
@@ -263,7 +285,12 @@ export default class E26902_BladeRunner {
                     gltf: { intensity: this.sun.userData.gltfIntensity ?? null, color: this.sun.userData.gltfColor?.map(v => +v.toFixed(4)) ?? null },
                     note: 'El GLB trae 683 lux y blanco, ambos desfasados; en uso van los 2,25 W/m² y el ámbar del maestro.'
                 },
-                world: this.world ? { intensity: this.world.intensity, color: this.world.color.toArray().map(v => +v.toFixed(4)) } : null,
+                indirect: {
+                    mode: this.indirect, modes: INDIRECT_MODES,
+                    ambient: this.indirectBuild?.ambient ? { intensity: this.indirectBuild.ambient.intensity, color: this.indirectBuild.ambient.color.toArray().map(v => +v.toFixed(4)) } : null,
+                    environment: this.indirectBuild?.environment ? 'PMREM' : null,
+                    capturedFrom: this.indirectBuild?.capturedFrom ?? null
+                },
                 areaFills: this.areaLights?.map(light => ({
                     name: light.name, intensity: light.intensity, watts: light.userData.watts,
                     size: [light.width, light.height], color: light.color.toArray().map(v => +v.toFixed(4))
@@ -290,8 +317,8 @@ export default class E26902_BladeRunner {
         if (this.resizeListener) this.app.emitter.off('onAppSizeUpdate', this.resizeListener)
         document.removeEventListener('visibilitychange', this.visibilityListener)
         disposeScene(this.world3D)
-        this.world?.removeFromParent()
-        this.world?.dispose()
+        this.indirectBuild?.dispose()
+        this.scene.environment = null
         this.areaLights?.forEach(light => { light.removeFromParent(); light.dispose() })
         if (this.usesLTC && --ltcUsers === 0) {
             for (const name of ['LTC_FLOAT_1', 'LTC_FLOAT_2', 'LTC_HALF_1', 'LTC_HALF_2']) RectAreaLightTexturesLib[name].dispose()

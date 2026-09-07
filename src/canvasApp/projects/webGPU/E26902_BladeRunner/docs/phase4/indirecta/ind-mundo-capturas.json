@@ -1,0 +1,168 @@
+{
+  "generated": "2026-09-07T23:23:17.675Z",
+  "product": "Chrome/152.0.7977.76",
+  "window": [
+    1280,
+    800
+  ],
+  "quality": "Media",
+  "look": true,
+  "shots": [
+    {
+      "camera": "CAM 01",
+      "label": "CAM 01 | fotograma general",
+      "png": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\indirecta\\ind-mundo-cam01-comparacion.png",
+      "json": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\indirecta\\ind-mundo-cam01-comparacion.json",
+      "metrics": "59.4 FPS · 16.84 ms/fotograma · 1920 × 800 · 328 dibujos · 655.927 triángulos/pasadas",
+      "imageSize": [
+        1920,
+        800
+      ],
+      "imageBytes": 1097888,
+      "renderMetrics": {
+        "fps": 59.4,
+        "frameMeanMs": 16.84,
+        "frameP95Ms": 20.7,
+        "samples": 120,
+        "resolution": [
+          1920,
+          800
+        ],
+        "drawCalls": 328,
+        "renderedTriangles": 655927,
+        "geometries": 163,
+        "textures": 41
+      },
+      "compare": {
+        "width": 1920,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "cameraPose": {
+        "name": "CAM_01_|_fotograma_general",
+        "position": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 22.91750563177261,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      }
+    },
+    {
+      "camera": "CAM 02",
+      "label": "CAM 02 | mesa y juntas",
+      "png": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\indirecta\\ind-mundo-cam02-comparacion.png",
+      "json": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\indirecta\\ind-mundo-cam02-comparacion.json",
+      "metrics": "58.9 FPS · 16.97 ms/fotograma · 1920 × 800 · 262 dibujos · 475.700 triángulos/pasadas",
+      "imageSize": [
+        1920,
+        800
+      ],
+      "imageBytes": 1082175,
+      "renderMetrics": {
+        "fps": 58.9,
+        "frameMeanMs": 16.97,
+        "frameP95Ms": 20.2,
+        "samples": 120,
+        "resolution": [
+          1920,
+          800
+        ],
+        "drawCalls": 262,
+        "renderedTriangles": 475700,
+        "geometries": 163,
+        "textures": 41
+      },
+      "compare": {
+        "width": 1920,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "cameraPose": {
+        "name": "CAM_02_|_mesa_y_juntas",
+        "position": [
+          1.899999976158142,
+          1.6200000047683716,
+          -7
+        ],
+        "quaternion": [
+          -0.07395983694909083,
+          0.2723234660486248,
+          0.02099927769581201,
+          0.9591292419423805
+        ],
+        "fov": 27.20108524234708,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      }
+    },
+    {
+      "camera": "CAM 04",
+      "label": "CAM 04 | recorrido lateral",
+      "png": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\indirecta\\ind-mundo-cam04-comparacion.png",
+      "json": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\indirecta\\ind-mundo-cam04-comparacion.json",
+      "metrics": "41.8 FPS · 23.92 ms/fotograma · 1920 × 800 · 313 dibujos · 593.851 triángulos/pasadas",
+      "imageSize": [
+        1920,
+        800
+      ],
+      "imageBytes": 1162207,
+      "renderMetrics": {
+        "fps": 41.8,
+        "frameMeanMs": 23.92,
+        "frameP95Ms": 32.4,
+        "samples": 106,
+        "resolution": [
+          1920,
+          800
+        ],
+        "drawCalls": 313,
+        "renderedTriangles": 593851,
+        "geometries": 163,
+        "textures": 41
+      },
+      "compare": {
+        "width": 1920,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "cameraPose": {
+        "name": "CAM_04_|_recorrido_lateral",
+        "position": [
+          -1.899999976158142,
+          1.649999976158142,
+          5.400000095367432
+        ],
+        "quaternion": [
+          0.010580465046842307,
+          -0.057634546537028736,
+          0.0006108450964972636,
+          0.9982814932037508
+        ],
+        "fov": 26.381222661129513,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      }
+    }
+  ],
+  "backend": "WebGPU · Three.js r182",
+  "indirect": "mundo",
+  "drawingBuffer": {
+    "width": 1920,
+    "height": 800,
+    "cssWidth": 1264,
+    "cssHeight": 527
+  },
+  "frameCheckboxLocked": true
+}

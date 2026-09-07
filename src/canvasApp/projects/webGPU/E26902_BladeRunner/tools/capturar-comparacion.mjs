@@ -7,6 +7,7 @@
 //
 // Options: --window 1280x800, --port 8099, --keep (leave the browser open),
 //          --out <carpeta>, --prefix <nombre>, --look on|off,
+//          --indirect ninguna|ambiente|mundo|escena,
 //          --eval "<js>" para un experimento puntual sobre la escena antes de capturar.
 // The window is visible on purpose: WebGPU needs a real adapter.
 import fs from 'node:fs'
@@ -26,6 +27,7 @@ const OUT = option('--out', 'src/canvasApp/projects/webGPU/E26902_BladeRunner/do
 const PREFIX = option('--prefix', 'fase3')
 const LOOK = option('--look', 'on') !== 'off'
 const EVAL = option('--eval', null)
+const INDIRECT = option('--indirect', null)
 
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.glb': 'model/gltf-binary', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.map': 'application/json' }
 
@@ -78,13 +80,22 @@ async function launch(port) {
 }
 
 class CDP {
-    constructor(socket) { this.socket = socket; this.id = 0; this.pending = new Map(); this.sessionId = null }
+    constructor(socket) { this.socket = socket; this.id = 0; this.pending = new Map(); this.sessionId = null; this.pageErrors = [] }
     static async connect(url) {
         const socket = new WebSocket(url)
         await new Promise((resolve, reject) => { socket.onopen = resolve; socket.onerror = reject })
         const cdp = new CDP(socket)
         socket.onmessage = event => {
             const message = JSON.parse(event.data)
+            // A page error is the usual reason a wait times out, so it is surfaced immediately
+            // instead of being hidden behind a timeout much later.
+            if (message.method === 'Runtime.exceptionThrown') {
+                const details = message.params.exceptionDetails
+                cdp.reportPageError(details.exception?.description || details.text, 'página')
+            }
+            if (message.method === 'Runtime.consoleAPICalled' && message.params.type === 'error') {
+                cdp.reportPageError(message.params.args.map(a => a.description ?? a.value).join(' '), 'consola')
+            }
             const entry = cdp.pending.get(message.id)
             if (!entry) return
             cdp.pending.delete(message.id)
@@ -104,10 +115,17 @@ class CDP {
         if (result.exceptionDetails) throw new Error(result.exceptionDetails.exception?.description || 'Error en la página')
         return result.result.value
     }
+    reportPageError(text, source) {
+        const message = String(text ?? '')
+        this.pageErrors.push(message)
+        console.error(`  [${source}] ${firstLine(message)}`)
+    }
     close() { this.socket.close() }
 }
 
 const wait = ms => new Promise(r => setTimeout(r, ms))
+// Escape-free on purpose: only the first line of a page error is worth printing.
+const firstLine = text => String(text).split(String.fromCharCode(10))[0]
 // The document may still be loading, so a failed evaluation counts as "not yet".
 async function until(cdp, expression, timeout, label) {
     const deadline = Date.now() + timeout
@@ -115,7 +133,8 @@ async function until(cdp, expression, timeout, label) {
         try { if (await cdp.evaluate(expression)) return true } catch { /* not ready */ }
         await wait(250)
     }
-    throw new Error(`Tiempo agotado esperando ${label}.`)
+    const blame = cdp.pageErrors.length ? ` La página había fallado antes: ${firstLine(cdp.pageErrors[0])}` : ''
+    throw new Error(`Tiempo agotado esperando ${label}.${blame}`)
 }
 
 // ---------------------------------------------------------------- page helpers
@@ -186,6 +205,13 @@ try {
     const quality = await cdp.evaluate(SELECT_BY_TEXT('[aria-label="Calidad"]', QUALITY))
     const compare = await cdp.evaluate(SET_CHECK('[data-action="compare"]', true))
     const look = await cdp.evaluate(SET_CHECK('[data-action="look"]', LOOK))
+    if (INDIRECT) {
+        const chosen = await cdp.evaluate(SELECT_BY_TEXT('[aria-label="Indirecta"]', INDIRECT[0].toUpperCase() + INDIRECT.slice(1)))
+        if (!chosen) throw new Error(`El visor no ofrece la indirecta "${INDIRECT}".`)
+        evidence.indirect = INDIRECT
+        console.log(`Iluminación indirecta: ${chosen}`)
+        await wait(1500)
+    }
     if (quality !== QUALITY || compare !== true || look !== LOOK) throw new Error(`No se pudieron fijar los controles: calidad="${quality}", comparación=${compare}, look=${look}`)
     console.log(`Look de Blender: ${LOOK ? 'aplicado' : 'desactivado'}`)
     if (EVAL) {

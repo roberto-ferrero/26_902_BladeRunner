@@ -15,43 +15,24 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { decodePNG, channelStats, crop, sideBySide, encodePNG, srgbToLinear, luminance } from './lib/png.mjs'
+import { REGIONS } from './lib/regiones.mjs'
 
 const OUT = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase4/comparacion.json'
 const PHASE3 = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase3'
 const PHASE2 = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase2'
 const PHASE4 = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase4'
-const BLENDER = '../../_Blender/v3_renders'
-
-// Regions are in pixels of the 1920 x 800 comparison frame, chosen to sit inside one surface.
+// The rectangles live in lib/regiones.mjs so this tool and comparar-indirecta.mjs cannot drift
+// apart and quietly measure different things.
 const SHOTS = [
     {
-        camera: 'CAM 01',
-        reference: `${BLENDER}/v3_general.png`,
+        camera: 'CAM 01', ...REGIONS['CAM 01'],
         current: `${PHASE4}/fase4-cam01-comparacion.png`,
-        baseline: `${PHASE3}/fase3-cam01-comparacion.png`,
-        regions: {
-            'suelo centro': { x: 780, y: 600, width: 380, height: 170 },
-            'suelo lateral izquierdo': { x: 210, y: 650, width: 240, height: 130 },
-            'columna izquierda': { x: 300, y: 160, width: 110, height: 340 },
-            'friso superior': { x: 820, y: 20, width: 380, height: 55 },
-            'cielo del vano': { x: 1010, y: 130, width: 140, height: 90 },
-            'mesa de trabajo': { x: 800, y: 455, width: 280, height: 35 },
-            'mueble derecho': { x: 1760, y: 340, width: 140, height: 110 }
-        }
+        baseline: `${PHASE3}/fase3-cam01-comparacion.png`
     },
     {
-        camera: 'CAM 02',
-        reference: `${BLENDER}/v3_detalle.png`,
+        camera: 'CAM 02', ...REGIONS['CAM 02'],
         current: `${PHASE4}/fase4-cam02-comparacion.png`,
-        baseline: `${PHASE3}/fase3-cam02-comparacion.png`,
-        regions: {
-            'campo de cuero': { x: 700, y: 470, width: 380, height: 110 },
-            'licorera de cristal': { x: 1600, y: 430, width: 90, height: 180 },
-            'vaso de cristal': { x: 1415, y: 545, width: 70, height: 80 },
-            'respaldo del sillon': { x: 1230, y: 200, width: 200, height: 220 },
-            'piramide del fondo': { x: 650, y: 120, width: 280, height: 230 },
-            'estuche de instrumental': { x: 1120, y: 450, width: 240, height: 80 }
-        }
+        baseline: `${PHASE3}/fase3-cam02-comparacion.png`
     }
 ]
 

@@ -1,6 +1,6 @@
 {
-  "generated": "2026-09-07T18:40:16.876Z",
-  "note": "La referencia es Cycles con luz indirecta completa y volumen de polvo; el visor sigue con las luces provisionales de la fase 1. La diferencia es esperada y lo que aquí se mide es dónde está y cuánta es.",
+  "generated": "2026-09-07T23:39:14.974Z",
+  "note": "La referencia es Cycles con luz indirecta completa y volumen de polvo, que el visor no tiene. La diferencia es esperada y lo que aquí se mide es dónde está y cuánta es.",
   "shots": [
     {
       "camera": "CAM 01",
@@ -32,12 +32,12 @@
         },
         "actual": {
           "display": [
-            0.1143,
-            0.0846,
-            0.057
+            0.1326,
+            0.0929,
+            0.0595
           ],
-          "displayLuminance": 0.0889,
-          "linearLuminance": 0.00854,
+          "displayLuminance": 0.0989,
+          "linearLuminance": 0.01012,
           "min": [
             0,
             0,
@@ -68,7 +68,7 @@
             1
           ]
         },
-        "rmsDisplay": 0.0943,
+        "rmsDisplay": 0.0967,
         "rmsDisplayAnterior": 0.11
       },
       "regions": [
@@ -81,7 +81,7 @@
             "height": 170
           },
           "referencia": 0.5139,
-          "actual": 0.6407,
+          "actual": 0.6402,
           "anterior": 0.6822,
           "razonLineal": 1.61,
           "evDeDiferencia": 0.69,
@@ -107,21 +107,21 @@
             },
             "actual": {
               "display": [
-                0.7064,
-                0.6321,
-                0.5321
+                0.7067,
+                0.6315,
+                0.5309
               ],
-              "displayLuminance": 0.6407,
-              "linearLuminance": 0.37042,
+              "displayLuminance": 0.6402,
+              "linearLuminance": 0.36989,
               "min": [
-                0.0196,
-                0.0078,
-                0
+                0.1373,
+                0.0588,
+                0.0078
               ],
               "max": [
-                0.9608,
-                0.9294,
-                0.8745
+                0.949,
+                0.9137,
+                0.851
               ]
             },
             "anterior": {
@@ -154,10 +154,10 @@
             "height": 130
           },
           "referencia": 0.0354,
-          "actual": 0.0026,
+          "actual": 0.0116,
           "anterior": 0.0044,
-          "razonLineal": 0.07,
-          "evDeDiferencia": -3.8,
+          "razonLineal": 0.32,
+          "evDeDiferencia": -1.64,
           "detalle": {
             "referencia": {
               "display": [
@@ -180,21 +180,21 @@
             },
             "actual": {
               "display": [
-                0.0034,
-                0.0025,
-                0.0015
+                0.0272,
+                0.0079,
+                0.0017
               ],
-              "displayLuminance": 0.0026,
-              "linearLuminance": 0.0002,
+              "displayLuminance": 0.0116,
+              "linearLuminance": 0.00089,
               "min": [
                 0,
                 0,
                 0
               ],
               "max": [
-                0.4824,
-                0.4078,
-                0.3059
+                0.4941,
+                0.4157,
+                0.3137
               ]
             },
             "anterior": {
@@ -227,10 +227,10 @@
             "height": 340
           },
           "referencia": 0.0572,
-          "actual": 0.0088,
+          "actual": 0.0078,
           "anterior": 0.0138,
-          "razonLineal": 0.14,
-          "evDeDiferencia": -2.81,
+          "razonLineal": 0.13,
+          "evDeDiferencia": -2.96,
           "detalle": {
             "referencia": {
               "display": [
@@ -253,12 +253,12 @@
             },
             "actual": {
               "display": [
-                0.014,
-                0.0079,
-                0.002
+                0.0135,
+                0.0068,
+                0.0014
               ],
-              "displayLuminance": 0.0088,
-              "linearLuminance": 0.00068,
+              "displayLuminance": 0.0078,
+              "linearLuminance": 0.00061,
               "min": [
                 0,
                 0,
@@ -300,10 +300,10 @@
             "height": 55
           },
           "referencia": 0.1652,
-          "actual": 0.2482,
+          "actual": 0.2496,
           "anterior": 0.2527,
-          "razonLineal": 2.1,
-          "evDeDiferencia": 1.07,
+          "razonLineal": 2.13,
+          "evDeDiferencia": 1.09,
           "detalle": {
             "referencia": {
               "display": [
@@ -326,20 +326,20 @@
             },
             "actual": {
               "display": [
-                0.3017,
-                0.2402,
-                0.1696
+                0.3038,
+                0.2414,
+                0.1706
               ],
-              "displayLuminance": 0.2482,
-              "linearLuminance": 0.05116,
+              "displayLuminance": 0.2496,
+              "linearLuminance": 0.05173,
               "min": [
                 0,
                 0,
                 0
               ],
               "max": [
-                0.6667,
-                0.5725,
+                0.6706,
+                0.5765,
                 0.4588
               ]
             },
@@ -373,7 +373,7 @@
             "height": 90
           },
           "referencia": 0.3366,
-          "actual": 0.3047,
+          "actual": 0.3049,
           "anterior": 0.3051,
           "razonLineal": 0.82,
           "evDeDiferencia": -0.29,
@@ -399,12 +399,12 @@
             },
             "actual": {
               "display": [
-                0.4314,
-                0.2809,
-                0.1679
+                0.4316,
+                0.2811,
+                0.1681
               ],
-              "displayLuminance": 0.3047,
-              "linearLuminance": 0.08075,
+              "displayLuminance": 0.3049,
+              "linearLuminance": 0.08086,
               "min": [
                 0.3294,
                 0.2078,
@@ -446,10 +446,10 @@
             "height": 35
           },
           "referencia": 0.1947,
-          "actual": 0.0929,
+          "actual": 0.0858,
           "anterior": 0.1046,
-          "razonLineal": 0.28,
-          "evDeDiferencia": -1.85,
+          "razonLineal": 0.25,
+          "evDeDiferencia": -2.02,
           "detalle": {
             "referencia": {
               "display": [
@@ -472,12 +472,12 @@
             },
             "actual": {
               "display": [
-                0.1044,
-                0.0912,
-                0.0762
+                0.0983,
+                0.0838,
+                0.0682
               ],
-              "displayLuminance": 0.0929,
-              "linearLuminance": 0.00899,
+              "displayLuminance": 0.0858,
+              "linearLuminance": 0.00799,
               "min": [
                 0,
                 0,
@@ -519,10 +519,10 @@
             "height": 110
           },
           "referencia": 0.1093,
-          "actual": 0.0502,
+          "actual": 0.049,
           "anterior": 0.0639,
-          "razonLineal": 0.34,
-          "evDeDiferencia": -1.57,
+          "razonLineal": 0.33,
+          "evDeDiferencia": -1.61,
           "detalle": {
             "referencia": {
               "display": [
@@ -545,21 +545,21 @@
             },
             "actual": {
               "display": [
-                0.0721,
-                0.0465,
-                0.0229
+                0.0719,
+                0.045,
+                0.0214
               ],
-              "displayLuminance": 0.0502,
-              "linearLuminance": 0.00405,
+              "displayLuminance": 0.049,
+              "linearLuminance": 0.00394,
               "min": [
                 0,
                 0,
                 0
               ],
               "max": [
-                0.949,
-                0.8902,
-                0.7961
+                0.9412,
+                0.8745,
+                0.7765
               ]
             },
             "anterior": {
@@ -615,12 +615,12 @@
         },
         "actual": {
           "display": [
-            0.1278,
-            0.101,
-            0.0718
+            0.1263,
+            0.0987,
+            0.0696
           ],
-          "displayLuminance": 0.1046,
-          "linearLuminance": 0.01089,
+          "displayLuminance": 0.1025,
+          "linearLuminance": 0.01056,
           "min": [
             0,
             0,
@@ -651,7 +651,7 @@
             1
           ]
         },
-        "rmsDisplay": 0.0948,
+        "rmsDisplay": 0.0928,
         "rmsDisplayAnterior": 0.1133
       },
       "regions": [
@@ -664,10 +664,10 @@
             "height": 110
           },
           "referencia": 0.173,
-          "actual": 0.2266,
+          "actual": 0.2289,
           "anterior": 0.3089,
-          "razonLineal": 1.65,
-          "evDeDiferencia": 0.72,
+          "razonLineal": 1.68,
+          "evDeDiferencia": 0.75,
           "detalle": {
             "referencia": {
               "display": [
@@ -690,12 +690,12 @@
             },
             "actual": {
               "display": [
-                0.2756,
-                0.2195,
-                0.153
+                0.2795,
+                0.2214,
+                0.1536
               ],
-              "displayLuminance": 0.2266,
-              "linearLuminance": 0.04285,
+              "displayLuminance": 0.2289,
+              "linearLuminance": 0.0437,
               "min": [
                 0,
                 0,
@@ -703,7 +703,7 @@
               ],
               "max": [
                 0.5725,
-                0.4902,
+                0.4941,
                 0.3882
               ]
             },
@@ -737,10 +737,10 @@
             "height": 180
           },
           "referencia": 0.1959,
-          "actual": 0.2705,
+          "actual": 0.2636,
           "anterior": 0.3129,
-          "razonLineal": 1.85,
-          "evDeDiferencia": 0.89,
+          "razonLineal": 1.76,
+          "evDeDiferencia": 0.82,
           "detalle": {
             "referencia": {
               "display": [
@@ -763,21 +763,21 @@
             },
             "actual": {
               "display": [
-                0.3154,
-                0.2648,
-                0.1946
+                0.3097,
+                0.2575,
+                0.1877
               ],
-              "displayLuminance": 0.2705,
-              "linearLuminance": 0.06028,
+              "displayLuminance": 0.2636,
+              "linearLuminance": 0.05731,
               "min": [
                 0.0039,
                 0,
                 0
               ],
               "max": [
-                0.9725,
-                0.9451,
-                0.8941
+                0.949,
+                0.9098,
+                0.8471
               ]
             },
             "anterior": {
@@ -810,10 +810,10 @@
             "height": 80
           },
           "referencia": 0.1819,
-          "actual": 0.4463,
+          "actual": 0.4426,
           "anterior": 0.4755,
-          "razonLineal": 5.99,
-          "evDeDiferencia": 2.58,
+          "razonLineal": 5.89,
+          "evDeDiferencia": 2.56,
           "detalle": {
             "referencia": {
               "display": [
@@ -836,21 +836,21 @@
             },
             "actual": {
               "display": [
-                0.5052,
-                0.4399,
-                0.3363
+                0.5019,
+                0.4361,
+                0.3327
               ],
-              "displayLuminance": 0.4463,
-              "linearLuminance": 0.16948,
+              "displayLuminance": 0.4426,
+              "linearLuminance": 0.16655,
               "min": [
-                0.2902,
-                0.2392,
-                0.1529
+                0.302,
+                0.2431,
+                0.1569
               ],
               "max": [
-                0.9608,
-                0.9294,
-                0.8706
+                0.949,
+                0.9098,
+                0.8431
               ]
             },
             "anterior": {
@@ -883,10 +883,10 @@
             "height": 220
           },
           "referencia": 0.0426,
-          "actual": 0.0128,
+          "actual": 0.013,
           "anterior": 0.0137,
-          "razonLineal": 0.29,
-          "evDeDiferencia": -1.77,
+          "razonLineal": 0.3,
+          "evDeDiferencia": -1.75,
           "detalle": {
             "referencia": {
               "display": [
@@ -909,21 +909,21 @@
             },
             "actual": {
               "display": [
-                0.0187,
-                0.0117,
-                0.0058
+                0.0194,
+                0.0118,
+                0.0056
               ],
-              "displayLuminance": 0.0128,
-              "linearLuminance": 0.00099,
+              "displayLuminance": 0.013,
+              "linearLuminance": 0.001,
               "min": [
                 0,
                 0,
                 0
               ],
               "max": [
-                0.9843,
                 0.9647,
-                0.9255
+                0.9333,
+                0.8784
               ]
             },
             "anterior": {
@@ -956,10 +956,10 @@
             "height": 230
           },
           "referencia": 0.084,
-          "actual": 0.0847,
+          "actual": 0.0848,
           "anterior": 0.1175,
-          "razonLineal": 1.02,
-          "evDeDiferencia": 0.03,
+          "razonLineal": 1.03,
+          "evDeDiferencia": 0.04,
           "detalle": {
             "referencia": {
               "display": [
@@ -982,20 +982,20 @@
             },
             "actual": {
               "display": [
-                0.1296,
-                0.0772,
-                0.0262
+                0.1307,
+                0.0771,
+                0.026
               ],
-              "displayLuminance": 0.0847,
-              "linearLuminance": 0.00828,
+              "displayLuminance": 0.0848,
+              "linearLuminance": 0.00832,
               "min": [
                 0,
                 0,
                 0
               ],
               "max": [
-                0.4392,
-                0.3373,
+                0.4353,
+                0.3333,
                 0.2157
               ]
             },
@@ -1029,10 +1029,10 @@
             "height": 80
           },
           "referencia": 0.084,
-          "actual": 0.0893,
+          "actual": 0.09,
           "anterior": 0.0953,
-          "razonLineal": 1.08,
-          "evDeDiferencia": 0.11,
+          "razonLineal": 1.09,
+          "evDeDiferencia": 0.13,
           "detalle": {
             "referencia": {
               "display": [
@@ -1055,20 +1055,20 @@
             },
             "actual": {
               "display": [
-                0.1076,
-                0.0863,
+                0.1094,
+                0.0867,
                 0.0651
               ],
-              "displayLuminance": 0.0893,
-              "linearLuminance": 0.00852,
+              "displayLuminance": 0.09,
+              "linearLuminance": 0.00863,
               "min": [
                 0,
                 0,
                 0
               ],
               "max": [
-                0.7294,
-                0.5608,
+                0.7333,
+                0.5647,
                 0.4314
               ]
             },

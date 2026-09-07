@@ -1,6 +1,6 @@
 {
   "phase": 4,
-  "date": "2026-09-07T18:39:50.667Z",
+  "date": "2026-09-07T23:39:09.316Z",
   "backend": "WebGPU",
   "three": "182",
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
@@ -27,6 +27,191 @@
       "thickness": 0.0583
     }
   ],
+  "backfaceCulling": {
+    "threshold": 0.5,
+    "measuredMeshes": 175,
+    "materials": 27,
+    "culled": 24,
+    "kept": [
+      {
+        "material": "Crystal",
+        "reason": "transmisión"
+      },
+      {
+        "material": "Cielo | nubes ambar",
+        "reason": "abierta"
+      },
+      {
+        "material": "Sol | disco emisivo",
+        "reason": "abierta"
+      }
+    ],
+    "elapsedMs": 63.3,
+    "detail": [
+      {
+        "material": "Cielo | nubes ambar",
+        "ratio": 1,
+        "worstMesh": "Cielo_|_fondo_a_900_m",
+        "reason": "abierta"
+      },
+      {
+        "material": "Sol | disco emisivo",
+        "ratio": 1,
+        "worstMesh": "Sol_|_disco_a_650_m",
+        "reason": "abierta"
+      },
+      {
+        "material": "PBR | Hormigon exterior",
+        "ratio": 0.1542,
+        "worstMesh": "Tyrell_Corporation_Pyramid",
+        "reason": "cerrada"
+      },
+      {
+        "material": "PBR | Caliza aristas claras",
+        "ratio": 0.0854,
+        "worstMesh": "Columna_01_|_perfil_original_y_24_hiladas_2",
+        "reason": "cerrada"
+      },
+      {
+        "material": "PBR | Caliza ocre envejecida",
+        "ratio": 0.0499,
+        "worstMesh": "Columna_04_|_perfil_original_y_24_hiladas_1",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Bronze | patinated",
+        "ratio": 0.0149,
+        "worstMesh": "Fluted_bronze_urn",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Foliage 0",
+        "ratio": 0.0051,
+        "worstMesh": "Bonsai_glazed_bowl_3",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Brass | polished highlights",
+        "ratio": 0.0044,
+        "worstMesh": "Fluted_bronze_urn_1",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Foliage 2",
+        "ratio": 0.0044,
+        "worstMesh": "Bonsai_glazed_bowl_5",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Foliage 3",
+        "ratio": 0.0036,
+        "worstMesh": "Bonsai_glazed_bowl_6",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Foliage 1",
+        "ratio": 0.0033,
+        "worstMesh": "Bonsai_glazed_bowl_4",
+        "reason": "cerrada"
+      },
+      {
+        "material": "PBR | Bronce patinado",
+        "ratio": 0.0011,
+        "worstMesh": "Eagle_2",
+        "reason": "cerrada"
+      },
+      {
+        "material": "PBR | Piedra negra pulida",
+        "ratio": 0,
+        "worstMesh": "Pavimento_|_sector_(3,_1)",
+        "reason": "cerrada"
+      },
+      {
+        "material": "PBR | Juntas y cavidades",
+        "ratio": 0,
+        "worstMesh": "Mortero_bajo_pavimento",
+        "reason": "cerrada"
+      },
+      {
+        "material": "PBR | Nogal oscuro",
+        "ratio": 0,
+        "worstMesh": "Base_3",
+        "reason": "cerrada"
+      },
+      {
+        "material": "PBR | Raiz de nogal",
+        "ratio": 0,
+        "worstMesh": "Table_Slab",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Walnut | quarter sawn",
+        "ratio": 0,
+        "worstMesh": "Scalloped_carved_back",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Leather | oxblood",
+        "ratio": 0,
+        "worstMesh": "Scalloped_carved_back_1",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Burl walnut | table rim",
+        "ratio": 0,
+        "worstMesh": "Scalloped_carved_back_2",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Recesses | charcoal",
+        "ratio": 0,
+        "worstMesh": "Scalloped_carved_back_5",
+        "reason": "cerrada"
+      },
+      {
+        "material": "PBR | Cuero oscuro",
+        "ratio": 0,
+        "worstMesh": "Mesa_|_campo_de_cuero",
+        "reason": "cerrada"
+      },
+      {
+        "material": "PBR | Laton envejecido",
+        "ratio": 0,
+        "worstMesh": "Mesa_|_filete_de_laton",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Black glazed ceramic",
+        "ratio": 0,
+        "worstMesh": "Bonsai_glazed_bowl001",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Soil",
+        "ratio": 0,
+        "worstMesh": "Bonsai_glazed_bowl_1",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Ivory paper",
+        "ratio": 0,
+        "worstMesh": "Paper_on_folio",
+        "reason": "cerrada"
+      },
+      {
+        "material": "PBR | Aciculas de pino",
+        "ratio": 0,
+        "worstMesh": "Pino_|_follaje_L",
+        "reason": "cerrada"
+      },
+      {
+        "material": "Crystal",
+        "ratio": 0,
+        "worstMesh": "Cut_crystal_decanter",
+        "reason": "transmisión"
+      }
+    ]
+  },
   "toneMapping": {
     "transform": "AgX",
     "look": "AgX - Medium High Contrast (ajustado)",
@@ -54,12 +239,20 @@
       },
       "note": "El GLB trae 683 lux y blanco, ambos desfasados; en uso van los 2,25 W/m² y el ámbar del maestro."
     },
-    "world": {
-      "intensity": 0.15708,
-      "color": [
-        0.2,
-        0.25,
-        0.23
+    "indirect": {
+      "mode": "escena",
+      "modes": [
+        "ninguna",
+        "ambiente",
+        "mundo",
+        "escena"
+      ],
+      "ambient": null,
+      "environment": "PMREM",
+      "capturedFrom": [
+        -2.903,
+        3.374,
+        -1.805
       ]
     },
     "areaFills": [
@@ -140,7 +333,7 @@
       },
       "mapSize": 2048,
       "texelMetres": 0.01313,
-      "normalBias": 0.0197,
+      "normalBias": 0.00328,
       "bias": -0.0000079,
       "radius": 2
     }
@@ -153,7 +346,7 @@
   "asset": {
     "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3.glb",
     "bytes": 56526524,
-    "loadMs": 917.5
+    "loadMs": 692.6000000238419
   },
   "camera": {
     "name": "CAM_02_|_mesa_y_juntas",
@@ -174,18 +367,18 @@
     "far": 2500
   },
   "metrics": {
-    "fps": 33.5,
-    "frameMeanMs": 29.88,
-    "frameP95Ms": 33.9,
-    "samples": 98,
+    "fps": 59.8,
+    "frameMeanMs": 16.72,
+    "frameP95Ms": 17.9,
+    "samples": 120,
     "resolution": [
       1920,
       800
     ],
     "drawCalls": 262,
     "renderedTriangles": 475700,
-    "geometries": 158,
-    "textures": 34
+    "geometries": 168,
+    "textures": 42
   },
   "metricNote": "Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.",
   "pending": [

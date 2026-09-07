@@ -22,7 +22,18 @@ function load(file, imports = {}) {
     return module.exports
 }
 const { TYRELL } = load(path.join(root, 'config.js'))
-const lighting = load(path.join(root, 'TyrellLighting.js'), { three: THREE, './config': { TYRELL } })
+// The indirect path is not exercised here: it needs a live WebGPU renderer, so the module's
+// WebGPU import is stubbed and only the parts that run without a GPU are tested.
+const lighting = load(path.join(root, 'TyrellLighting.js'), {
+    three: THREE,
+    'three/webgpu': {
+        PMREMGenerator: class { dispose() {} }, DataTexture: THREE.DataTexture,
+        RGBAFormat: THREE.RGBAFormat, FloatType: THREE.FloatType,
+        EquirectangularReflectionMapping: THREE.EquirectangularReflectionMapping,
+        LinearSRGBColorSpace: THREE.LinearSRGBColorSpace
+    },
+    './config': { TYRELL }
+})
 const rig = JSON.parse(fs.readFileSync(path.join(root, 'docs/phase4/luces-blender.json'), 'utf8'))
 const check = JSON.parse(fs.readFileSync(path.join(root, 'docs/phase4/luces.json'), 'utf8'))
 const WATTS_TO_LUMENS = 683
@@ -147,4 +158,63 @@ test('The fitted frustum really is tighter than the fixed one it replaced', () =
     assert.ok(shadow.frustum.near > 50, `cerca ${shadow.frustum.near}`)
     assert.equal(capture.lighting.sun.intensity, TYRELL.lighting.sun.intensity)
     assert.equal(capture.lighting.areaFills.length, 4)
+})
+
+// --- points 5 to 8 -----------------------------------------------------------
+
+const surfaces = load(path.join(root, 'TyrellSurfaces.js'), { three: THREE, './config': { TYRELL } })
+
+test('The indirect options are the ones the comparison ranked, and the default is the winner', () => {
+    assert.deepEqual(lighting.INDIRECT_MODES, ['ninguna', 'ambiente', 'mundo', 'escena'])
+    assert.ok(lighting.INDIRECT_MODES.includes(TYRELL.lighting.indirect.mode))
+    const ranking = JSON.parse(fs.readFileSync(path.join(root, 'docs/phase4/indirecta.json'), 'utf8'))
+    // The frame-wide error cannot pick between them; the regions that live on bounced light can.
+    const shadowed = ranking.shadowedSummary
+    for (const mode of ['ninguna', 'ambiente', 'mundo']) {
+        assert.ok(shadowed.escena.meanEv > shadowed[mode].meanEv,
+            `"escena" debe acercarse más que "${mode}": ${shadowed.escena.meanEv} frente a ${shadowed[mode].meanEv}`)
+    }
+    assert.equal(TYRELL.lighting.indirect.mode, 'escena')
+})
+
+test('The closure test separates a closed solid from an open card', () => {
+    const box = new THREE.BoxGeometry(1, 1, 1)
+    const plane = new THREE.PlaneGeometry(1, 1)
+    assert.ok(surfaces.closureRatio(box) < 1e-6, `caja ${surfaces.closureRatio(box)}`)
+    assert.ok(surfaces.closureRatio(plane) > 0.99, `plano ${surfaces.closureRatio(plane)}`)
+    // The threshold has to sit between them with room to spare on both sides.
+    assert.ok(TYRELL.backfaceCulling.closureThreshold > 0.2 && TYRELL.backfaceCulling.closureThreshold < 0.9)
+    box.dispose(); plane.dispose()
+})
+
+test('Culling takes the closed opaque surfaces and leaves the open and the transmissive ones', () => {
+    const root3D = new THREE.Group()
+    const closed = new THREE.MeshStandardMaterial({ name: 'piedra', side: THREE.DoubleSide })
+    const open = new THREE.MeshStandardMaterial({ name: 'cielo', side: THREE.DoubleSide })
+    const glass = new THREE.MeshPhysicalMaterial({ name: 'cristal', side: THREE.DoubleSide, transmission: 1 })
+    const box = new THREE.BoxGeometry(1, 1, 1)
+    root3D.add(new THREE.Mesh(box, closed), new THREE.Mesh(new THREE.PlaneGeometry(1, 1), open), new THREE.Mesh(box, glass))
+    root3D.updateMatrixWorld(true)
+
+    const report = surfaces.applyBackfaceCulling(root3D)
+    assert.equal(closed.side, THREE.FrontSide, 'una piedra cerrada se descarta por detrás')
+    assert.equal(open.side, THREE.DoubleSide, 'una cartela abierta conserva las dos caras')
+    // Closed, yet Three needs both faces to approximate the refracting volume.
+    assert.equal(glass.side, THREE.DoubleSide, 'el cristal conserva las dos caras por transmisión')
+    assert.equal(report.culled, 1)
+    assert.deepEqual(report.kept.map(k => k.reason).sort(), ['abierta', 'transmisión'])
+    for (const material of [closed, open, glass]) material.dispose()
+    box.dispose()
+})
+
+test('What the viewer shipped matches what the reports describe', () => {
+    const capture = JSON.parse(fs.readFileSync(path.join(root, 'docs/phase4/fase4-cam01-comparacion.json'), 'utf8'))
+    assert.equal(capture.lighting.indirect.mode, TYRELL.lighting.indirect.mode)
+    assert.ok(capture.lighting.indirect.capturedFrom, 'el modo escena debe registrar desde dónde sondeó')
+    assert.equal(capture.backfaceCulling.culled, 24)
+    assert.deepEqual(capture.backfaceCulling.kept.map(k => k.material).sort(),
+        ['Cielo | nubes ambar', 'Crystal', 'Sol | disco emisivo'])
+    // The bias sweep showed a larger one only leaks light, so it stays small.
+    assert.ok(TYRELL.lighting.shadow.normalBiasTexels <= 0.5, `sesgo ${TYRELL.lighting.shadow.normalBiasTexels}`)
+    assert.ok(capture.lighting.shadow.normalBias < 0.005, `sesgo normal ${capture.lighting.shadow.normalBias} m`)
 })

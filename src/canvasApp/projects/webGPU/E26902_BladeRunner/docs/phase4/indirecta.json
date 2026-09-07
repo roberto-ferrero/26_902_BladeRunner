@@ -1,0 +1,457 @@
+{
+  "generated": "2026-09-07T23:24:49.637Z",
+  "modes": [
+    "ninguna",
+    "ambiente",
+    "mundo",
+    "escena"
+  ],
+  "note": "Blender traza los rebotes y ninguna de estas opciones puede. Lo que se compara es cuál se acerca más y dónde falla cada una.",
+  "cameras": [
+    {
+      "camera": "CAM 01",
+      "size": [
+        1920,
+        800
+      ],
+      "whole": {
+        "ninguna": {
+          "rms": 0.0948,
+          "luminance": 0.0882
+        },
+        "ambiente": {
+          "rms": 0.0943,
+          "luminance": 0.0889
+        },
+        "mundo": {
+          "rms": 0.0942,
+          "luminance": 0.0906
+        },
+        "escena": {
+          "rms": 0.0956,
+          "luminance": 0.0994
+        },
+        "blenderLuminance": 0.1348
+      },
+      "regions": [
+        {
+          "name": "suelo centro",
+          "shadowed": false,
+          "blender": 0.5139,
+          "modes": {
+            "ninguna": {
+              "display": 0.6407,
+              "ratio": 1.61,
+              "ev": 0.69
+            },
+            "ambiente": {
+              "display": 0.6407,
+              "ratio": 1.61,
+              "ev": 0.69
+            },
+            "mundo": {
+              "display": 0.6427,
+              "ratio": 1.62,
+              "ev": 0.7
+            },
+            "escena": {
+              "display": 0.6432,
+              "ratio": 1.62,
+              "ev": 0.7
+            }
+          }
+        },
+        {
+          "name": "suelo lateral izquierdo",
+          "shadowed": true,
+          "blender": 0.0354,
+          "modes": {
+            "ninguna": {
+              "display": 0.0026,
+              "ratio": 0.07,
+              "ev": -3.79
+            },
+            "ambiente": {
+              "display": 0.0026,
+              "ratio": 0.07,
+              "ev": -3.78
+            },
+            "mundo": {
+              "display": 0.0035,
+              "ratio": 0.1,
+              "ev": -3.35
+            },
+            "escena": {
+              "display": 0.0117,
+              "ratio": 0.33,
+              "ev": -1.62
+            }
+          }
+        },
+        {
+          "name": "columna izquierda",
+          "shadowed": true,
+          "blender": 0.0572,
+          "modes": {
+            "ninguna": {
+              "display": 0.0073,
+              "ratio": 0.12,
+              "ev": -3.08
+            },
+            "ambiente": {
+              "display": 0.0088,
+              "ratio": 0.14,
+              "ev": -2.81
+            },
+            "mundo": {
+              "display": 0.0092,
+              "ratio": 0.15,
+              "ev": -2.74
+            },
+            "escena": {
+              "display": 0.0091,
+              "ratio": 0.15,
+              "ev": -2.76
+            }
+          }
+        },
+        {
+          "name": "friso superior",
+          "shadowed": false,
+          "blender": 0.1652,
+          "modes": {
+            "ninguna": {
+              "display": 0.2469,
+              "ratio": 2.08,
+              "ev": 1.06
+            },
+            "ambiente": {
+              "display": 0.2482,
+              "ratio": 2.1,
+              "ev": 1.07
+            },
+            "mundo": {
+              "display": 0.2487,
+              "ratio": 2.11,
+              "ev": 1.08
+            },
+            "escena": {
+              "display": 0.2498,
+              "ratio": 2.13,
+              "ev": 1.09
+            }
+          }
+        },
+        {
+          "name": "cielo del vano",
+          "shadowed": false,
+          "blender": 0.3366,
+          "modes": {
+            "ninguna": {
+              "display": 0.3046,
+              "ratio": 0.82,
+              "ev": -0.29
+            },
+            "ambiente": {
+              "display": 0.3047,
+              "ratio": 0.82,
+              "ev": -0.29
+            },
+            "mundo": {
+              "display": 0.305,
+              "ratio": 0.82,
+              "ev": -0.29
+            },
+            "escena": {
+              "display": 0.3049,
+              "ratio": 0.82,
+              "ev": -0.29
+            }
+          }
+        },
+        {
+          "name": "mesa de trabajo",
+          "shadowed": true,
+          "blender": 0.1947,
+          "modes": {
+            "ninguna": {
+              "display": 0.0927,
+              "ratio": 0.28,
+              "ev": -1.85
+            },
+            "ambiente": {
+              "display": 0.0929,
+              "ratio": 0.28,
+              "ev": -1.85
+            },
+            "mundo": {
+              "display": 0.0934,
+              "ratio": 0.28,
+              "ev": -1.83
+            },
+            "escena": {
+              "display": 0.0937,
+              "ratio": 0.28,
+              "ev": -1.83
+            }
+          }
+        },
+        {
+          "name": "mueble derecho",
+          "shadowed": true,
+          "blender": 0.1093,
+          "modes": {
+            "ninguna": {
+              "display": 0.0496,
+              "ratio": 0.33,
+              "ev": -1.59
+            },
+            "ambiente": {
+              "display": 0.0502,
+              "ratio": 0.34,
+              "ev": -1.57
+            },
+            "mundo": {
+              "display": 0.0514,
+              "ratio": 0.35,
+              "ev": -1.53
+            },
+            "escena": {
+              "display": 0.0518,
+              "ratio": 0.35,
+              "ev": -1.51
+            }
+          }
+        }
+      ],
+      "best": "mundo",
+      "sheetOrder": [
+        "Blender",
+        "ninguna",
+        "ambiente",
+        "mundo",
+        "escena"
+      ]
+    },
+    {
+      "camera": "CAM 02",
+      "size": [
+        1920,
+        800
+      ],
+      "whole": {
+        "ninguna": {
+          "rms": 0.0949,
+          "luminance": 0.1041
+        },
+        "ambiente": {
+          "rms": 0.0948,
+          "luminance": 0.1046
+        },
+        "mundo": {
+          "rms": 0.0952,
+          "luminance": 0.1054
+        },
+        "escena": {
+          "rms": 0.0952,
+          "luminance": 0.1054
+        },
+        "blenderLuminance": 0.1052
+      },
+      "regions": [
+        {
+          "name": "campo de cuero",
+          "shadowed": false,
+          "blender": 0.173,
+          "modes": {
+            "ninguna": {
+              "display": 0.2265,
+              "ratio": 1.65,
+              "ev": 0.72
+            },
+            "ambiente": {
+              "display": 0.2266,
+              "ratio": 1.65,
+              "ev": 0.72
+            },
+            "mundo": {
+              "display": 0.2313,
+              "ratio": 1.71,
+              "ev": 0.78
+            },
+            "escena": {
+              "display": 0.2301,
+              "ratio": 1.7,
+              "ev": 0.77
+            }
+          }
+        },
+        {
+          "name": "licorera de cristal",
+          "shadowed": false,
+          "blender": 0.1959,
+          "modes": {
+            "ninguna": {
+              "display": 0.2697,
+              "ratio": 1.84,
+              "ev": 0.88
+            },
+            "ambiente": {
+              "display": 0.2705,
+              "ratio": 1.85,
+              "ev": 0.89
+            },
+            "mundo": {
+              "display": 0.2731,
+              "ratio": 1.89,
+              "ev": 0.92
+            },
+            "escena": {
+              "display": 0.2746,
+              "ratio": 1.91,
+              "ev": 0.93
+            }
+          }
+        },
+        {
+          "name": "vaso de cristal",
+          "shadowed": false,
+          "blender": 0.1819,
+          "modes": {
+            "ninguna": {
+              "display": 0.4463,
+              "ratio": 5.99,
+              "ev": 2.58
+            },
+            "ambiente": {
+              "display": 0.4463,
+              "ratio": 5.99,
+              "ev": 2.58
+            },
+            "mundo": {
+              "display": 0.4489,
+              "ratio": 6.07,
+              "ev": 2.6
+            },
+            "escena": {
+              "display": 0.4493,
+              "ratio": 6.08,
+              "ev": 2.6
+            }
+          }
+        },
+        {
+          "name": "respaldo del sillon",
+          "shadowed": true,
+          "blender": 0.0426,
+          "modes": {
+            "ninguna": {
+              "display": 0.0126,
+              "ratio": 0.29,
+              "ev": -1.78
+            },
+            "ambiente": {
+              "display": 0.0128,
+              "ratio": 0.29,
+              "ev": -1.77
+            },
+            "mundo": {
+              "display": 0.0132,
+              "ratio": 0.3,
+              "ev": -1.72
+            },
+            "escena": {
+              "display": 0.0132,
+              "ratio": 0.3,
+              "ev": -1.72
+            }
+          }
+        },
+        {
+          "name": "piramide del fondo",
+          "shadowed": false,
+          "blender": 0.084,
+          "modes": {
+            "ninguna": {
+              "display": 0.0829,
+              "ratio": 0.99,
+              "ev": -0.01
+            },
+            "ambiente": {
+              "display": 0.0847,
+              "ratio": 1.02,
+              "ev": 0.03
+            },
+            "mundo": {
+              "display": 0.0851,
+              "ratio": 1.03,
+              "ev": 0.04
+            },
+            "escena": {
+              "display": 0.0857,
+              "ratio": 1.04,
+              "ev": 0.06
+            }
+          }
+        },
+        {
+          "name": "estuche de instrumental",
+          "shadowed": false,
+          "blender": 0.084,
+          "modes": {
+            "ninguna": {
+              "display": 0.0888,
+              "ratio": 1.07,
+              "ev": 0.1
+            },
+            "ambiente": {
+              "display": 0.0893,
+              "ratio": 1.08,
+              "ev": 0.11
+            },
+            "mundo": {
+              "display": 0.0901,
+              "ratio": 1.09,
+              "ev": 0.13
+            },
+            "escena": {
+              "display": 0.0904,
+              "ratio": 1.1,
+              "ev": 0.14
+            }
+          }
+        }
+      ],
+      "best": "ambiente",
+      "sheetOrder": [
+        "Blender",
+        "ninguna",
+        "ambiente",
+        "mundo",
+        "escena"
+      ]
+    }
+  ],
+  "shadowedSummary": {
+    "ninguna": {
+      "regions": 5,
+      "meanEv": -2.42,
+      "worstEv": -3.79
+    },
+    "ambiente": {
+      "regions": 5,
+      "meanEv": -2.36,
+      "worstEv": -3.78
+    },
+    "mundo": {
+      "regions": 5,
+      "meanEv": -2.23,
+      "worstEv": -3.35
+    },
+    "escena": {
+      "regions": 5,
+      "meanEv": -1.89,
+      "worstEv": -2.76
+    }
+  }
+}

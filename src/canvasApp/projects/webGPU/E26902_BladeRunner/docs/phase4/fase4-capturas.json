@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07T18:39:29.836Z",
+  "generated": "2026-09-07T23:38:41.240Z",
   "product": "Chrome/152.0.7977.76",
   "window": [
     1280,
@@ -13,25 +13,25 @@
       "label": "CAM 01 | fotograma general",
       "png": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\fase4-cam01-comparacion.png",
       "json": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\fase4-cam01-comparacion.json",
-      "metrics": "30.7 FPS · 32.61 ms/fotograma · 1920 × 800 · 328 dibujos · 655.927 triángulos/pasadas",
+      "metrics": "41.1 FPS · 24.35 ms/fotograma · 1920 × 800 · 328 dibujos · 655.927 triángulos/pasadas",
       "imageSize": [
         1920,
         800
       ],
-      "imageBytes": 1080810,
+      "imageBytes": 1253753,
       "renderMetrics": {
-        "fps": 30.7,
-        "frameMeanMs": 32.61,
-        "frameP95Ms": 35.1,
-        "samples": 92,
+        "fps": 41.1,
+        "frameMeanMs": 24.35,
+        "frameP95Ms": 26.5,
+        "samples": 112,
         "resolution": [
           1920,
           800
         ],
         "drawCalls": 328,
         "renderedTriangles": 655927,
-        "geometries": 158,
-        "textures": 34
+        "geometries": 168,
+        "textures": 42
       },
       "compare": {
         "width": 1920,
@@ -62,25 +62,25 @@
       "label": "CAM 02 | mesa y juntas",
       "png": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\fase4-cam02-comparacion.png",
       "json": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\fase4-cam02-comparacion.json",
-      "metrics": "33.5 FPS · 29.88 ms/fotograma · 1920 × 800 · 262 dibujos · 475.700 triángulos/pasadas",
+      "metrics": "59.8 FPS · 16.72 ms/fotograma · 1920 × 800 · 262 dibujos · 475.700 triángulos/pasadas",
       "imageSize": [
         1920,
         800
       ],
-      "imageBytes": 1070799,
+      "imageBytes": 1110073,
       "renderMetrics": {
-        "fps": 33.5,
-        "frameMeanMs": 29.88,
-        "frameP95Ms": 33.9,
-        "samples": 98,
+        "fps": 59.8,
+        "frameMeanMs": 16.72,
+        "frameP95Ms": 17.9,
+        "samples": 120,
         "resolution": [
           1920,
           800
         ],
         "drawCalls": 262,
         "renderedTriangles": 475700,
-        "geometries": 158,
-        "textures": 34
+        "geometries": 168,
+        "textures": 42
       },
       "compare": {
         "width": 1920,
@@ -111,25 +111,25 @@
       "label": "CAM 04 | recorrido lateral",
       "png": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\fase4-cam04-comparacion.png",
       "json": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\fase4-cam04-comparacion.json",
-      "metrics": "32.7 FPS · 30.6 ms/fotograma · 1920 × 800 · 313 dibujos · 593.851 triángulos/pasadas",
+      "metrics": "59.9 FPS · 16.71 ms/fotograma · 1920 × 800 · 313 dibujos · 593.851 triángulos/pasadas",
       "imageSize": [
         1920,
         800
       ],
-      "imageBytes": 1146018,
+      "imageBytes": 1280865,
       "renderMetrics": {
-        "fps": 32.7,
-        "frameMeanMs": 30.6,
-        "frameP95Ms": 33.5,
-        "samples": 96,
+        "fps": 59.9,
+        "frameMeanMs": 16.71,
+        "frameP95Ms": 18,
+        "samples": 120,
         "resolution": [
           1920,
           800
         ],
         "drawCalls": 313,
         "renderedTriangles": 593851,
-        "geometries": 158,
-        "textures": 34
+        "geometries": 168,
+        "textures": 42
       },
       "compare": {
         "width": 1920,
@@ -157,6 +157,7 @@
     }
   ],
   "backend": "WebGPU · Three.js r182",
+  "indirect": "escena",
   "drawingBuffer": {
     "width": 1920,
     "height": 800,

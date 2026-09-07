@@ -27,6 +27,12 @@ export const TYRELL = {
     // right if the model changes. Set to 0 to keep the file's own value.
     crystalThicknessFactor: 0.5,
 
+    // The 27 materials of the GLB all arrive double-sided, which is the exporter's habit and not
+    // an authoring decision. TyrellSurfaces.js measures whether each surface is closed and culls
+    // only where it is safe. The threshold sits between the 0,15 of the most open real geometry
+    // and the 1,0 of the sky backdrop and the sun disc, which are single planes.
+    backfaceCulling: { enabled: true, closureThreshold: 0.5 },
+
     // The lighting rig, read out of BladeRunner_5_6_High_v3.blend by tools/blender/leer_luces.py
     // and converted by tools/verificar-luces.mjs. Both reports are in docs/phase4/.
     //
@@ -54,6 +60,19 @@ export const TYRELL = {
         // This only feeds the diffuse; the specular half of the environment is the indirect
         // lighting item, still open in this phase.
         world: { color: [0.2, 0.25, 0.23], intensity: 0.15708 },
+        // Indirect light. Blender path-traces the bounces and the viewer cannot, so the plan
+        // asks to compare the options rather than assume one. `mode` picks the shipped default;
+        // the viewer can switch between them for review. See TyrellLighting.js and
+        // docs/phase4/indirecta.json for what each one measured.
+        indirect: {
+            mode: 'escena',
+            // The same world as above, but as radiance rather than as an ambient irradiance:
+            // an environment is sampled directly, so it carries no pi.
+            color: [0.2, 0.25, 0.23], strength: 0.05,
+            // Cube capture for the 'escena' mode, taken from the centre of the room. 256 is
+            // Three's own default and matches the prefiltered chain it builds.
+            captureSize: 256, captureNear: 0.1, captureFar: 2000
+        },
         // Blender's lamps are discs carrying total power in watts. A Lambertian emitter of area A
         // has radiance P/(A·pi), which is what a RectAreaLight takes. Three has no disc light, so
         // each one becomes a square of equal area: power and radiance stay right and only the
@@ -70,7 +89,14 @@ export const TYRELL = {
             marginMetres: 0.75,
             // Bias in texels of the fitted map, not in metres: it then survives a change of
             // shadow resolution or of room size without being retuned.
-            normalBiasTexels: 1.5,
+            //
+            // Kept small on purpose. Once the closed solids are culled to front faces, Three
+            // casts their shadows from the back faces, which is what normally forces a large
+            // normal bias, and the bias then only leaks light. Measured by sweeping it in the
+            // browser: from 0 to 4 texels the contact at a column base moved from 0,0135 to
+            // 0,0141, while the lit floor climbed from 0,6889 to 0,7191 and got noisier. There
+            // is nothing to buy with a larger bias here.
+            normalBiasTexels: 0.25,
             biasTexels: 0.6,
             // Radius of the percentage-closer filter, in texels.
             radius: 2

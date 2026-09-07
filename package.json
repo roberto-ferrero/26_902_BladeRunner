@@ -9,6 +9,7 @@
     "tyrell:color": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/calibrar-color.mjs",
     "tyrell:lights": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/verificar-luces.mjs",
     "tyrell:compare": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/comparar-render.mjs --recortes",
+    "tyrell:indirect": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/comparar-indirecta.mjs",
     "tyrell:capture": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/capturar-comparacion.mjs",
     "dev": "webpack serve --config ./bundler/webpack.dev.js",
     "dev:local": "webpack serve --config ./bundler/webpack.dev.js --env local"

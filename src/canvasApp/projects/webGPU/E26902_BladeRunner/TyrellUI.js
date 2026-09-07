@@ -15,6 +15,7 @@ export default class TyrellUI {
                 <label class="tyrell-check"><input type="checkbox" data-action="frame" checked> Encuadre 2,4:1</label>
                 <label class="tyrell-check"><input type="checkbox" data-action="compare"> Comparación 1920 × 800</label>
                 <label class="tyrell-check"><input type="checkbox" data-action="look" checked> Look AgX de Blender</label>
+                <label>Indirecta <select aria-label="Indirecta"><option value="ninguna">Ninguna</option><option value="ambiente">Ambiente</option><option value="mundo">Mundo</option><option value="escena" selected>Escena</option></select></label>
                 <button type="button" data-action="capture">Captura</button>
                 <button type="button" data-action="report">Diagnóstico</button>
             </div><p class="tyrell-note">Luz provisional · Cámaras originales de Blender · Recorrido libre en una próxima fase</p>
@@ -31,6 +32,7 @@ export default class TyrellUI {
         this.frameCheck.onchange = event => actions.frame(event.target.checked)
         this.root.querySelector('[data-action="compare"]').onchange = event => actions.compare(event.target.checked)
         this.root.querySelector('[data-action="look"]').onchange = event => actions.look(event.target.checked)
+        this.root.querySelector('[aria-label="Indirecta"]').onchange = event => actions.indirect(event.target.value)
         this.retry.onclick = () => actions.retry()
         this.root.querySelector('[data-action="capture"]').onclick = () => actions.capture()
         this.root.querySelector('[data-action="report"]').onclick = () => actions.report()

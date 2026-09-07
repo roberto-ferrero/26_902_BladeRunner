@@ -1,4 +1,7 @@
 import * as THREE from 'three'
+// The main build ships a WebGL-only PMREMGenerator that reaches into renderer.state.buffers.
+// The WebGPU build has its own, and the texture it filters has to come from the same build.
+import { PMREMGenerator, DataTexture, RGBAFormat, FloatType, EquirectangularReflectionMapping, LinearSRGBColorSpace } from 'three/webgpu'
 import { TYRELL } from './config'
 
 // The lighting rig, rebuilt from the master .blend rather than from the GLB.
@@ -123,4 +126,85 @@ export function fitSunShadow(sun, casters) {
         bias: +sun.shadow.bias.toFixed(7),
         radius
     }
+}
+
+// --- indirect lighting -------------------------------------------------------
+//
+// Blender path-traces the bounces; the viewer cannot. These are the options the plan asks to
+// compare, from cheapest to most faithful. Each one is built the same way so the comparison is
+// like for like, and docs/phase4/ records what each measured.
+//
+//   ninguna  Sun and the four fills only. The floor of the comparison.
+//   ambiente Blender's world as an AmbientLight. Feeds the diffuse and nothing else; this is
+//            what the first four points of the phase shipped.
+//   mundo    Blender's world as a real uniform environment. Same irradiance on the diffuse, plus
+//            the specular half that an ambient light cannot give.
+//   escena   The environment captured from the room itself, so the stone that the sun lights
+//            becomes a source. One bounce, which is what the dark side of the room is missing.
+export const INDIRECT_MODES = ['ninguna', 'ambiente', 'mundo', 'escena']
+
+// A uniform equirectangular texture holding the world radiance. Small on purpose: every texel
+// carries the same value, and PMREM only needs enough of them to filter cleanly.
+function worldTexture() {
+    const { color, strength } = TYRELL.lighting.indirect
+    const width = 16, height = 8
+    const data = new Float32Array(width * height * 4)
+    for (let i = 0; i < width * height; i++) {
+        data[i * 4] = color[0] * strength
+        data[i * 4 + 1] = color[1] * strength
+        data[i * 4 + 2] = color[2] * strength
+        data[i * 4 + 3] = 1
+    }
+    const texture = new DataTexture(data, width, height, RGBAFormat, FloatType)
+    texture.mapping = EquirectangularReflectionMapping
+    texture.colorSpace = LinearSRGBColorSpace
+    texture.needsUpdate = true
+    return texture
+}
+
+/**
+ * Builds one indirect-lighting option and returns what it produced, along with the way to undo
+ * it. The caller owns the disposal: PMREM allocates render targets that outlive the call.
+ *
+ * The scene capture has to run after the direct lights are in place and while no environment is
+ * applied, or the room would light itself twice.
+ */
+export function createIndirect(mode, { renderer, scene, centre }) {
+    const result = { mode, ambient: null, environment: null, capturedFrom: null, dispose: () => {} }
+    if (mode === 'ninguna') return result
+
+    if (mode === 'ambiente') {
+        result.ambient = createWorldLight()
+        result.dispose = () => { result.ambient.removeFromParent(); result.ambient.dispose() }
+        return result
+    }
+
+    const pmrem = new PMREMGenerator(renderer)
+    if (mode === 'mundo') {
+        const source = worldTexture()
+        const target = pmrem.fromEquirectangular(source)
+        result.environment = target.texture
+        result.dispose = () => { target.dispose(); source.dispose(); pmrem.dispose() }
+        return result
+    }
+
+    if (mode === 'escena') {
+        const { captureSize, captureNear, captureFar } = TYRELL.lighting.indirect
+        const position = centre ? centre.clone() : new THREE.Vector3()
+        const previous = scene.environment
+        scene.environment = null
+        let target
+        try {
+            target = pmrem.fromScene(scene, 0, captureNear, captureFar, { size: captureSize, position })
+        } finally {
+            scene.environment = previous
+        }
+        result.environment = target.texture
+        result.capturedFrom = position.toArray().map(v => +v.toFixed(3))
+        result.dispose = () => { target.dispose(); pmrem.dispose() }
+        return result
+    }
+
+    pmrem.dispose()
+    throw new Error(`Modo de iluminación indirecta desconocido: ${mode}`)
 }

@@ -1,0 +1,201 @@
+{
+  "phase": 4,
+  "date": "2026-09-07T23:22:38.826Z",
+  "backend": "WebGPU",
+  "three": "182",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+  "secureContext": true,
+  "adapter": {
+    "vendor": "nvidia",
+    "architecture": "turing",
+    "device": "",
+    "description": ""
+  },
+  "benchmarkOnStart": false,
+  "quality": "Media",
+  "exposure": 1.0718,
+  "compare": {
+    "width": 1920,
+    "height": 800,
+    "pixelRatio": 1
+  },
+  "crystal": [
+    {
+      "material": "Crystal",
+      "pieces": 4,
+      "medianSpan": 0.1166,
+      "thickness": 0.0583
+    }
+  ],
+  "toneMapping": {
+    "transform": "AgX",
+    "look": "AgX - Medium High Contrast (ajustado)",
+    "contrast": 1.198,
+    "pivot": 0.691,
+    "lookApplied": true
+  },
+  "shadowMapSize": 2048,
+  "lighting": {
+    "source": "BladeRunner_5_6_High_v3.blend, leído por tools/blender/leer_luces.py",
+    "sun": {
+      "intensity": 2.25,
+      "color": [
+        1,
+        0.69,
+        0.34
+      ],
+      "gltf": {
+        "intensity": 683,
+        "color": [
+          1,
+          1,
+          1
+        ]
+      },
+      "note": "El GLB trae 683 lux y blanco, ambos desfasados; en uso van los 2,25 W/m² y el ámbar del maestro."
+    },
+    "indirect": {
+      "mode": "ninguna",
+      "modes": [
+        "ninguna",
+        "ambiente",
+        "mundo",
+        "escena"
+      ],
+      "ambient": null,
+      "environment": null,
+      "capturedFrom": null
+    },
+    "areaFills": [
+      {
+        "name": "Tyrell / L02 | Cielo por ventanal",
+        "intensity": 1.9138,
+        "watts": 170,
+        "size": [
+          5.3174,
+          5.3174
+        ],
+        "color": [
+          1,
+          0.72,
+          0.41
+        ]
+      },
+      {
+        "name": "Tyrell / L03 | Rebote frontal frio",
+        "intensity": 0.4963,
+        "watts": 60,
+        "size": [
+          6.2036,
+          6.2036
+        ],
+        "color": [
+          0.48,
+          0.59,
+          0.63
+        ]
+      },
+      {
+        "name": "Tyrell / L04 | Rebote piedra izquierda",
+        "intensity": 1.7731,
+        "watts": 70,
+        "size": [
+          3.5449,
+          3.5449
+        ],
+        "color": [
+          1,
+          0.67,
+          0.32
+        ]
+      },
+      {
+        "name": "Tyrell / L05 | Rebote piedra derecha",
+        "intensity": 2.0264,
+        "watts": 80,
+        "size": [
+          3.5449,
+          3.5449
+        ],
+        "color": [
+          1,
+          0.7,
+          0.39
+        ]
+      }
+    ],
+    "shadow": {
+      "casters": 172,
+      "boundsMin": [
+        -15.556,
+        -0.051,
+        -15.91
+      ],
+      "boundsMax": [
+        9.75,
+        6.8,
+        12.3
+      ],
+      "frustum": {
+        "width": 26.89,
+        "height": 10.365,
+        "near": 83.123,
+        "far": 113.328
+      },
+      "mapSize": 2048,
+      "texelMetres": 0.01313,
+      "normalBias": 0.0197,
+      "bias": -0.0000079,
+      "radius": 2
+    }
+  },
+  "model": {
+    "meshes": 175,
+    "triangles": 378164,
+    "cameras": 10
+  },
+  "asset": {
+    "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3.glb",
+    "bytes": 56526524,
+    "loadMs": 694.3000000119209
+  },
+  "camera": {
+    "name": "CAM_04_|_recorrido_lateral",
+    "position": [
+      -1.899999976158142,
+      1.649999976158142,
+      5.400000095367432
+    ],
+    "quaternion": [
+      0.010580465046842307,
+      -0.057634546537028736,
+      0.0006108450964972636,
+      0.9982814932037508
+    ],
+    "fov": 26.381222661129513,
+    "aspect": 2.4,
+    "near": 0.029999999329447746,
+    "far": 2500
+  },
+  "metrics": {
+    "fps": 33.4,
+    "frameMeanMs": 29.95,
+    "frameP95Ms": 33.2,
+    "samples": 98,
+    "resolution": [
+      1920,
+      800
+    ],
+    "drawCalls": 313,
+    "renderedTriangles": 593851,
+    "geometries": 158,
+    "textures": 36
+  },
+  "metricNote": "Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.",
+  "pending": [
+    "Iluminación indirecta",
+    "Reflejos del suelo",
+    "Atmósfera",
+    "Recorrido libre"
+  ]
+}

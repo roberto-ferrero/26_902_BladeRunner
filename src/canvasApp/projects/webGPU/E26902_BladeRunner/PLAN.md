@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado (08/09/2026): **fases 1, 2 y 3 completadas; de la fase 4 van los cuatro primeros puntos**. Próximo paso: **el quinto punto de la fase 4, iluminación indirecta**. Instrucciones en [README.md](README.md). Evidencia y límites en [fase 1](docs/phase1/VALIDACION.md), [fase 2](docs/phase2/VALIDACION.md), [fase 3](docs/phase3/VALIDACION.md) y [fase 4](docs/phase4/VALIDACION.md). Objetivo artístico de luz y atmósfera en [REFERENCIAS.md](docs/REFERENCIAS.md).
+Estado (08/09/2026): **fases 1, 2 y 3 completadas; de la fase 4, siete de ocho puntos**. Queda abierto el friso en penumbra, diagnosticado. Próxima entrega: **fase 5, reflejos del pavimento**. Instrucciones en [README.md](README.md). Evidencia y límites en [fase 1](docs/phase1/VALIDACION.md), [fase 2](docs/phase2/VALIDACION.md), [fase 3](docs/phase3/VALIDACION.md) y [fase 4](docs/phase4/VALIDACION.md). Objetivo artístico de luz y atmósfera en [REFERENCIAS.md](docs/REFERENCIAS.md).
 
 ## Objetivo
 
@@ -100,19 +100,21 @@ Lo que esta fase deja medido para la fase 4:
 - [x] Calibrar intensidades en Three.js; no trasladar sin comprobar los valores fotométricos exportados. **El GLB resultó inservible como fuente**: declara 683 lux, que son 1,0 W/m², donde el maestro tiene 2,25, y blanco donde el maestro tiene ámbar. Todo sale ahora del `.blend`, con la conversión de cada magnitud escrita junto al dato.
 - [x] Reconstruir los rellenos de área con la inicialización apropiada para WebGPU. Las cuatro luces del maestro no viajan en el GLB; se reconstruyen con su potencia real de 170, 60, 70 y 80 W, convertida a radiancia, y con colores lineales.
 - [x] Ajustar sombras solares, sesgos, resolución y cobertura de la sala sin desperdiciar resolución en todo el exterior lejano. El frustum se ajusta al interior en el espacio del sol: 26,89 × 10,37 m frente a 36 × 24, y 83,1 a 113,3 m de profundidad frente a 0,1 a 150. Los sesgos se expresan en texels.
-- [ ] Comparar soluciones de iluminación indirecta: entorno/sondas y, si hace falta, luz estática horneada desde Blender. Incorporar horneado sólo si mejora la comparación y su coste está justificado. **Es lo que falta ahora:** sin rebotes, las zonas en sombra quedan hasta 3,8 EV por debajo de Blender.
-- [ ] Medir y corregir fugas de luz, contactos del mobiliario y pérdida de detalle en sombras.
-- [ ] Devolver el friso superior a la penumbra que tiene en el render y en los fotogramas; hoy sale plenamente iluminado.
-- [ ] Decidir el descarte de caras traseras: los 27 materiales del GLB son de doble cara, lo que encarece el relleno y obliga a más sesgo de sombra.
+- [x] Comparar soluciones de iluminación indirecta: entorno/sondas y, si hace falta, luz estática horneada desde Blender. Cuatro opciones implementadas y medidas; gana la sonda de entorno capturada de la propia sala, que acerca las zonas de sombra de −2,42 a −1,89 EV. El horneado se descarta con su coste medido: sólo 10 de 157 primitivas traen el segundo juego de UV que exige.
+- [x] Medir y corregir fugas de luz, contactos del mobiliario y pérdida de detalle en sombras. Barrido del sesgo en el navegador: el contacto no se mueve entre 0 y 4 texels y el pavimento se aclara y se ensucia según sube, así que baja de 1,5 a 0,25 texels. Los contactos del mobiliario ya estaban medidos en la fase 2.
+- [ ] Devolver el friso superior a la penumbra que tiene en el render y en los fotogramas. **Diagnosticado, no resuelto.** L02 aporta el 99,3 % de su luz y el friso no está ocluido de esa luz, así que las sombras de área tampoco lo arreglarían. Los remedios descartados y por qué están en la validación.
+- [x] Decidir el descarte de caras traseras. Se mide el cierre de cada superficie en vez de consultar el archivo: 24 de 27 materiales se descartan en 65 ms de carga. Se conservan el cielo y el disco solar por abiertos y la cristalería por transmisión, esto último comprobado midiendo el empeoramiento al descartarla.
 
 **Resultado comprobable:** contraluz y lectura de volúmenes cercanos al render de referencia, con atmósfera y bloom desactivados.
 
 Al cerrar los cuatro primeros puntos, el error del fotograma frente a Blender baja de 0,1100 a 0,0943 en CAM 01 y de 0,1133 a 0,0948 en CAM 02. Evidencia en [docs/phase4/VALIDACION.md](docs/phase4/VALIDACION.md).
 
-Medido y pendiente para los puntos que quedan:
+Al cerrar la fase, el error de CAM 02 queda en 0,0928 y el de CAM 01 en 0,0967. La pirámide del fondo y el estuche caen dentro del 10 % de Blender, y el lateral del pavimento sube de 0,12 a 0,32 veces su luminancia.
 
-- Las zonas en sombra salen hasta 3,8 EV por debajo de Blender por falta de rebotes.
-- El pavimento queda 0,69 EV y el friso 1,07 EV por encima. La causa está comprobada: en Blender los cuatro rellenos proyectan sombra y una `RectAreaLight` de Three.js no puede hacerlo, así que su luz llega al suelo sin que las columnas la corten. No es un problema de calibración; los factores de contribución del maestro están todos a 1.
+Queda abierto y medido:
+
+- Las zonas en sombra siguen a −1,89 EV de media. Una sonda única no reproduce un rebote que varía con el sitio, y es un solo rebote.
+- El pavimento queda 0,69 EV y el friso 1,09 EV por encima. En el pavimento la causa está comprobada: en Blender los rellenos proyectan sombra y una `RectAreaLight` de Three.js no puede, así que su luz llega al suelo sin que las columnas la corten. En el friso no hay oclusión que valga, así que la causa es otra y sigue sin establecerse.
 
 ## 5 · Reflejos del pavimento y materiales pulidos
 
