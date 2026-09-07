@@ -23,12 +23,9 @@ console.log('secure', window.isSecureContext)
 console.log('gpu', !!navigator.gpu)
 console.log('shaderStage', !!globalThis.GPUShaderStage)
 
-const adapter = await navigator.gpu?.requestAdapter()
-console.log('adapter', adapter)
-
-
 window.platform = new Platform()
 
+if (!window.platform.canvasApp.project.ownsMetrics) {
 const meter = new FPSMeter({
     position: 'fixed',
 })
@@ -42,6 +39,7 @@ function update_RAF(){
     window.requestAnimationFrame( () =>{
         update_RAF()
     })
+}
 }
 
 

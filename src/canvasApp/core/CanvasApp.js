@@ -51,7 +51,7 @@ class CanvasApp{
         this.project = obj.project || null
         //----------------------
         this.TYPE = obj.project.type || "WEBGL_APP" // "WEBGL_APP", "WEBGPU_APP"
-        this.DEBUG_MODE = obj.debug_mode ||true;
+        this.DEBUG_MODE = obj.debug_mode ?? true;
         this.GUI_MODE = obj.gui_mode;
         this.MOBILE_MODE = obj.mobile_mode || false;
         this.AUTO_ACTIVE = obj.auto_active === true;
@@ -188,12 +188,15 @@ class CanvasApp{
     }
 
     kill(){
+        if (this._isKilled) return
         // console.log("-----------------------------------");
         console.log("(CanvasApp.kill):"+this.id+" rnd:"+this.rnd);
         // console.log("-----------------------------------");
         this._isKilled = true
         this.deactivate()
         this.emitter.emit("onAppKill")
+        this.size.kill()
+        this.dev.kill()
         gsap.delayedCall(0.1, ()=>{
             this.stage = null
             this.emitter.removeAllListeners()

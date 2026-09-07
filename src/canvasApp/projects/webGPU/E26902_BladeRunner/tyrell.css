@@ -1,0 +1,32 @@
+body.tyrell-viewer { background: #070807; color: #e6dfce; overflow: hidden; font-family: system-ui, sans-serif; }
+.tyrell-viewer #content { display: none; }
+.tyrell-viewer #canvas_app { inset: 0; margin: auto; }
+.tyrell-viewer.tyrell-reference #canvas_app { width: min(100vw, 240vh); height: min(100vh, 41.666667vw); }
+.tyrell-viewer #canvas_app canvas { display: block; }
+.tyrell-ui { position: fixed; inset: 0; pointer-events: none; z-index: 20; }
+.tyrell-ui header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 26px; background: linear-gradient(#070807d9, transparent); }
+.tyrell-eyebrow { font-size: 10px; letter-spacing: 0.2em; color: #c7ae7c; }
+.tyrell-ui h1 { font-size: 22px; font-weight: 450; letter-spacing: 0.02em; }
+.tyrell-backend { font: 12px ui-monospace, monospace; color: #c7ae7c; }
+.tyrell-ui footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 26px; background: linear-gradient(transparent, #070807f0 30%); }
+.tyrell-controls { display: flex; align-items: end; gap: 14px; flex-wrap: wrap; pointer-events: auto; }
+.tyrell-controls label { display: grid; gap: 3px; font-size: 11px; color: #c7ae7c; }
+.tyrell-ui select, .tyrell-ui button { border: 1px solid #746344; border-radius: 3px; background: #11130ff0; color: #e6dfce; padding: 7px 10px; font: 12px system-ui, sans-serif; cursor: pointer; }
+.tyrell-ui select { max-width: 290px; }
+.tyrell-ui button:hover { border-color: #d6b577; }
+.tyrell-ui :focus-visible { outline: 2px solid #e8c481; outline-offset: 3px; }
+.tyrell-controls .tyrell-check { display: flex; align-items: center; align-self: center; gap: 6px; padding-top: 13px; }
+.tyrell-ui input { accent-color: #c7ae7c; }
+.tyrell-note { font-size: 11px; margin-top: 9px; color: #b0ada2; }
+.tyrell-metrics { font: 11px ui-monospace, monospace; color: #c7ae7c; margin-top: 3px; }
+.tyrell-status { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(460px, 80vw); padding: 28px; background: #0b0d0bf5; border: 1px solid #746344; text-align: center; pointer-events: auto; font-size: 14px; }
+.tyrell-status progress { display: block; width: 100%; height: 5px; accent-color: #c7ae7c; margin-top: 22px; }
+.tyrell-status button { margin-top: 20px; }
+.tyrell-ui [hidden] { display: none !important; }
+.tyrell-dialog { margin: auto; width: min(1100px, 90vw); max-height: 90vh; overflow: auto; background: #11130f; color: #e6dfce; border: 1px solid #746344; padding: 18px; pointer-events: auto; }
+.tyrell-dialog::backdrop { background: #000b; }
+.tyrell-dialog form { text-align: right; margin-bottom: 12px; }
+.tyrell-dialog img { width: 100%; height: auto; display: block; }
+.tyrell-dialog pre { white-space: pre-wrap; font-size: 12px; }
+.tyrell-dialog a { display: inline-block; color: #e8c481; margin-top: 12px; }
+@media (max-width: 700px) { .tyrell-ui header, .tyrell-ui footer { padding: 12px; } .tyrell-ui h1 { font-size: 18px; } .tyrell-controls { gap: 7px; } .tyrell-backend { max-width: 130px; text-align: right; } }

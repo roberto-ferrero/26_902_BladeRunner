@@ -1,87 +1,232 @@
 import * as THREE from 'three'
-import * as THREE_GPU from 'three/webgpu'
-import * as TSL from 'three/tsl'
+import { RectAreaLightNode } from 'three/webgpu'
+import { RectAreaLightTexturesLib } from 'three/addons/lights/RectAreaLightTexturesLib.js'
+import { TYRELL } from './config'
+import { loadTyrell, disposeScene } from './TyrellAssets'
+import TyrellCameraRig from './TyrellCameraRig'
+import TyrellUI from './TyrellUI'
 
-import AssetLoader from '../../../core/AssetLoder/AssetLoader'
-import StageOrtoCamera from "../../../core/cameras/StageOrtoCamera"
-import OrtoResponsiveFrame from '../../../core/utils/OrtoResponsiveFrame'
-
-
-class E26902_BladeRunner {
+export default class E26902_BladeRunner {
     constructor() {
-        console.log("(E26902_BladeRunner.CONSTRUCTOR)!")
-        this.type = "WEBGPU_APP"
-
+        this.type = 'WEBGPU_APP'
+        this.rendererOptions = { requireWebGPU: true, benchmarkOnStart: false, powerPreference: 'high-performance' }
+        this.ownsMetrics = true
+        this.quality = TYRELL.quality
+        this.samples = []
+        this.disposed = false
     }
-
-    init(app) {
-        console.log("(E26902_BladeRunner.init)!")
+    mount(app) {
+        if (this.ui) return
         this.app = app
-        this.scene = this.app.render.scene
-
-
-        //---------------------
-        // SET PERFORMANCE FOR POSSIBLE LOD:
-        let tier = this.app.render.performanceData.tier
-        tier = "Low"
-        switch (tier) {
-            case 'Low':
-                break
-                case 'Mid':
-                    break
-                    case 'High':
-                        break
-            default:
-                break
+        document.body.classList.add('tyrell-viewer', 'tyrell-reference')
+        this.ui = new TyrellUI({
+            camera: index => this.selectCamera(index), quality: name => this.setQuality(name),
+            frame: enabled => { document.body.classList.toggle('tyrell-reference', enabled); app.size.update(); this.resetMetrics() },
+            retry: () => this.rendererError ? location.reload() : this.load(),
+            capture: () => { this.captureRequested = true }, report: () => this.downloadReport()
+        })
+        app.size.update()
+        app.emitter.on('onAppKill', this.killListener = () => this.dispose())
+    }
+    onRendererProgress(app) { this.mount(app) }
+    onRendererError(error, app) {
+        this.mount(app)
+        this.rendererError = error
+        this.ui.setBackend('WebGPU no disponible')
+        this.ui.error(error, true)
+    }
+    init(app) {
+        this.mount(app)
+        this.scene = app.render.scene
+        this.stageCamera = new TyrellCameraRig(app)
+        this.renderer = app.render.renderer
+        this.renderer.toneMapping = THREE.AgXToneMapping
+        this.renderer.toneMappingExposure = TYRELL.exposure
+        this.renderer.outputColorSpace = THREE.SRGBColorSpace
+        this.renderer.shadowMap.enabled = true
+        this.renderer.shadowMap.type = THREE.PCFShadowMap
+        this.renderer.setClearColor(0x171512, 1)
+        this.ui.setBackend('WebGPU · Three.js r182')
+        this.setQuality(this.quality)
+        this.resizeListener = () => this.resetMetrics()
+        app.emitter.on('onAppSizeUpdate', this.resizeListener)
+        this.visibilityListener = () => {
+            this.resetMetrics()
+            if (!this.built) return
+            if (document.hidden) app.deactivate()
+            else app.activate()
         }
-        //---------------------
-        
-        //---------------------
-        // STAGE CAMERA:
-        this.stageCamera = new StageOrtoCamera({
-            app: this.app,
-            project: this,
-            parent3D: this.scene,
-            size: this.app.size.CURRENT
-        })
-        this.app.render.set_stageCamera(this.stageCamera.get_camera())
-        //---------------------
-
-        //---------------------
-        // LOAD ASSETS:
-        this.loader = new AssetLoader({
-            app: this.app,
-            pathPrefix: this.app.pathPrefix
-        })
-        //this.loader.add_texture("mars", this.app.pathPrefix + "img/mars_1.jpg")
-        
-        this.loader.emitter.on("onCompleted", () => {
-            console.log("ALL ASSETS LOADED!")
-            this.app.emitter.emit("onProjectLoaded", {})
-        })
-        this.loader.start()
-        //---------------------
+        document.addEventListener('visibilitychange', this.visibilityListener)
+        this.load()
     }
-
+    async load() {
+        this.abort?.abort()
+        this.abort = new AbortController()
+        this.ui.progress.hidden = false
+        this.ui.status('Cargando la oficina Tyrell…')
+        try {
+            this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
+                (received, total, parsing) => this.ui.status(parsing ? 'Preparando geometría, materiales y cámaras…' : `Cargando escenario · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, total ? received / total : undefined))
+            if (this.disposed) { disposeScene(this.asset.gltf.scene); return }
+            this.app.emitter.emit('onProjectLoaded', {})
+        } catch (error) {
+            if (error.name === 'AbortError' || this.disposed) return
+            console.error('[Tyrell] Carga:', error)
+            // A parse/build failure must leave retry without a duplicate scene.
+            disposeScene(this.asset?.gltf.scene)
+            this.asset = null
+            this.fill?.removeFromParent()
+            this.ui.error(error)
+        }
+    }
     build() {
-        console.log("(E26902_BladeRunner.build)!")
-
-        this.world3D = new THREE.Object3D()
+        this.world3D = this.asset.gltf.scene
         this.scene.add(this.world3D)
-
-        this.frame = new OrtoResponsiveFrame({
-            app: this.app,
-            project: this,
-            itemRef: this.world3D,
-            refWidth: this.app.size.REF.width,
-            refHeight: this.app.size.REF.height,
-            MODE: "COVER",
-            SCALE_FACTOR: 1.0
+        this.world3D.updateMatrixWorld(true)
+        this.cameras = []
+        this.modelStats = { meshes: 0, triangles: 0, cameras: 0 }
+        this.world3D.traverse(object => {
+            if (object.isPerspectiveCamera) this.cameras.push(object)
+            if (object.isMesh) {
+                this.modelStats.meshes++
+                this.modelStats.triangles += (object.geometry.index?.count || object.geometry.attributes.position.count) / 3
+                object.receiveShadow = true
+                // Keep the distant pyramid/sky out of the room's shadow pass.
+                object.getWorldPosition(_position)
+                object.castShadow = _position.length() < 50
+            }
+            if (object.isDirectionalLight) {
+                this.sun = object
+                object.userData.exportedIntensity = object.intensity
+                object.intensity = TYRELL.sunIntensity
+                object.castShadow = true
+                Object.assign(object.shadow.camera, { left: -18, right: 18, top: 12, bottom: -12, near: 0.1, far: 150 })
+                object.shadow.bias = -0.00015
+                object.shadow.normalBias = 0.025
+                object.shadow.camera.updateProjectionMatrix()
+            }
         })
-
+        this.cameras.sort((a, b) => a.name.localeCompare(b.name))
+        this.modelStats.cameras = this.cameras.length
+        if (!this.cameras.length) throw new Error('El GLB no contiene cámaras de perspectiva.')
+        this.fill = new THREE.HemisphereLight(0xffdab0, 0x797e8a, TYRELL.hemisphereIntensity)
+        this.fill.name = 'Tyrell / relleno provisional'
+        this.scene.add(this.fill)
+        if (ltcUsers++ === 0) RectAreaLightNode.setLTC(RectAreaLightTexturesLib.init())
+        this.usesLTC = true
+        this.areaLights = TYRELL.areaFills.map(({ position, target, color, intensity, size }) => {
+            const light = new THREE.RectAreaLight(color, intensity, size, size)
+            light.name = 'Tyrell / área provisional'
+            light.position.set(...position)
+            light.lookAt(new THREE.Vector3(...target))
+            this.scene.add(light)
+            return light
+        })
+        this.selectCamera(Math.max(0, this.cameras.findIndex(camera => camera.name.startsWith(TYRELL.initialCamera.replaceAll(' ', '_')) || camera.name.startsWith(TYRELL.initialCamera))))
+        this.setQuality(this.quality)
+        this.built = true
+        this.ui.ready(this.cameras, this.activeCameraIndex)
+        this.resetMetrics()
     }
-
-    
+    selectCamera(index) {
+        if (!this.cameras?.[index]) return
+        this.activeCameraIndex = index
+        this.stageCamera.setSource(this.cameras[index])
+        this.app.render.set_stageCamera(this.stageCamera.get_camera())
+        this.app.dev.hide_dev_camera()
+        this.resetMetrics()
+    }
+    setQuality(name) {
+        const profile = TYRELL.profiles[name]
+        if (!profile) return
+        this.quality = name
+        this.renderer?.setPixelRatio(profile.pixelRatio)
+        this.app.render?.update_resize()
+        if (this.sun && this.sun.shadow.mapSize.x !== profile.shadowSize) {
+            // A new light identity rebuilds r182's cached shadow nodes and bindings.
+            // Keep the authored transform/target; LightShadow.clone omits GPU targets.
+            const previous = this.sun
+            const replacement = previous.clone(false)
+            replacement.target = previous.target
+            replacement.shadow.mapSize.setScalar(profile.shadowSize)
+            previous.parent.add(replacement)
+            previous.removeFromParent()
+            previous.dispose()
+            this.sun = replacement
+        }
+        this.resetMetrics()
+    }
+    resetMetrics() {
+        this.samples = []; this.warmup = 60; this.previousFrame = undefined; this.metrics = undefined
+        if (this.built) this.ui.metrics('Estabilizando la medición…')
+    }
+    update_RAF() {
+        const now = performance.now()
+        if (this.previousFrame !== undefined && !document.hidden) {
+            if (this.warmup > 0) this.warmup--
+            else {
+                this.samples.push(now - this.previousFrame)
+                if (this.samples.length > 120) this.samples.shift()
+            }
+        }
+        this.previousFrame = now
+        if (this.samples.length >= 30 && (!this.lastReport || now - this.lastReport > 1000)) {
+            this.lastReport = now
+            const mean = this.samples.reduce((a, b) => a + b, 0) / this.samples.length
+            const sorted = [...this.samples].sort((a, b) => a - b)
+            const size = this.renderer.getDrawingBufferSize(new THREE.Vector2())
+            this.metrics = {
+                fps: +(1000 / mean).toFixed(1), frameMeanMs: +mean.toFixed(2),
+                frameP95Ms: +sorted[Math.floor((sorted.length - 1) * 0.95)].toFixed(2),
+                samples: this.samples.length, resolution: [size.x, size.y],
+                drawCalls: this.renderer.info.render.drawCalls, renderedTriangles: this.renderer.info.render.triangles,
+                geometries: this.renderer.info.memory.geometries, textures: this.renderer.info.memory.textures
+            }
+            this.ui.metrics(`${this.metrics.fps} FPS · ${this.metrics.frameMeanMs} ms/fotograma · ${size.x} × ${size.y} · ${this.metrics.drawCalls} dibujos · ${Math.round(this.metrics.renderedTriangles).toLocaleString('es')} triángulos/pasadas`)
+        }
+        if (this.captureRequested) {
+            this.captureRequested = false
+            const camera = this.activeCameraIndex + 1
+            this.renderer.domElement.toBlob(blob => { if (blob && !this.disposed) this.ui.showOutput(blob, `tyrell-camara-${camera}.png`) })
+        }
+    }
+    getDiagnostics() {
+        const camera = this.stageCamera?.get_camera()
+        const info = this.renderer?.backend?.device?.adapterInfo
+        return {
+            phase: 1, date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
+            adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
+            benchmarkOnStart: false, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
+            model: this.modelStats, asset: { path: TYRELL.asset, bytes: this.asset?.bytes, loadMs: this.asset?.loadMs },
+            camera: camera ? { name: camera.name, position: camera.position.toArray(), quaternion: camera.quaternion.toArray(), fov: camera.fov, aspect: camera.aspect, near: camera.near, far: camera.far } : null,
+            metrics: this.metrics || null,
+            metricNote: 'Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.',
+            pending: ['Materiales y luz definitiva', 'Reflejos del suelo', 'Atmósfera', 'Recorrido libre']
+        }
+    }
+    downloadReport() {
+        const text = JSON.stringify(this.getDiagnostics(), null, 2)
+        this.ui.showOutput(new Blob([text], { type: 'application/json' }), 'tyrell-diagnostico.json', text)
+    }
+    dispose() {
+        if (this.disposed) return
+        this.disposed = true
+        this.abort?.abort()
+        this.stageCamera?.dispose()
+        this.app.emitter.off('onAppKill', this.killListener)
+        if (this.resizeListener) this.app.emitter.off('onAppSizeUpdate', this.resizeListener)
+        document.removeEventListener('visibilitychange', this.visibilityListener)
+        disposeScene(this.world3D)
+        this.fill?.removeFromParent()
+        this.fill?.dispose()
+        this.areaLights?.forEach(light => { light.removeFromParent(); light.dispose() })
+        if (this.usesLTC && --ltcUsers === 0) {
+            for (const name of ['LTC_FLOAT_1', 'LTC_FLOAT_2', 'LTC_HALF_1', 'LTC_HALF_2']) RectAreaLightTexturesLib[name].dispose()
+        }
+        this.ui?.dispose()
+        document.body.classList.remove('tyrell-viewer', 'tyrell-reference')
+    }
 }
-
-export default E26902_BladeRunner
+const _position = new THREE.Vector3()
+let ltcUsers = 0

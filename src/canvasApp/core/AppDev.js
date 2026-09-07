@@ -100,6 +100,8 @@ class AppDev{
     }
     kill(){
         document.removeEventListener('keydown', this.listener_keypress)
+        this.controls?.dispose()
+        this.gui?.destroy()
     }
     switch_backstage(){
         if(this.SHOW_BACKSTAGE){

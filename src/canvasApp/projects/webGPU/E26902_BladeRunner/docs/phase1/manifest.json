@@ -1,0 +1,17 @@
+{
+  "phase": 1,
+  "date": "2026-09-07",
+  "sourceBlend": "D:/Trabajo/Proyectos_LEGION/26_902_BladeRunner/_Blender/BladeRunner_5_6_High_v3.blend",
+  "sourceGlb": "D:/Trabajo/Proyectos_LEGION/26_902_BladeRunner/_Blender/BladeRunner_5_6_High_v3.glb",
+  "repositoryAsset": "static/glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3.glb",
+  "bytes": 56526524,
+  "sha256": "21f28ad9297badf397d457879b12e3858c2fbe8ab9e3ad926a60afee09a1fbb3",
+  "threeVersion": "0.182.0",
+  "glb": { "meshResources": 117, "primitives": 157, "embeddedImages": 25, "cameras": 10 },
+  "runtimeScene": { "meshObjects": 175, "trianglesIncludingInstances": 378164 },
+  "sourceModifiedInPhase1": false,
+  "referenceRenders": [
+    "D:/Trabajo/Proyectos_LEGION/26_902_BladeRunner/_Blender/v3_renders/v3_general.png",
+    "D:/Trabajo/Proyectos_LEGION/26_902_BladeRunner/_Blender/v3_renders/v3_detalle.png"
+  ]
+}

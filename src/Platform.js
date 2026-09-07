@@ -36,8 +36,8 @@ class Platform{
             $mouseEvents: $mouseEvents,
             pathPrefix:"./",
             initData: {},
-            debug_mode: true,
-            gui_mode: true,
+            debug_mode: false,
+            gui_mode: false,
             mobile_mode: false,
 
             render_background_alpha: 0,
@@ -56,9 +56,7 @@ class Platform{
             scrolls: ["scroll_main"],
 
         })
-        gsap.delayedCall(1, ()=>{
-            this.init_scrollTriger()
-        })
+        // Tyrell is a scene viewer; it does not use the template's page scroll.
 
     }
     //----------------------------------------------

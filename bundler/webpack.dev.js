@@ -8,7 +8,7 @@ const infoColor = (_message) =>
     return `\u001b[1m\u001b[34m${_message}\u001b[39m\u001b[22m`
 }
 
-module.exports = merge(
+module.exports = (env = {}) => merge(
     commonConfiguration,
     {
         stats: 'errors-warnings',
@@ -19,10 +19,10 @@ module.exports = merge(
         },
         devServer:
         {
-            host: 'local-ip',
-            port: portFinderSync.getPort(8080),
-            open: true,
-            server: 'https', // CHANGE THIS: Use 'server: https' for newer webpack-dev-server
+            host: env.local ? 'localhost' : 'local-ip',
+            port: env.local ? 8080 : portFinderSync.getPort(8080),
+            open: !env.local,
+            server: { type: env.local ? 'http' : 'https' },
             // If the above doesn't work with your version, use 'https: true'
             allowedHosts: 'all',
             hot: false,
@@ -44,7 +44,7 @@ module.exports = merge(
                 console.log(devServer.options.host)
                 const port = devServer.options.port
                 // const https = devServer.options.https ? 's' : ''
-                const https = 's'
+                const https = devServer.options.server.type === 'https' ? 's' : ''
                 const domain1 = `http${https}://${devServer.options.host}:${port}`
                 const domain2 = `http${https}://localhost:${port}`
 

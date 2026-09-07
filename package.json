@@ -3,7 +3,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "webpack --config ./bundler/webpack.prod.js",
-    "dev": "webpack serve --config ./bundler/webpack.dev.js"
+    "test:tyrell": "node --test --test-isolation=none src/canvasApp/projects/webGPU/E26902_BladeRunner/tests/phase1.test.mjs",
+    "dev": "webpack serve --config ./bundler/webpack.dev.js",
+    "dev:local": "webpack serve --config ./bundler/webpack.dev.js --env local"
   },
   "dependencies": {
     "@babel/core": "^7.17.10",
