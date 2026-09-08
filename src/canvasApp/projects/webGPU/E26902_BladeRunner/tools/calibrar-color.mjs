@@ -67,7 +67,7 @@ function decodePNG(file) {
 
 // Every matrix in Three's AgX chain preserves grey (each row sums to 1), so for a grey ramp the
 // whole transform collapses to this scalar function. Values copied from
-// three/src/nodes/display/ToneMappingFunctions.js at r182.
+// three/src/nodes/display/ToneMappingFunctions.js. Unchanged between r182 and r185.
 const AGX_MIN_EV = -12.47393, AGX_MAX_EV = 4.026069
 const clamp01 = v => Math.min(1, Math.max(0, v))
 function agxSigmoid(x) {
@@ -134,7 +134,7 @@ report.checks.harness = {
 
 // Does Three's AgX match Blender's AgX with no look?
 report.checks.agxBaseVsThree = {
-    note: 'Three.js r182 implementa AgX base con una aproximación polinómica del sigmoide; Blender usa su LUT. Ésta es la diferencia que queda aunque el look se reproduzca perfecto.',
+    note: 'Three.js implementa AgX base con una aproximación polinómica del sigmoide; Blender usa su LUT. Ésta es la diferencia que queda aunque el look se reproduzca perfecto.',
     ...stats(measured.agxNone.red, linear.map(v => srgbEncode(agxScalar(v))))
 }
 report.checks.blenderLookSpread = {

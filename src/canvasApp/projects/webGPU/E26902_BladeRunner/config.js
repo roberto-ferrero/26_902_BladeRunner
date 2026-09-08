@@ -33,6 +33,54 @@ export const TYRELL = {
     // and the 1,0 of the sky backdrop and the sun disc, which are single planes.
     backfaceCulling: { enabled: true, closureThreshold: 0.5 },
 
+    // The pavement's planar reflection. See TyrellReflection.js for where it is added and why.
+    // The plane and the extent come from the floor sectors, not from numbers typed here.
+    //
+    // STILL DISABLED, though phase 6 improved it. Before the post-processing pipeline the
+    // reflector froze the canvas outright and emitted over a thousand WebGPU warnings per
+    // session. With the pipeline the warnings drop to eight and the canvas updates again, but
+    // the presented frame still trails the camera by one change. docs/phase5/VALIDACION.md has
+    // the evidence. Set to true to reproduce it.
+    reflection: {
+        enabled: false,
+        // Half resolution: the reflection is blurred by the roughness anyway, and this is the
+        // one knob that pays for itself. One extra pass for the whole floor, no recursion.
+        resolutionScale: 0.5,
+        samples: 4,
+        // Frames to wait after a resize before the floor samples the reflector again. Changing
+        // the drawing buffer destroys the reflector's render target while WebGPU still has
+        // submits referring to it, and the browser reports it. Two frames is enough for those
+        // to drain; the floor renders without its reflection meanwhile, which is not visible.
+        resumeFrames: 2,
+        // Schlick F0 for a dielectric stone. Faint head-on, dominant at grazing, which is what
+        // draws the long streaks of the reference.
+        reflectivity: 0.04,
+        // How much the material's own roughness blurs the reflection, in blur units.
+        roughnessBlur: 3,
+        strength: 1
+    },
+
+    // Post-processing. The bloom numbers are Blender's own compositor glare, read from
+    // _Blender/build_tyrell_v3.py and finish_tyrell_v3.py: Fog Glow, threshold 1,2, strength
+    // 0,6, size 0,72. They act on the same linear render in both places.
+    post: {
+        enabled: true,
+        // Strength measured, not copied across: see TyrellPost.js. Threshold and radius are
+        // Blender's own Fog Glow values.
+        bloom: { enabled: true, threshold: 1.2, strength: 0.3, radius: 0.72 },
+        // Aerial perspective beyond the room, from the film rather than from Blender, which has
+        // no volume out there. Distances in metres: the room ends around 16 m and the pyramid
+        // sits at 269 m, so nothing inside the hall is touched.
+        aerial: { enabled: true, strength: 0.45, startMetres: 60, fullMetres: 600, color: [0.186, 0.081, 0.023] },
+        // The dust in the light shafts. Colour is Blender's Principled Volume, (0,66, 0,61,
+        // 0,47). Its density of 0,005 is per metre of a homogeneous medium and does not map onto
+        // the raymarcher's own scale, so this one is fitted against the render.
+        beams: {
+            enabled: true, strength: 1, color: [0.66, 0.61, 0.47],
+            density: 0.5, maxDensity: 0.5, distanceAttenuation: 2, steps: 60, resolutionScale: 0.5
+        }
+    },
+
     // The lighting rig, read out of BladeRunner_5_6_High_v3.blend by tools/blender/leer_luces.py
     // and converted by tools/verificar-luces.mjs. Both reports are in docs/phase4/.
     //

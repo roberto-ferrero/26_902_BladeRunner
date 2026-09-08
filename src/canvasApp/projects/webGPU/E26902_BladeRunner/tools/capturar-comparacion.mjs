@@ -80,7 +80,7 @@ async function launch(port) {
 }
 
 class CDP {
-    constructor(socket) { this.socket = socket; this.id = 0; this.pending = new Map(); this.sessionId = null; this.pageErrors = [] }
+    constructor(socket) { this.socket = socket; this.id = 0; this.pending = new Map(); this.sessionId = null; this.pageErrors = []; this.errorCounts = new Map() }
     static async connect(url) {
         const socket = new WebSocket(url)
         await new Promise((resolve, reject) => { socket.onopen = resolve; socket.onerror = reject })
@@ -117,12 +117,27 @@ class CDP {
     }
     reportPageError(text, source) {
         const message = String(text ?? '')
-        this.pageErrors.push(message)
-        console.error(`  [${source}] ${firstLine(message)}`)
+        const at = Date.now() - START
+        this.pageErrors.push({ at, source, message })
+        // Repeats are counted, not printed: a renderer warning can fire every frame.
+        const key = `${source}:${firstLine(message)}`
+        const seen = (this.errorCounts.get(key) || 0) + 1
+        this.errorCounts.set(key, seen)
+        if (seen === 1) console.error(`  [${source}] +${(at / 1000).toFixed(1)}s ${firstLine(message)}`)
+    }
+    summariseErrors() {
+        if (!this.pageErrors.length) return
+        console.error(`  ${this.pageErrors.length} mensajes de la página:`)
+        for (const [key, count] of this.errorCounts) {
+            const times = this.pageErrors.filter(e => `${e.source}:${firstLine(e.message)}` === key).map(e => e.at)
+            console.error(`    ${count} × ${key.slice(0, 90)}`)
+            console.error(`      de +${(Math.min(...times) / 1000).toFixed(1)}s a +${(Math.max(...times) / 1000).toFixed(1)}s`)
+        }
     }
     close() { this.socket.close() }
 }
 
+const START = Date.now()
 const wait = ms => new Promise(r => setTimeout(r, ms))
 // Escape-free on purpose: only the first line of a page error is worth printing.
 const firstLine = text => String(text).split(String.fromCharCode(10))[0]
@@ -133,7 +148,7 @@ async function until(cdp, expression, timeout, label) {
         try { if (await cdp.evaluate(expression)) return true } catch { /* not ready */ }
         await wait(250)
     }
-    const blame = cdp.pageErrors.length ? ` La página había fallado antes: ${firstLine(cdp.pageErrors[0])}` : ''
+    const blame = cdp.pageErrors.length ? ` La página había fallado antes: ${firstLine(cdp.pageErrors[0].message)}` : ''
     throw new Error(`Tiempo agotado esperando ${label}.${blame}`)
 }
 
@@ -278,6 +293,7 @@ try {
     fs.writeFileSync(path.join(OUT, `${PREFIX}-capturas.json`), JSON.stringify(evidence, null, 2))
     console.log(`\nEvidencia en ${OUT}`)
 } finally {
+    cdp?.summariseErrors()
     cdp?.close()
     if (!args.includes('--keep')) {
         browser.kill()

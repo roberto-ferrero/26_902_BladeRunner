@@ -218,3 +218,63 @@ test('What the viewer shipped matches what the reports describe', () => {
     assert.ok(TYRELL.lighting.shadow.normalBiasTexels <= 0.5, `sesgo ${TYRELL.lighting.shadow.normalBiasTexels}`)
     assert.ok(capture.lighting.shadow.normalBias < 0.005, `sesgo normal ${capture.lighting.shadow.normalBias} m`)
 })
+
+// --- phase 5 ------------------------------------------------------------------
+
+test('The floor reflection ships disabled while the renderer freezes the canvas', () => {
+    // Not a preference: with it on, the presented image stops updating. See
+    // docs/phase5/VALIDACION.md. This test exists so nobody flips it back by accident.
+    assert.equal(TYRELL.reflection.enabled, false)
+    // The settings still have to be the ones the module was measured with.
+    assert.equal(TYRELL.reflection.resolutionScale, 0.5)
+    assert.equal(TYRELL.reflection.reflectivity, 0.04)
+    assert.ok(TYRELL.reflection.resumeFrames >= 1)
+})
+
+test('The reflection is a single shared pass whose plane comes from the floor itself', () => {
+    const reflectionModule = load(path.join(root, 'TyrellReflection.js'), {
+        three: THREE,
+        'three/webgpu': { MeshStandardNodeMaterial: class extends THREE.MeshStandardMaterial {} },
+        'three/tsl': {
+            reflector: () => {
+                // A stand-in that answers every chained call with itself, so the module can build
+                // its node expression without a GPU.
+                const node = {}
+                node.target = new THREE.Object3D()
+                node.blur = () => node
+                node.mul = () => node
+                node.rgb = node
+                return node
+            },
+            float: () => ({ add: () => ({}), sub: () => ({ mul: () => ({}) }) }),
+            pow: () => ({}), saturate: () => ({}), dot: () => ({}),
+            positionViewDirection: {}, transformedNormalView: {}, materialRoughness: { mul: () => ({}) }
+        },
+        './config': { TYRELL: { ...TYRELL, reflection: { ...TYRELL.reflection, enabled: true } } }
+    })
+    const scene = new THREE.Scene()
+    const material = new THREE.MeshStandardMaterial({ name: 'PBR | Piedra negra pulida' })
+    const meshes = [[-5, 0, -5], [5, 0, 5]].map(([x, y, z]) => {
+        const mesh = new THREE.Mesh(new THREE.BoxGeometry(10, 0.2, 10), material)
+        mesh.position.set(x, y, z)
+        mesh.updateMatrixWorld(true)
+        scene.add(mesh)
+        return mesh
+    })
+    const built = reflectionModule.createFloorReflection({ scene, meshes })
+    assert.ok(built, 'debe construirse cuando está habilitado')
+    // The plane sits on the top of the pavement, taken from the sectors, not typed in.
+    assert.ok(Math.abs(built.planeY - 0.1) < 1e-6, `altura ${built.planeY}`)
+    assert.deepEqual(built.centre, [0, 0, 0])
+    assert.equal(built.sectors, 2)
+    // One material for every sector: one extra pass, not one per mesh.
+    assert.equal(built.sharedMaterials, 1)
+    assert.equal(meshes[0].material, meshes[1].material)
+    assert.notEqual(meshes[0].material, material)
+    assert.equal(built.bounces, false, 'nunca debe recurrir')
+    // Undoing it must put the original material back on every sector.
+    built.restore()
+    for (const mesh of meshes) assert.equal(mesh.material, material)
+    for (const mesh of meshes) mesh.geometry.dispose()
+    material.dispose()
+})

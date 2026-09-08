@@ -13,8 +13,8 @@ export function setLookEnabled(enabled) {
 // AgX with the look the reference renders were made with.
 //
 // Blender rendered v3_general.png and v3_detalle.png with view transform AgX and the look
-// "AgX - Medium High Contrast" (see _Blender/build_tyrell_v3.py). Three.js r182 ships AgX base
-// only, with no look, which lifts the shadows badly: measured against Blender at -6 EV, Three
+// "AgX - Medium High Contrast" (see _Blender/build_tyrell_v3.py). Three.js ships AgX base only,
+// with no look, which lifts the shadows badly: measured against Blender at -6 EV, Three
 // reports 0.115 where Blender reports 0.070.
 //
 // The look is an OCIO GradingPrimaryTransform in log style, contrast 1.2, saturation 1. Because
@@ -23,8 +23,10 @@ export function setLookEnabled(enabled) {
 // normalisation and the sigmoid. The constants live in config.js and were fitted against a
 // measured Blender ramp by tools/calibrar-color.mjs, which also reports the residual.
 //
-// The body below mirrors agxToneMapping from three/src/nodes/display/ToneMappingFunctions.js at
-// r182; agxDefaultContrastApprox is not exported, so it is inlined.
+// The body below mirrors agxToneMapping from three/src/nodes/display/ToneMappingFunctions.js;
+// agxDefaultContrastApprox is not exported, so it is inlined. The constants and both matrices
+// were checked again after the r182 to r185 update and are unchanged, so the fitted look still
+// sits on the same curve.
 
 const LINEAR_REC2020_TO_LINEAR_SRGB = mat3(
     vec3(1.6605, -0.1246, -0.0182), vec3(-0.5876, 1.1329, -0.1006), vec3(-0.0728, -0.0083, 1.1187))

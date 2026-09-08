@@ -16,6 +16,9 @@ export default class TyrellUI {
                 <label class="tyrell-check"><input type="checkbox" data-action="compare"> Comparación 1920 × 800</label>
                 <label class="tyrell-check"><input type="checkbox" data-action="look" checked> Look AgX de Blender</label>
                 <label>Indirecta <select aria-label="Indirecta"><option value="ninguna">Ninguna</option><option value="ambiente">Ambiente</option><option value="mundo">Mundo</option><option value="escena" selected>Escena</option></select></label>
+                <label class="tyrell-check"><input type="checkbox" data-effect="bruma" checked> Bruma exterior</label>
+                <label class="tyrell-check"><input type="checkbox" data-effect="haces" checked> Haces de luz</label>
+                <label class="tyrell-check"><input type="checkbox" data-effect="bloom" checked> Bloom</label>
                 <button type="button" data-action="capture">Captura</button>
                 <button type="button" data-action="report">Diagnóstico</button>
             </div><p class="tyrell-note">Luz provisional · Cámaras originales de Blender · Recorrido libre en una próxima fase</p>
@@ -33,6 +36,10 @@ export default class TyrellUI {
         this.root.querySelector('[data-action="compare"]').onchange = event => actions.compare(event.target.checked)
         this.root.querySelector('[data-action="look"]').onchange = event => actions.look(event.target.checked)
         this.root.querySelector('[aria-label="Indirecta"]').onchange = event => actions.indirect(event.target.value)
+        // Each atmosphere effect switches on its own, so its contribution and cost can be read.
+        for (const box of this.root.querySelectorAll('[data-effect]')) {
+            box.onchange = event => actions.effect(event.target.dataset.effect, event.target.checked)
+        }
         this.retry.onclick = () => actions.retry()
         this.root.querySelector('[data-action="capture"]').onclick = () => actions.capture()
         this.root.querySelector('[data-action="report"]').onclick = () => actions.report()

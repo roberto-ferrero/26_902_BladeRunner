@@ -34,7 +34,11 @@ class AppRender{
         if(this.app.TYPE == "WEBGPU_APP" && !this.renderer?.initialized){
             return
         }
-        this.renderer.render( this.scene, active_camera);
+        // A project may own its render path, for instance a post-processing pipeline. It returns
+        // true when it has drawn the frame itself.
+        if(this.app.project?.render_frame?.(this.renderer, this.scene, active_camera) !== true){
+            this.renderer.render( this.scene, active_camera);
+        }
         this.RENDER_COUNT++
     }
     //----------------------------------------------

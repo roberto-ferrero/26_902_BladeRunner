@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado (08/09/2026): **fases 1, 2 y 3 completadas; de la fase 4, siete de ocho puntos**. Queda abierto el friso en penumbra, diagnosticado. Próxima entrega: **fase 5, reflejos del pavimento**. Instrucciones en [README.md](README.md). Evidencia y límites en [fase 1](docs/phase1/VALIDACION.md), [fase 2](docs/phase2/VALIDACION.md), [fase 3](docs/phase3/VALIDACION.md) y [fase 4](docs/phase4/VALIDACION.md). Objetivo artístico de luz y atmósfera en [REFERENCIAS.md](docs/REFERENCIAS.md).
+Estado (08/09/2026): **fases 1, 2 y 3 completadas; de la fase 4, siete de ocho puntos; de la fase 6, siete de ocho; fase 5 todavía abierta**. Three.js 0.185.1. CAM 01 queda en 0,0905 de error frente a Blender. Próxima entrega: **reintentar la fase 5**, que el posprocesado de la 6 ha dejado a medio desbloquear, y después la fase 7. Instrucciones en [README.md](README.md). Evidencia y límites en [fase 1](docs/phase1/VALIDACION.md), [fase 2](docs/phase2/VALIDACION.md), [fase 3](docs/phase3/VALIDACION.md) y [fase 4](docs/phase4/VALIDACION.md). Objetivo artístico de luz y atmósfera en [REFERENCIAS.md](docs/REFERENCIAS.md).
 
 ## Objetivo
 
@@ -11,7 +11,7 @@ Trabajar por entregas pequeñas, en el orden de esta lista. Cada entrega actuali
 ## Fuentes y puntos de integración
 
 - Entrada del proyecto: `E26902_BladeRunner`, en esta carpeta. Es un archivo JavaScript sin extensión; `src/Platform.js` ya lo importa e instancia.
-- Motor instalado: Three.js **0.182.0**. Usar las APIs de esta versión como referencia; cualquier actualización deberá tener una razón concreta.
+- Motor instalado: Three.js **0.185.1**, actualizado el 08/09/2026 desde 0.182.0 a petición del usuario. Usar las APIs de esta versión como referencia. La actualización se comprobó antes de darla por buena: las constantes y matrices de AgX son idénticas, así que la calibración de color se mantiene sin refitar, y las APIs de las que depende el proyecto siguen existiendo. Ver el registro en [docs/phase4/VALIDACION.md](docs/phase4/VALIDACION.md).
 - Ciclo del andamiaje: `onRendererReady` → `project.init(app)` → carga → `onProjectLoaded` → `project.build()` → `update_RAF()`.
 - El código específico de Tyrell permanecerá en esta carpeta; los cambios en `core` serán pequeños y necesarios para integrarlo.
 - Recursos originales, fuera del repositorio: `../../_Blender/BladeRunner_5_6_High_v3.blend` y `.glb`, respecto a la raíz del repositorio.
@@ -33,7 +33,7 @@ Priorizar la fidelidad visual en esos equipos. Las cámaras fijas proporcionará
 
 - [x] Localizar la entrada y comprobar que está seleccionada en `Platform.js`.
 - [x] Revisar el ciclo de carga, cámaras, render y eventos del andamiaje.
-- [x] Confirmar Three.js 0.182.0 y la disponibilidad local de nodos para reflexión, volumen y posprocesado.
+- [x] Confirmar Three.js y la disponibilidad local de nodos para reflexión, volumen y posprocesado. Se arrancó en 0.182.0 y se actualizó a 0.185.1 el 08/09/2026.
 - [x] Revisar las métricas del recurso: 378.164 triángulos contando repeticiones, 25 imágenes embebidas y GLB de 56,5 MB sin compresión geométrica.
 - [x] Identificar diferencias iniciales: cámara ortográfica, encuadre que escala contenido, calidad forzada a `Low` y cambio automático a WebGL en el núcleo.
 - [x] Compilación inicial con `npm run build`: completada el 07/09/2026, Webpack 5.97.1, 46,2 s. Dos advertencias de tamaño de recursos y entrada; sin errores de compilación. Registro local: `tyrell-build-baseline.log` en la raíz, ignorado por Git.
@@ -118,26 +118,30 @@ Queda abierto y medido:
 
 ## 5 · Reflejos del pavimento y materiales pulidos
 
-- [ ] Probar un reflector planar compartido por el pavimento mediante nodos compatibles con WebGPU.
-- [ ] Integrarlo con rugosidad, Fresnel, normales y juntas del material, evitando un espejo uniforme.
-- [ ] Comprobar las columnas y el mobiliario reflejados, también al cambiar de cámara.
-- [ ] Controlar resolución y frecuencia de actualización del reflejo; evitar recursión y pasadas innecesarias.
-- [ ] Mantener un entorno de reflexión coherente para bronces y cristalería.
+- [ ] Probar un reflector planar compartido por el pavimento mediante nodos compatibles con WebGPU. **Escrito y correcto en imagen, pero bloqueado:** `reflector()` congela el lienzo en Three 0.185.1 al chocar con el destino de posprocesado que el mapeo tonal obliga a usar. Se entrega desactivado.
+- [x] Integrarlo con rugosidad, Fresnel, normales y juntas del material, evitando un espejo uniforme. Fresnel de Schlick, desenfoque desde el propio mapa de rugosidad y la normal sombreada con su mapa.
+- [ ] Comprobar las columnas y el mobiliario reflejados, también al cambiar de cámara. No se puede: el cambio de cámara es justo lo que revela el congelado.
+- [x] Controlar resolución y frecuencia de actualización del reflejo; evitar recursión y pasadas innecesarias. Media resolución, sin rebotes, una sola pasada para los 21 sectores porque comparten material.
+- [x] Mantener un entorno de reflexión coherente para bronces y cristalería. Lo da la sonda de escena de la fase 4, que sigue activa.
 
-**Resultado comprobable:** los reflejos largos del suelo refuerzan la composición y mantienen estabilidad al mover la cámara, con coste registrado.
+**Resultado:** la fase queda **bloqueada por el motor**, no por el diseño. En el primer fotograma válido el lateral del pavimento sube de −1,63 a −0,79 EV respecto a Blender, la mayor mejora que ha tenido esa región. Evidencia, hipótesis descartadas y las tres vías de desbloqueo en [docs/phase5/VALIDACION.md](docs/phase5/VALIDACION.md).
+
+La vía que encaja con el plan es la primera: llevar el mapeo tonal a una pasada de posprocesado propia, que es lo que la fase 6 necesita de todas formas. **Reintentar la fase 5 después de la 6.**
 
 ## 6 · Atmósfera y acabado cinematográfico
 
-- [ ] Separar la profundidad atmosférica del exterior de la bruma dentro de la sala.
-- [ ] Implementar y medir haces de luz y polvo mediante nodos/volumen compatibles con la versión instalada; una niebla uniforme no sustituye estos haces.
-- [ ] Comprobar oclusión por las columnas, estabilidad temporal, bandas y ruido del volumen.
-- [ ] Añadir bloom contenido y ajuste final del color con el sistema de posprocesado WebGPU.
-- [ ] Mantener controles para activar/desactivar cada efecto y comparar su aportación y coste.
-- [ ] Valorar grano, viñeta o profundidad de campo sólo si aportan fidelidad a las referencias y no ocultan defectos del modelo o la luz.
-- [ ] Sustituir el disco solar recortado por un núcleo difuso con halo. El GLB trae un disco emisivo de 14 m a 650 m que hoy se recorta con borde duro; en los tres fotogramas de la película el sol no tiene borde.
-- [ ] Añadir perspectiva aérea al exterior: en los fotogramas lo lejano se aclara y pierde contraste, y hoy las pirámides se recortan contra el cielo.
+- [x] Separar la profundidad atmosférica del exterior de la bruma dentro de la sala. El maestro respalda la separación: su polvo es una caja que sólo cubre la sala. Dentro van los haces, acotados por el frustum de sombra; fuera, perspectiva aérea por profundidad de 60 a 600 m.
+- [x] Implementar y medir haces de luz y polvo mediante nodos/volumen compatibles con la versión instalada. `GodraysNode` raymarchea el mapa de sombra del sol, con el color de polvo del maestro.
+- [x] Comprobar oclusión por las columnas, estabilidad temporal, bandas y ruido del volumen. La oclusión sale del propio mapa de sombra; revisado en las tres cámaras sin bandas ni ruido visible.
+- [x] Añadir bloom contenido y ajuste final del color con el sistema de posprocesado WebGPU. `RenderPipeline` con el mapeo tonal al final, así que la calibración de la fase 3 sigue intacta. Umbral y tamaño son los de Blender; la fuerza se midió en 0,3 porque su 0,6 no traslada.
+- [x] Mantener controles para activar/desactivar cada efecto y comparar su aportación y coste. Tres casillas nuevas y la tabla de aportación por región en la validación. Coste: trece llamadas de dibujo más por cámara.
+- [ ] Valorar grano, viñeta o profundidad de campo. **Descartados por ahora, razonadamente:** con el friso a 2,38 y la columna a 0,22 veces Blender, grano y viñeta taparían esos errores en vez de corregirlos. Los nodos están disponibles, así que es reversible.
+- [x] Sustituir el disco solar recortado por un núcleo difuso con halo. Lo resuelve el bloom, sin tocar el disco ni su material.
+- [x] Añadir perspectiva aérea al exterior. Apuntada al color del cielo medido en el render, (0,186, 0,081, 0,023) lineal, de modo que el cielo apenas cambia y sólo sube lo oscuro y lejano hacia él.
 
-**Resultado comprobable:** comparación lado a lado del plano general, el detalle y la vista lateral contra las capturas base de la fase 2, los renders de Blender y los fotogramas de la película.
+**Resultado:** CAM 01 baja de 0,0965 a **0,0905**, el mejor del proyecto. La mesa de trabajo pasa de 0,26 a 0,97 veces la luminancia de Blender y el cielo del vano de 0,82 a 1,08. CAM 02 sube ligeramente a 0,0954 porque el bloom levanta la cristalería, que ya sobraba. Evidencia en [docs/phase6/VALIDACION.md](docs/phase6/VALIDACION.md).
+
+Efecto sobre la fase 5: reactivando el reflector sobre la tubería nueva, los avisos de WebGPU bajan de 1255 a 8 y el lienzo deja de congelarse, lo que confirma el diagnóstico de aquella fase. No basta todavía: la imagen presentada va una cámara por detrás.
 
 ## 7 · Navegación y presentación
 
@@ -168,4 +172,4 @@ La medición comienza en la fase 1; esta fase reúne los ajustes finales cuando 
 
 Al terminar cada entrega: actualizar esta lista, anotar archivos relevantes, comprobaciones realizadas, captura comparable cuando exista cambio visual y siguiente tarea. Las decisiones de implementación rutinarias se resuelven durante el trabajo; se consultan los cambios de alcance o de experiencia que lo necesiten.
 
-Documentación técnica consultada: [WebGPURenderer](https://threejs.org/manual/en/webgpurenderer.html), [ReflectorNode](https://threejs.org/docs/pages/ReflectorNode.html), [VolumeNodeMaterial](https://threejs.org/docs/pages/VolumeNodeMaterial.html). Los ejemplos actuales pueden diferir de Three.js 0.182.0; contrastarlos con el código instalado antes de implementar.
+Documentación técnica consultada: [WebGPURenderer](https://threejs.org/manual/en/webgpurenderer.html), [ReflectorNode](https://threejs.org/docs/pages/ReflectorNode.html), [VolumeNodeMaterial](https://threejs.org/docs/pages/VolumeNodeMaterial.html). Los ejemplos publicados pueden diferir de la versión instalada; contrastarlos con el código de `node_modules/three` antes de implementar.

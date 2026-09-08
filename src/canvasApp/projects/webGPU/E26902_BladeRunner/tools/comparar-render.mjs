@@ -17,22 +17,25 @@ import path from 'node:path'
 import { decodePNG, channelStats, crop, sideBySide, encodePNG, srgbToLinear, luminance } from './lib/png.mjs'
 import { REGIONS } from './lib/regiones.mjs'
 
-const OUT = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase4/comparacion.json'
-const PHASE3 = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase3'
-const PHASE2 = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase2'
-const PHASE4 = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase4'
+// Which delivery is being measured, and which one it is compared against. Passing them keeps
+// the tool usable in later phases without editing it each time.
+const arg = (name, fallback) => { const i = process.argv.indexOf(name); return i >= 0 ? process.argv[i + 1] : fallback }
+const CURRENT = arg('--fase', 'fase5')
+const PREVIOUS = arg('--anterior', 'fase4')
+const DOCS = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/docs'
+const OUT = `${DOCS}/${CURRENT.replace('fase', 'phase')}/comparacion.json`
 // The rectangles live in lib/regiones.mjs so this tool and comparar-indirecta.mjs cannot drift
 // apart and quietly measure different things.
 const SHOTS = [
     {
         camera: 'CAM 01', ...REGIONS['CAM 01'],
-        current: `${PHASE4}/fase4-cam01-comparacion.png`,
-        baseline: `${PHASE3}/fase3-cam01-comparacion.png`
+        current: `${DOCS}/${CURRENT.replace('fase', 'phase')}/${CURRENT}-cam01-comparacion.png`,
+        baseline: `${DOCS}/${PREVIOUS.replace('fase', 'phase')}/${PREVIOUS}-cam01-comparacion.png`
     },
     {
         camera: 'CAM 02', ...REGIONS['CAM 02'],
-        current: `${PHASE4}/fase4-cam02-comparacion.png`,
-        baseline: `${PHASE3}/fase3-cam02-comparacion.png`
+        current: `${DOCS}/${CURRENT.replace('fase', 'phase')}/${CURRENT}-cam02-comparacion.png`,
+        baseline: `${DOCS}/${PREVIOUS.replace('fase', 'phase')}/${PREVIOUS}-cam02-comparacion.png`
     }
 ]
 
@@ -96,7 +99,7 @@ for (const shot of SHOTS) {
         whole.rmsDisplayAnterior = +Math.sqrt(base / (reference.width * reference.height * 3)).toFixed(4)
     }
     if (CROPS) {
-        const dir = path.join(PHASE4, 'recortes')
+        const dir = path.join(DOCS, CURRENT.replace('fase', 'phase'), 'recortes')
         fs.mkdirSync(dir, { recursive: true })
         for (const [name, rect] of Object.entries(shot.regions)) {
             const panels = [crop(reference, rect, CROP_SCALE), crop(current, rect, CROP_SCALE)]

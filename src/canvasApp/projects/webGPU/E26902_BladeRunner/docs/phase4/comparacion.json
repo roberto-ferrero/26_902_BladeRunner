@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07T23:39:14.974Z",
+  "generated": "2026-09-07T23:50:51.311Z",
   "note": "La referencia es Cycles con luz indirecta completa y volumen de polvo, que el visor no tiene. La diferencia es esperada y lo que aquí se mide es dónde está y cuánta es.",
   "shots": [
     {
@@ -32,12 +32,12 @@
         },
         "actual": {
           "display": [
-            0.1326,
-            0.0929,
-            0.0595
+            0.1338,
+            0.0939,
+            0.0601
           ],
-          "displayLuminance": 0.0989,
-          "linearLuminance": 0.01012,
+          "displayLuminance": 0.0999,
+          "linearLuminance": 0.01029,
           "min": [
             0,
             0,
@@ -68,7 +68,7 @@
             1
           ]
         },
-        "rmsDisplay": 0.0967,
+        "rmsDisplay": 0.0965,
         "rmsDisplayAnterior": 0.11
       },
       "regions": [
@@ -81,7 +81,7 @@
             "height": 170
           },
           "referencia": 0.5139,
-          "actual": 0.6402,
+          "actual": 0.6413,
           "anterior": 0.6822,
           "razonLineal": 1.61,
           "evDeDiferencia": 0.69,
@@ -107,21 +107,21 @@
             },
             "actual": {
               "display": [
-                0.7067,
-                0.6315,
-                0.5309
+                0.7077,
+                0.6326,
+                0.5321
               ],
-              "displayLuminance": 0.6402,
-              "linearLuminance": 0.36989,
+              "displayLuminance": 0.6413,
+              "linearLuminance": 0.37127,
               "min": [
-                0.1373,
-                0.0588,
-                0.0078
+                0.149,
+                0.0706,
+                0.0118
               ],
               "max": [
-                0.949,
-                0.9137,
-                0.851
+                0.9529,
+                0.9176,
+                0.8549
               ]
             },
             "anterior": {
@@ -157,7 +157,7 @@
           "actual": 0.0116,
           "anterior": 0.0044,
           "razonLineal": 0.32,
-          "evDeDiferencia": -1.64,
+          "evDeDiferencia": -1.63,
           "detalle": {
             "referencia": {
               "display": [
@@ -180,12 +180,12 @@
             },
             "actual": {
               "display": [
-                0.0272,
+                0.0273,
                 0.0079,
                 0.0017
               ],
               "displayLuminance": 0.0116,
-              "linearLuminance": 0.00089,
+              "linearLuminance": 0.0009,
               "min": [
                 0,
                 0,
@@ -227,10 +227,10 @@
             "height": 340
           },
           "referencia": 0.0572,
-          "actual": 0.0078,
+          "actual": 0.0091,
           "anterior": 0.0138,
-          "razonLineal": 0.13,
-          "evDeDiferencia": -2.96,
+          "razonLineal": 0.15,
+          "evDeDiferencia": -2.77,
           "detalle": {
             "referencia": {
               "display": [
@@ -253,12 +253,12 @@
             },
             "actual": {
               "display": [
-                0.0135,
-                0.0068,
-                0.0014
+                0.015,
+                0.008,
+                0.0021
               ],
-              "displayLuminance": 0.0078,
-              "linearLuminance": 0.00061,
+              "displayLuminance": 0.0091,
+              "linearLuminance": 0.0007,
               "min": [
                 0,
                 0,
@@ -300,10 +300,10 @@
             "height": 55
           },
           "referencia": 0.1652,
-          "actual": 0.2496,
+          "actual": 0.2518,
           "anterior": 0.2527,
-          "razonLineal": 2.13,
-          "evDeDiferencia": 1.09,
+          "razonLineal": 2.16,
+          "evDeDiferencia": 1.11,
           "detalle": {
             "referencia": {
               "display": [
@@ -326,21 +326,21 @@
             },
             "actual": {
               "display": [
-                0.3038,
-                0.2414,
-                0.1706
+                0.3061,
+                0.2436,
+                0.1725
               ],
-              "displayLuminance": 0.2496,
-              "linearLuminance": 0.05173,
+              "displayLuminance": 0.2518,
+              "linearLuminance": 0.05262,
               "min": [
                 0,
                 0,
                 0
               ],
               "max": [
-                0.6706,
-                0.5765,
-                0.4588
+                0.7451,
+                0.6549,
+                0.5333
               ]
             },
             "anterior": {
@@ -446,10 +446,10 @@
             "height": 35
           },
           "referencia": 0.1947,
-          "actual": 0.0858,
+          "actual": 0.0882,
           "anterior": 0.1046,
-          "razonLineal": 0.25,
-          "evDeDiferencia": -2.02,
+          "razonLineal": 0.26,
+          "evDeDiferencia": -1.96,
           "detalle": {
             "referencia": {
               "display": [
@@ -472,12 +472,12 @@
             },
             "actual": {
               "display": [
-                0.0983,
-                0.0838,
-                0.0682
+                0.1007,
+                0.0863,
+                0.0708
               ],
-              "displayLuminance": 0.0858,
-              "linearLuminance": 0.00799,
+              "displayLuminance": 0.0882,
+              "linearLuminance": 0.00833,
               "min": [
                 0,
                 0,
@@ -519,10 +519,10 @@
             "height": 110
           },
           "referencia": 0.1093,
-          "actual": 0.049,
+          "actual": 0.0547,
           "anterior": 0.0639,
-          "razonLineal": 0.33,
-          "evDeDiferencia": -1.61,
+          "razonLineal": 0.37,
+          "evDeDiferencia": -1.42,
           "detalle": {
             "referencia": {
               "display": [
@@ -545,21 +545,21 @@
             },
             "actual": {
               "display": [
-                0.0719,
-                0.045,
-                0.0214
+                0.0783,
+                0.0506,
+                0.0257
               ],
-              "displayLuminance": 0.049,
-              "linearLuminance": 0.00394,
+              "displayLuminance": 0.0547,
+              "linearLuminance": 0.00448,
               "min": [
                 0,
                 0,
                 0
               ],
               "max": [
-                0.9412,
-                0.8745,
-                0.7765
+                0.9451,
+                0.8824,
+                0.7882
               ]
             },
             "anterior": {
@@ -615,12 +615,12 @@
         },
         "actual": {
           "display": [
-            0.1263,
-            0.0987,
-            0.0696
+            0.1284,
+            0.1006,
+            0.0713
           ],
-          "displayLuminance": 0.1025,
-          "linearLuminance": 0.01056,
+          "displayLuminance": 0.1044,
+          "linearLuminance": 0.01087,
           "min": [
             0,
             0,
@@ -651,7 +651,7 @@
             1
           ]
         },
-        "rmsDisplay": 0.0928,
+        "rmsDisplay": 0.0936,
         "rmsDisplayAnterior": 0.1133
       },
       "regions": [
@@ -664,10 +664,10 @@
             "height": 110
           },
           "referencia": 0.173,
-          "actual": 0.2289,
+          "actual": 0.2293,
           "anterior": 0.3089,
-          "razonLineal": 1.68,
-          "evDeDiferencia": 0.75,
+          "razonLineal": 1.69,
+          "evDeDiferencia": 0.76,
           "detalle": {
             "referencia": {
               "display": [
@@ -690,12 +690,12 @@
             },
             "actual": {
               "display": [
-                0.2795,
-                0.2214,
-                0.1536
+                0.2803,
+                0.2218,
+                0.1538
               ],
-              "displayLuminance": 0.2289,
-              "linearLuminance": 0.0437,
+              "displayLuminance": 0.2293,
+              "linearLuminance": 0.04388,
               "min": [
                 0,
                 0,
@@ -737,9 +737,9 @@
             "height": 180
           },
           "referencia": 0.1959,
-          "actual": 0.2636,
+          "actual": 0.2642,
           "anterior": 0.3129,
-          "razonLineal": 1.76,
+          "razonLineal": 1.77,
           "evDeDiferencia": 0.82,
           "detalle": {
             "referencia": {
@@ -763,21 +763,21 @@
             },
             "actual": {
               "display": [
-                0.3097,
-                0.2575,
-                0.1877
+                0.3104,
+                0.2581,
+                0.1882
               ],
-              "displayLuminance": 0.2636,
-              "linearLuminance": 0.05731,
+              "displayLuminance": 0.2642,
+              "linearLuminance": 0.05757,
               "min": [
                 0.0039,
                 0,
                 0
               ],
               "max": [
-                0.949,
-                0.9098,
-                0.8471
+                0.9569,
+                0.9176,
+                0.8549
               ]
             },
             "anterior": {
@@ -810,10 +810,10 @@
             "height": 80
           },
           "referencia": 0.1819,
-          "actual": 0.4426,
+          "actual": 0.4443,
           "anterior": 0.4755,
-          "razonLineal": 5.89,
-          "evDeDiferencia": 2.56,
+          "razonLineal": 5.94,
+          "evDeDiferencia": 2.57,
           "detalle": {
             "referencia": {
               "display": [
@@ -836,20 +836,20 @@
             },
             "actual": {
               "display": [
-                0.5019,
-                0.4361,
-                0.3327
+                0.5037,
+                0.4378,
+                0.3342
               ],
-              "displayLuminance": 0.4426,
-              "linearLuminance": 0.16655,
+              "displayLuminance": 0.4443,
+              "linearLuminance": 0.16792,
               "min": [
-                0.302,
-                0.2431,
+                0.3059,
+                0.2471,
                 0.1569
               ],
               "max": [
-                0.949,
-                0.9098,
+                0.9451,
+                0.9059,
                 0.8431
               ]
             },
@@ -883,10 +883,10 @@
             "height": 220
           },
           "referencia": 0.0426,
-          "actual": 0.013,
+          "actual": 0.0132,
           "anterior": 0.0137,
           "razonLineal": 0.3,
-          "evDeDiferencia": -1.75,
+          "evDeDiferencia": -1.72,
           "detalle": {
             "referencia": {
               "display": [
@@ -909,21 +909,21 @@
             },
             "actual": {
               "display": [
-                0.0194,
-                0.0118,
-                0.0056
+                0.0196,
+                0.012,
+                0.0059
               ],
-              "displayLuminance": 0.013,
-              "linearLuminance": 0.001,
+              "displayLuminance": 0.0132,
+              "linearLuminance": 0.00102,
               "min": [
                 0,
                 0,
                 0
               ],
               "max": [
+                0.9843,
                 0.9647,
-                0.9333,
-                0.8784
+                0.9255
               ]
             },
             "anterior": {
@@ -956,10 +956,10 @@
             "height": 230
           },
           "referencia": 0.084,
-          "actual": 0.0848,
+          "actual": 0.0858,
           "anterior": 0.1175,
-          "razonLineal": 1.03,
-          "evDeDiferencia": 0.04,
+          "razonLineal": 1.04,
+          "evDeDiferencia": 0.06,
           "detalle": {
             "referencia": {
               "display": [
@@ -982,21 +982,21 @@
             },
             "actual": {
               "display": [
-                0.1307,
-                0.0771,
-                0.026
+                0.1318,
+                0.0781,
+                0.0269
               ],
-              "displayLuminance": 0.0848,
-              "linearLuminance": 0.00832,
+              "displayLuminance": 0.0858,
+              "linearLuminance": 0.00846,
               "min": [
                 0,
                 0,
                 0
               ],
               "max": [
-                0.4353,
-                0.3333,
-                0.2157
+                0.4392,
+                0.3373,
+                0.2196
               ]
             },
             "anterior": {
@@ -1029,10 +1029,10 @@
             "height": 80
           },
           "referencia": 0.084,
-          "actual": 0.09,
+          "actual": 0.0904,
           "anterior": 0.0953,
-          "razonLineal": 1.09,
-          "evDeDiferencia": 0.13,
+          "razonLineal": 1.1,
+          "evDeDiferencia": 0.14,
           "detalle": {
             "referencia": {
               "display": [
@@ -1055,12 +1055,12 @@
             },
             "actual": {
               "display": [
-                0.1094,
-                0.0867,
-                0.0651
+                0.1098,
+                0.0871,
+                0.0653
               ],
-              "displayLuminance": 0.09,
-              "linearLuminance": 0.00863,
+              "displayLuminance": 0.0904,
+              "linearLuminance": 0.00868,
               "min": [
                 0,
                 0,
@@ -1093,138 +1093,6 @@
             }
           }
         }
-      ]
-    }
-  ],
-  "crops": [
-    {
-      "camera": "CAM 01",
-      "region": "suelo centro",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-01-suelo-centro.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 01",
-      "region": "suelo lateral izquierdo",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-01-suelo-lateral-izquierdo.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 01",
-      "region": "columna izquierda",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-01-columna-izquierda.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 01",
-      "region": "friso superior",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-01-friso-superior.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 01",
-      "region": "cielo del vano",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-01-cielo-del-vano.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 01",
-      "region": "mesa de trabajo",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-01-mesa-de-trabajo.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 01",
-      "region": "mueble derecho",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-01-mueble-derecho.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 02",
-      "region": "campo de cuero",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-02-campo-de-cuero.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 02",
-      "region": "licorera de cristal",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-02-licorera-de-cristal.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 02",
-      "region": "vaso de cristal",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-02-vaso-de-cristal.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 02",
-      "region": "respaldo del sillon",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-02-respaldo-del-sillon.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 02",
-      "region": "piramide del fondo",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-02-piramide-del-fondo.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
-      ]
-    },
-    {
-      "camera": "CAM 02",
-      "region": "estuche de instrumental",
-      "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase4\\recortes\\cam-02-estuche-de-instrumental.png",
-      "order": [
-        "Blender",
-        "visor",
-        "fase anterior"
       ]
     }
   ]

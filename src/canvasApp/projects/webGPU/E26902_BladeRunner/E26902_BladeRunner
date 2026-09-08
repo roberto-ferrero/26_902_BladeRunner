@@ -8,6 +8,8 @@ import TyrellUI from './TyrellUI'
 import { agxLookToneMapping, setLookEnabled } from './TyrellToneMapping'
 import { createAreaFills, applySunFromMaster, fitSunShadow, createIndirect, INDIRECT_MODES } from './TyrellLighting'
 import { applyBackfaceCulling } from './TyrellSurfaces'
+import { createFloorReflection } from './TyrellReflection'
+import { createPipeline, EFFECTS } from './TyrellPost'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -36,6 +38,7 @@ export default class E26902_BladeRunner {
             compare: enabled => this.setCompare(enabled),
             look: enabled => this.setLook(enabled),
             indirect: mode => this.setIndirect(mode),
+            effect: (name, enabled) => this.setEffect(name, enabled),
             retry: () => this.rendererError ? location.reload() : this.load(),
             capture: () => { this.captureRequested = true }, report: () => this.downloadReport()
         })
@@ -62,9 +65,9 @@ export default class E26902_BladeRunner {
         this.renderer.shadowMap.enabled = true
         this.renderer.shadowMap.type = THREE.PCFShadowMap
         this.renderer.setClearColor(0x171512, 1)
-        this.ui.setBackend('WebGPU · Three.js r182')
+        this.ui.setBackend(`WebGPU · Three.js r${THREE.REVISION}`)
         this.setQuality(this.quality)
-        this.resizeListener = () => this.resetMetrics()
+        this.resizeListener = () => { this.resetMetrics(); this.pauseReflection() }
         app.emitter.on('onAppSizeUpdate', this.resizeListener)
         this.visibilityListener = () => {
             this.resetMetrics()
@@ -101,6 +104,7 @@ export default class E26902_BladeRunner {
         this.world3D.updateMatrixWorld(true)
         this.cameras = []
         this.shadowCasters = []
+        this.floorMeshes = []
         this.modelStats = { meshes: 0, triangles: 0, cameras: 0 }
         this.world3D.traverse(object => {
             if (object.isPerspectiveCamera) this.cameras.push(object)
@@ -113,11 +117,13 @@ export default class E26902_BladeRunner {
                 object.getWorldPosition(_position)
                 object.castShadow = _position.length() < 50 && !FAR_AWAY.test(object.name)
                 if (object.castShadow) this.shadowCasters.push(object)
+                if (FLOOR.test(object.name)) this.floorMeshes.push(object)
             }
             if (object.isDirectionalLight) this.sun = applySunFromMaster(object)
         })
         this.applyCrystalThickness()
         this.culling = applyBackfaceCulling(this.world3D)
+        this.reflection = createFloorReflection({ scene: this.scene, meshes: this.floorMeshes })
         this.cameras.sort((a, b) => a.name.localeCompare(b.name))
         this.modelStats.cameras = this.cameras.length
         if (!this.cameras.length) throw new Error('El GLB no contiene cámaras de perspectiva.')
@@ -127,10 +133,14 @@ export default class E26902_BladeRunner {
         this.areaLights = createAreaFills()
         for (const light of this.areaLights) this.scene.add(light)
         this.shadowFit = fitSunShadow(this.sun, this.shadowCasters)
+        // Before the pipeline: the quality profile may swap the sun for a clone, and the light
+        // shafts read that light's shadow map. Building the pipeline first would leave them
+        // pointing at a light nothing renders any more, and they would come out exactly zero.
+        this.setQuality(this.quality)
+        this.buildPipeline()
         // The scene capture has to see the direct lights already in place, so this comes last.
         this.setIndirect(this.indirect)
         this.selectCamera(Math.max(0, this.cameras.findIndex(camera => camera.name.startsWith(TYRELL.initialCamera.replaceAll(' ', '_')) || camera.name.startsWith(TYRELL.initialCamera))))
-        this.setQuality(this.quality)
         this.built = true
         this.ui.ready(this.cameras, this.activeCameraIndex)
         this.resetMetrics()
@@ -160,6 +170,31 @@ export default class E26902_BladeRunner {
             this.crystalThickness.push({ material: material.name, pieces: sizes.length, medianSpan: +median.toFixed(4), thickness: +material.thickness.toFixed(4) })
         }
     }
+    // Rebuilt rather than patched when the sun changes identity, because the light shafts hold a
+    // reference to that light and to its shadow map.
+    buildPipeline() {
+        if (!TYRELL.post.enabled || !this.renderer) return
+        const previous = this.post
+        this.post = createPipeline({
+            renderer: this.renderer, scene: this.scene,
+            camera: this.stageCamera.get_camera(), sun: this.sun
+        })
+        if (previous) {
+            for (const name of EFFECTS) this.post.setEffect(name, previous.isEnabled(name))
+            previous.dispose()
+        }
+    }
+    // The pipeline owns the frame once it exists; AppRender falls back to a plain render.
+    render_frame() {
+        if (!this.post) return false
+        this.post.render()
+        return true
+    }
+    setEffect(name, enabled) {
+        if (!this.post?.setEffect(name, enabled)) return
+        this.effects = { ...this.effects, [name]: enabled }
+        this.resetMetrics()
+    }
     selectCamera(index) {
         if (!this.cameras?.[index]) return
         this.activeCameraIndex = index
@@ -178,6 +213,14 @@ export default class E26902_BladeRunner {
         // setQuality reapplies the pixel ratio and resizes the render target.
         this.setQuality(this.quality)
         this.app.size.update()
+    }
+    // A resize destroys the reflector's render target while WebGPU still holds submits that
+    // name it. Detaching the floor material stops the reflector being part of the graph, so it
+    // does not render, and a couple of frames later those submits have drained.
+    pauseReflection() {
+        if (!this.reflection) return
+        this.reflection.restore()
+        this.reflectionResume = TYRELL.reflection.resumeFrames
     }
     // Each option is torn down before the next is built, so the room never lights itself twice
     // and no render target is left behind.
@@ -222,6 +265,8 @@ export default class E26902_BladeRunner {
             this.sun = replacement
             // The bias is expressed in texels, so a new map size needs the fit run again.
             if (this.shadowCasters?.length) this.shadowFit = fitSunShadow(this.sun, this.shadowCasters)
+            // The shafts read this light; a new identity needs a new pipeline.
+            if (this.built) this.buildPipeline()
         }
         this.resetMetrics()
     }
@@ -230,6 +275,7 @@ export default class E26902_BladeRunner {
         if (this.built) this.ui.metrics('Estabilizando la medición…')
     }
     update_RAF() {
+        if (this.reflectionResume > 0 && --this.reflectionResume === 0) this.reflection?.apply()
         const now = performance.now()
         if (this.previousFrame !== undefined && !document.hidden) {
             if (this.warmup > 0) this.warmup--
@@ -276,6 +322,8 @@ export default class E26902_BladeRunner {
             compare: this.compare ? { ...TYRELL.compareSize, pixelRatio: 1 } : false,
             crystal: this.crystalThickness || null,
             backfaceCulling: this.culling || null,
+            post: this.post ? { ...this.post.settings, effects: Object.fromEntries(EFFECTS.map(n => [n, this.post.isEnabled(n)])) } : null,
+            reflection: this.reflection ? { ...this.reflection, dispose: undefined, restore: undefined, apply: undefined } : null,
             toneMapping: { transform: 'AgX', look: this.look ? 'AgX - Medium High Contrast (ajustado)' : 'ninguno', ...TYRELL.look, lookApplied: this.look },
             shadowMapSize: this.sun?.shadow.mapSize.x ?? null,
             lighting: this.sun ? {
@@ -318,6 +366,8 @@ export default class E26902_BladeRunner {
         document.removeEventListener('visibilitychange', this.visibilityListener)
         disposeScene(this.world3D)
         this.indirectBuild?.dispose()
+        this.post?.dispose()
+        this.reflection?.dispose()
         this.scene.environment = null
         this.areaLights?.forEach(light => { light.removeFromParent(); light.dispose() })
         if (this.usesLTC && --ltcUsers === 0) {
@@ -329,6 +379,8 @@ export default class E26902_BladeRunner {
 }
 // Everything past the room walls: hundreds of metres away, never a shadow caster.
 const FAR_AWAY = /^(Tyrell_Corporation|Cielo[_ ]|Sol[_ ])/
+// The 21 pavement sectors, which share one material and therefore one reflector.
+const FLOOR = /^Pavimento[_ ]/
 const _position = new THREE.Vector3()
 const _size = new THREE.Vector3()
 const _box = new THREE.Box3()

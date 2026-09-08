@@ -1,0 +1,168 @@
+{
+  "generated": "2026-09-08T01:27:05.862Z",
+  "product": "Chrome/152.0.7977.76",
+  "window": [
+    1280,
+    800
+  ],
+  "quality": "Media",
+  "look": true,
+  "shots": [
+    {
+      "camera": "CAM 01",
+      "label": "CAM 01 | fotograma general",
+      "png": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase6\\fase6-cam01-comparacion.png",
+      "json": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase6\\fase6-cam01-comparacion.json",
+      "metrics": "32.4 FPS · 30.85 ms/fotograma · 1920 × 800 · 341 dibujos · 655.940 triángulos/pasadas",
+      "imageSize": [
+        1920,
+        800
+      ],
+      "imageBytes": 1287549,
+      "renderMetrics": {
+        "fps": 32.4,
+        "frameMeanMs": 30.85,
+        "frameP95Ms": 34.2,
+        "samples": 96,
+        "resolution": [
+          1920,
+          800
+        ],
+        "drawCalls": 341,
+        "renderedTriangles": 655940,
+        "geometries": 168,
+        "textures": 53
+      },
+      "compare": {
+        "width": 1920,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "cameraPose": {
+        "name": "CAM_01_|_fotograma_general",
+        "position": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 22.91750563177261,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      }
+    },
+    {
+      "camera": "CAM 02",
+      "label": "CAM 02 | mesa y juntas",
+      "png": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase6\\fase6-cam02-comparacion.png",
+      "json": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase6\\fase6-cam02-comparacion.json",
+      "metrics": "59.9 FPS · 16.71 ms/fotograma · 1920 × 800 · 275 dibujos · 475.713 triángulos/pasadas",
+      "imageSize": [
+        1920,
+        800
+      ],
+      "imageBytes": 1156364,
+      "renderMetrics": {
+        "fps": 59.9,
+        "frameMeanMs": 16.71,
+        "frameP95Ms": 18.3,
+        "samples": 120,
+        "resolution": [
+          1920,
+          800
+        ],
+        "drawCalls": 275,
+        "renderedTriangles": 475713,
+        "geometries": 168,
+        "textures": 53
+      },
+      "compare": {
+        "width": 1920,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "cameraPose": {
+        "name": "CAM_02_|_mesa_y_juntas",
+        "position": [
+          1.899999976158142,
+          1.6200000047683716,
+          -7
+        ],
+        "quaternion": [
+          -0.07395983694909083,
+          0.2723234660486248,
+          0.02099927769581201,
+          0.9591292419423805
+        ],
+        "fov": 27.20108524234708,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      }
+    },
+    {
+      "camera": "CAM 04",
+      "label": "CAM 04 | recorrido lateral",
+      "png": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase6\\fase6-cam04-comparacion.png",
+      "json": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase6\\fase6-cam04-comparacion.json",
+      "metrics": "59.9 FPS · 16.69 ms/fotograma · 1920 × 800 · 326 dibujos · 593.864 triángulos/pasadas",
+      "imageSize": [
+        1920,
+        800
+      ],
+      "imageBytes": 1292195,
+      "renderMetrics": {
+        "fps": 59.9,
+        "frameMeanMs": 16.69,
+        "frameP95Ms": 18.5,
+        "samples": 120,
+        "resolution": [
+          1920,
+          800
+        ],
+        "drawCalls": 326,
+        "renderedTriangles": 593864,
+        "geometries": 168,
+        "textures": 53
+      },
+      "compare": {
+        "width": 1920,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "cameraPose": {
+        "name": "CAM_04_|_recorrido_lateral",
+        "position": [
+          -1.899999976158142,
+          1.649999976158142,
+          5.400000095367432
+        ],
+        "quaternion": [
+          0.010580465046842307,
+          -0.057634546537028736,
+          0.0006108450964972636,
+          0.9982814932037508
+        ],
+        "fov": 26.381222661129513,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      }
+    }
+  ],
+  "backend": "WebGPU · Three.js r185",
+  "indirect": "escena",
+  "drawingBuffer": {
+    "width": 1920,
+    "height": 800,
+    "cssWidth": 1264,
+    "cssHeight": 527
+  },
+  "frameCheckboxLocked": true
+}

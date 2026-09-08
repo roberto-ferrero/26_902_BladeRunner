@@ -17,7 +17,7 @@ npm run tyrell:lights   # confronta maestro y GLB, y deriva las conversiones
 npm run build
 npm run tyrell:capture -- --out src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase4 --prefix fase4
 npm run tyrell:compare  # mide contra Blender y saca recortes
-npm run test:tyrell     # 25 pruebas de las fases 1 a 4
+npm run test:tyrell     # 29 pruebas de las fases 1 a 4
 ```
 
 ## Lo que el GLB dice y lo que el maestro dice
@@ -194,6 +194,16 @@ Lo que **no** se ha hecho, y por qué: bajar la potencia de L02 falsearía un va
 | Columna izquierda | 0,22 | **0,13** | 1,00 |
 
 La luminancia media del fotograma de CAM 02 queda en 0,1054 frente a los 0,1052 de Blender. CAM 01 sube un poco su error respecto a los cuatro primeros puntos porque la indirecta también levanta lo que ya sobraba; el balance por regiones es claramente mejor.
+
+## Actualización de Three.js, 0.182.0 a 0.185.1
+
+Hecha el 08/09/2026 a petición del usuario, después de cerrar los puntos de la fase y comprobada antes de darla por buena.
+
+Lo que se verificó, en este orden: que las 29 pruebas siguen pasando; que **las constantes de AgX y sus dos matrices son idénticas** en r185, por lo que la calibración de color no necesita refitarse; que la herramienta de color reproduce exactamente el mismo residuo de 0,00914; que siguen existiendo `NodeLibrary.addToneMapping`, el tercer argumento de `setSize`, `RectAreaLightNode.setLTC`, `RectAreaLightTexturesLib.init` y el `PMREMGenerator` del build de WebGPU; y que la escena arranca, construye el equipo de luces, descarta las mismas 24 caras traseras y ajusta el mismo frustum de sombra.
+
+La imagen no cambia. El error del fotograma queda en 0,0965 para CAM 01 y 0,0936 para CAM 02, frente a 0,0967 y 0,0928 en r182; la diferencia está dentro de lo que varía una recaptura, porque la sonda de entorno y el muestreo de sombra no son deterministas entre ejecuciones.
+
+El visor dejaba escrita la versión a mano en la cabecera y decía r182 con r185 instalado. Ahora la toma de `THREE.REVISION` y no puede quedarse desfasada.
 
 ## Límites de esta entrega
 

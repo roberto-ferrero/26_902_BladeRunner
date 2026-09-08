@@ -1,8 +1,8 @@
 {
   "phase": 4,
-  "date": "2026-09-07T23:39:09.316Z",
+  "date": "2026-09-07T23:50:28.387Z",
   "backend": "WebGPU",
-  "three": "182",
+  "three": "185",
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
   "secureContext": true,
   "adapter": {
@@ -46,7 +46,7 @@
         "reason": "abierta"
       }
     ],
-    "elapsedMs": 63.3,
+    "elapsedMs": 35,
     "detail": [
       {
         "material": "Cielo | nubes ambar",
@@ -346,7 +346,7 @@
   "asset": {
     "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3.glb",
     "bytes": 56526524,
-    "loadMs": 692.6000000238419
+    "loadMs": 686.0999999642372
   },
   "camera": {
     "name": "CAM_02_|_mesa_y_juntas",
@@ -368,8 +368,8 @@
   },
   "metrics": {
     "fps": 59.8,
-    "frameMeanMs": 16.72,
-    "frameP95Ms": 17.9,
+    "frameMeanMs": 16.71,
+    "frameP95Ms": 18.2,
     "samples": 120,
     "resolution": [
       1920,
@@ -378,7 +378,7 @@
     "drawCalls": 262,
     "renderedTriangles": 475700,
     "geometries": 168,
-    "textures": 42
+    "textures": 41
   },
   "metricNote": "Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.",
   "pending": [
