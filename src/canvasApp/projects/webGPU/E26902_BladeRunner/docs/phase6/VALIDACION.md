@@ -1,6 +1,6 @@
 # Fase 6 · Atmósfera y acabado cinematográfico
 
-Fecha: 08/09/2026. Estado: **siete de ocho puntos completados**. El octavo, grano y viñeta, se descarta razonadamente. La fase deja además parcialmente desbloqueada la fase 5.
+Fecha: 08/09/2026. Estado: **siete de ocho puntos completados**. El octavo, grano y viñeta, se descarta razonadamente. La fase **no** desbloquea la fase 5, aunque una primera lectura equivocada lo dio por hecho; está rectificado más abajo.
 
 **CAM 01 baja a 0,0905 de error frente a Blender**, el mejor resultado del proyecto, desde 0,0965.
 
@@ -81,13 +81,20 @@ El plan los condiciona a que aporten fidelidad **y no oculten defectos del model
 
 CAM 02 sube un poco porque el bloom levanta la cristalería, que ya sobraba. El friso empeora por lo mismo, y sigue siendo el problema abierto de la fase 4.
 
-## Lo que esto le hace a la fase 5
+## Lo que esto le hace a la fase 5: nada, y hubo que rectificar
 
-La fase 5 se aparcó porque el reflector planar del pavimento **congelaba el lienzo**: más de mil avisos de WebGPU por sesión y las tres capturas byte a byte idénticas. La razón que se dio entonces fue el choque con el destino de posprocesado que imponía el mapeo tonal, y la vía de desbloqueo propuesta fue justamente llevar ese mapeo a una pasada propia.
+La fase 5 se aparcó porque el reflector planar del pavimento no llegaba a la pantalla. La razón que se dio entonces fue el choque con el destino de posprocesado que imponía el mapeo tonal, y la vía de desbloqueo propuesta fue llevar ese mapeo a una pasada propia. Esta fase la construye, así que tocaba comprobarlo.
 
-Reactivándolo sobre la tubería nueva: **los avisos bajan de 1255 a 8** y el lienzo vuelve a actualizarse, con tres capturas distintas. El diagnóstico era correcto.
+**No funciona, y la primera lectura de esta comprobación fue equivocada.** Conviene dejar escrito el error y cómo se detectó.
 
-Pero **no está resuelto**: la imagen presentada sigue una cámara por detrás. La captura de CAM 02 muestra el encuadre de CAM 01. Con el reflejo activo el lateral del pavimento sube a 0,62 veces la luminancia de Blender, frente a 0,35, así que la mejora sigue ahí esperando. Se deja desactivado y la fase 5 sigue abierta, con el diagnóstico ahora más estrecho.
+La primera medida pareció buena: los avisos de WebGPU bajaban de 1255 a 8 y las tres capturas salían con firmas distintas. Las dos cosas eran falsas.
+
+- Los 1255 se habían contado como líneas impresas y los 8 como **tipos únicos**, porque entretanto la herramienta pasó a agrupar repeticiones. Contando ocurrencias en ambos casos, siguen siendo unos 1350 por sesión. La tubería no cambia nada ahí.
+- Las firmas distintas venían de leer el lienzo justo después de cambiar de cámara: cada lectura cogía el fotograma de la cámara **anterior**, que era distinto cada vez. Eso es exactamente lo que produce un retraso constante, no lo que lo descarta.
+
+Lo que zanjó el asunto fue una captura del compositor, no de la página, añadida a la herramienta como opción `--pantalla`. Con **CAM 02 seleccionada en la interfaz y sus 316 llamadas de dibujo en el contador**, la pantalla mostraba el encuadre de CAM 01. El renderizador dibuja la cámara correcta y la pantalla no la enseña.
+
+La fase 5 sigue bloqueada, con el mismo diagnóstico que ya tenía y una hipótesis menos: no era el destino de posprocesado.
 
 ## Límites de esta entrega
 

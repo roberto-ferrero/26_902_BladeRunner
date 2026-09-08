@@ -1,6 +1,6 @@
 # Fase 5 · Reflejos del pavimento y materiales pulidos
 
-Fecha: 08/09/2026. Estado: **bloqueada**. El reflector planar está escrito y produce la imagen correcta, pero **congela el lienzo**, así que se entrega desactivado. La fase no se da por cerrada.
+Fecha: 08/09/2026, reintentada tras la fase 6. Estado: **bloqueada**. El reflector planar está escrito y produce la imagen correcta, pero **no llega a la pantalla**: el compositor va una cámara por detrás. Se entrega desactivado y la fase no se da por cerrada.
 
 ## Lo que se ve cuando funciona
 
@@ -32,7 +32,7 @@ Ese último resultado es el que cierra el diagnóstico. Con tamaños distintos, 
 
 El espacio de color sí está bien y se comprobó: `Renderer.currentToneMapping` devuelve `NoToneMapping` cuando el destino no es el de salida, así que la textura del reflejo es lineal y sumarla al emisivo no la mapea dos veces.
 
-**Conclusión: es un conflicto entre `reflector()` y el destino de posprocesado que el mapeo tonal obliga a usar, en Three.js 0.185.1.** No es un mal uso de la API por parte del proyecto.
+**Conclusión de aquel momento: un conflicto entre `reflector()` y el destino de posprocesado que el mapeo tonal obliga a usar.** El reintento descrito más abajo la desmiente: con el posprocesado de la fase 6 el problema persiste igual. Lo que sigue en pie es que no es un mal uso de la API por parte del proyecto.
 
 ## Lo que sí queda hecho
 
@@ -60,15 +60,25 @@ El coste medido, cuando corre: las llamadas de dibujo pasan de 328 a 433 en CAM 
 
 Tres caminos, ninguno probado todavía:
 
-1. Renderizar el reflejo a un destino que no comparta el búfer de posprocesado, lo que exigiría no usar el mapeo tonal del renderizador y llevarlo a una pasada de posprocesado propia. Eso es además lo que la fase 6 va a necesitar para el bloom, así que puede resolverse allí.
+1. Renderizar el reflejo a un destino que no comparta el búfer de posprocesado, llevando el mapeo tonal a una pasada propia. Es lo que la fase 6 necesita de todas formas, así que conviene reintentar la fase 5 después de ella.
 2. Sustituir el reflector por una implementación propia con `CubeCamera` o con una cámara espejo manual, sin pasar por `ReflectorNode`.
 3. Informar del fallo aguas arriba y esperar.
 
-La primera es la que encaja con el plan, porque la fase 6 introduce posprocesado de todas formas. Conviene reintentar la fase 5 después de esa, no antes.
+La primera se probó y **no funciona**; queda descrita en la sección siguiente. Las otras dos siguen abiertas.
+
+## Reintento sobre el posprocesado de la fase 6
+
+La vía de desbloqueo que este documento proponía era llevar el mapeo tonal a una pasada propia, que es lo que la fase 6 construye. Se probó y **no basta**.
+
+Los avisos de WebGPU siguen en unos 1350 por sesión y la pantalla sigue una cámara por detrás: con CAM 02 seleccionada y sus 316 llamadas de dibujo en el contador, el compositor muestra el encuadre de CAM 01. La comprobación se hizo con una captura del compositor, no de la página, porque leer el lienzo desde la propia página engaña: cada lectura devuelve el fotograma de la cámara anterior, que es distinto cada vez y parece movimiento.
+
+Queda descartada, por tanto, la hipótesis del destino de posprocesado. Siguen abiertas las otras dos vías: escribir el reflejo sin `ReflectorNode`, con una cámara espejo propia, o informar del fallo aguas arriba.
+
+Con el reflejo activo el lateral del pavimento sube a 0,62 veces la luminancia de Blender frente a 0,35, así que la mejora sigue esperando.
 
 ## Límites de esta entrega
 
-No hay cifras de comparación contra Blender para el estado final, porque el estado final no lleva reflejo: las capturas de esta carpeta son idénticas a las de la fase 4. La medida de −0,79 EV en el lateral del pavimento corresponde al primer fotograma bueno y no a un estado sostenido.
+No hay cifras de comparación contra Blender para el estado final, porque el estado final no lleva reflejo: las capturas de esta carpeta se regeneraron tras el reintento y coinciden con las de la fase 6. La medida de −0,79 EV en el lateral del pavimento corresponde al primer fotograma bueno y no a un estado sostenido.
 
 Los materiales pulidos que no son el pavimento, bronces y cristalería, no se han tocado. Siguen con el entorno de la fase 4.
 

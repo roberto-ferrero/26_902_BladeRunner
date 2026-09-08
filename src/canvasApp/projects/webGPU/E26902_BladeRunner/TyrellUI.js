@@ -11,6 +11,7 @@ export default class TyrellUI {
             <div class="tyrell-status" role="status" aria-live="polite"><p>Preparando el motor…</p><progress aria-label="Carga del escenario"></progress><button type="button" hidden>Reintentar</button></div>
             <footer hidden><div class="tyrell-controls">
                 <label>Cámara <select aria-label="Cámara"></select></label>
+                <label class="tyrell-check tyrell-siempre"><input type="checkbox" data-action="walk"> Recorrido libre</label>
                 <label>Calidad <select aria-label="Calidad"><option>Baja</option><option selected>Media</option><option>Alta</option></select></label>
                 <label class="tyrell-check"><input type="checkbox" data-action="frame" checked> Encuadre 2,4:1</label>
                 <label class="tyrell-check"><input type="checkbox" data-action="compare"> Comparación 1920 × 800</label>
@@ -21,7 +22,8 @@ export default class TyrellUI {
                 <label class="tyrell-check"><input type="checkbox" data-effect="bloom" checked> Bloom</label>
                 <button type="button" data-action="capture">Captura</button>
                 <button type="button" data-action="report">Diagnóstico</button>
-            </div><p class="tyrell-note">Luz provisional · Cámaras originales de Blender · Recorrido libre en una próxima fase</p>
+                <label class="tyrell-check tyrell-siempre"><input type="checkbox" data-action="presentation"> Presentación</label>
+            </div><p class="tyrell-note">Cámaras originales de Blender · Recorrido libre con W A S D, ratón para mirar y Mayús para correr</p>
             <p class="tyrell-metrics">Preparando la primera imagen…</p></footer>`
         document.body.appendChild(this.root)
         this.statusBox = this.root.querySelector('.tyrell-status')
@@ -40,6 +42,9 @@ export default class TyrellUI {
         for (const box of this.root.querySelectorAll('[data-effect]')) {
             box.onchange = event => actions.effect(event.target.dataset.effect, event.target.checked)
         }
+        this.walkCheck = this.root.querySelector('[data-action="walk"]')
+        this.walkCheck.onchange = event => actions.walk(event.target.checked)
+        this.root.querySelector('[data-action="presentation"]').onchange = event => actions.presentation(event.target.checked)
         this.retry.onclick = () => actions.retry()
         this.root.querySelector('[data-action="capture"]').onclick = () => actions.capture()
         this.root.querySelector('[data-action="report"]').onclick = () => actions.report()
@@ -74,6 +79,11 @@ export default class TyrellUI {
         this.root.querySelector('footer').hidden = false
         this.cameraSelect.replaceChildren(...cameras.map((camera, i) => new Option(camera.userData.name || camera.name, i)))
         this.cameraSelect.value = activeIndex
+    }
+    // Selecting a camera leaves the walk, so the checkbox has to follow the project, not the click.
+    setWalking(enabled) {
+        this.walkCheck.checked = enabled
+        this.root.classList.toggle('tyrell-andando', enabled)
     }
     metrics(text) { this.root.querySelector('.tyrell-metrics').textContent = text }
     showOutput(blob, filename, text) {

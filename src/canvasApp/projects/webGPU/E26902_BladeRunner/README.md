@@ -1,6 +1,6 @@
 # Oficinas Tyrell · Visor WebGPU
 
-Fases 1, 2 y 3 completadas, de la fase 4 siete de sus ocho puntos, de la fase 6 otros siete de ocho, y la fase 5 todavía abierta. Three.js 0.185.1. El visor carga el GLB completo, conserva sus cámaras y materiales, ofrece un encuadre de comparación fijo de 1920 × 800, aplica la misma gestión de color con la que se renderizaron las referencias y monta el equipo de luces leído del `.blend` maestro. La iluminación indirecta, los reflejos, la atmósfera y el recorrido libre continúan en [PLAN.md](PLAN.md).
+Fases 1, 2, 3 y 7 completadas, de la fase 4 siete de sus ocho puntos, de la fase 6 otros siete de ocho, y la fase 5 todavía abierta. Three.js 0.185.1. El visor carga el GLB completo, conserva sus cámaras y materiales, ofrece un encuadre de comparación fijo de 1920 × 800, aplica la misma gestión de color con la que se renderizaron las referencias, monta el equipo de luces leído del `.blend` maestro y permite recorrer la sala a pie sin perder las cámaras de la película. Lo que queda continúa en [PLAN.md](PLAN.md).
 
 El objetivo de atmósfera e iluminación son los fotogramas de [`movie_screenshots/`](movie_screenshots), leídos en [docs/REFERENCIAS.md](docs/REFERENCIAS.md). Los renders de Blender mandan en la forma y el encuadre.
 
@@ -16,20 +16,21 @@ npm run dev:local
 Abrir `http://localhost:8080`. Se requiere un navegador con WebGPU habilitado, contexto seguro (localhost o HTTPS) y GPU compatible. El proyecto solicita alto rendimiento y comprueba el backend efectivo; si no consigue WebGPU muestra un error y permite recargar. El navegador decide el adaptador final.
 
 ```powershell
-npm run test:tyrell       # 36 pruebas de las fases 1 a 6
+npm run test:tyrell       # 50 pruebas de las fases 1 a 7
 npm run tyrell:audit      # auditoría geométrica, escribe docs/phase2/auditoria.json
 npm run tyrell:materials  # auditoría de materiales y mapas, escribe docs/phase3/materiales.json
 npm run tyrell:color      # compara el mapeo tonal con el de Blender, ya medido
 npm run tyrell:lights     # confronta el equipo de luces del maestro con el del GLB
 npm run build
 npm run tyrell:capture    # sirve dist, abre Chrome y guarda capturas y diagnósticos
+npm run tyrell:walk       # recorre la sala con teclado y ratón reales y mide el paseo
 npm run tyrell:compare    # compara las capturas con los renders de Blender y saca recortes
 npm run tyrell:indirect   # ordena las opciones de luz indirecta ya capturadas
 # Comprobación manual de dist, si Python está instalado:
 python -m http.server 8081 --bind 127.0.0.1 --directory dist
 ```
 
-`tyrell:capture` acepta `--window 1024x640`, `--port 8099`, `--out <carpeta>`, `--prefix <nombre>`, `--look on|off`, `--eval "<js>"` para un experimento puntual sobre la escena y `--keep` para dejar el navegador abierto. Abre una ventana real porque WebGPU necesita un adaptador de verdad; usa `CHROME_PATH` si Chrome no está en la ruta habitual. Antes de medir recorre las tres cámaras para que la primera no pague la creación de tuberías.
+`tyrell:capture` acepta `--window 1024x640`, `--port 8099`, `--out <carpeta>`, `--prefix <nombre>`, `--look on|off`, `--pantalla` para capturar del compositor en vez de la página, `--paseo` para recorrer la sala con teclado y ratón reales en lugar de capturar las cámaras, `--eval "<js>"` para un experimento puntual sobre la escena y `--keep` para dejar el navegador abierto. `--eval` corre **antes** del calentamiento, con la página aún sin animar, así que no sirve para medir nada que dependa de que haya fotogramas; para eso está `--paseo`. Abre una ventana real porque WebGPU necesita un adaptador de verdad; usa `CHROME_PATH` si Chrome no está en la ruta habitual. Antes de medir recorre las tres cámaras para que la primera no pague la creación de tuberías.
 
 `tyrell:lights` y `tyrell:color` sólo leen medidas ya tomadas. Para rehacerlas hace falta Blender:
 
@@ -49,6 +50,8 @@ Abrir `http://localhost:8081` para producción. Tras una nueva compilación hay 
 ## Controles y medición
 
 - **Cámara:** diez cámaras del GLB. Inicio en CAM 01; CAM 02 muestra mesa y juntas, CAM 03 los perfiles invertidos y CAM 04 una vista lateral. Son cámaras de Blender pendientes de validar contra los fotogramas.
+- **Recorrido libre:** anda por la sala con W A S D, ratón para mirar y Mayús para correr; Esc suelta el ratón y un clic en el lienzo lo recupera. La altura de ojo, 1,62 m, es la mediana de las alturas a las que están las cámaras de Blender, así que se ve la sala desde donde se rodó. Al salir, la cámara vuelve interpolada al encuadre del que se salió, idéntico píxel a píxel. Las colisiones son las cajas de las mallas de la escena, con deslizamiento eje a eje para que las esquinas sean pasables.
+- **Presentación:** deja a la vista sólo la cámara y el recorrido libre, y esconde los once controles de revisión y el contador. No quita las cámaras de la película.
 - **Calidad:** Baja usa resolución interna ×0,75 y sombras 1024; Media ×1 y sombras 2048; Alta ×1,5 y sombras 2048. Son multiplicadores del tamaño CSS, independientes del DPR del equipo. Todos conservan la misma geometría.
 - **Encuadre 2,4:1:** activa bandas para mantener el aspecto de referencia. Al desactivarlo se utiliza el contenedor completo y cambia el campo horizontal visible, conservando el FOV vertical.
 - **Comparación 1920 × 800:** clava el destino de render en ese tamaño con relación de píxel 1, sea cual sea la ventana, y bloquea la casilla de encuadre porque 1920 × 800 ya es 2,4:1. Es el tamaño con el que Blender renderizó `v3_general.png` y `v3_detalle.png`. Mientras está activo, el perfil de calidad sigue mandando en las sombras pero deja de mandar en la resolución interna.
@@ -69,7 +72,7 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `TyrellAssets.js` | Carga con progreso, errores HTTP/GLB, cancelación y liberación de recursos compartidos |
 | `TyrellCameraRig.js` | Pose mundial y FOV de cámaras, escala de visualización de Blender normalizada, resize |
 | `TyrellUI.js`, `tyrell.css` | Interfaz de revisión y estados de carga/error |
-| `tests/phase1.test.mjs` … `tests/phase4.test.mjs` | Treinta y una comprobaciones de integración, recurso, encuadre, curva de tono, materiales, luces, superficies y reflejo |
+| `tests/phase1.test.mjs` … `tests/phase7.test.mjs` | Cincuenta comprobaciones de integración, recurso, encuadre, curva de tono, materiales, luces, superficies, reflejo, posprocesado y navegación |
 | `tools/auditar-modelo.mjs` | Auditoría geométrica del GLB sin DOM: columnas, juntas, perfiles, sillas, celosías, exterior, normales, tangentes, escalas, transparencias y contactos |
 | `tools/capturar-comparacion.mjs` | Sirve `dist`, abre Chrome por el protocolo de depuración y guarda capturas y diagnósticos desde las cámaras de comparación |
 | `TyrellToneMapping.js` | AgX con el aspecto de Blender, y su gemelo escalar para comprobarlo sin GPU |
@@ -80,11 +83,13 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `TyrellSurfaces.js` | Mide si cada superficie es cerrada y descarta caras traseras sólo donde es seguro |
 | `TyrellReflection.js` | Reflector planar del pavimento, con Fresnel y desenfoque por rugosidad. **Desactivado**: la imagen presentada va una cámara por detrás |
 | `TyrellPost.js` | Tubería de posprocesado: bruma exterior, haces de luz, bloom y el mapeo tonal al final |
+| `TyrellNavigation.js` | Recorrido libre: altura de ojo tomada de las cámaras, colisiones por cajas y transición suave de vuelta al encuadre |
+| `tools/lib/paseo.mjs` | Recorre la sala en el navegador con teclado y ratón reales y mide velocidad, choque, foco, redimensionado y pausa |
 | `tools/blender/leer_luces.py`, `tools/verificar-luces.mjs` | Leen el equipo real del `.blend` y derivan lo que Three necesita |
 | `tools/comparar-indirecta.mjs` | Ordena las opciones de luz indirecta por lo que consiguen en las zonas de sombra |
 | `tools/lib/png.mjs`, `tools/lib/regiones.mjs` | Utilidades de PNG y las regiones de medida que comparten las herramientas |
 | `docs/REFERENCIAS.md` | Lectura de los fotogramas de la película y reparto por fases |
-| `docs/phase1/`, `docs/phase2/`, `docs/phase3/` | Evidencia y límites de cada entrega |
+| `docs/phase1/` … `docs/phase7/` | Evidencia y límites de cada entrega |
 | `docs/phase1/manifest.json` | Procedencia, tamaño y SHA-256 del modelo |
 | `docs/phase2/auditoria.json` | Salida completa de la auditoría del modelo |
 
@@ -104,6 +109,6 @@ La copia actual ocupa 56.526.524 bytes, contiene 25 imágenes, 117 recursos mesh
 
 ## Próxima entrega
 
-Fase 6: atmósfera y acabado. Se adelanta a la 5 por una razón concreta: el reflector planar del pavimento choca con el destino de posprocesado que impone el mapeo tonal del renderizador, y llevar ese mapeo a una pasada propia es justo lo que la fase 6 necesita para el bloom. Con eso hecho, la fase 5 se reintenta.
+Fase 8: optimización y entrega. Es la fase que reúne los ajustes finales, ahora que ya se conoce el coste y la aportación visual de cada efecto: medir CPU, GPU, memoria y carga; ajustar resolución interna, sombras y muestras antes de tocar geometría; valorar compresión de malla y textura; y acotar lo que se copia a producción, que hoy incluye archivos fuente `.psd` y `.blend`.
 
-Siguen abiertos el friso de la fase 4, diagnosticado pero sin causa establecida, y de la fase 2 que ninguna columna resulta ser el reflejo vertical de otra pese al nombre de CAM 03.
+Siguen abiertos la fase 5, cuyo reflector planar no llega a la pantalla y a la que le quedan dos vías —escribir el reflejo sin `ReflectorNode` o informar aguas arriba—, el friso de la fase 4, diagnosticado pero sin causa establecida, el grano y la viñeta de la fase 6, descartados a propósito hasta que el friso y la cristalería estén en su sitio, y de la fase 2 que ninguna columna resulta ser el reflejo vertical de otra pese al nombre de CAM 03.

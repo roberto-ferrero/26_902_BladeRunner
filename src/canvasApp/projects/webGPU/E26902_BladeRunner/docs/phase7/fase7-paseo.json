@@ -1,0 +1,261 @@
+{
+  "generated": "2026-09-08T05:26:15.066Z",
+  "encuadreAntes": {
+    "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase7\\fase7-camara-antes.png",
+    "bytes": 400418,
+    "sha": "7dbd76ed"
+  },
+  "poseAntes": {
+    "posicion": [
+      -0.12,
+      1.55,
+      10.3
+    ],
+    "rotacion": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "fov": 22.9175
+  },
+  "estado": {
+    "walking": true,
+    "pointerLocked": true,
+    "transitioning": false,
+    "eyeHeight": 1.62,
+    "floorY": 0,
+    "obstacles": 150,
+    "position": [
+      -0.12,
+      1.62,
+      10.3
+    ],
+    "returnCamera": 0
+  },
+  "ajustes": {
+    "enabled": true,
+    "fallbackEyeHeight": 1.62,
+    "walkSpeed": 1.4,
+    "runSpeed": 3.2,
+    "radius": 0.35,
+    "height": 1.8,
+    "stepUp": 0.35,
+    "stepDown": 0.6,
+    "lookSensitivity": 0.0022,
+    "pitchLimitDeg": 85,
+    "transitionSeconds": 1.2
+  },
+  "alturasDeCamara": [
+    {
+      "nombre": "CAM_01_|_fotograma_general",
+      "altura": 1.55
+    },
+    {
+      "nombre": "CAM_02_|_mesa_y_juntas",
+      "altura": 1.62
+    },
+    {
+      "nombre": "CAM_03_|_perfiles_invertidos",
+      "altura": 1.8
+    },
+    {
+      "nombre": "CAM_04_|_recorrido_lateral",
+      "altura": 1.65
+    },
+    {
+      "nombre": "Camera_B",
+      "altura": 1.8
+    },
+    {
+      "nombre": "Camera_C",
+      "altura": 1.868
+    },
+    {
+      "nombre": "Camera_D",
+      "altura": 1.45
+    },
+    {
+      "nombre": "Camera_E",
+      "altura": 1.435
+    },
+    {
+      "nombre": "Camera_F",
+      "altura": 1.278
+    },
+    {
+      "nombre": "Camera_free",
+      "altura": 3.193
+    }
+  ],
+  "paso": {
+    "from": [
+      -0.12,
+      1.62,
+      10.3
+    ],
+    "to": [
+      -0.12,
+      1.62,
+      6.769
+    ],
+    "seconds": 2.52,
+    "metres": 3.531,
+    "speed": 1.402
+  },
+  "carrera": {
+    "from": [
+      -0.12,
+      1.62,
+      6.769
+    ],
+    "to": [
+      -0.12,
+      1.62,
+      0.332
+    ],
+    "seconds": 2.03,
+    "metres": 6.437,
+    "speed": 3.168
+  },
+  "paseoMedio": {
+    "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase7\\fase7-paseo-01.png",
+    "bytes": 465485,
+    "sha": "5f20ac78"
+  },
+  "raton": {
+    "bloqueoDePuntero": true,
+    "giroAntes": 0,
+    "giroDespues": -0.264,
+    "giroEnGrados": -15.13,
+    "cabeceoEnGrados": -0.13
+  },
+  "colision": {
+    "medido": true,
+    "prediccion": 1.8,
+    "recorrido": 2.15,
+    "segundos": 2.14,
+    "dentroDeUnObstaculo": false,
+    "dentroDeLosLimites": true,
+    "posicion": [
+      -1.913,
+      1.62,
+      -0.856
+    ],
+    "alturaSobreElSuelo": 1.62,
+    "pies": 0
+  },
+  "paseoFinal": {
+    "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase7\\fase7-paseo-02.png",
+    "bytes": 203747,
+    "sha": "17c467be"
+  },
+  "escapeSueltaElRaton": true,
+  "escapeNoSaleDelPaseo": true,
+  "transicion": {
+    "declarada": 1.2,
+    "empezada": true,
+    "recorrida": 1.135
+  },
+  "poseDespues": {
+    "posicion": [
+      -0.12,
+      1.55,
+      10.3
+    ],
+    "rotacion": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "fov": 22.9175
+  },
+  "encuadreDespues": {
+    "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase7\\fase7-camara-despues.png",
+    "bytes": 402828,
+    "sha": "de4c815e"
+  },
+  "errorDePose": {
+    "metros": 0,
+    "fov": 0
+  },
+  "encuadreRestaurado": {
+    "iguales": true,
+    "pixeles": 554896,
+    "distintos": 0,
+    "proporcion": 0,
+    "diferenciaMaxima": 0,
+    "recorte": {
+      "x": 0,
+      "y": 89,
+      "width": 1264,
+      "height": 527
+    },
+    "filasComparadas": 439,
+    "bandaExcluida": "la barra de controles, desde y 439 del recorte",
+    "cajaDeDiferencias": null
+  },
+  "presentacionActivada": true,
+  "presentacion": [
+    "Cámara CAM 01 | fotograma generalCAM 02 | mesa y juntasCAM 03 | perfiles invertidosCAM 04 | recorrido lateralCamera_BCamera_CCamera_DCamera_ECamera_FCamera_free",
+    "Recorrido libre",
+    "Presentación"
+  ],
+  "presentacionCaptura": {
+    "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase7\\fase7-presentacion.png",
+    "bytes": 422523,
+    "sha": "9c3847e0"
+  },
+  "revision": [
+    "Cámara CAM 01 | fotograma generalCAM 02 | mesa y juntasCAM 03 | perfiles invertidosCAM 04 | recorrido lateralCamera_BCamera_CCamera_DCamera_ECamera_FCamera_free",
+    "Recorrido libre",
+    "Calidad BajaMediaAlta",
+    "Encuadre 2,4:1",
+    "Comparación 1920 × 800",
+    "Look AgX de Blender",
+    "Indirecta NingunaAmbienteMundoEscena",
+    "Bruma exterior",
+    "Haces de luz",
+    "Bloom",
+    "Captura",
+    "Diagnóstico",
+    "Presentación"
+  ],
+  "redimensionado": {
+    "fijadoEnComparacion": {
+      "width": 1920,
+      "height": 800
+    },
+    "antes": {
+      "width": 1264,
+      "height": 527
+    },
+    "a900x600": {
+      "width": 900,
+      "height": 375
+    },
+    "restaurado": {
+      "width": 1264,
+      "height": 527
+    },
+    "siguioALaVentana": true,
+    "volvio": true
+  },
+  "pausa": {
+    "visible": {
+      "oculta": false,
+      "activa": true
+    },
+    "oculta": {
+      "oculta": true,
+      "activa": false,
+      "fotogramasEnUnSegundo": 0
+    },
+    "devuelta": {
+      "oculta": false,
+      "activa": true,
+      "fotogramasEnUnSegundo": 33
+    }
+  }
+}

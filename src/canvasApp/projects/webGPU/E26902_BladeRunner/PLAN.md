@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado (08/09/2026): **fases 1, 2 y 3 completadas; de la fase 4, siete de ocho puntos; de la fase 6, siete de ocho; fase 5 todavía abierta**. Three.js 0.185.1. CAM 01 queda en 0,0905 de error frente a Blender. Próxima entrega: **reintentar la fase 5**, que el posprocesado de la 6 ha dejado a medio desbloquear, y después la fase 7. Instrucciones en [README.md](README.md). Evidencia y límites en [fase 1](docs/phase1/VALIDACION.md), [fase 2](docs/phase2/VALIDACION.md), [fase 3](docs/phase3/VALIDACION.md) y [fase 4](docs/phase4/VALIDACION.md). Objetivo artístico de luz y atmósfera en [REFERENCIAS.md](docs/REFERENCIAS.md).
+Estado (08/09/2026): **fases 1, 2, 3 y 7 completadas; de la fase 4, siete de ocho puntos; de la fase 6, siete de ocho; fase 5 bloqueada**. Three.js 0.185.1. CAM 01 queda en 0,0905 de error frente a Blender. La fase 5 se reintentó sobre el posprocesado de la 6 y sigue sin funcionar, así que la vía que queda es escribir el reflejo sin `ReflectorNode`. Próxima entrega: **fase 8, optimización y entrega**. Instrucciones en [README.md](README.md). Evidencia y límites en [fase 1](docs/phase1/VALIDACION.md), [fase 2](docs/phase2/VALIDACION.md), [fase 3](docs/phase3/VALIDACION.md), [fase 4](docs/phase4/VALIDACION.md), [fase 5](docs/phase5/VALIDACION.md), [fase 6](docs/phase6/VALIDACION.md) y [fase 7](docs/phase7/VALIDACION.md). Objetivo artístico de luz y atmósfera en [REFERENCIAS.md](docs/REFERENCIAS.md).
 
 ## Objetivo
 
@@ -141,17 +141,19 @@ La vía que encaja con el plan es la primera: llevar el mapeo tonal a una pasada
 
 **Resultado:** CAM 01 baja de 0,0965 a **0,0905**, el mejor del proyecto. La mesa de trabajo pasa de 0,26 a 0,97 veces la luminancia de Blender y el cielo del vano de 0,82 a 1,08. CAM 02 sube ligeramente a 0,0954 porque el bloom levanta la cristalería, que ya sobraba. Evidencia en [docs/phase6/VALIDACION.md](docs/phase6/VALIDACION.md).
 
-Efecto sobre la fase 5: reactivando el reflector sobre la tubería nueva, los avisos de WebGPU bajan de 1255 a 8 y el lienzo deja de congelarse, lo que confirma el diagnóstico de aquella fase. No basta todavía: la imagen presentada va una cámara por detrás.
+Efecto sobre la fase 5: **ninguno**. Reactivando el reflector sobre la tubería nueva, la pantalla sigue una cámara por detrás y los avisos siguen en unos 1350 por sesión. Queda descartada la hipótesis del destino de posprocesado.
 
 ## 7 · Navegación y presentación
 
-- [ ] Aplicar la elección del usuario: cámaras fijas, recorridos o movimiento libre.
-- [ ] Añadir transiciones y restauración del encuadre de referencia.
-- [ ] Si hay recorrido libre, mantener altura y velocidad coherentes con la escala e impedir atravesar paredes y muebles con colisiones simplificadas.
-- [ ] Resolver redimensionado, foco del teclado/ratón, pausa al ocultar la pestaña y dispositivos objetivo.
-- [ ] Separar los controles de revisión técnica de la experiencia final.
+- [x] Aplicar la elección del usuario: cámaras fijas, recorridos o movimiento libre. Se entregan **las dos**, como se pidió: las diez cámaras del GLB siguen siendo la referencia de comparación y la casilla «Recorrido libre» permite andar por la sala con W A S D, ratón para mirar y Mayús para correr.
+- [x] Añadir transiciones y restauración del encuadre de referencia. Todo cambio de cámara y toda salida del recorrido se interpolan con suavizado durante 1,2 s y aterrizan sobre la pose original, no sobre el último paso del interpolado. Medido: **error de pose 0 m y 0° de campo, y el lienzo vuelve idéntico, 0 píxeles distintos de 554.896**.
+- [x] Si hay recorrido libre, mantener altura y velocidad coherentes con la escala e impedir atravesar paredes y muebles con colisiones simplificadas. La altura de ojo, **1,62 m**, es la mediana de las alturas de las cámaras de Blender, no un número escrito a mano. Velocidades medidas en el navegador: **1,402 m/s andando y 3,168 m/s corriendo** sobre 1,4 y 3,2 declarados. Las colisiones son las cajas de las 150 mallas que ya se recogían para las sombras, con deslizamiento eje a eje.
+- [x] Resolver redimensionado, foco del teclado/ratón, pausa al ocultar la pestaña y dispositivos objetivo. Con la pestaña oculta se dibujan **0 fotogramas por segundo** y al volver **33**; el búfer sigue a la ventana y regresa; Esc suelta el ratón sin salir del recorrido y `blur` vacía las teclas.
+- [x] Separar los controles de revisión técnica de la experiencia final. La casilla «Presentación» deja **3 controles de 13**, y las cámaras de la película entre ellos.
 
-**Resultado comprobable:** navegación cómoda y estable sin perder acceso a las cámaras de comparación.
+**Resultado:** navegación cómoda y estable sin perder acceso a las cámaras de comparación. Evidencia en [docs/phase7/VALIDACION.md](docs/phase7/VALIDACION.md), con catorce comprobaciones nuevas en `tests/phase7.test.mjs` que incluyen el choque contra un pilar desde 36 direcciones y el fotograma tardío que podría teletransportar al andador.
+
+Error propio que costó tiempo y queda escrito: el recorrido pareció no funcionar porque se medía desde `--eval`, que corre antes del calentamiento con la página sin animar. La herramienta tiene ahora un modo `--paseo` que espera a que haya fotogramas y usa teclado y ratón reales del navegador.
 
 ## 8 · Optimización y entrega
 

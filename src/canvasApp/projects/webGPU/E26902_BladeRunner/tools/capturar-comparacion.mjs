@@ -7,7 +7,8 @@
 //
 // Options: --window 1280x800, --port 8099, --keep (leave the browser open),
 //          --out <carpeta>, --prefix <nombre>, --look on|off,
-//          --indirect ninguna|ambiente|mundo|escena,
+//          --indirect ninguna|ambiente|mundo|escena, --pantalla (captura del compositor),
+//          --paseo (recorre la sala con teclado y ratón reales en vez de capturar las cámaras),
 //          --eval "<js>" para un experimento puntual sobre la escena antes de capturar.
 // The window is visible on purpose: WebGPU needs a real adapter.
 import fs from 'node:fs'
@@ -15,6 +16,7 @@ import path from 'node:path'
 import http from 'node:http'
 import os from 'node:os'
 import { spawn } from 'node:child_process'
+import { makeWalkthrough } from './lib/paseo.mjs'
 
 const ROOT = 'dist'
 const CAMERAS = ['CAM 01', 'CAM 02', 'CAM 04']
@@ -28,6 +30,8 @@ const PREFIX = option('--prefix', 'fase3')
 const LOOK = option('--look', 'on') !== 'off'
 const EVAL = option('--eval', null)
 const INDIRECT = option('--indirect', null)
+const SHOT = args.includes('--pantalla')
+const WALK = args.includes('--paseo')
 
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.glb': 'model/gltf-binary', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.map': 'application/json' }
 
@@ -258,7 +262,24 @@ try {
     console.log('Calentamiento completado en las tres cámaras')
 
     fs.mkdirSync(OUT, { recursive: true })
-    for (const camera of CAMERAS) {
+    if (WALK) {
+        // The walk is exercised here and not in --eval on purpose: --eval runs before this
+        // warm-up, while the page is still throttled, and measured zero animation frames.
+        const walkthrough = makeWalkthrough({
+            cdp, wait, out: OUT, prefix: PREFIX,
+            selectByText: (selector, text) => cdp.evaluate(SELECT_BY_TEXT(selector, text))
+        })
+        evidence.paseo = await walkthrough()
+        const p = evidence.paseo
+        console.log(`Paseo: ${p.paso.speed} m/s andando y ${p.carrera.speed} m/s corriendo, sobre ${p.ajustes.walkSpeed} y ${p.ajustes.runSpeed} declarados`)
+        console.log(`  altura de ojo ${p.estado.eyeHeight} m, ${p.estado.obstacles} obstáculos`)
+        console.log(`  ratón: bloqueo de puntero ${p.raton.bloqueoDePuntero}, giro ${p.raton.giroEnGrados}°`)
+        console.log(`  choque: predicho ${p.colision.prediccion} m, recorrido ${p.colision.recorrido} m, dentro de un obstáculo: ${p.colision.dentroDeUnObstaculo}`)
+        console.log(`  redimensionado: ${p.redimensionado.antes.width} × ${p.redimensionado.antes.height} → ${p.redimensionado.a900x600.width} × ${p.redimensionado.a900x600.height}, vuelve: ${p.redimensionado.volvio}`)
+        console.log(`  pestaña oculta: activa ${p.pausa.oculta.activa}, ${p.pausa.oculta.fotogramasEnUnSegundo} fotogramas; al volver ${p.pausa.devuelta.fotogramasEnUnSegundo}`)
+        console.log(`  regreso: ${p.transicion.recorrida} s de ${p.transicion.declarada} declarados, error de pose ${p.errorDePose.metros} m, lienzo idéntico: ${p.encuadreRestaurado.iguales} (${p.encuadreRestaurado.distintos} píxeles distintos de ${p.encuadreRestaurado.pixeles})`)
+    }
+    for (const camera of WALK ? [] : CAMERAS) {
         const chosen = await cdp.evaluate(SELECT_BY_TEXT('[aria-label="Cámara"]', camera))
         if (!chosen) throw new Error(`El visor no ofrece la cámara ${camera}.`)
         // 60 warm-up frames, then a 30 sample window, then the once-a-second report.
@@ -276,7 +297,15 @@ try {
         const image = await cdp.evaluate(READ_DIALOG_IMAGE)
         await cdp.evaluate(`document.querySelector('.tyrell-dialog').close()`)
 
+        // An independent view of what is actually on screen, taken from the compositor rather
+        // than from the page. It is the tie-breaker when the canvas and the encoded capture
+        // disagree about which frame they hold.
         const slug = camera.toLowerCase().replace(/[^a-z0-9]+/g, '')
+        if (SHOT) {
+            const shot = await cdp.send('Page.captureScreenshot', { format: 'png' })
+            fs.mkdirSync(OUT, { recursive: true })
+            fs.writeFileSync(path.join(OUT, `${PREFIX}-${slug}-pantalla.png`), Buffer.from(shot.data, 'base64'))
+        }
         const png = path.join(OUT, `${PREFIX}-${slug}-comparacion.png`)
         const json = path.join(OUT, `${PREFIX}-${slug}-comparacion.json`)
         fs.writeFileSync(png, Buffer.from(image.base64, 'base64'))

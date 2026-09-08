@@ -1,6 +1,6 @@
 {
   "phase": 4,
-  "date": "2026-09-08T00:18:23.824Z",
+  "date": "2026-09-08T04:29:33.971Z",
   "backend": "WebGPU",
   "three": "185",
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
@@ -46,7 +46,7 @@
         "reason": "abierta"
       }
     ],
-    "elapsedMs": 50.8,
+    "elapsedMs": 54,
     "detail": [
       {
         "material": "Cielo | nubes ambar",
@@ -212,6 +212,45 @@
       }
     ]
   },
+  "post": {
+    "bloom": {
+      "enabled": true,
+      "threshold": 1.2,
+      "strength": 0.3,
+      "radius": 0.72
+    },
+    "aerial": {
+      "enabled": true,
+      "strength": 0.45,
+      "startMetres": 60,
+      "fullMetres": 600,
+      "color": [
+        0.186,
+        0.081,
+        0.023
+      ]
+    },
+    "beams": {
+      "enabled": true,
+      "strength": 1,
+      "color": [
+        0.66,
+        0.61,
+        0.47
+      ],
+      "density": 0.5,
+      "maxDensity": 0.5,
+      "distanceAttenuation": 2,
+      "steps": 60,
+      "resolutionScale": 0.5
+    },
+    "outputColorTransform": true,
+    "effects": {
+      "bruma": true,
+      "haces": true,
+      "bloom": true
+    }
+  },
   "reflection": null,
   "toneMapping": {
     "transform": "AgX",
@@ -347,7 +386,7 @@
   "asset": {
     "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3.glb",
     "bytes": 56526524,
-    "loadMs": 868.6000000238419
+    "loadMs": 820.3999999761581
   },
   "camera": {
     "name": "CAM_02_|_mesa_y_juntas",
@@ -368,18 +407,18 @@
     "far": 2500
   },
   "metrics": {
-    "fps": 59.9,
-    "frameMeanMs": 16.7,
-    "frameP95Ms": 17.8,
-    "samples": 120,
+    "fps": 59.8,
+    "frameMeanMs": 16.73,
+    "frameP95Ms": 18.1,
+    "samples": 90,
     "resolution": [
       1920,
       800
     ],
-    "drawCalls": 262,
-    "renderedTriangles": 475700,
+    "drawCalls": 275,
+    "renderedTriangles": 475713,
     "geometries": 168,
-    "textures": 41
+    "textures": 53
   },
   "metricNote": "Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.",
   "pending": [

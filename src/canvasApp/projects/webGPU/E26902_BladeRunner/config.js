@@ -36,11 +36,10 @@ export const TYRELL = {
     // The pavement's planar reflection. See TyrellReflection.js for where it is added and why.
     // The plane and the extent come from the floor sectors, not from numbers typed here.
     //
-    // STILL DISABLED, though phase 6 improved it. Before the post-processing pipeline the
-    // reflector froze the canvas outright and emitted over a thousand WebGPU warnings per
-    // session. With the pipeline the warnings drop to eight and the canvas updates again, but
-    // the presented frame still trails the camera by one change. docs/phase5/VALIDACION.md has
-    // the evidence. Set to true to reproduce it.
+    // DISABLED. The reflector renders the right image but the presented canvas trails the
+    // camera: with CAM 02 selected and its own draw count on screen, the compositor still shows
+    // CAM 01. The post-processing pipeline of phase 6 did not change this. docs/phase5 has the
+    // evidence. Set to true to reproduce it.
     reflection: {
         enabled: false,
         // Half resolution: the reflection is blurred by the roughness anyway, and this is the
@@ -58,6 +57,25 @@ export const TYRELL = {
         // How much the material's own roughness blurs the reflection, in blur units.
         roughnessBlur: 3,
         strength: 1
+    },
+
+    // Free walk. The user asked for the film cameras and a free walk, so both ship and neither
+    // replaces the other. See TyrellNavigation.js.
+    //
+    // Eye height is not here on purpose: it is taken at build time from the heights the Blender
+    // cameras were placed at, so the walk sees the room from where it was shot. The fallback only
+    // applies if the model ever arrives without usable cameras.
+    navigation: {
+        enabled: true,
+        fallbackEyeHeight: 1.62,
+        // A room 25 m across; a walking pace crosses it in about eighteen seconds.
+        walkSpeed: 1.4, runSpeed: 3.2,
+        // The walker as a vertical cylinder: how wide it is and how tall, in metres.
+        radius: 0.35, height: 1.8,
+        // What counts as a step rather than a wall, and how far down a drop is still ground.
+        stepUp: 0.35, stepDown: 0.6,
+        lookSensitivity: 0.0022, pitchLimitDeg: 85,
+        transitionSeconds: 1.2
     },
 
     // Post-processing. The bloom numbers are Blender's own compositor glare, read from

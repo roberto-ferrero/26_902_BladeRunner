@@ -33,3 +33,10 @@ body.tyrell-viewer { background: #070807; color: #e6dfce; overflow: hidden; font
 .tyrell-dialog pre { white-space: pre-wrap; font-size: 12px; }
 .tyrell-dialog a { display: inline-block; color: #e8c481; margin-top: 12px; }
 @media (max-width: 700px) { .tyrell-ui header, .tyrell-ui footer { padding: 12px; } .tyrell-ui h1 { font-size: 18px; } .tyrell-controls { gap: 7px; } .tyrell-backend { max-width: 130px; text-align: right; } }
+
+/* Presentation hides the review controls without taking the film cameras away. */
+.tyrell-presentacion .tyrell-controls > *:not(.tyrell-siempre):not(label:has([aria-label="Cámara"])) { display: none; }
+.tyrell-presentacion .tyrell-metrics { display: none; }
+.tyrell-presentacion .tyrell-ui footer { background: linear-gradient(transparent, #070807c0 40%); }
+/* While walking the pointer is captured, so the note says how to get out. */
+.tyrell-andando .tyrell-note::after { content: ' · Esc para soltar el ratón'; color: #e8c481; }

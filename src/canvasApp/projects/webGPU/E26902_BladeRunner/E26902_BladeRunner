@@ -10,6 +10,7 @@ import { createAreaFills, applySunFromMaster, fitSunShadow, createIndirect, INDI
 import { applyBackfaceCulling } from './TyrellSurfaces'
 import { createFloorReflection } from './TyrellReflection'
 import { createPipeline, EFFECTS } from './TyrellPost'
+import TyrellNavigation, { collectObstacles, authoredEyeHeight } from './TyrellNavigation'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -39,6 +40,8 @@ export default class E26902_BladeRunner {
             look: enabled => this.setLook(enabled),
             indirect: mode => this.setIndirect(mode),
             effect: (name, enabled) => this.setEffect(name, enabled),
+            walk: enabled => this.setWalking(enabled),
+            presentation: enabled => this.setPresentation(enabled),
             retry: () => this.rendererError ? location.reload() : this.load(),
             capture: () => { this.captureRequested = true }, report: () => this.downloadReport()
         })
@@ -140,6 +143,7 @@ export default class E26902_BladeRunner {
         this.buildPipeline()
         // The scene capture has to see the direct lights already in place, so this comes last.
         this.setIndirect(this.indirect)
+        this.buildNavigation()
         this.selectCamera(Math.max(0, this.cameras.findIndex(camera => camera.name.startsWith(TYRELL.initialCamera.replaceAll(' ', '_')) || camera.name.startsWith(TYRELL.initialCamera))))
         this.built = true
         this.ui.ready(this.cameras, this.activeCameraIndex)
@@ -195,10 +199,59 @@ export default class E26902_BladeRunner {
         this.effects = { ...this.effects, [name]: enabled }
         this.resetMetrics()
     }
+    // The walker needs three things from the model, and takes all three from it: where the floor
+    // is, how high the film cameras stood, and which boxes it cannot cross.
+    buildNavigation() {
+        if (!TYRELL.navigation.enabled || !this.shadowCasters?.length) return
+        const bounds = new THREE.Box3()
+        for (const mesh of this.shadowCasters) {
+            if (!mesh.geometry.boundingBox) mesh.geometry.computeBoundingBox()
+            _box.copy(mesh.geometry.boundingBox).applyMatrix4(mesh.matrixWorld)
+            bounds.union(_box)
+        }
+        const floorY = this.floorMeshes.length
+            ? Math.max(...this.floorMeshes.map(mesh => {
+                if (!mesh.geometry.boundingBox) mesh.geometry.computeBoundingBox()
+                return _box.copy(mesh.geometry.boundingBox).applyMatrix4(mesh.matrixWorld).max.y
+            }))
+            : bounds.min.y
+        this.navigation = new TyrellNavigation({
+            app: this.app, rig: this.stageCamera,
+            obstacles: collectObstacles(this.shadowCasters),
+            floorY, eyeHeight: authoredEyeHeight(this.cameras, floorY), bounds
+        })
+        this.navigation.attach()
+    }
+    setWalking(enabled) {
+        if (!this.navigation) return
+        if (enabled) {
+            this.navigation.start(this.stageCamera.get_camera(), this.activeCameraIndex)
+        } else {
+            this.navigation.stop()
+            // Leaving the walk returns to the camera it started from, eased rather than cut.
+            const target = this.cameras?.[this.navigation.returnCamera ?? this.activeCameraIndex]
+            if (target) this.navigation.transitionTo(target)
+        }
+        this.walking = enabled
+        this.ui.setWalking(enabled)
+        this.resetMetrics()
+    }
+    // The review controls and the finished experience are not the same thing; this hides the
+    // former without taking the comparison cameras away.
+    setPresentation(enabled) {
+        this.presentation = enabled
+        document.body.classList.toggle('tyrell-presentacion', enabled)
+    }
     selectCamera(index) {
         if (!this.cameras?.[index]) return
         this.activeCameraIndex = index
-        this.stageCamera.setSource(this.cameras[index])
+        if (this.navigation && this.built) {
+            // From one authored framing to another, ease instead of cutting.
+            if (this.walking) this.setWalking(false)
+            this.navigation.transitionTo(this.cameras[index])
+        } else {
+            this.stageCamera.setSource(this.cameras[index])
+        }
         this.app.render.set_stageCamera(this.stageCamera.get_camera())
         this.app.dev.hide_dev_camera()
         this.resetMetrics()
@@ -276,6 +329,7 @@ export default class E26902_BladeRunner {
     }
     update_RAF() {
         if (this.reflectionResume > 0 && --this.reflectionResume === 0) this.reflection?.apply()
+        this.navigation?.update(this.app.DELTA_TIME)
         const now = performance.now()
         if (this.previousFrame !== undefined && !document.hidden) {
             if (this.warmup > 0) this.warmup--
@@ -315,7 +369,7 @@ export default class E26902_BladeRunner {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 4, date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 7, date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
             benchmarkOnStart: false, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
@@ -323,6 +377,7 @@ export default class E26902_BladeRunner {
             crystal: this.crystalThickness || null,
             backfaceCulling: this.culling || null,
             post: this.post ? { ...this.post.settings, effects: Object.fromEntries(EFFECTS.map(n => [n, this.post.isEnabled(n)])) } : null,
+            navigation: this.navigation ? this.navigation.state : null,
             reflection: this.reflection ? { ...this.reflection, dispose: undefined, restore: undefined, apply: undefined } : null,
             toneMapping: { transform: 'AgX', look: this.look ? 'AgX - Medium High Contrast (ajustado)' : 'ninguno', ...TYRELL.look, lookApplied: this.look },
             shadowMapSize: this.sun?.shadow.mapSize.x ?? null,
@@ -365,6 +420,7 @@ export default class E26902_BladeRunner {
         if (this.resizeListener) this.app.emitter.off('onAppSizeUpdate', this.resizeListener)
         document.removeEventListener('visibilitychange', this.visibilityListener)
         disposeScene(this.world3D)
+        this.navigation?.dispose()
         this.indirectBuild?.dispose()
         this.post?.dispose()
         this.reflection?.dispose()
@@ -374,7 +430,7 @@ export default class E26902_BladeRunner {
             for (const name of ['LTC_FLOAT_1', 'LTC_FLOAT_2', 'LTC_HALF_1', 'LTC_HALF_2']) RectAreaLightTexturesLib[name].dispose()
         }
         this.ui?.dispose()
-        document.body.classList.remove('tyrell-viewer', 'tyrell-reference', 'tyrell-compare')
+        document.body.classList.remove('tyrell-viewer', 'tyrell-reference', 'tyrell-compare', 'tyrell-presentacion')
     }
 }
 // Everything past the room walls: hundreds of metres away, never a shadow caster.

@@ -11,6 +11,7 @@
     "tyrell:compare": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/comparar-render.mjs --recortes",
     "tyrell:indirect": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/comparar-indirecta.mjs",
     "tyrell:capture": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/capturar-comparacion.mjs",
+    "tyrell:walk": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/tools/capturar-comparacion.mjs --paseo --out src/canvasApp/projects/webGPU/E26902_BladeRunner/docs/phase7 --prefix fase7",
     "dev": "webpack serve --config ./bundler/webpack.dev.js",
     "dev:local": "webpack serve --config ./bundler/webpack.dev.js --env local"
   },
