@@ -6,6 +6,8 @@ Fases 1 y 2 cerradas: cámaras, capturas exactas de 1920 × 800 y fidelidad geom
 
 **3.2 implementado; 3.3 en revisión:** referencia de color explícita y propuesta de materiales **Tyrell v1**, seleccionada al arrancar. Puede compararse con el export desde **Color y materiales**. [Cambios, previsualizaciones y límites](docs/phase3/3.2-3.3/COLOR_MATERIALES.md).
 
+**3.4 completado:** juntas, desgaste y respuesta de normal del pavimento revisados en WebGPU. [Auditoría, capturas y límites](docs/phase3/3.4/SUELO.md). Motor instalado en esta revisión: Three.js 0.185.1; las primeras fases usaron r182.
+
 ## Ejecutar
 
 Desde la raíz del repositorio, con Node.js 24.14.0 (versión utilizada en la validación):
@@ -28,7 +30,7 @@ Abrir `http://localhost:8081` para producción. Tras una nueva compilación hay 
 
 ## Controles y medición
 
-- **Color y materiales:** comparar `Importado del GLB` con `Tyrell v1 · en revisión`, variar compensación entre −2 y +2 EV, restablecer 0 EV y activar luz blanca de estudio. La referencia utiliza AgX, salida sRGB y exposición base 1,07. Las capturas incluyen acabado, luz y EV en el nombre y mantienen la cámara sin paneo.
+- **Color y materiales:** comparar `Importado del GLB` con `Tyrell v1 · en revisión`, variar compensación entre −2 y +2 EV, restablecer 0 EV y activar luz blanca de estudio. La referencia utiliza AgX, salida sRGB y exposición base 1,07. El control **Normal de piedra negra** permite comparar el suelo con y sin relieve, conservando su rugosidad. Las capturas incluyen acabado, luz, EV y estado de la normal en el nombre y mantienen la cámara sin paneo.
 - **Paneo con el ratón:** panel plegable con activación, recorrido horizontal/vertical (metros), suavidad (segundos), distancia al punto de mirada y retorno al centro. [Comportamiento y validación](docs/PANEO.md).
 - **Cámara:** diez cámaras del GLB. Inicio en CAM 01; CAM 02 muestra mesa y juntas, CAM 03 los perfiles invertidos y CAM 04 una vista lateral. Son cámaras de Blender pendientes de validar contra los fotogramas.
 - **Calidad:** Baja usa resolución interna ×0,75 y sombras 1024; Media ×1 y sombras 2048; Alta ×1,5 y sombras 2048. Son multiplicadores del tamaño CSS, independientes del DPR del equipo. Todos conservan la misma geometría.
@@ -83,4 +85,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-Revisar [la propuesta de 3.2–3.3](docs/phase3/3.2-3.3/COLOR_MATERIALES.md) en WebGPU desde CAM 01/02/04, a 0 EV, alternando acabado importado/Tyrell v1 y luz de escena/estudio. **3.3 permanece abierto hasta esa comprobación visual.** Después: 3.4, suelo y respuesta de normales, seguido de iluminación de fase 4.
+Revisar [la propuesta de 3.2–3.3](docs/phase3/3.2-3.3/COLOR_MATERIALES.md) en WebGPU desde CAM 01/02/04, a 0 EV, alternando acabado importado/Tyrell v1 y luz de escena/estudio. **3.3 permanece abierto hasta esa comprobación visual.** 3.4 ya está revisado y documentado. Siguiente entrega: **3.5**, materiales estándar y necesidades concretas de nodos; después 3.6, conservación de recursos compartidos, antes de iluminación de fase 4.

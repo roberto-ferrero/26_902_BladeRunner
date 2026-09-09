@@ -24,6 +24,7 @@ export default class TyrellUI {
             <label>Acabado<select aria-label="Acabado"><option value="imported">Importado del GLB</option><option value="tyrell-v1">Tyrell v1 · en revisión</option></select></label>
             <label>Exposición<input aria-label="Compensación de exposición" type="range" min="-2" max="2" step="0.1"><output></output></label>
             <label><input type="checkbox" aria-label="Luz de estudio"> Luz de estudio</label>
+            <label><input type="checkbox" aria-label="Normal de piedra negra" checked> Normal de piedra negra</label>
             <button type="button">Restablecer exposición</button>
             </div><p>La luz de estudio es blanca y sirve para comparar materiales. La exposición de referencia corresponde a 0 EV; las capturas conservan el acabado y la luz seleccionados.</p>`
         this.lookSelect = this.lookPanel.querySelector('select')
@@ -35,6 +36,7 @@ export default class TyrellUI {
             actions.look({ ev: Number(this.lookExposure.value) })
         }
         this.lookStudio.onchange = () => actions.look({ studio: this.lookStudio.checked })
+        this.lookPanel.querySelector('[aria-label="Normal de piedra negra"]').onchange = event => actions.look({ floorNormal: event.target.checked })
         this.lookPanel.querySelector('button').onclick = () => { this.lookExposure.value = 0; this.lookExposure.oninput() }
         this.root.querySelector('footer').prepend(this.lookPanel)
         this.panPanel = document.createElement('details')

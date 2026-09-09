@@ -32,6 +32,7 @@ export function applyColorReference(renderer, compensationEV = 0) {
 
 export default class TyrellLook {
     constructor(root) {
+        this.floorNormal = true
         this.original = new Map()
         root.traverse(object => {
             if (!object.isMesh) return
@@ -62,9 +63,25 @@ export default class TyrellLook {
                 if (change[key] !== undefined && source[key] !== undefined) mat[key] = change[key]
             }
         }
+        this.applyFloorNormal()
+    }
+    setFloorNormal(enabled) {
+        if (typeof enabled !== 'boolean') return
+        this.floorNormal = enabled
+        this.applyFloorNormal()
+    }
+    applyFloorNormal() {
+        for (const [mat, source] of this.original) {
+            if (mat.name !== 'PBR | Piedra negra pulida' || !source.normalScale) continue
+            if (!this.floorNormal) mat.normalScale.set(0, 0)
+            else if (this.profile === 'tyrell-v1') {
+                const strength = MATERIAL_LOOK[mat.name].normal
+                mat.normalScale.set(Math.sign(source.normalScale.x)*strength, Math.sign(source.normalScale.y)*strength)
+            } else mat.normalScale.copy(source.normalScale)
+        }
     }
     diagnostics() {
-        return { profile: this.profile, status: 'v1 pending visual WebGPU approval', materialCount: this.original.size,
+        return { profile: this.profile, floorNormal: this.floorNormal, status: 'v1 pending visual WebGPU approval', materialCount: this.original.size,
             adjusted: this.profile === 'tyrell-v1' ? [...this.original.keys()].filter(m => MATERIAL_LOOK[m.name]).map(m => m.name) : [] }
     }
 }

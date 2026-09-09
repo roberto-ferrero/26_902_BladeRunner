@@ -1,0 +1,559 @@
+{
+  "assetSha256": "bf2108bbe13d32df23bfa34e598c1d98085e2322e859fbf62354240f7e6b8fa2",
+  "material": "PBR | Piedra negra pulida",
+  "normalAngularDeviation": {
+    "0": {
+      "maxDegrees": 0.0,
+      "p95Degrees": 0.0
+    },
+    "0.025": {
+      "maxDegrees": 0.1044864631451482,
+      "p95Degrees": 0.03971983111460994
+    },
+    "0.035": {
+      "maxDegrees": 0.14628089273077405,
+      "p95Degrees": 0.05560775500870844
+    }
+  },
+  "roughness": {
+    "min": 0.11372549019607843,
+    "max": 0.45098039215686275,
+    "p50": 0.18823529411764706,
+    "p95": 0.2235294117647059
+  },
+  "imageSha256": {
+    "normal": "f447062e0ed0929d08948d35683bb2c2d1395f4943cececc8c433b5038514445",
+    "roughness": "442316d354773c3c86b198482beb57e39bc57b65d80a9dd30a114f1cc6890498",
+    "color": "92481ea079ce1852ab246fd807c27289103c28420e1db9211513cf1031160e90"
+  },
+  "meshPrimitives": [
+    {
+      "mesh": 28,
+      "primitive": 0,
+      "name": "Mesh.003",
+      "triangles": 4400,
+      "boundsLocal": [
+        [
+          1.7999958992004395,
+          -0.029999999329447746,
+          -2.9802322387695312e-08
+        ],
+        [
+          7.7999958992004395,
+          4.5262277126312256e-07,
+          6.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 29,
+      "primitive": 0,
+      "name": "Mesh.004",
+      "triangles": 3696,
+      "boundsLocal": [
+        [
+          -9.600004196166992,
+          -0.03000045195221901,
+          -6.000000476837158
+        ],
+        [
+          -4.200003623962402,
+          -9.313225746154785e-10,
+          2.9802322387695312e-08
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 30,
+      "primitive": 0,
+      "name": "Mesh.020",
+      "triangles": 4400,
+      "boundsLocal": [
+        [
+          1.7999958992004395,
+          -0.030000906437635422,
+          -12.0
+        ],
+        [
+          7.7999958992004395,
+          -4.5355409383773804e-07,
+          -6.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 31,
+      "primitive": 0,
+      "name": "Mesh.023",
+      "triangles": 4400,
+      "boundsLocal": [
+        [
+          -4.2000041007995605,
+          -0.029999999329447746,
+          -2.9802322387695312e-08
+        ],
+        [
+          1.79999577999115,
+          4.5262277126312256e-07,
+          6.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 32,
+      "primitive": 0,
+      "name": "Mesh.033",
+      "triangles": 4400,
+      "boundsLocal": [
+        [
+          1.7999958992004395,
+          -0.03000045195221901,
+          -6.000000476837158
+        ],
+        [
+          7.7999958992004395,
+          -9.313225746154785e-10,
+          2.9802322387695312e-08
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 33,
+      "primitive": 0,
+      "name": "Mesh.036",
+      "triangles": 4400,
+      "boundsLocal": [
+        [
+          -4.2000041007995605,
+          -0.030000906437635422,
+          -12.0
+        ],
+        [
+          1.79999577999115,
+          -4.5355409383773804e-07,
+          -6.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 34,
+      "primitive": 0,
+      "name": "Mesh.038",
+      "triangles": 3344,
+      "boundsLocal": [
+        [
+          1.7999958992004395,
+          -0.029999546706676483,
+          5.999999523162842
+        ],
+        [
+          7.7999958992004395,
+          9.052455425262451e-07,
+          11.999999046325684
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 35,
+      "primitive": 0,
+      "name": "Mesh.039",
+      "triangles": 1408,
+      "boundsLocal": [
+        [
+          -9.000003814697266,
+          -0.030001085251569748,
+          -14.40000057220459
+        ],
+        [
+          -4.200003623962402,
+          -9.061768651008606e-07,
+          -12.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 36,
+      "primitive": 0,
+      "name": "Mesh.042",
+      "triangles": 4400,
+      "boundsLocal": [
+        [
+          -4.2000041007995605,
+          -0.03000045195221901,
+          -6.000000476837158
+        ],
+        [
+          1.79999577999115,
+          -9.313225746154785e-10,
+          2.9802322387695312e-08
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 37,
+      "primitive": 0,
+      "name": "Mesh.043",
+      "triangles": 3608,
+      "boundsLocal": [
+        [
+          -9.600004196166992,
+          -0.030000906437635422,
+          -12.0
+        ],
+        [
+          -4.200003623962402,
+          -4.5355409383773804e-07,
+          -6.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 38,
+      "primitive": 0,
+      "name": "Mesh.048",
+      "triangles": 4400,
+      "boundsLocal": [
+        [
+          -4.2000041007995605,
+          -0.029999546706676483,
+          5.999999523162842
+        ],
+        [
+          1.79999577999115,
+          9.052455425262451e-07,
+          11.999999046325684
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 39,
+      "primitive": 0,
+      "name": "Mesh.050",
+      "triangles": 3520,
+      "boundsLocal": [
+        [
+          -9.000003814697266,
+          -0.029999999329447746,
+          -2.9802322387695312e-08
+        ],
+        [
+          -4.200003623962402,
+          4.5262277126312256e-07,
+          6.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 40,
+      "primitive": 0,
+      "name": "Mesh.1460",
+      "triangles": 880,
+      "boundsLocal": [
+        [
+          7.799995422363281,
+          -0.030000906437635422,
+          -12.0
+        ],
+        [
+          8.999996185302734,
+          -4.5355409383773804e-07,
+          -6.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 41,
+      "primitive": 0,
+      "name": "Mesh.1471",
+      "triangles": 1760,
+      "boundsLocal": [
+        [
+          -4.2000041007995605,
+          -0.030001085251569748,
+          -14.40000057220459
+        ],
+        [
+          1.79999577999115,
+          -9.061768651008606e-07,
+          -12.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 42,
+      "primitive": 0,
+      "name": "Mesh.1494",
+      "triangles": 1760,
+      "boundsLocal": [
+        [
+          1.7999958992004395,
+          -0.030001085251569748,
+          -14.40000057220459
+        ],
+        [
+          7.7999958992004395,
+          -9.061768651008606e-07,
+          -12.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 43,
+      "primitive": 0,
+      "name": "Mesh.1510",
+      "triangles": 1936,
+      "boundsLocal": [
+        [
+          -9.000003814697266,
+          -0.029999546706676483,
+          5.999999523162842
+        ],
+        [
+          -4.200003623962402,
+          9.052455425262451e-07,
+          11.999999046325684
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 44,
+      "primitive": 0,
+      "name": "Mesh.1534",
+      "triangles": 880,
+      "boundsLocal": [
+        [
+          7.799995422363281,
+          -0.029999999329447746,
+          -2.9802322387695312e-08
+        ],
+        [
+          8.999996185302734,
+          4.5262277126312256e-07,
+          6.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 45,
+      "primitive": 0,
+      "name": "Mesh.1640",
+      "triangles": 352,
+      "boundsLocal": [
+        [
+          7.799995422363281,
+          -0.030001085251569748,
+          -14.40000057220459
+        ],
+        [
+          8.999996185302734,
+          -9.061768651008606e-07,
+          -12.0
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 46,
+      "primitive": 0,
+      "name": "Mesh.1672",
+      "triangles": 880,
+      "boundsLocal": [
+        [
+          7.799995422363281,
+          -0.03000045195221901,
+          -6.000000476837158
+        ],
+        [
+          8.999996185302734,
+          -9.313225746154785e-10,
+          2.9802322387695312e-08
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 47,
+      "primitive": 0,
+      "name": "Mesh.1706",
+      "triangles": 44,
+      "boundsLocal": [
+        [
+          -13.600004196166992,
+          -0.030000021681189537,
+          -0.6000000238418579
+        ],
+        [
+          -13.000003814697266,
+          2.2351741790771484e-08,
+          -2.9802322387695312e-08
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    },
+    {
+      "mesh": 48,
+      "primitive": 0,
+      "name": "Mesh.1925",
+      "triangles": 352,
+      "boundsLocal": [
+        [
+          7.799995422363281,
+          -0.029999546706676483,
+          5.999999523162842
+        ],
+        [
+          8.999996185302734,
+          6.332993507385254e-07,
+          8.399999618530273
+        ]
+      ],
+      "collapsedUVTriangles": 0
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Pavimento | sector (3, 1)",
+      "mesh": 28,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (1, 2)",
+      "mesh": 29,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (3, 3)",
+      "mesh": 30,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (2, 1)",
+      "mesh": 31,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (3, 2)",
+      "mesh": 32,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (2, 3)",
+      "mesh": 33,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (3, 0)",
+      "mesh": 34,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (1, 4)",
+      "mesh": 35,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (2, 2)",
+      "mesh": 36,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (1, 3)",
+      "mesh": 37,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (2, 0)",
+      "mesh": 38,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (1, 1)",
+      "mesh": 39,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (4, 3)",
+      "mesh": 40,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (2, 4)",
+      "mesh": 41,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (3, 4)",
+      "mesh": 42,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (1, 0)",
+      "mesh": 43,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (4, 1)",
+      "mesh": 44,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (4, 4)",
+      "mesh": 45,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (4, 2)",
+      "mesh": 46,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (0, 2)",
+      "mesh": 47,
+      "translation": null,
+      "scale": null
+    },
+    {
+      "name": "Pavimento | sector (4, 0)",
+      "mesh": 48,
+      "translation": null,
+      "scale": null
+    }
+  ],
+  "note": "Angles describe decoded texture normals on a flat tangent frame; not total mesh shading or screen-space reflection distortion. Bounds are local; translations are glTF Y-up."
+}

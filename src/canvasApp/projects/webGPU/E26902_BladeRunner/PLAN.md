@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **fases 1, 2, 3.1 y base técnica 3.2 completadas**. **3.3: primera propuesta aplicada, pendiente de revisión visual WebGPU**. Numeración consecutiva por fase, incluido el paneo como 7.6. Detalles en [COLOR_MATERIALES.md](docs/phase3/3.2-3.3/COLOR_MATERIALES.md); siguiente paso: contrastar la propuesta desde CAM 01/02/04 antes de cerrar 3.3.
+Estado: **fases 1, 2, 3.1 y base técnica 3.2 completadas**. **3.3: primera propuesta aplicada, pendiente de revisión visual WebGPU**. Numeración consecutiva por fase, incluido el paneo como 7.6. Detalles en [COLOR_MATERIALES.md](docs/phase3/3.2-3.3/COLOR_MATERIALES.md); **3.4 completado:** pavimento auditado y comparación WebGPU documentada en [SUELO.md](docs/phase3/3.4/SUELO.md). Siguiente entrega: **3.5**; la revisión general de 3.3 sigue pendiente.
 
 ## Objetivo
 
@@ -11,7 +11,7 @@ Trabajar por entregas pequeñas, en el orden de esta lista. Cada entrega actuali
 ## Fuentes y puntos de integración
 
 - Entrada del proyecto: `E26902_BladeRunner`, en esta carpeta. Es un archivo JavaScript sin extensión; `src/Platform.js` ya lo importa e instancia.
-- Motor instalado: Three.js **0.182.0**. Usar las APIs de esta versión como referencia; cualquier actualización deberá tener una razón concreta.
+- Motor de las primeras fases: Three.js **0.182.0**; en la revisión 3.4 se detecta **0.185.1** instalada, sin modificar dependencias en esa entrega. Usar las APIs de esta versión como referencia; cualquier actualización deberá tener una razón concreta.
 - Ciclo del andamiaje: `onRendererReady` → `project.init(app)` → carga → `onProjectLoaded` → `project.build()` → `update_RAF()`.
 - El código específico de Tyrell permanecerá en esta carpeta; los cambios en `core` serán pequeños y necesarios para integrarlo.
 - Recursos originales, fuera del repositorio: `../../_Blender/BladeRunner_5_6_High_v3.blend` y `.glb`, respecto a la raíz del repositorio.
@@ -73,8 +73,8 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 - [x] **3.1** Validar los mapas de color, normales y rugosidad; separar correctamente texturas de color y de datos. 25 imágenes auditadas, 20 materiales contrastados con Blender y conexiones comprobadas con GLTFLoader y WebGPU. No se encontraron errores de espacio de color; informe y límites en `docs/phase3/3.1/`.
 - [x] **3.2** Establecer gestión de color, AgX y exposición de referencia antes de calibrar las luces. Linear-sRGB → AgX → sRGB, base 1,07 y compensación ±2 EV; controles de comparación y luz de estudio. Validación técnica; la equivalencia con fotogramas sigue pendiente.
-- [ ] **3.3** Ajustar piedra, cuero, nogal, bronce, suelo y cristalería con el GLB como punto de partida y las tres referencias visuales. **Propuesta Tyrell v1 implementada y reversible desde el GUI**, con previsualización auxiliar en Blender y pruebas correctas; falta revisión en WebGPU por ausencia de navegador conectado. Mantener revisión de las UV colapsadas de 3.1 antes del cierre visual.
-- [ ] **3.4** Comprobar que el suelo conserva juntas y desgaste y que la normal no produce un aspecto de agua.
+- [ ] **3.3** Ajustar piedra, cuero, nogal, bronce, suelo y cristalería con el GLB como punto de partida y las tres referencias visuales. **Propuesta Tyrell v1 implementada y reversible desde el GUI**, con previsualización auxiliar en Blender y pruebas correctas; falta completar la revisión general de acabados en WebGPU; en 3.4 se ha comprobado el pavimento desde CAM 01/04. Mantener revisión de las UV colapsadas de 3.1 antes del cierre visual.
+- [x] **3.4** Suelo auditado: juntas y desgaste conservados, sin UV colapsadas; comparación WebGPU con normal activada/desactivada. Normal 0,025 mantenida. El brillo amplio persiste sin normal y queda para luces/reflejos; evidencia y límites en [SUELO.md](docs/phase3/3.4/SUELO.md).
 - [ ] **3.5** Usar materiales estándar cuando sean suficientes y materiales de nodos donde lo exija un efecto concreto.
 - [ ] **3.6** Conservar los recursos compartidos entre sillas y evitar clonar materiales innecesariamente.
 

@@ -43,3 +43,19 @@ test('Material comparison restores exact imported values, preserves shared maps 
     assert.ok(root.children.slice(0,4).every(o=>o.material===stone))
     geometry.dispose(); stone.dispose(); glass.dispose(); texture.dispose()
 })
+
+test('Floor normal comparison preserves texture, roughness, UV and profile strength across toggles', () => {
+    const root=new THREE.Group(), geometry=new THREE.PlaneGeometry(), texture=new THREE.Texture()
+    const material=new THREE.MeshStandardMaterial({normalMap:texture,roughnessMap:texture})
+    material.name='PBR | Piedra negra pulida';material.normalScale.set(.035,-.035)
+    root.add(new THREE.Mesh(geometry,material))
+    const look=new Look(root), uv=geometry.attributes.uv.array.slice(), version=texture.version
+    look.apply('tyrell-v1');look.setFloorNormal(false)
+    assert.deepEqual(material.normalScale.toArray(),[0,0])
+    look.apply('imported');assert.deepEqual(material.normalScale.toArray(),[0,0])
+    look.setFloorNormal(true);assert.deepEqual(material.normalScale.toArray(),[.035,-.035])
+    look.apply('tyrell-v1');assert.deepEqual(material.normalScale.toArray(),[.025,-.025])
+    assert.equal(material.roughnessMap,texture);assert.equal(material.normalMap,texture)
+    assert.equal(texture.version,version);assert.deepEqual(geometry.attributes.uv.array,uv)
+    geometry.dispose();material.dispose();texture.dispose()
+})
