@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **5.2 implementado y documentado**. Reflejo de piedra pulida con Fresnel, suavizado por rugosidad y distorsión de normales; ensayo uniforme 5.1 disponible para comparar. R01 conservado al arrancar. [Parámetros y límites](docs/phase5/5.2/MATERIAL.md). Siguiente entrega: **5.3 · Columnas y mobiliario reflejados al cambiar de cámara**.
+Estado: **5.3–5.5 ejecutados y documentados**. Diez cámaras revisadas, actualización adaptativa/resolución configurable y entorno local para metales/vidrio. R01 conservado al arrancar. [Cámaras](docs/phase5/5.3/CAMARAS.md), [rendimiento](docs/phase5/5.4/RENDIMIENTO.md), [entorno](docs/phase5/5.5/ENTORNO.md). Siguiente entrega: **6.1 · Profundidad atmosférica exterior y bruma interior**. Las vistas inversas aún muestran límites del decorado; no se declara fidelidad final.
 
 ## Objetivo
 
@@ -97,9 +97,9 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 - [x] **5.1** Reflector WebGPU compartido por 21 sectores, control de comparación, cámaras/capturas reutilizadas y coste observado. 29 pruebas correctas; capturas 001–007. Ensayo aditivo, desactivado al arrancar. [Informe](docs/phase5/5.1/REFLECTOR.md).
 - [x] **5.2** Reflejo modulado por Fresnel, mapa de rugosidad y normales, respetando juntas geométricas; selector de comparación con 5.1. 29 pruebas correctas y capturas 001–007. Integración visual aproximada, no BRDF completa. [Informe](docs/phase5/5.2/MATERIAL.md).
-- [ ] **5.3** Comprobar las columnas y el mobiliario reflejados, también al cambiar de cámara.
-- [ ] **5.4** Controlar resolución y frecuencia de actualización del reflejo; evitar recursión y pasadas innecesarias.
-- [ ] **5.5** Mantener un entorno de reflexión coherente para bronces y cristalería.
+- [x] **5.3** Revisadas las diez cámaras y paneo; matemática del reflector verificada con las cámaras reales. Vistas inversas con limitaciones de decorado documentadas. [Informe](docs/phase5/5.3/CAMARAS.md).
+- [x] **5.4** Resolución automática por calidad y manual; actualización adaptativa por cambios, comparador continuo y sin recursión. Caché corregida y ahorro de pasadas verificado en navegador. [Informe](docs/phase5/5.4/RENDIMIENTO.md).
+- [x] **5.5** Cubemap local de sala compartido por cinco materiales de metal/vidrio, reversible y actualizado al cambiar iluminación. Pavimento y entorno global conservados. 32 pruebas correctas para la entrega conjunta. [Informe](docs/phase5/5.5/ENTORNO.md).
 
 **Resultado comprobable:** los reflejos largos del suelo refuerzan la composición y mantienen estabilidad al mover la cámara, con coste registrado.
 

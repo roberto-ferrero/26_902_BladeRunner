@@ -1,13 +1,17 @@
 import { Object3D } from 'three'
 import { MeshStandardNodeMaterial } from 'three/webgpu'
 import { reflector, normalWorldGeometry, normalView, normalViewGeometry, positionViewDirection,
-    materialRoughness, screenUV, vec2, float } from 'three/tsl'
+    materialRoughness, screenUV, vec2, float, uniform } from 'three/tsl'
+import TyrellReflectionUpdates from './TyrellReflectionUpdates'
 
 // Planar radiance with a bounded, art-directed specular contribution; retains the direct PBR light.
 export default class TyrellFloorReflection {
     constructor(root) {
         this.enabled = false
         this.mode = 'stone'
+        this.resolution = 'auto'
+        this.quality = 'Media'
+        this.lodOffset = uniform(0)
         this.target = new Object3D()
         this.target.name = 'Tyrell / plano de reflexion del pavimento'
         this.target.rotation.x = -Math.PI / 2
@@ -15,12 +19,13 @@ export default class TyrellFloorReflection {
         this.node = reflector({ target: this.target, resolutionScale: .5, generateMipmaps: true, bounces: false, samples: 0 })
         // Captures and live views can render different cameras within the same animation frame.
         this.node.reflector.updateBeforeType = 'render'
+        this.updates = new TyrellReflectionUpdates(this.node)
         this.contribution = this.node.rgb.mul(.18).mul(normalWorldGeometry.y.greaterThan(.99))
         const rough = materialRoughness.clamp(0, 1)
         const fresnel = float(.04).add(float(.96).mul(float(1).sub(normalView.dot(positionViewDirection).clamp(0, 1)).pow(5)))
         // Perturb the reflected image using the same mapped normal/normalScale as the PBR surface.
         const distortion = normalView.sub(normalViewGeometry).xy.mul(vec2(-1, 1)).mul(.045)
-        const reflected = this.node.sample(screenUV.flipX().add(distortion).clamp(.001, .999)).level(rough.mul(10).clamp(0, 5))
+        const reflected = this.node.sample(screenUV.flipX().add(distortion).clamp(.001, .999)).level(rough.mul(10).clamp(0, 5).add(this.lodOffset).max(0))
         this.stoneContribution = reflected.rgb.mul(fresnel).mul(.32).mul(float(1).sub(rough.mul(.65)))
             .mul(normalWorldGeometry.y.greaterThan(.99))
         this.materials = new Map()
@@ -46,11 +51,20 @@ export default class TyrellFloorReflection {
         })
     }
     setEnabled(enabled) {
+        this.updates.invalidate()
         this.enabled = Boolean(enabled)
         for (const material of this.materials.values()) {
             material.emissiveNode = this.enabled ? (this.mode === 'stone' ? this.stoneContribution : this.contribution) : null
             material.needsUpdate = true
         }
+    }
+    setResolution(value = this.resolution, quality = this.quality) {
+        if (!['auto', '0.25', '0.5', '1'].includes(value)) return
+        this.resolution = value; this.quality = quality
+        const scale = value === 'auto' ? ({ Baja: .25, Media: .5, Alta: .75 }[quality] || .5) : Number(value)
+        this.node.reflector.resolutionScale = scale
+        this.lodOffset.value = Math.log2(scale / .5)
+        this.updates.invalidate()
     }
     setMode(mode) {
         if (!['stone', 'prototype'].includes(mode)) return
@@ -60,11 +74,14 @@ export default class TyrellFloorReflection {
     diagnostics() {
         return { enabled: this.enabled, mode: this.mode, status: '5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion',
             planeY: 0, gain: this.mode === 'stone' ? .32 : .18, fresnelF0: .04, roughnessLodScale: 10,
-            maxLod: 5, normalDistortion: .045, resolutionScale: .5, mipmaps: true, bounces: false,
+            maxLod: 5, normalDistortion: .045, resolutionScale: this.node.reflector.resolutionScale, resolution: this.resolution,
+            mipLodOffset: this.lodOffset.value, mipmaps: true, bounces: false,
+            updates: { mode: this.updates.mode, rendered: this.updates.rendered, reused: this.updates.reused },
             meshes: this.meshes.length, sharedMaterials: this.materials.size,
             targets: [...this.node.reflector.renderTargets.values()].map(rt => ({ width: rt.width, height: rt.height })) }
     }
     dispose() {
+        this.updates.dispose()
         this.node.dispose()
         this.node.reflector.renderTargets.clear()
         this.target.removeFromParent()

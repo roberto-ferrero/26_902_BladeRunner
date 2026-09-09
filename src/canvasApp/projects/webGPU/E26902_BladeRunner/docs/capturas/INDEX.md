@@ -1,6 +1,60 @@
 # Registro cronológico de capturas
 
-Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; de 4.5: **010**; de 4.6: **011**; de 5.1: **008**; de 5.2: **008**; primera de 5.3: **001**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; de 4.5: **010**; de 4.6: **011**; de 5.1: **008**; de 5.2: **008**; de 5.3: **012**; de 5.4: **008**; de 5.5: **006**; primera de 6.1: **001**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+
+## Entrega conjunta 5.3–5.5
+
+09/09/2026. Horas UTC (Madrid +2 h). Todos son pantallazos 893 × 912, codificados como PNG desde la imagen entregada por el navegador, sin cambiar tamaño o contenido visual. Salvo 5.3/011, muestran el diálogo de captura fija 1920 × 800 reducido, sin paneo. Tyrell v1, luz 4.2 con balance R01, Base R01 indirecta, 0 EV y normales activas. Calidad Media salvo las excepciones indicadas. El reflector planar usa Piedra pulida 5.2.
+
+### 5.3 · Cámaras
+
+Reflejo planar activado, entorno de metal/vidrio desactivado. 001–010: compilación 5.2 con actualización continua; 011: compilación final con caché adaptativa.
+
+| Orden | Hora | Archivo | Vista y estado |
+| --- | --- | --- | --- |
+| 5.3 / 001 | 19:31:09 | [CAM 01](5.3_001_2026-09-09_CAM01.png) | General |
+| 5.3 / 002 | 19:31:50 | [CAM 03](5.3_002_2026-09-09_CAM03.png) | Columnas invertidas, poco suelo visible |
+| 5.3 / 003 | 19:33:16 | [CAM 05](5.3_003_2026-09-09_CAM05.png) | Camera_B, fondo inverso pendiente |
+| 5.3 / 004 | 19:35:22 | [CAM 06](5.3_004_2026-09-09_CAM06.png) | Camera_C, lateral inverso |
+| 5.3 / 005 | 19:37:14 | [CAM 07](5.3_005_2026-09-09_CAM07.png) | Camera_D, mesa desde atrás |
+| 5.3 / 006 | 19:37:52 | [CAM 08](5.3_006_2026-09-09_CAM08.png) | Camera_E, plano cerrado de mesa |
+| 5.3 / 007 | 19:38:09 | [CAM 09](5.3_007_2026-09-09_CAM09.png) | Camera_F, fondo/cielo limitado |
+| 5.3 / 008 | 19:38:24 | [CAM 10](5.3_008_2026-09-09_CAM10.png) | Camera_free, pose fija elevada |
+| 5.3 / 009 | 19:38:43 | [CAM 02](5.3_009_2026-09-09_CAM02.png) | Mesa y juntas |
+| 5.3 / 010 | 19:39:07 | [CAM 04](5.3_010_2026-09-09_CAM04.png) | Lateral de referencia |
+| 5.3 / 011 | 19:47:52 | [CAM 01 en vivo](5.3_011_2026-09-09_CAM01.png) | Paneo activo; no es captura fija. [Diagnóstico](5.3_011_2026-09-09_CAM01.json) |
+
+[Conclusiones y límites de las vistas inversas](../phase5/5.3/CAMARAS.md).
+
+### 5.4 · Resolución y actualización
+
+CAM 01, reflector activado y entorno de metal/vidrio desactivado.
+
+| Orden | Hora | Archivo | Estado |
+| --- | --- | --- | --- |
+| 5.4 / 001 | 19:40:56 | [Iteración inicial](5.4_001_2026-09-09_CAM01.png) | Caché sin reutilización, corregida después; [diagnóstico](5.4_001_2026-09-09_CAM01.json) |
+| 5.4 / 002 | 19:46:04 | [Adaptativo corregido](5.4_002_2026-09-09_CAM01.png) | Auto/Media, 50 %; [1 render / 871 reutilizaciones](5.4_002_2026-09-09_CAM01.json) antes de capturar |
+| 5.4 / 003 | 19:46:38 | [25 %](5.4_003_2026-09-09_CAM01.png) | Resolución manual 25 %, adaptativo |
+| 5.4 / 004 | 19:47:15 | [100 %](5.4_004_2026-09-09_CAM01.png) | Resolución manual 100 %, adaptativo |
+| 5.4 / 005 | 19:50:10 | [Continuo](5.4_005_2026-09-09_CAM01.png) | Auto/Media, cada render; [diagnóstico](5.4_005_2026-09-09_CAM01.json) |
+| 5.4 / 006 | 19:50:35 | [Baja](5.4_006_2026-09-09_CAM01.png) | Auto/Baja, reflector 25 %, adaptativo |
+| 5.4 / 007 | 19:50:51 | [Alta](5.4_007_2026-09-09_CAM01.png) | Auto/Alta, reflector 75 %, adaptativo |
+
+[Parámetros, ahorro y limitaciones](../phase5/5.4/RENDIMIENTO.md). Media/Auto/adaptativo restaurados después.
+
+### 5.5 · Metal y vidrio
+
+Reflector planar activado, Media, Auto 50 %. 001–002 pertenecen a la primera compilación; 003–005 incluyen la caché corregida.
+
+| Orden | Hora | Archivo | Estado |
+| --- | --- | --- | --- |
+| 5.5 / 001 | 19:41:14 | [CAM 02 sin entorno](5.5_001_2026-09-09_CAM02.png) | Comparación inicial |
+| 5.5 / 002 | 19:43:27 | [CAM 02 con entorno](5.5_002_2026-09-09_CAM02.png) | Una captura local; [diagnóstico](5.5_002_2026-09-09_CAM02.json) |
+| 5.5 / 003 | 19:52:14 | [CAM 02 final](5.5_003_2026-09-09_CAM02.png) | R01 restaurado después de estudio; tres capturas locales, [diagnóstico](5.5_003_2026-09-09_CAM02.json) |
+| 5.5 / 004 | 19:53:37 | [CAM 04 final](5.5_004_2026-09-09_CAM04.png) | Ambos reflejos activados |
+| 5.5 / 005 | 19:54:15 | [CAM 01 final](5.5_005_2026-09-09_CAM01.png) | Estado dejado para revisión; [diagnóstico final](5.5_005_2026-09-09_CAM01.json) |
+
+[Fuente, coste y límites del entorno](../phase5/5.5/ENTORNO.md). 23 pantallazos nuevos en total; R01 archivado permanece intacto. Al recargar, los dos controles de reflexión arrancan desactivados.
 
 ## Entrega 5.2 · Reflejo de piedra pulida
 

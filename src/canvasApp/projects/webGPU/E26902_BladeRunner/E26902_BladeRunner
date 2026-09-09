@@ -15,6 +15,7 @@ import TyrellIndirect from './TyrellIndirect'
 import { addColumnCores } from './TyrellColumnCores'
 import { settleInstrumentCase } from './TyrellContacts'
 import TyrellFloorReflection from './TyrellFloorReflection'
+import TyrellSpecularEnvironment from './TyrellSpecularEnvironment'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -44,8 +45,11 @@ export default class E26902_BladeRunner {
             lighting: profile => this.setLighting(profile),
             reflection: enabled => { this.floorReflection?.setEnabled(enabled); this.resetMetrics() },
             reflectionMode: mode => { this.floorReflection?.setMode(mode); this.resetMetrics() },
+            reflectionResolution: value => { this.floorReflection?.setResolution(value); this.resetMetrics() },
+            reflectionUpdates: value => { this.floorReflection?.updates.setMode(value); this.resetMetrics() },
+            specularEnvironment: enabled => { this.specularEnvironment?.setEnabled(enabled); this.resetMetrics() },
             indirect: mode => { this.indirect?.setMode(mode); this.setLighting(this.lightingProfile) },
-            contribution: value => { this.lighting?.setContribution(value); this.indirect?.apply(this.lighting, this.studio); this.resetMetrics() }
+            contribution: value => { this.lighting?.setContribution(value); this.indirect?.apply(this.lighting, this.studio); this.specularEnvironment?.invalidate(); this.resetMetrics() }
         })
         this.ui.setPanSettings(TYRELL.pan)
         this.ui.lightingSelect.value = this.lightingProfile
@@ -170,6 +174,7 @@ export default class E26902_BladeRunner {
         })
         this.lighting = new TyrellLighting(this.world3D, this.sun, this.fill, this.areaLights)
         this.indirect = new TyrellIndirect(this.scene)
+        this.specularEnvironment = new TyrellSpecularEnvironment(this.scene, this.world3D, this.floorReflection)
         this.setLighting(this.lightingProfile)
         this.studioLights = new THREE.Group()
         this.studioLights.name = 'Tyrell / estudio de materiales'
@@ -204,6 +209,7 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     setLighting(profile) {
+        this.specularEnvironment?.invalidate()
         if (!['provisional', 'tyrell-light-v1', 'tyrell-light-v2', 'tyrell-light-v3'].includes(profile)) return
         this.lightingProfile = profile
         this.lighting?.apply(profile)
@@ -211,6 +217,7 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     setLook(values) {
+        this.specularEnvironment?.invalidate()
         if (['imported', 'tyrell-v1'].includes(values.profile)) {
             this.lookProfile = values.profile
             this.look?.apply(this.lookProfile)
@@ -240,6 +247,8 @@ export default class E26902_BladeRunner {
         const profile = TYRELL.profiles[name]
         if (!profile) return
         this.quality = name
+        this.floorReflection?.setResolution(this.floorReflection.resolution, name)
+        this.specularEnvironment?.invalidate()
         this.renderer?.setPixelRatio(profile.pixelRatio)
         this.app.render?.update_resize()
         if (this.sun && this.sun.shadow.mapSize.x !== profile.shadowSize) {
@@ -258,10 +267,12 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     resetMetrics() {
+        this.floorReflection?.updates.invalidate()
         this.samples = []; this.warmup = 60; this.previousFrame = undefined; this.metrics = undefined
         if (this.built) this.ui.metrics('Estabilizando la medición…')
     }
     update_RAF() {
+        this.specularEnvironment?.update(this.renderer)
         const now = performance.now()
         this.pan?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)
         this.panTime = now
@@ -304,7 +315,7 @@ export default class E26902_BladeRunner {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 5, step: '5.2', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 5, step: '5.5', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             referenceCapture: { ...REFERENCE_CAPTURE, aspect: 2.4 },
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
@@ -313,6 +324,7 @@ export default class E26902_BladeRunner {
             columnRepair: this.columnCores?.userData.columnRepair || null,
             contactRepair: this.contactRepair || null,
             floorReflection: this.floorReflection?.diagnostics() || null,
+            specularEnvironment: this.specularEnvironment?.diagnostics() || null,
             materialAudit: this.materialAudit || null,
             colorReference: this.colorReference,
             lighting: this.lighting?.diagnostics(),
@@ -341,6 +353,7 @@ export default class E26902_BladeRunner {
         this.app.emitter.off('onAppKill', this.killListener)
         if (this.resizeListener) this.app.emitter.off('onAppSizeUpdate', this.resizeListener)
         document.removeEventListener('visibilitychange', this.visibilityListener)
+        this.specularEnvironment?.dispose()
         this.floorReflection?.dispose()
         disposeScene(this.world3D)
         this.fill?.removeFromParent()

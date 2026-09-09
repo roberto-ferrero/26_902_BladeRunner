@@ -30,6 +30,9 @@ export default class TyrellUI {
             <label><input type="checkbox" aria-label="Normal de piedra negra" checked> Normal de piedra negra</label>
             <label><input type="checkbox" aria-label="Reflejo del suelo"> Reflejo del suelo</label>
             <label>Acabado del reflejo<select aria-label="Acabado del reflejo"><option value="stone">Piedra pulida · 5.2</option><option value="prototype">Ensayo uniforme · 5.1</option></select></label>
+            <label>Resolución del reflejo<select aria-label="Resolución del reflejo"><option value="auto">Según calidad</option><option value="0.25">25 %</option><option value="0.5">50 %</option><option value="1">100 %</option></select></label>
+            <label>Actualización del reflejo<select aria-label="Actualización del reflejo"><option value="adaptive">Al cambiar la vista o la escena</option><option value="always">Cada render</option></select></label>
+            <label><input type="checkbox" aria-label="Reflejos en metal y vidrio"> Reflejos en metal y vidrio</label>
             <button type="button">Restablecer exposición</button>
             </div><p>La luz de estudio es blanca y sirve para comparar materiales. La exposición de referencia corresponde a 0 EV; las capturas conservan el acabado y la luz seleccionados.</p>`
         this.lightingSelect = this.lookPanel.querySelector('select[aria-label="Iluminación"]')
@@ -37,6 +40,9 @@ export default class TyrellUI {
         this.lookPanel.querySelector('[aria-label="Luz indirecta"]').onchange = event => actions.indirect(event.target.value)
         this.lookPanel.querySelector('[aria-label="Reflejo del suelo"]').onchange = event => actions.reflection(event.target.checked)
         this.lookPanel.querySelector('[aria-label="Acabado del reflejo"]').onchange = event => actions.reflectionMode(event.target.value)
+        this.lookPanel.querySelector('[aria-label="Resolución del reflejo"]').onchange = event => actions.reflectionResolution(event.target.value)
+        this.lookPanel.querySelector('[aria-label="Actualización del reflejo"]').onchange = event => actions.reflectionUpdates(event.target.value)
+        this.lookPanel.querySelector('[aria-label="Reflejos en metal y vidrio"]').onchange = event => actions.specularEnvironment(event.target.checked)
         this.lookPanel.querySelector('[aria-label="Aporte de luz"]').onchange = event => actions.contribution(event.target.value)
         this.lookSelect = this.lookPanel.querySelector('select')
         this.lookExposure = this.lookPanel.querySelector('input[type=range]')

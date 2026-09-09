@@ -1,6 +1,6 @@
 # Oficinas Tyrell · Visor WebGPU
 
-**Estado actual: 5.2 implementado y documentado.** Reflejo modulado por rugosidad, Fresnel y normales; comparación con el ensayo uniforme en el GUI. Desactivado al arrancar para conservar R01. [Parámetros, capturas y límites](docs/phase5/5.2/MATERIAL.md). Próximo punto: **5.3 · Columnas y mobiliario reflejados**. Las notas de reapertura que siguen documentan el histórico.
+**Estado actual: 5.3–5.5 ejecutados.** Cámaras revisadas, reflector con caché adaptativa/resolución configurable y entorno local para metales/vidrio. 32 pruebas correctas. [Cámaras](docs/phase5/5.3/CAMARAS.md), [rendimiento](docs/phase5/5.4/RENDIMIENTO.md) y [entorno](docs/phase5/5.5/ENTORNO.md). Ambos controles de reflexión arrancan desactivados para conservar R01. Próximo punto: **6.1 · Profundidad atmosférica exterior y bruma interior**. Las notas que siguen incluyen el histórico.
 
 **Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
 
@@ -47,6 +47,8 @@ Abrir `http://localhost:8081` para producción. Tras una nueva compilación hay 
 ## Controles y medición
 
 - **Reflejo del suelo:** dentro de Color y materiales, activa una reflexión planar compartida a media resolución. **Acabado del reflejo** alterna `Piedra pulida · 5.2` (rugosidad, Fresnel y normales) y `Ensayo uniforme · 5.1`. Desmarcar vuelve a R01. El control de normales afecta también a la distorsión del reflejo. Diagnóstico y capturas registran modo y activación.
+- **Resolución del reflejo:** automática (Baja 25 %, Media 50 %, Alta 75 %) o manual 25/50/100 % por eje. **Actualización del reflejo** reutiliza vistas quietas por defecto; `Cada render` sirve para comparar o para futuras escenas animadas. Movimiento, cámara, tamaño y cambios de escena fuerzan actualización.
+- **Reflejos en metal y vidrio:** captura local compartida de la sala, seis caras de 128 × 128, sólo para cinco materiales de bronce/latón/cristal. Se actualiza al activarlo o cambiar iluminación/acabado/calidad. Desactivar restaura esos materiales; no cambia el entorno global ni el pavimento. Para volver a la base R01 completa, desactivar también Reflejo del suelo.
 - **Luz indirecta:** dentro de Color y materiales, `Base R01` (inicio), `Sonda difusa · ensayo` y `Entorno · ensayo`. Los ensayos usan un campo artístico, sin captura de escena ni GI horneada; se desactivan con luz de estudio o al aislar sol/áreas. El diagnóstico registra el modo y su estado efectivo.
 - **Iluminación:** dentro de Color y materiales, alternar `Provisional · fase 3`, `Tyrell · luz 4.1`, `Tyrell · luz 4.2` (inicio restaurado) y `Tyrell · luz 4.3` (propuesta rechazada, para comparar). **Aporte de luz** permite aislar sol, ambiente y áreas. Las capturas y el diagnóstico incluyen perfil y aporte; el diagnóstico detalla tamaño y orientación de las áreas.
 - **Color y materiales:** comparar `Importado del GLB` con `Tyrell v1 · base revisada`, variar compensación entre −2 y +2 EV, restablecer 0 EV y activar luz blanca de estudio. La referencia utiliza AgX, salida sRGB y exposición base 1,07. El control **Normal de piedra negra** permite comparar el suelo con y sin relieve, conservando su rugosidad. Las capturas incluyen acabado, luz, EV y estado de la normal en el nombre y mantienen la cámara sin paneo.
@@ -68,6 +70,8 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `TyrellAssets.js` | Carga con progreso, errores HTTP/GLB, cancelación y liberación de recursos compartidos |
 | `TyrellContacts.js` | Apoyo del maletín completo mediante cuatro comprobaciones geométricas; conserva los recursos originales |
 | `TyrellFloorReflection.js` | Ensayo planar compartido por el suelo, control de activación, diagnóstico y liberación |
+| `TyrellReflectionUpdates.js` | Caché de vistas quietas, invalidación y contadores de render/reutilización |
+| `TyrellSpecularEnvironment.js` | Captura local de sala para metales/vidrio, selección de receptores, actualización y restauración |
 | `scripts/audit-contacts.mjs`, `tests/contacts.test.mjs` | Medición de apoyos del GLB y regresión de la corrección sin modificar el archivo fuente |
 | `TyrellCameraRig.js` | Pose mundial y FOV de cámaras, escala de visualización de Blender normalizada, resize |
 | `TyrellCameraPan.js` | Paneo relativo al ratón, límites, mirada fija y suavizado temporal; referencia independiente para capturas |
@@ -112,4 +116,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-**5.3 · Columnas y mobiliario reflejados al cambiar de cámara.** Revisar continuidad, recortes y contactos en distintas vistas, conservando el equilibrio de R01 y las capturas numeradas.
+**6.1 · Profundidad atmosférica exterior y bruma interior.** Separar ambas contribuciones, conservar el equilibrio de R01 y registrar las comparaciones. Las vistas inversas del decorado aún requieren revisión para el recorrido libre.
