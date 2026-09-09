@@ -1,5 +1,9 @@
 # Oficinas Tyrell · Visor WebGPU
 
+**Estado actual:** 4.3 resuelto conservando R01 y descartando la propuesta de áreas reducidas. Se mantienen sus intensidades y rellenos; nuevas capturas 004–006 en el registro. Próximo punto: 4.4, sombras solares. Las notas de reapertura que siguen documentan el histórico de la revisión.
+
+**Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
+
 Fases 1 y 2 cerradas: cámaras, capturas exactas de 1920 × 800 y fidelidad geométrica revisadas. El visor utiliza una copia del GLB con limpieza de índices, conservando posiciones, UV, materiales y cámaras. La iluminación es provisional; materiales, atmósfera y recorrido libre continúan en las siguientes fases de [PLAN.md](PLAN.md). Evidencia y límites en [el cierre de fase 2](docs/phase2/CIERRE.md).
 
 **3.1 completado:** [mapas, canales y conexiones validados](docs/phase3/3.1/MAPAS.md). Las tres imágenes de [referencia de acabado e iluminación](<docs/reference images/README.md>) orientan las próximas entregas. El diagnóstico incluye una auditoría de los mapas realmente cargados, sin modificar los materiales.
@@ -103,4 +107,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-**Revisión de 4.3.** Recuperar lectura del pavimento y equilibrio de luz respecto al fotograma antes de avanzar a 4.4. Guardar capturas numeradas sin sobrescribir versiones anteriores. La fidelidad final todavía requiere luz indirecta, reflejos y atmósfera.
+**4.4 · Sombras solares.** Conservar R01 y revisar cobertura, resolución, sesgos y sombras de la cristalería. Guardar capturas numeradas sin sobrescribir versiones anteriores. La fidelidad final todavía requiere luz indirecta, reflejos y atmósfera.

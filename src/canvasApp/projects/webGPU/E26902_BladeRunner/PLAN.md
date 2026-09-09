@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **fases 1, 2 y base de materiales de fase 3 completadas**. **4.3 reabierto tras revisión del usuario:** demasiado oscuro, pérdida de lectura del pavimento y contraste insuficiente. Se restaura 4.2 corregido como base de trabajo, sin declararlo resultado final. Próxima entrega: **revisar 4.3 contra el fotograma antes de avanzar a 4.4**.
+Estado: **fases 1, 2 y base de materiales de fase 3 completadas**. **4.3 revisado y resuelto conservando R01**, con los rellenos originales; propuesta de áreas reducidas descartada. Capturas 004–006 desde CAM 01/02/04. La base de trabajo no equivale al acabado cinematográfico final. Próxima entrega: **4.4 · Sombras solares**, conservando la referencia R01.
 
 ## Objetivo
 
@@ -86,7 +86,7 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 - [x] **4.1** Primera composición solar coherente con el disco, cielo ajustado y balance interior/exterior revisado desde CAM 01/02/04. Perfil reversible y parámetros documentados; equivalencia final pendiente de calibración y atmósfera. [Informe](docs/phase4/4.1/SOL_CIELO.md).
 - [x] **4.2** Calibrar intensidades relativas en Three.js a exposición fija; perfil 4.2, comparación con 4.1 y aislamiento de sol/ambiente/áreas. CAM 01/02/04 revisadas y 23 pruebas correctas. El brillo amplio de las áreas disminuye, pero su forma y el acabado final siguen pendientes. [Informe](docs/phase4/4.2/INTENSIDADES.md).
-- [ ] **4.3** Integración LTC y restauración implementadas, pero resultado visual rechazado por el usuario: demasiado oscuro y pavimento sin la lectura de reflejos/contraste buscada. Recuperar equilibrio y comparar con el fotograma; las pruebas técnicas no bastan para cerrar el punto. [Informe y revisión](docs/phase4/4.3/AREAS.md).
+- [x] **4.3** Integración LTC y restauración verificadas. Tras rechazar las áreas reducidas, se conservan los rellenos originales con el balance R01 registrado por el usuario. Revisión visual CAM 01/02/04, capturas 004–006; no se introduce otra reducción de luz. Reflejos finales y sombras de cristalería pendientes en sus puntos. [Informe y decisión](docs/phase4/4.3/AREAS.md).
 - [ ] **4.4** Ajustar sombras solares, sesgos, resolución y cobertura de la sala sin desperdiciar resolución en todo el exterior lejano.
 - [ ] **4.5** Comparar soluciones de iluminación indirecta: entorno/sondas y, si hace falta, luz estática horneada desde Blender. Incorporar horneado sólo si mejora la comparación y su coste está justificado.
 - [ ] **4.6** Medir y corregir fugas de luz, contactos del mobiliario y pérdida de detalle en sombras.
@@ -142,6 +142,8 @@ La medición comienza en la fase 1; esta fase reúne los ajustes finales cuando 
 **Resultado comprobable:** compilación reproducible, versión WebGPU probada en los dispositivos acordados y comparaciones visuales y de rendimiento registradas.
 
 ## Criterio de seguimiento
+
+**Referencia de acabado:** [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md), guardada a petición del usuario, corresponde al estado 4.3_003. No sobrescribir sus parámetros/captura; crear R02 para la siguiente referencia. Registrar una referencia no cierra automáticamente el punto pendiente.
 
 **Requisito del usuario desde 09/09/2026:** al completar cada punto, crear y guardar un pantallazo en `docs/capturas/` con el formato `PUNTO_NNN_AAAA-MM-DD_CAMxx.png` (ejemplo: `4.3_001_2026-09-09_CAM01.png`). NNN es un contador cronológico creciente dentro del punto, incluyendo revisiones; no reiniciarlo ni sobrescribir capturas anteriores. Si se guardan varias cámaras, cada captura recibe el siguiente número. Registrar en `docs/capturas/INDEX.md` fecha/hora, perfil, cámara, calidad, exposición, tipo de captura y estado (propuesta, rechazada o base restaurada). Contrastar con el fotograma antes de marcar completado; si el usuario rechaza el resultado visual, reabrir el punto aunque pasen las pruebas. Las capturas históricas anteriores mantienen sus nombres; cualquier copia al nuevo registro debe indicar su procedencia.
 

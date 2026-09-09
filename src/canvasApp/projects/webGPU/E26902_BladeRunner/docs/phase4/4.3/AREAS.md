@@ -1,5 +1,13 @@
 # 4.3 · Rellenos rectangulares WebGPU
 
+## Resolución de la revisión · base R01 conservada
+
+09/09/2026. Al retomar el plan se revisa R01 desde CAM 01/02/04 y se resuelve el punto conservando las cuatro áreas originales y el balance registrado como referencia. Se descarta la reducción de dimensiones del experimento 4.3. No se cambian intensidades, exposición, materiales ni sombras de R01. El perfil activo conserva el identificador `tyrell-light-v2` (luz 4.2 en el GUI); `tyrell-light-v3` queda descartado como base y se conserva para comparar. El archivo de R01 permanece intacto.
+
+Capturas cronológicas: [004 · general](../../capturas/4.3_004_2026-09-09_CAM01.png), [005 · mesa](../../capturas/4.3_005_2026-09-09_CAM02.png), [006 · lateral](../../capturas/4.3_006_2026-09-09_CAM04.png). Todas muestran el encuadre fijo 1920 × 800 reducido en una interfaz 1294 × 912, Media, 0 EV, sin paneo, composición completa. El suelo conserva más relleno que en la propuesta rechazada, y se mantienen la cara iluminada de la pirámide y la proyección del mobiliario. En la mesa siguen visibles sombras demasiado opacas de la cristalería; el lateral sigue necesitando el tratamiento posterior de reflejos e iluminación indirecta. No se declara equivalencia final con la película ni aprobación del usuario de estas nuevas vistas.
+
+Este cierre selecciona la base para continuar; no da por corregidos los efectos pendientes. Siguiente: **4.4**, cobertura, resolución, sesgos y revisión de las sombras de la cristalería. Las notas siguientes son el histórico de propuestas y revisión.
+
 ## Revisión de contraste solicitada · 09/09/2026
 
 Sobre la base restaurada de 4.2, se aumenta el ambiente hemisférico de **0,8 a 0,86 (+7,5 %)** y la luz principal de **2,1 a 2,5 (+19 %)**. El objetivo es abrir ligeramente las penumbras y reforzar más las caras iluminadas. Exposición 1,07 / 0 EV, áreas, posición del disco, dirección artística solar y materiales permanecen iguales. `calibratedLighting` es compartido por los perfiles 4.2 y 4.3: ambos reciben estas intensidades; el perfil inicial sigue siendo 4.2, con los rellenos anteriores. Las capturas históricas conservan el estado previo.
@@ -59,3 +67,5 @@ CAM 01: disminuye el relleno amplio central y se distingue mejor la sombra del m
 Imágenes de interfaz 1280 × 720 mostrando la captura fija 1920 × 800 reducida en el diálogo; no son los PNG originales a resolución completa. Captura sin paneo, luz de estudio desactivada y composición completa salvo las dos imágenes de áreas aisladas.
 
 **23/23 pruebas correctas**, con ampliación de las comprobaciones de iluminación. Compilación Webpack 5.97.1 en **58,562 s**, sin errores y con tres advertencias de empaquetado. Revisado en Chrome 152, WebGPU, Three.js r185, NVIDIA Turing. Selector 4.2/4.3, aislamiento de áreas, captura y vuelta de estudio a escena comprobados. Se mantienen 149 mallas, 347.325 triángulos, 21 materiales y 25 texturas de materiales; no se presenta esta comprobación como benchmark de rendimiento.
+
+Nota de esta entrega: no cambia el render ni sus controles; se conserva la compilación existente verificada en navegador. Se intentó renombrar los perfiles en el GUI, pero dos compilaciones quedaron sin progreso y se cancelaron; se retiró ese cambio de etiquetas. La identificación de R01 y de la propuesta descartada queda en esta documentación.
