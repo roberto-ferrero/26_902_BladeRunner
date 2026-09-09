@@ -6,7 +6,7 @@ export const TYRELL = {
     initialCamera: 'CAM 01',
     exposure: 1.07,
     materialLook: 'tyrell-v1', // Reviewed material baseline; lighting/reflections still being calibrated.
-    lightingProfile: 'tyrell-light-v2',
+    lightingProfile: 'tyrell-light-v2', // Accepted recovery baseline; 4.3 requires visual revision.
     lighting: {
         target: [0, 1, -5], discPosition: [2, 58, -650], shadowDistance: 80,
         discScale: 0.72, sunColor: 0xffd093, sunIntensity: 2.6,
@@ -17,8 +17,15 @@ export const TYRELL = {
         discPosition: [8, 42.5, -650],
         // Art-directed key: retain the visible disc placement while recovering the lit pyramid and floor shadows.
         keyPosition: [2, 58, -650],
-        sunIntensity: 2.1, hemisphereIntensity: 0.8, areaIntensities: [0.08, 0.08, 0.2, 0.2]
+        sunIntensity: 2.5, hemisphereIntensity: 0.86, areaIntensities: [0.08, 0.08, 0.2, 0.2]
     },
+    // World-space rectangular bounce sources; retain the calibrated key and disc.
+    shapedAreaFills: [
+        { position: [0, 3.8, -13.8], target: [0, 3.4, -3], width: 6, height: 1.8 },
+        { position: [0, 4.5, 7], target: [0, 3.4, -7], width: 5, height: 2 },
+        { position: [-7.7, 3.8, -3.4], target: [-3, 3.4, -5], width: 2, height: 3 },
+        { position: [7.7, 3.8, -7.2], target: [2, 3.2, -8], width: 2, height: 3 }
+    ],
     quality: 'Media',
     pan: { enabled: true, horizontal: 0.25, vertical: 0.12, smoothness: 0.35, targetDistance: 20 },
     // Resolution budgets, not an inferred GPU ranking. Geometry is unchanged.

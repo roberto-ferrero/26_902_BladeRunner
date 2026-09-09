@@ -63,6 +63,38 @@ test('Solar composition aligns light and disc, restores the baseline and survive
         lighting.setContribution('all')
         assert.deepEqual(lighting.diagnostics(), calibrated)
     }
+    const areaParent = new THREE.Group()
+    areaParent.position.set(2, 0, -1); areaParent.rotation.y = .3; root.add(areaParent)
+    areas.forEach(light => areaParent.attach(light))
+    const areaBefore = areas.map(light => ({ position: light.position.clone(), quaternion: light.quaternion.clone(), width: light.width, height: light.height }))
+    // Recreate the controller to snapshot the new transformed parent arrangement.
+    const shapedLighting = new Lighting(root, lighting.sun, fill, areas)
+    shapedLighting.apply('tyrell-light-v2')
+    const prior = shapedLighting.diagnostics()
+    for (let cycle = 0; cycle < 3; cycle++) {
+        shapedLighting.apply('tyrell-light-v3')
+        const shaped = shapedLighting.diagnostics()
+        assert.deepEqual(shaped.directionToSun, prior.directionToSun)
+        assert.deepEqual(shaped.discPosition, prior.discPosition)
+        areas.forEach((light, i) => {
+            const shape = TYRELL.shapedAreaFills[i], actual = shaped.areas[i]
+            assert.ok(new THREE.Vector3(...actual.position).distanceTo(new THREE.Vector3(...shape.position)) < 1e-8)
+            const expected = new THREE.Vector3(...shape.target).sub(new THREE.Vector3(...shape.position)).normalize()
+            assert.ok(new THREE.Vector3(...actual.emissionDirection).distanceTo(expected) < 1e-8)
+            assert.equal(light.width, shape.width); assert.equal(light.height, shape.height)
+            assert.equal(light.castShadow, false)
+        })
+        shapedLighting.setContribution('area-0'); shapedLighting.setContribution('all')
+        assert.deepEqual(shapedLighting.diagnostics(), shaped)
+        shapedLighting.apply('tyrell-light-v2')
+        areas.forEach((light, i) => {
+            assert.ok(light.position.equals(areaBefore[i].position)); assert.ok(light.quaternion.equals(areaBefore[i].quaternion))
+            assert.equal(light.width, areaBefore[i].width); assert.equal(light.height, areaBefore[i].height)
+        })
+    }
+    // The first controller restores its own snapshot before the original comparison.
+    areas.forEach(light => light.removeFromParent())
+    lighting.apply('tyrell-light-v2')
     lighting.setContribution('invalid')
     assert.deepEqual(lighting.diagnostics(), calibrated)
     geometry.dispose(); disc.material.dispose(); sky.material.dispose(); texture.dispose()

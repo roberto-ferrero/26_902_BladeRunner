@@ -10,7 +10,9 @@ export default class TyrellLighting {
         root.attach(sun.target)
         this.original = { position: sun.position.clone(), target: sun.target.position.clone(),
             color: sun.color.clone(), intensity: sun.intensity, hemisphere: fill.intensity,
-            areas: areas.map(light => light.intensity) }
+            areas: areas.map(light => light.intensity),
+            areaShapes: areas.map(light => ({ position: light.position.clone(), quaternion: light.quaternion.clone(),
+                width: light.width, height: light.height })) }
         root.traverse(object => {
             if (object.isMesh && object.name.startsWith('Sol')) this.disc = object
             if (object.isMesh && object.name.startsWith('Cielo')) this.sky = object
@@ -21,14 +23,26 @@ export default class TyrellLighting {
         this.original.skyEmission = this.sky.material.emissive.clone()
     }
     apply(profile) {
-        if (!['provisional', 'tyrell-light-v1', 'tyrell-light-v2'].includes(profile)) return
+        if (!['provisional', 'tyrell-light-v1', 'tyrell-light-v2', 'tyrell-light-v3'].includes(profile)) return
         this.profile = profile
-        const o = this.original, p = profile === 'tyrell-light-v2'
+        const o = this.original, p = ['tyrell-light-v2', 'tyrell-light-v3'].includes(profile)
             ? { ...TYRELL.lighting, ...TYRELL.calibratedLighting } : TYRELL.lighting
         this.sun.position.copy(o.position); this.sun.target.position.copy(o.target)
         this.sun.color.copy(o.color); this.sun.intensity = o.intensity
         this.fill.intensity = o.hemisphere
-        this.areas.forEach((light, i) => { light.intensity = o.areas[i] })
+        this.areas.forEach((light, i) => {
+            const shape = o.areaShapes[i]
+            light.intensity = o.areas[i]
+            light.position.copy(shape.position); light.quaternion.copy(shape.quaternion)
+            light.width = shape.width; light.height = shape.height
+            if (profile === 'tyrell-light-v3') {
+                const next = TYRELL.shapedAreaFills[i], position = new Vector3(...next.position)
+                light.position.copy(light.parent ? light.parent.worldToLocal(position) : position)
+                light.lookAt(new Vector3(...next.target))
+                light.width = next.width; light.height = next.height
+            }
+            light.updateMatrixWorld(true)
+        })
         this.disc.position.copy(o.discPosition); this.disc.scale.copy(o.discScale)
         this.sky.material.emissive.copy(o.skyEmission)
         if (profile !== 'provisional') {
@@ -43,7 +57,7 @@ export default class TyrellLighting {
             this.areas.forEach((light, i) => { light.intensity = p.areaIntensities[i] })
             this.sky.material.emissive.copy(o.skyEmission).multiplyScalar(p.skyEmissionScale)
         }
-        if (profile === 'tyrell-light-v2') {
+        if (['tyrell-light-v2', 'tyrell-light-v3'].includes(profile)) {
             const calibrated = TYRELL.calibratedLighting
             this.sun.intensity = calibrated.sunIntensity
             this.fill.intensity = calibrated.hemisphereIntensity
@@ -70,6 +84,11 @@ export default class TyrellLighting {
             directionToSun: position.sub(target).normalize().toArray(), sunIntensity: this.sun.intensity,
             sunColor: this.sun.color.getHexString(), discPosition: this.disc.getWorldPosition(new Vector3()).toArray(),
             discScale: this.disc.scale.toArray(), skyEmission: this.sky.material.emissive.toArray(),
-            hemisphereIntensity: this.fill.intensity, areaIntensities: this.areas.map(light => light.intensity) }
+            hemisphereIntensity: this.fill.intensity, areaIntensities: this.areas.map(light => light.intensity),
+            areas: this.areas.map((light, i) => ({ role: ['window', 'front', 'left', 'right'][i],
+                position: light.getWorldPosition(new Vector3()).toArray(),
+                emissionDirection: light.getWorldDirection(new Vector3()).negate().toArray(),
+                width: light.width, height: light.height, intensity: light.intensity, power: light.power,
+                castShadow: light.castShadow })) }
     }
 }
