@@ -73,6 +73,20 @@ export default class TyrellUI {
             this.atmospherePanel.querySelector('div').append(label, strengthLabel)
         }
         this.root.querySelector('footer').prepend(this.atmospherePanel)
+        const volumeControls = document.createElement('div')
+        volumeControls.className = 'tyrell-pan-controls'
+        volumeControls.innerHTML = `<label><input type="checkbox" aria-label="Haces de luz"> Haces de luz</label>
+            <label><input type="checkbox" checked aria-label="Polvo en suspensión"> Polvo en suspensión</label>
+            <label>Intensidad de haces<input type="range" aria-label="Intensidad de haces" min="0" max="2" step="0.05" value="1"><output>1.00</output></label>
+            <label>Movimiento del polvo<input type="range" aria-label="Movimiento del polvo" min="0" max="2" step="0.05" value="1"><output>1.00</output></label>`
+        volumeControls.querySelector('[aria-label="Haces de luz"]').onchange = e => actions.volume({ enabled: e.target.checked })
+        volumeControls.querySelector('[aria-label="Polvo en suspensión"]').onchange = e => actions.volume({ dust: e.target.checked })
+        for (const [title, key] of [['Intensidad de haces', 'strength'], ['Movimiento del polvo', 'speed']]) {
+            const input = volumeControls.querySelector(`[aria-label="${title}"]`)
+            input.oninput = () => { input.nextElementSibling.value = Number(input.value).toFixed(2); actions.volume({ [key]: Number(input.value) }) }
+        }
+        this.atmospherePanel.append(volumeControls)
+        this.atmospherePanel.querySelector('p').textContent = 'Haces solares y polvo volumétrico dentro de la sala. Movimiento 0 congela el polvo para comparar; desactivar Haces vuelve a la profundidad de 6.1.'
         this.panPanel = document.createElement('details')
         this.panPanel.className = 'tyrell-pan'
         this.panPanel.innerHTML = `<summary>Paneo con el ratón</summary>

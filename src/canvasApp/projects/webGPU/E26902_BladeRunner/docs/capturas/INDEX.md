@@ -2,6 +2,50 @@
 
 Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; de 4.5: **010**; de 4.6: **011**; de 5.1: **008**; de 5.2: **008**; de 5.3: **012**; de 5.4: **008**; de 5.5: **006**; de 6.1: **010**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
 
+## 6.2 · Haces de luz y polvo
+
+Entrega del 09–10/09/2026. Horas UTC; Madrid +2 h. Los nombres usan la fecha local y el contador sigue creciendo al cambiar de día. Pantallazos PNG 893 × 912, convertidos desde la imagen del navegador sin cambiar tamaño ni píxeles. Diálogo de captura fija 1920 × 800, sin paneo, salvo 012 (visor vivo). Condiciones: Tyrell v1, luz 4.2/balance R01, Base R01 indirecta, 0 EV, normal activa; ambos reflejos activos, Piedra pulida/Auto/adaptativo, calidad Media salvo 007–008. Las capas de 6.1 están activas a 1 salvo donde se indica apagado. [Informe y límites](../phase6/6.2/VOLUMEN.md).
+
+**Propuesta para revisión: 031–033.** 001–026 son comparaciones y diagnósticos históricos, no entregas aprobadas. El problema de actualización de materiales se resuelve en 027–033. No se sobrescriben ensayos descartados.
+
+| Orden | Fecha/hora UTC | Archivo | Estado |
+| --- | --- | --- | --- |
+| 6.2 / 001 | 09/09 21:38:15 | [CAM01](6.2_001_2026-09-09_CAM01.png) | Base 6.1 previa; después se detectó actualización incompleta de bruma en materiales compartidos. |
+| 6.2 / 002 | 09/09 21:40:53 | [CAM01](6.2_002_2026-09-09_CAM01.png) | Ensayo inicial descartado: dispersión excesiva, piedra lavada. |
+| 6.2 / 003 | 09/09 21:45:01 | [CAM01](6.2_003_2026-09-09_CAM01.png) | Volumen acotado, polvo animado; reflejo continuo. Diagnóstico 003 disponible. |
+| 6.2 / 004 | 09/09 21:45:30 | [CAM04](6.2_004_2026-09-09_CAM04.png) | Ensayo acotado, CAM 04, anterior a la corrección de actualización. |
+| 6.2 / 005 | 09/09 21:45:42 | [CAM02](6.2_005_2026-09-09_CAM02.png) | Ensayo acotado, CAM 02, anterior a la corrección de actualización. |
+| 6.2 / 006 | 09/09 21:46:55 | [CAM01](6.2_006_2026-09-09_CAM01.png) | Polvo apagado, haces activos, Media. Diagnóstico 006 disponible. |
+| 6.2 / 007 | 09/09 21:48:35 | [CAM01](6.2_007_2026-09-09_CAM01.png) | Calidad Baja, polvo apagado; 24 muestras y nueva sombra. |
+| 6.2 / 008 | 09/09 21:49:31 | [CAM01](6.2_008_2026-09-09_CAM01.png) | Calidad Alta, polvo apagado; 64 muestras. |
+| 6.2 / 009 | 09/09 21:50:45 | [CAM01](6.2_009_2026-09-09_CAM01.png) | Actualización planar limitada, polvo animado; anterior a corrección de materiales. Diagnóstico 009. |
+| 6.2 / 010 | 09/09 21:51:53 | [CAM04](6.2_010_2026-09-09_CAM04.png) | Vista lateral con actualización limitada, anterior a corrección de materiales. |
+| 6.2 / 011 | 09/09 21:52:06 | [CAM01](6.2_011_2026-09-09_CAM01.png) | Control de apagado: diferencia detectada respecto a la base previa; no validado como restauración. |
+| 6.2 / 012 | 09/09 21:52:26 | [CAM01](6.2_012_2026-09-09_CAM01.png) | Visor vivo con paneo; anterior a corrección de materiales. Diagnóstico 012. |
+| 6.2 / 013 | 09/09 21:56:04 | [CAM01](6.2_013_2026-09-09_CAM01.png) | Carga limpia sin volumen; coincide con 001. |
+| 6.2 / 014 | 09/09 21:57:26 | [CAM01](6.2_014_2026-09-09_CAM01.png) | Ensayo de restauración: variantes explícitas; diferencia persistente. |
+| 6.2 / 015 | 09/09 21:58:37 | [CAM01](6.2_015_2026-09-09_CAM01.png) | Control de restauración tras renovar sombras; diferencia persistente. |
+| 6.2 / 016 | 09/09 21:59:54 | [CAM01](6.2_016_2026-09-09_CAM01.png) | Control tras renovar materiales; diferencia persistente. |
+| 6.2 / 017 | 09/09 22:00:51 | [CAM01](6.2_017_2026-09-10_CAM01.png) | Atmósfera completamente apagada; coincide con base sin atmósfera. Diagnóstico 017. |
+| 6.2 / 018 | 09/09 22:02:09 | [CAM01](6.2_018_2026-09-10_CAM01.png) | Reactivación manual de profundidad; referencia usada para aislar actualización de parámetros. |
+| 6.2 / 019 | 09/09 22:05:23 | [CAM01](6.2_019_2026-09-10_CAM01.png) | Ensayo de renovación de enlaces; no resuelve diferencia. |
+| 6.2 / 020 | 09/09 22:08:22 | [CAM01](6.2_020_2026-09-10_CAM01.png) | Volumen con origen por matriz de cámara; ensayo de diagnóstico. |
+| 6.2 / 021 | 09/09 22:08:37 | [CAM01](6.2_021_2026-09-10_CAM01.png) | Apagado con origen por matriz; diferencia persistente. |
+| 6.2 / 022 | 09/09 22:09:59 | [CAM01](6.2_022_2026-09-10_CAM01.png) | Repetición estabilizada; diferencia persistente. |
+| 6.2 / 023 | 09/09 22:13:56 | [CAM01](6.2_023_2026-09-10_CAM01.png) | Ensayo de grafo único antes de corregir observador; no validado. |
+| 6.2 / 024 | 09/09 22:18:23 | [CAM01](6.2_024_2026-09-10_CAM01.png) | Ensayo de limpieza mediante renders inmediatos; descartado. |
+| 6.2 / 025 | 09/09 22:22:28 | [CAM01](6.2_025_2026-09-10_CAM01.png) | Ensayo de transición entre fotogramas; descartado. |
+| 6.2 / 026 | 09/09 22:27:13 | [CAM01](6.2_026_2026-09-10_CAM01.png) | Ensayo de parámetros compartidos por render; aún anterior a corrección del observador. |
+| 6.2 / 027 | 09/09 22:37:35 | [CAM01](6.2_027_2026-09-10_CAM01.png) | Base de profundidad corregida: ambos controles se aplican ahora a todos los materiales. |
+| 6.2 / 028 | 09/09 22:38:07 | [CAM01](6.2_028_2026-09-10_CAM01.png) | Haces y polvo activos con actualización de materiales corregida. |
+| 6.2 / 029 | 09/09 22:38:16 | [CAM01](6.2_029_2026-09-10_CAM01.png) | Haces apagados: idéntica a 027 en el rectángulo de escena; restauración validada. |
+| 6.2 / 030 | 09/09 22:39:17 | [CAM01](6.2_030_2026-09-10_CAM01.png) | Toda la atmósfera apagada; idéntica a 6.1/009, base conservada. |
+| 6.2 / 031 | 09/09 22:39:34 | [CAM01](6.2_031_2026-09-10_CAM01.png) | Propuesta final CAM 01; ambas capas y haces a 1, polvo activo. Diagnóstico 031. |
+| 6.2 / 032 | 09/09 22:39:46 | [CAM04](6.2_032_2026-09-10_CAM04.png) | Propuesta final CAM 04 con controles corregidos. |
+| 6.2 / 033 | 09/09 22:39:59 | [CAM02](6.2_033_2026-09-10_CAM02.png) | Propuesta final CAM 02 con controles corregidos. |
+
+La escena se deja en CAM 01, Media, con profundidad, haces, polvo y ambos reflejos activos. Al recargar vuelve a la base sin estos efectos. Próxima captura de 6.2: **034**.
+
 ## 6.1 · Profundidad exterior y bruma interior
 
 09/09/2026, horas UTC (Madrid +2 h). Pantallazos PNG 893 × 912, convertidos desde la imagen del navegador sin modificar tamaño ni píxeles. Captura fija 1920 × 800 reducida en diálogo, sin paneo, salvo 008 (visor vivo). Todos: Media, Tyrell v1, luz 4.2/balance R01, Base R01 indirecta, 0 EV, normales activas, reflejo Piedra pulida/Auto/adaptativo y entorno metal/vidrio activados. [Informe](../phase6/6.1/ATMOSFERA.md).

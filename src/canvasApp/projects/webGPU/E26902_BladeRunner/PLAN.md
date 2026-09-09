@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **Fase 6 iniciada; 6.1 ejecutado y documentado**. Profundidad exterior y bruma interior independientes, revisadas con reflejos desde CAM 01/02/04 y durante paneo. 33 pruebas correctas; capturas 6.1/001–009. R01 conservado al arrancar. [Informe y límites](docs/phase6/6.1/ATMOSFERA.md). Siguiente entrega: **6.2 · Haces de luz y polvo**. La propuesta queda para revisión del usuario; no se declara fidelidad final ni cierre de toda la fase 6.
+Estado: **6.2 ejecutado y documentado**. Integración volumétrica solar y polvo de densidad animada, controles independientes y actualización planar limitada. Corregida la actualización de bruma en materiales compartidos. 35 pruebas correctas; propuesta final en capturas 6.2/031–033. R01 archivado intacto. [Informe, coste y límites](docs/phase6/6.2/VOLUMEN.md). Siguiente entrega: **6.3 · Oclusión, estabilidad, bandas y ruido**. La propuesta queda para revisión del usuario; la fase 6 no está cerrada.
 
 ## Objetivo
 
@@ -106,7 +106,7 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 ## 6 · Atmósfera y acabado cinematográfico
 
 - [x] **6.1** Profundidad exterior y bruma interior separadas con nodos analíticos y controles independientes. Primer exterior descartado por exceso de aclarado; propuesta tenue revisada en CAM 01/02/04, paneo y restauración. Sin pasadas adicionales; 33 pruebas correctas. [Parámetros, capturas y límites](docs/phase6/6.1/ATMOSFERA.md).
-- [ ] **6.2** Implementar y medir haces de luz y polvo mediante nodos/volumen compatibles con la versión instalada; una niebla uniforme no sustituye estos haces.
+- [x] **6.2** Integración solar acotada con consulta de sombra y polvo de densidad animada, 24/40/64 muestras según calidad. Medición con reflejos, actualización planar a 10 Hz para deriva lenta, controles y restauración comprobados. Corregido el refresco de parámetros de 6.1 en materiales compartidos. 35 pruebas correctas. [Informe y límites](docs/phase6/6.2/VOLUMEN.md).
 - [ ] **6.3** Comprobar oclusión por las columnas, estabilidad temporal, bandas y ruido del volumen.
 - [ ] **6.4** Añadir bloom contenido y ajuste final del color con el sistema de posprocesado WebGPU.
 - [ ] **6.5** Mantener controles para activar/desactivar cada efecto y comparar su aportación y coste.

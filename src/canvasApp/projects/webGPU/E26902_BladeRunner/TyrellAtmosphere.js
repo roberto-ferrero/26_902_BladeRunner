@@ -1,18 +1,33 @@
 import { Color } from 'three'
-import { Fn, cameraPosition, positionWorld, uniform, output, vec4 } from 'three/tsl'
+import { Fn, materialColor, renderGroup, cameraWorldMatrix, positionWorld, uniform, output, vec4 } from 'three/tsl'
+const cameraPosition = cameraWorldMatrix.element(3).xyz
 
 // Art-directed depth, in metres. The back opening separates two half-spaces.
 // Interior path is capped: this is not an enclosed volume or shadowed scattering.
 export const ATMOSPHERE = Object.freeze({ boundary: -14.4, interiorPath: 24, exteriorDensity: 0.00025, interiorDensity: 0.0015 })
 
 export default class TyrellAtmosphere {
-    constructor(scene, world) {
+    constructor(scene, world, volume = null) {
+        this.volume = volume
         this.scene = scene
         this.original = scene.fogNode
         this.settings = { exterior: false, interior: false, exteriorStrength: 1, interiorStrength: 1 }
-        this.exterior = uniform(0)
-        this.interior = uniform(0)
+        this.exterior = uniform(0).setGroup(renderGroup).setName('tyrellExteriorDensity')
+        this.interior = uniform(0).setGroup(renderGroup).setName('tyrellInteriorDensity')
         this.materials = new Map()
+        this.dynamicMaterials = new Map()
+        world.traverse(object => {
+            if (!object.isMesh || /^(Cielo|Sol)/.test(object.name)) return
+            for (const material of [].concat(object.material)) {
+                if (material.colorNode || this.dynamicMaterials.has(material)) continue
+                this.dynamicMaterials.set(material, material.colorNode)
+                // Equivalent to the standard color+map path. An explicit material
+                // node makes r185's observer refresh scene-fog uniforms on every
+                // shared mesh, including stationary cameras and animated dust.
+                material.colorNode = materialColor
+                material.needsUpdate = true
+            }
+        })
         // The photographed sky already includes aerial perspective; keep its sun intact.
         world.traverse(object => {
             if (!object.isMesh || !/^(Cielo|Sol)/.test(object.name)) return
@@ -22,9 +37,9 @@ export default class TyrellAtmosphere {
                 material.needsUpdate = true
             }
         })
-        const exteriorColor = uniform(new Color('#ae8050'))
-        const interiorColor = uniform(new Color('#635344'))
-        this.node = Fn(() => {
+        const exteriorColor = uniform(new Color('#ae8050')).setGroup(renderGroup)
+        const interiorColor = uniform(new Color('#635344')).setGroup(renderGroup)
+        this.makeNode = (includeVolume = false) => Fn(() => {
             const ray = positionWorld.sub(cameraPosition)
             const distance = ray.length()
             const start = cameraPosition.z.negate().add(ATMOSPHERE.boundary)
@@ -40,8 +55,16 @@ export default class TyrellAtmosphere {
             const exteriorFactor = exteriorPath.mul(this.exterior).negate().exp().oneMinus().min(0.35)
             const interiorFactor = interiorPath.mul(this.interior).negate().exp().oneMinus().min(0.065)
             const distant = exteriorFactor.mix(output.rgb, exteriorColor)
-            return vec4(interiorFactor.mix(distant, interiorColor), output.a)
+            const base = interiorFactor.mix(distant, interiorColor)
+            if (includeVolume) {
+                const scattering = this.volume.node
+                return vec4(base.mul(scattering.a.mul(0.25).oneMinus()).add(scattering.rgb), output.a)
+            }
+            return vec4(base, output.a)
         })()
+        this.node = this.makeNode()
+        this.baseNode = this.node
+        this.volumeNode = null
         // Disabled by default, preserving the archived R01 comparison on reload.
     }
     configure(values) {
@@ -51,7 +74,14 @@ export default class TyrellAtmosphere {
         }
         this.exterior.value = this.settings.exterior ? ATMOSPHERE.exteriorDensity * this.settings.exteriorStrength : 0
         this.interior.value = this.settings.interior ? ATMOSPHERE.interiorDensity * this.settings.interiorStrength : 0
-        this.scene.fogNode = this.settings.exterior || this.settings.interior ? this.node : this.original
+        this.scene.fogNode = this.settings.exterior || this.settings.interior || this.volume?.settings.enabled ? this.node : this.original
+    }
+    refreshVolume() {
+        if (this.volume?.node) {
+            if (!this.volumeNode) this.volumeNode = this.makeNode(true)
+            this.node = this.volumeNode
+        } else this.node = this.baseNode
+        this.configure({})
     }
     diagnostics() {
         return { ...this.settings, ...ATMOSPHERE, effectiveDensity: [this.exterior.value, this.interior.value], excludedMaterials: [...this.materials.keys()].map(m => m.name), method: 'Analytic split depth; no light shafts, dust or volumetric occlusion', extraRenderPasses: 0 }
@@ -60,5 +90,11 @@ export default class TyrellAtmosphere {
         this.scene.fogNode = this.original
         for (const [material, fog] of this.materials) { material.fog = fog; material.needsUpdate = true }
         this.materials.clear()
+        for (const [material, node] of this.dynamicMaterials) {
+            if (node === undefined) delete material.colorNode
+            else material.colorNode = node
+            material.needsUpdate = true
+        }
+        this.dynamicMaterials.clear()
     }
 }

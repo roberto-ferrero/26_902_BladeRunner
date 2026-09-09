@@ -1,5 +1,7 @@
 # 6.1 · Profundidad exterior y bruma interior
 
+**Corrección posterior en 6.2:** se detectó que los cambios de bruma no refrescaban consistentemente todos los materiales compartidos. Se corrigió declarando la ruta de color como nodo, sin cambiar color ni mapas. Las capturas de esta página son históricas; la comparación con controles efectivos y la restauración verificada están en [6.2 · Volumen](../6.2/VOLUMEN.md).
+
 Dos aportaciones independientes, reversibles, implementadas en `TyrellAtmosphere.js` con TSL y `scene.fogNode` de Three.js 0.185.1. Se conserva la exposición, iluminación y respuesta de los materiales de R01. Los archivos Blender/GLB y la referencia R01 archivada no cambian.
 
 ## Ajuste y reproducción
