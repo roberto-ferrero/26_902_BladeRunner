@@ -96,6 +96,13 @@ export function makeWalkthrough({ cdp, wait, out, prefix, selectByText }) {
         report.ajustes = await cdp.evaluate(`${PROJECT}.navigation.settings`)
         report.alturasDeCamara = await cdp.evaluate(CAMERA_HEIGHTS)
 
+        // The mouse panning of the fixed cameras has to stand aside while the walk owns the
+        // camera. This is the only place the walk is entered properly, so it is measured here.
+        report.paneoDuranteElPaseo = await cdp.evaluate(`(() => {
+            const p = window.platform.canvasApp.project
+            return p.panning ? { enabled: p.panning.enabled, walking: p.walking } : null
+        })()`)
+
         // Speed, against the metres per second the configuration declares.
         report.paso = await hold(['KeyW'], 2.5)
         await wait(300)

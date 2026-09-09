@@ -24,11 +24,11 @@ Medido con teclado y ratón **reales**, despachados por el navegador con `Input.
 
 | Comprobación | Declarado | Medido |
 | --- | ---: | ---: |
-| Velocidad andando | 1,4 m/s | **1,402 m/s** (3,531 m en 2,52 s) |
-| Velocidad corriendo | 3,2 m/s | **3,168 m/s** (6,437 m en 2,03 s) |
-| Duración de la transición | 1,2 s | **1,135 s** leídos del reloj del propio interpolado |
+| Velocidad andando | 1,4 m/s | **1,403 m/s** |
+| Velocidad corriendo | 3,2 m/s | **3,173 m/s** |
+| Duración de la transición | 1,2 s | **1,117 s** leídos del reloj del propio interpolado |
 | Error de pose al volver | 0 | **0 m y 0° de campo** |
-| Lienzo al volver | idéntico | **0 píxeles distintos de 554.896** |
+| Lienzo al volver | idéntico | **0 píxeles distintos de 506.864** |
 | Giro con el ratón | — | −15,13° con bloqueo de puntero concedido |
 
 ![La sala desde el recorrido libre](fase7-paseo-01.png)
@@ -51,7 +51,7 @@ Fuera del navegador, `tests/phase7.test.mjs` repite el choque contra un pilar **
 | Situación | Comportamiento medido |
 | --- | --- |
 | Pestaña oculta | `ACTIVE` pasa a `false` y se dibujan **0 fotogramas en un segundo** |
-| Pestaña de vuelta | `ACTIVE` vuelve a `true` y se dibujan **33 fotogramas en un segundo** |
+| Pestaña de vuelta | `ACTIVE` vuelve a `true` y se dibujan **32 fotogramas en un segundo** |
 | Ventana a 900 × 600 | El búfer pasa de 1264 × 527 a **900 × 375** y vuelve al recuperar el tamaño |
 | Modo comparación | El búfer se clava en **1920 × 800** a propósito, y por eso se apaga antes de medir el redimensionado |
 | Esc | Suelta el ratón **sin salir del recorrido**; un clic en el lienzo lo recupera |
@@ -61,7 +61,7 @@ Sólo se capturan las teclas que el recorrido usa; Tab y el resto siguen llegand
 
 ## Separar la revisión de la experiencia
 
-La casilla **Presentación** deja **3 controles de 13**: cámara, recorrido libre y la propia casilla. Desaparecen calidad, encuadre, comparación, look, indirecta, los tres efectos, captura, diagnóstico y el contador de fotogramas. Las cámaras de la película se quedan, que era la condición.
+La casilla **Presentación** deja **3 controles de 14**: cámara, recorrido libre y la propia casilla. Desaparecen calidad, encuadre, comparación, look, indirecta, los cuatro efectos, captura, diagnóstico, el panel de ajustes y el contador de fotogramas. Las cámaras de la película se quedan, que era la condición.
 
 ![Modo presentación](fase7-presentacion.png)
 
@@ -75,7 +75,7 @@ De paso, un `KeyboardEvent` sintético demuestra que el manejador funciona, no q
 
 ## Cómo se comparó el encuadre
 
-La captura del compositor completa **nunca** sale idéntica: lleva el contador de fotogramas, que cambia cada segundo. Las diferencias entre la captura de antes y la de después caían todas en la banda `y` 568 a 685, que es la barra de controles. La comparación se hace por tanto sobre el lienzo y por encima de esa barra: 554.896 píxeles, **cero distintos**, diferencia máxima 0.
+La captura del compositor completa **nunca** sale idéntica: lleva el contador de fotogramas, que cambia cada segundo. Las diferencias entre la captura de antes y la de después caían todas en la banda `y` 529 a 685, que es la barra de controles con su panel plegado. La comparación se hace por tanto sobre el lienzo y por encima de esa barra: 506.864 píxeles, **cero distintos**, diferencia máxima 0.
 
 ## Límites de esta entrega
 
@@ -83,4 +83,5 @@ La captura del compositor completa **nunca** sale idéntica: lleva el contador d
 - Las colisiones son cajas alineadas con los ejes, no la geometría. Una columna redonda se rodea como si fuera cuadrada. Es deliberado: 150 cajas se prueban por fotograma sin coste apreciable, y el error es de centímetros contra un obstáculo que de todas formas no se puede atravesar.
 - El suelo se resuelve por altura de caja, así que una rampa se sube a escalones del tamaño de sus cajas. En esta sala no hay ninguna.
 - **No se ofrece cifra de rendimiento**, por lo mismo que en las fases 3 a 6: este equipo no da lecturas reproducibles. Las capturas de esta carpeta muestran 59,8 FPS con 299 dibujos durante el paseo, y esa lectura vale para esa ventana y ese momento, no como promesa.
+- Las cifras de esta página se remidieron tras añadir el destello del sol y el paneo con el ratón, que están documentados en [docs/extras](../extras/VALIDACION.md). El paneo queda apagado durante el recorrido, comprobado en esta misma medida.
 - El recorrido no aparece en el modo comparación de 1920 × 800 por ninguna razón de fondo; simplemente esa vista existe para medir contra Blender y el paseo no se mide contra nada.

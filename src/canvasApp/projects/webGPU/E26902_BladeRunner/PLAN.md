@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado (08/09/2026): **fases 1, 2, 3 y 7 completadas; de la fase 4, siete de ocho puntos; de la fase 6, siete de ocho; fase 5 bloqueada**. Three.js 0.185.1. CAM 01 queda en 0,0905 de error frente a Blender. La fase 5 se reintentó sobre el posprocesado de la 6 y sigue sin funcionar, así que la vía que queda es escribir el reflejo sin `ReflectorNode`. Próxima entrega: **fase 8, optimización y entrega**. Instrucciones en [README.md](README.md). Evidencia y límites en [fase 1](docs/phase1/VALIDACION.md), [fase 2](docs/phase2/VALIDACION.md), [fase 3](docs/phase3/VALIDACION.md), [fase 4](docs/phase4/VALIDACION.md), [fase 5](docs/phase5/VALIDACION.md), [fase 6](docs/phase6/VALIDACION.md) y [fase 7](docs/phase7/VALIDACION.md). Objetivo artístico de luz y atmósfera en [REFERENCIAS.md](docs/REFERENCIAS.md).
+Estado (08/09/2026): **fases 1, 2, 3 y 7 completadas; de la fase 4, siete de ocho puntos; de la fase 6, siete de ocho; fase 5 bloqueada**. Three.js 0.185.1. CAM 01 queda en 0,0905 de error frente a Blender. La fase 5 se reintentó sobre el posprocesado de la 6 y sigue sin funcionar, así que la vía que queda es escribir el reflejo sin `ReflectorNode`. Próxima entrega: **fase 8, optimización y entrega**. Instrucciones en [README.md](README.md). Evidencia y límites en [fase 1](docs/phase1/VALIDACION.md), [fase 2](docs/phase2/VALIDACION.md), [fase 3](docs/phase3/VALIDACION.md), [fase 4](docs/phase4/VALIDACION.md), [fase 5](docs/phase5/VALIDACION.md), [fase 6](docs/phase6/VALIDACION.md) y [fase 7](docs/phase7/VALIDACION.md), más los [añadidos posteriores](docs/extras/VALIDACION.md). Objetivo artístico de luz y atmósfera en [REFERENCIAS.md](docs/REFERENCIAS.md).
 
 ## Objetivo
 
@@ -154,6 +154,18 @@ Efecto sobre la fase 5: **ninguno**. Reactivando el reflector sobre la tubería 
 **Resultado:** navegación cómoda y estable sin perder acceso a las cámaras de comparación. Evidencia en [docs/phase7/VALIDACION.md](docs/phase7/VALIDACION.md), con catorce comprobaciones nuevas en `tests/phase7.test.mjs` que incluyen el choque contra un pilar desde 36 direcciones y el fotograma tardío que podría teletransportar al andador.
 
 Error propio que costó tiempo y queda escrito: el recorrido pareció no funcionar porque se medía desde `--eval`, que corre antes del calentamiento con la página sin animar. La herramienta tiene ahora un modo `--paseo` que espera a que haya fotogramas y usa teclado y ratón reales del navegador.
+
+## Añadidos posteriores a la fase 7
+
+Peticiones hechas con las fases 6 y 7 ya cerradas. Se anotan aquí y no dentro de ellas porque aquellas entregas tienen su propia evidencia fechada, y reescribirlas ocultaría cuándo se hizo cada cosa.
+
+- [x] **Destello del sol.** `lensflare()` de r185 dentro de la tubería de la fase 6, alimentado por el bloom que ya se calcula. De ahí sale la oclusión gratis: con el bloom apagado, mover la fuerza del destello de 0 a 2 cambia **0 píxeles**. El tinte es el color del sol del maestro; la fuerza, 1,0, es una decisión de aspecto porque **no hay referencia contra la que medirla**: el render de Blender no lleva destello. Cuesta dos llamadas de dibujo.
+- [x] **Panel de ajustes en la interfaz del visor.** Trece mandos con el estilo de los controles, plegado por defecto, oculto en Presentación, y con un botón que escribe el bloque listo para pegar en `config.js`. El tinte va en tres deslizadores lineales y no en un selector de color, que devolvería hex sRGB.
+- [x] **Paneo con el ratón sobre las cámaras fijas.** La cámara se desplaza y **sigue apuntando al mismo punto**, así que lo que cambia es el paralaje. Medido: recorrido de 0,2689 m sobre 0,28 declarados, error de mira **0°** en los dos extremos, y pose de reposo **exacta**. Apagado en comparación, durante el recorrido libre y durante las transiciones.
+
+El punto al que apunta cada cámara está medido, y costó una medida equivocada: un solo rayo por el eje dejaba las diez cámaras en el valor de reserva, porque **CAM 01 está encuadrada sobre el sol a través del ventanal** y su píxel central es cielo. Ahora se muestrea el cuadro en rejilla y se toma la mediana; miden las diez.
+
+Evidencia y límites en [docs/extras/VALIDACION.md](docs/extras/VALIDACION.md).
 
 ## 8 · Optimización y entrega
 

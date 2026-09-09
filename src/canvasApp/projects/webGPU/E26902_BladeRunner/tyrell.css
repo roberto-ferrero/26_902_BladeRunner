@@ -34,6 +34,24 @@ body.tyrell-viewer { background: #070807; color: #e6dfce; overflow: hidden; font
 .tyrell-dialog a { display: inline-block; color: #e8c481; margin-top: 12px; }
 @media (max-width: 700px) { .tyrell-ui header, .tyrell-ui footer { padding: 12px; } .tyrell-ui h1 { font-size: 18px; } .tyrell-controls { gap: 7px; } .tyrell-backend { max-width: 130px; text-align: right; } }
 
+/* The tuning panel for the flare and the panning. It is review, not experience, so it folds
+   away by default and disappears entirely in presentation. */
+.tyrell-panel { pointer-events: auto; margin-top: 10px; max-width: 720px; }
+.tyrell-panel summary { display: inline-block; font-size: 11px; letter-spacing: 0.04em; color: #c7ae7c; cursor: pointer; padding: 5px 9px; border: 1px solid #746344; border-radius: 3px; background: #11130ff0; }
+.tyrell-panel summary:hover { border-color: #d6b577; }
+.tyrell-panel[open] summary { margin-bottom: 9px; }
+.tyrell-panel-body { display: flex; gap: 22px; flex-wrap: wrap; align-items: start; padding: 12px 14px; border: 1px solid #746344; border-radius: 3px; background: #11130ff2; max-height: 42vh; overflow: auto; }
+.tyrell-panel-group { display: grid; gap: 6px; min-width: 210px; }
+/* The checkboxes live outside .tyrell-controls, so they would take the body's own size. */
+.tyrell-panel label { font-size: 11px; }
+.tyrell-panel .tyrell-check { padding-top: 0; gap: 6px; color: #b0ada2; }
+.tyrell-panel h2 { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #c7ae7c; font-weight: 500; margin: 0 0 2px; }
+.tyrell-slider { display: grid; gap: 2px; font-size: 11px; color: #b0ada2; }
+.tyrell-slider b { color: #e6dfce; font: 11px ui-monospace, monospace; font-weight: 400; }
+.tyrell-slider input { width: 100%; accent-color: #c7ae7c; }
+.tyrell-panel-body > button { align-self: end; }
+.tyrell-presentacion .tyrell-panel { display: none; }
+
 /* Presentation hides the review controls without taking the film cameras away. */
 .tyrell-presentacion .tyrell-controls > *:not(.tyrell-siempre):not(label:has([aria-label="Cámara"])) { display: none; }
 .tyrell-presentacion .tyrell-metrics { display: none; }

@@ -11,6 +11,7 @@ import { applyBackfaceCulling } from './TyrellSurfaces'
 import { createFloorReflection } from './TyrellReflection'
 import { createPipeline, EFFECTS } from './TyrellPost'
 import TyrellNavigation, { collectObstacles, authoredEyeHeight } from './TyrellNavigation'
+import TyrellPanning, { measureFocusDistances } from './TyrellPanning'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -42,6 +43,9 @@ export default class E26902_BladeRunner {
             effect: (name, enabled) => this.setEffect(name, enabled),
             walk: enabled => this.setWalking(enabled),
             presentation: enabled => this.setPresentation(enabled),
+            flare: (name, value) => this.setFlare(name, value),
+            panning: (name, value) => this.setPanning(name, value),
+            copySettings: () => this.copySettings(),
             retry: () => this.rendererError ? location.reload() : this.load(),
             capture: () => { this.captureRequested = true }, report: () => this.downloadReport()
         })
@@ -144,6 +148,7 @@ export default class E26902_BladeRunner {
         // The scene capture has to see the direct lights already in place, so this comes last.
         this.setIndirect(this.indirect)
         this.buildNavigation()
+        this.buildPanning()
         this.selectCamera(Math.max(0, this.cameras.findIndex(camera => camera.name.startsWith(TYRELL.initialCamera.replaceAll(' ', '_')) || camera.name.startsWith(TYRELL.initialCamera))))
         this.built = true
         this.ui.ready(this.cameras, this.activeCameraIndex)
@@ -222,6 +227,68 @@ export default class E26902_BladeRunner {
         })
         this.navigation.attach()
     }
+    // Panning needs two things from the model: the pose of each camera, which the rig already
+    // has, and how far away what that camera frames actually is, which is measured by casting a
+    // ray down its own axis against the room.
+    buildPanning() {
+        if (!TYRELL.panning.enabled || !this.cameras?.length) return
+        this.focusDistances = measureFocusDistances(this.cameras, this.shadowCasters || [])
+        this.panning = new TyrellPanning({ app: this.app, rig: this.stageCamera, focusDistances: this.focusDistances })
+        this.panning.attach()
+        this.updatePanningGate()
+    }
+    // Three places where the authored pose has to be exactly the authored pose: comparison mode,
+    // where every measurement against Blender depends on it; the free walk, where the mouse is
+    // already turning the head under pointer lock; and a camera transition, which owns the
+    // camera until it lands.
+    updatePanningGate() {
+        if (!this.panning) return
+        const allowed = !this.compare && !this.walking && !this.navigation?.transition
+        this.panning.setEnabled(allowed && this.panningWanted !== false)
+    }
+    setPanning(name, value) {
+        if (name === 'enabled') { this.panningWanted = value; this.updatePanningGate(); return }
+        if (name === 'x' || name === 'y') TYRELL.panning.maxOffset[name] = value
+        else if (name === 'smoothingSeconds' || name === 'invert') TYRELL.panning[name] = value
+    }
+    setFlare(name, value) {
+        if (!this.post) return
+        // The tint arrives one linear component at a time, so the other two are read back from
+        // the uniform rather than kept in a second copy that could drift from it.
+        if (name.startsWith('tint')) {
+            const tint = this.post.readFlare().tint
+            tint['RGB'.indexOf(name[4])] = value
+            this.post.setFlare('tint', tint)
+            return
+        }
+        if (!this.post.setFlare(name, value)) return
+        if (name === 'strength') this.effects = { ...this.effects, destello: value > 0 }
+    }
+    // The panel is a measuring instrument, not a preferences dialog: what comes out of it has to
+    // end up in config.js, so it hands back a block that can be pasted there.
+    copySettings() {
+        const flare = this.post?.readFlare()
+        const panning = TYRELL.panning
+        return [
+            '// Medido en el visor el ' + new Date().toLocaleDateString('es-ES') + '.',
+            'flare: {',
+            '    enabled: true,',
+            '    strength: ' + (flare?.strength ?? 0) + ',',
+            '    tint: [' + (flare?.tint ?? []).join(', ') + '],',
+            '    threshold: ' + (flare?.threshold ?? 0) + ',',
+            '    ghosts: ' + (flare?.ghosts ?? 0) + ', spacing: ' + (flare?.spacing ?? 0) + ',',
+            '    attenuation: ' + (flare?.attenuation ?? 0) + ',',
+            '    downSampleRatio: ' + (flare?.downSampleRatio ?? 4),
+            '},',
+            'panning: {',
+            '    enabled: true,',
+            '    maxOffset: { x: ' + panning.maxOffset.x + ', y: ' + panning.maxOffset.y + ' },',
+            '    smoothingSeconds: ' + panning.smoothingSeconds + ',',
+            '    invert: ' + panning.invert + ',',
+            '    fallbackFocusMetres: ' + panning.fallbackFocusMetres,
+            '}'
+        ].join(String.fromCharCode(10))
+    }
     setWalking(enabled) {
         if (!this.navigation) return
         if (enabled) {
@@ -233,6 +300,7 @@ export default class E26902_BladeRunner {
             if (target) this.navigation.transitionTo(target)
         }
         this.walking = enabled
+        this.updatePanningGate()
         this.ui.setWalking(enabled)
         this.resetMetrics()
     }
@@ -252,12 +320,17 @@ export default class E26902_BladeRunner {
         } else {
             this.stageCamera.setSource(this.cameras[index])
         }
+        // The pose to pan around is the authored one, so it is recorded from the target camera
+        // and not from the rig, which during a transition is still somewhere in between.
+        this.panning?.setBase(this.cameras[index])
+        this.updatePanningGate()
         this.app.render.set_stageCamera(this.stageCamera.get_camera())
         this.app.dev.hide_dev_camera()
         this.resetMetrics()
     }
     setCompare(enabled) {
         this.compare = enabled
+        this.updatePanningGate()
         document.body.classList.toggle('tyrell-compare', enabled)
         if (enabled) document.body.classList.add('tyrell-reference')
         this.ui.lockFrame(enabled)
@@ -329,7 +402,11 @@ export default class E26902_BladeRunner {
     }
     update_RAF() {
         if (this.reflectionResume > 0 && --this.reflectionResume === 0) this.reflection?.apply()
-        this.navigation?.update(this.app.DELTA_TIME)
+        const owned = this.navigation?.update(this.app.DELTA_TIME)
+        // Navigation owns the camera while it walks or eases; panning only gets the frames it
+        // leaves alone, and re-arms itself as soon as a transition lands.
+        if (owned) this.updatePanningGate()
+        else this.panning?.update(this.app.DELTA_TIME)
         const now = performance.now()
         if (this.previousFrame !== undefined && !document.hidden) {
             if (this.warmup > 0) this.warmup--
@@ -378,6 +455,7 @@ export default class E26902_BladeRunner {
             backfaceCulling: this.culling || null,
             post: this.post ? { ...this.post.settings, effects: Object.fromEntries(EFFECTS.map(n => [n, this.post.isEnabled(n)])) } : null,
             navigation: this.navigation ? this.navigation.state : null,
+            panning: this.panning ? this.panning.state : null,
             reflection: this.reflection ? { ...this.reflection, dispose: undefined, restore: undefined, apply: undefined } : null,
             toneMapping: { transform: 'AgX', look: this.look ? 'AgX - Medium High Contrast (ajustado)' : 'ninguno', ...TYRELL.look, lookApplied: this.look },
             shadowMapSize: this.sun?.shadow.mapSize.x ?? null,
@@ -421,6 +499,7 @@ export default class E26902_BladeRunner {
         document.removeEventListener('visibilitychange', this.visibilityListener)
         disposeScene(this.world3D)
         this.navigation?.dispose()
+        this.panning?.dispose()
         this.indirectBuild?.dispose()
         this.post?.dispose()
         this.reflection?.dispose()

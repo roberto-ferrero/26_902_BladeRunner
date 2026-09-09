@@ -1,4 +1,5 @@
 import './tyrell.css'
+import { TYRELL } from './config'
 
 export default class TyrellUI {
     constructor(actions) {
@@ -20,10 +21,13 @@ export default class TyrellUI {
                 <label class="tyrell-check"><input type="checkbox" data-effect="bruma" checked> Bruma exterior</label>
                 <label class="tyrell-check"><input type="checkbox" data-effect="haces" checked> Haces de luz</label>
                 <label class="tyrell-check"><input type="checkbox" data-effect="bloom" checked> Bloom</label>
+                <label class="tyrell-check"><input type="checkbox" data-effect="destello" checked> Destello</label>
                 <button type="button" data-action="capture">Captura</button>
                 <button type="button" data-action="report">Diagnóstico</button>
                 <label class="tyrell-check tyrell-siempre"><input type="checkbox" data-action="presentation"> Presentación</label>
-            </div><p class="tyrell-note">Cámaras originales de Blender · Recorrido libre con W A S D, ratón para mirar y Mayús para correr</p>
+            </div>
+            <details class="tyrell-panel"><summary>Ajustes de destello y paneo</summary><div class="tyrell-panel-body"></div></details>
+            <p class="tyrell-note">Cámaras originales de Blender · Recorrido libre con W A S D, ratón para mirar y Mayús para correr</p>
             <p class="tyrell-metrics">Preparando la primera imagen…</p></footer>`
         document.body.appendChild(this.root)
         this.statusBox = this.root.querySelector('.tyrell-status')
@@ -48,11 +52,64 @@ export default class TyrellUI {
         this.retry.onclick = () => actions.retry()
         this.root.querySelector('[data-action="capture"]').onclick = () => actions.capture()
         this.root.querySelector('[data-action="report"]').onclick = () => actions.report()
+        this.buildPanel(actions)
         this.dialog = document.createElement('dialog')
         this.dialog.className = 'tyrell-dialog'
         this.dialog.innerHTML = '<form method="dialog"><button>Cerrar</button></form><div class="tyrell-output"></div><a download>Descargar archivo</a>'
         this.dialog.setAttribute('aria-label', 'Resultado de revisión')
         this.root.appendChild(this.dialog)
+    }
+    // The tuning panel. Its values are not preferences: they are a look decision that has to end
+    // up in config.js, which is why it carries a button that writes the block out rather than
+    // leaving the numbers stranded in a session.
+    buildPanel(actions) {
+        const body = this.root.querySelector('.tyrell-panel-body')
+        this.panelFields = new Map()
+        for (const group of PANEL) {
+            const section = document.createElement('div')
+            section.className = 'tyrell-panel-group'
+            const title = document.createElement('h2')
+            title.textContent = group.title
+            section.appendChild(title)
+            for (const field of group.fields) {
+                section.appendChild(this.buildField(group.action, field, actions))
+            }
+            body.appendChild(section)
+        }
+        const copy = document.createElement('button')
+        copy.type = 'button'
+        copy.dataset.action = 'copy-settings'
+        copy.textContent = 'Copiar valores para config.js'
+        copy.onclick = () => {
+            const text = actions.copySettings()
+            this.showOutput(new Blob([text], { type: 'text/plain' }), 'tyrell-ajustes.txt', text)
+        }
+        body.appendChild(copy)
+    }
+    buildField(action, field, actions) {
+        const label = document.createElement('label')
+        label.className = field.type === 'check' ? 'tyrell-check' : 'tyrell-slider'
+        const input = document.createElement('input')
+        input.dataset.field = `${action}.${field.name}`
+        if (field.type === 'check') {
+            input.type = 'checkbox'
+            input.checked = field.value
+            input.onchange = () => actions[action](field.name, input.checked)
+            label.append(input, ' ' + field.label)
+            this.panelFields.set(input.dataset.field, { input })
+            return label
+        }
+        input.type = 'range'
+        input.min = field.min; input.max = field.max; input.step = field.step; input.value = field.value
+        const caption = document.createElement('span')
+        const readout = document.createElement('b')
+        const show = () => { readout.textContent = Number(input.value).toFixed(field.decimals ?? 2) }
+        show()
+        caption.append(field.label + ' ', readout)
+        input.oninput = () => { show(); actions[action](field.name, Number(input.value)) }
+        label.append(caption, input)
+        this.panelFields.set(input.dataset.field, { input, show })
+        return label
     }
     status(text, fraction) {
         this.statusBox.hidden = false
@@ -107,3 +164,37 @@ export default class TyrellUI {
     }
     dispose() { if (this.outputURL) URL.revokeObjectURL(this.outputURL); this.root.remove() }
 }
+
+// What the panel offers, and the range of each control. Defaults come from config.js, so the
+// panel opens on the shipped values and never invents its own.
+//
+// The tint is three linear sliders and not a colour picker on purpose: a colour input hands back
+// an sRGB hex, and every colour in this project is linear. Converting one into the other quietly
+// is exactly the mistake config.js warns about, so the panel does not offer the chance.
+const flare = TYRELL.post.flare
+const panning = TYRELL.panning
+const PANEL = [
+    {
+        title: 'Destello del sol', action: 'flare',
+        fields: [
+            { name: 'strength', label: 'Fuerza', min: 0, max: 2, step: 0.01, value: flare.strength },
+            { name: 'threshold', label: 'Umbral', min: 0, max: 2, step: 0.01, value: flare.threshold },
+            { name: 'ghosts', label: 'Fantasmas', min: 1, max: 12, step: 1, value: flare.ghosts, decimals: 0 },
+            { name: 'spacing', label: 'Separación', min: 0, max: 1, step: 0.01, value: flare.spacing },
+            { name: 'attenuation', label: 'Atenuación al borde', min: 1, max: 60, step: 1, value: flare.attenuation, decimals: 0 },
+            { name: 'tintR', label: 'Tinte R (lineal)', min: 0, max: 1, step: 0.01, value: flare.tint[0] },
+            { name: 'tintG', label: 'Tinte G (lineal)', min: 0, max: 1, step: 0.01, value: flare.tint[1] },
+            { name: 'tintB', label: 'Tinte B (lineal)', min: 0, max: 1, step: 0.01, value: flare.tint[2] }
+        ]
+    },
+    {
+        title: 'Paneo con el ratón', action: 'panning',
+        fields: [
+            { name: 'enabled', label: 'Activo', type: 'check', value: panning.enabled },
+            { name: 'x', label: 'Recorrido horizontal (m)', min: 0, max: 0.6, step: 0.005, value: panning.maxOffset.x, decimals: 3 },
+            { name: 'y', label: 'Recorrido vertical (m)', min: 0, max: 0.6, step: 0.005, value: panning.maxOffset.y, decimals: 3 },
+            { name: 'smoothingSeconds', label: 'Suavizado (s)', min: 0, max: 1.2, step: 0.01, value: panning.smoothingSeconds },
+            { name: 'invert', label: 'Invertido', type: 'check', value: panning.invert }
+        ]
+    }
+]

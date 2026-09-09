@@ -1,9 +1,9 @@
 {
-  "generated": "2026-09-08T05:26:15.066Z",
+  "generated": "2026-09-08T07:33:24.270Z",
   "encuadreAntes": {
     "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase7\\fase7-camara-antes.png",
-    "bytes": 400418,
-    "sha": "7dbd76ed"
+    "bytes": 386935,
+    "sha": "3361e80"
   },
   "poseAntes": {
     "posicion": [
@@ -88,6 +88,10 @@
       "altura": 3.193
     }
   ],
+  "paneoDuranteElPaseo": {
+    "enabled": false,
+    "walking": true
+  },
   "paso": {
     "from": [
       -0.12,
@@ -101,7 +105,7 @@
     ],
     "seconds": 2.52,
     "metres": 3.531,
-    "speed": 1.402
+    "speed": 1.403
   },
   "carrera": {
     "from": [
@@ -112,16 +116,16 @@
     "to": [
       -0.12,
       1.62,
-      0.332
+      0.289
     ],
-    "seconds": 2.03,
-    "metres": 6.437,
-    "speed": 3.168
+    "seconds": 2.04,
+    "metres": 6.48,
+    "speed": 3.173
   },
   "paseoMedio": {
     "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase7\\fase7-paseo-01.png",
-    "bytes": 465485,
-    "sha": "5f20ac78"
+    "bytes": 449519,
+    "sha": "f1500d79"
   },
   "raton": {
     "bloqueoDePuntero": true,
@@ -133,29 +137,29 @@
   "colision": {
     "medido": true,
     "prediccion": 1.8,
-    "recorrido": 2.15,
+    "recorrido": 2.149,
     "segundos": 2.14,
     "dentroDeUnObstaculo": false,
     "dentroDeLosLimites": true,
     "posicion": [
-      -1.913,
+      -1.911,
       1.62,
-      -0.856
+      -0.899
     ],
     "alturaSobreElSuelo": 1.62,
     "pies": 0
   },
   "paseoFinal": {
     "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase7\\fase7-paseo-02.png",
-    "bytes": 203747,
-    "sha": "17c467be"
+    "bytes": 199657,
+    "sha": "bcf7f37a"
   },
   "escapeSueltaElRaton": true,
   "escapeNoSaleDelPaseo": true,
   "transicion": {
     "declarada": 1.2,
     "empezada": true,
-    "recorrida": 1.135
+    "recorrida": 1.117
   },
   "poseDespues": {
     "posicion": [
@@ -173,8 +177,8 @@
   },
   "encuadreDespues": {
     "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase7\\fase7-camara-despues.png",
-    "bytes": 402828,
-    "sha": "de4c815e"
+    "bytes": 389457,
+    "sha": "99c2fa60"
   },
   "errorDePose": {
     "metros": 0,
@@ -182,7 +186,7 @@
   },
   "encuadreRestaurado": {
     "iguales": true,
-    "pixeles": 554896,
+    "pixeles": 506864,
     "distintos": 0,
     "proporcion": 0,
     "diferenciaMaxima": 0,
@@ -192,8 +196,8 @@
       "width": 1264,
       "height": 527
     },
-    "filasComparadas": 439,
-    "bandaExcluida": "la barra de controles, desde y 439 del recorte",
+    "filasComparadas": 401,
+    "bandaExcluida": "la barra de controles, desde y 401 del recorte",
     "cajaDeDiferencias": null
   },
   "presentacionActivada": true,
@@ -204,8 +208,8 @@
   ],
   "presentacionCaptura": {
     "file": "src\\canvasApp\\projects\\webGPU\\E26902_BladeRunner\\docs\\phase7\\fase7-presentacion.png",
-    "bytes": 422523,
-    "sha": "9c3847e0"
+    "bytes": 422895,
+    "sha": "5f3c2cc2"
   },
   "revision": [
     "Cámara CAM 01 | fotograma generalCAM 02 | mesa y juntasCAM 03 | perfiles invertidosCAM 04 | recorrido lateralCamera_BCamera_CCamera_DCamera_ECamera_FCamera_free",
@@ -218,6 +222,7 @@
     "Bruma exterior",
     "Haces de luz",
     "Bloom",
+    "Destello",
     "Captura",
     "Diagnóstico",
     "Presentación"
@@ -255,7 +260,7 @@
     "devuelta": {
       "oculta": false,
       "activa": true,
-      "fotogramasEnUnSegundo": 33
+      "fotogramasEnUnSegundo": 32
     }
   }
 }

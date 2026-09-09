@@ -1,0 +1,255 @@
+{
+  "generated": "2026-09-08T07:36:37.839Z",
+  "product": "Chrome/152.0.7977.76",
+  "window": [
+    1280,
+    800
+  ],
+  "quality": "Media",
+  "look": true,
+  "shots": [],
+  "backend": "WebGPU · Three.js r185",
+  "indirect": "escena",
+  "drawingBuffer": {
+    "width": 1920,
+    "height": 800,
+    "cssWidth": 1264,
+    "cssHeight": 527
+  },
+  "frameCheckboxLocked": true,
+  "extras": {
+    "generated": "2026-09-08T07:36:50.726Z",
+    "flare": {
+      "shipped": 1,
+      "settings": {
+        "strength": 1,
+        "tint": [
+          1,
+          0.69,
+          0.34
+        ],
+        "threshold": 0.62,
+        "ghosts": 5,
+        "spacing": 0.28,
+        "attenuation": 22,
+        "downSampleRatio": 4
+      },
+      "drawCalls": 343,
+      "sweep": [
+        {
+          "strength": 0.5,
+          "coverage": 0.258,
+          "maxDifference": 0.0627,
+          "meanOfTouched": 0.0204
+        },
+        {
+          "strength": 1,
+          "coverage": 0.442,
+          "maxDifference": 0.1098,
+          "meanOfTouched": 0.026
+        },
+        {
+          "strength": 1.5,
+          "coverage": 0.609,
+          "maxDifference": 0.1529,
+          "meanOfTouched": 0.0292
+        },
+        {
+          "strength": 2,
+          "coverage": 0.703,
+          "maxDifference": 0.1922,
+          "meanOfTouched": 0.0335
+        }
+      ],
+      "size": [
+        1920,
+        800
+      ],
+      "withoutBloom": {
+        "differingPixels": 0,
+        "note": "con el bloom apagado, mover la fuerza del destello de 0 a 2 no cambia nada: se alimenta de él"
+      }
+    },
+    "panning": {
+      "focusDistances": [
+        {
+          "name": "CAM_01_|_fotograma_general",
+          "metres": 12.838,
+          "measured": true,
+          "hits": 20,
+          "samples": 25,
+          "nearest": 10.237,
+          "farthest": 23.489
+        },
+        {
+          "name": "CAM_02_|_mesa_y_juntas",
+          "metres": 5.265,
+          "measured": true,
+          "hits": 22,
+          "samples": 25,
+          "nearest": 2.026,
+          "farthest": 12.956
+        },
+        {
+          "name": "CAM_03_|_perfiles_invertidos",
+          "metres": 11.094,
+          "measured": true,
+          "hits": 21,
+          "samples": 25,
+          "nearest": 3.076,
+          "farthest": 17.766
+        },
+        {
+          "name": "CAM_04_|_recorrido_lateral",
+          "metres": 11.613,
+          "measured": true,
+          "hits": 20,
+          "samples": 25,
+          "nearest": 5.089,
+          "farthest": 18.898
+        },
+        {
+          "name": "Camera_B",
+          "metres": 19.91,
+          "measured": true,
+          "hits": 13,
+          "samples": 25,
+          "nearest": 4.973,
+          "farthest": 21.026
+        },
+        {
+          "name": "Camera_C",
+          "metres": 18.038,
+          "measured": true,
+          "hits": 25,
+          "samples": 25,
+          "nearest": 6.041,
+          "farthest": 21.676
+        },
+        {
+          "name": "Camera_D",
+          "metres": 9.778,
+          "measured": true,
+          "hits": 22,
+          "samples": 25,
+          "nearest": 6.005,
+          "farthest": 18.097
+        },
+        {
+          "name": "Camera_E",
+          "metres": 7.648,
+          "measured": true,
+          "hits": 17,
+          "samples": 25,
+          "nearest": 5.109,
+          "farthest": 12.161
+        },
+        {
+          "name": "Camera_F",
+          "metres": 13.24,
+          "measured": true,
+          "hits": 22,
+          "samples": 25,
+          "nearest": 7.195,
+          "farthest": 21.532
+        },
+        {
+          "name": "Camera_free",
+          "metres": 16.606,
+          "measured": true,
+          "hits": 21,
+          "samples": 25,
+          "nearest": 12.121,
+          "farthest": 20.364
+        }
+      ],
+      "inComparison": {
+        "enabled": false,
+        "poseUntouched": true
+      },
+      "state": {
+        "enabled": true,
+        "maxOffset": {
+          "x": 0.14,
+          "y": 0.07
+        },
+        "offset": [
+          -0.9003,
+          0.0019
+        ],
+        "focusMetres": 12.838,
+        "focusMeasured": true,
+        "focusSamples": {
+          "hits": 20,
+          "samples": 25,
+          "nearest": 10.237,
+          "farthest": 23.489
+        },
+        "displacementMetres": 0.126
+      },
+      "travel": {
+        "left": [
+          0.0145,
+          1.5501,
+          10.3
+        ],
+        "right": [
+          -0.2544,
+          1.5501,
+          10.3
+        ],
+        "alongCameraRight": {
+          "left": 0.1345,
+          "right": -0.1344
+        },
+        "metres": 0.2689,
+        "declaredMaximum": 0.28
+      },
+      "aimErrorDegrees": {
+        "left": 0,
+        "right": 0
+      },
+      "restIsExact": true
+    },
+    "panel": {
+      "fields": [
+        "flare.strength",
+        "flare.threshold",
+        "flare.ghosts",
+        "flare.spacing",
+        "flare.attenuation",
+        "flare.tintR",
+        "flare.tintG",
+        "flare.tintB",
+        "panning.enabled",
+        "panning.x",
+        "panning.y",
+        "panning.smoothingSeconds",
+        "panning.invert"
+      ],
+      "snippet": "// Medido en el visor el 8/9/2026.\nflare: {\n    enabled: true,\n    strength: 1,\n    tint: [1, 0.69, 0.34],\n    threshold: 0.62,\n    ghosts: 5, spacing: 0.28,\n    attenuation: 22,\n    downSampleRatio: 4\n},\npanning: {\n    enabled: true,\n    maxOffset: { x: 0.14, y: 0.07 },\n    smoothingSeconds: 0.28,\n    invert: true,\n    fallbackFocusMetres: 8\n}",
+      "visibleInPresentation": false,
+      "controlsInPresentation": [
+        "Cámara CAM 01 | fotograma generalCAM 02 | mesa y juntasCAM 03 | perfiles invertidosCAM 04 | recorrido lateralCamera_BCamera_CCamera_DCamera_ECamera_FCamera_free",
+        "Recorrido libre",
+        "Presentación"
+      ],
+      "controlsInReview": [
+        "Cámara CAM 01 | fotograma generalCAM 02 | mesa y juntasCAM 03 | perfiles invertidosCAM 04 | recorrido lateralCamera_BCamera_CCamera_DCamera_ECamera_FCamera_free",
+        "Recorrido libre",
+        "Calidad BajaMediaAlta",
+        "Encuadre 2,4:1",
+        "Comparación 1920 × 800",
+        "Look AgX de Blender",
+        "Indirecta NingunaAmbienteMundoEscena",
+        "Bruma exterior",
+        "Haces de luz",
+        "Bloom",
+        "Destello",
+        "Captura",
+        "Diagnóstico",
+        "Presentación"
+      ]
+    }
+  }
+}

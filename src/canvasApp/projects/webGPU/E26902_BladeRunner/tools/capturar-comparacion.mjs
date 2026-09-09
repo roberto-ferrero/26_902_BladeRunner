@@ -9,6 +9,7 @@
 //          --out <carpeta>, --prefix <nombre>, --look on|off,
 //          --indirect ninguna|ambiente|mundo|escena, --pantalla (captura del compositor),
 //          --paseo (recorre la sala con teclado y ratón reales en vez de capturar las cámaras),
+//          --extras (mide el destello del sol y el paneo con el ratón),
 //          --eval "<js>" para un experimento puntual sobre la escena antes de capturar.
 // The window is visible on purpose: WebGPU needs a real adapter.
 import fs from 'node:fs'
@@ -17,6 +18,7 @@ import http from 'node:http'
 import os from 'node:os'
 import { spawn } from 'node:child_process'
 import { makeWalkthrough } from './lib/paseo.mjs'
+import { makeExtras } from './lib/extras.mjs'
 
 const ROOT = 'dist'
 const CAMERAS = ['CAM 01', 'CAM 02', 'CAM 04']
@@ -32,6 +34,7 @@ const EVAL = option('--eval', null)
 const INDIRECT = option('--indirect', null)
 const SHOT = args.includes('--pantalla')
 const WALK = args.includes('--paseo')
+const EXTRAS = args.includes('--extras')
 
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.glb': 'model/gltf-binary', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.map': 'application/json' }
 
@@ -178,6 +181,9 @@ const SET_CHECK = (selector, checked) => `(() => {
     return el.checked
 })()`
 
+// Waiting for an image that is already there returns the previous capture, not the next one.
+const CLEAR_DIALOG = `document.querySelector('.tyrell-dialog .tyrell-output').replaceChildren()`
+
 const READ_DIALOG_TEXT = `(() => {
     const pre = document.querySelector('.tyrell-dialog pre')
     return pre ? pre.textContent : null
@@ -279,7 +285,38 @@ try {
         console.log(`  pestaña oculta: activa ${p.pausa.oculta.activa}, ${p.pausa.oculta.fotogramasEnUnSegundo} fotogramas; al volver ${p.pausa.devuelta.fotogramasEnUnSegundo}`)
         console.log(`  regreso: ${p.transicion.recorrida} s de ${p.transicion.declarada} declarados, error de pose ${p.errorDePose.metros} m, lienzo idéntico: ${p.encuadreRestaurado.iguales} (${p.encuadreRestaurado.distintos} píxeles distintos de ${p.encuadreRestaurado.pixeles})`)
     }
-    for (const camera of WALK ? [] : CAMERAS) {
+    if (EXTRAS) {
+        const extras = makeExtras({
+            cdp, wait, out: OUT, prefix: PREFIX,
+            selectByText: (selector, text) => cdp.evaluate(SELECT_BY_TEXT(selector, text)),
+            captureCanvas: async () => {
+                // The viewer's own capture, so the sweep is measured on the 1920 x 800 canvas and
+                // not on the scaled compositor image.
+                //
+                // The previous image is cleared first, and that is not tidiness. The capture is
+                // asynchronous — the viewer requests it, the next frame encodes it — so with the
+                // old image still in the dialog the wait below returns at once and reads it. That
+                // is exactly what happened: the whole flare sweep came out shifted by one step,
+                // each strength showing the frame of the one before it.
+                await cdp.evaluate(CLEAR_DIALOG)
+                await cdp.evaluate(`document.querySelector('[data-action="capture"]').click()`)
+                await until(cdp, `!!document.querySelector('.tyrell-dialog img')`, 15000, 'la captura')
+                const image = await cdp.evaluate(READ_DIALOG_IMAGE)
+                await cdp.evaluate(`document.querySelector('.tyrell-dialog').close()`)
+                return image
+            }
+        })
+        evidence.extras = await extras()
+        const e = evidence.extras
+        console.log(`Destello: fuerza ${e.flare.shipped}, ${e.flare.sweep.map(r => `${r.strength}→${r.maxDifference}`).join(' ')}`)
+        console.log(`  sin bloom quedan ${e.flare.withoutBloom.differingPixels} píxeles distintos, que es el destello desapareciendo con él`)
+        const fallbacks = e.panning.focusDistances.filter(c => !c.measured)
+        console.log(`Paneo: foco medido en ${e.panning.focusDistances.length - fallbacks.length} de ${e.panning.focusDistances.length} cámaras`)
+        console.log(`  recorrido ${e.panning.travel.metres} m sobre ${e.panning.travel.declaredMaximum} declarados, error de mira ${e.panning.aimErrorDegrees.left}° y ${e.panning.aimErrorDegrees.right}°`)
+        console.log(`  en comparación activo: ${e.panning.inComparison.enabled}, pose intacta: ${e.panning.inComparison.poseUntouched}; reposo exacto: ${e.panning.restIsExact}`)
+        console.log(`  panel: ${e.panel.fields.length} mandos, visible en presentación: ${e.panel.visibleInPresentation}`)
+    }
+    for (const camera of (WALK || EXTRAS) ? [] : CAMERAS) {
         const chosen = await cdp.evaluate(SELECT_BY_TEXT('[aria-label="Cámara"]', camera))
         if (!chosen) throw new Error(`El visor no ofrece la cámara ${camera}.`)
         // 60 warm-up frames, then a 30 sample window, then the once-a-second report.
@@ -292,6 +329,7 @@ try {
         const diagnostics = JSON.parse(await cdp.evaluate(READ_DIALOG_TEXT))
         await cdp.evaluate(`document.querySelector('.tyrell-dialog').close()`)
 
+        await cdp.evaluate(CLEAR_DIALOG)
         await cdp.evaluate(`document.querySelector('[data-action="capture"]').click()`)
         await until(cdp, `!!document.querySelector('.tyrell-dialog img')`, 15000, 'la captura')
         const image = await cdp.evaluate(READ_DIALOG_IMAGE)

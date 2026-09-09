@@ -1,6 +1,8 @@
+import { Vector3 } from 'three'
 import { RenderPipeline } from 'three/webgpu'
 import { pass, uniform, float, vec3, mix, smoothstep } from 'three/tsl'
 import { bloom } from 'three/addons/tsl/display/BloomNode.js'
+import { lensflare } from 'three/addons/tsl/display/LensflareNode.js'
 import { godrays } from 'three/addons/tsl/display/GodraysNode.js'
 import { TYRELL } from './config'
 
@@ -18,7 +20,7 @@ import { TYRELL } from './config'
 // Every effect can be switched off on its own, so its contribution and its cost can be read
 // separately, which is what the plan asks for.
 
-export const EFFECTS = ['bruma', 'haces', 'bloom']
+export const EFFECTS = ['bruma', 'haces', 'bloom', 'destello']
 
 // Blender stores these linearly, so the components go straight into the node. Handing a
 // THREE.Color to vec3() does not convert: it yields zero, which silently turns the haze into a
@@ -72,20 +74,68 @@ export function createPipeline({ renderer, scene, camera, sun }) {
     const bloomNode = bloom(composed, settings.strength, settings.radius, settings.threshold)
     bloomNode.strength = bloomStrength
 
-    const pipeline = new RenderPipeline(renderer, composed.add(bloomNode))
+    // The sun's lens flare, fed by that same bloom. That is the whole reason it needs no
+    // visibility test of its own: the ghosts are built from bright spots in the bloom, so when a
+    // column covers the sun the bloom drops there and the flare goes with it. Nothing in the
+    // scene knows the flare exists.
+    //
+    // Every parameter is a uniform rather than a literal, including the ghost count, which is the
+    // bound of the node's loop. That keeps the panel from recompiling a shader on every drag of
+    // a slider, the same reason the AgX look of phase 3 is uniforms.
+    const flare = TYRELL.post.flare
+    const flareStrength = uniform(float(flare.enabled ? flare.strength : 0))
+    const flareUniforms = {
+        // A Vector3 and not a Color: a Color uniform would invite a colour-space conversion on
+        // a value that is already linear, which is the mistake config.js warns about.
+        tint: uniform(new Vector3(...flare.tint)),
+        threshold: uniform(float(flare.threshold)),
+        ghosts: uniform(float(flare.ghosts)),
+        spacing: uniform(float(flare.spacing)),
+        attenuation: uniform(float(flare.attenuation))
+    }
+    const flareNode = lensflare(bloomNode, {
+        ghostTint: flareUniforms.tint,
+        threshold: flareUniforms.threshold,
+        ghostSamples: flareUniforms.ghosts,
+        ghostSpacing: flareUniforms.spacing,
+        ghostAttenuationFactor: flareUniforms.attenuation,
+        downSampleRatio: flare.downSampleRatio
+    })
+
+    const pipeline = new RenderPipeline(renderer, composed.add(bloomNode).add(flareNode.rgb.mul(flareStrength)))
 
     return {
         pipeline,
         scenePass,
         settings: {
-            bloom: { ...settings }, aerial: { ...aerial }, beams: { ...beams },
+            bloom: { ...settings }, aerial: { ...aerial }, beams: { ...beams }, flare: { ...flare },
             outputColorTransform: pipeline.outputColorTransform
         },
         setEffect(name, enabled) {
             if (name === 'bloom') { bloomStrength.value = enabled ? settings.strength : 0; return true }
             if (name === 'bruma') { aerialStrength.value = enabled ? aerial.strength : 0; return true }
             if (name === 'haces') { beamStrength.value = enabled ? beams.strength : 0; return true }
+            if (name === 'destello') { flareStrength.value = enabled ? flare.strength : 0; return true }
             return false
+        },
+        // The panel drives these. Values go straight into uniforms, so nothing recompiles and
+        // the effect can be judged against the film stills while it moves.
+        setFlare(name, value) {
+            if (name === 'strength') { flareStrength.value = value; return true }
+            if (name === 'tint') { flareUniforms.tint.value.set(value[0], value[1], value[2]); return true }
+            if (name in flareUniforms) { flareUniforms[name].value = value; return true }
+            return false
+        },
+        readFlare() {
+            return {
+                strength: +flareStrength.value.toFixed(4),
+                tint: flareUniforms.tint.value.toArray().map(v => +v.toFixed(4)),
+                threshold: +flareUniforms.threshold.value.toFixed(4),
+                ghosts: Math.round(flareUniforms.ghosts.value),
+                spacing: +flareUniforms.spacing.value.toFixed(4),
+                attenuation: +flareUniforms.attenuation.value.toFixed(4),
+                downSampleRatio: flare.downSampleRatio
+            }
         },
         // Exposed so each strength can be swept in the browser and chosen against the reference
         // instead of guessed, the way the bloom one was.
@@ -96,6 +146,7 @@ export function createPipeline({ renderer, scene, camera, sun }) {
             if (name === 'bloom') return bloomStrength.value > 0
             if (name === 'bruma') return aerialStrength.value > 0
             if (name === 'haces') return beamStrength.value > 0
+            if (name === 'destello') return flareStrength.value > 0
             return false
         },
         setCamera(next) {
@@ -106,6 +157,7 @@ export function createPipeline({ renderer, scene, camera, sun }) {
             pipeline.render()
         },
         dispose() {
+            flareNode.dispose?.()
             pipeline.dispose?.()
         }
     }

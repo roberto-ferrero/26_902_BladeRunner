@@ -96,7 +96,71 @@ export const TYRELL = {
         beams: {
             enabled: true, strength: 1, color: [0.66, 0.61, 0.47],
             density: 0.5, maxDensity: 0.5, distanceAttenuation: 2, steps: 60, resolutionScale: 0.5
+        },
+        // The sun's lens flare. Unlike everything above it, this one has NO reference to be
+        // measured against: Blender's render carries no flare and the master has no glare node
+        // for one. The plan gives the film authority over the finish, so these come from the
+        // stills and from the panel in the viewer, and they are the one block here that is a
+        // look decision rather than a measurement. The panel writes them back in this shape.
+        //
+        // It is fed by the bloom that is already computed, which is what makes the occlusion
+        // free: when a column covers the sun its bloom drops and the flare goes with it. There
+        // is no separate visibility test anywhere.
+        flare: {
+            enabled: true,
+            // Overall scale, so the effect can be swept and switched off like the others. Unlike
+            // the bloom's 0,3, this one is NOT a minimum of anything: with no reference to
+            // compare against, the sweep is monotonic and only says how much of the frame the
+            // effect touches. Measured on CAM 01 against the same frame without it:
+            //
+            //   fuerza 0,5 → 0,26 % del cuadro, diferencia máxima 0,063
+            //   fuerza 1,0 → 0,44 % del cuadro, diferencia máxima 0,110
+            //   fuerza 1,5 → 0,61 % del cuadro, diferencia máxima 0,153
+            //   fuerza 2,0 → 0,70 % del cuadro, diferencia máxima 0,192
+            //
+            // 1,0 is where the ghost reads on the chair without becoming a smudge on it. It is a
+            // look decision and it is written down as one.
+            strength: 1,
+            // Ghosts are the sun's light scattered inside the lens, so they carry the sun's own
+            // colour: the (1, 0,69, 0,34) linear of the master, not a tint picked by eye.
+            tint: [1, 0.69, 0.34],
+            // Subtracted from the bloom sample: higher leaves only the brightest core, so the
+            // flare gets smaller and cleaner. The room's own highlights sit under this.
+            threshold: 0.62,
+            // How many ghosts pivot around the centre of the frame, and how far apart they sit
+            // along the line from the bright spot through the centre.
+            ghosts: 5, spacing: 0.28,
+            // How fast a ghost fades as it approaches the edge of the frame.
+            attenuation: 22,
+            // The effect is not rendered at full resolution; it is all low frequency.
+            downSampleRatio: 4
         }
+    },
+
+    // Mouse panning over the fixed cameras. Moving the pointer left slides the camera right and
+    // it keeps aiming at the same place, so what changes is the parallax: the near columns move
+    // against the far pyramids while the framing stays on its subject.
+    //
+    // The point it keeps aiming at is not a number typed here. At build time each authored
+    // camera casts a ray down its own axis against the room and keeps the distance to what it
+    // actually frames; the fallback below is only used by a camera that looks at nothing.
+    //
+    // It is off in three places, for reasons rather than taste: in comparison mode, because every
+    // measurement against Blender depends on the authored pose being exact; during the free walk,
+    // where the mouse already turns the head under pointer lock; and during a camera transition,
+    // which owns the camera until it lands.
+    panning: {
+        enabled: true,
+        // Maximum displacement from the authored pose, in metres. Wider than tall because a
+        // frame is wider than it is tall and vertical movement reads as a stumble.
+        maxOffset: { x: 0.14, y: 0.07 },
+        // Time constant of the easing, in seconds: how long the camera takes to catch up with
+        // the pointer, and to return to the authored pose when it leaves the window.
+        smoothingSeconds: 0.28,
+        // Mouse left moves the camera right, which is what makes it read as looking around a
+        // near object rather than as dragging the frame.
+        invert: true,
+        fallbackFocusMetres: 8
     },
 
     // The lighting rig, read out of BladeRunner_5_6_High_v3.blend by tools/blender/leer_luces.py
