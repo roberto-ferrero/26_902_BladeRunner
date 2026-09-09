@@ -15,18 +15,21 @@ export default class TyrellUI {
                 <label class="tyrell-check"><input type="checkbox" checked> Encuadre 2,4:1</label>
                 <button type="button" data-action="capture">Captura 1920 × 800</button>
                 <button type="button" data-action="report">Diagnóstico</button>
-            </div><p class="tyrell-note">Luz provisional · Cámaras originales de Blender · Recorrido libre en una próxima fase</p>
+            </div><p class="tyrell-note">Iluminación en calibración · Cámaras originales de Blender · Recorrido libre en una próxima fase</p>
             <p class="tyrell-metrics">Preparando la primera imagen…</p></footer>`
         document.body.appendChild(this.root)
         this.lookPanel = document.createElement('details')
         this.lookPanel.className = 'tyrell-look tyrell-pan'
         this.lookPanel.innerHTML = `<summary>Color y materiales</summary><div class="tyrell-pan-controls">
             <label>Acabado<select aria-label="Acabado"><option value="imported">Importado del GLB</option><option value="tyrell-v1">Tyrell v1 · base revisada</option></select></label>
+            <label>Iluminación<select aria-label="Iluminación"><option value="provisional">Provisional · fase 3</option><option value="tyrell-light-v1">Tyrell · luz 4.1</option></select></label>
             <label>Exposición<input aria-label="Compensación de exposición" type="range" min="-2" max="2" step="0.1"><output></output></label>
             <label><input type="checkbox" aria-label="Luz de estudio"> Luz de estudio</label>
             <label><input type="checkbox" aria-label="Normal de piedra negra" checked> Normal de piedra negra</label>
             <button type="button">Restablecer exposición</button>
             </div><p>La luz de estudio es blanca y sirve para comparar materiales. La exposición de referencia corresponde a 0 EV; las capturas conservan el acabado y la luz seleccionados.</p>`
+        this.lightingSelect = this.lookPanel.querySelector('select[aria-label="Iluminación"]')
+        this.lightingSelect.onchange = () => actions.lighting(this.lightingSelect.value)
         this.lookSelect = this.lookPanel.querySelector('select')
         this.lookExposure = this.lookPanel.querySelector('input[type=range]')
         this.lookStudio = this.lookPanel.querySelector('input[type=checkbox]')

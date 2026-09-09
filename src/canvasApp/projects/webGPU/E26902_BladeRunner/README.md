@@ -12,6 +12,8 @@ Fases 1 y 2 cerradas: cámaras, capturas exactas de 1920 × 800 y fidelidad geom
 
 **3.6 completado:** cuatro sillas comparten seis geometrías, seis materiales y doce texturas; identidad y liberación verificadas tras diez ciclos de acabado. **19/19 pruebas correctas.** [Informe y reproducción](docs/phase3/3.6/RECURSOS_COMPARTIDOS.md).
 
+**Fase 4 iniciada:** perfil de iluminación **Tyrell · luz 4.1**, comparador con la base provisional, dirección solar vinculada al disco y primer balance de cielo/rellenos. [Parámetros, capturas y límites](docs/phase4/4.1/SOL_CIELO.md).
+
 ## Ejecutar
 
 Desde la raíz del repositorio, con Node.js 24.14.0 (versión utilizada en la validación):
@@ -34,6 +36,7 @@ Abrir `http://localhost:8081` para producción. Tras una nueva compilación hay 
 
 ## Controles y medición
 
+- **Iluminación:** dentro de Color y materiales, alternar `Provisional · fase 3` y `Tyrell · luz 4.1` (inicio). El modo de estudio funciona con ambos. Las capturas y el diagnóstico incluyen el perfil.
 - **Color y materiales:** comparar `Importado del GLB` con `Tyrell v1 · base revisada`, variar compensación entre −2 y +2 EV, restablecer 0 EV y activar luz blanca de estudio. La referencia utiliza AgX, salida sRGB y exposición base 1,07. El control **Normal de piedra negra** permite comparar el suelo con y sin relieve, conservando su rugosidad. Las capturas incluyen acabado, luz, EV y estado de la normal en el nombre y mantienen la cámara sin paneo.
 - **Paneo con el ratón:** panel plegable con activación, recorrido horizontal/vertical (metros), suavidad (segundos), distancia al punto de mirada y retorno al centro. [Comportamiento y validación](docs/PANEO.md).
 - **Cámara:** diez cámaras del GLB. Inicio en CAM 01; CAM 02 muestra mesa y juntas, CAM 03 los perfiles invertidos y CAM 04 una vista lateral. Son cámaras de Blender pendientes de validar contra los fotogramas.
@@ -53,6 +56,7 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `TyrellAssets.js` | Carga con progreso, errores HTTP/GLB, cancelación y liberación de recursos compartidos |
 | `TyrellCameraRig.js` | Pose mundial y FOV de cámaras, escala de visualización de Blender normalizada, resize |
 | `TyrellCameraPan.js` | Paneo relativo al ratón, límites, mirada fija y suavizado temporal; referencia independiente para capturas |
+| `TyrellLighting.js` | Composición reversible de sol, disco, cielo y rellenos; dirección común y diagnóstico |
 | `TyrellLook.js` | Referencia de color/exposición y propuesta reversible de materiales; conserva mapas y recursos compartidos |
 | `TyrellCapture.js` | Captura a resolución fija y restauración del visor; reinicio de métricas tras la captura |
 | `TyrellUI.js`, `tyrell.css` | Interfaz de revisión y estados de carga/error |
@@ -89,4 +93,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-**4.1 · Sol, cielo y contraste interior/exterior.** La base de fase 3 está revisada. [Cierre, comparación WebGPU y límites de UV](docs/phase3/3.3-review/CIERRE.md). La iluminación, los reflejos y la atmósfera todavía requieren calibración; este cierre no acredita equivalencia final con la película.
+**4.2 · Calibración de intensidades.** Separar la contribución del sol y los rellenos, especialmente en suelo y mesa, partiendo de [la composición 4.1](docs/phase4/4.1/SOL_CIELO.md). La fidelidad final todavía requiere sombras, luz indirecta, reflejos y atmósfera.

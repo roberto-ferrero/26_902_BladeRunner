@@ -5,7 +5,14 @@ export const TYRELL = {
     referenceAspect: 2.4,
     initialCamera: 'CAM 01',
     exposure: 1.07,
-    materialLook: 'tyrell-v1', // First material pass; visual WebGPU approval pending.
+    materialLook: 'tyrell-v1', // Reviewed material baseline; lighting/reflections still being calibrated.
+    lightingProfile: 'tyrell-light-v1',
+    lighting: {
+        target: [0, 1, -5], discPosition: [2, 58, -650], shadowDistance: 80,
+        discScale: 0.72, sunColor: 0xffd093, sunIntensity: 2.6,
+        skyEmissionScale: 1.25, hemisphereIntensity: 0.65,
+        areaIntensities: [0.65, 0.22, 0.45, 0.45]
+    },
     quality: 'Media',
     pan: { enabled: true, horizontal: 0.25, vertical: 0.12, smoothness: 0.35, targetDistance: 20 },
     // Resolution budgets, not an inferred GPU ranking. Geometry is unchanged.

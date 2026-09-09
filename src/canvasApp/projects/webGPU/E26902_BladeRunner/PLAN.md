@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **fases 1, 2 y base de materiales de fase 3 completadas**. Tyrell v1 revisado en WebGPU desde CAM 01/02/04; UV pendientes evaluadas a esas distancias, con límites para recorrido libre. [Cierre de fase 3](docs/phase3/3.3-review/CIERRE.md). Siguiente entrega: **4.1 · Sol, cielo y contraste interior/exterior**.
+Estado: **fases 1, 2 y base de materiales de fase 3 completadas**. **Fase 4 iniciada: primera composición 4.1 implementada y revisada en WebGPU**, reversible desde el GUI. [Sol, cielo, capturas y límites](docs/phase4/4.1/SOL_CIELO.md). Siguiente entrega: **4.2 · Calibración de intensidades**.
 
 ## Objetivo
 
@@ -82,7 +82,7 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 ## 4 · Iluminación y sombras
 
-- [ ] **4.1** Igualar dirección del sol, disco solar, cielo y contraste interior/exterior.
+- [x] **4.1** Primera composición solar coherente con el disco, cielo ajustado y balance interior/exterior revisado desde CAM 01/02/04. Perfil reversible y parámetros documentados; equivalencia final pendiente de calibración y atmósfera. [Informe](docs/phase4/4.1/SOL_CIELO.md).
 - [ ] **4.2** Calibrar intensidades en Three.js; no trasladar sin comprobar los valores fotométricos exportados.
 - [ ] **4.3** Reconstruir los rellenos de área con la inicialización apropiada para WebGPU.
 - [ ] **4.4** Ajustar sombras solares, sesgos, resolución y cobertura de la sala sin desperdiciar resolución en todo el exterior lejano.
