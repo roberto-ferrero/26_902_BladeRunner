@@ -1,6 +1,24 @@
 # Registro cronológico de capturas
 
-Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; de 4.5: **010**; de 4.6: **011**; de 5.1: **008**; de 5.2: **008**; de 5.3: **012**; de 5.4: **008**; de 5.5: **006**; primera de 6.1: **001**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; de 4.5: **010**; de 4.6: **011**; de 5.1: **008**; de 5.2: **008**; de 5.3: **012**; de 5.4: **008**; de 5.5: **006**; de 6.1: **010**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+
+## 6.1 · Profundidad exterior y bruma interior
+
+09/09/2026, horas UTC (Madrid +2 h). Pantallazos PNG 893 × 912, convertidos desde la imagen del navegador sin modificar tamaño ni píxeles. Captura fija 1920 × 800 reducida en diálogo, sin paneo, salvo 008 (visor vivo). Todos: Media, Tyrell v1, luz 4.2/balance R01, Base R01 indirecta, 0 EV, normales activas, reflejo Piedra pulida/Auto/adaptativo y entorno metal/vidrio activados. [Informe](../phase6/6.1/ATMOSFERA.md).
+
+| Orden | Hora | Archivo | Estado |
+| --- | --- | --- | --- |
+| 6.1 / 001 | 20:15:37 | [CAM 01](6.1_001_2026-09-09_CAM01.png) | Base anterior, sin atmósfera |
+| 6.1 / 002 | 20:19:37 | [CAM 01](6.1_002_2026-09-09_CAM01.png) | Sólo exterior 0,002 /m; descartado por aclarado excesivo |
+| 6.1 / 003 | 20:19:49 | [CAM 01](6.1_003_2026-09-09_CAM01.png) | Sólo interior, intensidad 1; propuesta tenue |
+| 6.1 / 004 | 20:22:53 | [CAM 01](6.1_004_2026-09-09_CAM01.png) | Sólo exterior corregido 0,00025 /m, intensidad 1 |
+| 6.1 / 005 | 20:23:07 | [CAM 01](6.1_005_2026-09-09_CAM01.png) | Ambas capas a 1; propuesta final de 6.1, pendiente de revisión del usuario. [Diagnóstico](6.1_005_2026-09-09_CAM01.json) |
+| 6.1 / 006 | 20:23:35 | [CAM 02](6.1_006_2026-09-09_CAM02.png) | Ambas capas a 1; mesa y cristalería |
+| 6.1 / 007 | 20:23:48 | [CAM 04](6.1_007_2026-09-09_CAM04.png) | Ambas capas a 1; vista lateral |
+| 6.1 / 008 | 20:24:00 | [CAM 01](6.1_008_2026-09-09_CAM01.png) | Ambas capas a 1; visor con paneo. [Diagnóstico](6.1_008_2026-09-09_CAM01.json) |
+| 6.1 / 009 | 20:24:31 | [CAM 01](6.1_009_2026-09-09_CAM01.png) | Ambas capas apagadas; base restaurada, rectángulo de escena idéntico a 001 |
+
+Se deja el visor en CAM 01 con ambas capas y reflejos activos para revisión. Al recargar esos cuatro efectos arrancan apagados. R01 archivado intacto; no se registra una nueva versión de acabado.
 
 ## Entrega conjunta 5.3–5.5
 

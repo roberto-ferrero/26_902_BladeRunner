@@ -56,6 +56,23 @@ export default class TyrellUI {
         this.lookPanel.querySelector('[aria-label="Normal de piedra negra"]').onchange = event => actions.look({ floorNormal: event.target.checked })
         this.lookPanel.querySelector('button').onclick = () => { this.lookExposure.value = 0; this.lookExposure.oninput() }
         this.root.querySelector('footer').prepend(this.lookPanel)
+        this.atmospherePanel = document.createElement('details')
+        this.atmospherePanel.className = 'tyrell-pan'
+        this.atmospherePanel.innerHTML = '<summary>Atmósfera</summary><div class="tyrell-pan-controls"></div><p>Exterior y sala se ajustan por separado. Base sin bruma al recargar; los haces de luz se incorporarán en el siguiente punto.</p>'
+        for (const [key, title] of [['exterior', 'Profundidad exterior'], ['interior', 'Bruma interior']]) {
+            const label = document.createElement('label'), enabled = document.createElement('input')
+            enabled.type = 'checkbox'; enabled.setAttribute('aria-label', title)
+            enabled.onchange = () => actions.atmosphere({ [key]: enabled.checked })
+            label.append(enabled, document.createTextNode(title))
+            const strengthLabel = document.createElement('label'), strength = document.createElement('input'), value = document.createElement('output')
+            strength.type = 'range'; strength.min = 0; strength.max = 2; strength.step = 0.05; strength.value = 1
+            strength.setAttribute('aria-label', `Intensidad de ${title.toLowerCase()}`)
+            value.value = '1.00'
+            strength.oninput = () => { value.value = Number(strength.value).toFixed(2); actions.atmosphere({ [`${key}Strength`]: Number(strength.value) }) }
+            strengthLabel.append(document.createTextNode(`Intensidad de ${title.toLowerCase()}`), strength, value)
+            this.atmospherePanel.querySelector('div').append(label, strengthLabel)
+        }
+        this.root.querySelector('footer').prepend(this.atmospherePanel)
         this.panPanel = document.createElement('details')
         this.panPanel.className = 'tyrell-pan'
         this.panPanel.innerHTML = `<summary>Paneo con el ratón</summary>

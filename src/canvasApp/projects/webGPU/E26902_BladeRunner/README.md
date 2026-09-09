@@ -1,6 +1,6 @@
 # Oficinas Tyrell · Visor WebGPU
 
-**Estado actual: 5.3–5.5 ejecutados.** Cámaras revisadas, reflector con caché adaptativa/resolución configurable y entorno local para metales/vidrio. 32 pruebas correctas. [Cámaras](docs/phase5/5.3/CAMARAS.md), [rendimiento](docs/phase5/5.4/RENDIMIENTO.md) y [entorno](docs/phase5/5.5/ENTORNO.md). Ambos controles de reflexión arrancan desactivados para conservar R01. Próximo punto: **6.1 · Profundidad atmosférica exterior y bruma interior**. Las notas que siguen incluyen el histórico.
+**Estado actual: fase 6 iniciada, punto 6.1 ejecutado.** Profundidad exterior y bruma interior independientes, con comparación desde CAM 01/02/04 y paneo. 33 pruebas correctas y nueve capturas registradas. [Informe de atmósfera](docs/phase6/6.1/ATMOSFERA.md). Reflejos y atmósfera arrancan desactivados para conservar R01. Próximo punto: **6.2 · Haces de luz y polvo**. Las notas que siguen incluyen el histórico.
 
 **Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
 
@@ -46,6 +46,7 @@ Abrir `http://localhost:8081` para producción. Tras una nueva compilación hay 
 
 ## Controles y medición
 
+- **Atmósfera:** Profundidad exterior y Bruma interior se activan por separado, con intensidad independiente 0–2 (propuesta: 1). Desmarcar ambas restaura la base sin bruma. No modifica las luces ni la exposición. Las capturas exportadas incluyen intensidades `ext`/`int`; Diagnóstico incluye parámetros. No genera todavía haces de luz ni polvo.
 - **Reflejo del suelo:** dentro de Color y materiales, activa una reflexión planar compartida a media resolución. **Acabado del reflejo** alterna `Piedra pulida · 5.2` (rugosidad, Fresnel y normales) y `Ensayo uniforme · 5.1`. Desmarcar vuelve a R01. El control de normales afecta también a la distorsión del reflejo. Diagnóstico y capturas registran modo y activación.
 - **Resolución del reflejo:** automática (Baja 25 %, Media 50 %, Alta 75 %) o manual 25/50/100 % por eje. **Actualización del reflejo** reutiliza vistas quietas por defecto; `Cada render` sirve para comparar o para futuras escenas animadas. Movimiento, cámara, tamaño y cambios de escena fuerzan actualización.
 - **Reflejos en metal y vidrio:** captura local compartida de la sala, seis caras de 128 × 128, sólo para cinco materiales de bronce/latón/cristal. Se actualiza al activarlo o cambiar iluminación/acabado/calidad. Desactivar restaura esos materiales; no cambia el entorno global ni el pavimento. Para volver a la base R01 completa, desactivar también Reflejo del suelo.
@@ -72,6 +73,7 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `TyrellFloorReflection.js` | Ensayo planar compartido por el suelo, control de activación, diagnóstico y liberación |
 | `TyrellReflectionUpdates.js` | Caché de vistas quietas, invalidación y contadores de render/reutilización |
 | `TyrellSpecularEnvironment.js` | Captura local de sala para metales/vidrio, selección de receptores, actualización y restauración |
+| `TyrellAtmosphere.js` | Profundidad exterior y bruma interior analíticas, controles y restauración; sin pasadas adicionales |
 | `scripts/audit-contacts.mjs`, `tests/contacts.test.mjs` | Medición de apoyos del GLB y regresión de la corrección sin modificar el archivo fuente |
 | `TyrellCameraRig.js` | Pose mundial y FOV de cámaras, escala de visualización de Blender normalizada, resize |
 | `TyrellCameraPan.js` | Paneo relativo al ratón, límites, mirada fija y suavizado temporal; referencia independiente para capturas |

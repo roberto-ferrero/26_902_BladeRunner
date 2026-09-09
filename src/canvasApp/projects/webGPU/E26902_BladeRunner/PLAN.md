@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **5.3–5.5 ejecutados y documentados**. Diez cámaras revisadas, actualización adaptativa/resolución configurable y entorno local para metales/vidrio. R01 conservado al arrancar. [Cámaras](docs/phase5/5.3/CAMARAS.md), [rendimiento](docs/phase5/5.4/RENDIMIENTO.md), [entorno](docs/phase5/5.5/ENTORNO.md). Siguiente entrega: **6.1 · Profundidad atmosférica exterior y bruma interior**. Las vistas inversas aún muestran límites del decorado; no se declara fidelidad final.
+Estado: **Fase 6 iniciada; 6.1 ejecutado y documentado**. Profundidad exterior y bruma interior independientes, revisadas con reflejos desde CAM 01/02/04 y durante paneo. 33 pruebas correctas; capturas 6.1/001–009. R01 conservado al arrancar. [Informe y límites](docs/phase6/6.1/ATMOSFERA.md). Siguiente entrega: **6.2 · Haces de luz y polvo**. La propuesta queda para revisión del usuario; no se declara fidelidad final ni cierre de toda la fase 6.
 
 ## Objetivo
 
@@ -105,7 +105,7 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 ## 6 · Atmósfera y acabado cinematográfico
 
-- [ ] **6.1** Separar la profundidad atmosférica del exterior de la bruma dentro de la sala.
+- [x] **6.1** Profundidad exterior y bruma interior separadas con nodos analíticos y controles independientes. Primer exterior descartado por exceso de aclarado; propuesta tenue revisada en CAM 01/02/04, paneo y restauración. Sin pasadas adicionales; 33 pruebas correctas. [Parámetros, capturas y límites](docs/phase6/6.1/ATMOSFERA.md).
 - [ ] **6.2** Implementar y medir haces de luz y polvo mediante nodos/volumen compatibles con la versión instalada; una niebla uniforme no sustituye estos haces.
 - [ ] **6.3** Comprobar oclusión por las columnas, estabilidad temporal, bandas y ruido del volumen.
 - [ ] **6.4** Añadir bloom contenido y ajuste final del color con el sistema de posprocesado WebGPU.
