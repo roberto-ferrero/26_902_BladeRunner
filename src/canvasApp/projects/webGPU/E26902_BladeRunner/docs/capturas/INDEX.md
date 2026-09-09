@@ -1,6 +1,25 @@
 # Registro cronológico de capturas
 
-Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; de 4.5: **010**; primera de 4.6: **001**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; de 4.5: **010**; de 4.6: **011**; primera de 5.1: **001**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+
+## Entrega 4.6 · Fugas y contactos
+
+09/09/2026. Horas UTC (Madrid: +2 h). Todas usan Tyrell v1, luz 4.2 con balance R01, Base R01 indirecta, composición completa, 0 EV y cámara de referencia sin paneo. Pantallazos de interfaz 1294 × 912 con render 1920 × 800 reducido.
+
+| Orden | Hora UTC | Archivo | Calidad | Estado |
+| --- | --- | --- | --- | --- |
+| 4.6 / 001 | 18:09:53 | [CAM 01](4.6_001_2026-09-09_CAM01.png) | Media | Antes, base 4.5 |
+| 4.6 / 002 | 18:10:33 | [CAM 02](4.6_002_2026-09-09_CAM02.png) | Media | Antes, base 4.5 |
+| 4.6 / 003 | 18:14:27 | [CAM 01](4.6_003_2026-09-09_CAM01.png) | Media | Ensayo descartado: normalBias 10 mm y maletín apoyado |
+| 4.6 / 004 | 18:15:01 | [CAM 02](4.6_004_2026-09-09_CAM02.png) | Media | Ensayo descartado; [diagnóstico](4.6_004_2026-09-09_CAM02.json) |
+| 4.6 / 005 | 18:17:12 | [CAM 04](4.6_005_2026-09-09_CAM04.png) | Media | Ensayo descartado |
+| 4.6 / 006 | 18:18:07 | [CAM 02](4.6_006_2026-09-09_CAM02.png) | Baja | Ensayo descartado: bandas de autosombra sobre la mesa |
+| 4.6 / 007 | 18:21:42 | [CAM 02](4.6_007_2026-09-09_CAM02.png) | Baja | Final: normalBias restaurado a 25 mm, bandas del ensayo eliminadas |
+| 4.6 / 008 | 18:22:20 | [CAM 02](4.6_008_2026-09-09_CAM02.png) | Media | Final: maletín apoyado, sombras 4.4 |
+| 4.6 / 009 | 18:22:37 | [CAM 04](4.6_009_2026-09-09_CAM04.png) | Media | Final: revisión lateral |
+| 4.6 / 010 | 18:22:52 | [CAM 01](4.6_010_2026-09-09_CAM01.png) | Media | Final: general; [diagnóstico](4.6_010_2026-09-09_CAM01.json) |
+
+[Mediciones, corrección y límites](../phase4/4.6/CONTACTOS.md). Resultado listo para revisión del usuario; no constituye una nueva versión de acabado ni aprobación de fidelidad final. R01 archivado intacto.
 
 ## Entrega 4.5 · Iluminación indirecta
 

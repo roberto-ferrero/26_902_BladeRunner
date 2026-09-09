@@ -1,6 +1,6 @@
 # Oficinas Tyrell · Visor WebGPU
 
-**Estado actual: 4.5 comparado y documentado.** Se conserva Base R01 con las sombras de 4.4: el entorno reduce el contraste del suelo y la sonda no demuestra una mejora suficiente. Ambos ensayos son reversibles desde el GUI. [Comparación, límites y capturas](docs/phase4/4.5/INDIRECTA.md). La referencia archivada R01 permanece intacta. Próximo punto: **4.6 · Fugas de luz y contactos**. Las notas de reapertura que siguen documentan el histórico.
+**Estado actual: 4.6 revisado y documentado.** Corregido el apoyo del maletín completo (3,6 mm); revisados contactos y cobertura del suelo. Se conserva R01 con sombras de 4.4; reducir normalBias produjo bandas y se descartó. [Mediciones, capturas y límites](docs/phase4/4.6/CONTACTOS.md). La referencia archivada R01 permanece intacta. Próximo punto: **5.1 · Reflector planar del pavimento**. Las notas de reapertura que siguen documentan el histórico.
 
 **Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
 
@@ -65,6 +65,8 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `E26902_BladeRunner` | Entrada sin extensión, ciclo del proyecto, luces provisionales, perfiles, captura y métricas |
 | `config.js` | Ruta del GLB, cámara inicial, AgX/exposición 1,07 y parámetros artísticos |
 | `TyrellAssets.js` | Carga con progreso, errores HTTP/GLB, cancelación y liberación de recursos compartidos |
+| `TyrellContacts.js` | Apoyo del maletín completo mediante cuatro comprobaciones geométricas; conserva los recursos originales |
+| `scripts/audit-contacts.mjs`, `tests/contacts.test.mjs` | Medición de apoyos del GLB y regresión de la corrección sin modificar el archivo fuente |
 | `TyrellCameraRig.js` | Pose mundial y FOV de cámaras, escala de visualización de Blender normalizada, resize |
 | `TyrellCameraPan.js` | Paneo relativo al ratón, límites, mirada fija y suavizado temporal; referencia independiente para capturas |
 | `TyrellLighting.js` | Composición reversible de sol, disco, cielo y rellenos; dirección común y diagnóstico |
@@ -108,4 +110,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-**4.6 · Fugas de luz y contactos.** Revisar encuentros entre suelo, columnas y mobiliario, conservando el equilibrio de R01 y guardando capturas numeradas. La fidelidad final todavía requiere reflejos y atmósfera.
+**5.1 · Reflector planar del pavimento.** Probar una reflexión compartida compatible con WebGPU, conservando el equilibrio de R01 y guardando capturas numeradas. La fidelidad final todavía requiere reflejos y atmósfera.

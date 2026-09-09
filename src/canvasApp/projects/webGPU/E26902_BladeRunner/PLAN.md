@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **4.5 comparado y documentado**, conservando Base R01 y sombras 4.4. Sonda difusa y entorno disponibles como ensayos reversibles; ninguno seleccionado como mejora final. [Informe](docs/phase4/4.5/INDIRECTA.md). Siguiente entrega: **4.6 · Fugas de luz y contactos**.
+Estado: **4.6 revisado y documentado**. Apoyo del maletín corregido; R01 y sombras 4.4 conservados tras descartar la reducción de normalBias. [Mediciones, alcance y capturas](docs/phase4/4.6/CONTACTOS.md). Siguiente entrega: **5.1 · Reflector planar del pavimento**. El cierre de esta revisión no equivale a fidelidad cinematográfica final: quedan reflejos y atmósfera.
 
 ## Objetivo
 
@@ -89,7 +89,7 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 - [x] **4.3** Integración LTC y restauración verificadas. Tras rechazar las áreas reducidas, se conservan los rellenos originales con el balance R01 registrado por el usuario. Revisión visual CAM 01/02/04, capturas 004–006; no se introduce otra reducción de luz. Reflejos finales y sombras de cristalería pendientes en sus puntos. [Informe y decisión](docs/phase4/4.3/AREAS.md).
 - [x] **4.4** Cobertura solar acotada, PCF moderado y sombras transmitidas del vidrio. R01 conservado en luces y exposición; CAM 01/02/04, paneo y perfiles de calidad revisados. 24 pruebas correctas. [Informe y límites](docs/phase4/4.4/SOMBRAS.md).
 - [x] **4.5** Comparadas base hemisférica, sonda SH y entorno en CAM 01/02/04. Se conserva R01; ensayos reversibles y horneado no incorporado al no demostrar mejora suficiente. 25 pruebas y capturas 001–009. [Decisión, alcance y límites](docs/phase4/4.5/INDIRECTA.md).
-- [ ] **4.6** Medir y corregir fugas de luz, contactos del mobiliario y pérdida de detalle en sombras.
+- [x] **4.6** Auditados apoyos y cobertura de suelo (11.659 muestras); corregidos 3,6 mm bajo el maletín completo. R01 conservado: reducción de normalBias descartada por bandas. 26 pruebas correctas, capturas cronológicas y límites de oclusión documentados. [Informe](docs/phase4/4.6/CONTACTOS.md).
 
 **Resultado comprobable:** contraluz y lectura de volúmenes cercanos al render de referencia, con atmósfera y bloom desactivados.
 

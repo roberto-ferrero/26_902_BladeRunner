@@ -1,0 +1,443 @@
+{
+  "before": {
+    "units": "metres, glTF Y up",
+    "contacts": [
+      {
+        "name": "Columna_01_|_perfil_original_y_24_hiladas",
+        "probes": 785,
+        "hits": 785,
+        "minGap": -0.00003575309254500586,
+        "maxGap": 0.00003575394946749716
+      },
+      {
+        "name": "Columna_02_|_perfil_original_y_24_hiladas",
+        "probes": 48,
+        "hits": 48,
+        "minGap": 4.513034165126717e-10,
+        "maxGap": 0.00002027979648958414
+      },
+      {
+        "name": "Columna_03_|_perfil_original_y_24_hiladas",
+        "probes": 48,
+        "hits": 48,
+        "minGap": -2.493806706277413e-10,
+        "maxGap": 0.00002027962019531329
+      },
+      {
+        "name": "Columna_04_|_perfil_original_y_24_hiladas",
+        "probes": 442,
+        "hits": 410,
+        "minGap": -0.000001972364098542373,
+        "maxGap": 0.0014936268837410609
+      },
+      {
+        "name": "Columna_05_|_perfil_original_y_24_hiladas",
+        "probes": 765,
+        "hits": 765,
+        "minGap": -0.0000011271065486796739,
+        "maxGap": 0.03100179500381728
+      },
+      {
+        "name": "Columna_06_|_perfil_original_y_24_hiladas",
+        "probes": 780,
+        "hits": 780,
+        "minGap": -0.00003567408288770654,
+        "maxGap": 0.031035933905513957
+      },
+      {
+        "name": "Columna_07_|_perfil_original_y_24_hiladas",
+        "probes": 764,
+        "hits": 764,
+        "minGap": -0.0000011272605347657089,
+        "maxGap": 0.031000979624081992
+      },
+      {
+        "name": "Columna_08_|_perfil_original_y_24_hiladas",
+        "probes": 774,
+        "hits": 774,
+        "minGap": -0.00003565371027212591,
+        "maxGap": 0.031035098119900795
+      },
+      {
+        "name": "Columna_09_|_perfil_original_y_24_hiladas",
+        "probes": 315,
+        "hits": 291,
+        "minGap": -0.00003615111200529035,
+        "maxGap": 0.03103521100638318
+      },
+      {
+        "name": "Columna_10_|_perfil_original_y_24_hiladas",
+        "probes": 51,
+        "hits": 51,
+        "minGap": -0.0002430163640793001,
+        "maxGap": -0.00024301569938165596
+      },
+      {
+        "name": "Columna_11_|_perfil_original_y_24_hiladas",
+        "probes": 48,
+        "hits": 48,
+        "minGap": 4.513034165126717e-10,
+        "maxGap": 0.000020279403498326548
+      },
+      {
+        "name": "Columna_12_|_perfil_original_y_24_hiladas",
+        "probes": 48,
+        "hits": 48,
+        "minGap": -2.493762071842376e-10,
+        "maxGap": 0.00002025593313630808
+      },
+      {
+        "name": "Columna_13_|_perfil_original_y_24_hiladas",
+        "probes": 447,
+        "hits": 415,
+        "minGap": -0.00003395024080408808,
+        "maxGap": 0.0015337115746258331
+      },
+      {
+        "name": "Columna_14_|_perfil_original_y_24_hiladas",
+        "probes": 55,
+        "hits": 55,
+        "minGap": -0.00024301604915279336,
+        "maxGap": 0.030757628483115695
+      },
+      {
+        "name": "Columna_15_|_perfil_original_y_24_hiladas",
+        "probes": 51,
+        "hits": 51,
+        "minGap": -0.0002431436403656003,
+        "maxGap": 0.030757083048229106
+      },
+      {
+        "name": "Columna_16_|_perfil_original_y_24_hiladas",
+        "probes": 776,
+        "hits": 776,
+        "minGap": -0.00003565694691357382,
+        "maxGap": 0.031035509306093445
+      },
+      {
+        "name": "Columna_17_|_perfil_original_y_24_hiladas",
+        "probes": 51,
+        "hits": 51,
+        "minGap": -0.00024333368670998758,
+        "maxGap": 0.030756077205296606
+      },
+      {
+        "name": "Columna_18_|_perfil_original_y_24_hiladas",
+        "probes": 130,
+        "hits": 122,
+        "minGap": -0.00007432318940262493,
+        "maxGap": 0.030999059572479837
+      },
+      {
+        "name": "Foot_5",
+        "probes": 16,
+        "hits": 16,
+        "minGap": 2.7675470422316995e-10,
+        "maxGap": 9.049776969471957e-10
+      },
+      {
+        "name": "Foot_4",
+        "probes": 16,
+        "hits": 16,
+        "minGap": 2.767547059578934e-10,
+        "maxGap": 9.049776986819191e-10
+      },
+      {
+        "name": "Sillon_01_|_frente",
+        "probes": 1,
+        "hits": 1,
+        "minGap": 0.00007901814756691716,
+        "maxGap": 0.00007901814756691716
+      },
+      {
+        "name": "Sillon_02_|_fondo",
+        "probes": 1,
+        "hits": 1,
+        "minGap": 0.00007931083761189735,
+        "maxGap": 0.00007931083761189735
+      },
+      {
+        "name": "Sillon_03_|_izquierda",
+        "probes": 1,
+        "hits": 1,
+        "minGap": 0.00007917987088034914,
+        "maxGap": 0.00007917987088034914
+      },
+      {
+        "name": "Sillon_04_|_derecha",
+        "probes": 1,
+        "hits": 1,
+        "minGap": 0.0000791597799768215,
+        "maxGap": 0.0000791597799768215
+      },
+      {
+        "name": "Cut_crystal_decanter",
+        "probes": 64,
+        "hits": 64,
+        "minGap": -1.7695128917694092e-8,
+        "maxGap": -1.7695128917694092e-8
+      },
+      {
+        "name": "Crystal_tumbler",
+        "probes": 80,
+        "hits": 80,
+        "minGap": -1.7695128917694092e-8,
+        "maxGap": -1.7695128917694092e-8
+      },
+      {
+        "name": "Crystal_tumbler001",
+        "probes": 80,
+        "hits": 80,
+        "minGap": -1.7695128917694092e-8,
+        "maxGap": -1.7695128917694092e-8
+      },
+      {
+        "name": "Leather_folio",
+        "probes": 4,
+        "hits": 4,
+        "minGap": 0.0003600211676955123,
+        "maxGap": 0.0003600211676955123
+      },
+      {
+        "name": "Instrument_case",
+        "probes": 4,
+        "hits": 4,
+        "minGap": 0.0035999499514698385,
+        "maxGap": 0.0035999499514698385
+      }
+    ],
+    "floorProbes": 11659,
+    "floorMisses": 0,
+    "limitations": "Sampled support geometry only; no proof of complete light occlusion. Ambient/area lights have no shadows."
+  },
+  "repair": {
+    "assembly": "Instrument_case",
+    "applied": true,
+    "offsetY": -0.0035999499514698385,
+    "reason": "four supported corners",
+    "probes": 4,
+    "gapsBefore": [
+      0.0035999499514698385,
+      0.0035999499514698385,
+      0.0035999499514698385,
+      0.0035999499514698385
+    ],
+    "members": [
+      "Instrument_case",
+      "Instrument_lid",
+      "Instrument_clasp",
+      "Instrument_clasp001"
+    ]
+  },
+  "after": {
+    "units": "metres, glTF Y up",
+    "contacts": [
+      {
+        "name": "Columna_01_|_perfil_original_y_24_hiladas",
+        "probes": 785,
+        "hits": 785,
+        "minGap": -0.00003575309254500586,
+        "maxGap": 0.00003575394946749716
+      },
+      {
+        "name": "Columna_02_|_perfil_original_y_24_hiladas",
+        "probes": 48,
+        "hits": 48,
+        "minGap": 4.513034165126717e-10,
+        "maxGap": 0.00002027979648958414
+      },
+      {
+        "name": "Columna_03_|_perfil_original_y_24_hiladas",
+        "probes": 48,
+        "hits": 48,
+        "minGap": -2.493806706277413e-10,
+        "maxGap": 0.00002027962019531329
+      },
+      {
+        "name": "Columna_04_|_perfil_original_y_24_hiladas",
+        "probes": 442,
+        "hits": 410,
+        "minGap": -0.000001972364098542373,
+        "maxGap": 0.0014936268837410609
+      },
+      {
+        "name": "Columna_05_|_perfil_original_y_24_hiladas",
+        "probes": 765,
+        "hits": 765,
+        "minGap": -0.0000011271065486796739,
+        "maxGap": 0.03100179500381728
+      },
+      {
+        "name": "Columna_06_|_perfil_original_y_24_hiladas",
+        "probes": 780,
+        "hits": 780,
+        "minGap": -0.00003567408288770654,
+        "maxGap": 0.031035933905513957
+      },
+      {
+        "name": "Columna_07_|_perfil_original_y_24_hiladas",
+        "probes": 764,
+        "hits": 764,
+        "minGap": -0.0000011272605347657089,
+        "maxGap": 0.031000979624081992
+      },
+      {
+        "name": "Columna_08_|_perfil_original_y_24_hiladas",
+        "probes": 774,
+        "hits": 774,
+        "minGap": -0.00003565371027212591,
+        "maxGap": 0.031035098119900795
+      },
+      {
+        "name": "Columna_09_|_perfil_original_y_24_hiladas",
+        "probes": 315,
+        "hits": 291,
+        "minGap": -0.00003615111200529035,
+        "maxGap": 0.03103521100638318
+      },
+      {
+        "name": "Columna_10_|_perfil_original_y_24_hiladas",
+        "probes": 51,
+        "hits": 51,
+        "minGap": -0.0002430163640793001,
+        "maxGap": -0.00024301569938165596
+      },
+      {
+        "name": "Columna_11_|_perfil_original_y_24_hiladas",
+        "probes": 48,
+        "hits": 48,
+        "minGap": 4.513034165126717e-10,
+        "maxGap": 0.000020279403498326548
+      },
+      {
+        "name": "Columna_12_|_perfil_original_y_24_hiladas",
+        "probes": 48,
+        "hits": 48,
+        "minGap": -2.493762071842376e-10,
+        "maxGap": 0.00002025593313630808
+      },
+      {
+        "name": "Columna_13_|_perfil_original_y_24_hiladas",
+        "probes": 447,
+        "hits": 415,
+        "minGap": -0.00003395024080408808,
+        "maxGap": 0.0015337115746258331
+      },
+      {
+        "name": "Columna_14_|_perfil_original_y_24_hiladas",
+        "probes": 55,
+        "hits": 55,
+        "minGap": -0.00024301604915279336,
+        "maxGap": 0.030757628483115695
+      },
+      {
+        "name": "Columna_15_|_perfil_original_y_24_hiladas",
+        "probes": 51,
+        "hits": 51,
+        "minGap": -0.0002431436403656003,
+        "maxGap": 0.030757083048229106
+      },
+      {
+        "name": "Columna_16_|_perfil_original_y_24_hiladas",
+        "probes": 776,
+        "hits": 776,
+        "minGap": -0.00003565694691357382,
+        "maxGap": 0.031035509306093445
+      },
+      {
+        "name": "Columna_17_|_perfil_original_y_24_hiladas",
+        "probes": 51,
+        "hits": 51,
+        "minGap": -0.00024333368670998758,
+        "maxGap": 0.030756077205296606
+      },
+      {
+        "name": "Columna_18_|_perfil_original_y_24_hiladas",
+        "probes": 130,
+        "hits": 122,
+        "minGap": -0.00007432318940262493,
+        "maxGap": 0.030999059572479837
+      },
+      {
+        "name": "Foot_5",
+        "probes": 16,
+        "hits": 16,
+        "minGap": 2.7675470422316995e-10,
+        "maxGap": 9.049776969471957e-10
+      },
+      {
+        "name": "Foot_4",
+        "probes": 16,
+        "hits": 16,
+        "minGap": 2.767547059578934e-10,
+        "maxGap": 9.049776986819191e-10
+      },
+      {
+        "name": "Sillon_01_|_frente",
+        "probes": 1,
+        "hits": 1,
+        "minGap": 0.00007901814756691716,
+        "maxGap": 0.00007901814756691716
+      },
+      {
+        "name": "Sillon_02_|_fondo",
+        "probes": 1,
+        "hits": 1,
+        "minGap": 0.00007931083761189735,
+        "maxGap": 0.00007931083761189735
+      },
+      {
+        "name": "Sillon_03_|_izquierda",
+        "probes": 1,
+        "hits": 1,
+        "minGap": 0.00007917987088034914,
+        "maxGap": 0.00007917987088034914
+      },
+      {
+        "name": "Sillon_04_|_derecha",
+        "probes": 1,
+        "hits": 1,
+        "minGap": 0.0000791597799768215,
+        "maxGap": 0.0000791597799768215
+      },
+      {
+        "name": "Cut_crystal_decanter",
+        "probes": 64,
+        "hits": 64,
+        "minGap": -1.7695128917694092e-8,
+        "maxGap": -1.7695128917694092e-8
+      },
+      {
+        "name": "Crystal_tumbler",
+        "probes": 80,
+        "hits": 80,
+        "minGap": -1.7695128917694092e-8,
+        "maxGap": -1.7695128917694092e-8
+      },
+      {
+        "name": "Crystal_tumbler001",
+        "probes": 80,
+        "hits": 80,
+        "minGap": -1.7695128917694092e-8,
+        "maxGap": -1.7695128917694092e-8
+      },
+      {
+        "name": "Leather_folio",
+        "probes": 4,
+        "hits": 4,
+        "minGap": 0.0003600211676955123,
+        "maxGap": 0.0003600211676955123
+      },
+      {
+        "name": "Instrument_case",
+        "probes": 4,
+        "hits": 4,
+        "minGap": 0,
+        "maxGap": 0
+      }
+    ],
+    "floorProbes": 11659,
+    "floorMisses": 0,
+    "limitations": "Sampled support geometry only; no proof of complete light occlusion. Ambient/area lights have no shadows."
+  }
+}
