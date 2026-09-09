@@ -1,6 +1,38 @@
 # Registro cronológico de capturas
 
-Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; de 4.5: **010**; de 4.6: **011**; primera de 5.1: **001**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; de 4.5: **010**; de 4.6: **011**; de 5.1: **008**; de 5.2: **008**; primera de 5.3: **001**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+
+## Entrega 5.2 · Reflejo de piedra pulida
+
+09/09/2026. Horas UTC (Madrid +2 h). Media, Tyrell v1, luz 4.2 con balance R01, Base R01 indirecta, composición completa y 0 EV. Reflejo activado y cámara fija sin paneo. El render de referencia es 1920 × 800, mostrado reducido en la interfaz. El navegador entregó pantallazos JPEG, codificados como PNG sin cambiar tamaño ni contenido visual.
+
+| Orden | Hora UTC | Archivo | Tamaño del pantallazo | Estado |
+| --- | --- | --- | --- | --- |
+| 5.2 / 001 | 19:16:32 | [CAM 01](5.2_001_2026-09-09_CAM01.png) | 1294 × 912 | Referencia: compilación anterior, ensayo uniforme 5.1 |
+| 5.2 / 002 | 19:18:54 | [CAM 01](5.2_002_2026-09-09_CAM01.png) | 893 × 912 | Piedra 5.2, normales activas; [diagnóstico](5.2_002_2026-09-09_CAM01.json) |
+| 5.2 / 003 | 19:19:16 | [CAM 04](5.2_003_2026-09-09_CAM04.png) | 893 × 912 | Piedra 5.2, normales activas |
+| 5.2 / 004 | 19:19:58 | [CAM 04](5.2_004_2026-09-09_CAM04.png) | 893 × 912 | Comparador uniforme 5.1, normales activas |
+| 5.2 / 005 | 19:20:36 | [CAM 04](5.2_005_2026-09-09_CAM04.png) | 893 × 912 | Piedra 5.2, normales desactivadas para comprobación |
+| 5.2 / 006 | 19:22:15 | [CAM 04](5.2_006_2026-09-09_CAM04.png) | 893 × 912 | Compilación final, piedra 5.2 y normales activas |
+| 5.2 / 007 | 19:23:31 | [CAM 01](5.2_007_2026-09-09_CAM01.png) | 893 × 912 | Final para revisión; [diagnóstico](5.2_007_2026-09-09_CAM01.json) |
+
+El tamaño de ventana cambió entre 001 y 002; no comparar píxeles directamente entre ellas. 003/004 permiten comparar ambos acabados a igual tamaño. [Parámetros, validación y límites](../phase5/5.2/MATERIAL.md). R01 archivado intacto; no se registra una nueva versión de acabado.
+
+## Entrega 5.1 · Ensayo de reflejo planar
+
+09/09/2026, sesión desde 18:53 UTC (20:53 Madrid). Media, Tyrell v1, luz 4.2 con balance R01, Base R01 indirecta, composición completa y 0 EV. Cámara fija sin paneo. Pantallazos de interfaz 1294 × 912 con render 1920 × 800 reducido. No son PNG nativos de 1920 × 800.
+
+| Orden | Archivo | Estado |
+| --- | --- | --- |
+| 5.1 / 001 | [CAM 01](5.1_001_2026-09-09_CAM01.png) | Sin reflejo planar; [diagnóstico base](5.1_001_2026-09-09_CAM01.json) |
+| 5.1 / 002 | [CAM 01](5.1_002_2026-09-09_CAM01.png) | Ensayo activado, primera compilación; [coste observado](5.1_002_2026-09-09_CAM01.json) |
+| 5.1 / 003 | [CAM 04](5.1_003_2026-09-09_CAM04.png) | Ensayo lateral, primera compilación |
+| 5.1 / 004 | [CAM 04](5.1_004_2026-09-09_CAM04.png) | Compilación final, cámaras reutilizadas; reflejo activado |
+| 5.1 / 005 | [CAM 02](5.1_005_2026-09-09_CAM02.png) | Compilación final, reflejo activado |
+| 5.1 / 006 | [CAM 01](5.1_006_2026-09-09_CAM01.png) | Vuelta a R01 sin reflejo planar; [diagnóstico](5.1_006_2026-09-09_CAM01.json), 277 dibujos y tres targets retenidos |
+| 5.1 / 007 | [CAM 01](5.1_007_2026-09-09_CAM01.png) | Ensayo final activado para revisión; [diagnóstico](5.1_007_2026-09-09_CAM01.json), se mantienen tres targets tras repetir capturas |
+
+[Informe, alcance y siguiente ajuste](../phase5/5.1/REFLECTOR.md). Se trata de un prototipo aditivo, no de una nueva referencia de acabado. R01 permanece como inicio al recargar.
 
 ## Entrega 4.6 · Fugas y contactos
 

@@ -14,6 +14,7 @@ import TyrellLighting from './TyrellLighting'
 import TyrellIndirect from './TyrellIndirect'
 import { addColumnCores } from './TyrellColumnCores'
 import { settleInstrumentCase } from './TyrellContacts'
+import TyrellFloorReflection from './TyrellFloorReflection'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -41,6 +42,8 @@ export default class E26902_BladeRunner {
             center: () => { this.pan?.reset(); this.resetMetrics() },
             look: values => this.setLook(values),
             lighting: profile => this.setLighting(profile),
+            reflection: enabled => { this.floorReflection?.setEnabled(enabled); this.resetMetrics() },
+            reflectionMode: mode => { this.floorReflection?.setMode(mode); this.resetMetrics() },
             indirect: mode => { this.indirect?.setMode(mode); this.setLighting(this.lightingProfile) },
             contribution: value => { this.lighting?.setContribution(value); this.indirect?.apply(this.lighting, this.studio); this.resetMetrics() }
         })
@@ -116,6 +119,7 @@ export default class E26902_BladeRunner {
         this.world3D = this.asset.gltf.scene
         this.columnCores = addColumnCores(this.world3D)
         this.contactRepair = settleInstrumentCase(this.world3D)
+        this.floorReflection = new TyrellFloorReflection(this.world3D)
         this.scene.add(this.world3D)
         this.world3D.updateMatrixWorld(true)
         this.materialAudit = auditMaterialMaps(this.world3D)
@@ -286,7 +290,7 @@ export default class E26902_BladeRunner {
         if (this.captureRequested) {
             this.captureRequested = false
             const camera = this.activeCameraIndex + 1
-            const filename = `tyrell-camara-${camera}-${this.lookProfile}-${this.studio ? 'estudio' : 'escena'}-${this.lightingProfile}-${this.indirect?.mode || 'reference'}-${this.lighting.contribution || 'all'}-EV${this.exposureEV}-normal${this.look.floorNormal ? 'on' : 'off'}-1920x800.png`
+            const filename = `tyrell-camara-${camera}-${this.lookProfile}-${this.studio ? 'estudio' : 'escena'}-${this.lightingProfile}-${this.indirect?.mode || 'reference'}-${this.lighting.contribution || 'all'}-EV${this.exposureEV}-normal${this.look.floorNormal ? 'on' : 'off'}-reflejo${this.floorReflection.enabled ? 'on' : 'off'}-${this.floorReflection.mode}-1920x800.png`
             captureReference(this.renderer, this.scene, this.pan.referenceCamera)
                 .then(blob => { if (!this.disposed) this.ui.showOutput(blob, filename) })
                 .catch(error => {
@@ -300,7 +304,7 @@ export default class E26902_BladeRunner {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 4, step: '4.6', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 5, step: '5.2', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             referenceCapture: { ...REFERENCE_CAPTURE, aspect: 2.4 },
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
@@ -308,6 +312,7 @@ export default class E26902_BladeRunner {
             model: this.modelStats, asset: { path: TYRELL.asset, bytes: this.asset?.bytes, loadMs: this.asset?.loadMs },
             columnRepair: this.columnCores?.userData.columnRepair || null,
             contactRepair: this.contactRepair || null,
+            floorReflection: this.floorReflection?.diagnostics() || null,
             materialAudit: this.materialAudit || null,
             colorReference: this.colorReference,
             lighting: this.lighting?.diagnostics(),
@@ -336,6 +341,7 @@ export default class E26902_BladeRunner {
         this.app.emitter.off('onAppKill', this.killListener)
         if (this.resizeListener) this.app.emitter.off('onAppSizeUpdate', this.resizeListener)
         document.removeEventListener('visibilitychange', this.visibilityListener)
+        this.floorReflection?.dispose()
         disposeScene(this.world3D)
         this.fill?.removeFromParent()
         this.fill?.dispose()

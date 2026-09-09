@@ -1,6 +1,6 @@
 # Oficinas Tyrell · Visor WebGPU
 
-**Estado actual: 4.6 revisado y documentado.** Corregido el apoyo del maletín completo (3,6 mm); revisados contactos y cobertura del suelo. Se conserva R01 con sombras de 4.4; reducir normalBias produjo bandas y se descartó. [Mediciones, capturas y límites](docs/phase4/4.6/CONTACTOS.md). La referencia archivada R01 permanece intacta. Próximo punto: **5.1 · Reflector planar del pavimento**. Las notas de reapertura que siguen documentan el histórico.
+**Estado actual: 5.2 implementado y documentado.** Reflejo modulado por rugosidad, Fresnel y normales; comparación con el ensayo uniforme en el GUI. Desactivado al arrancar para conservar R01. [Parámetros, capturas y límites](docs/phase5/5.2/MATERIAL.md). Próximo punto: **5.3 · Columnas y mobiliario reflejados**. Las notas de reapertura que siguen documentan el histórico.
 
 **Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
 
@@ -46,6 +46,7 @@ Abrir `http://localhost:8081` para producción. Tras una nueva compilación hay 
 
 ## Controles y medición
 
+- **Reflejo del suelo:** dentro de Color y materiales, activa una reflexión planar compartida a media resolución. **Acabado del reflejo** alterna `Piedra pulida · 5.2` (rugosidad, Fresnel y normales) y `Ensayo uniforme · 5.1`. Desmarcar vuelve a R01. El control de normales afecta también a la distorsión del reflejo. Diagnóstico y capturas registran modo y activación.
 - **Luz indirecta:** dentro de Color y materiales, `Base R01` (inicio), `Sonda difusa · ensayo` y `Entorno · ensayo`. Los ensayos usan un campo artístico, sin captura de escena ni GI horneada; se desactivan con luz de estudio o al aislar sol/áreas. El diagnóstico registra el modo y su estado efectivo.
 - **Iluminación:** dentro de Color y materiales, alternar `Provisional · fase 3`, `Tyrell · luz 4.1`, `Tyrell · luz 4.2` (inicio restaurado) y `Tyrell · luz 4.3` (propuesta rechazada, para comparar). **Aporte de luz** permite aislar sol, ambiente y áreas. Las capturas y el diagnóstico incluyen perfil y aporte; el diagnóstico detalla tamaño y orientación de las áreas.
 - **Color y materiales:** comparar `Importado del GLB` con `Tyrell v1 · base revisada`, variar compensación entre −2 y +2 EV, restablecer 0 EV y activar luz blanca de estudio. La referencia utiliza AgX, salida sRGB y exposición base 1,07. El control **Normal de piedra negra** permite comparar el suelo con y sin relieve, conservando su rugosidad. Las capturas incluyen acabado, luz, EV y estado de la normal en el nombre y mantienen la cámara sin paneo.
@@ -66,6 +67,7 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `config.js` | Ruta del GLB, cámara inicial, AgX/exposición 1,07 y parámetros artísticos |
 | `TyrellAssets.js` | Carga con progreso, errores HTTP/GLB, cancelación y liberación de recursos compartidos |
 | `TyrellContacts.js` | Apoyo del maletín completo mediante cuatro comprobaciones geométricas; conserva los recursos originales |
+| `TyrellFloorReflection.js` | Ensayo planar compartido por el suelo, control de activación, diagnóstico y liberación |
 | `scripts/audit-contacts.mjs`, `tests/contacts.test.mjs` | Medición de apoyos del GLB y regresión de la corrección sin modificar el archivo fuente |
 | `TyrellCameraRig.js` | Pose mundial y FOV de cámaras, escala de visualización de Blender normalizada, resize |
 | `TyrellCameraPan.js` | Paneo relativo al ratón, límites, mirada fija y suavizado temporal; referencia independiente para capturas |
@@ -110,4 +112,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-**5.1 · Reflector planar del pavimento.** Probar una reflexión compartida compatible con WebGPU, conservando el equilibrio de R01 y guardando capturas numeradas. La fidelidad final todavía requiere reflejos y atmósfera.
+**5.3 · Columnas y mobiliario reflejados al cambiar de cámara.** Revisar continuidad, recortes y contactos en distintas vistas, conservando el equilibrio de R01 y las capturas numeradas.

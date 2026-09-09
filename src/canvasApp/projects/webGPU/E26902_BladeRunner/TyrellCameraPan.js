@@ -13,7 +13,8 @@ export default class TyrellCameraPan {
         this.setReference()
     }
     setReference() {
-        this.referenceCamera = this.camera.clone()
+        if (this.referenceCamera) this.referenceCamera.copy(this.camera, false)
+        else this.referenceCamera = this.camera.clone(false)
         this.pointer.set(0, 0); this.offset.set(0, 0)
         this.right.set(1, 0, 0).applyQuaternion(this.referenceCamera.quaternion)
         this.up.set(0, 1, 0).applyQuaternion(this.referenceCamera.quaternion)

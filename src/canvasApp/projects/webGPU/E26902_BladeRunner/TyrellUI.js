@@ -28,11 +28,15 @@ export default class TyrellUI {
             <label>Exposición<input aria-label="Compensación de exposición" type="range" min="-2" max="2" step="0.1"><output></output></label>
             <label><input type="checkbox" aria-label="Luz de estudio"> Luz de estudio</label>
             <label><input type="checkbox" aria-label="Normal de piedra negra" checked> Normal de piedra negra</label>
+            <label><input type="checkbox" aria-label="Reflejo del suelo"> Reflejo del suelo</label>
+            <label>Acabado del reflejo<select aria-label="Acabado del reflejo"><option value="stone">Piedra pulida · 5.2</option><option value="prototype">Ensayo uniforme · 5.1</option></select></label>
             <button type="button">Restablecer exposición</button>
             </div><p>La luz de estudio es blanca y sirve para comparar materiales. La exposición de referencia corresponde a 0 EV; las capturas conservan el acabado y la luz seleccionados.</p>`
         this.lightingSelect = this.lookPanel.querySelector('select[aria-label="Iluminación"]')
         this.lightingSelect.onchange = () => actions.lighting(this.lightingSelect.value)
         this.lookPanel.querySelector('[aria-label="Luz indirecta"]').onchange = event => actions.indirect(event.target.value)
+        this.lookPanel.querySelector('[aria-label="Reflejo del suelo"]').onchange = event => actions.reflection(event.target.checked)
+        this.lookPanel.querySelector('[aria-label="Acabado del reflejo"]').onchange = event => actions.reflectionMode(event.target.value)
         this.lookPanel.querySelector('[aria-label="Aporte de luz"]').onchange = event => actions.contribution(event.target.value)
         this.lookSelect = this.lookPanel.querySelector('select')
         this.lookExposure = this.lookPanel.querySelector('input[type=range]')

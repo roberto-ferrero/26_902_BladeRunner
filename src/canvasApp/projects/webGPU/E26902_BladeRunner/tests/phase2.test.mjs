@@ -73,3 +73,16 @@ test('Reference capture reports an empty PNG without leaving the viewer resized'
     assert.deepEqual(f.renderer.size.toArray(), [1000, 625])
     assert.equal(f.renderer.ratio, 0.75)
 })
+
+test('Repeated reference captures reuse camera identity while updating its pose and lens', async () => {
+    const f = fixture()
+    await captureReference(f.renderer, f.scene, f.sourceCamera)
+    const camera = f.frames[0].camera
+    f.sourceCamera.position.x += 2; f.sourceCamera.fov = 31
+    f.sourceCamera.updateProjectionMatrix(); f.sourceCamera.updateMatrixWorld(true)
+    await captureReference(f.renderer, f.scene, f.sourceCamera)
+    assert.equal(f.frames[2].camera, camera)
+    assert.equal(camera.fov, 31)
+    assert.ok(camera.position.equals(f.sourceCamera.position))
+    assert.equal(camera.aspect, 2.4)
+})

@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **4.6 revisado y documentado**. Apoyo del maletín corregido; R01 y sombras 4.4 conservados tras descartar la reducción de normalBias. [Mediciones, alcance y capturas](docs/phase4/4.6/CONTACTOS.md). Siguiente entrega: **5.1 · Reflector planar del pavimento**. El cierre de esta revisión no equivale a fidelidad cinematográfica final: quedan reflejos y atmósfera.
+Estado: **5.2 implementado y documentado**. Reflejo de piedra pulida con Fresnel, suavizado por rugosidad y distorsión de normales; ensayo uniforme 5.1 disponible para comparar. R01 conservado al arrancar. [Parámetros y límites](docs/phase5/5.2/MATERIAL.md). Siguiente entrega: **5.3 · Columnas y mobiliario reflejados al cambiar de cámara**.
 
 ## Objetivo
 
@@ -95,8 +95,8 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 ## 5 · Reflejos del pavimento y materiales pulidos
 
-- [ ] **5.1** Probar un reflector planar compartido por el pavimento mediante nodos compatibles con WebGPU.
-- [ ] **5.2** Integrarlo con rugosidad, Fresnel, normales y juntas del material, evitando un espejo uniforme.
+- [x] **5.1** Reflector WebGPU compartido por 21 sectores, control de comparación, cámaras/capturas reutilizadas y coste observado. 29 pruebas correctas; capturas 001–007. Ensayo aditivo, desactivado al arrancar. [Informe](docs/phase5/5.1/REFLECTOR.md).
+- [x] **5.2** Reflejo modulado por Fresnel, mapa de rugosidad y normales, respetando juntas geométricas; selector de comparación con 5.1. 29 pruebas correctas y capturas 001–007. Integración visual aproximada, no BRDF completa. [Informe](docs/phase5/5.2/MATERIAL.md).
 - [ ] **5.3** Comprobar las columnas y el mobiliario reflejados, también al cambiar de cámara.
 - [ ] **5.4** Controlar resolución y frecuencia de actualización del reflejo; evitar recursión y pasadas innecesarias.
 - [ ] **5.5** Mantener un entorno de reflexión coherente para bronces y cristalería.
