@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **fases 1, 2 y punto 3.1 completados**. Instrucciones en [README.md](README.md), cierre de fase 2 en [CIERRE.md](docs/phase2/CIERRE.md) y validación de mapas en [MAPAS.md](docs/phase3/3.1/MAPAS.md). Siguiente entrega: **3.2, gestión de color y exposición de referencia**.
+Estado: **fases 1, 2, 3.1 y base técnica 3.2 completadas**. **3.3: primera propuesta aplicada, pendiente de revisión visual WebGPU**. Numeración consecutiva por fase, incluido el paneo como 7.6. Detalles en [COLOR_MATERIALES.md](docs/phase3/3.2-3.3/COLOR_MATERIALES.md); siguiente paso: contrastar la propuesta desde CAM 01/02/04 antes de cerrar 3.3.
 
 ## Objetivo
 
@@ -31,39 +31,39 @@ Priorizar la fidelidad visual en esos equipos. Las cámaras fijas proporcionará
 
 ## 0 · Revisión inicial
 
-- [x] Localizar la entrada y comprobar que está seleccionada en `Platform.js`.
-- [x] Revisar el ciclo de carga, cámaras, render y eventos del andamiaje.
-- [x] Confirmar Three.js 0.182.0 y la disponibilidad local de nodos para reflexión, volumen y posprocesado.
-- [x] Revisar las métricas del recurso: 378.164 triángulos contando repeticiones, 25 imágenes embebidas y GLB de 56,5 MB sin compresión geométrica.
-- [x] Identificar diferencias iniciales: cámara ortográfica, encuadre que escala contenido, calidad forzada a `Low` y cambio automático a WebGL en el núcleo.
-- [x] Compilación inicial con `npm run build`: completada el 07/09/2026, Webpack 5.97.1, 46,2 s. Dos advertencias de tamaño de recursos y entrada; sin errores de compilación. Registro local: `tyrell-build-baseline.log` en la raíz, ignorado por Git.
-- [x] Verificar el arranque en navegador y registrar el backend efectivo: WebGPU, Chrome 152/Windows, adaptador NVIDIA Turing. Diagnósticos en `docs/phase1/`.
+- [x] **0.1** Localizar la entrada y comprobar que está seleccionada en `Platform.js`.
+- [x] **0.2** Revisar el ciclo de carga, cámaras, render y eventos del andamiaje.
+- [x] **0.3** Confirmar Three.js 0.182.0 y la disponibilidad local de nodos para reflexión, volumen y posprocesado.
+- [x] **0.4** Revisar las métricas del recurso: 378.164 triángulos contando repeticiones, 25 imágenes embebidas y GLB de 56,5 MB sin compresión geométrica.
+- [x] **0.5** Identificar diferencias iniciales: cámara ortográfica, encuadre que escala contenido, calidad forzada a `Low` y cambio automático a WebGL en el núcleo.
+- [x] **0.6** Compilación inicial con `npm run build`: completada el 07/09/2026, Webpack 5.97.1, 46,2 s. Dos advertencias de tamaño de recursos y entrada; sin errores de compilación. Registro local: `tyrell-build-baseline.log` en la raíz, ignorado por Git.
+- [x] **0.7** Verificar el arranque en navegador y registrar el backend efectivo: WebGPU, Chrome 152/Windows, adaptador NVIDIA Turing. Diagnósticos en `docs/phase1/`.
 
 El `context.md` de la raíz describe un ejemplo anterior y no coincide completamente con el código actual. La planificación se basa en los archivos de ejecución revisados.
 
 ## 1 · Base WebGPU y carga de la escena
 
-- [x] Introducir configuración propia de Tyrell: recursos, cámara inicial, exposición y parámetros de calidad.
-- [x] Asegurar inicialización asíncrona y comprobar el backend efectivo; mostrar error si WebGPU no está disponible.
-- [x] Omitir el benchmark de arranque en Tyrell y separar sus fallos de la inicialización del motor en el núcleo.
-- [x] Sustituir la calidad fija por selección manual Baja/Media/Alta; geometría íntegra en todos los perfiles.
-- [x] Incorporar el GLB completo, con progreso, cancelación y errores de carga; conservar cámaras y metadatos.
-- [x] Respetar metros y conversión de ejes del GLB, sin escalar el mundo mediante `OrtoResponsiveFrame`.
-- [x] Encajar una cámara de perspectiva en `stageCamera.get_camera()`, conservando pose y FOV de Blender.
-- [x] Incorporar limpieza de recursos compartidos y eventos al ciclo de vida de la aplicación.
-- [x] Probar el visor de producción, cambios de calidad/cámara, captura y redimensionado; corregir la imagen negra al redimensionar sombras WebGPU.
-- [x] Registrar pruebas, compilación, procedencia del GLB, métricas y limitaciones visuales en `docs/phase1/`.
+- [x] **1.1** Introducir configuración propia de Tyrell: recursos, cámara inicial, exposición y parámetros de calidad.
+- [x] **1.2** Asegurar inicialización asíncrona y comprobar el backend efectivo; mostrar error si WebGPU no está disponible.
+- [x] **1.3** Omitir el benchmark de arranque en Tyrell y separar sus fallos de la inicialización del motor en el núcleo.
+- [x] **1.4** Sustituir la calidad fija por selección manual Baja/Media/Alta; geometría íntegra en todos los perfiles.
+- [x] **1.5** Incorporar el GLB completo, con progreso, cancelación y errores de carga; conservar cámaras y metadatos.
+- [x] **1.6** Respetar metros y conversión de ejes del GLB, sin escalar el mundo mediante `OrtoResponsiveFrame`.
+- [x] **1.7** Encajar una cámara de perspectiva en `stageCamera.get_camera()`, conservando pose y FOV de Blender.
+- [x] **1.8** Incorporar limpieza de recursos compartidos y eventos al ciclo de vida de la aplicación.
+- [x] **1.9** Probar el visor de producción, cambios de calidad/cámara, captura y redimensionado; corregir la imagen negra al redimensionar sombras WebGPU.
+- [x] **1.10** Registrar pruebas, compilación, procedencia del GLB, métricas y limitaciones visuales en `docs/phase1/`.
 
 **Resultado:** escena completa visible en WebGPU, errores de carga cubiertos por pruebas y recarga/redimensionado comprobados. Sin efectos atmosféricos añadidos todavía. El cierre técnico no valida aún la fidelidad visual con la película ni el rendimiento final.
 
 ## 2 · Cámaras y fidelidad del modelo
 
-- [x] Recuperar la cámara general y la de detalle del GLB sin perder su posición, orientación ni campo de visión (infraestructura adelantada en fase 1).
-- [x] Añadir captura de comparación de 1920 × 800 y encuadre 2,4:1, independiente del tamaño de la ventana. Conserva pose y FOV; restaura el visor y reinicia métricas.
-- [x] Exponer CAM 04 como tercera vista lateral estable y revisar su geometría junto a CAM 01–03 con material neutro y en WebGPU.
-- [x] Comprobar las 18 columnas y sus juntas, las orientaciones invertidas, las cuatro sillas, las celosías y el edificio exterior con paralaje. Perfiles contrastados con la plantilla, geometría inspeccionada y evidencia desde CAM 01–04.
-- [x] Revisar caras ausentes, normales, tangentes, escalas, transparencias y colisiones visuales del mobiliario. Copia de ejecución con limpieza de índices, atributos y recursos originales conservados; evidencia y límites en `docs/phase2/CIERRE.md`.
-- [x] Guardar capturas base 1920 × 800 y diagnósticos del visor desde CAM 01–04; resolución de medición 757 × 315, Media. Evidencia en `docs/phase2/model-audit/`.
+- [x] **2.1** Recuperar la cámara general y la de detalle del GLB sin perder su posición, orientación ni campo de visión (infraestructura adelantada en fase 1).
+- [x] **2.2** Añadir captura de comparación de 1920 × 800 y encuadre 2,4:1, independiente del tamaño de la ventana. Conserva pose y FOV; restaura el visor y reinicia métricas.
+- [x] **2.3** Exponer CAM 04 como tercera vista lateral estable y revisar su geometría junto a CAM 01–03 con material neutro y en WebGPU.
+- [x] **2.4** Comprobar las 18 columnas y sus juntas, las orientaciones invertidas, las cuatro sillas, las celosías y el edificio exterior con paralaje. Perfiles contrastados con la plantilla, geometría inspeccionada y evidencia desde CAM 01–04.
+- [x] **2.5** Revisar caras ausentes, normales, tangentes, escalas, transparencias y colisiones visuales del mobiliario. Copia de ejecución con limpieza de índices, atributos y recursos originales conservados; evidencia y límites en `docs/phase2/CIERRE.md`.
+- [x] **2.6** Guardar capturas base 1920 × 800 y diagnósticos del visor desde CAM 01–04; resolución de medición 757 × 315, Media. Evidencia en `docs/phase2/model-audit/`.
 
 **Resultado comprobable:** composición y siluetas comparables con Blender; la iluminación aún puede ser provisional.
 
@@ -72,8 +72,8 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 ## 3 · Materiales y respuesta al color
 
 - [x] **3.1** Validar los mapas de color, normales y rugosidad; separar correctamente texturas de color y de datos. 25 imágenes auditadas, 20 materiales contrastados con Blender y conexiones comprobadas con GLTFLoader y WebGPU. No se encontraron errores de espacio de color; informe y límites en `docs/phase3/3.1/`.
-- [ ] **3.2** Establecer gestión de color, AgX y exposición de referencia antes de calibrar las luces.
-- [ ] **3.3** Ajustar piedra, cuero, nogal, bronce, suelo y cristalería con el GLB como punto de partida y las tres referencias visuales. Revisar las UV colapsadas localizadas en 3.1 si aparecen estiramientos en las superficies al calibrar los materiales.
+- [x] **3.2** Establecer gestión de color, AgX y exposición de referencia antes de calibrar las luces. Linear-sRGB → AgX → sRGB, base 1,07 y compensación ±2 EV; controles de comparación y luz de estudio. Validación técnica; la equivalencia con fotogramas sigue pendiente.
+- [ ] **3.3** Ajustar piedra, cuero, nogal, bronce, suelo y cristalería con el GLB como punto de partida y las tres referencias visuales. **Propuesta Tyrell v1 implementada y reversible desde el GUI**, con previsualización auxiliar en Blender y pruebas correctas; falta revisión en WebGPU por ausencia de navegador conectado. Mantener revisión de las UV colapsadas de 3.1 antes del cierre visual.
 - [ ] **3.4** Comprobar que el suelo conserva juntas y desgaste y que la normal no produce un aspecto de agua.
 - [ ] **3.5** Usar materiales estándar cuando sean suficientes y materiales de nodos donde lo exija un efecto concreto.
 - [ ] **3.6** Conservar los recursos compartidos entre sillas y evitar clonar materiales innecesariamente.
@@ -82,43 +82,45 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 ## 4 · Iluminación y sombras
 
-- [ ] Igualar dirección del sol, disco solar, cielo y contraste interior/exterior.
-- [ ] Calibrar intensidades en Three.js; no trasladar sin comprobar los valores fotométricos exportados.
-- [ ] Reconstruir los rellenos de área con la inicialización apropiada para WebGPU.
-- [ ] Ajustar sombras solares, sesgos, resolución y cobertura de la sala sin desperdiciar resolución en todo el exterior lejano.
-- [ ] Comparar soluciones de iluminación indirecta: entorno/sondas y, si hace falta, luz estática horneada desde Blender. Incorporar horneado sólo si mejora la comparación y su coste está justificado.
-- [ ] Medir y corregir fugas de luz, contactos del mobiliario y pérdida de detalle en sombras.
+- [ ] **4.1** Igualar dirección del sol, disco solar, cielo y contraste interior/exterior.
+- [ ] **4.2** Calibrar intensidades en Three.js; no trasladar sin comprobar los valores fotométricos exportados.
+- [ ] **4.3** Reconstruir los rellenos de área con la inicialización apropiada para WebGPU.
+- [ ] **4.4** Ajustar sombras solares, sesgos, resolución y cobertura de la sala sin desperdiciar resolución en todo el exterior lejano.
+- [ ] **4.5** Comparar soluciones de iluminación indirecta: entorno/sondas y, si hace falta, luz estática horneada desde Blender. Incorporar horneado sólo si mejora la comparación y su coste está justificado.
+- [ ] **4.6** Medir y corregir fugas de luz, contactos del mobiliario y pérdida de detalle en sombras.
 
 **Resultado comprobable:** contraluz y lectura de volúmenes cercanos al render de referencia, con atmósfera y bloom desactivados.
 
 ## 5 · Reflejos del pavimento y materiales pulidos
 
-- [ ] Probar un reflector planar compartido por el pavimento mediante nodos compatibles con WebGPU.
-- [ ] Integrarlo con rugosidad, Fresnel, normales y juntas del material, evitando un espejo uniforme.
-- [ ] Comprobar las columnas y el mobiliario reflejados, también al cambiar de cámara.
-- [ ] Controlar resolución y frecuencia de actualización del reflejo; evitar recursión y pasadas innecesarias.
-- [ ] Mantener un entorno de reflexión coherente para bronces y cristalería.
+- [ ] **5.1** Probar un reflector planar compartido por el pavimento mediante nodos compatibles con WebGPU.
+- [ ] **5.2** Integrarlo con rugosidad, Fresnel, normales y juntas del material, evitando un espejo uniforme.
+- [ ] **5.3** Comprobar las columnas y el mobiliario reflejados, también al cambiar de cámara.
+- [ ] **5.4** Controlar resolución y frecuencia de actualización del reflejo; evitar recursión y pasadas innecesarias.
+- [ ] **5.5** Mantener un entorno de reflexión coherente para bronces y cristalería.
 
 **Resultado comprobable:** los reflejos largos del suelo refuerzan la composición y mantienen estabilidad al mover la cámara, con coste registrado.
 
 ## 6 · Atmósfera y acabado cinematográfico
 
-- [ ] Separar la profundidad atmosférica del exterior de la bruma dentro de la sala.
-- [ ] Implementar y medir haces de luz y polvo mediante nodos/volumen compatibles con la versión instalada; una niebla uniforme no sustituye estos haces.
-- [ ] Comprobar oclusión por las columnas, estabilidad temporal, bandas y ruido del volumen.
-- [ ] Añadir bloom contenido y ajuste final del color con el sistema de posprocesado WebGPU.
-- [ ] Mantener controles para activar/desactivar cada efecto y comparar su aportación y coste.
-- [ ] Valorar grano, viñeta o profundidad de campo sólo si aportan fidelidad a las referencias y no ocultan defectos del modelo o la luz.
+- [ ] **6.1** Separar la profundidad atmosférica del exterior de la bruma dentro de la sala.
+- [ ] **6.2** Implementar y medir haces de luz y polvo mediante nodos/volumen compatibles con la versión instalada; una niebla uniforme no sustituye estos haces.
+- [ ] **6.3** Comprobar oclusión por las columnas, estabilidad temporal, bandas y ruido del volumen.
+- [ ] **6.4** Añadir bloom contenido y ajuste final del color con el sistema de posprocesado WebGPU.
+- [ ] **6.5** Mantener controles para activar/desactivar cada efecto y comparar su aportación y coste.
+- [ ] **6.6** Valorar grano, viñeta o profundidad de campo sólo si aportan fidelidad a las referencias y no ocultan defectos del modelo o la luz.
 
 **Resultado comprobable:** comparación lado a lado del plano general, el detalle y la vista lateral. Registrar las diferencias restantes con Blender y con los fotogramas de la película.
 
 ## 7 · Navegación y presentación
 
-- [ ] Aplicar la elección del usuario: cámaras fijas, recorridos o movimiento libre.
-- [ ] Añadir transiciones y restauración del encuadre de referencia.
-- [ ] Si hay recorrido libre, mantener altura y velocidad coherentes con la escala e impedir atravesar paredes y muebles con colisiones simplificadas.
-- [ ] Resolver redimensionado, foco del teclado/ratón, pausa al ocultar la pestaña y dispositivos objetivo.
-- [ ] Separar los controles de revisión técnica de la experiencia final.
+- [ ] **7.1** Aplicar la elección del usuario: cámaras fijas, recorridos o movimiento libre.
+- [ ] **7.2** Añadir transiciones y restauración del encuadre de referencia.
+- [ ] **7.3** Si hay recorrido libre, mantener altura y velocidad coherentes con la escala e impedir atravesar paredes y muebles con colisiones simplificadas.
+- [ ] **7.4** Resolver redimensionado, foco del teclado/ratón, pausa al ocultar la pestaña y dispositivos objetivo.
+- [ ] **7.5** Separar los controles de revisión técnica de la experiencia final.
+
+- [x] **7.6** Adelanto solicitado durante 3.1: paneo con el ratón, mirada fija, recorridos y suavidad configurables, retorno al centro y captura sin paneo. Pruebas automatizadas correctas; **revisión visual pendiente por falta de navegador conectado**. Detalles en [PANEO.md](docs/PANEO.md).
 
 **Resultado comprobable:** navegación cómoda y estable sin perder acceso a las cámaras de comparación.
 
@@ -126,14 +128,14 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 La medición comienza en la fase 1; esta fase reúne los ajustes finales cuando ya se conoce el coste y la aportación visual de cada efecto.
 
-- [ ] Medir tiempo de CPU y GPU, fluidez, memoria, carga inicial y llamadas de dibujo en el dispositivo acordado.
-- [ ] Ajustar resolución interna, sombras, reflejos y muestras del volumen antes de reducir geometría que define la silueta.
-- [ ] Evaluar Meshopt/Draco y KTX2/Basis con sus decodificadores y comprobar que no dañen juntas, normales, cuero o degradados del cielo.
-- [ ] Revisar culling, instancias y agrupaciones sin perder control de materiales ni iluminación.
-- [ ] Acotar los recursos copiados a producción: el andamiaje copia actualmente ejemplos ajenos y archivos fuente `.psd`, `.blend` y `.blend1` desde `static/`. Conservar esos originales y excluirlos de la entrega de Tyrell cuando no sean necesarios.
-- [ ] Establecer perfiles de calidad medidos; comprobarlos siempre desde las mismas cámaras.
-- [ ] Compilar producción y probar carga, errores, redimensionado y liberación de recursos.
-- [ ] Documentar recursos, parámetros artísticos, capturas finales, dispositivos probados y diferencias conocidas frente a Blender.
+- [ ] **8.1** Medir tiempo de CPU y GPU, fluidez, memoria, carga inicial y llamadas de dibujo en el dispositivo acordado.
+- [ ] **8.2** Ajustar resolución interna, sombras, reflejos y muestras del volumen antes de reducir geometría que define la silueta.
+- [ ] **8.3** Evaluar Meshopt/Draco y KTX2/Basis con sus decodificadores y comprobar que no dañen juntas, normales, cuero o degradados del cielo.
+- [ ] **8.4** Revisar culling, instancias y agrupaciones sin perder control de materiales ni iluminación.
+- [ ] **8.5** Acotar los recursos copiados a producción: el andamiaje copia actualmente ejemplos ajenos y archivos fuente `.psd`, `.blend` y `.blend1` desde `static/`. Conservar esos originales y excluirlos de la entrega de Tyrell cuando no sean necesarios.
+- [ ] **8.6** Establecer perfiles de calidad medidos; comprobarlos siempre desde las mismas cámaras.
+- [ ] **8.7** Compilar producción y probar carga, errores, redimensionado y liberación de recursos.
+- [ ] **8.8** Documentar recursos, parámetros artísticos, capturas finales, dispositivos probados y diferencias conocidas frente a Blender.
 
 **Resultado comprobable:** compilación reproducible, versión WebGPU probada en los dispositivos acordados y comparaciones visuales y de rendimiento registradas.
 
@@ -142,4 +144,3 @@ La medición comienza en la fase 1; esta fase reúne los ajustes finales cuando 
 Al terminar cada entrega: actualizar esta lista, anotar archivos relevantes, comprobaciones realizadas, captura comparable cuando exista cambio visual y siguiente tarea. Las decisiones de implementación rutinarias se resuelven durante el trabajo; se consultan los cambios de alcance o de experiencia que lo necesiten.
 
 Documentación técnica consultada: [WebGPURenderer](https://threejs.org/manual/en/webgpurenderer.html), [ReflectorNode](https://threejs.org/docs/pages/ReflectorNode.html), [VolumeNodeMaterial](https://threejs.org/docs/pages/VolumeNodeMaterial.html). Los ejemplos actuales pueden diferir de Three.js 0.182.0; contrastarlos con el código instalado antes de implementar.
-- [x] Adelanto solicitado durante 3.1: paneo con el ratón, mirada fija, recorridos y suavidad configurables, retorno al centro y captura sin paneo. Pruebas automatizadas correctas; **revisión visual pendiente por falta de navegador conectado**. Detalles en [PANEO.md](docs/PANEO.md).

@@ -8,6 +8,7 @@ import TyrellUI from './TyrellUI'
 import { captureReference, REFERENCE_CAPTURE } from './TyrellCapture'
 import { auditMaterialMaps } from './TyrellMaterialAudit'
 import TyrellCameraPan from './TyrellCameraPan'
+import TyrellLook, { applyColorReference } from './TyrellLook'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -17,6 +18,9 @@ export default class E26902_BladeRunner {
         this.quality = TYRELL.quality
         this.samples = []
         this.disposed = false
+        this.lookProfile = TYRELL.materialLook
+        this.exposureEV = 0
+        this.studio = false
     }
     mount(app) {
         if (this.ui) return
@@ -28,9 +32,11 @@ export default class E26902_BladeRunner {
             retry: () => this.rendererError ? location.reload() : this.load(),
             capture: () => { this.captureRequested = true }, report: () => this.downloadReport(),
             pan: settings => { this.pan?.configure(settings); this.resetMetrics() },
-            center: () => { this.pan?.reset(); this.resetMetrics() }
+            center: () => { this.pan?.reset(); this.resetMetrics() },
+            look: values => this.setLook(values)
         })
         this.ui.setPanSettings(TYRELL.pan)
+        this.ui.setLookSettings({ profile: this.lookProfile, ev: this.exposureEV, studio: this.studio })
         app.size.update()
         app.emitter.on('onAppKill', this.killListener = () => this.dispose())
     }
@@ -48,7 +54,7 @@ export default class E26902_BladeRunner {
         this.pan = new TyrellCameraPan(this.stageCamera.get_camera(), TYRELL.pan)
         this.pointerMove = event => {
             if (event.pointerType !== 'mouse' || !this.built) return
-            if (event.target?.closest?.('.tyrell-controls, .tyrell-pan, dialog')) { this.pan.setPointer(0, 0); return }
+            if (event.target?.closest?.('.tyrell-controls, .tyrell-pan, .tyrell-look, dialog')) { this.pan.setPointer(0, 0); return }
             this.pan.setPointer(event.clientX / window.innerWidth * 2 - 1, event.clientY / window.innerHeight * 2 - 1)
         }
         this.pointerLeave = () => this.pan.setPointer(0, 0)
@@ -57,9 +63,7 @@ export default class E26902_BladeRunner {
         document.documentElement.addEventListener('pointerleave', this.pointerLeave)
         window.addEventListener('blur', this.windowBlur)
         this.renderer = app.render.renderer
-        this.renderer.toneMapping = THREE.AgXToneMapping
-        this.renderer.toneMappingExposure = TYRELL.exposure
-        this.renderer.outputColorSpace = THREE.SRGBColorSpace
+        this.colorReference = applyColorReference(this.renderer, this.exposureEV)
         this.renderer.shadowMap.enabled = true
         this.renderer.shadowMap.type = THREE.PCFShadowMap
         this.renderer.setClearColor(0x171512, 1)
@@ -102,6 +106,7 @@ export default class E26902_BladeRunner {
         this.scene.add(this.world3D)
         this.world3D.updateMatrixWorld(true)
         this.materialAudit = auditMaterialMaps(this.world3D)
+        this.look = new TyrellLook(this.world3D)
         this.cameras = []
         this.modelStats = { meshes: 0, triangles: 0, cameras: 0 }
         this.world3D.traverse(object => {
@@ -141,6 +146,23 @@ export default class E26902_BladeRunner {
             this.scene.add(light)
             return light
         })
+        this.studioLights = new THREE.Group()
+        this.studioLights.name = 'Tyrell / estudio de materiales'
+        this.studioLights.add(new THREE.HemisphereLight(0xffffff, 0x777777, 1.2))
+        for (const [position, target, intensity] of [
+            [[-5, 6, -5], [0, 1, -9], 3], [[6, 4, -12], [0, 1, -8], 1.5]
+        ]) {
+            const light = new THREE.RectAreaLight(0xffffff, intensity, 8, 8)
+            light.position.set(...position); light.lookAt(new THREE.Vector3(...target)); this.studioLights.add(light)
+        }
+        this.scene.add(this.studioLights)
+        this.reviewBackground = []
+        this.world3D.traverse(object => {
+            if (object.isMesh && (object.name.startsWith('Cielo') || object.name.startsWith('Sol'))) {
+                this.reviewBackground.push({ object, visible: object.visible })
+            }
+        })
+        this.setLook({ profile: this.lookProfile, studio: this.studio })
         this.selectCamera(Math.max(0, this.cameras.findIndex(camera => camera.name.startsWith(TYRELL.initialCamera.replaceAll(' ', '_')) || camera.name.startsWith(TYRELL.initialCamera))))
         this.setQuality(this.quality)
         this.built = true
@@ -154,6 +176,25 @@ export default class E26902_BladeRunner {
         this.pan?.setReference()
         this.app.render.set_stageCamera(this.stageCamera.get_camera())
         this.app.dev.hide_dev_camera()
+        this.resetMetrics()
+    }
+    setLook(values) {
+        if (['imported', 'tyrell-v1'].includes(values.profile)) {
+            this.lookProfile = values.profile
+            this.look?.apply(this.lookProfile)
+            if (this.world3D) this.materialAudit = auditMaterialMaps(this.world3D)
+        }
+        if (Number.isFinite(values.ev)) this.exposureEV = Math.max(-2, Math.min(2, values.ev))
+        if (this.renderer) this.colorReference = applyColorReference(this.renderer, this.exposureEV)
+        if (typeof values.studio === 'boolean') this.studio = values.studio
+        if (this.studioLights) {
+            this.studioLights.visible = this.studio
+            if (this.sun) this.sun.visible = !this.studio
+            this.fill.visible = !this.studio
+            this.areaLights.forEach(light => { light.visible = !this.studio })
+            this.reviewBackground.forEach(({ object, visible }) => { object.visible = !this.studio && visible })
+            this.renderer.setClearColor(this.studio ? 0x202020 : 0x171512, 1)
+        }
         this.resetMetrics()
     }
     setQuality(name) {
@@ -209,8 +250,9 @@ export default class E26902_BladeRunner {
         if (this.captureRequested) {
             this.captureRequested = false
             const camera = this.activeCameraIndex + 1
+            const filename = `tyrell-camara-${camera}-${this.lookProfile}-${this.studio ? 'estudio' : 'escena'}-EV${this.exposureEV}-1920x800.png`
             captureReference(this.renderer, this.scene, this.pan.referenceCamera)
-                .then(blob => { if (!this.disposed) this.ui.showOutput(blob, `tyrell-camara-${camera}-1920x800.png`) })
+                .then(blob => { if (!this.disposed) this.ui.showOutput(blob, filename) })
                 .catch(error => {
                     console.error('[Tyrell] Captura:', error)
                     if (!this.disposed) this.ui.showOutput(new Blob([error.message], { type: 'text/plain' }), 'tyrell-error-captura.txt', error.message)
@@ -222,13 +264,15 @@ export default class E26902_BladeRunner {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 3, step: '3.1', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 3, step: '3.3', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             referenceCapture: { ...REFERENCE_CAPTURE, aspect: 2.4 },
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
             benchmarkOnStart: false, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
             model: this.modelStats, asset: { path: TYRELL.asset, bytes: this.asset?.bytes, loadMs: this.asset?.loadMs },
             materialAudit: this.materialAudit || null,
+            colorReference: this.colorReference,
+            materialLook: this.look?.diagnostics(), reviewLighting: this.studio ? 'neutral-studio' : 'provisional-scene',
             cameraPan: this.pan?.diagnostics() || null,
             camera: camera ? { name: camera.name, position: camera.position.toArray(), quaternion: camera.quaternion.toArray(), fov: camera.fov, aspect: camera.aspect, near: camera.near, far: camera.far } : null,
             metrics: this.metrics || null,
@@ -255,6 +299,9 @@ export default class E26902_BladeRunner {
         this.fill?.removeFromParent()
         this.fill?.dispose()
         this.areaLights?.forEach(light => { light.removeFromParent(); light.dispose() })
+        this.studioLights?.traverse(object => { if (object.isLight) object.dispose() })
+        this.studioLights?.removeFromParent()
+        this.look?.original.clear()
         if (this.usesLTC && --ltcUsers === 0) {
             for (const name of ['LTC_FLOAT_1', 'LTC_FLOAT_2', 'LTC_HALF_1', 'LTC_HALF_2']) RectAreaLightTexturesLib[name].dispose()
         }

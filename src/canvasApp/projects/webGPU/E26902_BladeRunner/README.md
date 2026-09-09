@@ -4,6 +4,8 @@ Fases 1 y 2 cerradas: cámaras, capturas exactas de 1920 × 800 y fidelidad geom
 
 **3.1 completado:** [mapas, canales y conexiones validados](docs/phase3/3.1/MAPAS.md). Las tres imágenes de [referencia de acabado e iluminación](<docs/reference images/README.md>) orientan las próximas entregas. El diagnóstico incluye una auditoría de los mapas realmente cargados, sin modificar los materiales.
 
+**3.2 implementado; 3.3 en revisión:** referencia de color explícita y propuesta de materiales **Tyrell v1**, seleccionada al arrancar. Puede compararse con el export desde **Color y materiales**. [Cambios, previsualizaciones y límites](docs/phase3/3.2-3.3/COLOR_MATERIALES.md).
+
 ## Ejecutar
 
 Desde la raíz del repositorio, con Node.js 24.14.0 (versión utilizada en la validación):
@@ -26,6 +28,8 @@ Abrir `http://localhost:8081` para producción. Tras una nueva compilación hay 
 
 ## Controles y medición
 
+- **Color y materiales:** comparar `Importado del GLB` con `Tyrell v1 · en revisión`, variar compensación entre −2 y +2 EV, restablecer 0 EV y activar luz blanca de estudio. La referencia utiliza AgX, salida sRGB y exposición base 1,07. Las capturas incluyen acabado, luz y EV en el nombre y mantienen la cámara sin paneo.
+- **Paneo con el ratón:** panel plegable con activación, recorrido horizontal/vertical (metros), suavidad (segundos), distancia al punto de mirada y retorno al centro. [Comportamiento y validación](docs/PANEO.md).
 - **Cámara:** diez cámaras del GLB. Inicio en CAM 01; CAM 02 muestra mesa y juntas, CAM 03 los perfiles invertidos y CAM 04 una vista lateral. Son cámaras de Blender pendientes de validar contra los fotogramas.
 - **Calidad:** Baja usa resolución interna ×0,75 y sombras 1024; Media ×1 y sombras 2048; Alta ×1,5 y sombras 2048. Son multiplicadores del tamaño CSS, independientes del DPR del equipo. Todos conservan la misma geometría.
 - **Encuadre 2,4:1:** activa bandas para mantener el aspecto de referencia. Al desactivarlo se utiliza el contenedor completo y cambia el campo horizontal visible, conservando el FOV vertical.
@@ -43,6 +47,7 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `TyrellAssets.js` | Carga con progreso, errores HTTP/GLB, cancelación y liberación de recursos compartidos |
 | `TyrellCameraRig.js` | Pose mundial y FOV de cámaras, escala de visualización de Blender normalizada, resize |
 | `TyrellCameraPan.js` | Paneo relativo al ratón, límites, mirada fija y suavizado temporal; referencia independiente para capturas |
+| `TyrellLook.js` | Referencia de color/exposición y propuesta reversible de materiales; conserva mapas y recursos compartidos |
 | `TyrellCapture.js` | Captura a resolución fija y restauración del visor; reinicio de métricas tras la captura |
 | `TyrellUI.js`, `tyrell.css` | Interfaz de revisión y estados de carga/error |
 | `tests/phase1.test.mjs` | Seis comprobaciones de integración y recurso |
@@ -78,5 +83,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-Revisar [la entrega 3.1](docs/phase3/3.1/MAPAS.md). Siguiente punto: **3.2, gestión de color y exposición de referencia**, usando las tres nuevas referencias. Después se ajustarán piedra, cuero, madera y cristal.
-- **Paneo con el ratón:** panel plegable con activación, recorrido horizontal/vertical (metros), suavidad (segundos), distancia al punto de mirada y retorno al centro. El desplazamiento es opuesto al ratón y conserva la mirada en un punto fijo. Valores iniciales: ±0,25 m horizontal, ±0,12 m vertical, suavidad 0,35 s. [Comportamiento y validación](docs/PANEO.md).
+Revisar [la propuesta de 3.2–3.3](docs/phase3/3.2-3.3/COLOR_MATERIALES.md) en WebGPU desde CAM 01/02/04, a 0 EV, alternando acabado importado/Tyrell v1 y luz de escena/estudio. **3.3 permanece abierto hasta esa comprobación visual.** Después: 3.4, suelo y respuesta de normales, seguido de iluminación de fase 4.

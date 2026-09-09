@@ -18,6 +18,25 @@ export default class TyrellUI {
             </div><p class="tyrell-note">Luz provisional · Cámaras originales de Blender · Recorrido libre en una próxima fase</p>
             <p class="tyrell-metrics">Preparando la primera imagen…</p></footer>`
         document.body.appendChild(this.root)
+        this.lookPanel = document.createElement('details')
+        this.lookPanel.className = 'tyrell-look tyrell-pan'
+        this.lookPanel.innerHTML = `<summary>Color y materiales</summary><div class="tyrell-pan-controls">
+            <label>Acabado<select aria-label="Acabado"><option value="imported">Importado del GLB</option><option value="tyrell-v1">Tyrell v1 · en revisión</option></select></label>
+            <label>Exposición<input aria-label="Compensación de exposición" type="range" min="-2" max="2" step="0.1"><output></output></label>
+            <label><input type="checkbox" aria-label="Luz de estudio"> Luz de estudio</label>
+            <button type="button">Restablecer exposición</button>
+            </div><p>La luz de estudio es blanca y sirve para comparar materiales. La exposición de referencia corresponde a 0 EV; las capturas conservan el acabado y la luz seleccionados.</p>`
+        this.lookSelect = this.lookPanel.querySelector('select')
+        this.lookExposure = this.lookPanel.querySelector('input[type=range]')
+        this.lookStudio = this.lookPanel.querySelector('input[type=checkbox]')
+        this.lookSelect.onchange = () => actions.look({ profile: this.lookSelect.value })
+        this.lookExposure.oninput = () => {
+            this.lookPanel.querySelector('output').value = `${Number(this.lookExposure.value).toFixed(1)} EV`
+            actions.look({ ev: Number(this.lookExposure.value) })
+        }
+        this.lookStudio.onchange = () => actions.look({ studio: this.lookStudio.checked })
+        this.lookPanel.querySelector('button').onclick = () => { this.lookExposure.value = 0; this.lookExposure.oninput() }
+        this.root.querySelector('footer').prepend(this.lookPanel)
         this.panPanel = document.createElement('details')
         this.panPanel.className = 'tyrell-pan'
         this.panPanel.innerHTML = `<summary>Paneo con el ratón</summary>
@@ -69,6 +88,10 @@ export default class TyrellUI {
     setPanSettings(settings) {
         this.panEnabled.checked = settings.enabled
         for (const [key, { input, refresh }] of this.panInputs) { input.value = settings[key]; refresh() }
+    }
+    setLookSettings({ profile, ev, studio }) {
+        this.lookSelect.value = profile; this.lookExposure.value = ev; this.lookStudio.checked = studio
+        this.lookPanel.querySelector('output').value = `${ev.toFixed(1)} EV`
     }
     status(text, fraction) {
         this.statusBox.hidden = false

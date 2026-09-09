@@ -1,0 +1,132 @@
+{
+  "profile": "tyrell-v1",
+  "status": "Pending visual WebGPU approval",
+  "colorReference": {
+    "workingColorSpace": "srgb-linear",
+    "outputColorSpace": "srgb",
+    "toneMapping": "AgX",
+    "baseExposure": 1.07,
+    "compensationEV": 0,
+    "exposure": 1.07
+  },
+  "materials": {
+    "PBR | Caliza ocre envejecida": {
+      "tint": [
+        0.96,
+        1,
+        0.92
+      ],
+      "normal": 0.28
+    },
+    "PBR | Caliza aristas claras": {
+      "tint": [
+        0.98,
+        1,
+        0.94
+      ],
+      "normal": 0.26
+    },
+    "PBR | Piedra negra pulida": {
+      "tint": [
+        0.94,
+        0.98,
+        0.94
+      ],
+      "normal": 0.025
+    },
+    "PBR | Nogal oscuro": {
+      "tint": [
+        1.05,
+        1.03,
+        1
+      ],
+      "normal": 0.16
+    },
+    "Walnut | quarter sawn": {
+      "tint": [
+        1.05,
+        1.03,
+        1
+      ],
+      "normal": 0.22
+    },
+    "PBR | Raiz de nogal": {
+      "tint": [
+        1,
+        1.02,
+        1
+      ],
+      "normal": 0.16
+    },
+    "Burl walnut | table rim": {
+      "tint": [
+        1,
+        1.02,
+        1
+      ],
+      "normal": 0.22
+    },
+    "PBR | Cuero oscuro": {
+      "tint": [
+        0.94,
+        0.98,
+        1
+      ],
+      "normal": 0.22
+    },
+    "Leather | oxblood": {
+      "tint": [
+        0.94,
+        0.98,
+        1
+      ],
+      "normal": 0.32
+    },
+    "PBR | Bronce patinado": {
+      "tint": [
+        0.96,
+        1,
+        0.94
+      ],
+      "normal": 0.18,
+      "metalness": 0.72
+    },
+    "Bronze | patinated": {
+      "tint": [
+        0.96,
+        1,
+        0.94
+      ],
+      "normal": 0.28,
+      "metalness": 0.72
+    },
+    "PBR | Laton envejecido": {
+      "tint": [
+        0.96,
+        1,
+        0.94
+      ],
+      "roughness": 0.34,
+      "metalness": 0.8
+    },
+    "Brass | polished highlights": {
+      "tint": [
+        0.96,
+        1,
+        0.94
+      ],
+      "roughness": 0.28,
+      "metalness": 0.82
+    },
+    "Crystal": {
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "roughness": 0.035,
+      "transmission": 1,
+      "thickness": 0.006
+    }
+  }
+}

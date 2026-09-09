@@ -5,6 +5,7 @@ export const TYRELL = {
     referenceAspect: 2.4,
     initialCamera: 'CAM 01',
     exposure: 1.07,
+    materialLook: 'tyrell-v1', // First material pass; visual WebGPU approval pending.
     quality: 'Media',
     pan: { enabled: true, horizontal: 0.25, vertical: 0.12, smoothness: 0.35, targetDistance: 20 },
     // Resolution budgets, not an inferred GPU ranking. Geometry is unchanged.
