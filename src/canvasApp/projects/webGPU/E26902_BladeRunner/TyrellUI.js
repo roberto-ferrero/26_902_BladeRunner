@@ -18,6 +18,37 @@ export default class TyrellUI {
             </div><p class="tyrell-note">Luz provisional · Cámaras originales de Blender · Recorrido libre en una próxima fase</p>
             <p class="tyrell-metrics">Preparando la primera imagen…</p></footer>`
         document.body.appendChild(this.root)
+        this.panPanel = document.createElement('details')
+        this.panPanel.className = 'tyrell-pan'
+        this.panPanel.innerHTML = `<summary>Paneo con el ratón</summary>
+            <div class="tyrell-pan-controls">
+                <label><input type="checkbox" data-pan="enabled"> Activar paneo</label>
+                <button type="button" data-pan-center>Volver al centro</button>
+            </div>`
+        this.panInputs = new Map()
+        const panControls = this.panPanel.querySelector('div')
+        for (const [key, title, max, step, unit, min] of [
+            ['horizontal', 'Recorrido horizontal', 2, 0.01, 'm', 0],
+            ['vertical', 'Recorrido vertical', 2, 0.01, 'm', 0],
+            ['smoothness', 'Suavidad', 2, 0.05, 's', 0],
+            ['targetDistance', 'Distancia al punto de mirada', 100, 1, 'm', 1]
+        ]) {
+            const label = document.createElement('label')
+            const input = document.createElement('input'), output = document.createElement('output')
+            input.type = 'range'; input.min = min; input.max = max; input.step = step
+            input.setAttribute('aria-label', title)
+            label.append(document.createTextNode(title), input, output)
+            const refresh = () => { output.value = `${Number(input.value).toFixed(key === 'targetDistance' ? 0 : 2)} ${unit}` }
+            input.oninput = () => { refresh(); actions.pan({ [key]: Number(input.value) }) }
+            this.panInputs.set(key, { input, refresh }); panControls.append(label)
+        }
+        this.panEnabled = this.panPanel.querySelector('[data-pan="enabled"]')
+        this.panEnabled.onchange = () => actions.pan({ enabled: this.panEnabled.checked })
+        this.panPanel.querySelector('[data-pan-center]').onclick = () => actions.center()
+        const hint = document.createElement('p')
+        hint.textContent = 'Mayor suavidad: respuesta más lenta. Recorrido máximo desde el centro en cada sentido. La mirada permanece fija; las capturas usan la cámara de referencia.'
+        this.panPanel.append(hint)
+        this.root.querySelector('footer').prepend(this.panPanel)
         this.statusBox = this.root.querySelector('.tyrell-status')
         this.statusText = this.statusBox.querySelector('p')
         this.progress = this.statusBox.querySelector('progress')
@@ -25,7 +56,7 @@ export default class TyrellUI {
         this.cameraSelect = this.root.querySelector('[aria-label="Cámara"]')
         this.cameraSelect.onchange = () => actions.camera(Number(this.cameraSelect.value))
         this.root.querySelector('[aria-label="Calidad"]').onchange = event => actions.quality(event.target.value)
-        this.root.querySelector('input').onchange = event => actions.frame(event.target.checked)
+        this.root.querySelector('.tyrell-controls input').onchange = event => actions.frame(event.target.checked)
         this.retry.onclick = () => actions.retry()
         this.root.querySelector('[data-action="capture"]').onclick = () => actions.capture()
         this.root.querySelector('[data-action="report"]').onclick = () => actions.report()
@@ -34,6 +65,10 @@ export default class TyrellUI {
         this.dialog.innerHTML = '<form method="dialog"><button>Cerrar</button></form><div class="tyrell-output"></div><a download>Descargar archivo</a>'
         this.dialog.setAttribute('aria-label', 'Resultado de revisión')
         this.root.appendChild(this.dialog)
+    }
+    setPanSettings(settings) {
+        this.panEnabled.checked = settings.enabled
+        for (const [key, { input, refresh }] of this.panInputs) { input.value = settings[key]; refresh() }
     }
     status(text, fraction) {
         this.statusBox.hidden = false

@@ -44,7 +44,7 @@ Se localizan **236 triángulos con área UV inferior a 10⁻¹²**, repartidos e
 
 No se remapean automáticamente esas caras: alterar una proyección sin inspeccionar su continuidad puede introducir costuras. Es una limitación conocida para revisar de cerca en 3.3 si se aprecian estiramientos, especialmente antes de aprobar el recorrido libre. La ausencia de errores de conexión no significa que todas las UV sean perfectas ni que el normal mapping sea uniforme sobre esas caras.
 
-La revisión de las láminas confirma variación suave en piedra, veta de madera, cuero oscuro y desgaste localizado del suelo. El brillo amplio del pavimento, la oscuridad del exterior y el aspecto lechoso del cristal siguen pendientes de calibración. La fase 3.1 no valida iluminación final, reflejos ni atmósfera. Para contrastar el aspecto actual con las nuevas referencias se conservan las capturas de [fase 2](../../phase2/CIERRE.md) y [el detalle tras esta entrega](cam02.png).
+La revisión de las láminas confirma variación suave en piedra, veta de madera, cuero oscuro y desgaste localizado del suelo. El brillo amplio del pavimento, la oscuridad del exterior y el aspecto lechoso del cristal siguen pendientes de calibración. La fase 3.1 no valida iluminación final, reflejos ni atmósfera. Para contrastar el aspecto con las nuevas referencias se conservan las capturas de [fase 2](../../phase2/CIERRE.md), incluido [el detalle de referencia](../../phase2/surfaces/clean/cam02.png). No se archivó una nueva captura de detalle en 3.1.
 
 ## Evidencia y reproducción
 

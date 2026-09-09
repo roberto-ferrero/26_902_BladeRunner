@@ -7,6 +7,7 @@ import TyrellCameraRig from './TyrellCameraRig'
 import TyrellUI from './TyrellUI'
 import { captureReference, REFERENCE_CAPTURE } from './TyrellCapture'
 import { auditMaterialMaps } from './TyrellMaterialAudit'
+import TyrellCameraPan from './TyrellCameraPan'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -25,8 +26,11 @@ export default class E26902_BladeRunner {
             camera: index => this.selectCamera(index), quality: name => this.setQuality(name),
             frame: enabled => { document.body.classList.toggle('tyrell-reference', enabled); app.size.update(); this.resetMetrics() },
             retry: () => this.rendererError ? location.reload() : this.load(),
-            capture: () => { this.captureRequested = true }, report: () => this.downloadReport()
+            capture: () => { this.captureRequested = true }, report: () => this.downloadReport(),
+            pan: settings => { this.pan?.configure(settings); this.resetMetrics() },
+            center: () => { this.pan?.reset(); this.resetMetrics() }
         })
+        this.ui.setPanSettings(TYRELL.pan)
         app.size.update()
         app.emitter.on('onAppKill', this.killListener = () => this.dispose())
     }
@@ -41,6 +45,17 @@ export default class E26902_BladeRunner {
         this.mount(app)
         this.scene = app.render.scene
         this.stageCamera = new TyrellCameraRig(app)
+        this.pan = new TyrellCameraPan(this.stageCamera.get_camera(), TYRELL.pan)
+        this.pointerMove = event => {
+            if (event.pointerType !== 'mouse' || !this.built) return
+            if (event.target?.closest?.('.tyrell-controls, .tyrell-pan, dialog')) { this.pan.setPointer(0, 0); return }
+            this.pan.setPointer(event.clientX / window.innerWidth * 2 - 1, event.clientY / window.innerHeight * 2 - 1)
+        }
+        this.pointerLeave = () => this.pan.setPointer(0, 0)
+        this.windowBlur = () => { this.pan.reset(); this.panTime = undefined }
+        window.addEventListener('pointermove', this.pointerMove)
+        document.documentElement.addEventListener('pointerleave', this.pointerLeave)
+        window.addEventListener('blur', this.windowBlur)
         this.renderer = app.render.renderer
         this.renderer.toneMapping = THREE.AgXToneMapping
         this.renderer.toneMappingExposure = TYRELL.exposure
@@ -53,6 +68,7 @@ export default class E26902_BladeRunner {
         this.resizeListener = () => this.resetMetrics()
         app.emitter.on('onAppSizeUpdate', this.resizeListener)
         this.visibilityListener = () => {
+            this.windowBlur()
             this.resetMetrics()
             if (!this.built) return
             if (document.hidden) app.deactivate()
@@ -135,6 +151,7 @@ export default class E26902_BladeRunner {
         if (!this.cameras?.[index]) return
         this.activeCameraIndex = index
         this.stageCamera.setSource(this.cameras[index])
+        this.pan?.setReference()
         this.app.render.set_stageCamera(this.stageCamera.get_camera())
         this.app.dev.hide_dev_camera()
         this.resetMetrics()
@@ -165,6 +182,8 @@ export default class E26902_BladeRunner {
     }
     update_RAF() {
         const now = performance.now()
+        this.pan?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)
+        this.panTime = now
         if (this.previousFrame !== undefined && !document.hidden) {
             if (this.warmup > 0) this.warmup--
             else {
@@ -190,7 +209,7 @@ export default class E26902_BladeRunner {
         if (this.captureRequested) {
             this.captureRequested = false
             const camera = this.activeCameraIndex + 1
-            captureReference(this.renderer, this.scene, this.stageCamera.get_camera())
+            captureReference(this.renderer, this.scene, this.pan.referenceCamera)
                 .then(blob => { if (!this.disposed) this.ui.showOutput(blob, `tyrell-camara-${camera}-1920x800.png`) })
                 .catch(error => {
                     console.error('[Tyrell] Captura:', error)
@@ -210,6 +229,7 @@ export default class E26902_BladeRunner {
             benchmarkOnStart: false, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
             model: this.modelStats, asset: { path: TYRELL.asset, bytes: this.asset?.bytes, loadMs: this.asset?.loadMs },
             materialAudit: this.materialAudit || null,
+            cameraPan: this.pan?.diagnostics() || null,
             camera: camera ? { name: camera.name, position: camera.position.toArray(), quaternion: camera.quaternion.toArray(), fov: camera.fov, aspect: camera.aspect, near: camera.near, far: camera.far } : null,
             metrics: this.metrics || null,
             metricNote: 'Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.',
@@ -224,6 +244,9 @@ export default class E26902_BladeRunner {
         if (this.disposed) return
         this.disposed = true
         this.abort?.abort()
+        window.removeEventListener('pointermove', this.pointerMove)
+        document.documentElement.removeEventListener('pointerleave', this.pointerLeave)
+        window.removeEventListener('blur', this.windowBlur)
         this.stageCamera?.dispose()
         this.app.emitter.off('onAppKill', this.killListener)
         if (this.resizeListener) this.app.emitter.off('onAppSizeUpdate', this.resizeListener)

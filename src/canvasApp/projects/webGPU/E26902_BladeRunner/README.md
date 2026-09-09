@@ -42,6 +42,7 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `config.js` | Ruta del GLB, cámara inicial, AgX/exposición 1,07 y parámetros artísticos |
 | `TyrellAssets.js` | Carga con progreso, errores HTTP/GLB, cancelación y liberación de recursos compartidos |
 | `TyrellCameraRig.js` | Pose mundial y FOV de cámaras, escala de visualización de Blender normalizada, resize |
+| `TyrellCameraPan.js` | Paneo relativo al ratón, límites, mirada fija y suavizado temporal; referencia independiente para capturas |
 | `TyrellCapture.js` | Captura a resolución fija y restauración del visor; reinicio de métricas tras la captura |
 | `TyrellUI.js`, `tyrell.css` | Interfaz de revisión y estados de carga/error |
 | `tests/phase1.test.mjs` | Seis comprobaciones de integración y recurso |
@@ -78,3 +79,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 ## Próxima entrega
 
 Revisar [la entrega 3.1](docs/phase3/3.1/MAPAS.md). Siguiente punto: **3.2, gestión de color y exposición de referencia**, usando las tres nuevas referencias. Después se ajustarán piedra, cuero, madera y cristal.
+- **Paneo con el ratón:** panel plegable con activación, recorrido horizontal/vertical (metros), suavidad (segundos), distancia al punto de mirada y retorno al centro. El desplazamiento es opuesto al ratón y conserva la mirada en un punto fijo. Valores iniciales: ±0,25 m horizontal, ±0,12 m vertical, suavidad 0,35 s. [Comportamiento y validación](docs/PANEO.md).

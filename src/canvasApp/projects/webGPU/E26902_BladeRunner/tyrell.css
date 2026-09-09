@@ -17,6 +17,14 @@ body.tyrell-viewer { background: #070807; color: #e6dfce; overflow: hidden; font
 .tyrell-ui :focus-visible { outline: 2px solid #e8c481; outline-offset: 3px; }
 .tyrell-controls .tyrell-check { display: flex; align-items: center; align-self: center; gap: 6px; padding-top: 13px; }
 .tyrell-ui input { accent-color: #c7ae7c; }
+.tyrell-pan { pointer-events: auto; margin-bottom: 12px; max-width: 720px; background: #11130ff0; border: 1px solid #746344; border-radius: 3px; padding: 9px 12px; font-size: 12px; }
+.tyrell-pan summary { cursor: pointer; color: #e8c481; }
+.tyrell-pan-controls { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; padding-top: 12px; }
+.tyrell-pan-controls label { display: grid; gap: 4px; color: #c7ae7c; }
+.tyrell-pan-controls label:first-child { display: flex; align-items: center; }
+.tyrell-pan-controls input[type=range] { width: 145px; }
+.tyrell-pan-controls output { font: 11px ui-monospace, monospace; }
+.tyrell-pan p { max-width: 620px; color: #b0ada2; font-size: 11px; margin: 10px 0 0; }
 .tyrell-note { font-size: 11px; margin-top: 9px; color: #b0ada2; }
 .tyrell-metrics { font: 11px ui-monospace, monospace; color: #c7ae7c; margin-top: 3px; }
 .tyrell-status { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(460px, 80vw); padding: 28px; background: #0b0d0bf5; border: 1px solid #746344; text-align: center; pointer-events: auto; font-size: 14px; }
