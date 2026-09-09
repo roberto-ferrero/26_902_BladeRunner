@@ -1,6 +1,20 @@
 # Registro cronológico de capturas
 
-Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; primera de 4.4: **001**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; primera de 4.5: **001**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+
+## Entrega 4.4 · Sombras
+
+09/09/2026, sesión 17:00–17:04 UTC. Todas en Media, Tyrell v1, luz R01, 0 EV, composición completa, cámara de referencia sin paneo. Interfaz 1294 × 912 con render 1920 × 800 reducido.
+
+| Orden | Archivo | Estado |
+| --- | --- | --- |
+| 4.4 / 001 | [CAM 01](4.4_001_2026-09-09_CAM01.png) | Antes: página en caché, sombras R01 |
+| 4.4 / 002 | [CAM 02](4.4_002_2026-09-09_CAM02.png) | Antes: sombras opacas de vidrio; [diagnóstico 4.3](4.4_002_2026-09-09_CAM02.json) |
+| 4.4 / 003 | [CAM 02](4.4_003_2026-09-09_CAM02.png) | Después: revisión 4.4 confirmada, vidrio con sombra parcial |
+| 4.4 / 004 | [CAM 01](4.4_004_2026-09-09_CAM01.png) | Después: cobertura y mobiliario. [Diagnóstico final](4.4_004_2026-09-09_CAM01.json) tomado después de probar paneo |
+| 4.4 / 005 | [CAM 04](4.4_005_2026-09-09_CAM04.png) | Después: cobertura lateral, 17:03:54 UTC |
+
+Se conservaron las dos capturas iniciales al detectar que la página anterior seguía en caché. [Informe de la entrega](../phase4/4.4/SOMBRAS.md). R01 archivado sin cambios.
 
 | Orden | Fecha/hora | Archivo | Perfil y condiciones | Estado |
 | --- | --- | --- | --- | --- |

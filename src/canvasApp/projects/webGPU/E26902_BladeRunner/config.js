@@ -27,6 +27,10 @@ export const TYRELL = {
         { position: [7.7, 3.8, -7.2], target: [2, 3.2, -8], width: 2, height: 3 }
     ],
     quality: 'Media',
+    shadows: {
+        camera: { left: -14, right: 14, top: 10, bottom: -4, near: 50, far: 115 },
+        bias: -0.00015, normalBias: 0.025, radius: 1.5, glassOpacity: 0.22
+    },
     pan: { enabled: true, horizontal: 0.25, vertical: 0.12, smoothness: 0.35, targetDistance: 20 },
     // Resolution budgets, not an inferred GPU ranking. Geometry is unchanged.
     profiles: {

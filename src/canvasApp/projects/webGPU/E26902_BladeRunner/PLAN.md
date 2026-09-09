@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **fases 1, 2 y base de materiales de fase 3 completadas**. **4.3 revisado y resuelto conservando R01**, con los rellenos originales; propuesta de áreas reducidas descartada. Capturas 004–006 desde CAM 01/02/04. La base de trabajo no equivale al acabado cinematográfico final. Próxima entrega: **4.4 · Sombras solares**, conservando la referencia R01.
+Estado: **4.4 implementado y revisado en WebGPU**, conservando el balance R01. Cobertura solar ajustada y sombra parcial de cristalería. [Informe y capturas](docs/phase4/4.4/SOMBRAS.md). Siguiente entrega: **4.5 · Iluminación indirecta**.
 
 ## Objetivo
 
@@ -87,7 +87,7 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 - [x] **4.1** Primera composición solar coherente con el disco, cielo ajustado y balance interior/exterior revisado desde CAM 01/02/04. Perfil reversible y parámetros documentados; equivalencia final pendiente de calibración y atmósfera. [Informe](docs/phase4/4.1/SOL_CIELO.md).
 - [x] **4.2** Calibrar intensidades relativas en Three.js a exposición fija; perfil 4.2, comparación con 4.1 y aislamiento de sol/ambiente/áreas. CAM 01/02/04 revisadas y 23 pruebas correctas. El brillo amplio de las áreas disminuye, pero su forma y el acabado final siguen pendientes. [Informe](docs/phase4/4.2/INTENSIDADES.md).
 - [x] **4.3** Integración LTC y restauración verificadas. Tras rechazar las áreas reducidas, se conservan los rellenos originales con el balance R01 registrado por el usuario. Revisión visual CAM 01/02/04, capturas 004–006; no se introduce otra reducción de luz. Reflejos finales y sombras de cristalería pendientes en sus puntos. [Informe y decisión](docs/phase4/4.3/AREAS.md).
-- [ ] **4.4** Ajustar sombras solares, sesgos, resolución y cobertura de la sala sin desperdiciar resolución en todo el exterior lejano.
+- [x] **4.4** Cobertura solar acotada, PCF moderado y sombras transmitidas del vidrio. R01 conservado en luces y exposición; CAM 01/02/04, paneo y perfiles de calidad revisados. 24 pruebas correctas. [Informe y límites](docs/phase4/4.4/SOMBRAS.md).
 - [ ] **4.5** Comparar soluciones de iluminación indirecta: entorno/sondas y, si hace falta, luz estática horneada desde Blender. Incorporar horneado sólo si mejora la comparación y su coste está justificado.
 - [ ] **4.6** Medir y corregir fugas de luz, contactos del mobiliario y pérdida de detalle en sombras.
 

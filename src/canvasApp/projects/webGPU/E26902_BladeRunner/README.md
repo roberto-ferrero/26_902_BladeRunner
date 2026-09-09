@@ -1,6 +1,6 @@
 # Oficinas Tyrell · Visor WebGPU
 
-**Estado actual:** 4.3 resuelto conservando R01 y descartando la propuesta de áreas reducidas. Se mantienen sus intensidades y rellenos; nuevas capturas 004–006 en el registro. Próximo punto: 4.4, sombras solares. Las notas de reapertura que siguen documentan el histórico de la revisión.
+**Estado actual: 4.4 completado.** Cobertura solar ajustada y sombras parciales de cristalería; luces y exposición de R01 conservadas. [Parámetros, validación y capturas](docs/phase4/4.4/SOMBRAS.md). La referencia archivada R01 permanece intacta. Próximo punto: 4.5, iluminación indirecta. Las notas de reapertura que siguen documentan el histórico.
 
 **Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
 
@@ -107,4 +107,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-**4.4 · Sombras solares.** Conservar R01 y revisar cobertura, resolución, sesgos y sombras de la cristalería. Guardar capturas numeradas sin sobrescribir versiones anteriores. La fidelidad final todavía requiere luz indirecta, reflejos y atmósfera.
+**4.5 · Iluminación indirecta.** Comparar entorno/sondas y valorar horneado si mejora la referencia. Conservar el equilibrio de R01 y guardar capturas numeradas. La fidelidad final todavía requiere reflejos y atmósfera.
