@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **fases 1, 2 y base de materiales de fase 3 completadas**. **Fase 4 iniciada: primera composición 4.1 implementada y revisada en WebGPU**, reversible desde el GUI. [Sol, cielo, capturas y límites](docs/phase4/4.1/SOL_CIELO.md). Siguiente entrega: **4.2 · Calibración de intensidades**.
+Estado: **fases 1, 2 y base de materiales de fase 3 completadas**. **4.1 y 4.2 completados como base de iluminación**, revisada en WebGPU y reversible desde el GUI. [Intensidades, capturas y límites](docs/phase4/4.2/INTENSIDADES.md). Siguiente entrega: **4.3 · Rellenos de área**.
 
 ## Objetivo
 
@@ -82,10 +82,10 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 ## 4 · Iluminación y sombras
 
-**Corrección solicitada durante 4.1:** eliminadas las líneas horizontales que atravesaban las juntas al hacer paneo y oscurecidas las caras interiores que producían las dos líneas verticales señaladas. Verificación en WebGPU, 23 pruebas y [capturas e informe](docs/phase4/pan-lines/CORRECCION.md). Adelanto puntual de 4.6; ese punto sigue pendiente en el conjunto de la sala. La siguiente entrega continúa siendo 4.2.
+**Corrección solicitada durante 4.1:** eliminadas las líneas horizontales que atravesaban las juntas al hacer paneo y oscurecidas las caras interiores que producían las dos líneas verticales señaladas. Verificación en WebGPU, 23 pruebas y [capturas e informe](docs/phase4/pan-lines/CORRECCION.md). Adelanto puntual de 4.6; ese punto sigue pendiente en el conjunto de la sala. Conservada durante la calibración 4.2.
 
 - [x] **4.1** Primera composición solar coherente con el disco, cielo ajustado y balance interior/exterior revisado desde CAM 01/02/04. Perfil reversible y parámetros documentados; equivalencia final pendiente de calibración y atmósfera. [Informe](docs/phase4/4.1/SOL_CIELO.md).
-- [ ] **4.2** Calibrar intensidades en Three.js; no trasladar sin comprobar los valores fotométricos exportados.
+- [x] **4.2** Calibrar intensidades relativas en Three.js a exposición fija; perfil 4.2, comparación con 4.1 y aislamiento de sol/ambiente/áreas. CAM 01/02/04 revisadas y 23 pruebas correctas. El brillo amplio de las áreas disminuye, pero su forma y el acabado final siguen pendientes. [Informe](docs/phase4/4.2/INTENSIDADES.md).
 - [ ] **4.3** Reconstruir los rellenos de área con la inicialización apropiada para WebGPU.
 - [ ] **4.4** Ajustar sombras solares, sesgos, resolución y cobertura de la sala sin desperdiciar resolución en todo el exterior lejano.
 - [ ] **4.5** Comparar soluciones de iluminación indirecta: entorno/sondas y, si hace falta, luz estática horneada desde Blender. Incorporar horneado sólo si mejora la comparación y su coste está justificado.

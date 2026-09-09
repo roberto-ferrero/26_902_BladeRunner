@@ -37,7 +37,8 @@ export default class E26902_BladeRunner {
             pan: settings => { this.pan?.configure(settings); this.resetMetrics() },
             center: () => { this.pan?.reset(); this.resetMetrics() },
             look: values => this.setLook(values),
-            lighting: profile => this.setLighting(profile)
+            lighting: profile => this.setLighting(profile),
+            contribution: value => { this.lighting?.setContribution(value); this.resetMetrics() }
         })
         this.ui.setPanSettings(TYRELL.pan)
         this.ui.lightingSelect.value = this.lightingProfile
@@ -187,7 +188,7 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     setLighting(profile) {
-        if (!['provisional', 'tyrell-light-v1'].includes(profile)) return
+        if (!['provisional', 'tyrell-light-v1', 'tyrell-light-v2'].includes(profile)) return
         this.lightingProfile = profile
         this.lighting?.apply(profile)
         this.resetMetrics()
@@ -269,7 +270,7 @@ export default class E26902_BladeRunner {
         if (this.captureRequested) {
             this.captureRequested = false
             const camera = this.activeCameraIndex + 1
-            const filename = `tyrell-camara-${camera}-${this.lookProfile}-${this.studio ? 'estudio' : 'escena'}-${this.lightingProfile}-EV${this.exposureEV}-normal${this.look.floorNormal ? 'on' : 'off'}-1920x800.png`
+            const filename = `tyrell-camara-${camera}-${this.lookProfile}-${this.studio ? 'estudio' : 'escena'}-${this.lightingProfile}-${this.lighting.contribution || 'all'}-EV${this.exposureEV}-normal${this.look.floorNormal ? 'on' : 'off'}-1920x800.png`
             captureReference(this.renderer, this.scene, this.pan.referenceCamera)
                 .then(blob => { if (!this.disposed) this.ui.showOutput(blob, filename) })
                 .catch(error => {
@@ -283,7 +284,7 @@ export default class E26902_BladeRunner {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 4, step: '4.1', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 4, step: '4.2', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             referenceCapture: { ...REFERENCE_CAPTURE, aspect: 2.4 },
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,

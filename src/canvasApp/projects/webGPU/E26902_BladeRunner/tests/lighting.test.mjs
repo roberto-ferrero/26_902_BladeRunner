@@ -43,5 +43,23 @@ test('Solar composition aligns light and disc, restores the baseline and survive
         assert.ok(sky.material.emissive.equals(before.emission)); assert.equal(fill.intensity, .35)
         assert.deepEqual(areas.map(l => l.intensity), TYRELL.areaFills.map(p => p.intensity))
     }
+    lighting.apply('tyrell-light-v2')
+    const calibrated = lighting.diagnostics()
+    for (const contribution of ['sun', 'hemisphere', 'areas', 'area-0', 'area-1', 'area-2', 'area-3']) {
+        lighting.setContribution(contribution)
+        const isolated = lighting.diagnostics()
+        assert.equal(isolated.sunIntensity, contribution === 'sun' ? calibrated.sunIntensity : 0)
+        assert.equal(isolated.hemisphereIntensity, contribution === 'hemisphere' ? calibrated.hemisphereIntensity : 0)
+        assert.deepEqual(isolated.areaIntensities, calibrated.areaIntensities.map((v, i) => contribution === 'areas' || contribution === `area-${i}` ? v : 0))
+        assert.deepEqual(isolated.discPosition, calibrated.discPosition)
+        assert.deepEqual(isolated.skyEmission, calibrated.skyEmission)
+        lighting.apply('tyrell-light-v1')
+        lighting.apply('tyrell-light-v2')
+        assert.deepEqual(lighting.diagnostics(), isolated)
+        lighting.setContribution('all')
+        assert.deepEqual(lighting.diagnostics(), calibrated)
+    }
+    lighting.setContribution('invalid')
+    assert.deepEqual(lighting.diagnostics(), calibrated)
     geometry.dispose(); disc.material.dispose(); sky.material.dispose(); texture.dispose()
 })

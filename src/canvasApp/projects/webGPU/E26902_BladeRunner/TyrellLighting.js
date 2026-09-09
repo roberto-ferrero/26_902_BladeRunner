@@ -21,7 +21,7 @@ export default class TyrellLighting {
         this.original.skyEmission = this.sky.material.emissive.clone()
     }
     apply(profile) {
-        if (!['provisional', 'tyrell-light-v1'].includes(profile)) return
+        if (!['provisional', 'tyrell-light-v1', 'tyrell-light-v2'].includes(profile)) return
         this.profile = profile
         const o = this.original, p = TYRELL.lighting
         this.sun.position.copy(o.position); this.sun.target.position.copy(o.target)
@@ -30,7 +30,7 @@ export default class TyrellLighting {
         this.areas.forEach((light, i) => { light.intensity = o.areas[i] })
         this.disc.position.copy(o.discPosition); this.disc.scale.copy(o.discScale)
         this.sky.material.emissive.copy(o.skyEmission)
-        if (profile === 'tyrell-light-v1') {
+        if (profile !== 'provisional') {
             const center = new Vector3(...p.target), disc = new Vector3(...p.discPosition)
             const direction = disc.clone().sub(center).normalize()
             this.sun.position.copy(this.sun.parent.worldToLocal(center.clone().addScaledVector(direction, p.shadowDistance)))
@@ -42,11 +42,30 @@ export default class TyrellLighting {
             this.areas.forEach((light, i) => { light.intensity = p.areaIntensities[i] })
             this.sky.material.emissive.copy(o.skyEmission).multiplyScalar(p.skyEmissionScale)
         }
+        if (profile === 'tyrell-light-v2') {
+            const calibrated = TYRELL.calibratedLighting
+            this.sun.intensity = calibrated.sunIntensity
+            this.fill.intensity = calibrated.hemisphereIntensity
+            this.areas.forEach((light, i) => { light.intensity = calibrated.areaIntensities[i] })
+        }
+        const contribution = this.contribution || 'all'
+        if (contribution !== 'all') {
+            if (contribution !== 'sun') this.sun.intensity = 0
+            if (contribution !== 'hemisphere') this.fill.intensity = 0
+            this.areas.forEach((light, i) => {
+                if (contribution !== 'areas' && contribution !== `area-${i}`) light.intensity = 0
+            })
+        }
         this.root.updateMatrixWorld(true)
+    }
+    setContribution(value) {
+        if (!['all', 'sun', 'hemisphere', 'areas', 'area-0', 'area-1', 'area-2', 'area-3'].includes(value)) return
+        this.contribution = value
+        this.apply(this.profile)
     }
     diagnostics() {
         const position = this.sun.getWorldPosition(new Vector3()), target = this.sun.target.getWorldPosition(new Vector3())
-        return { profile: this.profile, sunPosition: position.toArray(), target: target.toArray(),
+        return { profile: this.profile, contribution: this.contribution || 'all', sunPosition: position.toArray(), target: target.toArray(),
             directionToSun: position.sub(target).normalize().toArray(), sunIntensity: this.sun.intensity,
             sunColor: this.sun.color.getHexString(), discPosition: this.disc.getWorldPosition(new Vector3()).toArray(),
             discScale: this.disc.scale.toArray(), skyEmission: this.sky.material.emissive.toArray(),
