@@ -13,7 +13,12 @@ export const TYRELL = {
         skyEmissionScale: 1.25, hemisphereIntensity: 0.65,
         areaIntensities: [0.65, 0.22, 0.45, 0.45]
     },
-    calibratedLighting: { sunIntensity: 2.1, hemisphereIntensity: 0.8, areaIntensities: [0.32, 0.12, 0.3, 0.3] },
+    calibratedLighting: {
+        discPosition: [8, 42.5, -650],
+        // Art-directed key: retain the visible disc placement while recovering the lit pyramid and floor shadows.
+        keyPosition: [2, 58, -650],
+        sunIntensity: 2.1, hemisphereIntensity: 0.8, areaIntensities: [0.08, 0.08, 0.2, 0.2]
+    },
     quality: 'Media',
     pan: { enabled: true, horizontal: 0.25, vertical: 0.12, smoothness: 0.35, targetDistance: 20 },
     // Resolution budgets, not an inferred GPU ranking. Geometry is unchanged.

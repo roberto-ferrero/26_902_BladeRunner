@@ -1,6 +1,6 @@
 # 4.2 · Calibración de intensidades
 
-09/09/2026. Perfil `tyrell-light-v2`, **Tyrell · luz 4.2**, con exposición base 1,07, compensación 0 EV y materiales Tyrell v1. La composición solar y la emisión del cielo son las de 4.1. Se ajusta el balance relativo en el visor; no se deducen valores fotométricos de las imágenes comprimidas de la película ni se convierten directamente vatios de Blender.
+09/09/2026. Perfil `tyrell-light-v2`, **Tyrell · luz 4.2**, con exposición base 1,07, compensación 0 EV y materiales Tyrell v1. La emisión del cielo es la de 4.1; la posición solar se corrigió después según la referencia del usuario (véase la nota final). Se ajusta el balance relativo en el visor; no se deducen valores fotométricos de las imágenes comprimidas de la película ni se convierten directamente vatios de Blender.
 
 ## Parámetros
 
@@ -48,3 +48,21 @@ npm.cmd run build
 ```
 
 El cierre de este punto fija una base relativa de intensidades. Los reflejos alargados, la difusión atmosférica del sol y la equivalencia final con los fotogramas pertenecen a fases posteriores.
+
+## Corrección posterior · sol junto al vértice del edificio
+
+Según la indicación visual del usuario, el centro solar queda aproximadamente en el extremo superior izquierdo del edificio inclinado. En el perfil 4.2 se cambia `discPosition` de (2, 58, −650) a **(8, 42,5, −650) m**. El vértice de referencia del GLB está en (2,9263, 15,4421, −214,7697) m. Desde CAM 01, sin paneo, el centro del sol se proyecta 2,44 píxeles a la izquierda y 0,58 píxeles por encima de ese vértice en 1920 × 800.
+
+En esta primera corrección se recalculó la dirección de la luz hacia la nueva posición del disco. Ese vínculo se sustituyó posteriormente por el ajuste descrito a continuación, tras observar la pérdida de sombras y de luz en la pirámide. El perfil 4.1 conserva su composición histórica para comparar. Es una colocación mundial fija: el paralaje cambia al pasar a otra cámara o hacer paneo, como corresponde a distintas distancias. Las capturas anteriores de este informe documentan el balance previo a este ajuste.
+
+Validación: 23/23 pruebas y compilación correcta en 50,488 s, con tres advertencias de empaquetado. [Plano general corregido](cam01-solar-position.png). El halo y la difusión del sol siguen previstos en fase 6.
+
+## Recuperación de sombras y luz de la pirámide
+
+La revisión del usuario mostró dos regresiones al orientar la luz hacia el disco más bajo: pérdida de la cara iluminada de la pirámide y de la proyección visible del mobiliario en el suelo. La solución conserva `discPosition = [8, 42.5, -650]`, pero introduce **`keyPosition = [2, 58, -650]`** como referencia independiente para la dirección de la luz. Recupera la dirección anterior sin mover el disco ni los edificios. Es una separación artística explícita entre posición visual y luz principal, no una alineación física exacta con el sol visible.
+
+Se reducen además las intensidades de las áreas a **0,08 / 0,08 / 0,2 / 0,2** (ventanal, frontal, izquierda, derecha). Ese relleno sin sombras aclaraba la proyección del mobiliario. Sol 2,1, ambiente 0,8, exposición, materiales y sesgos de sombra permanecen iguales. No se añaden luces, geometría, texturas ni pasadas.
+
+[CAM 01 después de recuperar las sombras](cam01-shadow-recovery.png): vuelve la cara inclinada iluminada y la sombra central del mobiliario hacia la cámara, conservando el sol junto al vértice. El pavimento todavía requiere el tratamiento de reflejos y atmósfera previsto en el plan. La captura es la previsualización de 1920 × 800 dentro de una interfaz de 1280 × 720.
+
+Validación: **23/23 pruebas**, incluyendo dirección de la luz y posición del disco independientes, aislamiento y restauración de aportes. Compilación Webpack correcta en 64,298 s, tres advertencias de empaquetado. [Diagnóstico actualizado](runtime-shadow-recovery.json). Siguiente entrega del plan: 4.3.

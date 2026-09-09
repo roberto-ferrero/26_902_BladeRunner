@@ -23,7 +23,8 @@ export default class TyrellLighting {
     apply(profile) {
         if (!['provisional', 'tyrell-light-v1', 'tyrell-light-v2'].includes(profile)) return
         this.profile = profile
-        const o = this.original, p = TYRELL.lighting
+        const o = this.original, p = profile === 'tyrell-light-v2'
+            ? { ...TYRELL.lighting, ...TYRELL.calibratedLighting } : TYRELL.lighting
         this.sun.position.copy(o.position); this.sun.target.position.copy(o.target)
         this.sun.color.copy(o.color); this.sun.intensity = o.intensity
         this.fill.intensity = o.hemisphere
@@ -32,7 +33,7 @@ export default class TyrellLighting {
         this.sky.material.emissive.copy(o.skyEmission)
         if (profile !== 'provisional') {
             const center = new Vector3(...p.target), disc = new Vector3(...p.discPosition)
-            const direction = disc.clone().sub(center).normalize()
+            const direction = new Vector3(...(p.keyPosition || p.discPosition)).sub(center).normalize()
             this.sun.position.copy(this.sun.parent.worldToLocal(center.clone().addScaledVector(direction, p.shadowDistance)))
             this.sun.target.position.copy(this.sun.target.parent.worldToLocal(center.clone()))
             this.disc.position.copy(this.disc.parent.worldToLocal(disc))

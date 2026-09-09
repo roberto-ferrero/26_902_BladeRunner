@@ -45,6 +45,10 @@ test('Solar composition aligns light and disc, restores the baseline and survive
     }
     lighting.apply('tyrell-light-v2')
     const calibrated = lighting.diagnostics()
+    const expectedKey = new THREE.Vector3(...TYRELL.calibratedLighting.keyPosition)
+        .sub(new THREE.Vector3(...TYRELL.lighting.target)).normalize()
+    assert.ok(new THREE.Vector3(...calibrated.directionToSun).distanceTo(expectedKey) < 1e-10)
+    assert.ok(new THREE.Vector3(...calibrated.discPosition).distanceTo(new THREE.Vector3(...TYRELL.calibratedLighting.discPosition)) < 1e-10)
     for (const contribution of ['sun', 'hemisphere', 'areas', 'area-0', 'area-1', 'area-2', 'area-3']) {
         lighting.setContribution(contribution)
         const isolated = lighting.diagnostics()
