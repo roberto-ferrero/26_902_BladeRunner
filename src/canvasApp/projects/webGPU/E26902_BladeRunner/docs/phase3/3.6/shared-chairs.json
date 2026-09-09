@@ -1,0 +1,36 @@
+{
+  "threeRevision": "185",
+  "assetSha256": "bf2108bbe13d32df23bfa34e598c1d98085e2322e859fbf62354240f7e6b8fa2",
+  "scope": "Offline real GLTFLoader and project look/disposal; image decoding stubbed; no GPU benchmark",
+  "chairs": [
+    "Sillon_01_|_frente",
+    "Sillon_02_|_fondo",
+    "Sillon_03_|_izquierda",
+    "Sillon_04_|_derecha"
+  ],
+  "chairMeshObjects": 24,
+  "sharedChairGeometries": 6,
+  "sharedChairMaterials": 6,
+  "sharedChairTextures": 12,
+  "chairMaterialNames": [
+    "Walnut | quarter sawn",
+    "Leather | oxblood",
+    "Burl walnut | table rim",
+    "Brass | polished highlights",
+    "Bronze | patinated",
+    "Recesses | charcoal"
+  ],
+  "sceneResources": {
+    "meshes": 148,
+    "geometries": 130,
+    "materials": 20,
+    "textures": 25
+  },
+  "lookCycles": 10,
+  "identitiesAndTransformsPreserved": true,
+  "importedColorsRestored": true,
+  "disposal": {
+    "resourcesDisposedOnce": 175,
+    "imagesClosedOnce": 25
+  }
+}

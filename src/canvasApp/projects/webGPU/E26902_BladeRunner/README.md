@@ -10,6 +10,8 @@ Fases 1 y 2 cerradas: cámaras, capturas exactas de 1920 × 800 y fidelidad geom
 
 **3.5 completado:** se mantienen 19 materiales estándar y uno físico; los nodos propios se reservan para reflejos y volumen. [Decisiones y auditoría reproducible](docs/phase3/3.5/MATERIALES_NODOS.md).
 
+**3.6 completado:** cuatro sillas comparten seis geometrías, seis materiales y doce texturas; identidad y liberación verificadas tras diez ciclos de acabado. **19/19 pruebas correctas.** [Informe y reproducción](docs/phase3/3.6/RECURSOS_COMPARTIDOS.md).
+
 ## Ejecutar
 
 Desde la raíz del repositorio, con Node.js 24.14.0 (versión utilizada en la validación):
@@ -87,4 +89,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-Revisar [la propuesta de 3.2–3.3](docs/phase3/3.2-3.3/COLOR_MATERIALES.md) en WebGPU desde CAM 01/02/04, a 0 EV, alternando acabado importado/Tyrell v1 y luz de escena/estudio. **3.3 permanece abierto hasta esa comprobación visual.** 3.4 ya está revisado y documentado. 3.5 completado: estrategia de materiales y adaptación WebGPU verificadas. Siguiente entrega: **3.6**, conservación de recursos compartidos, antes de iluminación de fase 4.
+Revisar [la propuesta de 3.2–3.3](docs/phase3/3.2-3.3/COLOR_MATERIALES.md) en WebGPU desde CAM 01/02/04, a 0 EV, alternando acabado importado/Tyrell v1 y luz de escena/estudio. **3.3 permanece abierto hasta esa comprobación visual.** 3.4 ya está revisado y documentado. 3.5 completado: estrategia de materiales y adaptación WebGPU verificadas. 3.6 completado: recursos compartidos y liberación comprobados. Siguiente entrega: **terminar 3.3**, revisión general de acabados y UV pendientes, antes de iniciar iluminación en 4.1.
