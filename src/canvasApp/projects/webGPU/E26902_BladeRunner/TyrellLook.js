@@ -81,7 +81,7 @@ export default class TyrellLook {
         }
     }
     diagnostics() {
-        return { profile: this.profile, floorNormal: this.floorNormal, status: 'v1 pending visual WebGPU approval', materialCount: this.original.size,
+        return { profile: this.profile, floorNormal: this.floorNormal, status: 'v1 reviewed baseline; final lighting and reflections pending', materialCount: this.original.size,
             adjusted: this.profile === 'tyrell-v1' ? [...this.original.keys()].filter(m => MATERIAL_LOOK[m.name]).map(m => m.name) : [] }
     }
 }

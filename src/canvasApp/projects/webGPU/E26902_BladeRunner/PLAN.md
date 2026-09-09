@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **fases 1, 2, 3.1 y base técnica 3.2 completadas**. **3.3: primera propuesta aplicada, pendiente de revisión visual WebGPU**. Numeración consecutiva por fase, incluido el paneo como 7.6. Detalles en [COLOR_MATERIALES.md](docs/phase3/3.2-3.3/COLOR_MATERIALES.md); **3.4 completado:** pavimento auditado y comparación WebGPU documentada en [SUELO.md](docs/phase3/3.4/SUELO.md). **3.5 completado:** 19 materiales estándar y uno físico conservados; nodos propios reservados a efectos concretos. [Decisiones y auditoría](docs/phase3/3.5/MATERIALES_NODOS.md). **3.6 completado:** recursos compartidos y liberación comprobados con el GLB real. [Informe](docs/phase3/3.6/RECURSOS_COMPARTIDOS.md). Siguiente entrega: terminar la revisión pendiente de **3.3** antes de fase 4.
+Estado: **fases 1, 2 y base de materiales de fase 3 completadas**. Tyrell v1 revisado en WebGPU desde CAM 01/02/04; UV pendientes evaluadas a esas distancias, con límites para recorrido libre. [Cierre de fase 3](docs/phase3/3.3-review/CIERRE.md). Siguiente entrega: **4.1 · Sol, cielo y contraste interior/exterior**.
 
 ## Objetivo
 
@@ -73,7 +73,7 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 - [x] **3.1** Validar los mapas de color, normales y rugosidad; separar correctamente texturas de color y de datos. 25 imágenes auditadas, 20 materiales contrastados con Blender y conexiones comprobadas con GLTFLoader y WebGPU. No se encontraron errores de espacio de color; informe y límites en `docs/phase3/3.1/`.
 - [x] **3.2** Establecer gestión de color, AgX y exposición de referencia antes de calibrar las luces. Linear-sRGB → AgX → sRGB, base 1,07 y compensación ±2 EV; controles de comparación y luz de estudio. Validación técnica; la equivalencia con fotogramas sigue pendiente.
-- [ ] **3.3** Ajustar piedra, cuero, nogal, bronce, suelo y cristalería con el GLB como punto de partida y las tres referencias visuales. **Propuesta Tyrell v1 implementada y reversible desde el GUI**, con previsualización auxiliar en Blender y pruebas correctas; falta completar la revisión general de acabados en WebGPU; en 3.4 se ha comprobado el pavimento desde CAM 01/04. Mantener revisión de las UV colapsadas de 3.1 antes del cierre visual.
+- [x] **3.3** Tyrell v1 conservado como base tras comparar importado/Tyrell en CAM 01/02/04 con luz de estudio y escena. UV colapsadas localizadas y proyectadas: hasta 4,042 píxeles cuadrados en CAM 02; se conservan con revisión de proximidad pendiente en recorrido libre. [Evidencias y límites](docs/phase3/3.3-review/CIERRE.md).
 - [x] **3.4** Suelo auditado: juntas y desgaste conservados, sin UV colapsadas; comparación WebGPU con normal activada/desactivada. Normal 0,025 mantenida. El brillo amplio persiste sin normal y queda para luces/reflejos; evidencia y límites en [SUELO.md](docs/phase3/3.4/SUELO.md).
 - [x] **3.5** Conservar 19 MeshStandardMaterial y un MeshPhysicalMaterial; adaptación WebGPU y propiedades comprobadas en los 20 materiales. Nodos propios previstos para reflector y volumen en sus fases. [Estrategia y límites](docs/phase3/3.5/MATERIALES_NODOS.md).
 - [x] **3.6** Cuatro sillas comparten seis geometrías, seis materiales y doce texturas. Diez ciclos de acabado conservan identidades y transformaciones; liberación única comprobada. 19/19 pruebas correctas. [Informe y reproducción](docs/phase3/3.6/RECURSOS_COMPARTIDOS.md).
@@ -116,7 +116,7 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 - [ ] **7.1** Aplicar la elección del usuario: cámaras fijas, recorridos o movimiento libre.
 - [ ] **7.2** Añadir transiciones y restauración del encuadre de referencia.
-- [ ] **7.3** Si hay recorrido libre, mantener altura y velocidad coherentes con la escala e impedir atravesar paredes y muebles con colisiones simplificadas.
+- [ ] **7.3** Revisar al aproximarse las UV colapsadas de Table_Slab y Wall_Side_L documentadas en el cierre de fase 3. Si hay recorrido libre, mantener altura y velocidad coherentes con la escala e impedir atravesar paredes y muebles con colisiones simplificadas.
 - [ ] **7.4** Resolver redimensionado, foco del teclado/ratón, pausa al ocultar la pestaña y dispositivos objetivo.
 - [ ] **7.5** Separar los controles de revisión técnica de la experiencia final.
 

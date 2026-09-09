@@ -21,7 +21,7 @@ export default class TyrellUI {
         this.lookPanel = document.createElement('details')
         this.lookPanel.className = 'tyrell-look tyrell-pan'
         this.lookPanel.innerHTML = `<summary>Color y materiales</summary><div class="tyrell-pan-controls">
-            <label>Acabado<select aria-label="Acabado"><option value="imported">Importado del GLB</option><option value="tyrell-v1">Tyrell v1 · en revisión</option></select></label>
+            <label>Acabado<select aria-label="Acabado"><option value="imported">Importado del GLB</option><option value="tyrell-v1">Tyrell v1 · base revisada</option></select></label>
             <label>Exposición<input aria-label="Compensación de exposición" type="range" min="-2" max="2" step="0.1"><output></output></label>
             <label><input type="checkbox" aria-label="Luz de estudio"> Luz de estudio</label>
             <label><input type="checkbox" aria-label="Normal de piedra negra" checked> Normal de piedra negra</label>

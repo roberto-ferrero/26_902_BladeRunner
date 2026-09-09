@@ -1,5 +1,7 @@
 # 3.2–3.3 · Color y primera propuesta de materiales
 
+> Actualización: revisión WebGPU completada posteriormente; consultar [el cierre de fase 3](../3.3-review/CIERRE.md). Lo que sigue documenta la entrega inicial y sus limitaciones en aquel momento.
+
 09/09/2026. **3.2 implementado y validado técnicamente. 3.3 dispone de una primera propuesta activa y reversible; permanece abierto hasta revisión visual en WebGPU.** La herramienta de navegación no tiene navegadores conectados en esta sesión. Los renders auxiliares de Blender no sustituyen esa comprobación.
 
 También se ha numerado cada subtarea de las fases 0–8 en `PLAN.md`, conservando los identificadores 3.1–3.6. El paneo queda dentro de navegación como 7.6. Las decisiones generales de producto no son una fase y mantienen sus casillas sin número.

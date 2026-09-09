@@ -1,0 +1,5453 @@
+{
+  "scope": "Normal-mapped meshes, scene instances, 1920x800; projected area without clipping or occlusion, not visibility proof",
+  "summary": [
+    {
+      "camera": "CAM_01_|_fotograma_general",
+      "overlappingTriangles": 97,
+      "maxAreaPixels": 0.9072077588613982,
+      "trianglesOverOnePixel": 0
+    },
+    {
+      "camera": "CAM_02_|_mesa_y_juntas",
+      "overlappingTriangles": 29,
+      "maxAreaPixels": 4.04166935427716,
+      "trianglesOverOnePixel": 1
+    },
+    {
+      "camera": "CAM_04_|_recorrido_lateral",
+      "overlappingTriangles": 72,
+      "maxAreaPixels": 1.5701714772433322,
+      "trianglesOverOnePixel": 1
+    }
+  ],
+  "triangles": [
+    {
+      "object": "Wall_Side_R",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 113,
+      "areaM2": 0.0007320135755435331,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Wall_Side_R",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 133,
+      "areaM2": 0.00023147621777752647,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.2869100562976848
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.35124180400222726
+        }
+      ]
+    },
+    {
+      "object": "Wing_R",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 95,
+      "areaM2": 1.670769957388336e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 0,
+      "areaM2": 0.0000014945954619213455,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.021890015482090585
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1,
+      "areaM2": 0.0000014945954619213455,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.021890014664388134
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 2,
+      "areaM2": 2.8610450304611293e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 3,
+      "areaM2": 2.8610450304624845e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 4,
+      "areaM2": 0.0000014984956689692868,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.027980888633825713
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5,
+      "areaM2": 0.0000014984956689692868,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.027980889679053024
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 6,
+      "areaM2": 4.046128684640191e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0009472575273465925
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7,
+      "areaM2": 4.046128684640191e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0009472575627314396
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 8,
+      "areaM2": 0.000001363518506996501,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 9,
+      "areaM2": 0.0000013635184654956779,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 10,
+      "areaM2": 0.000001370778162979036,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 11,
+      "areaM2": 0.000001370778162979036,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 12,
+      "areaM2": 0.000001045653179698264,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.011762386740520749
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.013643649983796635
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 13,
+      "areaM2": 0.0000010456533070026539,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.011762388169831306
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.0131705679032457
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 14,
+      "areaM2": 2.8610452080981685e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00032183443714712103
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.0003865803568030941
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 15,
+      "areaM2": 2.8610452080981685e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00032183443714712103
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.00038664888830643597
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 16,
+      "areaM2": 0.000001051220582581891,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.01182501357013441
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.013709085602386928
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 17,
+      "areaM2": 0.000001051220582581891,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.01182501357013441
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.013233814306484886
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 18,
+      "areaM2": 0.0000019489331183019687,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.004009643342683944
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.011320271578796337
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 19,
+      "areaM2": 0.0000019489333215464783,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0058442874868151985
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.0190031148855739
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 20,
+      "areaM2": 0.0000019540191415361174,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0076979916907582435
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.018719676987188905
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 21,
+      "areaM2": 0.0000019540191415361174,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.011220265373858028
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.031420560826363915
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 23,
+      "areaM2": 0.0000013416606363646082,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0228783685027821
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 24,
+      "areaM2": 0.0000011541182516339177,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 25,
+      "areaM2": 0.0000011541182516339177,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 26,
+      "areaM2": 0.0000013416606363646082,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.010528623567456525
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.011828616990894325
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 27,
+      "areaM2": 0.0000013416606363646082,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.010528623290171844
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.011451858268476884
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 28,
+      "areaM2": 0.0000016321696840430133,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.006831463904566348
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.016179560046403196
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 29,
+      "areaM2": 0.0000016321696840430133,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.009324432528393519
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.024719034990664284
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 30,
+      "areaM2": 5.8672879887922136e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 31,
+      "areaM2": 0.000001414857604748076,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.025364074298875768
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 32,
+      "areaM2": 0.0000014148579238007538,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.025364080947792318
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 33,
+      "areaM2": 5.867399366366044e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 35,
+      "areaM2": 9.925472603811158e-7,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.011471210103241673
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.0128846399213948
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 36,
+      "areaM2": 0.0000017867436511990509,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0073713925337060004
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.017616924228747166
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 38,
+      "areaM2": 2.8610452673660802e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 40,
+      "areaM2": 0.0000014038506154449002,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.02478818449278114
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 41,
+      "areaM2": 0.0000014038506154449002,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.024788185400958573
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 45,
+      "areaM2": 2.8610449120947123e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00033066080211673337
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.0003973512668498312
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 46,
+      "areaM2": 9.76792541962368e-7,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.011289127401667907
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.013109768956243162
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 47,
+      "areaM2": 9.76792541962368e-7,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.011289127401667907
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.012673429116334654
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 48,
+      "areaM2": 0.0000017728431471337532,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.007144364643885126
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.017124764390530345
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 49,
+      "areaM2": 0.0000017728431471337532,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.010076064114923398
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.027412467237128292
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 50,
+      "areaM2": 5.774193034824293e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 51,
+      "areaM2": 5.774216482734573e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 52,
+      "areaM2": 0.0000013208632384394746,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.02241219789054047
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 53,
+      "areaM2": 0.0000013208635550099871,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.02241220406771064
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 54,
+      "areaM2": 5.774201383701438e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 55,
+      "areaM2": 5.774177935791158e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 56,
+      "areaM2": 0.0000013208632384394746,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.010101765764001165
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.011305961653385044
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 57,
+      "areaM2": 0.0000013208635550099871,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.010101767919042487
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.010945789228871709
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 58,
+      "areaM2": 0.000001606869303322935,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0067804352332778706
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.01598976772054783
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 61,
+      "areaM2": 2.861045800273132e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 62,
+      "areaM2": 4.0461297733168485e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0008918609516749069
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 63,
+      "areaM2": 4.0461297733168485e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0008918609837346516
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 64,
+      "areaM2": 2.8610450897303963e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 65,
+      "areaM2": 2.8610230629055877e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 66,
+      "areaM2": 4.046128768457675e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00023811858448012963
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.00018574331695490236
+        }
+      ]
+    },
+    {
+      "object": "Podest",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 67,
+      "areaM2": 4.046128768457675e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00023811859075128548
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.00018577727762099892
+        }
+      ]
+    },
+    {
+      "object": "Wall_Side_L",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 273,
+      "areaM2": 0.0007319263168028556,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.9072077588613982
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 1.5701714772433322
+        }
+      ]
+    },
+    {
+      "object": "Wall_Side_L",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 287,
+      "areaM2": 0.00023150381389314134,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Wall_Side_L",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 460,
+      "areaM2": 8.640446935714863e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Wing_L",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 70,
+      "areaM2": 4.960071033984485e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Wing_L",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 132,
+      "areaM2": 4.427575055087875e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_01_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 24,
+      "areaM2": 9.042518634491947e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_01_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 26,
+      "areaM2": 9.042518947816745e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_01_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 30,
+      "areaM2": 6.389846625253739e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_01_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 36,
+      "areaM2": 9.04251776254854e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_01_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 37,
+      "areaM2": 1.4135673748452456e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_01_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 38,
+      "areaM2": 6.389845924274862e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_01_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1114,
+      "areaM2": 0.0000043260085969553244,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_01_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1127,
+      "areaM2": 0.000012828602279191583,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_01_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1132,
+      "areaM2": 0.000003649745557403354,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_01_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1161,
+      "areaM2": 0.000004326008378396777,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_01_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1205,
+      "areaM2": 0.000002581452918093426,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_02_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1166,
+      "areaM2": 9.032431821219895e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_02_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1167,
+      "areaM2": 9.032431821219895e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_02_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1172,
+      "areaM2": 1.2769512598827987e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_02_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1181,
+      "areaM2": 1.2769512598827987e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_02_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 6798,
+      "areaM2": 0.0000036507306260839613,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_02_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 6800,
+      "areaM2": 0.000003650727611506752,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_02_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 6960,
+      "areaM2": 0.0000028930885911910878,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_03_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1200,
+      "areaM2": 9.043732562018544e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_03_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1201,
+      "areaM2": 9.043732562018544e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_03_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1206,
+      "areaM2": 1.2783123942721618e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_03_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 6973,
+      "areaM2": 0.00000998725528944533,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_03_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 6974,
+      "areaM2": 0.0000036507257273953152,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_03_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 6982,
+      "areaM2": 0.00000998725528944533,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_03_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 6983,
+      "areaM2": 0.0000036507287419740807,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_03_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7068,
+      "areaM2": 0.0000028954929473676394,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_03_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7139,
+      "areaM2": 0.000010398859012251824,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_04_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 3117,
+      "areaM2": 5.509289006796418e-7,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.004028677230084906
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.019081555450967125
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.0051033083394210615
+        }
+      ]
+    },
+    {
+      "object": "Columna_05_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 3898,
+      "areaM2": 1.3702947209338638e-7,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_06_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 24,
+      "areaM2": 8.998623545243389e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_06_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 26,
+      "areaM2": 8.998623209409725e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_06_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 30,
+      "areaM2": 6.363859203996573e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_06_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 35,
+      "areaM2": 6.001479313511156e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_06_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 36,
+      "areaM2": 6.363859809880372e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_06_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5370,
+      "areaM2": 8.998623209409725e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_06_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5371,
+      "areaM2": 0.000014074428912991274,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_06_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5379,
+      "areaM2": 0.000009962914164812856,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_06_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5381,
+      "areaM2": 0.000009963410546874721,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_06_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5414,
+      "areaM2": 0.0000025749992857981924,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_06_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5463,
+      "areaM2": 0.000004315202356095416,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_07_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 3927,
+      "areaM2": 3.1481918925697707e-7,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_07_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 3931,
+      "areaM2": 8.174600907295994e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_07_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 4039,
+      "areaM2": 1.3702993153216575e-7,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_07_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 4069,
+      "areaM2": 8.174614407607828e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_08_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 24,
+      "areaM2": 5.991154239382013e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_08_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 32,
+      "areaM2": 5.991154239382107e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 6.223314810691663e-7
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_08_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 33,
+      "areaM2": 6.355253911826617e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_08_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1110,
+      "areaM2": 0.000009957773905310712,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.119974242275575
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_08_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1112,
+      "areaM2": 0.000003639569157381576,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.015477457993245571
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_08_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1115,
+      "areaM2": 0.000009957792430603257,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.10941710120936517
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_08_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1117,
+      "areaM2": 0.0000036396176384426853,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_08_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1127,
+      "areaM2": 6.355254884530683e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_08_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1153,
+      "areaM2": 0.0000043116137851123766,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.048111992583764286
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_08_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1198,
+      "areaM2": 0.0000025728565731242808,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_09_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 14,
+      "areaM2": 7.534241000134926e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000004755059165926384
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.000020321397572013645
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000006680576917798106
+        }
+      ]
+    },
+    {
+      "object": "Columna_09_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 18,
+      "areaM2": 9.240896796439803e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00000145997017728234
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.000013422925410365743
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000001923407045644493
+        }
+      ]
+    },
+    {
+      "object": "Columna_10_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 24,
+      "areaM2": 2.9528509306435753e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_10_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 27,
+      "areaM2": 4.175745920372692e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_10_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 30,
+      "areaM2": 3.7420101879383236e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_10_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 35,
+      "areaM2": 4.1757453535669205e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_10_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 38,
+      "areaM2": 3.742010126353887e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_10_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5534,
+      "areaM2": 4.1757460124711787e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_10_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5545,
+      "areaM2": 0.000067849500325559,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_10_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5551,
+      "areaM2": 0.000024807571920273227,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_10_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5590,
+      "areaM2": 4.175745969555369e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_10_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5606,
+      "areaM2": 0.00001754097257844483,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_10_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5609,
+      "areaM2": 0.0000048981821558771235,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_11_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1210,
+      "areaM2": 9.032431821219895e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_11_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1212,
+      "areaM2": 9.032431821219895e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_11_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1216,
+      "areaM2": 9.032431821219895e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_11_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1217,
+      "areaM2": 9.032431821219895e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_11_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7014,
+      "areaM2": 0.000003650982352062208,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_11_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7019,
+      "areaM2": 0.000003650727611506752,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_11_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7023,
+      "areaM2": 0.000009987895310814565,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_11_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7156,
+      "areaM2": 0.0000028930885911910878,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_11_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7182,
+      "areaM2": 0.0000028930885911910878,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_12_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1220,
+      "areaM2": 1.2769511614535828e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_12_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1222,
+      "areaM2": 9.021138928918536e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_12_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1223,
+      "areaM2": 9.021138928918536e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_12_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1230,
+      "areaM2": 9.021138928918536e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_12_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 1231,
+      "areaM2": 9.021138928918536e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_12_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7068,
+      "areaM2": 0.000003650980091233771,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_12_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7073,
+      "areaM2": 0.0000036507257273953152,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_12_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7077,
+      "areaM2": 0.000009987895843721617,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_12_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7210,
+      "areaM2": 9.021138928918536e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_12_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 7237,
+      "areaM2": 9.021138928918536e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_13_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 22,
+      "areaM2": 5.762066374880092e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0000037955098304882516
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.0000040960553521861764
+        }
+      ]
+    },
+    {
+      "object": "Columna_13_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 3998,
+      "areaM2": 0.000009482002420334178,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.06933686939217573
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.07839553831911344
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 24,
+      "areaM2": 2.9528509306435753e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 27,
+      "areaM2": 4.175745920372692e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 30,
+      "areaM2": 3.7420101879383236e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 35,
+      "areaM2": 4.1757453535669205e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 38,
+      "areaM2": 3.742010126353887e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 4849,
+      "areaM2": 4.1757460124711787e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 4870,
+      "areaM2": 0.00002480753366441732,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 4875,
+      "areaM2": 0.00006784959145657613,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 4877,
+      "areaM2": 0.00006784958723501217,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 4904,
+      "areaM2": 4.175745969555369e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 4920,
+      "areaM2": 0.00001754097257844483,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_14_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 4923,
+      "areaM2": 0.000004898045713908289,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_15_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 24,
+      "areaM2": 2.9558795098674515e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_15_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 27,
+      "areaM2": 4.180678590221909e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_15_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 30,
+      "areaM2": 3.746412455752281e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_15_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 35,
+      "areaM2": 4.18067784671229e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_15_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 38,
+      "areaM2": 3.746412034366269e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_15_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1123,
+      "areaM2": 4.180678505513087e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_15_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1149,
+      "areaM2": 0.00006788500161903578,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_15_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1151,
+      "areaM2": 0.00006788500554302626,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_15_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1179,
+      "areaM2": 4.1806784626461103e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_15_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1195,
+      "areaM2": 0.00001755172863227022,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_15_|_perfil_original_y_24_hiladas_2",
+      "material": "PBR | Caliza aristas claras",
+      "triangle": 1198,
+      "areaM2": 0.0000048980772056064374,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_16_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 31,
+      "areaM2": 6.355837075777768e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_16_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 37,
+      "areaM2": 8.985219282925951e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_16_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 38,
+      "areaM2": 1.4050712950664003e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_16_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 45,
+      "areaM2": 6.823548919219227e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_16_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5644,
+      "areaM2": 7.104986678996452e-7,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_16_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5651,
+      "areaM2": 0.000012794043861305214,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_16_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5654,
+      "areaM2": 0.000009958687496930562,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_16_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5657,
+      "areaM2": 0.000012794059360281005,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_17_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 24,
+      "areaM2": 2.960484991310086e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_17_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 27,
+      "areaM2": 4.186927526551321e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00012599363515621763
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_17_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 30,
+      "areaM2": 3.7518843353176475e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00013192479407274794
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_17_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 35,
+      "areaM2": 4.186927919883895e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_17_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 38,
+      "areaM2": 3.7518845541591735e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_17_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5536,
+      "areaM2": 4.1869279740177506e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00017954997978202882
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_17_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5554,
+      "areaM2": 0.0000679381042143805,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_17_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5557,
+      "areaM2": 0.000024839902637671632,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_17_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5592,
+      "areaM2": 4.186927826667836e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_17_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5608,
+      "areaM2": 0.000017564693912675204,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.017953319388118623
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_17_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 5611,
+      "areaM2": 0.000004902383227812566,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.005010885192325433
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        }
+      ]
+    },
+    {
+      "object": "Columna_18_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 15,
+      "areaM2": 2.7620519424800524e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00001644115479019808
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.00001533333090580122
+        }
+      ]
+    },
+    {
+      "object": "Columna_18_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 3178,
+      "areaM2": 0.000007584753481051409,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.05390126152037988
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.06275933390557217
+        }
+      ]
+    },
+    {
+      "object": "Columna_18_|_perfil_original_y_24_hiladas_1",
+      "material": "PBR | Caliza ocre envejecida",
+      "triangle": 3188,
+      "areaM2": 3.906320661682082e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000021279282987821372
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000022123936269114733
+        }
+      ]
+    },
+    {
+      "object": "Foot_5",
+      "material": "PBR | Nogal oscuro",
+      "triangle": 280,
+      "areaM2": 3.783741153728926e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00003538547469332586
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.0002921887151510249
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000047032361269932155
+        }
+      ]
+    },
+    {
+      "object": "Foot_5",
+      "material": "PBR | Nogal oscuro",
+      "triangle": 281,
+      "areaM2": 3.783741153728926e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00003538547469332586
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.000295992233077802
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.00004699047865842085
+        }
+      ]
+    },
+    {
+      "object": "Table_Slab",
+      "material": "PBR | Raiz de nogal",
+      "triangle": 97,
+      "areaM2": 5.044073934731097e-7,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.003869265502421249
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.027376924296836563
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.005081330373514785
+        }
+      ]
+    },
+    {
+      "object": "Table_Slab",
+      "material": "PBR | Raiz de nogal",
+      "triangle": 111,
+      "areaM2": 0.0000012257820487280238,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.008986720855904759
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.01107028841494384
+        }
+      ]
+    },
+    {
+      "object": "Table_Slab",
+      "material": "PBR | Raiz de nogal",
+      "triangle": 112,
+      "areaM2": 0.0000012260371475909035,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00894828856985405
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.07502564179050875
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.011204070999637087
+        }
+      ]
+    },
+    {
+      "object": "Table_Slab",
+      "material": "PBR | Raiz de nogal",
+      "triangle": 146,
+      "areaM2": 2.0209451512818523e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0000017645889917102026
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.0000021048826788845904
+        }
+      ]
+    },
+    {
+      "object": "Table_Slab",
+      "material": "PBR | Raiz de nogal",
+      "triangle": 171,
+      "areaM2": 0.00002324339378783138,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.1717588030786336
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.18906006220390545
+        }
+      ]
+    },
+    {
+      "object": "Table_Slab",
+      "material": "PBR | Raiz de nogal",
+      "triangle": 183,
+      "areaM2": 1.9846274368832888e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000001520950869513921
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.00001069426444593754
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000001998554865881926
+        }
+      ]
+    },
+    {
+      "object": "Table_Slab",
+      "material": "PBR | Raiz de nogal",
+      "triangle": 190,
+      "areaM2": 0.0000560994138058993,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.45667259497622037
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 4.04166935427716
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.576981316197833
+        }
+      ]
+    },
+    {
+      "object": "Foot_4",
+      "material": "PBR | Nogal oscuro",
+      "triangle": 280,
+      "areaM2": 3.783741153728926e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00003538547469332594
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000043426764189231264
+        }
+      ]
+    },
+    {
+      "object": "Foot_4",
+      "material": "PBR | Nogal oscuro",
+      "triangle": 281,
+      "areaM2": 3.783741153728926e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00003538547469332594
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.00004338910572694067
+        }
+      ]
+    },
+    {
+      "object": "Mesa_|_campo_de_cuero",
+      "material": "PBR | Cuero oscuro",
+      "triangle": 24,
+      "areaM2": 2.099201035221654e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000021031067546069682
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.0008174972379038081
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000026855108636869574
+        }
+      ]
+    },
+    {
+      "object": "Mesa_|_campo_de_cuero",
+      "material": "PBR | Cuero oscuro",
+      "triangle": 25,
+      "areaM2": 2.099201035221654e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000021031067546069682
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.00037466387885148433
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000027805697136169734
+        }
+      ]
+    },
+    {
+      "object": "Mesa_|_campo_de_cuero",
+      "material": "PBR | Cuero oscuro",
+      "triangle": 28,
+      "areaM2": 1.4510006529633301e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0000014610772435669217
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.00015607695669217492
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 4.369242441806809e-7
+        }
+      ]
+    },
+    {
+      "object": "Mesa_|_campo_de_cuero",
+      "material": "PBR | Cuero oscuro",
+      "triangle": 29,
+      "areaM2": 1.4510006529633301e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000001354100473310761
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.00011982539983570048
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 3.9520794255946166e-7
+        }
+      ]
+    },
+    {
+      "object": "Mesa_|_campo_de_cuero",
+      "material": "PBR | Cuero oscuro",
+      "triangle": 30,
+      "areaM2": 1.4510006529633301e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000001505962209102929
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000004140373169314593
+        }
+      ]
+    },
+    {
+      "object": "Mesa_|_campo_de_cuero",
+      "material": "PBR | Cuero oscuro",
+      "triangle": 31,
+      "areaM2": 1.4510006529633301e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0000016249363705992666
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000004562439139420526
+        }
+      ]
+    },
+    {
+      "object": "Mesa_|_campo_de_cuero",
+      "material": "PBR | Cuero oscuro",
+      "triangle": 32,
+      "areaM2": 2.099201035221654e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000018042949455040936
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.0002176918911800385
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000022780550279488665
+        }
+      ]
+    },
+    {
+      "object": "Mesa_|_campo_de_cuero",
+      "material": "PBR | Cuero oscuro",
+      "triangle": 33,
+      "areaM2": 2.099201035221654e-9,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000018042949455040936
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.00037209174447332035
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000022074344719248588
+        }
+      ]
+    },
+    {
+      "object": "Leather_folio",
+      "material": "Walnut | quarter sawn",
+      "triangle": 152,
+      "areaM2": 1.0420206446384568e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 3.0322215032056555e-8
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.0000039977999430590005
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 6.934239373846986e-8
+        }
+      ]
+    },
+    {
+      "object": "Leather_folio",
+      "material": "Walnut | quarter sawn",
+      "triangle": 153,
+      "areaM2": 7.663186130253373e-11,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 5.341909128062899e-9
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.0000026960112927000194
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 2.8889791942151398e-8
+        }
+      ]
+    },
+    {
+      "object": "Leather_folio",
+      "material": "Walnut | quarter sawn",
+      "triangle": 154,
+      "areaM2": 7.663186130301086e-11,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 5.342861973869483e-9
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.000002696830874887341
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 2.889731531214726e-8
+        }
+      ]
+    },
+    {
+      "object": "Leather_folio",
+      "material": "Walnut | quarter sawn",
+      "triangle": 155,
+      "areaM2": 3.345787880860497e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000003238610004347374
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.00004389622199063581
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000004240453567710273
+        }
+      ]
+    },
+    {
+      "object": "Leather_folio",
+      "material": "Walnut | quarter sawn",
+      "triangle": 156,
+      "areaM2": 3.345787880860497e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000003238610004347374
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.000041076212524286334
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000004256555459772446
+        }
+      ]
+    },
+    {
+      "object": "Leather_folio",
+      "material": "Walnut | quarter sawn",
+      "triangle": 159,
+      "areaM2": 2.2353531683592143e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 1.1011552948766642e-7
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.000026387154461460227
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 1.363004894497019e-7
+        }
+      ]
+    },
+    {
+      "object": "Leather_folio",
+      "material": "Walnut | quarter sawn",
+      "triangle": 160,
+      "areaM2": 2.2353531683592143e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 1.0831614339182221e-7
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.000024677869196449727
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 1.3338173359359945e-7
+        }
+      ]
+    },
+    {
+      "object": "Leather_folio",
+      "material": "Walnut | quarter sawn",
+      "triangle": 161,
+      "areaM2": 2.2353531683592143e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 5.428314373522036e-8
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.00002496690770792398
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 2.2409718612032004e-7
+        }
+      ]
+    },
+    {
+      "object": "Leather_folio",
+      "material": "Walnut | quarter sawn",
+      "triangle": 162,
+      "areaM2": 2.2353531683592143e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 5.518491459409792e-8
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.000026819484620608134
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 2.28981811542733e-7
+        }
+      ]
+    },
+    {
+      "object": "Leather_folio",
+      "material": "Walnut | quarter sawn",
+      "triangle": 163,
+      "areaM2": 3.345787880860497e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000003127614754794141
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.0000372722469554887
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000004066698682230613
+        }
+      ]
+    },
+    {
+      "object": "Leather_folio",
+      "material": "Walnut | quarter sawn",
+      "triangle": 164,
+      "areaM2": 3.345787880860497e-10,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000003127614754794141
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.000039644665006622674
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.0000040516643862927616
+        }
+      ]
+    },
+    {
+      "object": "Tyrell_Corporation_Pyramid",
+      "material": "PBR | Hormigon exterior",
+      "triangle": 2097,
+      "areaM2": 0.0001463113585487008,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00027158955321921613
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 0.000347849539381051
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.0002181623456757112
+        }
+      ]
+    },
+    {
+      "object": "Tyrell_Corporation_Pyramid",
+      "material": "PBR | Hormigon exterior",
+      "triangle": 2332,
+      "areaM2": 0.000008465111022815108,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.000060917772709727434
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.00005286463348650426
+        }
+      ]
+    },
+    {
+      "object": "Tyrell_Corporation_Pyramid",
+      "material": "PBR | Hormigon exterior",
+      "triangle": 12426,
+      "areaM2": 0.000011427793651819229,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.00006191654224380516
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 0.000052921410956436894
+        }
+      ]
+    },
+    {
+      "object": "Tyrell_Corporation_Pyramid",
+      "material": "PBR | Hormigon exterior",
+      "triangle": 20708,
+      "areaM2": 5.194451659917831e-7,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 4.467500334514457e-7
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": false,
+          "areaPixels": 0
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 3.5892729942170985e-7
+        }
+      ]
+    },
+    {
+      "object": "Tyrell_Corporation_Pyramid",
+      "material": "PBR | Hormigon exterior",
+      "triangle": 33074,
+      "areaM2": 4.1869084473755185e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 0.0000011118607085317663
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 8.224400592508053e-7
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 9.86493919102115e-7
+        }
+      ]
+    },
+    {
+      "object": "Tyrell_Corporation_Pyramid",
+      "material": "PBR | Hormigon exterior",
+      "triangle": 33076,
+      "areaM2": 5.0240767088625635e-8,
+      "views": [
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "overlapsFrame": true,
+          "areaPixels": 9.788475471107829e-7
+        },
+        {
+          "camera": "CAM_02_|_mesa_y_juntas",
+          "overlapsFrame": true,
+          "areaPixels": 7.285137330675789e-7
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "overlapsFrame": true,
+          "areaPixels": 8.680843432983059e-7
+        }
+      ]
+    }
+  ]
+}
