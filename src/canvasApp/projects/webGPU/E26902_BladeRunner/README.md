@@ -1,6 +1,6 @@
 # Oficinas Tyrell · Visor WebGPU
 
-**Estado actual: 4.4 completado.** Cobertura solar ajustada y sombras parciales de cristalería; luces y exposición de R01 conservadas. [Parámetros, validación y capturas](docs/phase4/4.4/SOMBRAS.md). La referencia archivada R01 permanece intacta. Próximo punto: 4.5, iluminación indirecta. Las notas de reapertura que siguen documentan el histórico.
+**Estado actual: 4.5 comparado y documentado.** Se conserva Base R01 con las sombras de 4.4: el entorno reduce el contraste del suelo y la sonda no demuestra una mejora suficiente. Ambos ensayos son reversibles desde el GUI. [Comparación, límites y capturas](docs/phase4/4.5/INDIRECTA.md). La referencia archivada R01 permanece intacta. Próximo punto: **4.6 · Fugas de luz y contactos**. Las notas de reapertura que siguen documentan el histórico.
 
 **Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
 
@@ -46,6 +46,7 @@ Abrir `http://localhost:8081` para producción. Tras una nueva compilación hay 
 
 ## Controles y medición
 
+- **Luz indirecta:** dentro de Color y materiales, `Base R01` (inicio), `Sonda difusa · ensayo` y `Entorno · ensayo`. Los ensayos usan un campo artístico, sin captura de escena ni GI horneada; se desactivan con luz de estudio o al aislar sol/áreas. El diagnóstico registra el modo y su estado efectivo.
 - **Iluminación:** dentro de Color y materiales, alternar `Provisional · fase 3`, `Tyrell · luz 4.1`, `Tyrell · luz 4.2` (inicio restaurado) y `Tyrell · luz 4.3` (propuesta rechazada, para comparar). **Aporte de luz** permite aislar sol, ambiente y áreas. Las capturas y el diagnóstico incluyen perfil y aporte; el diagnóstico detalla tamaño y orientación de las áreas.
 - **Color y materiales:** comparar `Importado del GLB` con `Tyrell v1 · base revisada`, variar compensación entre −2 y +2 EV, restablecer 0 EV y activar luz blanca de estudio. La referencia utiliza AgX, salida sRGB y exposición base 1,07. El control **Normal de piedra negra** permite comparar el suelo con y sin relieve, conservando su rugosidad. Las capturas incluyen acabado, luz, EV y estado de la normal en el nombre y mantienen la cámara sin paneo.
 - **Paneo con el ratón:** panel plegable con activación, recorrido horizontal/vertical (metros), suavidad (segundos), distancia al punto de mirada y retorno al centro. [Comportamiento y validación](docs/PANEO.md).
@@ -107,4 +108,4 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 
 ## Próxima entrega
 
-**4.5 · Iluminación indirecta.** Comparar entorno/sondas y valorar horneado si mejora la referencia. Conservar el equilibrio de R01 y guardar capturas numeradas. La fidelidad final todavía requiere reflejos y atmósfera.
+**4.6 · Fugas de luz y contactos.** Revisar encuentros entre suelo, columnas y mobiliario, conservando el equilibrio de R01 y guardando capturas numeradas. La fidelidad final todavía requiere reflejos y atmósfera.

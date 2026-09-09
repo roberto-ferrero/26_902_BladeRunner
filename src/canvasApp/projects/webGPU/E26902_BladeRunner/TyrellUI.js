@@ -24,6 +24,7 @@ export default class TyrellUI {
             <label>Acabado<select aria-label="Acabado"><option value="imported">Importado del GLB</option><option value="tyrell-v1">Tyrell v1 · base revisada</option></select></label>
             <label>Iluminación<select aria-label="Iluminación"><option value="provisional">Provisional · fase 3</option><option value="tyrell-light-v1">Tyrell · luz 4.1</option><option value="tyrell-light-v2">Tyrell · luz 4.2</option><option value="tyrell-light-v3">Tyrell · luz 4.3</option></select></label>
             <label>Aporte de luz<select aria-label="Aporte de luz"><option value="all">Composición completa</option><option value="sun">Sólo sol</option><option value="hemisphere">Sólo ambiente</option><option value="areas">Sólo áreas</option><option value="area-0">Área ventanal</option><option value="area-1">Área frontal</option><option value="area-2">Área izquierda</option><option value="area-3">Área derecha</option></select></label>
+            <label>Luz indirecta<select aria-label="Luz indirecta"><option value="reference">Base R01</option><option value="probe">Sonda difusa · ensayo</option><option value="environment">Entorno · ensayo</option></select></label>
             <label>Exposición<input aria-label="Compensación de exposición" type="range" min="-2" max="2" step="0.1"><output></output></label>
             <label><input type="checkbox" aria-label="Luz de estudio"> Luz de estudio</label>
             <label><input type="checkbox" aria-label="Normal de piedra negra" checked> Normal de piedra negra</label>
@@ -31,6 +32,7 @@ export default class TyrellUI {
             </div><p>La luz de estudio es blanca y sirve para comparar materiales. La exposición de referencia corresponde a 0 EV; las capturas conservan el acabado y la luz seleccionados.</p>`
         this.lightingSelect = this.lookPanel.querySelector('select[aria-label="Iluminación"]')
         this.lightingSelect.onchange = () => actions.lighting(this.lightingSelect.value)
+        this.lookPanel.querySelector('[aria-label="Luz indirecta"]').onchange = event => actions.indirect(event.target.value)
         this.lookPanel.querySelector('[aria-label="Aporte de luz"]').onchange = event => actions.contribution(event.target.value)
         this.lookSelect = this.lookPanel.querySelector('select')
         this.lookExposure = this.lookPanel.querySelector('input[type=range]')

@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **4.4 implementado y revisado en WebGPU**, conservando el balance R01. Cobertura solar ajustada y sombra parcial de cristalería. [Informe y capturas](docs/phase4/4.4/SOMBRAS.md). Siguiente entrega: **4.5 · Iluminación indirecta**.
+Estado: **4.5 comparado y documentado**, conservando Base R01 y sombras 4.4. Sonda difusa y entorno disponibles como ensayos reversibles; ninguno seleccionado como mejora final. [Informe](docs/phase4/4.5/INDIRECTA.md). Siguiente entrega: **4.6 · Fugas de luz y contactos**.
 
 ## Objetivo
 
@@ -88,7 +88,7 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 - [x] **4.2** Calibrar intensidades relativas en Three.js a exposición fija; perfil 4.2, comparación con 4.1 y aislamiento de sol/ambiente/áreas. CAM 01/02/04 revisadas y 23 pruebas correctas. El brillo amplio de las áreas disminuye, pero su forma y el acabado final siguen pendientes. [Informe](docs/phase4/4.2/INTENSIDADES.md).
 - [x] **4.3** Integración LTC y restauración verificadas. Tras rechazar las áreas reducidas, se conservan los rellenos originales con el balance R01 registrado por el usuario. Revisión visual CAM 01/02/04, capturas 004–006; no se introduce otra reducción de luz. Reflejos finales y sombras de cristalería pendientes en sus puntos. [Informe y decisión](docs/phase4/4.3/AREAS.md).
 - [x] **4.4** Cobertura solar acotada, PCF moderado y sombras transmitidas del vidrio. R01 conservado en luces y exposición; CAM 01/02/04, paneo y perfiles de calidad revisados. 24 pruebas correctas. [Informe y límites](docs/phase4/4.4/SOMBRAS.md).
-- [ ] **4.5** Comparar soluciones de iluminación indirecta: entorno/sondas y, si hace falta, luz estática horneada desde Blender. Incorporar horneado sólo si mejora la comparación y su coste está justificado.
+- [x] **4.5** Comparadas base hemisférica, sonda SH y entorno en CAM 01/02/04. Se conserva R01; ensayos reversibles y horneado no incorporado al no demostrar mejora suficiente. 25 pruebas y capturas 001–009. [Decisión, alcance y límites](docs/phase4/4.5/INDIRECTA.md).
 - [ ] **4.6** Medir y corregir fugas de luz, contactos del mobiliario y pérdida de detalle en sombras.
 
 **Resultado comprobable:** contraluz y lectura de volúmenes cercanos al render de referencia, con atmósfera y bloom desactivados.

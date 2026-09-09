@@ -1,6 +1,24 @@
 # Registro cronológico de capturas
 
-Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; primera de 4.5: **001**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+Formato: `PUNTO_NNN_AAAA-MM-DD_CAMxx.png`. Contador creciente por punto, también entre revisiones y cámaras. No sobrescribir. Próxima captura de 4.3: **007**; de 4.4: **006**; de 4.5: **010**; primera de 4.6: **001**. Guardar una nueva captura al completar cada punto y registrar su estado; un resultado rechazado reabre el punto.
+
+## Entrega 4.5 · Iluminación indirecta
+
+09/09/2026, sesión aproximadamente 17:12–17:16 UTC (19:12–19:16 Madrid). Todas en Media, Tyrell v1, luz 4.2 con parámetros R01, 0 EV, composición completa y cámara de referencia sin paneo. Pantallazos de interfaz 1294 × 912 con render 1920 × 800 reducido; no son PNG nativos de 1920 × 800.
+
+| Orden | Archivo | Estado |
+| --- | --- | --- |
+| 4.5 / 001 | [CAM 01](4.5_001_2026-09-09_CAM01.png) | Base R01, antes de los ensayos |
+| 4.5 / 002 | [CAM 01](4.5_002_2026-09-09_CAM01.png) | Sonda difusa · ensayo |
+| 4.5 / 003 | [CAM 01](4.5_003_2026-09-09_CAM01.png) | Entorno · ensayo |
+| 4.5 / 004 | [CAM 02](4.5_004_2026-09-09_CAM02.png) | Entorno · ensayo |
+| 4.5 / 005 | [CAM 02](4.5_005_2026-09-09_CAM02.png) | Sonda difusa · ensayo |
+| 4.5 / 006 | [CAM 02](4.5_006_2026-09-09_CAM02.png) | Base R01 |
+| 4.5 / 007 | [CAM 04](4.5_007_2026-09-09_CAM04.png) | Sonda difusa · ensayo |
+| 4.5 / 008 | [CAM 04](4.5_008_2026-09-09_CAM04.png) | Entorno · ensayo |
+| 4.5 / 009 | [CAM 04](4.5_009_2026-09-09_CAM04.png) | Base R01 restaurada |
+
+Se conserva Base R01 como resultado. [Informe y validación](../phase4/4.5/INDIRECTA.md). Diagnósticos: [sonda CAM 04](4.5_007_2026-09-09_CAM04.json), [entorno CAM 04](4.5_008_2026-09-09_CAM04.json) y [Base R01 CAM 01](4.5_001_2026-09-09_CAM01.json). Este último se guardó al finalizar la sesión, tras restaurar la base; acompaña a 001 pero no es simultáneo a esa captura. Archivo R01 intacto.
 
 ## Entrega 4.4 · Sombras
 
