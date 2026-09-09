@@ -82,6 +82,8 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 ## 4 · Iluminación y sombras
 
+**Corrección solicitada durante 4.1:** eliminadas las líneas horizontales que atravesaban las juntas al hacer paneo y oscurecidas las caras interiores que producían las dos líneas verticales señaladas. Verificación en WebGPU, 23 pruebas y [capturas e informe](docs/phase4/pan-lines/CORRECCION.md). Adelanto puntual de 4.6; ese punto sigue pendiente en el conjunto de la sala. La siguiente entrega continúa siendo 4.2.
+
 - [x] **4.1** Primera composición solar coherente con el disco, cielo ajustado y balance interior/exterior revisado desde CAM 01/02/04. Perfil reversible y parámetros documentados; equivalencia final pendiente de calibración y atmósfera. [Informe](docs/phase4/4.1/SOL_CIELO.md).
 - [ ] **4.2** Calibrar intensidades en Three.js; no trasladar sin comprobar los valores fotométricos exportados.
 - [ ] **4.3** Reconstruir los rellenos de área con la inicialización apropiada para WebGPU.

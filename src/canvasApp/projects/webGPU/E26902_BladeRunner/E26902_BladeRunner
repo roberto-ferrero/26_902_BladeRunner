@@ -10,6 +10,7 @@ import { auditMaterialMaps } from './TyrellMaterialAudit'
 import TyrellCameraPan from './TyrellCameraPan'
 import TyrellLook, { applyColorReference } from './TyrellLook'
 import TyrellLighting from './TyrellLighting'
+import { addColumnCores } from './TyrellColumnCores'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -107,6 +108,7 @@ export default class E26902_BladeRunner {
     }
     build() {
         this.world3D = this.asset.gltf.scene
+        this.columnCores = addColumnCores(this.world3D)
         this.scene.add(this.world3D)
         this.world3D.updateMatrixWorld(true)
         this.materialAudit = auditMaterialMaps(this.world3D)
@@ -287,6 +289,7 @@ export default class E26902_BladeRunner {
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
             benchmarkOnStart: false, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
             model: this.modelStats, asset: { path: TYRELL.asset, bytes: this.asset?.bytes, loadMs: this.asset?.loadMs },
+            columnRepair: this.columnCores?.userData.columnRepair || null,
             materialAudit: this.materialAudit || null,
             colorReference: this.colorReference,
             lighting: this.lighting?.diagnostics(),

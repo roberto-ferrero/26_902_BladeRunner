@@ -16,6 +16,8 @@ Fases 1 y 2 cerradas: cámaras, capturas exactas de 1920 × 800 y fidelidad geom
 
 ## Ejecutar
 
+**Corrección de líneas durante el paneo:** respaldo interior en las 18 columnas y acabado oscuro en las caras de retorno señaladas de las columnas 09/18. Conserva las juntas exteriores y los archivos fuente. En ejecución: 149 mallas, 347.325 triángulos, 21 materiales y las mismas 25 texturas de materiales. [Diagnóstico, capturas y 23 pruebas correctas](docs/phase4/pan-lines/CORRECCION.md).
+
 Desde la raíz del repositorio, con Node.js 24.14.0 (versión utilizada en la validación):
 
 ```powershell
@@ -57,6 +59,8 @@ Cada cambio de cámara, calidad, tamaño o visibilidad reinicia la medición: 60
 | `TyrellCameraRig.js` | Pose mundial y FOV de cámaras, escala de visualización de Blender normalizada, resize |
 | `TyrellCameraPan.js` | Paneo relativo al ratón, límites, mirada fija y suavizado temporal; referencia independiente para capturas |
 | `TyrellLighting.js` | Composición reversible de sol, disco, cielo y rellenos; dirección común y diagnóstico |
+| `TyrellColumnCores.js`, `column-cores.json` | Respaldo de juntas y caras interiores oscuras; una malla adicional compartida por las 18 columnas |
+| `scripts/export-column-cores.py`, `tests/column-cores.test.mjs` | Generación desde la plantilla y comprobación de juntas, atributos y coste geométrico |
 | `TyrellLook.js` | Referencia de color/exposición y propuesta reversible de materiales; conserva mapas y recursos compartidos |
 | `TyrellCapture.js` | Captura a resolución fija y restauración del visor; reinicio de métricas tras la captura |
 | `TyrellUI.js`, `tyrell.css` | Interfaz de revisión y estados de carga/error |
@@ -86,6 +90,8 @@ El GLB conserva metros y ejes glTF (Y arriba). No se escala la escena para adapt
 3. Ejecutar `node src/canvasApp/projects/webGPU/E26902_BladeRunner/scripts/prepare-phase2.mjs`. Genera `_phase2.glb` y `docs/phase2/surfaces/cleanup.json`; no modifica el export `_edited.glb`. Revisar el informe y las vistas neutras: la corrección presupone que las normales exportadas expresan la orientación deseada de la superficie.
 4. Obtener tamaño y SHA-256, actualizar `config.js` (`asset`, revisión de caché y `assetBytes`) y las expectativas de las pruebas sólo cuando el cambio sea intencionado. El manifiesto de `docs/phase1` y las evidencias de entregas anteriores son históricas.
 5. Repetir las auditorías indicadas en el cierre de fase 2, ejecutar pruebas, compilar, recargar y guardar nuevas capturas y diagnósticos desde las mismas cámaras, resolución y calidad.
+
+Si cambian los perfiles o posiciones de las columnas, regenerar `column-cores.json` desde la plantilla y revisar la selección geométrica de las caras de retorno en `TyrellColumnCores.js`; la reparación está ajustada al modelo v3 actual. Comando en [CORRECCION.md](docs/phase4/pan-lines/CORRECCION.md).
 
 La copia activa `_phase2.glb` ocupa **40.552.456 bytes**, contiene 25 imágenes, 107 recursos mesh, 10 cámaras y **339.381 triángulos contando instancias**. Procede del export `_edited.glb` de 40.549.528 bytes. La pequeña diferencia de tamaño se debe a índices separados para primitivas que requieren distinta orientación; no se ha compactado el binario. Excluye los objetos ocultos tanto en visor como en render y el volumen `Atmosfera | polvo en haces de luz`, exclusivo de Cycles. El `.blend` original y el export de entrada se conservan intactos.
 
