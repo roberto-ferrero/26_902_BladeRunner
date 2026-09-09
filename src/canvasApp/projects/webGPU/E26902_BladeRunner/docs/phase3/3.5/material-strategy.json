@@ -1,0 +1,275 @@
+{
+  "threeRevision": "185",
+  "assetSha256": "bf2108bbe13d32df23bfa34e598c1d98085e2322e859fbf62354240f7e6b8fa2",
+  "scope": "Offline loader/library compatibility; no GPU rendering or image decoding",
+  "materialCount": 20,
+  "counts": {
+    "MeshStandardMaterial": 19,
+    "MeshPhysicalMaterial": 1
+  },
+  "preservedBindings": true,
+  "materials": [
+    {
+      "name": "PBR | Caliza ocre envejecida",
+      "instances": 27,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "PBR | Caliza aristas claras",
+      "instances": 40,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "PBR | Piedra negra pulida",
+      "instances": 21,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "PBR | Juntas y cavidades",
+      "instances": 1,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "PBR | Nogal oscuro",
+      "instances": 7,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "PBR | Raiz de nogal",
+      "instances": 1,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "Walnut | quarter sawn",
+      "instances": 5,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "Leather | oxblood",
+      "instances": 4,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "Burl walnut | table rim",
+      "instances": 4,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "Brass | polished highlights",
+      "instances": 6,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "Bronze | patinated",
+      "instances": 5,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "Recesses | charcoal",
+      "instances": 5,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "PBR | Cuero oscuro",
+      "instances": 1,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "PBR | Laton envejecido",
+      "instances": 4,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "PBR | Bronce patinado",
+      "instances": 9,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "Crystal",
+      "instances": 4,
+      "materialType": "MeshPhysicalMaterial",
+      "webgpuImplementation": "MeshPhysicalNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [],
+      "transmission": 1,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "Ivory paper",
+      "instances": 1,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "PBR | Hormigon exterior",
+      "instances": 1,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "map",
+        "normalMap",
+        "roughnessMap",
+        "metalnessMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "Cielo | nubes ambar",
+      "instances": 1,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [
+        "emissiveMap"
+      ],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    },
+    {
+      "name": "Sol | disco emisivo",
+      "instances": 1,
+      "materialType": "MeshStandardMaterial",
+      "webgpuImplementation": "MeshStandardNodeMaterial",
+      "explicitNodeMaterial": false,
+      "maps": [],
+      "transmission": 0,
+      "decision": "Keep imported material; use built-in WebGPU adaptation"
+    }
+  ]
+}
