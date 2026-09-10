@@ -2,7 +2,7 @@
 
 **GUI plegable:** «Ocultar GUI» oculta controles y cabecera; la línea de FPS permanece siempre visible; queda «Abrir GUI» para recuperarlos. Se conservan valores y secciones abiertas durante la sesión. El panel tiene desplazamiento vertical cuando no cabe en pantalla. La escena y sus efectos siguen activos.
 
-**Estado actual: 6.4 ejecutado.** Bloom contenido y color cinematográfico suave, configurables en **Acabado cinematográfico**. Misma cadena en visor/captura; apagar ambos recupera la base. 40 pruebas correctas. [Informe y capturas](docs/phase6/6.4/ACABADO.md). Arranque actual: calidad Media, los siete efectos activos y paneo horizontal/vertical 1,1 m con suavidad 0,75 s. R01 permanece archivado. Próximo punto: **6.5 · Comparación de aportación y coste**.
+**Estado actual: fase 6 ejecutada.** Panel **Comparar efectos y coste** con mediciones y exportación JSON; nueve configuraciones revisadas. Se conserva la imagen sin grano, viñeta ni profundidad de campo añadidos. 41 pruebas correctas. [6.5](docs/phase6/6.5/COMPARACION.md) y [6.6](docs/phase6/6.6/CRITERIO.md). Próximo punto: **7.1 · Recorrido libre y cámaras de la película**. Se mantienen calidad Media, siete efectos activos y paneo 1,1 / 1,1 / 0,75.
 
 **Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
 

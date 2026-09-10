@@ -286,3 +286,24 @@ Arranque verificado en WebGPU: paneo H/V 1,1 m, suavidad 0,75 s, calidad Media y
 | --- | --- |
 | [GUI_005_2026-09-10_valores-iniciales.png](GUI_005_2026-09-10_valores-iniciales.png) | 2026-09-10 09:10:31 |
 | [GUI_006_2026-09-10_FPS-visibles.png](GUI_006_2026-09-10_FPS-visibles.png) | 2026-09-10 09:10:43 |
+
+## 6.5 · 10-09-2026
+
+Media, CAM indicada, 0 EV, siete efectos activos salvo exclusión del nombre en 6.5/001–002. Polvo animado cuando hay haces. PNG 893 × 912, captura 1920 × 800 reducida salvo 6.5/003 (exportación JSON). Horas UTC.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [6.5_001_2026-09-10_CAM01-sin-haces.png](6.5_001_2026-09-10_CAM01-sin-haces.png) | 2026-09-10 09:20:44 |
+| [6.5_002_2026-09-10_CAM01-sin-reflejo.png](6.5_002_2026-09-10_CAM01-sin-reflejo.png) | 2026-09-10 09:21:26 |
+| [6.5_003_2026-09-10_comparacion.png](6.5_003_2026-09-10_comparacion.png) | 2026-09-10 09:22:32 |
+| [6.5_004_2026-09-10_CAM01-completa.png](6.5_004_2026-09-10_CAM01-completa.png) | 2026-09-10 09:22:52 |
+
+## 6.6 · 10-09-2026
+
+Media, CAM indicada, 0 EV, siete efectos activos salvo exclusión del nombre en 6.5/001–002. Polvo animado cuando hay haces. PNG 893 × 912, captura 1920 × 800 reducida salvo 6.5/003 (exportación JSON). Horas UTC.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [6.6_001_2026-09-10_CAM01.png](6.6_001_2026-09-10_CAM01.png) | 2026-09-10 09:23:21 |
+| [6.6_002_2026-09-10_CAM02.png](6.6_002_2026-09-10_CAM02.png) | 2026-09-10 09:23:39 |
+| [6.6_003_2026-09-10_CAM04.png](6.6_003_2026-09-10_CAM04.png) | 2026-09-10 09:23:50 |

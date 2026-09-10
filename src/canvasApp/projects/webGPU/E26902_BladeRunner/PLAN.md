@@ -1,8 +1,8 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Ajustes de arranque solicitados el 10-09-2026: calidad Media; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo H/V 1,1 m, suavidad 0,75 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos y no cierra 6.5.
+Ajustes de arranque solicitados el 10-09-2026: calidad Media; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo H/V 1,1 m, suavidad 0,75 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos ; 6.5 queda documentado más abajo.
 
-Estado: **6.4 ejecutado y documentado**. Bloom contenido y color suave en WebGPU, controles independientes, misma cadena en visor/captura y restauración exacta de la base. 40 pruebas correctas; capturas finales 6.4/011–019. R01 intacto. [Informe y límites](docs/phase6/6.4/ACABADO.md). Siguiente entrega: **6.5 · Comparación de aportación y coste**.
+Estado: **Fase 6 ejecutada y documentada**. 6.5 incorpora comparación exportable y nueve mediciones controladas; 6.6 mantiene la imagen limpia sin grano, viñeta ni desenfoque adicional tras valorar las referencias. 41 pruebas correctas. [Comparación](docs/phase6/6.5/COMPARACION.md) y [criterio de acabado](docs/phase6/6.6/CRITERIO.md). Siguiente punto: **7.1 · Navegación: recorrido libre y cámaras de la película**, según la elección del usuario.
 
 ## Objetivo
 
@@ -111,8 +111,8 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 - [x] **6.2** Integración solar acotada con consulta de sombra y polvo de densidad animada, 24/40/64 muestras según calidad. Medición con reflejos, actualización planar a 10 Hz para deriva lenta, controles y restauración comprobados. Corregido el refresco de parámetros de 6.1 en materiales compartidos. 35 pruebas correctas. [Informe y límites](docs/phase6/6.2/VOLUMEN.md).
 - [x] **6.3** Oclusión, estabilidad, bandas y ruido revisados: 414 juntas frente al sol, CAM 01–04, paneo y perfiles de calidad. Capturas estáticas idénticas antes/después y tras alternar haces. Protecciones para rayos rasantes e intervalos vacíos; 36 pruebas correctas. [Informe y límites](docs/phase6/6.3/ESTABILIDAD.md).
 - [x] **6.4** Bloom por umbral con energía limitada y gradación suave antes de AgX/sRGB. Controles independientes, captura coherente, revisión CAM 01/02/04 y tres calidades. Restauración y repetibilidad exactas, 40 pruebas correctas. [Informe y capturas](docs/phase6/6.4/ACABADO.md).
-- [ ] **6.5** Mantener controles para activar/desactivar cada efecto y comparar su aportación y coste.
-- [ ] **6.6** Valorar grano, viñeta o profundidad de campo sólo si aportan fidelidad a las referencias y no ocultan defectos del modelo o la luz.
+- [x] **6.5** Controles independientes y registro exportable de 12 configuraciones. Nueve mediciones a igual cámara/resolución/luz; resultados limitados por refresco. [Informe](docs/phase6/6.5/COMPARACION.md).
+- [x] **6.6** Valorados grano, viñeta y profundidad de campo; no se incorporan al acabado actual para preservar lectura de piedra, reflejos y arquitectura. CAM 01/02/04 documentadas. [Decisión y límites](docs/phase6/6.6/CRITERIO.md).
 
 **Resultado comprobable:** comparación lado a lado del plano general, el detalle y la vista lateral. Registrar las diferencias restantes con Blender y con los fotogramas de la película.
 

@@ -22,6 +22,9 @@ body.tyrell-viewer { background: #070807; color: #e6dfce; overflow: hidden; font
 .tyrell-ui input { accent-color: #c7ae7c; }
 .tyrell-pan { pointer-events: auto; margin-bottom: 12px; max-width: 720px; background: #11130ff0; border: 1px solid #746344; border-radius: 3px; padding: 9px 12px; font-size: 12px; }
 .tyrell-pan summary { cursor: pointer; color: #e8c481; }
+.tyrell-comparison-table { overflow-x: auto; margin-top: 10px; }
+.tyrell-comparison-table table { border-collapse: collapse; width: 100%; font-size: 11px; }
+.tyrell-comparison-table th, .tyrell-comparison-table td { padding: 7px; border-bottom: 1px solid #746344; text-align: left; vertical-align: top; }
 .tyrell-pan-controls { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; padding-top: 12px; }
 .tyrell-pan-controls label { display: grid; gap: 4px; color: #c7ae7c; }
 .tyrell-pan-controls label:first-child { display: flex; align-items: center; }

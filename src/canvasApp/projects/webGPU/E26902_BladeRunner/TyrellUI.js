@@ -139,6 +139,16 @@ export default class TyrellUI {
             label.append(document.createTextNode(title), input, output); finishControls.append(label)
         }
         this.root.querySelector('footer').insertBefore(finishPanel, this.lookPanel)
+        this.comparisonPanel = document.createElement('details')
+        this.comparisonPanel.className = 'tyrell-pan'
+        this.comparisonPanel.innerHTML = `<summary>Comparar efectos y coste</summary><div class="tyrell-pan-controls">
+            <button type="button" data-measure>Medir configuración</button><button type="button" data-export>Exportar comparación</button><button type="button" data-clear>Borrar mediciones</button></div>
+            <p>Activa o desactiva efectos en sus paneles. Medir centra la cámara, descarta 60 fotogramas y recoge 120. Compara con la misma cámara, calidad, resolución y luz. Los FPS pueden estar limitados por la pantalla; no son tiempo GPU.</p>
+            <p role="status" data-status>Sin mediciones. Se conservan las últimas 12 durante la sesión.</p><div class="tyrell-comparison-table"></div>`
+        this.comparisonPanel.querySelector('[data-measure]').onclick = () => actions.measure()
+        this.comparisonPanel.querySelector('[data-export]').onclick = () => actions.exportMeasurements()
+        this.comparisonPanel.querySelector('[data-clear]').onclick = () => actions.clearMeasurements()
+        this.root.querySelector('footer').append(this.comparisonPanel)
         this.statusBox = this.root.querySelector('.tyrell-status')
         this.statusText = this.statusBox.querySelector('p')
         this.progress = this.statusBox.querySelector('progress')
@@ -189,6 +199,22 @@ export default class TyrellUI {
         this.openGUI.setAttribute('aria-expanded', String(visible))
         // Keep all controls mounted: values and expanded sections survive hiding.
         ;(visible ? this.closeGUI : this.openGUI).focus({ preventScroll: true })
+    }
+    comparisonStatus(text) { this.comparisonPanel.querySelector('[data-status]').textContent = text }
+    showMeasurements(rows) {
+        const container = this.comparisonPanel.querySelector('.tyrell-comparison-table')
+        container.replaceChildren()
+        if (!rows.length) return
+        const table = document.createElement('table'), head = table.createTHead().insertRow()
+        for (const label of ['Nº', 'Vista / calidad / píxeles', 'Efectos activos', 'FPS', 'Media ms', 'P95 ms']) {
+            const th = document.createElement('th'); th.scope = 'col'; th.textContent = label; head.append(th)
+        }
+        const body = table.createTBody()
+        for (const row of rows) {
+            const tr = body.insertRow()
+            for (const value of [row.id, `${row.camera?.name || 'Cámara'} / ${row.quality} / ${row.metrics.resolution.join(' × ')}`, row.effects, row.metrics.fps, row.metrics.frameMeanMs, row.metrics.frameP95Ms]) tr.insertCell().textContent = value
+        }
+        container.append(table)
     }
     setPanSettings(settings) {
         this.panEnabled.checked = settings.enabled

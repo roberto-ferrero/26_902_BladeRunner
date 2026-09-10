@@ -19,6 +19,7 @@ import TyrellSpecularEnvironment from './TyrellSpecularEnvironment'
 import TyrellAtmosphere from './TyrellAtmosphere'
 import TyrellLightVolume from './TyrellLightVolume'
 import TyrellPostProcessing from './TyrellPostProcessing'
+import TyrellComparison from './TyrellComparison'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -27,6 +28,7 @@ export default class E26902_BladeRunner {
         this.ownsMetrics = true
         this.quality = TYRELL.quality
         this.samples = []
+        this.comparison = new TyrellComparison()
         this.disposed = false
         this.lookProfile = TYRELL.materialLook
         this.exposureEV = 0
@@ -53,6 +55,9 @@ export default class E26902_BladeRunner {
             specularEnvironment: enabled => { this.specularEnvironment?.setEnabled(enabled); this.resetMetrics() },
             volume: values => this.setVolume(values),
             post: values => { this.post?.configure(values); this.resetMetrics() },
+            measure: () => { this.pan?.reset(); this.resetMetrics(); this.measuring = true; this.ui.comparisonStatus('Midiendo: espera sin cambiar controles ni mover la cámara…') },
+            clearMeasurements: () => { this.measuring = false; this.comparison.clear(); this.ui.showMeasurements([]); this.ui.comparisonStatus('Registro vacío.') },
+            exportMeasurements: () => { const text = JSON.stringify({ note: 'Intervalos RAF; no tiempo GPU. Comparar misma cámara, resolución, calidad y luz.', rows: this.comparison.rows }, null, 2); this.ui.showOutput(new Blob([text], { type: 'application/json' }), 'tyrell-comparacion.json', text) },
             atmosphere: values => { this.atmosphere?.configure(values); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             indirect: mode => { this.indirect?.setMode(mode); this.setLighting(this.lightingProfile) },
             contribution: value => { this.lighting?.setContribution(value); this.indirect?.apply(this.lighting, this.studio); this.specularEnvironment?.invalidate(); this.resetMetrics() }
@@ -79,6 +84,7 @@ export default class E26902_BladeRunner {
         this.pointerMove = event => {
             if (event.pointerType !== 'mouse' || !this.built) return
             if (event.target?.closest?.('.tyrell-gui-panel footer, .tyrell-gui-toggle, .tyrell-controls, .tyrell-pan, .tyrell-look, dialog')) { this.pan.setPointer(0, 0); return }
+            if (this.measuring) this.resetMetrics()
             this.pan.setPointer(event.clientX / window.innerWidth * 2 - 1, event.clientY / window.innerHeight * 2 - 1)
         }
         this.pointerLeave = () => this.pan.setPointer(0, 0)
@@ -295,6 +301,8 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     resetMetrics() {
+        if (this.measuring) this.ui.comparisonStatus('Medición cancelada por un cambio de configuración. Vuelve a medir.')
+        this.measuring = false
         this.floorReflection?.updates.invalidate()
         this.samples = []; this.warmup = 60; this.previousFrame = undefined; this.metrics = undefined
         if (this.built) this.ui.metrics('Estabilizando la medición…')
@@ -328,6 +336,12 @@ export default class E26902_BladeRunner {
                 geometries: this.renderer.info.memory.geometries, textures: this.renderer.info.memory.textures
             }
             this.ui.metrics(`${this.metrics.fps} FPS · ${this.metrics.frameMeanMs} ms/fotograma · ${size.x} × ${size.y} · ${this.metrics.drawCalls} dibujos · ${Math.round(this.metrics.renderedTriangles).toLocaleString('es')} triángulos/pasadas`)
+            if (this.measuring && this.metrics.samples === 120) {
+                this.measuring = false
+                this.comparison.add(this.getDiagnostics())
+                this.ui.showMeasurements(this.comparison.rows)
+                this.ui.comparisonStatus('Medición guardada. Cambia un efecto y vuelve a medir; conserva cámara, calidad y encuadre.')
+            }
         }
         if (this.captureRequested) {
             this.captureRequested = false
@@ -347,7 +361,7 @@ export default class E26902_BladeRunner {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 6, step: '6.4', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 6, step: '6.6', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             referenceCapture: { ...REFERENCE_CAPTURE, aspect: 2.4 },
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
@@ -360,6 +374,8 @@ export default class E26902_BladeRunner {
             atmosphere: this.atmosphere?.diagnostics() || null,
             lightVolume: this.volume?.diagnostics() || null,
             postProcessing: this.post?.diagnostics() || null,
+            comparison: this.comparison.rows,
+            optionalFinish: { grain: false, vignette: false, depthOfField: false, decision: '6.6: retain clean image; preserve stone, floor reflections and architectural depth' },
             materialAudit: this.materialAudit || null,
             colorReference: this.colorReference,
             lighting: this.lighting?.diagnostics(),
