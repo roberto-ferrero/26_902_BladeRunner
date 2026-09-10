@@ -307,3 +307,41 @@ Media, CAM indicada, 0 EV, siete efectos activos salvo exclusión del nombre en 
 | [6.6_001_2026-09-10_CAM01.png](6.6_001_2026-09-10_CAM01.png) | 2026-09-10 09:23:21 |
 | [6.6_002_2026-09-10_CAM02.png](6.6_002_2026-09-10_CAM02.png) | 2026-09-10 09:23:39 |
 | [6.6_003_2026-09-10_CAM04.png](6.6_003_2026-09-10_CAM04.png) | 2026-09-10 09:23:50 |
+
+## 6.7 · 10-09-2026
+
+Prueba de cielo panorámico. Media, siete efectos activos, polvo desactivado en 001–006 y activo en 007. PNG 893 × 912 con previsualización de la captura 1920 × 800. 001–002: versión anterior; 003–004 y 006–007: panorama activo; 005: control desactivado. Horas UTC.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [6.7_001_2026-09-10_CAM01-original.png](6.7_001_2026-09-10_CAM01-original.png) | 2026-09-10 09:38:15 |
+| [6.7_002_2026-09-10_CAM02-original.png](6.7_002_2026-09-10_CAM02-original.png) | 2026-09-10 09:41:26 |
+| [6.7_003_2026-09-10_CAM01-panorama.png](6.7_003_2026-09-10_CAM01-panorama.png) | 2026-09-10 09:45:00 |
+| [6.7_004_2026-09-10_CAM02-panorama.png](6.7_004_2026-09-10_CAM02-panorama.png) | 2026-09-10 09:47:32 |
+| [6.7_005_2026-09-10_CAM02-desactivado.png](6.7_005_2026-09-10_CAM02-desactivado.png) | 2026-09-10 09:48:08 |
+| [6.7_006_2026-09-10_CAM04-panorama.png](6.7_006_2026-09-10_CAM04-panorama.png) | 2026-09-10 09:48:28 |
+| [6.7_007_2026-09-10_CAM01-final.png](6.7_007_2026-09-10_CAM01-final.png) | 2026-09-10 09:49:35 |
+
+## 6.7 v2 · 10-09-2026
+
+Revisión tras rechazo de v1. Panorama equirectangular único, Media, siete efectos y polvo activos. PNG 893 × 912 con previsualización 1920 × 800 reducida. 013 recupera el original para comparar; al terminar queda el panorama activo. Horas UTC.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [6.7_008_2026-09-10_CAM01-v2.png](6.7_008_2026-09-10_CAM01-v2.png) | 2026-09-10 12:55:21 |
+| [6.7_009_2026-09-10_CameraD-v2.png](6.7_009_2026-09-10_CameraD-v2.png) | 2026-09-10 12:55:53 |
+| [6.7_010_2026-09-10_CameraE-v2.png](6.7_010_2026-09-10_CameraE-v2.png) | 2026-09-10 12:56:07 |
+| [6.7_011_2026-09-10_CameraF-v2.png](6.7_011_2026-09-10_CameraF-v2.png) | 2026-09-10 12:56:26 |
+| [6.7_012_2026-09-10_CAM02-v2.png](6.7_012_2026-09-10_CAM02-v2.png) | 2026-09-10 12:56:42 |
+| [6.7_013_2026-09-10_CAM01-original-restaurado.png](6.7_013_2026-09-10_CAM01-original-restaurado.png) | 2026-09-10 12:57:00 |
+
+## 6.7 v3 · 10-09-2026
+
+Media, siete efectos activos, polvo desactivado para comparar. 014: original; 015: v3 frontal; 016/017: laterales D/F. PNG de interfaz con captura reducida. Horas UTC.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [6.7_014_2026-09-10_CAM01-original-control.png](6.7_014_2026-09-10_CAM01-original-control.png) | 2026-09-10 13:29:11 |
+| [6.7_015_2026-09-10_CAM01-v3.png](6.7_015_2026-09-10_CAM01-v3.png) | 2026-09-10 13:30:23 |
+| [6.7_016_2026-09-10_CameraD-v3.png](6.7_016_2026-09-10_CameraD-v3.png) | 2026-09-10 13:30:53 |
+| [6.7_017_2026-09-10_CameraF-v3.png](6.7_017_2026-09-10_CameraF-v3.png) | 2026-09-10 13:31:11 |

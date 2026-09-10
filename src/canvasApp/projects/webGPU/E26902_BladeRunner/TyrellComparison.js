@@ -3,7 +3,7 @@ export default class TyrellComparison {
     constructor() { this.rows = []; this.nextId = 1 }
     add(report) {
         if (!report.metrics || report.metrics.samples < 120) throw new Error('Faltan muestras estables.')
-        const keys = ['date', 'quality', 'camera', 'cameraPan', 'exposure', 'metrics', 'floorReflection', 'specularEnvironment', 'atmosphere', 'lightVolume', 'postProcessing', 'lighting', 'materialLook', 'indirect', 'reviewLighting']
+        const keys = ['date', 'quality', 'camera', 'cameraPan', 'exposure', 'metrics', 'floorReflection', 'specularEnvironment', 'atmosphere', 'lightVolume', 'postProcessing', 'sky', 'lighting', 'materialLook', 'indirect', 'reviewLighting']
         const row = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, report[key]]))))
         row.id = this.nextId++
         row.effects = [

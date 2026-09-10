@@ -2,7 +2,7 @@
 
 **GUI plegable:** «Ocultar GUI» oculta controles y cabecera; la línea de FPS permanece siempre visible; queda «Abrir GUI» para recuperarlos. Se conservan valores y secciones abiertas durante la sesión. El panel tiene desplazamiento vertical cuando no cabe en pantalla. La escena y sus efectos siguen activos.
 
-**Estado actual: fase 6 ejecutada.** Panel **Comparar efectos y coste** con mediciones y exportación JSON; nueve configuraciones revisadas. Se conserva la imagen sin grano, viñeta ni profundidad de campo añadidos. 41 pruebas correctas. [6.5](docs/phase6/6.5/COMPARACION.md) y [6.6](docs/phase6/6.6/CRITERIO.md). Próximo punto: **7.1 · Recorrido libre y cámaras de la película**. Se mantienen calidad Media, siete efectos activos y paneo 1,1 / 1,1 / 0,75.
+Estado actual: **6.7 v3: recuperación de la proyección original del cielo**. v2 rechazada por cambiar escala y posición de las nubes. Foto original en la zona frontal, transición interior hacia el panorama en los bordes; pendiente de revisión visual. [Historial y validación](docs/phase6/6.7/CIELO.md). No se avanza a 7.1.
 
 **Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
 

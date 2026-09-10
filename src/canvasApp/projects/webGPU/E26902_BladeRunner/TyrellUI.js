@@ -86,6 +86,11 @@ export default class TyrellUI {
             input.oninput = () => { input.nextElementSibling.value = Number(input.value).toFixed(2); actions.volume({ [key]: Number(input.value) }) }
         }
         this.atmospherePanel.append(volumeControls)
+        const skyLabel = document.createElement('label'), skyToggle = document.createElement('input')
+        skyToggle.type = 'checkbox'; skyToggle.checked = true; skyToggle.setAttribute('aria-label', 'Cielo panorámico')
+        skyToggle.onchange = () => actions.sky(skyToggle.checked)
+        skyLabel.append(skyToggle, document.createTextNode('Cielo panorámico'))
+        volumeControls.append(skyLabel)
         this.atmospherePanel.querySelector('p').textContent = 'Haces solares y polvo volumétrico dentro de la sala. Movimiento 0 congela el polvo para comparar; desactivar Haces vuelve a la profundidad de 6.1.'
         this.panPanel = document.createElement('details')
         this.panPanel.className = 'tyrell-pan'

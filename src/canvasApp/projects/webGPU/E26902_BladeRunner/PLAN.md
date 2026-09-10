@@ -2,7 +2,7 @@
 
 Ajustes de arranque solicitados el 10-09-2026: calidad Media; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo H/V 1,1 m, suavidad 0,75 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos ; 6.5 queda documentado más abajo.
 
-Estado: **Fase 6 ejecutada y documentada**. 6.5 incorpora comparación exportable y nueve mediciones controladas; 6.6 mantiene la imagen limpia sin grano, viñeta ni desenfoque adicional tras valorar las referencias. 41 pruebas correctas. [Comparación](docs/phase6/6.5/COMPARACION.md) y [criterio de acabado](docs/phase6/6.6/CRITERIO.md). Siguiente punto: **7.1 · Navegación: recorrido libre y cámaras de la película**, según la elección del usuario.
+Estado actual: **6.7 v3: recuperación de la proyección original del cielo**. v2 rechazada por cambiar escala y posición de las nubes. Foto original en la zona frontal, transición interior hacia el panorama en los bordes; pendiente de revisión visual. [Historial y validación](docs/phase6/6.7/CIELO.md). No se avanza a 7.1.
 
 ## Objetivo
 
@@ -115,6 +115,8 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 - [x] **6.6** Valorados grano, viñeta y profundidad de campo; no se incorporan al acabado actual para preservar lectura de piedra, reflejos y arquitectura. CAM 01/02/04 documentadas. [Decisión y límites](docs/phase6/6.6/CRITERIO.md).
 
 **Resultado comprobable:** comparación lado a lado del plano general, el detalle y la vista lateral. Registrar las diferencias restantes con Blender y con los fotogramas de la película.
+
+- [x] **6.7** Cielo panorámico revisado en v3: recuperar composición de las nubes originales y mezclar dentro de su perímetro. v1 y v2 rechazadas; v3 pendiente de valoración visual. [Documentación](docs/phase6/6.7/CIELO.md).
 
 ## 7 · Navegación y presentación
 

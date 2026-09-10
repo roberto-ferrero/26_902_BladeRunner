@@ -20,6 +20,7 @@ import TyrellAtmosphere from './TyrellAtmosphere'
 import TyrellLightVolume from './TyrellLightVolume'
 import TyrellPostProcessing from './TyrellPostProcessing'
 import TyrellComparison from './TyrellComparison'
+import TyrellSky from './TyrellSky'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -55,6 +56,7 @@ export default class E26902_BladeRunner {
             specularEnvironment: enabled => { this.specularEnvironment?.setEnabled(enabled); this.resetMetrics() },
             volume: values => this.setVolume(values),
             post: values => { this.post?.configure(values); this.resetMetrics() },
+            sky: enabled => { this.sky?.setEnabled(enabled); this.resetMetrics() },
             measure: () => { this.pan?.reset(); this.resetMetrics(); this.measuring = true; this.ui.comparisonStatus('Midiendo: espera sin cambiar controles ni mover la cámara…') },
             clearMeasurements: () => { this.measuring = false; this.comparison.clear(); this.ui.showMeasurements([]); this.ui.comparisonStatus('Registro vacío.') },
             exportMeasurements: () => { const text = JSON.stringify({ note: 'Intervalos RAF; no tiempo GPU. Comparar misma cámara, resolución, calidad y luz.', rows: this.comparison.rows }, null, 2); this.ui.showOutput(new Blob([text], { type: 'application/json' }), 'tyrell-comparacion.json', text) },
@@ -122,6 +124,10 @@ export default class E26902_BladeRunner {
             this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
                 (received, total, parsing) => this.ui.status(parsing ? 'Preparando geometría, materiales y cámaras…' : `Cargando escenario · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, total ? received / total : undefined))
             if (this.disposed) { disposeScene(this.asset.gltf.scene); return }
+            this.skyTexture = await new THREE.TextureLoader().loadAsync(new URL('textures/E26902_BladeRunner/sky-panorama-v2.png', new URL(this.app.pathPrefix, document.baseURI)).href)
+            this.skyTexture.colorSpace = THREE.SRGBColorSpace
+            this.skyTexture.wrapS = THREE.RepeatWrapping
+            if (this.disposed) { this.skyTexture.dispose(); disposeScene(this.asset.gltf.scene); return }
             this.app.emitter.emit('onProjectLoaded', {})
         } catch (error) {
             if (error.name === 'AbortError' || this.disposed) return
@@ -191,6 +197,7 @@ export default class E26902_BladeRunner {
         this.specularEnvironment = new TyrellSpecularEnvironment(this.scene, this.world3D, this.floorReflection)
         this.volume = new TyrellLightVolume(() => this.sun)
         this.atmosphere = new TyrellAtmosphere(this.scene, this.world3D, this.volume)
+        this.sky = new TyrellSky(this.scene, this.lighting.sky, this.skyTexture)
         this.setLighting(this.lightingProfile)
         this.studioLights = new THREE.Group()
         this.studioLights.name = 'Tyrell / estudio de materiales'
@@ -263,6 +270,7 @@ export default class E26902_BladeRunner {
         if (this.renderer) this.colorReference = applyColorReference(this.renderer, this.exposureEV)
         if (typeof values.studio === 'boolean') {
             this.studio = values.studio
+            this.sky?.setStudio(this.studio)
             if (this.lighting) { this.lighting.apply(this.lightingProfile); this.indirect?.apply(this.lighting, this.studio) }
         }
         if (this.studioLights) {
@@ -271,6 +279,7 @@ export default class E26902_BladeRunner {
             this.fill.visible = !this.studio
             this.areaLights.forEach(light => { light.visible = !this.studio })
             this.reviewBackground.forEach(({ object, visible }) => { object.visible = !this.studio && visible })
+            this.sky?.apply()
             this.renderer.setClearColor(this.studio ? 0x202020 : 0x171512, 1)
         }
         this.resetMetrics()
@@ -312,7 +321,8 @@ export default class E26902_BladeRunner {
         const volumeNode = this.volume?.node
         if (this.volume?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)) this.floorReflection?.updates.invalidate()
         if (this.volume?.node !== volumeNode) { this.atmosphere.refreshVolume(); this.specularEnvironment.invalidate(); this.resetMetrics() }
-        this.specularEnvironment?.update(this.renderer)
+        if (this.sky) this.sky.withOriginalBackground(() => this.specularEnvironment?.update(this.renderer))
+        else this.specularEnvironment?.update(this.renderer)
         this.pan?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)
         this.panTime = now
         if (this.previousFrame !== undefined && !document.hidden) {
@@ -361,7 +371,7 @@ export default class E26902_BladeRunner {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 6, step: '6.6', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 6, step: '6.7', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             referenceCapture: { ...REFERENCE_CAPTURE, aspect: 2.4 },
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
@@ -374,6 +384,7 @@ export default class E26902_BladeRunner {
             atmosphere: this.atmosphere?.diagnostics() || null,
             lightVolume: this.volume?.diagnostics() || null,
             postProcessing: this.post?.diagnostics() || null,
+            sky: this.sky?.diagnostics() || null,
             comparison: this.comparison.rows,
             optionalFinish: { grain: false, vignette: false, depthOfField: false, decision: '6.6: retain clean image; preserve stone, floor reflections and architectural depth' },
             materialAudit: this.materialAudit || null,
@@ -406,6 +417,7 @@ export default class E26902_BladeRunner {
         document.removeEventListener('visibilitychange', this.visibilityListener)
         this.specularEnvironment?.dispose()
         this.post?.dispose()
+        this.sky?.dispose()
         this.atmosphere?.dispose()
         this.volume?.dispose()
         this.floorReflection?.dispose()
