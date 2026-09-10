@@ -118,6 +118,27 @@ export default class TyrellUI {
         hint.textContent = 'Mayor suavidad: respuesta más lenta. Recorrido máximo desde el centro en cada sentido. La mirada permanece fija; las capturas usan la cámara de referencia.'
         this.panPanel.append(hint)
         this.root.querySelector('footer').prepend(this.panPanel)
+        const finishPanel = document.createElement('details')
+        finishPanel.className = 'tyrell-pan'
+        finishPanel.innerHTML = '<summary>Acabado cinematográfico</summary><div class="tyrell-pan-controls"></div><p>Bloom sobre luces intensas y color suave. Desactiva ambos para comparar con la base. La captura conserva estos ajustes.</p>'
+        const finishControls = finishPanel.querySelector('div')
+        for (const [key, title] of [['bloom', 'Bloom'], ['grade', 'Color cinematográfico']]) {
+            const label = document.createElement('label'), input = document.createElement('input')
+            input.type = 'checkbox'; input.setAttribute('aria-label', title)
+            input.onchange = () => actions.post({ [key]: input.checked })
+            label.append(input, document.createTextNode(title)); finishControls.append(label)
+        }
+        for (const [key, title, value, min, max, step] of [
+            ['strength', 'Intensidad del bloom', 0.16, 0, 0.6, 0.01], ['radius', 'Radio del bloom', 0.25, 0, 1, 0.05],
+            ['threshold', 'Umbral del bloom', 1.5, 0.5, 5, 0.1], ['gradeStrength', 'Intensidad del color', 1, 0, 1, 0.05]
+        ]) {
+            const label = document.createElement('label'), input = document.createElement('input'), output = document.createElement('output')
+            Object.assign(input, { type: 'range', min, max, step, value }); input.setAttribute('aria-label', title)
+            output.value = Number(value).toFixed(2)
+            input.oninput = () => { output.value = Number(input.value).toFixed(2); actions.post({ [key]: Number(input.value) }) }
+            label.append(document.createTextNode(title), input, output); finishControls.append(label)
+        }
+        this.root.querySelector('footer').insertBefore(finishPanel, this.lookPanel)
         this.statusBox = this.root.querySelector('.tyrell-status')
         this.statusText = this.statusBox.querySelector('p')
         this.progress = this.statusBox.querySelector('progress')

@@ -238,3 +238,31 @@ Ambos reflejos, profundidad exterior, bruma interior y haces activos; intensidad
 | [6.3_012_2026-09-10_CAM01.png](6.3_012_2026-09-10_CAM01.png) | 2026-09-10 07:53:07 | Media | Entrega final; polvo animado |
 
 [Informe, comparación de píxeles y límites](../phase6/6.3/ESTABILIDAD.md).
+
+## 6.4 · Bloom y acabado (10-09-2026)
+
+Ambos reflejos, profundidad exterior, bruma y haces activos a intensidad 1; exposición 0 EV. Polvo apagado salvo 018–019 (velocidad 1). Bloom 0,16, radio 0,25, umbral 1,5; color 1, salvo filas OFF. 002–003 sin compresión de energía; 005 en adelante con límite 4. 011 en adelante: render anidado corregido. PNG 893 × 912 con diálogo de referencia 1920 × 800 reducido, salvo paneo. Horas UTC; nombres con fecha local.
+
+| Archivo | Hora UTC | Calidad | Estado |
+| --- | --- | --- | --- |
+| [6.4_001_2026-09-10_CAM01.png](6.4_001_2026-09-10_CAM01.png) | 2026-09-10 08:07:53 | Media | Base 6.3, bloom/color OFF |
+| [6.4_002_2026-09-10_CAM01.png](6.4_002_2026-09-10_CAM01.png) | 2026-09-10 08:10:44 | Media | Primer bloom sin limite, color OFF; descartado |
+| [6.4_003_2026-09-10_CAM01.png](6.4_003_2026-09-10_CAM01.png) | 2026-09-10 08:11:00 | Media | Primer bloom y color; descartado |
+| [6.4_004_2026-09-10_CAM01.png](6.4_004_2026-09-10_CAM01.png) | 2026-09-10 08:12:20 | Media | Restauracion OFF |
+| [6.4_005_2026-09-10_CAM01.png](6.4_005_2026-09-10_CAM01.png) | 2026-09-10 08:14:38 | Media | Bloom limitado + color; ensayo |
+| [6.4_006_2026-09-10_CAM01.png](6.4_006_2026-09-10_CAM01.png) | 2026-09-10 08:14:52 | Media | Repeticion ensayo |
+| [6.4_007_2026-09-10_CAM01.png](6.4_007_2026-09-10_CAM01.png) | 2026-09-10 08:15:26 | Media | Restauracion OFF |
+| [6.4_008_2026-09-10_CAM02.png](6.4_008_2026-09-10_CAM02.png) | 2026-09-10 08:15:42 | Media | CAM02 ensayo; detectado fondo negro |
+| [6.4_009_2026-09-10_CAM04.png](6.4_009_2026-09-10_CAM04.png) | 2026-09-10 08:16:15 | Media | CAM04 ensayo |
+| [6.4_010_2026-09-10_CAM02.png](6.4_010_2026-09-10_CAM02.png) | 2026-09-10 08:16:28 | Media | CAM02 base OFF |
+| [6.4_011_2026-09-10_CAM02.png](6.4_011_2026-09-10_CAM02.png) | 2026-09-10 08:19:39 | Media | CAM02 final corregida |
+| [6.4_012_2026-09-10_CAM01.png](6.4_012_2026-09-10_CAM01.png) | 2026-09-10 08:19:52 | Media | CAM01 final estatica |
+| [6.4_013_2026-09-10_CAM01.png](6.4_013_2026-09-10_CAM01.png) | 2026-09-10 08:20:13 | Media | Repeticion final estatica |
+| [6.4_014_2026-09-10_CAM01.png](6.4_014_2026-09-10_CAM01.png) | 2026-09-10 08:20:26 | Media | Restauracion final OFF |
+| [6.4_015_2026-09-10_CAM01.png](6.4_015_2026-09-10_CAM01.png) | 2026-09-10 08:21:06 | Baja | Final Baja |
+| [6.4_016_2026-09-10_CAM01.png](6.4_016_2026-09-10_CAM01.png) | 2026-09-10 08:21:43 | Alta | Final Alta |
+| [6.4_017_2026-09-10_CAM04.png](6.4_017_2026-09-10_CAM04.png) | 2026-09-10 08:22:00 | Media | CAM04 final |
+| [6.4_018_2026-09-10_CAM01-paneo.png](6.4_018_2026-09-10_CAM01-paneo.png) | 2026-09-10 08:22:27 | Media | Paneo con polvo animado; visor directo y JSON |
+| [6.4_019_2026-09-10_CAM01.png](6.4_019_2026-09-10_CAM01.png) | 2026-09-10 08:22:54 | Media | Entrega final con polvo animado |
+
+[Informe y validación](../phase6/6.4/ACABADO.md).

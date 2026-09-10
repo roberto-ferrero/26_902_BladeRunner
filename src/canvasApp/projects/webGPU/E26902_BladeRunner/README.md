@@ -1,6 +1,6 @@
 # Oficinas Tyrell · Visor WebGPU
 
-**Estado actual: 6.3 ejecutado.** Oclusión y estabilidad del volumen revisadas, 36 pruebas correctas, capturas 6.3/001–012 y comparaciones de píxeles archivadas. [Informe](docs/phase6/6.3/ESTABILIDAD.md). Reflejos y atmósfera arrancan desactivados para conservar R01. Próximo punto: **6.4 · Bloom contenido y ajuste final del color**. Las notas que siguen incluyen el histórico.
+**Estado actual: 6.4 ejecutado.** Bloom contenido y color cinematográfico suave, configurables en **Acabado cinematográfico**. Misma cadena en visor/captura; apagar ambos recupera la base. 40 pruebas correctas. [Informe y capturas](docs/phase6/6.4/ACABADO.md). Los efectos arrancan apagados; R01 permanece archivado. Próximo punto: **6.5 · Comparación de aportación y coste**.
 
 **Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
 

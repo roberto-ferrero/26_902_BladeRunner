@@ -27,6 +27,15 @@ const CameraRig = load(path.join(root, 'TyrellCameraRig.js'), { three: THREE, '.
 const { loadTyrell, disposeScene } = load(path.join(root, 'TyrellAssets.js'), { 'three/addons/loaders/GLTFLoader.js': { GLTFLoader } })
 const AppRender = load(path.resolve('src/canvasApp/core/AppRender.js'), { three: THREE, './utils/GPUProfiler': class {} }).default
 
+test('Project render hook replaces only the final frame; legacy projects still render directly',()=>{
+    const render=Object.create(AppRender.prototype),camera=new THREE.PerspectiveCamera()
+    let direct=0,custom=0
+    render.renderer={initialized:true,render:()=>direct++};render.get_activeCamera=()=>camera;render.RENDER_COUNT=0
+    render.app={TYPE:'WEBGPU_APP',project:{renderFrame:c=>{assert.equal(c,camera);custom++}}}
+    render.update_RAF();assert.deepEqual([direct,custom],[0,1])
+    delete render.app.project.renderFrame;render.update_RAF();assert.deepEqual([direct,custom],[1,1])
+})
+
 test('Perspective camera preserves world pose/FOV and removes Blender display scale across resize', () => {
     const app = { emitter: new EventEmitter(), size: { CURRENT: { aspect: 2.4 } } }
     const rig = new CameraRig(app)

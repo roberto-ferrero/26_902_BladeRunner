@@ -34,7 +34,8 @@ class AppRender{
         if(this.app.TYPE == "WEBGPU_APP" && !this.renderer?.initialized){
             return
         }
-        this.renderer.render( this.scene, active_camera);
+        if (this.app.project?.renderFrame) this.app.project.renderFrame(active_camera)
+        else this.renderer.render( this.scene, active_camera);
         this.RENDER_COUNT++
     }
     //----------------------------------------------
