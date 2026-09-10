@@ -155,10 +155,49 @@ export default class TyrellUI {
         this.dialog.innerHTML = '<form method="dialog"><button>Cerrar</button></form><div class="tyrell-output"></div><a download>Descargar archivo</a>'
         this.dialog.setAttribute('aria-label', 'Resultado de revisión')
         this.root.appendChild(this.dialog)
+        this.guiContainer = document.createElement('div')
+        this.guiContainer.id = 'tyrell-gui-panel'
+        this.guiContainer.className = 'tyrell-gui-panel'
+        const footer = this.root.querySelector('footer')
+        this.guiContainer.append(this.root.querySelector('header'), footer)
+        this.root.append(this.guiContainer)
+        this.root.append(this.root.querySelector('.tyrell-metrics'))
+        const toolbar = document.createElement('div')
+        toolbar.className = 'tyrell-controls tyrell-gui-toolbar'
+        this.closeGUI = document.createElement('button')
+        this.closeGUI.type = 'button'
+        this.closeGUI.textContent = 'Ocultar GUI'
+        this.closeGUI.setAttribute('aria-controls', this.guiContainer.id)
+        this.closeGUI.onclick = () => this.setGUIVisible(false)
+        toolbar.append(this.closeGUI)
+        footer.prepend(toolbar)
+        this.openGUI = document.createElement('button')
+        this.openGUI.type = 'button'
+        this.openGUI.className = 'tyrell-gui-toggle'
+        this.openGUI.textContent = 'Abrir GUI'
+        this.openGUI.setAttribute('aria-controls', this.guiContainer.id)
+        this.openGUI.hidden = true
+        this.openGUI.onclick = () => this.setGUIVisible(true)
+        this.root.append(this.openGUI)
+        this.closeGUI.setAttribute('aria-expanded', 'true')
+        this.openGUI.setAttribute('aria-expanded', 'true')
+    }
+    setGUIVisible(visible) {
+        this.guiContainer.hidden = !visible
+        this.openGUI.hidden = visible
+        this.closeGUI.setAttribute('aria-expanded', String(visible))
+        this.openGUI.setAttribute('aria-expanded', String(visible))
+        // Keep all controls mounted: values and expanded sections survive hiding.
+        ;(visible ? this.closeGUI : this.openGUI).focus({ preventScroll: true })
     }
     setPanSettings(settings) {
         this.panEnabled.checked = settings.enabled
         for (const [key, { input, refresh }] of this.panInputs) { input.value = settings[key]; refresh() }
+    }
+    setEffectSettings(settings) {
+        for (const [key, label] of Object.entries({ bloom: 'Bloom', grade: 'Color cinematográfico', exterior: 'Profundidad exterior', interior: 'Bruma interior', volume: 'Haces de luz', floorReflection: 'Reflejo del suelo', specularEnvironment: 'Reflejos en metal y vidrio' })) {
+            this.root.querySelector(`[aria-label="${label}"]`).checked = settings[key]
+        }
     }
     setLookSettings({ profile, ev, studio }) {
         this.lookSelect.value = profile; this.lookExposure.value = ev; this.lookStudio.checked = studio

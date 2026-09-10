@@ -58,6 +58,7 @@ export default class E26902_BladeRunner {
             contribution: value => { this.lighting?.setContribution(value); this.indirect?.apply(this.lighting, this.studio); this.specularEnvironment?.invalidate(); this.resetMetrics() }
         })
         this.ui.setPanSettings(TYRELL.pan)
+        this.ui.setEffectSettings(TYRELL.effects)
         this.ui.lightingSelect.value = this.lightingProfile
         this.ui.setLookSettings({ profile: this.lookProfile, ev: this.exposureEV, studio: this.studio })
         app.size.update()
@@ -77,7 +78,7 @@ export default class E26902_BladeRunner {
         this.pan = new TyrellCameraPan(this.stageCamera.get_camera(), TYRELL.pan)
         this.pointerMove = event => {
             if (event.pointerType !== 'mouse' || !this.built) return
-            if (event.target?.closest?.('.tyrell-controls, .tyrell-pan, .tyrell-look, dialog')) { this.pan.setPointer(0, 0); return }
+            if (event.target?.closest?.('.tyrell-gui-panel footer, .tyrell-gui-toggle, .tyrell-controls, .tyrell-pan, .tyrell-look, dialog')) { this.pan.setPointer(0, 0); return }
             this.pan.setPointer(event.clientX / window.innerWidth * 2 - 1, event.clientY / window.innerHeight * 2 - 1)
         }
         this.pointerLeave = () => this.pan.setPointer(0, 0)
@@ -205,6 +206,11 @@ export default class E26902_BladeRunner {
         this.selectCamera(Math.max(0, this.cameras.findIndex(camera => camera.name.startsWith(TYRELL.initialCamera.replaceAll(' ', '_')) || camera.name.startsWith(TYRELL.initialCamera))))
         this.setQuality(this.quality)
         this.built = true
+        this.floorReflection.setEnabled(TYRELL.effects.floorReflection)
+        this.specularEnvironment.setEnabled(TYRELL.effects.specularEnvironment)
+        this.atmosphere.configure({ exterior: TYRELL.effects.exterior, interior: TYRELL.effects.interior })
+        this.setVolume({ enabled: TYRELL.effects.volume })
+        this.post.configure({ bloom: TYRELL.effects.bloom, grade: TYRELL.effects.grade })
         this.ui.ready(this.cameras, this.activeCameraIndex)
         this.resetMetrics()
     }

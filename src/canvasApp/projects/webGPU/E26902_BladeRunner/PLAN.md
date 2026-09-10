@@ -1,5 +1,7 @@
 # E26902 Blade Runner · Plan de trabajo
 
+Ajustes de arranque solicitados el 10-09-2026: calidad Media; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo H/V 1,1 m, suavidad 0,75 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos y no cierra 6.5.
+
 Estado: **6.4 ejecutado y documentado**. Bloom contenido y color suave en WebGPU, controles independientes, misma cadena en visor/captura y restauración exacta de la base. 40 pruebas correctas; capturas finales 6.4/011–019. R01 intacto. [Informe y límites](docs/phase6/6.4/ACABADO.md). Siguiente entrega: **6.5 · Comparación de aportación y coste**.
 
 ## Objetivo

@@ -266,3 +266,23 @@ Ambos reflejos, profundidad exterior, bruma y haces activos a intensidad 1; expo
 | [6.4_019_2026-09-10_CAM01.png](6.4_019_2026-09-10_CAM01.png) | 2026-09-10 08:22:54 | Media | Entrega final con polvo animado |
 
 [Informe y validación](../phase6/6.4/ACABADO.md).
+
+## GUI plegable · 10-09-2026
+
+Cambio adicional de interfaz; no cierra 6.5. Ocultar/abrir conserva controles y secciones desplegadas. Comprobado en navegador; compilación correcta en 109,079 s, tres advertencias existentes de tamaño. Capturas de interfaz, no comparación de acabado: durante la revisión varió el encuadre. 003–004 documentan el ciclo final de reapertura/cierre con bloom y color activos. Horas UTC.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [GUI_001_2026-09-10_oculta.png](GUI_001_2026-09-10_oculta.png) | 2026-09-10 08:54:23 |
+| [GUI_002_2026-09-10_abierta.png](GUI_002_2026-09-10_abierta.png) | 2026-09-10 08:54:43 |
+| [GUI_003_2026-09-10_reabierta.png](GUI_003_2026-09-10_reabierta.png) | 2026-09-10 08:55:09 |
+| [GUI_004_2026-09-10_oculta.png](GUI_004_2026-09-10_oculta.png) | 2026-09-10 08:55:09 |
+
+### FPS permanentes y nuevos valores iniciales
+
+Arranque verificado en WebGPU: paneo H/V 1,1 m, suavidad 0,75 s, calidad Media y los siete efectos solicitados activos. GUI abierta/cerrada conserva la línea de FPS. 005 incluye diagnóstico JSON; 006 muestra la GUI oculta con FPS visibles. 40 pruebas correctas; build correcto en 65,927 s (tres advertencias existentes). Horas UTC.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [GUI_005_2026-09-10_valores-iniciales.png](GUI_005_2026-09-10_valores-iniciales.png) | 2026-09-10 09:10:31 |
+| [GUI_006_2026-09-10_FPS-visibles.png](GUI_006_2026-09-10_FPS-visibles.png) | 2026-09-10 09:10:43 |
