@@ -1,0 +1,87 @@
+- region "Visor Tyrell":
+  - text: BLADE RUNNER / ESTUDIO 01
+  - heading "Oficinas Tyrell" [level=1]
+  - generic: WebGPU · Three.js r185
+  - button "Ocultar GUI" [expanded]
+  - generic "Paneo con el ratón"
+  - generic "Atmósfera"
+  - generic "Acabado cinematográfico"
+  - generic "Color y materiales"
+  - option "Importado del GLB"
+  - option "Tyrell v1 · base revisada" [selected]
+  - option "Provisional · fase 3"
+  - option "Tyrell · luz 4.1"
+  - option "Tyrell · luz 4.2" [selected]
+  - option "Tyrell · luz 4.3"
+  - option "Composición completa" [selected]
+  - option "Sólo sol"
+  - option "Sólo ambiente"
+  - option "Sólo áreas"
+  - option "Área ventanal"
+  - option "Área frontal"
+  - option "Área izquierda"
+  - option "Área derecha"
+  - option "Base R01" [selected]
+  - option "Sonda difusa · ensayo"
+  - option "Entorno · ensayo"
+  - option "Piedra pulida · 5.2" [selected]
+  - option "Ensayo uniforme · 5.1"
+  - option "Según calidad" [selected]
+  - option "25 %"
+  - option "50 %"
+  - option "100 %"
+  - option "Al cambiar la vista o la escena" [selected]
+  - option "Cada render"
+  - text: Cámara
+  - combobox "Cámara":
+    - option "CAM 01 | fotograma general" [selected]
+    - option "CAM 02 | mesa y juntas"
+    - option "CAM 03 | perfiles invertidos"
+    - option "CAM 04 | recorrido lateral"
+    - option "Camera_B"
+    - option "Camera_C"
+    - option "Camera_D"
+    - option "Camera_E"
+    - option "Camera_F"
+    - option "Camera_free"
+  - text: Calidad
+  - combobox "Calidad":
+    - option "Baja"
+    - option "Media" [selected]
+    - option "Alta"
+  - checkbox "Encuadre 2,4:1" [checked]
+  - text: Encuadre 2,4:1
+  - button "Captura 1920 × 800"
+  - button "Diagnóstico"
+  - paragraph: Iluminación en calibración · Cámaras originales de Blender · Recorrido libre en una próxima fase
+  - generic "Comparar efectos y coste"
+  - button "Medir configuración" [active]
+  - button "Exportar comparación"
+  - button "Borrar mediciones"
+  - paragraph: Activa o desactiva efectos en sus paneles. Medir centra la cámara, descarta 60 fotogramas y recoge 120. Compara con la misma cámara, calidad, resolución y luz. Los FPS pueden estar limitados por la pantalla; no son tiempo GPU.
+  - status: Medición guardada. Cambia un efecto y vuelve a medir; conserva cámara, calidad y encuadre.
+  - table:
+    - rowgroup:
+      - row "Nº Vista / calidad / píxeles Efectos activos FPS Media ms P95 ms":
+        - columnheader "Nº"
+        - columnheader "Vista / calidad / píxeles"
+        - columnheader "Efectos activos"
+        - columnheader "FPS"
+        - columnheader "Media ms"
+        - columnheader "P95 ms"
+    - rowgroup:
+      - row "1 CAM_01_|_fotograma_general / Media / 893 × 372 Suelo, Metal/vidrio, Exterior, Bruma, Haces, Bloom, Color, Lens flare 50.9 19.65 41.7":
+        - cell "1"
+        - cell "CAM_01_|_fotograma_general / Media / 893 × 372"
+        - cell "Suelo, Metal/vidrio, Exterior, Bruma, Haces, Bloom, Color, Lens flare"
+        - cell "50.9"
+        - cell "19.65"
+        - cell "41.7"
+      - row "2 CAM_01_|_fotograma_general / Media / 893 × 372 Suelo, Metal/vidrio, Exterior, Bruma, Haces, Bloom, Color 46 21.73 54":
+        - cell "2"
+        - cell "CAM_01_|_fotograma_general / Media / 893 × 372"
+        - cell "Suelo, Metal/vidrio, Exterior, Bruma, Haces, Bloom, Color"
+        - cell "46"
+        - cell "21.73"
+        - cell "54"
+  - paragraph: 39.3 FPS · 25.46 ms/fotograma · 893 × 372 · 289 dibujos · 605.317 triángulos/pasadas

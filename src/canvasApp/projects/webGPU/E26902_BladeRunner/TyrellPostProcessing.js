@@ -23,6 +23,12 @@ export default class TyrellPostProcessing {
             if (active !== this.bloomInGraph) this.setGraph(active)
         }
     }
+    configureFlare(values) {
+        const wasActive = this.flare?.settings.enabled && this.flare.settings.intensity > 0
+        this.flare?.configure(values)
+        const active = this.flare?.settings.enabled && this.flare.settings.intensity > 0
+        if (this.pipeline && active !== wasActive) this.setGraph(this.bloomInGraph)
+    }
     setQuality(quality) {
         this.quality = quality
         this.bloomNode?.setResolutionScale(quality === 'Baja' ? 0.25 : 0.5)
@@ -42,6 +48,7 @@ export default class TyrellPostProcessing {
             catch (error) { this.sceneRevision = undefined; throw error }
         }
         this.color = this.scenePass.getTextureNode('output')
+        this.flareNode = this.flare?.createNode(this.scenePass.getTextureNode('depth'))
         this.bloomNode = bloom(this.color, this.settings.strength, this.settings.radius, this.settings.threshold)
         // Bound only the halo energy; a hot specular pixel must not become a new lamp.
         this.bloomNode.highPassFn = Fn(({ input, threshold, smoothWidth }) => {
@@ -55,7 +62,8 @@ export default class TyrellPostProcessing {
         this.setGraph(this.settings.bloom && this.settings.strength > 0)
     }
     setGraph(withBloom) {
-        const rgb = withBloom ? this.color.rgb.add(this.bloomNode.rgb) : this.color.rgb
+        const base = withBloom ? this.color.rgb.add(this.bloomNode.rgb) : this.color.rgb
+        const rgb = this.flareNode && this.flare.settings.enabled && this.flare.settings.intensity > 0 ? base.add(this.flareNode) : base
         // Mild saturation reduction and tonal balance, preserving zero and dark detail.
         const y = luminance(rgb)
         const balanced = rgb.mul(mix(vec3(0.99, 1.005, 1.015), vec3(1.015, 1.005, 0.985), y.smoothstep(0.03, 0.6)))
@@ -65,7 +73,8 @@ export default class TyrellPostProcessing {
         this.bloomInGraph = withBloom
     }
     render(camera) {
-        const active = (this.settings.bloom && this.settings.strength > 0) || (this.settings.grade && this.settings.gradeStrength > 0)
+        this.flare?.update(camera)
+        const active = (this.flare?.settings.enabled && this.flare.settings.intensity > 0) || (this.settings.bloom && this.settings.strength > 0) || (this.settings.grade && this.settings.gradeStrength > 0)
         if (!active) { this.renderer.render(this.scene, camera); return }
         if (!this.pipeline) this.initialize(camera)
         this.scenePass.camera = camera
@@ -79,10 +88,10 @@ export default class TyrellPostProcessing {
         }
     }
     diagnostics() {
-        return { ...this.settings, ready: !!this.pipeline, quality: this.quality, bloomResolutionScale: this.quality === 'Baja' ? 0.25 : 0.5,
+        return { ...this.settings, flare: this.flare?.diagnostics() || null, ready: !!this.pipeline, quality: this.quality, bloomResolutionScale: this.quality === 'Baja' ? 0.25 : 0.5,
             method: 'HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output',
             reference: '6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1', bloomLuminanceLimit: 4,
-            extraFullscreenPasses: this.settings.bloom && this.settings.strength > 0 ? 13 : this.settings.grade && this.settings.gradeStrength > 0 ? 1 : 0 }
+            extraFullscreenPasses: this.settings.bloom && this.settings.strength > 0 ? 13 : (this.settings.grade && this.settings.gradeStrength > 0) || (this.flare?.settings.enabled && this.flare.settings.intensity > 0) ? 1 : 0 }
     }
     dispose() { this.bloomNode?.dispose(); this.scenePass?.dispose(); this.pipeline?.dispose() }
 }

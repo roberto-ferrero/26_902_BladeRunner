@@ -125,7 +125,7 @@ export default class TyrellUI {
         this.root.querySelector('footer').prepend(this.panPanel)
         const finishPanel = document.createElement('details')
         finishPanel.className = 'tyrell-pan'
-        finishPanel.innerHTML = '<summary>Acabado cinematográfico</summary><div class="tyrell-pan-controls"></div><p>Bloom sobre luces intensas y color suave. Desactiva ambos para comparar con la base. La captura conserva estos ajustes.</p>'
+        finishPanel.innerHTML = '<summary>Acabado cinematográfico</summary><div class="tyrell-pan-controls"></div><p>Bloom sobre luces intensas y color suave. Desactiva bloom, color y lens flare para comparar con la base. La captura conserva estos ajustes.</p>'
         const finishControls = finishPanel.querySelector('div')
         for (const [key, title] of [['bloom', 'Bloom'], ['grade', 'Color cinematográfico']]) {
             const label = document.createElement('label'), input = document.createElement('input')
@@ -141,6 +141,17 @@ export default class TyrellUI {
             Object.assign(input, { type: 'range', min, max, step, value }); input.setAttribute('aria-label', title)
             output.value = Number(value).toFixed(2)
             input.oninput = () => { output.value = Number(input.value).toFixed(2); actions.post({ [key]: Number(input.value) }) }
+            label.append(document.createTextNode(title), input, output); finishControls.append(label)
+        }
+        const flareLabel = document.createElement('label'), flareToggle = document.createElement('input')
+        flareToggle.type = 'checkbox'; flareToggle.checked = true; flareToggle.setAttribute('aria-label', 'Lens flare solar')
+        flareToggle.onchange = () => actions.flare({ enabled: flareToggle.checked })
+        flareLabel.append(flareToggle, document.createTextNode('Lens flare solar')); finishControls.append(flareLabel)
+        for (const [key, title, value, min, max] of [['intensity', 'Intensidad del lens flare', .18, 0, .6], ['size', 'Tamaño del lens flare', 1, .5, 2]]) {
+            const label = document.createElement('label'), input = document.createElement('input'), output = document.createElement('output')
+            Object.assign(input, { type: 'range', min, max, step: .01, value }); input.setAttribute('aria-label', title)
+            output.value = Number(value).toFixed(2)
+            input.oninput = () => { output.value = Number(input.value).toFixed(2); actions.flare({ [key]: Number(input.value) }) }
             label.append(document.createTextNode(title), input, output); finishControls.append(label)
         }
         this.root.querySelector('footer').insertBefore(finishPanel, this.lookPanel)

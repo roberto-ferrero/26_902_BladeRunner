@@ -10,7 +10,7 @@ export default class TyrellComparison {
             [row.floorReflection?.enabled, 'Suelo'], [row.specularEnvironment?.enabled, 'Metal/vidrio'],
             [row.atmosphere?.exterior, 'Exterior'], [row.atmosphere?.interior, 'Bruma'],
             [row.lightVolume?.enabled, 'Haces'], [row.lightVolume?.enabled && row.lightVolume?.dust && row.lightVolume?.speed > 0, 'Polvo animado'],
-            [row.postProcessing?.bloom, 'Bloom'], [row.postProcessing?.grade, 'Color']
+            [row.postProcessing?.bloom, 'Bloom'], [row.postProcessing?.grade, 'Color'], [row.postProcessing?.flare?.enabled && row.postProcessing.flare.intensity > 0, 'Lens flare']
         ].filter(([enabled]) => enabled).map(([, name]) => name).join(', ') || 'Sin efectos'
         this.rows.push(row)
         if (this.rows.length > 12) this.rows.shift()

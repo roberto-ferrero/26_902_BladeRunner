@@ -345,3 +345,18 @@ Media, siete efectos activos, polvo desactivado para comparar. 014: original; 01
 | [6.7_015_2026-09-10_CAM01-v3.png](6.7_015_2026-09-10_CAM01-v3.png) | 2026-09-10 13:30:23 |
 | [6.7_016_2026-09-10_CameraD-v3.png](6.7_016_2026-09-10_CameraD-v3.png) | 2026-09-10 13:30:53 |
 | [6.7_017_2026-09-10_CameraF-v3.png](6.7_017_2026-09-10_CameraF-v3.png) | 2026-09-10 13:31:11 |
+
+## 6.8 · 10-09-2026
+
+Lens flare solar. PNG de interfaz 893 × 912 con captura 1920 × 800 reducida, salvo 007 (medición). Media salvo 005 Baja y 006 Alta. Polvo desactivado en 001–007 y activo en 008; resto de efectos activos. Flare desactivado en 002. Horas UTC.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [6.8_001_2026-09-10_CAM01-flare.png](6.8_001_2026-09-10_CAM01-flare.png) | 2026-09-10 14:40:19 |
+| [6.8_002_2026-09-10_CAM01-sin-flare.png](6.8_002_2026-09-10_CAM01-sin-flare.png) | 2026-09-10 14:40:58 |
+| [6.8_003_2026-09-10_CAM02-fuera-campo.png](6.8_003_2026-09-10_CAM02-fuera-campo.png) | 2026-09-10 14:44:04 |
+| [6.8_004_2026-09-10_CAM03.png](6.8_004_2026-09-10_CAM03.png) | 2026-09-10 14:44:32 |
+| [6.8_005_2026-09-10_CAM01-Baja.png](6.8_005_2026-09-10_CAM01-Baja.png) | 2026-09-10 14:47:51 |
+| [6.8_006_2026-09-10_CAM01-Alta.png](6.8_006_2026-09-10_CAM01-Alta.png) | 2026-09-10 14:48:41 |
+| [6.8_007_2026-09-10_medicion.png](6.8_007_2026-09-10_medicion.png) | 2026-09-10 14:51:01 |
+| [6.8_008_2026-09-10_CAM01-final.png](6.8_008_2026-09-10_CAM01-final.png) | 2026-09-10 14:51:35 |

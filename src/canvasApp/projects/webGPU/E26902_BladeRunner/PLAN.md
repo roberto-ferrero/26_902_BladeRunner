@@ -2,7 +2,7 @@
 
 Ajustes de arranque solicitados el 10-09-2026: calidad Media; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo H/V 1,1 m, suavidad 0,75 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos ; 6.5 queda documentado más abajo.
 
-Estado actual: **6.7 v3: recuperación de la proyección original del cielo**. v2 rechazada por cambiar escala y posición de las nubes. Foto original en la zona frontal, transición interior hacia el panorama en los bordes; pendiente de revisión visual. [Historial y validación](docs/phase6/6.7/CIELO.md). No se avanza a 7.1.
+Estado actual: **6.8 implementado: lens flare solar sutil**, halo cálido y tres destellos, activado a intensidad 0,18 con GUI y oclusión por profundidad. 44 pruebas correctas. [Documentación y límites de validación](docs/phase6/6.8/LENS_FLARE.md). Acabado pendiente de revisión visual del usuario. El cielo permanece en 6.7 v3; no se avanza a 7.1.
 
 ## Objetivo
 
@@ -117,6 +117,8 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 **Resultado comprobable:** comparación lado a lado del plano general, el detalle y la vista lateral. Registrar las diferencias restantes con Blender y con los fotogramas de la película.
 
 - [x] **6.7** Cielo panorámico revisado en v3: recuperar composición de las nubes originales y mezclar dentro de su perímetro. v1 y v2 rechazadas; v3 pendiente de valoración visual. [Documentación](docs/phase6/6.7/CIELO.md).
+
+- [x] **6.8** Lens flare solar sutil: halo cálido y tres destellos; activo con intensidad 0,18 y tamaño 1. GUI, trece muestras de profundidad para oclusión y atenuación en bordes; captura y comparación integradas. Revisadas CAM01/02/03 y tres calidades; 44 pruebas correctas. [Informe y alcance de validación](docs/phase6/6.8/LENS_FLARE.md). Estética pendiente de valoración del usuario.
 
 ## 7 · Navegación y presentación
 

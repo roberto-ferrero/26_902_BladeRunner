@@ -2,7 +2,7 @@
 
 **GUI plegable:** «Ocultar GUI» oculta controles y cabecera; la línea de FPS permanece siempre visible; queda «Abrir GUI» para recuperarlos. Se conservan valores y secciones abiertas durante la sesión. El panel tiene desplazamiento vertical cuando no cabe en pantalla. La escena y sus efectos siguen activos.
 
-Estado actual: **6.7 v3: recuperación de la proyección original del cielo**. v2 rechazada por cambiar escala y posición de las nubes. Foto original en la zona frontal, transición interior hacia el panorama en los bordes; pendiente de revisión visual. [Historial y validación](docs/phase6/6.7/CIELO.md). No se avanza a 7.1.
+Estado actual: **6.8 implementado: lens flare solar sutil**, halo cálido y tres destellos, activado a intensidad 0,18 con GUI y oclusión por profundidad. 44 pruebas correctas. [Documentación y límites de validación](docs/phase6/6.8/LENS_FLARE.md). Acabado pendiente de revisión visual del usuario. El cielo permanece en 6.7 v3; no se avanza a 7.1.
 
 **Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
 

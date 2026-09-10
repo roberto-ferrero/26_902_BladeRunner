@@ -64,3 +64,15 @@ test('Reference capture routes both resolutions through the final pipeline and r
     await assert.rejects(captureReference(renderer,new THREE.Scene(),camera,c=>{if(c!==camera)throw new Error('capture failed')}),/capture failed/)
     assert.deepEqual(size.toArray(),[893,372]);assert.equal(ratio,1.5)
 })
+
+test('Flare-only processing follows capture cameras and is removed from the graph when disabled',()=>{
+ const direct=[],renderer={render:(s,c)=>direct.push(c)}
+ const post=new Post(renderer,new THREE.Scene()),a=new THREE.PerspectiveCamera(),b=a.clone(),updates=[]
+ post.flare={settings:{enabled:true,intensity:.18},configure(v){Object.assign(this.settings,v)},update(c){updates.push(c)},createNode(){return TSL.vec3(.1)}}
+ post.initialize(a);const enabledGraph=post.pipeline.outputNode;let count=0;post.pipeline.render=()=>count++
+ post.render(b);assert.equal(count,1);assert.equal(updates.at(-1),b)
+ post.configureFlare({enabled:false});assert.notEqual(post.pipeline.outputNode,enabledGraph)
+ post.render(a);assert.deepEqual(direct,[a])
+ post.configureFlare({enabled:true});post.render(b);assert.equal(count,2)
+ post.dispose()
+})
