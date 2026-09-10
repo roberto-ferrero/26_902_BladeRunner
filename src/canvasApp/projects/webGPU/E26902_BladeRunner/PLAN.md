@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Ajustes de arranque solicitados el 10-09-2026: calidad Media; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo H/V 1,1 m, suavidad 0,75 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos ; 6.5 queda documentado más abajo.
+Ajustes de arranque actualizados el 10-09-2026: GUI inicialmente oculta, cabecera y FPS siempre visibles; calidad Baja; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo horizontal 2 m, vertical 0,5 m, suavidad 1,4 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos ; 6.5 queda documentado más abajo.
 
 Estado actual: **6.8 implementado: lens flare solar sutil**, halo cálido y tres destellos, activado a intensidad 0,18 con GUI y oclusión por profundidad. 44 pruebas correctas. [Documentación y límites de validación](docs/phase6/6.8/LENS_FLARE.md). Acabado pendiente de revisión visual del usuario. El cielo permanece en 6.7 v3; no se avanza a 7.1.
 

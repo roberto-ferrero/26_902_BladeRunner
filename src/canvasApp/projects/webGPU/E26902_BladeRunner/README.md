@@ -1,6 +1,6 @@
 # Oficinas Tyrell · Visor WebGPU
 
-**GUI plegable:** «Ocultar GUI» oculta controles y cabecera; la línea de FPS permanece siempre visible; queda «Abrir GUI» para recuperarlos. Se conservan valores y secciones abiertas durante la sesión. El panel tiene desplazamiento vertical cuando no cabe en pantalla. La escena y sus efectos siguen activos.
+**Arranque actualizado:** GUI oculta con botón «Abrir GUI»; cabecera y FPS siempre visibles. Calidad Baja. Paneo horizontal 2 m, vertical 0,5 m y suavidad 1,4 s. Los controles conservan sus valores al ocultarse.
 
 Estado actual: **6.8 implementado: lens flare solar sutil**, halo cálido y tres destellos, activado a intensidad 0,18 con GUI y oclusión por profundidad. 44 pruebas correctas. [Documentación y límites de validación](docs/phase6/6.8/LENS_FLARE.md). Acabado pendiente de revisión visual del usuario. El cielo permanece en 6.7 v3; no se avanza a 7.1.
 

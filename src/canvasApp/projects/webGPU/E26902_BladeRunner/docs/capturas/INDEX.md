@@ -360,3 +360,12 @@ Lens flare solar. PNG de interfaz 893 × 912 con captura 1920 × 800 reducida, s
 | [6.8_006_2026-09-10_CAM01-Alta.png](6.8_006_2026-09-10_CAM01-Alta.png) | 2026-09-10 14:48:41 |
 | [6.8_007_2026-09-10_medicion.png](6.8_007_2026-09-10_medicion.png) | 2026-09-10 14:51:01 |
 | [6.8_008_2026-09-10_CAM01-final.png](6.8_008_2026-09-10_CAM01-final.png) | 2026-09-10 14:51:35 |
+
+## GUI: cabecera permanente y nuevos valores · 10-09-2026
+
+Verificado en WebGPU: cabecera y FPS visibles con GUI oculta al arrancar, apertura/cierre y valores Baja, H 2 m, V 0,5 m, suavidad 1,4 s. Compilación correcta en 50,469 s con tres avisos de tamaño. Capturas PNG de interfaz; horas UTC.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [GUI_007_2026-09-10_arranque-oculto.png](GUI_007_2026-09-10_arranque-oculto.png) | 2026-09-10 15:05:00 |
+| [GUI_008_2026-09-10_valores-Baja-paneo.png](GUI_008_2026-09-10_valores-Baja-paneo.png) | 2026-09-10 15:05:37 |

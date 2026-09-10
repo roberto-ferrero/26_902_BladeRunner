@@ -26,12 +26,12 @@ export const TYRELL = {
         { position: [-7.7, 3.8, -3.4], target: [-3, 3.4, -5], width: 2, height: 3 },
         { position: [7.7, 3.8, -7.2], target: [2, 3.2, -8], width: 2, height: 3 }
     ],
-    quality: 'Media',
+    quality: 'Baja',
     shadows: {
         camera: { left: -14, right: 14, top: 10, bottom: -4, near: 50, far: 115 },
         bias: -0.00015, normalBias: 0.025, radius: 1.5, glassOpacity: 0.22
     },
-    pan: { enabled: true, horizontal: 1.1, vertical: 1.1, smoothness: 0.75, targetDistance: 20 },
+    pan: { enabled: true, horizontal: 2, vertical: 0.5, smoothness: 1.4, targetDistance: 20 },
     effects: { bloom: true, grade: true, exterior: true, interior: true, volume: true, floorReflection: true, specularEnvironment: true },
     // Resolution budgets, not an inferred GPU ranking. Geometry is unchanged.
     profiles: {

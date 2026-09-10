@@ -11,7 +11,7 @@ export default class TyrellUI {
             <div class="tyrell-status" role="status" aria-live="polite"><p>Preparando el motor…</p><progress aria-label="Carga del escenario"></progress><button type="button" hidden>Reintentar</button></div>
             <footer hidden><div class="tyrell-controls">
                 <label>Cámara <select aria-label="Cámara"></select></label>
-                <label>Calidad <select aria-label="Calidad"><option>Baja</option><option selected>Media</option><option>Alta</option></select></label>
+                <label>Calidad <select aria-label="Calidad"><option selected>Baja</option><option>Media</option><option>Alta</option></select></label>
                 <label class="tyrell-check"><input type="checkbox" checked> Encuadre 2,4:1</label>
                 <button type="button" data-action="capture">Captura 1920 × 800</button>
                 <button type="button" data-action="report">Diagnóstico</button>
@@ -185,7 +185,7 @@ export default class TyrellUI {
         this.guiContainer.id = 'tyrell-gui-panel'
         this.guiContainer.className = 'tyrell-gui-panel'
         const footer = this.root.querySelector('footer')
-        this.guiContainer.append(this.root.querySelector('header'), footer)
+        this.guiContainer.append(footer)
         this.root.append(this.guiContainer)
         this.root.append(this.root.querySelector('.tyrell-metrics'))
         const toolbar = document.createElement('div')
@@ -207,6 +207,7 @@ export default class TyrellUI {
         this.root.append(this.openGUI)
         this.closeGUI.setAttribute('aria-expanded', 'true')
         this.openGUI.setAttribute('aria-expanded', 'true')
+        this.setGUIVisible(false)
     }
     setGUIVisible(visible) {
         this.guiContainer.hidden = !visible
