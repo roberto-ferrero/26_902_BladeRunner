@@ -43,6 +43,30 @@ test('Column repair preserves shared textures and the authored wall/column mater
     geometry.dispose();material.dispose();columns[0].material.dispose();texture.dispose();core.geometry.dispose();core.material.dispose()
 })
 
+test('All 18 column cores occlude the calibrated oblique sun at every horizontal joint',()=>{
+    const root=new THREE.Group(),core=m.exports.addColumnCores(root)
+    root.updateMatrixWorld(true)
+    const configCode=require('@babel/core').transformSync(fs.readFileSync(base+'config.js','utf8'),{
+        configFile:false,babelrc:false,plugins:['@babel/plugin-transform-modules-commonjs']
+    }).code
+    const config={exports:{}}
+    new Function('module','exports',configCode)(config,config.exports)
+    const settings=config.exports.TYRELL
+    const direction=new THREE.Vector3(...settings.calibratedLighting.keyPosition).sub(new THREE.Vector3(...settings.lighting.target)).normalize()
+    const ray=new THREE.Raycaster();ray.far=2.5
+    let checked=0
+    for(const sx of [-1,1])for(const [x,ys] of [[3,[-8.1015,0,5.4,13.2]],[9,[-8.1015,-2.7015,2.6985,8.1015,13.2]]])for(const y of ys){
+        for(let course=1;course<=23;course++){
+            const center=new THREE.Vector3(sx*x,course*.245,-y)
+            ray.set(center.clone().addScaledVector(direction,-2),direction)
+            assert.ok(ray.intersectObject(core).length>0,`Solar leak at column ${sx*x},${-y}, joint ${course}`)
+            checked++
+        }
+    }
+    assert.equal(checked,414)
+    core.geometry.dispose();core.material.dispose()
+})
+
 test('Real model only reassigns the rear corner returns; all original positions and materials remain intact',async()=>{
     const oldSelf=globalThis.self,oldBitmap=globalThis.createImageBitmap
     globalThis.self=globalThis;globalThis.createImageBitmap=async()=>({width:1024,height:1024,close(){}})

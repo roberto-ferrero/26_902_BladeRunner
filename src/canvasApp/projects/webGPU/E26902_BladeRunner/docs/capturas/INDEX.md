@@ -217,3 +217,24 @@ Ambas muestran el render fijo 1920 × 800 sin paneo dentro del diálogo de captu
 Restauración compilada sin errores (Webpack, 33,667 s; tres advertencias de empaquetado). El único cambio de ejecución de esta revisión es el perfil inicial de luz. El punto 4.3 queda pendiente según la revisión del usuario.
 
 003 tiene 1294 × 912, igual que 002, y muestra la misma captura fija sin paneo. Revisión de contraste compilada sin errores en 30,132 s (tres advertencias de empaquetado). Exposición y fuentes de relleno sin cambios.
+
+## 6.3 · Oclusión y estabilidad (10-09-2026)
+
+Ambos reflejos, profundidad exterior, bruma interior y haces activos; intensidades 1 y exposición 0 EV. Polvo según fila, velocidad 1. Pantallazos PNG de 893 × 912; salvo paneo, diálogo de referencia 1920 × 800 reducido. Orden global por punto, horas UTC. 001–005: versión 6.2; 006–012: compilación 6.3.
+
+| Archivo | Hora UTC | Calidad | Estado |
+| --- | --- | --- | --- |
+| [6.3_001_2026-09-10_CAM01.png](6.3_001_2026-09-10_CAM01.png) | 2026-09-10 07:43:25 | Media | Base 6.2; polvo apagado |
+| [6.3_002_2026-09-10_CAM01.png](6.3_002_2026-09-10_CAM01.png) | 2026-09-10 07:43:56 | Baja | Comparacion de calidad; polvo apagado |
+| [6.3_003_2026-09-10_CAM01.png](6.3_003_2026-09-10_CAM01.png) | 2026-09-10 07:44:33 | Alta | Comparacion de calidad; polvo apagado |
+| [6.3_004_2026-09-10_CAM03.png](6.3_004_2026-09-10_CAM03.png) | 2026-09-10 07:46:03 | Media | Perfiles invertidos; polvo apagado |
+| [6.3_005_2026-09-10_CAM01-paneo.png](6.3_005_2026-09-10_CAM01-paneo.png) | 2026-09-10 07:47:04 | Media | Paneo asentado; polvo apagado; visor directo |
+| [6.3_006_2026-09-10_CAM01.png](6.3_006_2026-09-10_CAM01.png) | 2026-09-10 07:50:47 | Media | 6.3 final; primera muestra estatica |
+| [6.3_007_2026-09-10_CAM01.png](6.3_007_2026-09-10_CAM01.png) | 2026-09-10 07:51:10 | Media | Repeticion estatica |
+| [6.3_008_2026-09-10_CAM01.png](6.3_008_2026-09-10_CAM01.png) | 2026-09-10 07:51:21 | Media | Tras apagar/encender haces |
+| [6.3_009_2026-09-10_CAM02.png](6.3_009_2026-09-10_CAM02.png) | 2026-09-10 07:51:45 | Media | Detalle de mesa y juntas; polvo apagado |
+| [6.3_010_2026-09-10_CAM04.png](6.3_010_2026-09-10_CAM04.png) | 2026-09-10 07:52:00 | Media | Vista lateral; polvo apagado |
+| [6.3_011_2026-09-10_CAM01-paneo.png](6.3_011_2026-09-10_CAM01-paneo.png) | 2026-09-10 07:52:39 | Media | Paneo asentado; polvo animado; visor directo y JSON |
+| [6.3_012_2026-09-10_CAM01.png](6.3_012_2026-09-10_CAM01.png) | 2026-09-10 07:53:07 | Media | Entrega final; polvo animado |
+
+[Informe, comparación de píxeles y límites](../phase6/6.3/ESTABILIDAD.md).

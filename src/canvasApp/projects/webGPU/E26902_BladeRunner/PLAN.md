@@ -1,6 +1,6 @@
 # E26902 Blade Runner · Plan de trabajo
 
-Estado: **6.2 ejecutado y documentado**. Integración volumétrica solar y polvo de densidad animada, controles independientes y actualización planar limitada. Corregida la actualización de bruma en materiales compartidos. 35 pruebas correctas; propuesta final en capturas 6.2/031–033. R01 archivado intacto. [Informe, coste y límites](docs/phase6/6.2/VOLUMEN.md). Siguiente entrega: **6.3 · Oclusión, estabilidad, bandas y ruido**. La propuesta queda para revisión del usuario; la fase 6 no está cerrada.
+Estado: **6.3 ejecutado y documentado**. Oclusión solar comprobada en 414 juntas de las 18 columnas, revisión CAM 01–04 y paneo, comparación de calidad y repetibilidad estática exacta. 36 pruebas correctas. R01 intacto. [Informe y límites](docs/phase6/6.3/ESTABILIDAD.md). Siguiente entrega: **6.4 · Bloom contenido y ajuste final del color**.
 
 ## Objetivo
 
@@ -107,7 +107,7 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 - [x] **6.1** Profundidad exterior y bruma interior separadas con nodos analíticos y controles independientes. Primer exterior descartado por exceso de aclarado; propuesta tenue revisada en CAM 01/02/04, paneo y restauración. Sin pasadas adicionales; 33 pruebas correctas. [Parámetros, capturas y límites](docs/phase6/6.1/ATMOSFERA.md).
 - [x] **6.2** Integración solar acotada con consulta de sombra y polvo de densidad animada, 24/40/64 muestras según calidad. Medición con reflejos, actualización planar a 10 Hz para deriva lenta, controles y restauración comprobados. Corregido el refresco de parámetros de 6.1 en materiales compartidos. 35 pruebas correctas. [Informe y límites](docs/phase6/6.2/VOLUMEN.md).
-- [ ] **6.3** Comprobar oclusión por las columnas, estabilidad temporal, bandas y ruido del volumen.
+- [x] **6.3** Oclusión, estabilidad, bandas y ruido revisados: 414 juntas frente al sol, CAM 01–04, paneo y perfiles de calidad. Capturas estáticas idénticas antes/después y tras alternar haces. Protecciones para rayos rasantes e intervalos vacíos; 36 pruebas correctas. [Informe y límites](docs/phase6/6.3/ESTABILIDAD.md).
 - [ ] **6.4** Añadir bloom contenido y ajuste final del color con el sistema de posprocesado WebGPU.
 - [ ] **6.5** Mantener controles para activar/desactivar cada efecto y comparar su aportación y coste.
 - [ ] **6.6** Valorar grano, viñeta o profundidad de campo sólo si aportan fidelidad a las referencias y no ocultan defectos del modelo o la luz.

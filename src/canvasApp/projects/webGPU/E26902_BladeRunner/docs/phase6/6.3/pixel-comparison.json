@@ -1,0 +1,67 @@
+{
+  "001-006": {
+    "identical": true,
+    "rgbMeanAbsoluteDifference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maxRGBDifference": [
+      0,
+      0,
+      0
+    ]
+  },
+  "006-007": {
+    "identical": true,
+    "rgbMeanAbsoluteDifference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maxRGBDifference": [
+      0,
+      0,
+      0
+    ]
+  },
+  "006-008": {
+    "identical": true,
+    "rgbMeanAbsoluteDifference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "maxRGBDifference": [
+      0,
+      0,
+      0
+    ]
+  },
+  "001-002": {
+    "identical": false,
+    "rgbMeanAbsoluteDifference": [
+      0.6474639433440932,
+      0.6032699366032699,
+      0.6549508309807935
+    ],
+    "maxRGBDifference": [
+      186,
+      190,
+      191
+    ]
+  },
+  "001-003": {
+    "identical": false,
+    "rgbMeanAbsoluteDifference": [
+      0.2715412041254738,
+      0.244469188289413,
+      0.2733969924981161
+    ],
+    "maxRGBDifference": [
+      44,
+      41,
+      37
+    ]
+  }
+}

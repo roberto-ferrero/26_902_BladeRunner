@@ -1,6 +1,6 @@
 # Oficinas Tyrell · Visor WebGPU
 
-**Estado actual: 6.2 ejecutado.** Haces solares y polvo volumétrico con controles; corregida la actualización de bruma en materiales compartidos. 35 pruebas correctas, revisión CAM 01/02/04 y capturas finales 6.2/031–033. [Informe de volumen](docs/phase6/6.2/VOLUMEN.md). Reflejos y atmósfera arrancan desactivados para conservar R01. Próximo punto: **6.3 · Oclusión y estabilidad del volumen**. Las notas que siguen incluyen el histórico.
+**Estado actual: 6.3 ejecutado.** Oclusión y estabilidad del volumen revisadas, 36 pruebas correctas, capturas 6.3/001–012 y comparaciones de píxeles archivadas. [Informe](docs/phase6/6.3/ESTABILIDAD.md). Reflejos y atmósfera arrancan desactivados para conservar R01. Próximo punto: **6.4 · Bloom contenido y ajuste final del color**. Las notas que siguen incluyen el histórico.
 
 **Referencia visual guardada: [Tyrell · R01 — Contraste equilibrado](docs/acabados/R01/README.md)**, correspondiente a la captura 4.3_003. Incluye diagnóstico y copias de parámetros/materiales/luz. Conservar R01 sin sobrescribir; próximas referencias R02, R03, etc.
 

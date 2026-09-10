@@ -53,7 +53,8 @@ export default class TyrellLightVolume {
             const delta = positionWorld.sub(cameraPosition)
             const distance = delta.length().max(0.0001)
             const ray = delta.div(distance)
-            const safe = vec3(...['x', 'y', 'z'].map(axis => ray[axis].abs().lessThan(0.00001).select(0.00001, ray[axis])))
+            // Preserve the sign for grazing rays, including reflected cameras.
+            const safe = vec3(...['x', 'y', 'z'].map(axis => ray[axis].lessThan(0).select(-1, 1).mul(ray[axis].abs().max(0.00001))))
             const a = vec3(-9, 0.08, -14.4).sub(cameraPosition).div(safe)
             const b = vec3(9, 8, 2).sub(cameraPosition).div(safe)
             const low = a.min(b), high = a.max(b)
@@ -61,7 +62,8 @@ export default class TyrellLightVolume {
             const exit = high.x.min(high.y).min(high.z).min(distance)
             const step = exit.sub(entry).max(0).div(this.steps)
             const integral = float(0).toVar()
-            If(this.strength.greaterThan(0), () => {
+            // An empty camera/surface interval cannot scatter or sample the shadow map.
+            If(this.strength.greaterThan(0).and(exit.greaterThan(entry)), () => {
             Loop(this.steps, ({ i }) => {
                 const p = cameraPosition.add(ray.mul(entry.add(float(i).add(0.5).mul(step))))
                 const projected = matrix.mul(vec4(p, 1))
@@ -83,7 +85,7 @@ export default class TyrellLightVolume {
         })()
     }
     diagnostics() {
-        return { ...this.settings, ready: !!this.node, steps: this.steps.value, bounds: [[-9, 0.08, -14.4], [9, 8, 2]], time: this.clock.value, reflectionRefreshHz: 10, scatteringDensity: 0.004, solarRadianceScale: 0.18, source: 'solar shadow depth; bounded single scattering; procedural dust density', extraRenderPasses: 0 }
+        return { ...this.settings, ready: !!this.node, steps: this.steps.value, bounds: [[-9, 0.08, -14.4], [9, 8, 2]], time: this.clock.value, reflectionRefreshHz: 10, scatteringDensity: 0.004, solarRadianceScale: 0.18, sampling: 'deterministic midpoint; no temporal jitter or history', emptyIntervalSkipped: true, source: 'solar shadow depth; bounded single scattering; procedural dust density', extraRenderPasses: 0 }
     }
     dispose() { this.node = null } // Shadow texture belongs to the light; never dispose it here.
 }
