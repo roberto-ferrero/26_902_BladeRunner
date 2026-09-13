@@ -170,6 +170,7 @@ export default class TyrellUI {
         this.progress = this.statusBox.querySelector('progress')
         this.retry = this.statusBox.querySelector('button')
         this.cameraSelect = this.root.querySelector('[aria-label="Cámara"]')
+        this.cameraSelect.title = 'Atajos: 1–9 y 0, en el orden del selector'
         this.cameraSelect.onchange = () => actions.camera(Number(this.cameraSelect.value))
         this.root.querySelector('[aria-label="Calidad"]').onchange = event => actions.quality(event.target.value)
         this.root.querySelector('.tyrell-controls input').onchange = event => actions.frame(event.target.checked)

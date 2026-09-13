@@ -93,6 +93,16 @@ export default class E26902_BladeRunner {
         }
         this.pointerLeave = () => this.pan.setPointer(0, 0)
         this.windowBlur = () => { this.pan.reset(); this.panTime = undefined }
+        this.cameraKeyDown = event => {
+            if (!this.built || this.disposed || event.repeat || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return
+            if (event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable], [role="textbox"]') || this.ui.dialog.open) return
+            if (!/^[0-9]$/.test(event.key)) return
+            const index = event.key === '0' ? 9 : Number(event.key) - 1
+            if (!this.cameras?.[index]) return
+            event.preventDefault()
+            this.selectCamera(index)
+        }
+        window.addEventListener('keydown', this.cameraKeyDown)
         window.addEventListener('pointermove', this.pointerMove)
         document.documentElement.addEventListener('pointerleave', this.pointerLeave)
         window.addEventListener('blur', this.windowBlur)
@@ -233,6 +243,7 @@ export default class E26902_BladeRunner {
     selectCamera(index) {
         if (!this.cameras?.[index]) return
         this.activeCameraIndex = index
+        if (this.ui?.cameraSelect) this.ui.cameraSelect.value = String(index)
         this.stageCamera.setSource(this.cameras[index])
         this.pan?.setReference()
         this.app.render.set_stageCamera(this.stageCamera.get_camera())
@@ -411,6 +422,7 @@ export default class E26902_BladeRunner {
         if (this.disposed) return
         this.disposed = true
         this.abort?.abort()
+        window.removeEventListener('keydown', this.cameraKeyDown)
         window.removeEventListener('pointermove', this.pointerMove)
         document.documentElement.removeEventListener('pointerleave', this.pointerLeave)
         window.removeEventListener('blur', this.windowBlur)

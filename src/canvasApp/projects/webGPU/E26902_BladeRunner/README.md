@@ -122,3 +122,5 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 ## Próxima entrega
 
 **6.1 · Profundidad atmosférica exterior y bruma interior.** Separar ambas contribuciones, conservar el equilibrio de R01 y registrar las comparaciones. Las vistas inversas del decorado aún requieren revisión para el recorrido libre.
+
+**Atajos de cámara:** 1–4 = CAM01–CAM04; 5 = Camera_B; 6 = Camera_C; 7 = Camera_D; 8 = Camera_E; 9 = Camera_F; 0 = Camera_free. Funcionan con GUI oculta y actualizan el selector. No se activan al editar controles, con modificadores ni con el diálogo de captura/diagnóstico abierto.

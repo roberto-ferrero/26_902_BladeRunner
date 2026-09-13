@@ -369,3 +369,12 @@ Verificado en WebGPU: cabecera y FPS visibles con GUI oculta al arrancar, apertu
 | --- | --- |
 | [GUI_007_2026-09-10_arranque-oculto.png](GUI_007_2026-09-10_arranque-oculto.png) | 2026-09-10 15:05:00 |
 | [GUI_008_2026-09-10_valores-Baja-paneo.png](GUI_008_2026-09-10_valores-Baja-paneo.png) | 2026-09-10 15:05:37 |
+
+## GUI: atajos numéricos de cámara · 10-09-2026
+
+Verificadas teclas 1, 2, 5 y 0 en WebGPU, incluyendo 5 con GUI oculta y sincronización del selector. Compilación correcta en 94,496 s, tres avisos de tamaño. Horas UTC.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [GUI_009_2026-09-10_tecla5-CameraB.png](GUI_009_2026-09-10_tecla5-CameraB.png) | 2026-09-10 15:29:56 |
+| [GUI_010_2026-09-10_tecla1-CAM01.png](GUI_010_2026-09-10_tecla1-CAM01.png) | 2026-09-10 15:30:10 |
