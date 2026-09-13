@@ -2,7 +2,7 @@
 
 Ajustes de arranque actualizados el 10-09-2026: GUI inicialmente oculta, cabecera y FPS siempre visibles; calidad Baja; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo horizontal 2 m, vertical 0,5 m, suavidad 1,4 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos ; 6.5 queda documentado más abajo.
 
-Estado actual: **6.8 implementado: lens flare solar sutil**, halo cálido y tres destellos, activado a intensidad 0,18 con GUI y oclusión por profundidad. 44 pruebas correctas. [Documentación y límites de validación](docs/phase6/6.8/LENS_FLARE.md). Acabado pendiente de revisión visual del usuario. El cielo permanece en 6.7 v3; no se avanza a 7.1.
+Estado actual: **7.3 implementado: recorrido a altura fija con colisiones simplificadas**. Transiciones ralentizadas a 4,5 s, GUI 0–10 s. Ver [documentación](docs/phase7/7.3/WALKING.md). Se mantienen Blender y GLB anteriores.
 
 ## Objetivo
 
@@ -122,9 +122,9 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 ## 7 · Navegación y presentación
 
-- [ ] **7.1** Aplicar la elección del usuario: cámaras fijas, recorridos o movimiento libre.
-- [ ] **7.2** Añadir transiciones y restauración del encuadre de referencia.
-- [ ] **7.3** Revisar al aproximarse las UV colapsadas de Table_Slab y Wall_Side_L documentadas en el cierre de fase 3. Si hay recorrido libre, mantener altura y velocidad coherentes con la escala e impedir atravesar paredes y muebles con colisiones simplificadas.
+- [x] **7.1** Recorrido libre WASD/flechas, ratón con captura o arrastre alternativo, Q/E para altura, velocidad regulable y Escape. Cámaras y atajos conservados; paneo sólo en modo fijo. Sin colisiones (7.3).
+- [x] **7.2** Transiciones suaves entre cámaras (4,5 s, regulables 0–10 s desde 7.3), cambios durante el movimiento y restauración del encuadre desde paneo o recorrido libre. Preferencia de movimiento reducido respetada.
+- [x] **7.3** Altura fija ajustable (1,65 m), velocidad 1,4 m/s, colisiones XZ contra 111 volúmenes y límites de la sala, deslizamiento y entrada válida desde todos los presets. UV de mesa/pared reevaluadas: se conservan; ver límites y auditoría en docs/phase7/7.3/WALKING.md.
 - [ ] **7.4** Resolver redimensionado, foco del teclado/ratón, pausa al ocultar la pestaña y dispositivos objetivo.
 - [ ] **7.5** Separar los controles de revisión técnica de la experiencia final.
 

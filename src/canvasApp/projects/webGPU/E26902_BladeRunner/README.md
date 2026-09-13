@@ -124,3 +124,18 @@ En Blender: **Archivo > Exportar > glTF 2.0**; usar formato **glTF Binary (.glb)
 **6.1 · Profundidad atmosférica exterior y bruma interior.** Separar ambas contribuciones, conservar el equilibrio de R01 y registrar las comparaciones. Las vistas inversas del decorado aún requieren revisión para el recorrido libre.
 
 **Atajos de cámara:** 1–4 = CAM01–CAM04; 5 = Camera_B; 6 = Camera_C; 7 = Camera_D; 8 = Camera_E; 9 = Camera_F; 0 = Camera_free. Funcionan con GUI oculta y actualizan el selector. No se activan al editar controles, con modificadores ni con el diálogo de captura/diagnóstico abierto.
+
+
+## Recorrido libre · 7.1
+
+Abrir GUI > Navegación > Recorrido libre > Entrar al recorrido. WASD/flechas y ratón; Q/E para altura; Escape para pausar. Velocidad regulable. Si el navegador rechaza capturar el cursor, arrastrar en la escena para mirar. Teclas 1–9/0 vuelven a las cámaras. Sin colisiones todavía. [Uso y validación](docs/phase7/7.1/NAVIGATION.md).
+
+
+## Transiciones · 7.2
+
+GUI > Navegación permite regular la duración (1,2 s por defecto; 0 para cambio instantáneo) y Restaurar encuadre de referencia. Los atajos de cámara también usan transiciones. Restaurar sale del recorrido libre y centra el paneo. [Detalles y límites](docs/phase7/7.2/TRANSITIONS.md).
+
+
+## Actualización 7.3
+
+Transiciones iniciales 4,5 s (GUI 0–10). Recorrido con colisiones, altura constante de 1,65 m ajustable y velocidad inicial 1,4 m/s. Q/E ya no activa vuelo. Plataforma elevada bloqueada por ahora. [Uso, UV y límites](docs/phase7/7.3/WALKING.md).

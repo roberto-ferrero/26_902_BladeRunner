@@ -15,9 +15,40 @@ export default class TyrellUI {
                 <label class="tyrell-check"><input type="checkbox" checked> Encuadre 2,4:1</label>
                 <button type="button" data-action="capture">Captura 1920 × 800</button>
                 <button type="button" data-action="report">Diagnóstico</button>
-            </div><p class="tyrell-note">Iluminación en calibración · Cámaras originales de Blender · Recorrido libre en una próxima fase</p>
+            </div><p class="tyrell-note">Iluminación en calibración · Cámaras originales de Blender · Cámaras: 1–9 y 0 · Recorrido libre disponible en Navegación</p>
             <p class="tyrell-metrics">Preparando la primera imagen…</p></footer>`
         document.body.appendChild(this.root)
+        const navigationPanel = document.createElement('details')
+        navigationPanel.className = 'tyrell-pan'
+        navigationPanel.innerHTML = `<summary>Navegación</summary><div class="tyrell-pan-controls">
+            <label>Modo<select aria-label="Modo de navegación"><option value="fixed">Cámaras de película</option><option value="free">Recorrido libre</option></select></label>
+            <label>Velocidad<input aria-label="Velocidad del recorrido" type="range" min="0.25" max="5" step="0.05" value="1.4"><output>1.4 m/s</output></label>
+            <button type="button" data-enter hidden>Entrar al recorrido</button></div>
+            <p>WASD o flechas: avanzar y desplazarse. Ratón: mirar. Altura constante, ajustable en la GUI. Escape: liberar el cursor. Colisiones con paredes, columnas y muebles; plataforma elevada delimitada.</p>`
+        this.navigationMode = navigationPanel.querySelector('select')
+        this.navigationMode.onchange = () => actions.navigation(this.navigationMode.value === 'free')
+        this.navigationEnter = navigationPanel.querySelector('[data-enter]')
+        this.navigationEnter.onclick = () => actions.enterNavigation()
+        const speed = navigationPanel.querySelector('input')
+        speed.oninput = () => { speed.nextElementSibling.value = `${speed.value} m/s`; actions.navigationSpeed(Number(speed.value)) }
+        const heightLabel = document.createElement('label')
+        heightLabel.innerHTML = 'Altura de los ojos<input aria-label="Altura de los ojos" type="range" min="1.2" max="1.9" step="0.05" value="1.65"><output>1.65 m</output>'
+        const height = heightLabel.querySelector('input')
+        height.oninput = () => { height.nextElementSibling.value = `${height.value} m`; actions.navigationHeight(Number(height.value)) }
+        navigationPanel.querySelector('div').append(heightLabel)
+        const transitionLabel = document.createElement('label')
+        transitionLabel.innerHTML = 'Transición entre cámaras<input aria-label="Duración de transición" type="range" min="0" max="10" step="0.1" value="4.5"><output>4.5 s</output>'
+        const transitionInput = transitionLabel.querySelector('input')
+        transitionInput.oninput = () => { transitionInput.nextElementSibling.value = `${transitionInput.value} s`; actions.transitionDuration(Number(transitionInput.value)) }
+        const restore = document.createElement('button')
+        restore.type = 'button'; restore.textContent = 'Restaurar encuadre de referencia'
+        restore.onclick = () => actions.restoreCamera()
+        navigationPanel.querySelector('div').append(transitionLabel, restore)
+        this.root.querySelector('footer').append(navigationPanel)
+        this.navigationHint = document.createElement('p')
+        this.navigationHint.className = 'tyrell-navigation-hint'
+        this.navigationHint.hidden = true
+        this.root.append(this.navigationHint)
         this.lookPanel = document.createElement('details')
         this.lookPanel.className = 'tyrell-look tyrell-pan'
         this.lookPanel.innerHTML = `<summary>Color y materiales</summary><div class="tyrell-pan-controls">
@@ -233,6 +264,14 @@ export default class TyrellUI {
             for (const value of [row.id, `${row.camera?.name || 'Cámara'} / ${row.quality} / ${row.metrics.resolution.join(' × ')}`, row.effects, row.metrics.fps, row.metrics.frameMeanMs, row.metrics.frameP95Ms]) tr.insertCell().textContent = value
         }
         container.append(table)
+    }
+    setNavigationState(enabled, locked, message) {
+        if (locked) this.setGUIVisible(false)
+        this.navigationMode.value = enabled ? 'free' : 'fixed'
+        this.navigationEnter.hidden = !enabled
+        this.navigationHint.hidden = !enabled
+        this.navigationHint.textContent = message || (locked ? 'WASD · Ratón · Altura fija · Escape para pausar' : 'Recorrido pausado · Abre GUI > Navegación > Entrar al recorrido · Teclas 1–0: cámaras')
+        this.panPanel.querySelectorAll('input, button').forEach(input => { input.disabled = !!enabled })
     }
     setPanSettings(settings) {
         this.panEnabled.checked = settings.enabled

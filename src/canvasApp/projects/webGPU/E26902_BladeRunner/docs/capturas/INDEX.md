@@ -378,3 +378,34 @@ Verificadas teclas 1, 2, 5 y 0 en WebGPU, incluyendo 5 con GUI oculta y sincroni
 | --- | --- |
 | [GUI_009_2026-09-10_tecla5-CameraB.png](GUI_009_2026-09-10_tecla5-CameraB.png) | 2026-09-10 15:29:56 |
 | [GUI_010_2026-09-10_tecla1-CAM01.png](GUI_010_2026-09-10_tecla1-CAM01.png) | 2026-09-10 15:30:10 |
+
+
+## 7.1 · Recorrido libre · 13-09-2026
+
+Capturas del visor WebGPU en calidad Baja, orden temporal dentro del punto. Arrastre y Escape comprobados; regreso con 5 a Camera_B y 1 a CAM01.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [7.1_001_2026-09-13_recorrido-pausado.jpg](7.1_001_2026-09-13_recorrido-pausado.jpg) | 2026-09-13T16:37:55.027078+00:00 |
+| [7.1_002_2026-09-13_CAM01-controles.jpg](7.1_002_2026-09-13_CAM01-controles.jpg) | 2026-09-13T16:38:26.055931+00:00 |
+
+
+## 7.2 · Transiciones · 13-09-2026
+
+Orden temporal dentro del punto. Calidad Baja.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [7.2_001_2026-09-13_controles.jpg](7.2_001_2026-09-13_controles.jpg) | 2026-09-13T17:21:19.846564+00:00 |
+| [7.2_002_2026-09-13_CAM01-restaurada.jpg](7.2_002_2026-09-13_CAM01-restaurada.jpg) | 2026-09-13T17:22:27.990619+00:00 |
+
+
+## 7.3 · Colisiones y proximidad · 13-09-2026
+
+Orden temporal dentro del punto. Calidad Baja.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [7.3_001_2026-09-13_mesa-recorrido.jpg](7.3_001_2026-09-13_mesa-recorrido.jpg) | 2026-09-13T18:05:09.499806+00:00 |
+| [7.3_002_2026-09-13_pared-izquierda.jpg](7.3_002_2026-09-13_pared-izquierda.jpg) | 2026-09-13T18:05:50.567944+00:00 |
+| [7.3_003_2026-09-13_valores-finales.jpg](7.3_003_2026-09-13_valores-finales.jpg) | 2026-09-13T18:07:21.487327+00:00 |

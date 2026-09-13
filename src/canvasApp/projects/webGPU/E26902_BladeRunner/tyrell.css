@@ -45,3 +45,5 @@ body.tyrell-viewer { background: #070807; color: #e6dfce; overflow: hidden; font
 .tyrell-dialog pre { white-space: pre-wrap; font-size: 12px; }
 .tyrell-dialog a { display: inline-block; color: #e8c481; margin-top: 12px; }
 @media (max-width: 700px) { .tyrell-ui header, .tyrell-ui footer { padding: 12px; } .tyrell-ui h1 { font-size: 18px; } .tyrell-controls { gap: 7px; } .tyrell-backend { max-width: 130px; text-align: right; } }
+
+.tyrell-navigation-hint { position: absolute; top: 82px; left: 26px; font-size: 12px; padding: 6px 10px; background: #070807cc; color: #e8c481; }
