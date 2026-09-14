@@ -2,7 +2,7 @@
 
 Ajustes de arranque actualizados el 10-09-2026: GUI inicialmente oculta, cabecera y FPS siempre visibles; calidad Baja; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo horizontal 2 m, vertical 0,5 m, suavidad 1,4 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos ; 6.5 queda documentado más abajo.
 
-Estado actual: **7.3 implementado: recorrido a altura fija con colisiones simplificadas**. Transiciones ralentizadas a 4,5 s, GUI 0–10 s. Ver [documentación](docs/phase7/7.3/WALKING.md). Se mantienen Blender y GLB anteriores.
+Estado actual: **8.2 completado: presupuestos de render ajustados y comparados con 8.1.** Media 38 → 49,4 FPS; Alta 14,7 → 33 FPS en la sesión local. Baja conserva su acabado y presupuesto. Ver [resultados, capturas y límites](docs/phase8/8.2/PERFORMANCE.md). Siguiente: 8.3.
 
 ## Objetivo
 
@@ -125,8 +125,8 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 - [x] **7.1** Recorrido libre WASD/flechas, ratón con captura o arrastre alternativo, Q/E para altura, velocidad regulable y Escape. Cámaras y atajos conservados; paneo sólo en modo fijo. Sin colisiones (7.3).
 - [x] **7.2** Transiciones suaves entre cámaras (4,5 s, regulables 0–10 s desde 7.3), cambios durante el movimiento y restauración del encuadre desde paneo o recorrido libre. Preferencia de movimiento reducido respetada.
 - [x] **7.3** Altura fija ajustable (1,65 m), velocidad 1,4 m/s, colisiones XZ contra 111 volúmenes y límites de la sala, deslizamiento y entrada válida desde todos los presets. UV de mesa/pared reevaluadas: se conservan; ver límites y auditoría en docs/phase7/7.3/WALKING.md.
-- [ ] **7.4** Resolver redimensionado, foco del teclado/ratón, pausa al ocultar la pestaña y dispositivos objetivo.
-- [ ] **7.5** Separar los controles de revisión técnica de la experiencia final.
+- [x] **7.4** Observación del tamaño del contenedor, protección de proyección, pausa de entrada al perder foco/usar GUI, pausa al ocultar incluso durante carga y aviso de recarga por pérdida WebGPU. Objetivo escritorio GPU dedicada; límites de validación en docs/phase7/7.4/LIFECYCLE.md.
+- [x] **7.5** GUI principal con cámara, calidad, encuadre, navegación y paneo. Herramientas de acabado, captura, diagnóstico y medición agrupadas en Revisión técnica, plegada inicialmente. Cabecera y FPS siempre visibles; valores conservados.
 
 - [x] **7.6** Adelanto solicitado durante 3.1: paneo con el ratón, mirada fija, recorridos y suavidad configurables, retorno al centro y captura sin paneo. Pruebas automatizadas correctas; **revisión visual pendiente por falta de navegador conectado**. Detalles en [PANEO.md](docs/PANEO.md).
 
@@ -136,8 +136,8 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 La medición comienza en la fase 1; esta fase reúne los ajustes finales cuando ya se conoce el coste y la aportación visual de cada efecto.
 
-- [ ] **8.1** Medir tiempo de CPU y GPU, fluidez, memoria, carga inicial y llamadas de dibujo en el dispositivo acordado.
-- [ ] **8.2** Ajustar resolución interna, sombras, reflejos y muestras del volumen antes de reducir geometría que define la silueta.
+- [x] **8.1** Referencia local: CAM01 Baja/Media/Alta y CAM02 Baja, 120 intervalos por combinación, CPU de envío y timestamps GPU opcionales; carga local, heap JS y contadores de recursos/dibujo. VRAM y CPU total no disponibles; alcance y datos en docs/phase8/8.1/PERFORMANCE.md.
+- [x] **8.2** Ajustar resolución interna, reflejos y muestras del volumen; preservar sombras y geometría. Comparación A/B en GUI, ocho mediciones y capturas archivadas en docs/phase8/8.2/PERFORMANCE.md.
 - [ ] **8.3** Evaluar Meshopt/Draco y KTX2/Basis con sus decodificadores y comprobar que no dañen juntas, normales, cuero o degradados del cielo.
 - [ ] **8.4** Revisar culling, instancias y agrupaciones sin perder control de materiales ni iluminación.
 - [ ] **8.5** Acotar los recursos copiados a producción: el andamiaje copia actualmente ejemplos ajenos y archivos fuente `.psd`, `.blend` y `.blend1` desde `static/`. Conservar esos originales y excluirlos de la entrega de Tyrell cuando no sean necesarios.

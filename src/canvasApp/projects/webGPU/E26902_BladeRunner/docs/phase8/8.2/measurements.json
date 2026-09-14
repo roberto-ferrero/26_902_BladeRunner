@@ -1,0 +1,3189 @@
+{
+  "note": "RAF, CPU de envío y GPU de pases (opcional con profile=1). Comparar misma cámara y luz; consultar qualityBudget y resolución efectiva.",
+  "rows": [
+    {
+      "qualityBudget": {
+        "mode": "baseline",
+        "pixelRatio": 1,
+        "shadowSize": 2048,
+        "volumeSteps": 40,
+        "reflectionScale": 0.5
+      },
+      "performance": {
+        "enabled": true,
+        "cpuRender": {
+          "samples": 120,
+          "meanMs": 9.736666665474575,
+          "p95Ms": 17.899999976158142
+        },
+        "gpuRender": {
+          "samples": 29,
+          "meanMs": 23.28335889655174,
+          "p95Ms": 25.231360000000013
+        },
+        "gpuSupported": true,
+        "gpuError": null,
+        "heap": {
+          "usedBytes": 1317167453,
+          "totalBytes": 1393484001,
+          "limitBytes": 4395630592
+        },
+        "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+      },
+      "loading": {
+        "firstRenderedFrameSinceNavigationMs": 4308.299999952316,
+        "glbFetchDecodeMs": 767.8999999761581,
+        "glbBytes": 40552456,
+        "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+      },
+      "adapter": {
+        "vendor": "nvidia",
+        "architecture": "turing",
+        "device": "",
+        "description": ""
+      },
+      "asset": {
+        "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=1",
+        "bytes": 40552456,
+        "loadMs": 767.8999999761581
+      },
+      "date": "2026-09-13T21:25:02.386Z",
+      "quality": "Media",
+      "camera": {
+        "name": "CAM_01_|_fotograma_general",
+        "position": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 22.91750563177261,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      },
+      "cameraPan": {
+        "enabled": true,
+        "horizontal": 2,
+        "vertical": 0.5,
+        "smoothness": 1.4,
+        "targetDistance": 20,
+        "units": "metres; smoothness in seconds",
+        "offset": [
+          0,
+          0
+        ],
+        "referencePosition": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "target": [
+          -0.11999999731779099,
+          1.550000786781311,
+          -9.699999809265137
+        ]
+      },
+      "exposure": 1.07,
+      "metrics": {
+        "fps": 38,
+        "frameMeanMs": 26.32,
+        "frameP95Ms": 49,
+        "samples": 120,
+        "resolution": [
+          1920,
+          800
+        ],
+        "drawCalls": 370,
+        "renderedTriangles": 767365,
+        "geometries": 143,
+        "textures": 56
+      },
+      "floorReflection": {
+        "enabled": true,
+        "mode": "stone",
+        "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+        "planeY": 0,
+        "gain": 0.32,
+        "fresnelF0": 0.04,
+        "roughnessLodScale": 10,
+        "maxLod": 5,
+        "normalDistortion": 0.045,
+        "resolutionScale": 0.5,
+        "resolution": "auto",
+        "mipLodOffset": 0,
+        "mipmaps": true,
+        "bounces": false,
+        "updates": {
+          "mode": "adaptive",
+          "rendered": 1018,
+          "reused": 4229
+        },
+        "meshes": 21,
+        "sharedMaterials": 1,
+        "targets": [
+          {
+            "width": 960,
+            "height": 400
+          }
+        ]
+      },
+      "specularEnvironment": {
+        "enabled": true,
+        "dirty": false,
+        "captures": 3,
+        "size": 128,
+        "position": [
+          0,
+          1.4,
+          -10.2
+        ],
+        "materials": [
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ],
+        "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+        "metalIntensity": 0.6,
+        "glassIntensity": 0.35
+      },
+      "atmosphere": {
+        "exterior": true,
+        "interior": true,
+        "exteriorStrength": 1,
+        "interiorStrength": 1,
+        "boundary": -14.4,
+        "interiorPath": 24,
+        "exteriorDensity": 0.00025,
+        "interiorDensity": 0.0015,
+        "effectiveDensity": [
+          0.00025,
+          0.0015
+        ],
+        "excludedMaterials": [
+          "Cielo | nubes ambar",
+          "Sol | disco emisivo"
+        ],
+        "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+        "extraRenderPasses": 0
+      },
+      "lightVolume": {
+        "enabled": true,
+        "dust": true,
+        "strength": 1,
+        "speed": 1,
+        "ready": true,
+        "steps": 40,
+        "bounds": [
+          [
+            -9,
+            0.08,
+            -14.4
+          ],
+          [
+            9,
+            8,
+            2
+          ]
+        ],
+        "time": 100.94869999957096,
+        "reflectionRefreshHz": 10,
+        "scatteringDensity": 0.004,
+        "solarRadianceScale": 0.18,
+        "sampling": "deterministic midpoint; no temporal jitter or history",
+        "emptyIntervalSkipped": true,
+        "source": "solar shadow depth; bounded single scattering; procedural dust density",
+        "extraRenderPasses": 0
+      },
+      "postProcessing": {
+        "bloom": true,
+        "grade": true,
+        "strength": 0.16,
+        "radius": 0.25,
+        "threshold": 1.5,
+        "gradeStrength": 1,
+        "flare": {
+          "enabled": true,
+          "intensity": 0.18,
+          "size": 1,
+          "source": "visible solar disc only",
+          "screenPosition": [
+            0.5126390355880259,
+            0.347024089392177
+          ],
+          "energyBeforeOcclusion": 0.18,
+          "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+          "extraRenderPasses": 0
+        },
+        "ready": true,
+        "quality": "Media",
+        "bloomResolutionScale": 0.5,
+        "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+        "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+        "bloomLuminanceLimit": 4,
+        "extraFullscreenPasses": 13
+      },
+      "sky": {
+        "enabled": true,
+        "studio": false,
+        "coverage": "360 x 180 degrees",
+        "version": 3,
+        "panoramaPitchDegrees": 25,
+        "originalProjection": true,
+        "interiorBlendUV": 0.12,
+        "originalPlaneVisible": false,
+        "originalRectanglePreserved": false,
+        "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+        "size": [
+          1774,
+          887
+        ],
+        "visualOnly": true,
+        "probeUsesOriginalBackground": true
+      },
+      "lighting": {
+        "profile": "tyrell-light-v2",
+        "contribution": "all",
+        "sunPosition": [
+          0.24709783776834474,
+          8.042288376397824,
+          -84.68905268029118
+        ],
+        "target": [
+          0,
+          1,
+          -5
+        ],
+        "directionToSun": [
+          0.0030887229721043093,
+          0.08802860470497281,
+          -0.9961131585036398
+        ],
+        "sunIntensity": 2.5,
+        "sunColor": "ffd093",
+        "discPosition": [
+          8,
+          42.5,
+          -650
+        ],
+        "discScale": [
+          0.5600000095367431,
+          0.5600000095367431,
+          0.5600000095367431
+        ],
+        "skyEmission": [
+          0.7500000298023224,
+          0.7500000298023224,
+          0.7500000298023224
+        ],
+        "hemisphereIntensity": 0.86,
+        "areaIntensities": [
+          0.08,
+          0.08,
+          0.2,
+          0.2
+        ],
+        "areas": [
+          {
+            "role": "window",
+            "position": [
+              0,
+              4.2,
+              -13.8
+            ],
+            "emissionDirection": [
+              0,
+              -0.28408832969137404,
+              0.9587981127083873
+            ],
+            "width": 6,
+            "height": 6,
+            "intensity": 0.08,
+            "power": 9.047786842338605,
+            "castShadow": false
+          },
+          {
+            "role": "front",
+            "position": [
+              0,
+              4.5,
+              7
+            ],
+            "emissionDirection": [
+              0,
+              -0.12752174253952622,
+              -0.9918357753074262
+            ],
+            "width": 7,
+            "height": 7,
+            "intensity": 0.08,
+            "power": 12.31504320207199,
+            "castShadow": false
+          },
+          {
+            "role": "left",
+            "position": [
+              -7.7,
+              4.3,
+              -3.4
+            ],
+            "emissionDirection": [
+              0.8589580613952029,
+              -0.42034117898063117,
+              -0.2924112549430478
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          },
+          {
+            "role": "right",
+            "position": [
+              7.7,
+              4.1,
+              -7.2
+            ],
+            "emissionDirection": [
+              -0.9024909124636484,
+              -0.41166252147464655,
+              -0.12666539122296816
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          }
+        ]
+      },
+      "materialLook": {
+        "profile": "tyrell-v1",
+        "floorNormal": true,
+        "status": "v1 reviewed baseline; final lighting and reflections pending",
+        "materialCount": 21,
+        "adjusted": [
+          "PBR | Caliza ocre envejecida",
+          "PBR | Caliza aristas claras",
+          "PBR | Piedra negra pulida",
+          "PBR | Nogal oscuro",
+          "PBR | Raiz de nogal",
+          "Walnut | quarter sawn",
+          "Leather | oxblood",
+          "Burl walnut | table rim",
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Cuero oscuro",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ]
+      },
+      "indirect": {
+        "mode": "reference",
+        "probeIntensity": 0,
+        "environmentActive": false,
+        "environmentIntensity": 1,
+        "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+        "ambientRetention": 0.92
+      },
+      "reviewLighting": "tyrell-light-v2",
+      "id": 1,
+      "effects": "Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+    },
+    {
+      "qualityBudget": {
+        "mode": "resolution",
+        "pixelRatio": 0.9,
+        "shadowSize": 2048,
+        "volumeSteps": 40,
+        "reflectionScale": 0.5
+      },
+      "performance": {
+        "enabled": true,
+        "cpuRender": {
+          "samples": 120,
+          "meanMs": 9.401666669050853,
+          "p95Ms": 17.5
+        },
+        "gpuRender": {
+          "samples": 23,
+          "meanMs": 19.438547478260876,
+          "p95Ms": 20.64384000000001
+        },
+        "gpuSupported": true,
+        "gpuError": null,
+        "heap": {
+          "usedBytes": 1313949297,
+          "totalBytes": 1393484305,
+          "limitBytes": 4395630592
+        },
+        "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+      },
+      "loading": {
+        "firstRenderedFrameSinceNavigationMs": 4308.299999952316,
+        "glbFetchDecodeMs": 767.8999999761581,
+        "glbBytes": 40552456,
+        "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+      },
+      "adapter": {
+        "vendor": "nvidia",
+        "architecture": "turing",
+        "device": "",
+        "description": ""
+      },
+      "asset": {
+        "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=1",
+        "bytes": 40552456,
+        "loadMs": 767.8999999761581
+      },
+      "date": "2026-09-13T21:25:37.467Z",
+      "quality": "Media",
+      "camera": {
+        "name": "CAM_01_|_fotograma_general",
+        "position": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 22.91750563177261,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      },
+      "cameraPan": {
+        "enabled": true,
+        "horizontal": 2,
+        "vertical": 0.5,
+        "smoothness": 1.4,
+        "targetDistance": 20,
+        "units": "metres; smoothness in seconds",
+        "offset": [
+          0,
+          0
+        ],
+        "referencePosition": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "target": [
+          -0.11999999731779099,
+          1.550000786781311,
+          -9.699999809265137
+        ]
+      },
+      "exposure": 1.07,
+      "metrics": {
+        "fps": 45.1,
+        "frameMeanMs": 22.15,
+        "frameP95Ms": 34.7,
+        "samples": 120,
+        "resolution": [
+          1728,
+          720
+        ],
+        "drawCalls": 370,
+        "renderedTriangles": 767365,
+        "geometries": 143,
+        "textures": 56
+      },
+      "floorReflection": {
+        "enabled": true,
+        "mode": "stone",
+        "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+        "planeY": 0,
+        "gain": 0.32,
+        "fresnelF0": 0.04,
+        "roughnessLodScale": 10,
+        "maxLod": 5,
+        "normalDistortion": 0.045,
+        "resolutionScale": 0.5,
+        "resolution": "auto",
+        "mipLodOffset": 0,
+        "mipmaps": true,
+        "bounces": false,
+        "updates": {
+          "mode": "adaptive",
+          "rendered": 1369,
+          "reused": 5319
+        },
+        "meshes": 21,
+        "sharedMaterials": 1,
+        "targets": [
+          {
+            "width": 864,
+            "height": 360
+          }
+        ]
+      },
+      "specularEnvironment": {
+        "enabled": true,
+        "dirty": false,
+        "captures": 4,
+        "size": 128,
+        "position": [
+          0,
+          1.4,
+          -10.2
+        ],
+        "materials": [
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ],
+        "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+        "metalIntensity": 0.6,
+        "glassIntensity": 0.35
+      },
+      "atmosphere": {
+        "exterior": true,
+        "interior": true,
+        "exteriorStrength": 1,
+        "interiorStrength": 1,
+        "boundary": -14.4,
+        "interiorPath": 24,
+        "exteriorDensity": 0.00025,
+        "interiorDensity": 0.0015,
+        "effectiveDensity": [
+          0.00025,
+          0.0015
+        ],
+        "excludedMaterials": [
+          "Cielo | nubes ambar",
+          "Sol | disco emisivo"
+        ],
+        "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+        "extraRenderPasses": 0
+      },
+      "lightVolume": {
+        "enabled": true,
+        "dust": true,
+        "strength": 1,
+        "speed": 1,
+        "ready": true,
+        "steps": 40,
+        "bounds": [
+          [
+            -9,
+            0.08,
+            -14.4
+          ],
+          [
+            9,
+            8,
+            2
+          ]
+        ],
+        "time": 135.92349999988022,
+        "reflectionRefreshHz": 10,
+        "scatteringDensity": 0.004,
+        "solarRadianceScale": 0.18,
+        "sampling": "deterministic midpoint; no temporal jitter or history",
+        "emptyIntervalSkipped": true,
+        "source": "solar shadow depth; bounded single scattering; procedural dust density",
+        "extraRenderPasses": 0
+      },
+      "postProcessing": {
+        "bloom": true,
+        "grade": true,
+        "strength": 0.16,
+        "radius": 0.25,
+        "threshold": 1.5,
+        "gradeStrength": 1,
+        "flare": {
+          "enabled": true,
+          "intensity": 0.18,
+          "size": 1,
+          "source": "visible solar disc only",
+          "screenPosition": [
+            0.5126390355880259,
+            0.347024089392177
+          ],
+          "energyBeforeOcclusion": 0.18,
+          "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+          "extraRenderPasses": 0
+        },
+        "ready": true,
+        "quality": "Media",
+        "bloomResolutionScale": 0.5,
+        "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+        "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+        "bloomLuminanceLimit": 4,
+        "extraFullscreenPasses": 13
+      },
+      "sky": {
+        "enabled": true,
+        "studio": false,
+        "coverage": "360 x 180 degrees",
+        "version": 3,
+        "panoramaPitchDegrees": 25,
+        "originalProjection": true,
+        "interiorBlendUV": 0.12,
+        "originalPlaneVisible": false,
+        "originalRectanglePreserved": false,
+        "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+        "size": [
+          1774,
+          887
+        ],
+        "visualOnly": true,
+        "probeUsesOriginalBackground": true
+      },
+      "lighting": {
+        "profile": "tyrell-light-v2",
+        "contribution": "all",
+        "sunPosition": [
+          0.24709783776834474,
+          8.042288376397824,
+          -84.68905268029118
+        ],
+        "target": [
+          0,
+          1,
+          -5
+        ],
+        "directionToSun": [
+          0.0030887229721043093,
+          0.08802860470497281,
+          -0.9961131585036398
+        ],
+        "sunIntensity": 2.5,
+        "sunColor": "ffd093",
+        "discPosition": [
+          8,
+          42.5,
+          -650
+        ],
+        "discScale": [
+          0.5600000095367431,
+          0.5600000095367431,
+          0.5600000095367431
+        ],
+        "skyEmission": [
+          0.7500000298023224,
+          0.7500000298023224,
+          0.7500000298023224
+        ],
+        "hemisphereIntensity": 0.86,
+        "areaIntensities": [
+          0.08,
+          0.08,
+          0.2,
+          0.2
+        ],
+        "areas": [
+          {
+            "role": "window",
+            "position": [
+              0,
+              4.2,
+              -13.8
+            ],
+            "emissionDirection": [
+              0,
+              -0.28408832969137404,
+              0.9587981127083873
+            ],
+            "width": 6,
+            "height": 6,
+            "intensity": 0.08,
+            "power": 9.047786842338605,
+            "castShadow": false
+          },
+          {
+            "role": "front",
+            "position": [
+              0,
+              4.5,
+              7
+            ],
+            "emissionDirection": [
+              0,
+              -0.12752174253952622,
+              -0.9918357753074262
+            ],
+            "width": 7,
+            "height": 7,
+            "intensity": 0.08,
+            "power": 12.31504320207199,
+            "castShadow": false
+          },
+          {
+            "role": "left",
+            "position": [
+              -7.7,
+              4.3,
+              -3.4
+            ],
+            "emissionDirection": [
+              0.8589580613952029,
+              -0.42034117898063117,
+              -0.2924112549430478
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          },
+          {
+            "role": "right",
+            "position": [
+              7.7,
+              4.1,
+              -7.2
+            ],
+            "emissionDirection": [
+              -0.9024909124636484,
+              -0.41166252147464655,
+              -0.12666539122296816
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          }
+        ]
+      },
+      "materialLook": {
+        "profile": "tyrell-v1",
+        "floorNormal": true,
+        "status": "v1 reviewed baseline; final lighting and reflections pending",
+        "materialCount": 21,
+        "adjusted": [
+          "PBR | Caliza ocre envejecida",
+          "PBR | Caliza aristas claras",
+          "PBR | Piedra negra pulida",
+          "PBR | Nogal oscuro",
+          "PBR | Raiz de nogal",
+          "Walnut | quarter sawn",
+          "Leather | oxblood",
+          "Burl walnut | table rim",
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Cuero oscuro",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ]
+      },
+      "indirect": {
+        "mode": "reference",
+        "probeIntensity": 0,
+        "environmentActive": false,
+        "environmentIntensity": 1,
+        "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+        "ambientRetention": 0.92
+      },
+      "reviewLighting": "tyrell-light-v2",
+      "id": 2,
+      "effects": "Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+    },
+    {
+      "qualityBudget": {
+        "mode": "volume",
+        "pixelRatio": 1,
+        "shadowSize": 2048,
+        "volumeSteps": 32,
+        "reflectionScale": 0.5
+      },
+      "performance": {
+        "enabled": true,
+        "cpuRender": {
+          "samples": 120,
+          "meanMs": 9.545833333333333,
+          "p95Ms": 17.200000047683716
+        },
+        "gpuRender": {
+          "samples": 31,
+          "meanMs": 21.23577806451613,
+          "p95Ms": 22.54438400000001
+        },
+        "gpuSupported": true,
+        "gpuError": null,
+        "heap": {
+          "usedBytes": 1293121154,
+          "totalBytes": 1308472482,
+          "limitBytes": 4395630592
+        },
+        "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+      },
+      "loading": {
+        "firstRenderedFrameSinceNavigationMs": 4308.299999952316,
+        "glbFetchDecodeMs": 767.8999999761581,
+        "glbBytes": 40552456,
+        "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+      },
+      "adapter": {
+        "vendor": "nvidia",
+        "architecture": "turing",
+        "device": "",
+        "description": ""
+      },
+      "asset": {
+        "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=1",
+        "bytes": 40552456,
+        "loadMs": 767.8999999761581
+      },
+      "date": "2026-09-13T21:26:13.173Z",
+      "quality": "Media",
+      "camera": {
+        "name": "CAM_01_|_fotograma_general",
+        "position": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 22.91750563177261,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      },
+      "cameraPan": {
+        "enabled": true,
+        "horizontal": 2,
+        "vertical": 0.5,
+        "smoothness": 1.4,
+        "targetDistance": 20,
+        "units": "metres; smoothness in seconds",
+        "offset": [
+          0,
+          0
+        ],
+        "referencePosition": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "target": [
+          -0.11999999731779099,
+          1.550000786781311,
+          -9.699999809265137
+        ]
+      },
+      "exposure": 1.07,
+      "metrics": {
+        "fps": 41.4,
+        "frameMeanMs": 24.17,
+        "frameP95Ms": 44.5,
+        "samples": 120,
+        "resolution": [
+          1920,
+          800
+        ],
+        "drawCalls": 289,
+        "renderedTriangles": 605317,
+        "geometries": 143,
+        "textures": 56
+      },
+      "floorReflection": {
+        "enabled": true,
+        "mode": "stone",
+        "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+        "planeY": 0,
+        "gain": 0.32,
+        "fresnelF0": 0.04,
+        "roughnessLodScale": 10,
+        "maxLod": 5,
+        "normalDistortion": 0.045,
+        "resolutionScale": 0.5,
+        "resolution": "auto",
+        "mipLodOffset": 0,
+        "mipmaps": true,
+        "bounces": false,
+        "updates": {
+          "mode": "adaptive",
+          "rendered": 1725,
+          "reused": 6496
+        },
+        "meshes": 21,
+        "sharedMaterials": 1,
+        "targets": [
+          {
+            "width": 960,
+            "height": 400
+          }
+        ]
+      },
+      "specularEnvironment": {
+        "enabled": true,
+        "dirty": false,
+        "captures": 5,
+        "size": 128,
+        "position": [
+          0,
+          1.4,
+          -10.2
+        ],
+        "materials": [
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ],
+        "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+        "metalIntensity": 0.6,
+        "glassIntensity": 0.35
+      },
+      "atmosphere": {
+        "exterior": true,
+        "interior": true,
+        "exteriorStrength": 1,
+        "interiorStrength": 1,
+        "boundary": -14.4,
+        "interiorPath": 24,
+        "exteriorDensity": 0.00025,
+        "interiorDensity": 0.0015,
+        "effectiveDensity": [
+          0.00025,
+          0.0015
+        ],
+        "excludedMaterials": [
+          "Cielo | nubes ambar",
+          "Sol | disco emisivo"
+        ],
+        "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+        "extraRenderPasses": 0
+      },
+      "lightVolume": {
+        "enabled": true,
+        "dust": true,
+        "strength": 1,
+        "speed": 1,
+        "ready": true,
+        "steps": 32,
+        "bounds": [
+          [
+            -9,
+            0.08,
+            -14.4
+          ],
+          [
+            9,
+            8,
+            2
+          ]
+        ],
+        "time": 171.26770000016597,
+        "reflectionRefreshHz": 10,
+        "scatteringDensity": 0.004,
+        "solarRadianceScale": 0.18,
+        "sampling": "deterministic midpoint; no temporal jitter or history",
+        "emptyIntervalSkipped": true,
+        "source": "solar shadow depth; bounded single scattering; procedural dust density",
+        "extraRenderPasses": 0
+      },
+      "postProcessing": {
+        "bloom": true,
+        "grade": true,
+        "strength": 0.16,
+        "radius": 0.25,
+        "threshold": 1.5,
+        "gradeStrength": 1,
+        "flare": {
+          "enabled": true,
+          "intensity": 0.18,
+          "size": 1,
+          "source": "visible solar disc only",
+          "screenPosition": [
+            0.5126390355880259,
+            0.347024089392177
+          ],
+          "energyBeforeOcclusion": 0.18,
+          "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+          "extraRenderPasses": 0
+        },
+        "ready": true,
+        "quality": "Media",
+        "bloomResolutionScale": 0.5,
+        "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+        "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+        "bloomLuminanceLimit": 4,
+        "extraFullscreenPasses": 13
+      },
+      "sky": {
+        "enabled": true,
+        "studio": false,
+        "coverage": "360 x 180 degrees",
+        "version": 3,
+        "panoramaPitchDegrees": 25,
+        "originalProjection": true,
+        "interiorBlendUV": 0.12,
+        "originalPlaneVisible": false,
+        "originalRectanglePreserved": false,
+        "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+        "size": [
+          1774,
+          887
+        ],
+        "visualOnly": true,
+        "probeUsesOriginalBackground": true
+      },
+      "lighting": {
+        "profile": "tyrell-light-v2",
+        "contribution": "all",
+        "sunPosition": [
+          0.24709783776834474,
+          8.042288376397824,
+          -84.68905268029118
+        ],
+        "target": [
+          0,
+          1,
+          -5
+        ],
+        "directionToSun": [
+          0.0030887229721043093,
+          0.08802860470497281,
+          -0.9961131585036398
+        ],
+        "sunIntensity": 2.5,
+        "sunColor": "ffd093",
+        "discPosition": [
+          8,
+          42.5,
+          -650
+        ],
+        "discScale": [
+          0.5600000095367431,
+          0.5600000095367431,
+          0.5600000095367431
+        ],
+        "skyEmission": [
+          0.7500000298023224,
+          0.7500000298023224,
+          0.7500000298023224
+        ],
+        "hemisphereIntensity": 0.86,
+        "areaIntensities": [
+          0.08,
+          0.08,
+          0.2,
+          0.2
+        ],
+        "areas": [
+          {
+            "role": "window",
+            "position": [
+              0,
+              4.2,
+              -13.8
+            ],
+            "emissionDirection": [
+              0,
+              -0.28408832969137404,
+              0.9587981127083873
+            ],
+            "width": 6,
+            "height": 6,
+            "intensity": 0.08,
+            "power": 9.047786842338605,
+            "castShadow": false
+          },
+          {
+            "role": "front",
+            "position": [
+              0,
+              4.5,
+              7
+            ],
+            "emissionDirection": [
+              0,
+              -0.12752174253952622,
+              -0.9918357753074262
+            ],
+            "width": 7,
+            "height": 7,
+            "intensity": 0.08,
+            "power": 12.31504320207199,
+            "castShadow": false
+          },
+          {
+            "role": "left",
+            "position": [
+              -7.7,
+              4.3,
+              -3.4
+            ],
+            "emissionDirection": [
+              0.8589580613952029,
+              -0.42034117898063117,
+              -0.2924112549430478
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          },
+          {
+            "role": "right",
+            "position": [
+              7.7,
+              4.1,
+              -7.2
+            ],
+            "emissionDirection": [
+              -0.9024909124636484,
+              -0.41166252147464655,
+              -0.12666539122296816
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          }
+        ]
+      },
+      "materialLook": {
+        "profile": "tyrell-v1",
+        "floorNormal": true,
+        "status": "v1 reviewed baseline; final lighting and reflections pending",
+        "materialCount": 21,
+        "adjusted": [
+          "PBR | Caliza ocre envejecida",
+          "PBR | Caliza aristas claras",
+          "PBR | Piedra negra pulida",
+          "PBR | Nogal oscuro",
+          "PBR | Raiz de nogal",
+          "Walnut | quarter sawn",
+          "Leather | oxblood",
+          "Burl walnut | table rim",
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Cuero oscuro",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ]
+      },
+      "indirect": {
+        "mode": "reference",
+        "probeIntensity": 0,
+        "environmentActive": false,
+        "environmentIntensity": 1,
+        "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+        "ambientRetention": 0.92
+      },
+      "reviewLighting": "tyrell-light-v2",
+      "id": 3,
+      "effects": "Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+    },
+    {
+      "qualityBudget": {
+        "mode": "reflection",
+        "pixelRatio": 1,
+        "shadowSize": 2048,
+        "volumeSteps": 40,
+        "reflectionScale": 0.35
+      },
+      "performance": {
+        "enabled": true,
+        "cpuRender": {
+          "samples": 120,
+          "meanMs": 9.920833333333333,
+          "p95Ms": 17.299999952316284
+        },
+        "gpuRender": {
+          "samples": 29,
+          "meanMs": 23.027994482758626,
+          "p95Ms": 24.24832000000001
+        },
+        "gpuSupported": true,
+        "gpuError": null,
+        "heap": {
+          "usedBytes": 1288169160,
+          "totalBytes": 1319739124,
+          "limitBytes": 4395630592
+        },
+        "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+      },
+      "loading": {
+        "firstRenderedFrameSinceNavigationMs": 4308.299999952316,
+        "glbFetchDecodeMs": 767.8999999761581,
+        "glbBytes": 40552456,
+        "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+      },
+      "adapter": {
+        "vendor": "nvidia",
+        "architecture": "turing",
+        "device": "",
+        "description": ""
+      },
+      "asset": {
+        "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=1",
+        "bytes": 40552456,
+        "loadMs": 767.8999999761581
+      },
+      "date": "2026-09-13T21:26:49.468Z",
+      "quality": "Media",
+      "camera": {
+        "name": "CAM_01_|_fotograma_general",
+        "position": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 22.91750563177261,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      },
+      "cameraPan": {
+        "enabled": true,
+        "horizontal": 2,
+        "vertical": 0.5,
+        "smoothness": 1.4,
+        "targetDistance": 20,
+        "units": "metres; smoothness in seconds",
+        "offset": [
+          0,
+          0
+        ],
+        "referencePosition": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "target": [
+          -0.11999999731779099,
+          1.550000786781311,
+          -9.699999809265137
+        ]
+      },
+      "exposure": 1.07,
+      "metrics": {
+        "fps": 36.7,
+        "frameMeanMs": 27.22,
+        "frameP95Ms": 52.3,
+        "samples": 120,
+        "resolution": [
+          1920,
+          800
+        ],
+        "drawCalls": 289,
+        "renderedTriangles": 605317,
+        "geometries": 143,
+        "textures": 56
+      },
+      "floorReflection": {
+        "enabled": true,
+        "mode": "stone",
+        "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+        "planeY": 0,
+        "gain": 0.32,
+        "fresnelF0": 0.04,
+        "roughnessLodScale": 10,
+        "maxLod": 5,
+        "normalDistortion": 0.045,
+        "resolutionScale": 0.35,
+        "resolution": "auto",
+        "mipLodOffset": -0.5145731728297583,
+        "mipmaps": true,
+        "bounces": false,
+        "updates": {
+          "mode": "adaptive",
+          "rendered": 2087,
+          "reused": 7576
+        },
+        "meshes": 21,
+        "sharedMaterials": 1,
+        "targets": [
+          {
+            "width": 672,
+            "height": 280
+          }
+        ]
+      },
+      "specularEnvironment": {
+        "enabled": true,
+        "dirty": false,
+        "captures": 6,
+        "size": 128,
+        "position": [
+          0,
+          1.4,
+          -10.2
+        ],
+        "materials": [
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ],
+        "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+        "metalIntensity": 0.6,
+        "glassIntensity": 0.35
+      },
+      "atmosphere": {
+        "exterior": true,
+        "interior": true,
+        "exteriorStrength": 1,
+        "interiorStrength": 1,
+        "boundary": -14.4,
+        "interiorPath": 24,
+        "exteriorDensity": 0.00025,
+        "interiorDensity": 0.0015,
+        "effectiveDensity": [
+          0.00025,
+          0.0015
+        ],
+        "excludedMaterials": [
+          "Cielo | nubes ambar",
+          "Sol | disco emisivo"
+        ],
+        "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+        "extraRenderPasses": 0
+      },
+      "lightVolume": {
+        "enabled": true,
+        "dust": true,
+        "strength": 1,
+        "speed": 1,
+        "ready": true,
+        "steps": 40,
+        "bounds": [
+          [
+            -9,
+            0.08,
+            -14.4
+          ],
+          [
+            9,
+            8,
+            2
+          ]
+        ],
+        "time": 207.29599999988014,
+        "reflectionRefreshHz": 10,
+        "scatteringDensity": 0.004,
+        "solarRadianceScale": 0.18,
+        "sampling": "deterministic midpoint; no temporal jitter or history",
+        "emptyIntervalSkipped": true,
+        "source": "solar shadow depth; bounded single scattering; procedural dust density",
+        "extraRenderPasses": 0
+      },
+      "postProcessing": {
+        "bloom": true,
+        "grade": true,
+        "strength": 0.16,
+        "radius": 0.25,
+        "threshold": 1.5,
+        "gradeStrength": 1,
+        "flare": {
+          "enabled": true,
+          "intensity": 0.18,
+          "size": 1,
+          "source": "visible solar disc only",
+          "screenPosition": [
+            0.5126390355880259,
+            0.347024089392177
+          ],
+          "energyBeforeOcclusion": 0.18,
+          "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+          "extraRenderPasses": 0
+        },
+        "ready": true,
+        "quality": "Media",
+        "bloomResolutionScale": 0.5,
+        "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+        "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+        "bloomLuminanceLimit": 4,
+        "extraFullscreenPasses": 13
+      },
+      "sky": {
+        "enabled": true,
+        "studio": false,
+        "coverage": "360 x 180 degrees",
+        "version": 3,
+        "panoramaPitchDegrees": 25,
+        "originalProjection": true,
+        "interiorBlendUV": 0.12,
+        "originalPlaneVisible": false,
+        "originalRectanglePreserved": false,
+        "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+        "size": [
+          1774,
+          887
+        ],
+        "visualOnly": true,
+        "probeUsesOriginalBackground": true
+      },
+      "lighting": {
+        "profile": "tyrell-light-v2",
+        "contribution": "all",
+        "sunPosition": [
+          0.24709783776834474,
+          8.042288376397824,
+          -84.68905268029118
+        ],
+        "target": [
+          0,
+          1,
+          -5
+        ],
+        "directionToSun": [
+          0.0030887229721043093,
+          0.08802860470497281,
+          -0.9961131585036398
+        ],
+        "sunIntensity": 2.5,
+        "sunColor": "ffd093",
+        "discPosition": [
+          8,
+          42.5,
+          -650
+        ],
+        "discScale": [
+          0.5600000095367431,
+          0.5600000095367431,
+          0.5600000095367431
+        ],
+        "skyEmission": [
+          0.7500000298023224,
+          0.7500000298023224,
+          0.7500000298023224
+        ],
+        "hemisphereIntensity": 0.86,
+        "areaIntensities": [
+          0.08,
+          0.08,
+          0.2,
+          0.2
+        ],
+        "areas": [
+          {
+            "role": "window",
+            "position": [
+              0,
+              4.2,
+              -13.8
+            ],
+            "emissionDirection": [
+              0,
+              -0.28408832969137404,
+              0.9587981127083873
+            ],
+            "width": 6,
+            "height": 6,
+            "intensity": 0.08,
+            "power": 9.047786842338605,
+            "castShadow": false
+          },
+          {
+            "role": "front",
+            "position": [
+              0,
+              4.5,
+              7
+            ],
+            "emissionDirection": [
+              0,
+              -0.12752174253952622,
+              -0.9918357753074262
+            ],
+            "width": 7,
+            "height": 7,
+            "intensity": 0.08,
+            "power": 12.31504320207199,
+            "castShadow": false
+          },
+          {
+            "role": "left",
+            "position": [
+              -7.7,
+              4.3,
+              -3.4
+            ],
+            "emissionDirection": [
+              0.8589580613952029,
+              -0.42034117898063117,
+              -0.2924112549430478
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          },
+          {
+            "role": "right",
+            "position": [
+              7.7,
+              4.1,
+              -7.2
+            ],
+            "emissionDirection": [
+              -0.9024909124636484,
+              -0.41166252147464655,
+              -0.12666539122296816
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          }
+        ]
+      },
+      "materialLook": {
+        "profile": "tyrell-v1",
+        "floorNormal": true,
+        "status": "v1 reviewed baseline; final lighting and reflections pending",
+        "materialCount": 21,
+        "adjusted": [
+          "PBR | Caliza ocre envejecida",
+          "PBR | Caliza aristas claras",
+          "PBR | Piedra negra pulida",
+          "PBR | Nogal oscuro",
+          "PBR | Raiz de nogal",
+          "Walnut | quarter sawn",
+          "Leather | oxblood",
+          "Burl walnut | table rim",
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Cuero oscuro",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ]
+      },
+      "indirect": {
+        "mode": "reference",
+        "probeIntensity": 0,
+        "environmentActive": false,
+        "environmentIntensity": 1,
+        "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+        "ambientRetention": 0.92
+      },
+      "reviewLighting": "tyrell-light-v2",
+      "id": 4,
+      "effects": "Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+    },
+    {
+      "qualityBudget": {
+        "mode": "optimized",
+        "pixelRatio": 0.9,
+        "shadowSize": 2048,
+        "volumeSteps": 32,
+        "reflectionScale": 0.35
+      },
+      "performance": {
+        "enabled": true,
+        "cpuRender": {
+          "samples": 120,
+          "meanMs": 10.72166666686535,
+          "p95Ms": 17.700000047683716
+        },
+        "gpuRender": {
+          "samples": 25,
+          "meanMs": 17.77598464000001,
+          "p95Ms": 18.21900800000001
+        },
+        "gpuSupported": true,
+        "gpuError": null,
+        "heap": {
+          "usedBytes": 1299850155,
+          "totalBytes": 1335206903,
+          "limitBytes": 4395630592
+        },
+        "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+      },
+      "loading": {
+        "firstRenderedFrameSinceNavigationMs": 4308.299999952316,
+        "glbFetchDecodeMs": 767.8999999761581,
+        "glbBytes": 40552456,
+        "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+      },
+      "adapter": {
+        "vendor": "nvidia",
+        "architecture": "turing",
+        "device": "",
+        "description": ""
+      },
+      "asset": {
+        "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=1",
+        "bytes": 40552456,
+        "loadMs": 767.8999999761581
+      },
+      "date": "2026-09-13T21:27:26.896Z",
+      "quality": "Media",
+      "camera": {
+        "name": "CAM_01_|_fotograma_general",
+        "position": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 22.91750563177261,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      },
+      "cameraPan": {
+        "enabled": true,
+        "horizontal": 2,
+        "vertical": 0.5,
+        "smoothness": 1.4,
+        "targetDistance": 20,
+        "units": "metres; smoothness in seconds",
+        "offset": [
+          0,
+          0
+        ],
+        "referencePosition": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "target": [
+          -0.11999999731779099,
+          1.550000786781311,
+          -9.699999809265137
+        ]
+      },
+      "exposure": 1.07,
+      "metrics": {
+        "fps": 49.4,
+        "frameMeanMs": 20.23,
+        "frameP95Ms": 28.3,
+        "samples": 120,
+        "resolution": [
+          1728,
+          720
+        ],
+        "drawCalls": 289,
+        "renderedTriangles": 605317,
+        "geometries": 143,
+        "textures": 56
+      },
+      "floorReflection": {
+        "enabled": true,
+        "mode": "stone",
+        "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+        "planeY": 0,
+        "gain": 0.32,
+        "fresnelF0": 0.04,
+        "roughnessLodScale": 10,
+        "maxLod": 5,
+        "normalDistortion": 0.045,
+        "resolutionScale": 0.35,
+        "resolution": "auto",
+        "mipLodOffset": -0.5145731728297583,
+        "mipmaps": true,
+        "bounces": false,
+        "updates": {
+          "mode": "adaptive",
+          "rendered": 2446,
+          "reused": 8622
+        },
+        "meshes": 21,
+        "sharedMaterials": 1,
+        "targets": [
+          {
+            "width": 605,
+            "height": 252
+          }
+        ]
+      },
+      "specularEnvironment": {
+        "enabled": true,
+        "dirty": false,
+        "captures": 7,
+        "size": 128,
+        "position": [
+          0,
+          1.4,
+          -10.2
+        ],
+        "materials": [
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ],
+        "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+        "metalIntensity": 0.6,
+        "glassIntensity": 0.35
+      },
+      "atmosphere": {
+        "exterior": true,
+        "interior": true,
+        "exteriorStrength": 1,
+        "interiorStrength": 1,
+        "boundary": -14.4,
+        "interiorPath": 24,
+        "exteriorDensity": 0.00025,
+        "interiorDensity": 0.0015,
+        "effectiveDensity": [
+          0.00025,
+          0.0015
+        ],
+        "excludedMaterials": [
+          "Cielo | nubes ambar",
+          "Sol | disco emisivo"
+        ],
+        "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+        "extraRenderPasses": 0
+      },
+      "lightVolume": {
+        "enabled": true,
+        "dust": true,
+        "strength": 1,
+        "speed": 1,
+        "ready": true,
+        "steps": 32,
+        "bounds": [
+          [
+            -9,
+            0.08,
+            -14.4
+          ],
+          [
+            9,
+            8,
+            2
+          ]
+        ],
+        "time": 242.9655999993084,
+        "reflectionRefreshHz": 10,
+        "scatteringDensity": 0.004,
+        "solarRadianceScale": 0.18,
+        "sampling": "deterministic midpoint; no temporal jitter or history",
+        "emptyIntervalSkipped": true,
+        "source": "solar shadow depth; bounded single scattering; procedural dust density",
+        "extraRenderPasses": 0
+      },
+      "postProcessing": {
+        "bloom": true,
+        "grade": true,
+        "strength": 0.16,
+        "radius": 0.25,
+        "threshold": 1.5,
+        "gradeStrength": 1,
+        "flare": {
+          "enabled": true,
+          "intensity": 0.18,
+          "size": 1,
+          "source": "visible solar disc only",
+          "screenPosition": [
+            0.5126390355880259,
+            0.347024089392177
+          ],
+          "energyBeforeOcclusion": 0.18,
+          "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+          "extraRenderPasses": 0
+        },
+        "ready": true,
+        "quality": "Media",
+        "bloomResolutionScale": 0.5,
+        "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+        "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+        "bloomLuminanceLimit": 4,
+        "extraFullscreenPasses": 13
+      },
+      "sky": {
+        "enabled": true,
+        "studio": false,
+        "coverage": "360 x 180 degrees",
+        "version": 3,
+        "panoramaPitchDegrees": 25,
+        "originalProjection": true,
+        "interiorBlendUV": 0.12,
+        "originalPlaneVisible": false,
+        "originalRectanglePreserved": false,
+        "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+        "size": [
+          1774,
+          887
+        ],
+        "visualOnly": true,
+        "probeUsesOriginalBackground": true
+      },
+      "lighting": {
+        "profile": "tyrell-light-v2",
+        "contribution": "all",
+        "sunPosition": [
+          0.24709783776834474,
+          8.042288376397824,
+          -84.68905268029118
+        ],
+        "target": [
+          0,
+          1,
+          -5
+        ],
+        "directionToSun": [
+          0.0030887229721043093,
+          0.08802860470497281,
+          -0.9961131585036398
+        ],
+        "sunIntensity": 2.5,
+        "sunColor": "ffd093",
+        "discPosition": [
+          8,
+          42.5,
+          -650
+        ],
+        "discScale": [
+          0.5600000095367431,
+          0.5600000095367431,
+          0.5600000095367431
+        ],
+        "skyEmission": [
+          0.7500000298023224,
+          0.7500000298023224,
+          0.7500000298023224
+        ],
+        "hemisphereIntensity": 0.86,
+        "areaIntensities": [
+          0.08,
+          0.08,
+          0.2,
+          0.2
+        ],
+        "areas": [
+          {
+            "role": "window",
+            "position": [
+              0,
+              4.2,
+              -13.8
+            ],
+            "emissionDirection": [
+              0,
+              -0.28408832969137404,
+              0.9587981127083873
+            ],
+            "width": 6,
+            "height": 6,
+            "intensity": 0.08,
+            "power": 9.047786842338605,
+            "castShadow": false
+          },
+          {
+            "role": "front",
+            "position": [
+              0,
+              4.5,
+              7
+            ],
+            "emissionDirection": [
+              0,
+              -0.12752174253952622,
+              -0.9918357753074262
+            ],
+            "width": 7,
+            "height": 7,
+            "intensity": 0.08,
+            "power": 12.31504320207199,
+            "castShadow": false
+          },
+          {
+            "role": "left",
+            "position": [
+              -7.7,
+              4.3,
+              -3.4
+            ],
+            "emissionDirection": [
+              0.8589580613952029,
+              -0.42034117898063117,
+              -0.2924112549430478
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          },
+          {
+            "role": "right",
+            "position": [
+              7.7,
+              4.1,
+              -7.2
+            ],
+            "emissionDirection": [
+              -0.9024909124636484,
+              -0.41166252147464655,
+              -0.12666539122296816
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          }
+        ]
+      },
+      "materialLook": {
+        "profile": "tyrell-v1",
+        "floorNormal": true,
+        "status": "v1 reviewed baseline; final lighting and reflections pending",
+        "materialCount": 21,
+        "adjusted": [
+          "PBR | Caliza ocre envejecida",
+          "PBR | Caliza aristas claras",
+          "PBR | Piedra negra pulida",
+          "PBR | Nogal oscuro",
+          "PBR | Raiz de nogal",
+          "Walnut | quarter sawn",
+          "Leather | oxblood",
+          "Burl walnut | table rim",
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Cuero oscuro",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ]
+      },
+      "indirect": {
+        "mode": "reference",
+        "probeIntensity": 0,
+        "environmentActive": false,
+        "environmentIntensity": 1,
+        "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+        "ambientRetention": 0.92
+      },
+      "reviewLighting": "tyrell-light-v2",
+      "id": 5,
+      "effects": "Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+    },
+    {
+      "qualityBudget": {
+        "mode": "optimized",
+        "pixelRatio": 1,
+        "shadowSize": 2048,
+        "volumeSteps": 48,
+        "reflectionScale": 0.5
+      },
+      "performance": {
+        "enabled": true,
+        "cpuRender": {
+          "samples": 120,
+          "meanMs": 14.777500007549921,
+          "p95Ms": 31.700000047683716
+        },
+        "gpuRender": {
+          "samples": 27,
+          "meanMs": 25.2143691851852,
+          "p95Ms": 27.06636800000001
+        },
+        "gpuSupported": true,
+        "gpuError": null,
+        "heap": {
+          "usedBytes": 1296068983,
+          "totalBytes": 1341233115,
+          "limitBytes": 4395630592
+        },
+        "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+      },
+      "loading": {
+        "firstRenderedFrameSinceNavigationMs": 4308.299999952316,
+        "glbFetchDecodeMs": 767.8999999761581,
+        "glbBytes": 40552456,
+        "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+      },
+      "adapter": {
+        "vendor": "nvidia",
+        "architecture": "turing",
+        "device": "",
+        "description": ""
+      },
+      "asset": {
+        "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=1",
+        "bytes": 40552456,
+        "loadMs": 767.8999999761581
+      },
+      "date": "2026-09-13T21:28:09.911Z",
+      "quality": "Alta",
+      "camera": {
+        "name": "CAM_01_|_fotograma_general",
+        "position": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 22.91750563177261,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      },
+      "cameraPan": {
+        "enabled": true,
+        "horizontal": 2,
+        "vertical": 0.5,
+        "smoothness": 1.4,
+        "targetDistance": 20,
+        "units": "metres; smoothness in seconds",
+        "offset": [
+          0,
+          0
+        ],
+        "referencePosition": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "target": [
+          -0.11999999731779099,
+          1.550000786781311,
+          -9.699999809265137
+        ]
+      },
+      "exposure": 1.07,
+      "metrics": {
+        "fps": 33,
+        "frameMeanMs": 30.28,
+        "frameP95Ms": 59.8,
+        "samples": 120,
+        "resolution": [
+          1920,
+          800
+        ],
+        "drawCalls": 370,
+        "renderedTriangles": 767365,
+        "geometries": 143,
+        "textures": 56
+      },
+      "floorReflection": {
+        "enabled": true,
+        "mode": "stone",
+        "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+        "planeY": 0,
+        "gain": 0.32,
+        "fresnelF0": 0.04,
+        "roughnessLodScale": 10,
+        "maxLod": 5,
+        "normalDistortion": 0.045,
+        "resolutionScale": 0.5,
+        "resolution": "auto",
+        "mipLodOffset": 0,
+        "mipmaps": true,
+        "bounces": false,
+        "updates": {
+          "mode": "adaptive",
+          "rendered": 2861,
+          "reused": 9880
+        },
+        "meshes": 21,
+        "sharedMaterials": 1,
+        "targets": [
+          {
+            "width": 960,
+            "height": 400
+          }
+        ]
+      },
+      "specularEnvironment": {
+        "enabled": true,
+        "dirty": false,
+        "captures": 8,
+        "size": 128,
+        "position": [
+          0,
+          1.4,
+          -10.2
+        ],
+        "materials": [
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ],
+        "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+        "metalIntensity": 0.6,
+        "glassIntensity": 0.35
+      },
+      "atmosphere": {
+        "exterior": true,
+        "interior": true,
+        "exteriorStrength": 1,
+        "interiorStrength": 1,
+        "boundary": -14.4,
+        "interiorPath": 24,
+        "exteriorDensity": 0.00025,
+        "interiorDensity": 0.0015,
+        "effectiveDensity": [
+          0.00025,
+          0.0015
+        ],
+        "excludedMaterials": [
+          "Cielo | nubes ambar",
+          "Sol | disco emisivo"
+        ],
+        "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+        "extraRenderPasses": 0
+      },
+      "lightVolume": {
+        "enabled": true,
+        "dust": true,
+        "strength": 1,
+        "speed": 1,
+        "ready": true,
+        "steps": 48,
+        "bounds": [
+          [
+            -9,
+            0.08,
+            -14.4
+          ],
+          [
+            9,
+            8,
+            2
+          ]
+        ],
+        "time": 284.24729999923744,
+        "reflectionRefreshHz": 10,
+        "scatteringDensity": 0.004,
+        "solarRadianceScale": 0.18,
+        "sampling": "deterministic midpoint; no temporal jitter or history",
+        "emptyIntervalSkipped": true,
+        "source": "solar shadow depth; bounded single scattering; procedural dust density",
+        "extraRenderPasses": 0
+      },
+      "postProcessing": {
+        "bloom": true,
+        "grade": true,
+        "strength": 0.16,
+        "radius": 0.25,
+        "threshold": 1.5,
+        "gradeStrength": 1,
+        "flare": {
+          "enabled": true,
+          "intensity": 0.18,
+          "size": 1,
+          "source": "visible solar disc only",
+          "screenPosition": [
+            0.5126390355880259,
+            0.347024089392177
+          ],
+          "energyBeforeOcclusion": 0.18,
+          "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+          "extraRenderPasses": 0
+        },
+        "ready": true,
+        "quality": "Alta",
+        "bloomResolutionScale": 0.5,
+        "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+        "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+        "bloomLuminanceLimit": 4,
+        "extraFullscreenPasses": 13
+      },
+      "sky": {
+        "enabled": true,
+        "studio": false,
+        "coverage": "360 x 180 degrees",
+        "version": 3,
+        "panoramaPitchDegrees": 25,
+        "originalProjection": true,
+        "interiorBlendUV": 0.12,
+        "originalPlaneVisible": false,
+        "originalRectanglePreserved": false,
+        "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+        "size": [
+          1774,
+          887
+        ],
+        "visualOnly": true,
+        "probeUsesOriginalBackground": true
+      },
+      "lighting": {
+        "profile": "tyrell-light-v2",
+        "contribution": "all",
+        "sunPosition": [
+          0.24709783776834474,
+          8.042288376397824,
+          -84.68905268029118
+        ],
+        "target": [
+          0,
+          1,
+          -5
+        ],
+        "directionToSun": [
+          0.0030887229721043093,
+          0.08802860470497281,
+          -0.9961131585036398
+        ],
+        "sunIntensity": 2.5,
+        "sunColor": "ffd093",
+        "discPosition": [
+          8,
+          42.5,
+          -650
+        ],
+        "discScale": [
+          0.5600000095367431,
+          0.5600000095367431,
+          0.5600000095367431
+        ],
+        "skyEmission": [
+          0.7500000298023224,
+          0.7500000298023224,
+          0.7500000298023224
+        ],
+        "hemisphereIntensity": 0.86,
+        "areaIntensities": [
+          0.08,
+          0.08,
+          0.2,
+          0.2
+        ],
+        "areas": [
+          {
+            "role": "window",
+            "position": [
+              0,
+              4.2,
+              -13.8
+            ],
+            "emissionDirection": [
+              0,
+              -0.28408832969137404,
+              0.9587981127083873
+            ],
+            "width": 6,
+            "height": 6,
+            "intensity": 0.08,
+            "power": 9.047786842338605,
+            "castShadow": false
+          },
+          {
+            "role": "front",
+            "position": [
+              0,
+              4.5,
+              7
+            ],
+            "emissionDirection": [
+              0,
+              -0.12752174253952622,
+              -0.9918357753074262
+            ],
+            "width": 7,
+            "height": 7,
+            "intensity": 0.08,
+            "power": 12.31504320207199,
+            "castShadow": false
+          },
+          {
+            "role": "left",
+            "position": [
+              -7.7,
+              4.3,
+              -3.4
+            ],
+            "emissionDirection": [
+              0.8589580613952029,
+              -0.42034117898063117,
+              -0.2924112549430478
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          },
+          {
+            "role": "right",
+            "position": [
+              7.7,
+              4.1,
+              -7.2
+            ],
+            "emissionDirection": [
+              -0.9024909124636484,
+              -0.41166252147464655,
+              -0.12666539122296816
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          }
+        ]
+      },
+      "materialLook": {
+        "profile": "tyrell-v1",
+        "floorNormal": true,
+        "status": "v1 reviewed baseline; final lighting and reflections pending",
+        "materialCount": 21,
+        "adjusted": [
+          "PBR | Caliza ocre envejecida",
+          "PBR | Caliza aristas claras",
+          "PBR | Piedra negra pulida",
+          "PBR | Nogal oscuro",
+          "PBR | Raiz de nogal",
+          "Walnut | quarter sawn",
+          "Leather | oxblood",
+          "Burl walnut | table rim",
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Cuero oscuro",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ]
+      },
+      "indirect": {
+        "mode": "reference",
+        "probeIntensity": 0,
+        "environmentActive": false,
+        "environmentIntensity": 1,
+        "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+        "ambientRetention": 0.92
+      },
+      "reviewLighting": "tyrell-light-v2",
+      "id": 6,
+      "effects": "Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+    },
+    {
+      "qualityBudget": {
+        "mode": "baseline",
+        "pixelRatio": 1.5,
+        "shadowSize": 2048,
+        "volumeSteps": 64,
+        "reflectionScale": 0.75
+      },
+      "performance": {
+        "enabled": true,
+        "cpuRender": {
+          "samples": 120,
+          "meanMs": 12.749166662494341,
+          "p95Ms": 23.799999952316284
+        },
+        "gpuRender": {
+          "samples": 22,
+          "meanMs": 59.83734690909093,
+          "p95Ms": 66.84671999999998
+        },
+        "gpuSupported": true,
+        "gpuError": null,
+        "heap": {
+          "usedBytes": 1295345434,
+          "totalBytes": 1341234758,
+          "limitBytes": 4395630592
+        },
+        "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+      },
+      "loading": {
+        "firstRenderedFrameSinceNavigationMs": 4308.299999952316,
+        "glbFetchDecodeMs": 767.8999999761581,
+        "glbBytes": 40552456,
+        "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+      },
+      "adapter": {
+        "vendor": "nvidia",
+        "architecture": "turing",
+        "device": "",
+        "description": ""
+      },
+      "asset": {
+        "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=1",
+        "bytes": 40552456,
+        "loadMs": 767.8999999761581
+      },
+      "date": "2026-09-13T21:28:51.993Z",
+      "quality": "Alta",
+      "camera": {
+        "name": "CAM_01_|_fotograma_general",
+        "position": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 22.91750563177261,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      },
+      "cameraPan": {
+        "enabled": true,
+        "horizontal": 2,
+        "vertical": 0.5,
+        "smoothness": 1.4,
+        "targetDistance": 20,
+        "units": "metres; smoothness in seconds",
+        "offset": [
+          0,
+          0
+        ],
+        "referencePosition": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "target": [
+          -0.11999999731779099,
+          1.550000786781311,
+          -9.699999809265137
+        ]
+      },
+      "exposure": 1.07,
+      "metrics": {
+        "fps": 14.7,
+        "frameMeanMs": 68.14,
+        "frameP95Ms": 118.3,
+        "samples": 120,
+        "resolution": [
+          2880,
+          1200
+        ],
+        "drawCalls": 289,
+        "renderedTriangles": 605317,
+        "geometries": 143,
+        "textures": 56
+      },
+      "floorReflection": {
+        "enabled": true,
+        "mode": "stone",
+        "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+        "planeY": 0,
+        "gain": 0.32,
+        "fresnelF0": 0.04,
+        "roughnessLodScale": 10,
+        "maxLod": 5,
+        "normalDistortion": 0.045,
+        "resolutionScale": 0.75,
+        "resolution": "auto",
+        "mipLodOffset": 0.5849625007211562,
+        "mipmaps": true,
+        "bounces": false,
+        "updates": {
+          "mode": "adaptive",
+          "rendered": 3205,
+          "reused": 10572
+        },
+        "meshes": 21,
+        "sharedMaterials": 1,
+        "targets": [
+          {
+            "width": 2160,
+            "height": 900
+          }
+        ]
+      },
+      "specularEnvironment": {
+        "enabled": true,
+        "dirty": false,
+        "captures": 9,
+        "size": 128,
+        "position": [
+          0,
+          1.4,
+          -10.2
+        ],
+        "materials": [
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ],
+        "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+        "metalIntensity": 0.6,
+        "glassIntensity": 0.35
+      },
+      "atmosphere": {
+        "exterior": true,
+        "interior": true,
+        "exteriorStrength": 1,
+        "interiorStrength": 1,
+        "boundary": -14.4,
+        "interiorPath": 24,
+        "exteriorDensity": 0.00025,
+        "interiorDensity": 0.0015,
+        "effectiveDensity": [
+          0.00025,
+          0.0015
+        ],
+        "excludedMaterials": [
+          "Cielo | nubes ambar",
+          "Sol | disco emisivo"
+        ],
+        "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+        "extraRenderPasses": 0
+      },
+      "lightVolume": {
+        "enabled": true,
+        "dust": true,
+        "strength": 1,
+        "speed": 1,
+        "ready": true,
+        "steps": 64,
+        "bounds": [
+          [
+            -9,
+            0.08,
+            -14.4
+          ],
+          [
+            9,
+            8,
+            2
+          ]
+        ],
+        "time": 318.5272999990029,
+        "reflectionRefreshHz": 10,
+        "scatteringDensity": 0.004,
+        "solarRadianceScale": 0.18,
+        "sampling": "deterministic midpoint; no temporal jitter or history",
+        "emptyIntervalSkipped": true,
+        "source": "solar shadow depth; bounded single scattering; procedural dust density",
+        "extraRenderPasses": 0
+      },
+      "postProcessing": {
+        "bloom": true,
+        "grade": true,
+        "strength": 0.16,
+        "radius": 0.25,
+        "threshold": 1.5,
+        "gradeStrength": 1,
+        "flare": {
+          "enabled": true,
+          "intensity": 0.18,
+          "size": 1,
+          "source": "visible solar disc only",
+          "screenPosition": [
+            0.5126390355880259,
+            0.347024089392177
+          ],
+          "energyBeforeOcclusion": 0.18,
+          "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+          "extraRenderPasses": 0
+        },
+        "ready": true,
+        "quality": "Alta",
+        "bloomResolutionScale": 0.5,
+        "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+        "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+        "bloomLuminanceLimit": 4,
+        "extraFullscreenPasses": 13
+      },
+      "sky": {
+        "enabled": true,
+        "studio": false,
+        "coverage": "360 x 180 degrees",
+        "version": 3,
+        "panoramaPitchDegrees": 25,
+        "originalProjection": true,
+        "interiorBlendUV": 0.12,
+        "originalPlaneVisible": false,
+        "originalRectanglePreserved": false,
+        "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+        "size": [
+          1774,
+          887
+        ],
+        "visualOnly": true,
+        "probeUsesOriginalBackground": true
+      },
+      "lighting": {
+        "profile": "tyrell-light-v2",
+        "contribution": "all",
+        "sunPosition": [
+          0.24709783776834474,
+          8.042288376397824,
+          -84.68905268029118
+        ],
+        "target": [
+          0,
+          1,
+          -5
+        ],
+        "directionToSun": [
+          0.0030887229721043093,
+          0.08802860470497281,
+          -0.9961131585036398
+        ],
+        "sunIntensity": 2.5,
+        "sunColor": "ffd093",
+        "discPosition": [
+          8,
+          42.5,
+          -650
+        ],
+        "discScale": [
+          0.5600000095367431,
+          0.5600000095367431,
+          0.5600000095367431
+        ],
+        "skyEmission": [
+          0.7500000298023224,
+          0.7500000298023224,
+          0.7500000298023224
+        ],
+        "hemisphereIntensity": 0.86,
+        "areaIntensities": [
+          0.08,
+          0.08,
+          0.2,
+          0.2
+        ],
+        "areas": [
+          {
+            "role": "window",
+            "position": [
+              0,
+              4.2,
+              -13.8
+            ],
+            "emissionDirection": [
+              0,
+              -0.28408832969137404,
+              0.9587981127083873
+            ],
+            "width": 6,
+            "height": 6,
+            "intensity": 0.08,
+            "power": 9.047786842338605,
+            "castShadow": false
+          },
+          {
+            "role": "front",
+            "position": [
+              0,
+              4.5,
+              7
+            ],
+            "emissionDirection": [
+              0,
+              -0.12752174253952622,
+              -0.9918357753074262
+            ],
+            "width": 7,
+            "height": 7,
+            "intensity": 0.08,
+            "power": 12.31504320207199,
+            "castShadow": false
+          },
+          {
+            "role": "left",
+            "position": [
+              -7.7,
+              4.3,
+              -3.4
+            ],
+            "emissionDirection": [
+              0.8589580613952029,
+              -0.42034117898063117,
+              -0.2924112549430478
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          },
+          {
+            "role": "right",
+            "position": [
+              7.7,
+              4.1,
+              -7.2
+            ],
+            "emissionDirection": [
+              -0.9024909124636484,
+              -0.41166252147464655,
+              -0.12666539122296816
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          }
+        ]
+      },
+      "materialLook": {
+        "profile": "tyrell-v1",
+        "floorNormal": true,
+        "status": "v1 reviewed baseline; final lighting and reflections pending",
+        "materialCount": 21,
+        "adjusted": [
+          "PBR | Caliza ocre envejecida",
+          "PBR | Caliza aristas claras",
+          "PBR | Piedra negra pulida",
+          "PBR | Nogal oscuro",
+          "PBR | Raiz de nogal",
+          "Walnut | quarter sawn",
+          "Leather | oxblood",
+          "Burl walnut | table rim",
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Cuero oscuro",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ]
+      },
+      "indirect": {
+        "mode": "reference",
+        "probeIntensity": 0,
+        "environmentActive": false,
+        "environmentIntensity": 1,
+        "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+        "ambientRetention": 0.92
+      },
+      "reviewLighting": "tyrell-light-v2",
+      "id": 7,
+      "effects": "Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+    },
+    {
+      "qualityBudget": {
+        "mode": "optimized",
+        "pixelRatio": 0.75,
+        "shadowSize": 1024,
+        "volumeSteps": 24,
+        "reflectionScale": 0.25
+      },
+      "performance": {
+        "enabled": true,
+        "cpuRender": {
+          "samples": 120,
+          "meanMs": 10.46416666507721,
+          "p95Ms": 16.699999928474426
+        },
+        "gpuRender": {
+          "samples": 64,
+          "meanMs": 12.149759999999995,
+          "p95Ms": 12.910592000000001
+        },
+        "gpuSupported": true,
+        "gpuError": null,
+        "heap": {
+          "usedBytes": 1313694983,
+          "totalBytes": 1389992375,
+          "limitBytes": 4395630592
+        },
+        "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+      },
+      "loading": {
+        "firstRenderedFrameSinceNavigationMs": 4308.299999952316,
+        "glbFetchDecodeMs": 767.8999999761581,
+        "glbBytes": 40552456,
+        "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+      },
+      "adapter": {
+        "vendor": "nvidia",
+        "architecture": "turing",
+        "device": "",
+        "description": ""
+      },
+      "asset": {
+        "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=1",
+        "bytes": 40552456,
+        "loadMs": 767.8999999761581
+      },
+      "date": "2026-09-13T21:29:27.652Z",
+      "quality": "Baja",
+      "camera": {
+        "name": "CAM_01_|_fotograma_general",
+        "position": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fov": 22.91750563177261,
+        "aspect": 2.4,
+        "near": 0.029999999329447746,
+        "far": 2500
+      },
+      "cameraPan": {
+        "enabled": true,
+        "horizontal": 2,
+        "vertical": 0.5,
+        "smoothness": 1.4,
+        "targetDistance": 20,
+        "units": "metres; smoothness in seconds",
+        "offset": [
+          0,
+          0
+        ],
+        "referencePosition": [
+          -0.11999999731779099,
+          1.550000786781311,
+          10.300000190734863
+        ],
+        "target": [
+          -0.11999999731779099,
+          1.550000786781311,
+          -9.699999809265137
+        ]
+      },
+      "exposure": 1.07,
+      "metrics": {
+        "fps": 59.9,
+        "frameMeanMs": 16.7,
+        "frameP95Ms": 24.2,
+        "samples": 120,
+        "resolution": [
+          1440,
+          600
+        ],
+        "drawCalls": 289,
+        "renderedTriangles": 605317,
+        "geometries": 143,
+        "textures": 57
+      },
+      "floorReflection": {
+        "enabled": true,
+        "mode": "stone",
+        "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+        "planeY": 0,
+        "gain": 0.32,
+        "fresnelF0": 0.04,
+        "roughnessLodScale": 10,
+        "maxLod": 5,
+        "normalDistortion": 0.045,
+        "resolutionScale": 0.25,
+        "resolution": "auto",
+        "mipLodOffset": -1,
+        "mipmaps": true,
+        "bounces": false,
+        "updates": {
+          "mode": "adaptive",
+          "rendered": 3477,
+          "reused": 11283
+        },
+        "meshes": 21,
+        "sharedMaterials": 1,
+        "targets": [
+          {
+            "width": 360,
+            "height": 150
+          }
+        ]
+      },
+      "specularEnvironment": {
+        "enabled": true,
+        "dirty": false,
+        "captures": 11,
+        "size": 128,
+        "position": [
+          0,
+          1.4,
+          -10.2
+        ],
+        "materials": [
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ],
+        "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+        "metalIntensity": 0.6,
+        "glassIntensity": 0.35
+      },
+      "atmosphere": {
+        "exterior": true,
+        "interior": true,
+        "exteriorStrength": 1,
+        "interiorStrength": 1,
+        "boundary": -14.4,
+        "interiorPath": 24,
+        "exteriorDensity": 0.00025,
+        "interiorDensity": 0.0015,
+        "effectiveDensity": [
+          0.00025,
+          0.0015
+        ],
+        "excludedMaterials": [
+          "Cielo | nubes ambar",
+          "Sol | disco emisivo"
+        ],
+        "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+        "extraRenderPasses": 0
+      },
+      "lightVolume": {
+        "enabled": true,
+        "dust": true,
+        "strength": 1,
+        "speed": 1,
+        "ready": true,
+        "steps": 24,
+        "bounds": [
+          [
+            -9,
+            0.08,
+            -14.4
+          ],
+          [
+            9,
+            8,
+            2
+          ]
+        ],
+        "time": 345.2559999996499,
+        "reflectionRefreshHz": 10,
+        "scatteringDensity": 0.004,
+        "solarRadianceScale": 0.18,
+        "sampling": "deterministic midpoint; no temporal jitter or history",
+        "emptyIntervalSkipped": true,
+        "source": "solar shadow depth; bounded single scattering; procedural dust density",
+        "extraRenderPasses": 0
+      },
+      "postProcessing": {
+        "bloom": true,
+        "grade": true,
+        "strength": 0.16,
+        "radius": 0.25,
+        "threshold": 1.5,
+        "gradeStrength": 1,
+        "flare": {
+          "enabled": true,
+          "intensity": 0.18,
+          "size": 1,
+          "source": "visible solar disc only",
+          "screenPosition": [
+            0.5126390355880259,
+            0.347024089392177
+          ],
+          "energyBeforeOcclusion": 0.18,
+          "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+          "extraRenderPasses": 0
+        },
+        "ready": true,
+        "quality": "Baja",
+        "bloomResolutionScale": 0.25,
+        "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+        "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+        "bloomLuminanceLimit": 4,
+        "extraFullscreenPasses": 13
+      },
+      "sky": {
+        "enabled": true,
+        "studio": false,
+        "coverage": "360 x 180 degrees",
+        "version": 3,
+        "panoramaPitchDegrees": 25,
+        "originalProjection": true,
+        "interiorBlendUV": 0.12,
+        "originalPlaneVisible": false,
+        "originalRectanglePreserved": false,
+        "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+        "size": [
+          1774,
+          887
+        ],
+        "visualOnly": true,
+        "probeUsesOriginalBackground": true
+      },
+      "lighting": {
+        "profile": "tyrell-light-v2",
+        "contribution": "all",
+        "sunPosition": [
+          0.24709783776834474,
+          8.042288376397824,
+          -84.68905268029118
+        ],
+        "target": [
+          0,
+          1,
+          -5
+        ],
+        "directionToSun": [
+          0.0030887229721043093,
+          0.08802860470497281,
+          -0.9961131585036398
+        ],
+        "sunIntensity": 2.5,
+        "sunColor": "ffd093",
+        "discPosition": [
+          8,
+          42.5,
+          -650
+        ],
+        "discScale": [
+          0.5600000095367431,
+          0.5600000095367431,
+          0.5600000095367431
+        ],
+        "skyEmission": [
+          0.7500000298023224,
+          0.7500000298023224,
+          0.7500000298023224
+        ],
+        "hemisphereIntensity": 0.86,
+        "areaIntensities": [
+          0.08,
+          0.08,
+          0.2,
+          0.2
+        ],
+        "areas": [
+          {
+            "role": "window",
+            "position": [
+              0,
+              4.2,
+              -13.8
+            ],
+            "emissionDirection": [
+              0,
+              -0.28408832969137404,
+              0.9587981127083873
+            ],
+            "width": 6,
+            "height": 6,
+            "intensity": 0.08,
+            "power": 9.047786842338605,
+            "castShadow": false
+          },
+          {
+            "role": "front",
+            "position": [
+              0,
+              4.5,
+              7
+            ],
+            "emissionDirection": [
+              0,
+              -0.12752174253952622,
+              -0.9918357753074262
+            ],
+            "width": 7,
+            "height": 7,
+            "intensity": 0.08,
+            "power": 12.31504320207199,
+            "castShadow": false
+          },
+          {
+            "role": "left",
+            "position": [
+              -7.7,
+              4.3,
+              -3.4
+            ],
+            "emissionDirection": [
+              0.8589580613952029,
+              -0.42034117898063117,
+              -0.2924112549430478
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          },
+          {
+            "role": "right",
+            "position": [
+              7.7,
+              4.1,
+              -7.2
+            ],
+            "emissionDirection": [
+              -0.9024909124636484,
+              -0.41166252147464655,
+              -0.12666539122296816
+            ],
+            "width": 4,
+            "height": 4,
+            "intensity": 0.2,
+            "power": 10.053096491487338,
+            "castShadow": false
+          }
+        ]
+      },
+      "materialLook": {
+        "profile": "tyrell-v1",
+        "floorNormal": true,
+        "status": "v1 reviewed baseline; final lighting and reflections pending",
+        "materialCount": 21,
+        "adjusted": [
+          "PBR | Caliza ocre envejecida",
+          "PBR | Caliza aristas claras",
+          "PBR | Piedra negra pulida",
+          "PBR | Nogal oscuro",
+          "PBR | Raiz de nogal",
+          "Walnut | quarter sawn",
+          "Leather | oxblood",
+          "Burl walnut | table rim",
+          "Brass | polished highlights",
+          "Bronze | patinated",
+          "PBR | Cuero oscuro",
+          "PBR | Laton envejecido",
+          "PBR | Bronce patinado",
+          "Crystal"
+        ]
+      },
+      "indirect": {
+        "mode": "reference",
+        "probeIntensity": 0,
+        "environmentActive": false,
+        "environmentIntensity": 1,
+        "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+        "ambientRetention": 0.92
+      },
+      "reviewLighting": "tyrell-light-v2",
+      "id": 8,
+      "effects": "Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+    }
+  ]
+}

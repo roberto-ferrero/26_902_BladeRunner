@@ -23,7 +23,7 @@ export default class TyrellLightVolume {
         this.strength.value = this.settings.enabled ? this.settings.strength : 0
         this.dust.value = this.settings.dust ? 1 : 0
     }
-    setQuality(quality) { this.steps.value = { Baja: 24, Media: 40, Alta: 64 }[quality] || 40 }
+    setQuality(quality, steps) { this.steps.value = steps ?? ({ Baja: 24, Media: 40, Alta: 64 }[quality] || 40) }
     update(dt) {
         if (!this.settings.enabled) return false
         const sun = this.getSun()

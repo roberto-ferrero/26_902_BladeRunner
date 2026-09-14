@@ -33,12 +33,7 @@ export const TYRELL = {
     },
     pan: { enabled: true, horizontal: 2, vertical: 0.5, smoothness: 1.4, targetDistance: 20 },
     effects: { bloom: true, grade: true, exterior: true, interior: true, volume: true, floorReflection: true, specularEnvironment: true },
-    // Resolution budgets, not an inferred GPU ranking. Geometry is unchanged.
-    profiles: {
-        Baja: { pixelRatio: 0.75, shadowSize: 1024 },
-        Media: { pixelRatio: 1, shadowSize: 2048 },
-        Alta: { pixelRatio: 1.5, shadowSize: 2048 }
-    },
+    // Effective render budgets and the 8.1 comparison live in TyrellQuality.js.
     sunIntensity: 2.25,
     hemisphereIntensity: 0.35,
     // Provisional fills in glTF coordinates (metres, Y up). Calibrate in phase 4.

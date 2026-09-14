@@ -139,3 +139,23 @@ GUI > Navegación permite regular la duración (1,2 s por defecto; 0 para cambio
 ## Actualización 7.3
 
 Transiciones iniciales 4,5 s (GUI 0–10). Recorrido con colisiones, altura constante de 1,65 m ajustable y velocidad inicial 1,4 m/s. Q/E ya no activa vuelo. Plataforma elevada bloqueada por ahora. [Uso, UV y límites](docs/phase7/7.3/WALKING.md).
+
+
+## Foco y pausa · 7.4
+
+Al usar la GUI o cambiar de ventana se pausa el recorrido; pulsa Entrar al recorrido para retomarlo. La pestaña oculta suspende el render. Una pérdida de conexión WebGPU muestra Recargar página. Objetivo: escritorio con teclado/ratón y GPU dedicada. [Comportamiento y validación](docs/phase7/7.4/LIFECYCLE.md).
+
+
+## Organización de controles · 7.5
+
+Abrir GUI muestra cámaras, calidad, encuadre, Navegación y Paneo. Despliega Revisión técnica para iluminación/materiales, efectos, capturas, diagnóstico y mediciones. Plegar u ocultar no restablece valores. [Detalle](docs/phase7/7.5/INTERFACE.md).
+
+
+## Rendimiento · 8.1
+
+Añade `profile=1` a la URL para habilitar medición CPU de envío y timestamps GPU. Revisión técnica > Comparar efectos y coste permite guardar/exportar la referencia. Sin ese parámetro, el arranque mantiene la instrumentación GPU desactivada. [Datos medidos y límites](docs/phase8/8.1/PERFORMANCE.md).
+
+
+### 8.2 · Presupuestos de render
+
+Media y Alta usan presupuestos optimizados; Baja conserva los valores aceptados. En Revisión técnica, «Presupuesto de render» permite comparar con 8.1 o aislar resolución, volumen y reflejo. La configuración efectiva se exporta con las mediciones. Ver [resultados y límites](docs/phase8/8.2/PERFORMANCE.md).

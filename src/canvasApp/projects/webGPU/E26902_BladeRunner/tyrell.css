@@ -47,3 +47,10 @@ body.tyrell-viewer { background: #070807; color: #e6dfce; overflow: hidden; font
 @media (max-width: 700px) { .tyrell-ui header, .tyrell-ui footer { padding: 12px; } .tyrell-ui h1 { font-size: 18px; } .tyrell-controls { gap: 7px; } .tyrell-backend { max-width: 130px; text-align: right; } }
 
 .tyrell-navigation-hint { position: absolute; top: 82px; left: 26px; font-size: 12px; padding: 6px 10px; background: #070807cc; color: #e8c481; }
+
+.tyrell-experience { max-width: 746px; }
+.tyrell-experience > .tyrell-note { margin: 10px 0 14px; }
+.tyrell-technical { max-width: 746px; border-top: 1px solid #746344; padding-top: 12px; margin-top: 16px; font-size: 12px; pointer-events: auto; }
+.tyrell-technical > summary { cursor: pointer; color: #c7ae7c; padding: 4px 0; }
+.tyrell-technical > .tyrell-note { margin: 10px 0 14px; }
+.tyrell-technical-actions { margin: 12px 0; }

@@ -15,6 +15,7 @@ export default class TyrellNavigation {
         listen(document, 'pointerlockerror', () => this.useFallback())
         listen(canvas, 'mousedown', event => { if (this.fallback && event.button === 0) this.dragging = true })
         listen(document, 'mouseup', () => { this.dragging = false })
+        listen(canvas, 'mouseleave', () => { this.dragging = false })
         listen(window, 'blur', () => this.pause())
         listen(document, 'visibilitychange', () => { if (document.hidden) this.pause() })
         listen(window, 'keydown', event => {

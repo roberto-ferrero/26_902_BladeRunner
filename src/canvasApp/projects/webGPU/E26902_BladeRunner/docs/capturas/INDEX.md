@@ -409,3 +409,46 @@ Orden temporal dentro del punto. Calidad Baja.
 | [7.3_001_2026-09-13_mesa-recorrido.jpg](7.3_001_2026-09-13_mesa-recorrido.jpg) | 2026-09-13T18:05:09.499806+00:00 |
 | [7.3_002_2026-09-13_pared-izquierda.jpg](7.3_002_2026-09-13_pared-izquierda.jpg) | 2026-09-13T18:05:50.567944+00:00 |
 | [7.3_003_2026-09-13_valores-finales.jpg](7.3_003_2026-09-13_valores-finales.jpg) | 2026-09-13T18:07:21.487327+00:00 |
+
+
+## 7.4 · Tamaño y foco · 13-09-2026
+
+Orden temporal dentro del punto; calidad Baja.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [7.4_001_2026-09-13_contenedor-completo.jpg](7.4_001_2026-09-13_contenedor-completo.jpg) | 2026-09-13T18:56:57.771745+00:00 |
+| [7.4_002_2026-09-13_GUI-pausa-recorrido.jpg](7.4_002_2026-09-13_GUI-pausa-recorrido.jpg) | 2026-09-13T18:57:13.576361+00:00 |
+
+
+## 7.5 · Experiencia y revisión técnica · 13-09-2026
+
+Orden temporal dentro del punto; calidad Baja.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [7.5_001_2026-09-13_GUI-experiencia.jpg](7.5_001_2026-09-13_GUI-experiencia.jpg) | 2026-09-13T19:52:52.745285+00:00 |
+| [7.5_002_2026-09-13_revision-tecnica.jpg](7.5_002_2026-09-13_revision-tecnica.jpg) | 2026-09-13T19:53:12.676854+00:00 |
+
+
+## 8.1 · Referencia de rendimiento · 13-09-2026
+
+Viewport de medición 1920×1080, encuadre 2,4:1. Orden temporal dentro del punto.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [8.1_001_2026-09-13_mediciones.jpg](8.1_001_2026-09-13_mediciones.jpg) | 2026-09-13T20:19:10.713907+00:00 |
+| [8.1_002_2026-09-13_control-Baja.jpg](8.1_002_2026-09-13_control-Baja.jpg) | 2026-09-13T20:21:11.316787+00:00 |
+
+
+## 8.2 · Presupuestos de render · 13-09-2026
+
+Viewport 1920×1080; encuadre 2,4:1. Capturas de navegador JPEG; orden temporal dentro del punto.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [8.2_001_2026-09-13_CAM01-Media-referencia.jpg](8.2_001_2026-09-13_CAM01-Media-referencia.jpg) | 2026-09-13T21:30:16.593366+00:00 |
+| [8.2_002_2026-09-13_CAM01-Media-optimizada.jpg](8.2_002_2026-09-13_CAM01-Media-optimizada.jpg) | 2026-09-13T21:30:41.265904+00:00 |
+| [8.2_003_2026-09-13_CAM02-Media-optimizada.jpg](8.2_003_2026-09-13_CAM02-Media-optimizada.jpg) | 2026-09-13T21:31:18.925366+00:00 |
+| [8.2_004_2026-09-13_CAM02-Media-referencia.jpg](8.2_004_2026-09-13_CAM02-Media-referencia.jpg) | 2026-09-13T21:31:38.330797+00:00 |
+| [8.2_005_2026-09-13_CAM01-Alta-optimizada.jpg](8.2_005_2026-09-13_CAM01-Alta-optimizada.jpg) | 2026-09-13T21:33:23.076620+00:00 |

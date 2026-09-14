@@ -3,6 +3,7 @@ import { vec4 } from 'three/tsl'
 import { RectAreaLightNode } from 'three/webgpu'
 import { RectAreaLightTexturesLib } from 'three/addons/lights/RectAreaLightTexturesLib.js'
 import { TYRELL } from './config'
+import { qualityBudget, BUDGET_MODES } from './TyrellQuality'
 import { loadTyrell, disposeScene } from './TyrellAssets'
 import TyrellCameraRig from './TyrellCameraRig'
 import TyrellUI from './TyrellUI'
@@ -11,6 +12,8 @@ import { auditMaterialMaps } from './TyrellMaterialAudit'
 import TyrellCameraPan from './TyrellCameraPan'
 import TyrellNavigation from './TyrellNavigation'
 import TyrellCollision from './TyrellCollision'
+import TyrellLifecycle from './TyrellLifecycle'
+import TyrellPerformance from './TyrellPerformance'
 import TyrellLook, { applyColorReference } from './TyrellLook'
 import TyrellLighting from './TyrellLighting'
 import TyrellIndirect from './TyrellIndirect'
@@ -28,9 +31,11 @@ import TyrellLensFlare from './TyrellLensFlare'
 export default class E26902_BladeRunner {
     constructor() {
         this.type = 'WEBGPU_APP'
-        this.rendererOptions = { requireWebGPU: true, benchmarkOnStart: false, powerPreference: 'high-performance' }
+        this.profileEnabled = new URLSearchParams(location.search).get('profile') === '1'
+        this.rendererOptions = { requireWebGPU: true, benchmarkOnStart: false, powerPreference: 'high-performance', trackTimestamp: this.profileEnabled }
         this.ownsMetrics = true
         this.quality = TYRELL.quality
+        this.budgetMode = 'optimized'
         this.samples = []
         this.transitionDuration = 4.5
         this.comparison = new TyrellComparison()
@@ -55,6 +60,7 @@ export default class E26902_BladeRunner {
                 if (this.navigation.enabled) this.navigation.camera.position.y = this.navigation.height
             },
             navigationSpeed: value => { if (this.navigation) this.navigation.speed = Math.max(.25, Math.min(5, value)) },
+            budget: mode => { if (BUDGET_MODES.includes(mode)) { this.budgetMode = mode; this.setQuality(this.quality) } },
             camera: index => this.selectCamera(index), quality: name => this.setQuality(name),
             frame: enabled => { document.body.classList.toggle('tyrell-reference', enabled); app.size.update(); this.resetMetrics() },
             retry: () => this.rendererError ? location.reload() : this.load(),
@@ -72,9 +78,9 @@ export default class E26902_BladeRunner {
             post: values => { this.post?.configure(values); this.resetMetrics() },
             flare: values => { this.post?.configureFlare(values); this.resetMetrics() },
             sky: enabled => { this.sky?.setEnabled(enabled); this.resetMetrics() },
-            measure: () => { (!this.navigation?.enabled && !this.stageCamera?.transition && this.pan?.reset()); this.resetMetrics(); this.measuring = true; this.ui.comparisonStatus('Midiendo: espera sin cambiar controles ni mover la cámara…') },
+            measure: () => { if (this.navigation?.enabled || this.stageCamera?.transition) { this.ui.comparisonStatus('Selecciona una cámara fija y espera a que termine la transición.'); return } (!this.navigation?.enabled && !this.stageCamera?.transition && this.pan?.reset()); this.resetMetrics(); this.measuring = true; this.ui.comparisonStatus('Midiendo: espera sin cambiar controles ni mover la cámara…') },
             clearMeasurements: () => { this.measuring = false; this.comparison.clear(); this.ui.showMeasurements([]); this.ui.comparisonStatus('Registro vacío.') },
-            exportMeasurements: () => { const text = JSON.stringify({ note: 'Intervalos RAF; no tiempo GPU. Comparar misma cámara, resolución, calidad y luz.', rows: this.comparison.rows }, null, 2); this.ui.showOutput(new Blob([text], { type: 'application/json' }), 'tyrell-comparacion.json', text) },
+            exportMeasurements: () => { const text = JSON.stringify({ note: 'RAF, CPU de envío y GPU de pases (opcional con profile=1). Comparar misma cámara y luz; consultar qualityBudget y resolución efectiva.', rows: this.comparison.rows }, null, 2); this.ui.showOutput(new Blob([text], { type: 'application/json' }), 'tyrell-comparacion.json', text) },
             atmosphere: values => { this.atmosphere?.configure(values); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             indirect: mode => { this.indirect?.setMode(mode); this.setLighting(this.lightingProfile) },
             contribution: value => { this.lighting?.setContribution(value); this.indirect?.apply(this.lighting, this.studio); this.specularEnvironment?.invalidate(); this.resetMetrics() }
@@ -118,10 +124,10 @@ export default class E26902_BladeRunner {
         window.addEventListener('keydown', this.cameraKeyDown)
         window.addEventListener('pointermove', this.pointerMove)
         document.documentElement.addEventListener('pointerleave', this.pointerLeave)
-        window.addEventListener('blur', this.windowBlur)
         this.renderer = app.render.renderer
         this.navigation = new TyrellNavigation(this.stageCamera.get_camera(), this.renderer.domElement,
             message => this.ui.setNavigationState(this.navigation?.enabled, this.navigation?.locked, message), () => this.ui.dialog.open)
+        this.performanceProbe = new TyrellPerformance(this.renderer, this.profileEnabled)
         this.colorReference = applyColorReference(this.renderer, this.exposureEV)
         this.post = new TyrellPostProcessing(this.renderer, this.scene)
         this.renderer.shadowMap.enabled = true
@@ -132,14 +138,26 @@ export default class E26902_BladeRunner {
         this.setQuality(this.quality)
         this.resizeListener = () => this.resetMetrics()
         app.emitter.on('onAppSizeUpdate', this.resizeListener)
-        this.visibilityListener = () => {
-            this.windowBlur()
-            this.resetMetrics()
-            if (!this.built) return
-            if (document.hidden) app.deactivate()
-            else app.activate()
+        this.lifecycle = new TyrellLifecycle({
+            pauseInput: () => { this.navigation?.pause(); this.pan?.setPointer(0, 0) },
+            resetTiming: () => { this.panTime = undefined; this.resetMetrics() },
+            suspend: () => app.deactivate(), resume: () => app.activate(),
+            ready: () => this.built, failed: () => !!this.rendererError
+        })
+        this.previousDeviceLost = this.renderer.onDeviceLost
+        this.deviceLost = info => {
+            if (this.disposed) return
+            this.previousDeviceLost?.call(this.renderer, info)
+            this.rendererError = new Error('Se ha perdido la conexión con la GPU. Recarga la página para recuperar el visor.')
+            this.lifecycle.pause(); app.deactivate()
+            this.ui.setBackend('WebGPU · conexión interrumpida')
+            this.ui.error(this.rendererError, true)
         }
-        document.addEventListener('visibilitychange', this.visibilityListener)
+        this.renderer.onDeviceLost = this.deviceLost
+        this.containerObserver = new ResizeObserver(() => {
+            if (!this.disposed && app.$container.clientWidth > 0 && app.$container.clientHeight > 0) app.size.update()
+        })
+        this.containerObserver.observe(app.$container)
         this.load()
     }
     async load() {
@@ -248,6 +266,8 @@ export default class E26902_BladeRunner {
         this.selectCamera(Math.max(0, this.cameras.findIndex(camera => camera.name.startsWith(TYRELL.initialCamera.replaceAll(' ', '_')) || camera.name.startsWith(TYRELL.initialCamera))))
         this.setQuality(this.quality)
         this.built = true
+        // CanvasApp activates after build; run visibility reconciliation afterwards.
+        queueMicrotask(() => { if (!this.disposed && document.hidden) this.lifecycle.sync() })
         this.floorReflection.setEnabled(TYRELL.effects.floorReflection)
         this.specularEnvironment.setEnabled(TYRELL.effects.specularEnvironment)
         this.atmosphere.configure({ exterior: TYRELL.effects.exterior, interior: TYRELL.effects.interior })
@@ -284,8 +304,11 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     renderFrame(camera) {
+        const start = this.profileEnabled ? performance.now() : 0
         if (this.post) this.post.render(camera)
         else this.renderer.render(this.scene, camera)
+        if (this.firstFrameMs === undefined) this.firstFrameMs = performance.now()
+        this.performanceProbe?.frame(performance.now() - start, this.warmup === 0 && !document.hidden)
     }
     setLighting(profile) {
         this.specularEnvironment?.invalidate()
@@ -325,12 +348,12 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     setQuality(name) {
-        const profile = TYRELL.profiles[name]
+        const profile = qualityBudget(name, this.budgetMode)
         if (!profile) return
         this.quality = name
-        this.volume?.setQuality(name)
+        this.volume?.setQuality(name, profile.volumeSteps)
         this.post?.setQuality(name)
-        this.floorReflection?.setResolution(this.floorReflection.resolution, name)
+        this.floorReflection?.setResolution(this.floorReflection.resolution, name, profile.reflectionScale)
         this.specularEnvironment?.invalidate()
         this.renderer?.setPixelRatio(profile.pixelRatio)
         this.app.render?.update_resize()
@@ -350,6 +373,7 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     resetMetrics() {
+        this.performanceProbe?.reset()
         if (this.measuring) this.ui.comparisonStatus('Medición cancelada por un cambio de configuración. Vuelve a medir.')
         this.measuring = false
         this.floorReflection?.updates.invalidate()
@@ -412,11 +436,11 @@ export default class E26902_BladeRunner {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 7, step: '7.3', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 8, step: '8.2', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             referenceCapture: { ...REFERENCE_CAPTURE, aspect: 2.4 },
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
-            benchmarkOnStart: false, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
+            benchmarkOnStart: false, qualityBudget: { mode: this.budgetMode, ...qualityBudget(this.quality, this.budgetMode) }, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
             model: this.modelStats, asset: { path: TYRELL.asset, bytes: this.asset?.bytes, loadMs: this.asset?.loadMs },
             columnRepair: this.columnCores?.userData.columnRepair || null,
             contactRepair: this.contactRepair || null,
@@ -435,13 +459,16 @@ export default class E26902_BladeRunner {
             shadows: { ...TYRELL.shadows, mapSize: this.sun?.shadow.mapSize.toArray(), transmitted: this.renderer.shadowMap.transmitted },
             materialLook: this.look?.diagnostics(), reviewLighting: this.studio ? 'neutral-studio' : this.lightingProfile,
             collision: this.navigation?.collision?.diagnostics(),
+            lifecycle: { hidden: document.hidden, focused: document.hasFocus(), gpuLost: !!this.rendererError, target: 'Desktop with dedicated GPU, keyboard and mouse; WebGPU on localhost or HTTPS' },
             cameraTransition: { duration: this.transitionDuration, active: !!this.stageCamera?.transition },
             navigation: { mode: this.navigation?.enabled ? 'free' : 'fixed', locked: this.navigation?.locked, speed: this.navigation?.speed },
             cameraPan: this.pan?.diagnostics() || null,
             camera: camera ? { name: camera.name, position: camera.position.toArray(), quaternion: camera.quaternion.toArray(), fov: camera.fov, aspect: camera.aspect, near: camera.near, far: camera.far } : null,
             metrics: this.metrics || null,
+            performance: this.performanceProbe?.report(),
+            loading: { firstRenderedFrameSinceNavigationMs: this.firstFrameMs, glbFetchDecodeMs: this.asset?.loadMs, glbBytes: this.asset?.bytes, note: 'First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately.' },
             metricNote: 'Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.',
-            pending: ['7.2 Transiciones', '7.3 Colisiones y revisión del recorrido']
+            pending: ['Fase 8: optimización y validación final']
         }
     }
     downloadReport() {
@@ -455,12 +482,14 @@ export default class E26902_BladeRunner {
         window.removeEventListener('keydown', this.cameraKeyDown)
         window.removeEventListener('pointermove', this.pointerMove)
         document.documentElement.removeEventListener('pointerleave', this.pointerLeave)
-        window.removeEventListener('blur', this.windowBlur)
+        this.performanceProbe?.dispose()
+        this.lifecycle?.dispose()
+        this.containerObserver?.disconnect()
+        if (this.renderer?.onDeviceLost === this.deviceLost) this.renderer.onDeviceLost = this.previousDeviceLost
         this.navigation?.dispose()
         this.stageCamera?.dispose()
         this.app.emitter.off('onAppKill', this.killListener)
         if (this.resizeListener) this.app.emitter.off('onAppSizeUpdate', this.resizeListener)
-        document.removeEventListener('visibilitychange', this.visibilityListener)
         this.specularEnvironment?.dispose()
         this.post?.dispose()
         this.sky?.dispose()

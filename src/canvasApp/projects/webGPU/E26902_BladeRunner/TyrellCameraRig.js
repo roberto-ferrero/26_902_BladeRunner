@@ -7,7 +7,9 @@ export default class TyrellCameraRig {
         this.camera = new PerspectiveCamera(23, TYRELL.referenceAspect, 0.03, 2500)
         this.camera.position.set(-0.12, 1.55, 10.3)
         this.resize = () => {
-            this.camera.aspect = this.app.size.CURRENT.aspect
+            const aspect = this.app.size.CURRENT.aspect
+            if (!Number.isFinite(aspect) || aspect <= 0) return
+            this.camera.aspect = aspect
             this.camera.updateProjectionMatrix()
         }
         app.emitter.on('onAppSizeUpdate', this.resize)

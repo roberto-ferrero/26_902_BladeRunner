@@ -47,3 +47,9 @@ test('World transforms ignore Blender display scale; instant changes and cancell
     target.position.x = 20; rig.setSource(target, 1); rig.update(.1); rig.cancelTransition()
     const pose = rig.camera.position.clone(); assert.equal(rig.update(1), false); assert.ok(rig.camera.position.equals(pose))
 })
+
+test('Collapsed container dimensions never corrupt the projection', () => {
+ const {rig,app}=setup()
+ for(const aspect of [0, NaN, Infinity]) {app.size.CURRENT.aspect=aspect;rig.resize();assert.equal(rig.camera.aspect,2.4)}
+ app.size.CURRENT.aspect=16/9;rig.resize();assert.equal(rig.camera.aspect,16/9)
+})

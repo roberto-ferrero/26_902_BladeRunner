@@ -190,7 +190,7 @@ export default class TyrellUI {
         this.comparisonPanel.className = 'tyrell-pan'
         this.comparisonPanel.innerHTML = `<summary>Comparar efectos y coste</summary><div class="tyrell-pan-controls">
             <button type="button" data-measure>Medir configuración</button><button type="button" data-export>Exportar comparación</button><button type="button" data-clear>Borrar mediciones</button></div>
-            <p>Activa o desactiva efectos en sus paneles. Medir centra la cámara, descarta 60 fotogramas y recoge 120. Compara con la misma cámara, calidad, resolución y luz. Los FPS pueden estar limitados por la pantalla; no son tiempo GPU.</p>
+            <p>Activa o desactiva efectos en sus paneles. Medir centra la cámara, descarta 60 fotogramas y recoge 120. Compara con la misma cámara, calidad, resolución y luz. Los FPS pueden estar limitados por la pantalla. CPU/GPU se registran al abrir con ?profile=1; — significa sin medición. CPU mide envío del render; GPU, pases de render, sin presentación.</p>
             <p role="status" data-status>Sin mediciones. Se conservan las últimas 12 durante la sesión.</p><div class="tyrell-comparison-table"></div>`
         this.comparisonPanel.querySelector('[data-measure]').onclick = () => actions.measure()
         this.comparisonPanel.querySelector('[data-export]').onclick = () => actions.exportMeasurements()
@@ -220,6 +220,31 @@ export default class TyrellUI {
         this.guiContainer.append(footer)
         this.root.append(this.guiContainer)
         this.root.append(this.root.querySelector('.tyrell-metrics'))
+        // Move existing nodes so settings, handlers and open panels survive every toggle.
+        const mainControls = footer.querySelector('.tyrell-controls')
+        const experience = document.createElement('section')
+        experience.className = 'tyrell-experience'
+        experience.setAttribute('aria-label', 'Controles de la experiencia')
+        const intro = document.createElement('p')
+        intro.className = 'tyrell-note'
+        intro.textContent = 'Cámaras: 1–9 y 0 · Explora la sala desde Navegación.'
+        experience.append(mainControls, intro, navigationPanel, this.panPanel)
+        this.technicalPanel = document.createElement('details')
+        this.technicalPanel.className = 'tyrell-technical'
+        this.technicalPanel.innerHTML = '<summary>Revisión técnica</summary><p class="tyrell-note">Ajustes de acabado, capturas y mediciones. Los cambios se conservan durante esta sesión aunque cierres este panel.</p>'
+        const technicalActions = document.createElement('div')
+        const budgetLabel = document.createElement('label')
+        budgetLabel.textContent = 'Presupuesto de render '
+        const budgetSelect = document.createElement('select')
+        for (const [value, label] of [['optimized', 'Optimizado 8.2'], ['baseline', 'Referencia 8.1'], ['resolution', 'Solo resolución'], ['volume', 'Solo volumen'], ['reflection', 'Solo reflejo']]) budgetSelect.add(new Option(label, value))
+        budgetSelect.onchange = () => actions.budget(budgetSelect.value)
+        budgetLabel.append(budgetSelect)
+        technicalActions.append(budgetLabel)
+        technicalActions.className = 'tyrell-controls tyrell-technical-actions'
+        technicalActions.append(mainControls.querySelector('[data-action="capture"]'), mainControls.querySelector('[data-action="report"]'))
+        this.technicalPanel.append(this.atmospherePanel, finishPanel, this.lookPanel, technicalActions, this.comparisonPanel)
+        footer.querySelector(':scope > .tyrell-note')?.remove()
+        footer.append(experience, this.technicalPanel)
         const toolbar = document.createElement('div')
         toolbar.className = 'tyrell-controls tyrell-gui-toolbar'
         this.closeGUI = document.createElement('button')
@@ -255,13 +280,13 @@ export default class TyrellUI {
         container.replaceChildren()
         if (!rows.length) return
         const table = document.createElement('table'), head = table.createTHead().insertRow()
-        for (const label of ['Nº', 'Vista / calidad / píxeles', 'Efectos activos', 'FPS', 'Media ms', 'P95 ms']) {
+        for (const label of ['Nº', 'Vista / calidad / píxeles', 'Efectos activos', 'FPS', 'Media ms', 'P95 ms', 'CPU render ms', 'GPU pases ms']) {
             const th = document.createElement('th'); th.scope = 'col'; th.textContent = label; head.append(th)
         }
         const body = table.createTBody()
         for (const row of rows) {
             const tr = body.insertRow()
-            for (const value of [row.id, `${row.camera?.name || 'Cámara'} / ${row.quality} / ${row.metrics.resolution.join(' × ')}`, row.effects, row.metrics.fps, row.metrics.frameMeanMs, row.metrics.frameP95Ms]) tr.insertCell().textContent = value
+            for (const value of [row.id, `${row.camera?.name || 'Cámara'} / ${row.quality} (${row.qualityBudget?.mode || 'baseline'}) / ${row.metrics.resolution.join(' × ')}`, row.effects, row.metrics.fps, row.metrics.frameMeanMs, row.metrics.frameP95Ms, row.performance?.cpuRender?.meanMs?.toFixed(2) ?? '—', row.performance?.gpuRender?.meanMs?.toFixed(2) ?? '—']) tr.insertCell().textContent = value
         }
         container.append(table)
     }

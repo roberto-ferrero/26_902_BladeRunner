@@ -80,7 +80,8 @@ class AppRender{
             this.renderer = new WebGPURenderer({
                 antialias: true,
                 alpha: true,
-                powerPreference: this.policy.powerPreference || 'high-performance'
+                powerPreference: this.policy.powerPreference || 'high-performance',
+                trackTimestamp: this.policy.trackTimestamp === true
             });
             //-
             this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1))

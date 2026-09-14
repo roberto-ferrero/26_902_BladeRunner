@@ -58,10 +58,10 @@ export default class TyrellFloorReflection {
             material.needsUpdate = true
         }
     }
-    setResolution(value = this.resolution, quality = this.quality) {
+    setResolution(value = this.resolution, quality = this.quality, autoScale = this.autoScale) {
         if (!['auto', '0.25', '0.5', '1'].includes(value)) return
-        this.resolution = value; this.quality = quality
-        const scale = value === 'auto' ? ({ Baja: .25, Media: .5, Alta: .75 }[quality] || .5) : Number(value)
+        this.resolution = value; this.quality = quality; this.autoScale = autoScale
+        const scale = value === 'auto' ? (autoScale ?? ({ Baja: .25, Media: .5, Alta: .75 }[quality] || .5)) : Number(value)
         this.node.reflector.resolutionScale = scale
         this.lodOffset.value = Math.log2(scale / .5)
         this.updates.invalidate()
