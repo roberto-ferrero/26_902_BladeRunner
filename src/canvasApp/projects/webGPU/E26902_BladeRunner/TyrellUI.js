@@ -229,6 +229,18 @@ export default class TyrellUI {
         intro.className = 'tyrell-note'
         intro.textContent = 'Cámaras: 1–9 y 0 · Explora la sala desde Navegación.'
         experience.append(mainControls, intro, navigationPanel, this.panPanel)
+        const cityPanel = document.createElement('details')
+        cityPanel.className = 'tyrell-pan'
+        cityPanel.innerHTML = '<summary>Exterior — Fase 9</summary><div class="tyrell-pan-controls"><label><input type="checkbox" aria-label="Edificios bajos" checked> Edificios bajos</label></div>'
+        cityPanel.querySelector('input').onchange = event => actions.city(event.target.checked)
+        for (const [key, title, initial] of [['intensity', 'Luces de edificios', .22], ['beacons', 'Balizas blancas', .7]]) {
+            const label = document.createElement('label')
+            label.innerHTML = `${title}<input type="range" aria-label="${title}" min="0" max="2" step="0.01" value="${initial}"><output>${initial.toFixed(2)}</output>`
+            const input = label.querySelector('input')
+            input.oninput = () => { input.nextElementSibling.value = Number(input.value).toFixed(2); actions.buildingLights({ [key]: Number(input.value) }) }
+            cityPanel.querySelector('div').append(label)
+        }
+        experience.append(cityPanel)
         this.technicalPanel = document.createElement('details')
         this.technicalPanel.className = 'tyrell-technical'
         this.technicalPanel.innerHTML = '<summary>Revisión técnica</summary><p class="tyrell-note">Ajustes de acabado, capturas y mediciones. Los cambios se conservan durante esta sesión aunque cierres este panel.</p>'

@@ -452,3 +452,126 @@ Viewport 1920×1080; encuadre 2,4:1. Capturas de navegador JPEG; orden temporal 
 | [8.2_003_2026-09-13_CAM02-Media-optimizada.jpg](8.2_003_2026-09-13_CAM02-Media-optimizada.jpg) | 2026-09-13T21:31:18.925366+00:00 |
 | [8.2_004_2026-09-13_CAM02-Media-referencia.jpg](8.2_004_2026-09-13_CAM02-Media-referencia.jpg) | 2026-09-13T21:31:38.330797+00:00 |
 | [8.2_005_2026-09-13_CAM01-Alta-optimizada.jpg](8.2_005_2026-09-13_CAM01-Alta-optimizada.jpg) | 2026-09-13T21:33:23.076620+00:00 |
+
+## 9.0 · Preparación del exterior · 20-09-2026
+
+PNG de pantalla 1920 × 1080; escena 2,4:1, render interno 1440 × 600. Baja optimizada 8.2, Tyrell v1, luz 4.2 (`tyrell-light-v2`), exposición 1,07 y efectos iniciales activos. Estado de todas: **base previa a Fase 9, sin cambios de escena**. Paneos y vista libre son muestras de revisión, no poses de captura centrada. [Informe y límites](../phase9/9.0/PREPARACION.md).
+
+| Archivo | Hora UTC | Vista / tipo |
+| --- | --- | --- |
+| [9.0_001_2026-09-20_CAM01.png](9.0_001_2026-09-20_CAM01.png) | 2026-09-20T19:56:35.7364412Z | CAM01 centrada / pantalla |
+| [9.0_002_2026-09-20_CAM02.png](9.0_002_2026-09-20_CAM02.png) | 2026-09-20T19:57:02.7341514Z | CAM02 / pantalla |
+| [9.0_003_2026-09-20_CAM03.png](9.0_003_2026-09-20_CAM03.png) | 2026-09-20T19:57:12.9562795Z | CAM03 / pantalla |
+| [9.0_004_2026-09-20_CAM04.png](9.0_004_2026-09-20_CAM04.png) | 2026-09-20T19:57:34.2784949Z | CAM04 / pantalla |
+| [9.0_005_2026-09-20_CAM01-paneo.png](9.0_005_2026-09-20_CAM01-paneo.png) | 2026-09-20T19:57:55.8011126Z | CAM01, paneo superior izquierdo / pantalla |
+| [9.0_006_2026-09-20_CAM01-paneo.png](9.0_006_2026-09-20_CAM01-paneo.png) | 2026-09-20T19:58:09.9439977Z | CAM01, paneo inferior derecho / pantalla |
+| [9.0_007_2026-09-20_libre.png](9.0_007_2026-09-20_libre.png) | 2026-09-20T19:58:34.8467905Z | Libre desde CAM02 con giro, altura 1,65 m / pantalla |
+
+## 9.1 · Continuidad urbana · 20-09-2026
+
+Estado: **propuesta visual**, pendiente de valoración del usuario. Tyrell v1, luz 4.2, exposición 1,07, Baja optimizada 8.2, efectos iniciales y edificios bajos activos. PNG de pantalla 1920 × 1080, encuadre 2,4:1, render interno 1440 × 600. [Informe, cambios y límites](../phase9/9.1/CIUDAD.md).
+
+| Archivo | Hora UTC | Vista / tipo |
+| --- | --- | --- |
+| [9.1_001_2026-09-20_CAM01.png](9.1_001_2026-09-20_CAM01.png) | 2026-09-20T20:16:12.1131288Z | CAM01 / pantalla |
+| [9.1_002_2026-09-20_CAM04.png](9.1_002_2026-09-20_CAM04.png) | 2026-09-20T20:16:33.3271073Z | CAM04 / pantalla |
+| [9.1_003_2026-09-20_CAM02.png](9.1_003_2026-09-20_CAM02.png) | 2026-09-20T20:16:34.0939260Z | CAM02 / pantalla |
+| [9.1_004_2026-09-20_CAM03.png](9.1_004_2026-09-20_CAM03.png) | 2026-09-20T20:16:42.4967498Z | CAM03 / pantalla |
+| [9.1_005_2026-09-20_CAM01-paneo.png](9.1_005_2026-09-20_CAM01-paneo.png) | 2026-09-20T20:17:20.7322654Z | CAM01 paneo inferior derecho / pantalla |
+| [9.1_006_2026-09-20_CAM01-paneo.png](9.1_006_2026-09-20_CAM01-paneo.png) | 2026-09-20T20:17:52.7072452Z | CAM01 paneo superior izquierdo / pantalla |
+| [9.1_007_2026-09-20_Camera-free.png](9.1_007_2026-09-20_Camera-free.png) | 2026-09-20T20:18:06.9245623Z | Camera_free elevada (preset) / pantalla |
+
+## 9.1 · Revisión de altura y torres · 20-09-2026
+
+Propuesta revisada: cubiertas −2,5 m y tres torres laterales. Tyrell v1, luz 4.2, exposición 1,07, Baja optimizada 8.2; efectos iniciales y ciudad activos. PNG 1920 × 1080, encuadre 2,4:1. 008 CAM01, 009 CAM02 (dos torres izquierdas), 010 Camera_D (torre derecha), 011 Camera_free elevada. Sin llamaradas. Pendiente de valoración artística.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [9.1_008_2026-09-20_CAM01.png](9.1_008_2026-09-20_CAM01.png) | 2026-09-20T20:30:49.2945975Z |
+| [9.1_009_2026-09-20_CAM02.png](9.1_009_2026-09-20_CAM02.png) | 2026-09-20T20:33:56.6645544Z |
+| [9.1_010_2026-09-20_Camera-D.png](9.1_010_2026-09-20_Camera-D.png) | 2026-09-20T20:33:57.0931003Z |
+| [9.1_011_2026-09-20_Camera-free.png](9.1_011_2026-09-20_Camera-free.png) | 2026-09-20T20:34:07.5033674Z |
+
+## 9.2 · Luces de edificios · 20-09-2026
+
+Propuesta rechazada: ventanas demasiado grandes y bastas, balizas pequeñas y duras. Tyrell v1, luz 4.2, exposición 1,07; Baja optimizada 8.2, PNG de pantalla 1920 × 1080, encuadre 2,4:1. Luces 0,22 y balizas 0,70, salvo 002 con ambas a cero. 001–002 CAM01 comparables; 003 CAM02 y 004 CAM04. Los destellos pueden estar apagados en el instante de captura.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [9.2_001_2026-09-20_CAM01.png](9.2_001_2026-09-20_CAM01.png) | 2026-09-20T20:43:35.5363223Z |
+| [9.2_002_2026-09-20_CAM01-apagadas.png](9.2_002_2026-09-20_CAM01-apagadas.png) | 2026-09-20T20:43:56.6286991Z |
+| [9.2_003_2026-09-20_CAM02.png](9.2_003_2026-09-20_CAM02.png) | 2026-09-20T20:44:27.7270870Z |
+| [9.2_004_2026-09-20_CAM04.png](9.2_004_2026-09-20_CAM04.png) | 2026-09-20T20:44:36.1386437Z |
+
+## 9.2 · Revisión de filas y halos · 20-09-2026
+
+Propuesta revisada, pendiente de valoración. Ventanas más finas en filas con separación entre plantas; cinco balizas de halo blanco suave, cuyos destellos pueden estar apagados en la captura. Tyrell v1, luz 4.2, exposición 1,07; Baja optimizada 8.2, luces 0,22 y balizas 0,70. PNG de pantalla 1920 × 1080, encuadre 2,4:1. 005 CAM01, 006 CAM02, 007 CAM03. Las capturas anteriores se conservan como propuesta rechazada.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [9.2_005_2026-09-20_CAM01-filas.png](9.2_005_2026-09-20_CAM01-filas.png) | 2026-09-20T20:53:20.9598340Z |
+| [9.2_006_2026-09-20_CAM02-filas.png](9.2_006_2026-09-20_CAM02-filas.png) | 2026-09-20T20:53:36.7716073Z |
+| [9.2_007_2026-09-20_CAM03-filas-halos.png](9.2_007_2026-09-20_CAM03-filas-halos.png) | 2026-09-20T20:54:27.8383272Z |
+
+## 9.2 · Columnas, márgenes y zona central · 20-09-2026
+
+Propuesta revisada según referencia anotada del usuario; pendiente de valoración. Filas finas agrupadas en columnas, separaciones oscuras y márgenes adaptados a las fachadas. Franja central sin ventanas con baño ascendente cálido. Tyrell v1, luz 4.2, exposición 1,07; Baja optimizada 8.2, luces 0,22 y balizas 0,70. PNG de pantalla 1920 × 1080, encuadre 2,4:1. 008 CAM01, 009 CAM02, 010 CAM03. Capturas previas conservadas.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [9.2_008_2026-09-20_CAM01-columnas.png](9.2_008_2026-09-20_CAM01-columnas.png) | 2026-09-20T21:32:05.1593303Z |
+| [9.2_009_2026-09-20_CAM02-columnas.png](9.2_009_2026-09-20_CAM02-columnas.png) | 2026-09-20T21:32:30.0654626Z |
+| [9.2_010_2026-09-20_CAM03-columnas.png](9.2_010_2026-09-20_CAM03-columnas.png) | 2026-09-20T21:33:44.4449586Z |
+
+## 9.2 · Carriles exteriores con relieve · 20-09-2026
+
+Propuesta rechazada el 21/09: el soporte de los carriles sobresale y parece un volumen pegado a la pirámide. Banco central continuo de trece nervios, canales oscuros y soporte adaptado a las dos pendientes de la fachada. Tyrell v1, luz 4.2, exposición 1,07; Baja optimizada 8.2, luces 0,22 y balizas 0,70. PNG 1920 × 1080, encuadre 2,4:1. 011 Camera_E con paneo lateral para despejar la banda; 012 CAM01 y 013 CAM03 para comprobar integración. Capturas anteriores conservadas.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [9.2_011_2026-09-20_Camera-E-carriles.png](9.2_011_2026-09-20_Camera-E-carriles.png) | 2026-09-20T21:55:44.7009030Z |
+| [9.2_012_2026-09-20_CAM01-carriles.png](9.2_012_2026-09-20_CAM01-carriles.png) | 2026-09-20T21:56:02.2712305Z |
+| [9.2_013_2026-09-20_CAM03-carriles.png](9.2_013_2026-09-20_CAM03-carriles.png) | 2026-09-20T21:57:06.7946228Z |
+
+## 9.2 · Carriles adheridos y oscuros · 21-09-2026
+
+Se elimina la cuña y sus perfiles salientes. Acabado en el material de la fachada original, franja sin emisión y surcos oscuros con bajorrelieve simulado en normales. Propuesta pendiente de valoración. Tyrell v1, luz 4.2, exposición 1,07; presupuesto Optimizado 8.2, balizas 0,70. PNG 1492 × 1432, encuadre 2,4:1. 014 Camera_E con paneo, Baja y luces 0,22; 015 Camera_E con luces a cero; 016 Camera_E en Alta con luces 0,22; 017 CAM01 en Baja y luces 0,22. El paneo varía entre capturas. La propuesta rechazada 011–013 se conserva.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [9.2_014_2026-09-21_Camera-E-carriles-adheridos.png](9.2_014_2026-09-21_Camera-E-carriles-adheridos.png) | 2026-09-20T22:18:05.0308893Z |
+| [9.2_015_2026-09-21_Camera-E-carriles-sin-luces.png](9.2_015_2026-09-21_Camera-E-carriles-sin-luces.png) | 2026-09-20T22:18:42.4016993Z |
+| [9.2_016_2026-09-21_Camera-E-carriles-alta.png](9.2_016_2026-09-21_Camera-E-carriles-alta.png) | 2026-09-20T22:20:17.7732684Z |
+| [9.2_017_2026-09-21_CAM01-carriles-adheridos.png](9.2_017_2026-09-21_CAM01-carriles-adheridos.png) | 2026-09-20T22:20:27.2388801Z |
+
+## 9.1 · Tono y continuidad local · 21-09-2026
+
+Materiales base de la ciudad y torres algo más oscuros. Reparación localizada de la cubierta expuesta mediante revestimiento y tres remates bajos; edificios existentes con posiciones y alturas idénticas. Propuesta pendiente de valoración. 012 Camera_free antes; 013 Camera_free después; 014 CAM01 general; 015 Camera_D lateral; 016 CAM02 con las dos torres izquierdas. Tyrell v1, luz 4.2, exposición 1,07; Baja Optimizado 8.2, luces 0,22 y balizas 0,70. PNG 1492 × 1432, encuadre 2,4:1. Capturas históricas conservadas.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [9.1_012_2026-09-21_Camera-free-antes.png](9.1_012_2026-09-21_Camera-free-antes.png) | 2026-09-20T22:31:04.9773818Z |
+| [9.1_013_2026-09-21_Camera-free-continuidad.png](9.1_013_2026-09-21_Camera-free-continuidad.png) | 2026-09-20T22:42:12.5339391Z |
+| [9.1_014_2026-09-21_CAM01-tono.png](9.1_014_2026-09-21_CAM01-tono.png) | 2026-09-20T22:42:28.3493094Z |
+| [9.1_015_2026-09-21_Camera-D-lateral.png](9.1_015_2026-09-21_Camera-D-lateral.png) | 2026-09-20T22:42:45.0054364Z |
+| [9.1_016_2026-09-21_CAM02-torres-tono.png](9.1_016_2026-09-21_CAM02-torres-tono.png) | 2026-09-20T22:43:22.1602197Z |
+
+## 9.1 · Cubiertas mates y menor protagonismo · 21-09-2026
+
+Ciudad y torres más oscuras, con reducción adicional del tono de cubiertas y brillo especular. Se conserva la geometría y la iluminación general. 017 Camera_free; 018 CAM02 con torres izquierdas; 019 CAM01. Tyrell v1, luz 4.2, exposición 1,07; Baja Optimizado 8.2, luces 0,22 y balizas 0,70. PNG 1492 × 1432, encuadre 2,4:1. Propuesta pendiente de valoración; capturas anteriores conservadas.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [9.1_017_2026-09-21_Camera-free-cubiertas-mates.png](9.1_017_2026-09-21_Camera-free-cubiertas-mates.png) | 2026-09-20T22:53:57.2405572Z |
+| [9.1_018_2026-09-21_CAM02-torres-mates.png](9.1_018_2026-09-21_CAM02-torres-mates.png) | 2026-09-20T22:54:39.7758436Z |
+| [9.1_019_2026-09-21_CAM01-cubiertas-mates.png](9.1_019_2026-09-21_CAM01-cubiertas-mates.png) | 2026-09-20T22:56:54.8401563Z |
+
+## 9.1 · Corrección de techos claros y torres · 21-09-2026
+
+La revisión 017–019 fue rechazada por ser demasiado clara. 020 Camera_free con techos oscurecidos; 021 CAM02 con torres oscuras; 022 CAM01 general. Corrección de material y tono local después de la atmósfera, sin alterar geometría ni ambiente global. Tyrell v1, luz 4.2, exposición 1,07; Baja Optimizado 8.2, luces 0,22 y balizas 0,70. PNG 1492 × 1432, encuadre 2,4:1. El paneo de CAM02 difiere de 018. Pendiente de valoración artística.
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [9.1_020_2026-09-21_Camera-free-techos-oscuros.png](9.1_020_2026-09-21_Camera-free-techos-oscuros.png) | 2026-09-20T23:04:50.1813470Z |
+| [9.1_021_2026-09-21_CAM02-torres-oscuras.png](9.1_021_2026-09-21_CAM02-torres-oscuras.png) | 2026-09-20T23:05:01.3510332Z |
+| [9.1_022_2026-09-21_CAM01-techos-oscuros.png](9.1_022_2026-09-21_CAM01-techos-oscuros.png) | 2026-09-20T23:05:18.5593418Z |

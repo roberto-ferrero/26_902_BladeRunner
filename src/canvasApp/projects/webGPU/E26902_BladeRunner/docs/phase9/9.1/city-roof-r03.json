@@ -1,0 +1,40 @@
+{
+  "buildings": 97,
+  "boxes": 1963,
+  "meshes": 3,
+  "triangles": 23574,
+  "roofLowering": 2.5,
+  "towers": [
+    {
+      "x": 360,
+      "z": -460,
+      "top": 28
+    },
+    {
+      "x": -680,
+      "z": -700,
+      "top": 24
+    },
+    {
+      "x": -900,
+      "z": -830,
+      "top": 15
+    }
+  ],
+  "baseColorMultiplier": 0.68,
+  "continuity": {
+    "roofTriangles": 18,
+    "serviceBlocks": 3
+  },
+  "textureSize": [
+    256,
+    256
+  ],
+  "seed": 902091,
+  "cityBackdrop": "layered geometry; no photographic background",
+  "lights": 0,
+  "existingBuildingsPositionsIdentical": true,
+  "originalGLBPositionsIdentical": true,
+  "maxRoofOffset": 0.025000508188892462,
+  "stepWallFinish": "both sides; original back face visible from Camera_free"
+}

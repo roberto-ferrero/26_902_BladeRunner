@@ -2,7 +2,7 @@
 
 Ajustes de arranque actualizados el 10-09-2026: GUI inicialmente oculta, cabecera y FPS siempre visibles; calidad Baja; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo horizontal 2 m, vertical 0,5 m, suavidad 1,4 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos ; 6.5 queda documentado más abajo.
 
-Estado actual: **8.2 completado: presupuestos de render ajustados y comparados con 8.1.** Media 38 → 49,4 FPS; Alta 14,7 → 33 FPS en la sesión local. Baja conserva su acabado y presupuesto. Ver [resultados, capturas y límites](docs/phase8/8.2/PERFORMANCE.md). Siguiente: 8.3.
+Estado actual (21-09-2026): **9.1 y 9.2 implementados y en revisión artística.** Ciudad baja con 97 edificios, tres torres, continuidad local de cubierta y acabado más oscuro y mate; tres mallas, una textura compartida y 23.574 triángulos añadidos. Ventanas agrupadas, balizas suaves y carriles integrados en la superficie original. Última revisión: tres pruebas de ciudad/luces correctas, compilación y comprobación visual WebGPU. Detalles en [9.1 — Continuidad urbana](docs/phase9/9.1/CIUDAD.md) y [9.2 — Iluminación](docs/phase9/9.2/ILUMINACION.md). Pendiente de valoración artística del usuario. **9.3 sin iniciar.** [Preparación 9.0](docs/phase9/9.0/PREPARACION.md) conservada. 8.3–8.8 siguen pendientes; se revisará el coste global antes de la entrega final.
 
 ## Objetivo
 
@@ -146,6 +146,87 @@ La medición comienza en la fase 1; esta fase reúne los ajustes finales cuando 
 - [ ] **8.8** Documentar recursos, parámetros artísticos, capturas finales, dispositivos probados y diferencias conocidas frente a Blender.
 
 **Resultado comprobable:** compilación reproducible, versión WebGPU probada en los dispositivos acordados y comparaciones visuales y de rendimiento registradas.
+
+## 9 · Enriquecimiento del exterior
+
+**Objetivo:** completar el entorno de la pirámide y los edificios inclinados con continuidad urbana, iluminación, tráfico aéreo y llamaradas. Mantener el aspecto actual de amanecer/atardecer: las referencias nocturnas orientan formas y efectos, pero no trasladan su look nocturno. Integración sutil con la paleta, luz y atmósfera existentes, conservando el protagonismo de las oficinas.
+
+### 9.0 · Referencias, encuadres y criterios de integración — completado
+
+- [x] Revisar las imágenes de las tres carpetas de referencias y las cinco capturas del usuario con las carencias marcadas en verde. [Láminas e informe inicial](docs/phase9/9.0/PREPARACION.md).
+- [x] Registrar criterios visuales, distribución conceptual y fuentes históricas del acabado/rendimiento actuales, separando observaciones y propuestas.
+- [x] Revisar secuencias temporales de los dos vídeos y documentar referencias de movimiento/evolución y límites de temporización; no copiar la frecuencia nocturna.
+- [x] Revisar CAM01–04, dos extremos de paneo y una vista libre junto a la mesa. Auditar coordenadas del GLB y proponer zonas de edificios, corredores, pasos cercanos y torres. Tres volúmenes de torre/llamarada fuera del frustum en 451 muestras de paneo CAM01; no equivale a validación de efectos todavía inexistentes.
+- [x] Guardar siete capturas actuales y medición CAM01 Baja (60 fotogramas de calentamiento, 120 muestras RAF; viewport 1920 × 1080). Contrastar las carencias con las capturas del usuario y las referencias de película. [Preparación, evidencia y límites](docs/phase9/9.0/PREPARACION.md).
+
+### 9.1 · Continuidad urbana y edificios bajos
+
+- [x] Crear edificios bajos inspirados en las terrazas y cubiertas de `_Fuentes/Edificios ciudad/Screenshot_2.jpg`: cinturón cercano, laterales y capa distante; originales del GLB conservados.
+- [x] Añadir cornisas, retranqueos, bandas de servicio, nervios y equipos de cubierta; textura de paneles con UV métricas, mipmaps y variación discreta de material. Alturas ajustadas en visor para cubrir remates sin tapar la silueta principal.
+- [x] Valorar la textura distante: se conserva una capa geométrica con paralaje, sin fotografía de fondo ni cambio de cielo. Decisión y límites en el informe.
+- [x] Revisar CAM01–04, dos extremos de paneo y Camera_free elevada; siete capturas archivadas. GUI «Exterior — Fase 9 → Edificios bajos», comparación A/B con invalidación de reflejos y medición de coste. Valoración estética pendiente del usuario; no se declara cobertura de todas las posiciones posibles.
+
+**Resultado:** exterior continuo en las vistas revisadas, sin finales de modelo evidentes y con profundidad urbana.
+
+**Revisión solicitada 20/09:** cubiertas rebajadas 2,5 m. Tres torres industriales estáticas (una derecha, dos más lejanas a la izquierda), adelantando la geometría prevista en 9.5. Plataformas, fustes y mástiles con los materiales actuales; sin emisiones todavía. 451 muestras de paneo CAM01 verifican que las torres y una reserva de 25 m sobre ellas quedan fuera de cuadro. Propuesta revisada pendiente de valoración artística; capturas 008–011 conservadas junto a la primera propuesta.
+
+**Revisión solicitada 21/09:** materiales base algo más oscuros para la ciudad y las torres. Continuidad localizada en los dos niveles de cubierta y el lateral señalados al pie derecho de la pirámide: revestimiento texturizado adherido y tres pequeños remates de servicio. Se conservan exactamente las alturas y posiciones de los edificios existentes. Tres mallas y 23.574 triángulos en total; propuesta pendiente de valoración artística.
+
+**Segunda revisión de tono 21/09:** ciudad de 9.1 más oscura y cubiertas claramente más mates para dar protagonismo a pirámide e inclinados. Menor color base, oscurecimiento adicional de caras superiores y fuerte reducción de intensidad especular. Se mantienen geometría, alturas y luces. Propuesta pendiente de valoración artística.
+
+**Corrección posterior 21/09:** la segunda revisión se considera insuficiente por el usuario. Se oscurecen más los techos y todas las piezas de las torres; especular a cero y corrección artística de tono localizada después de la bruma para evitar que vuelva a aclararlos. Tres mallas y geometría intacta. Revisado en WebGPU y archivado en capturas 020–022; pendiente de valoración artística.
+
+### 9.2 · Iluminación de los edificios
+
+- [x] Usar `_Fuentes/Luces edificio piramide` como referencia para ventanas de oficinas a escala monumental, focos de hangares y luces rojas/naranjas de ascensores.
+- [x] Añadir máscaras emisivas métricas a la pirámide, edificios inclinados y nuevos edificios de 9.1; ventanas finas, bandas ocasionales de hangares y acentos de ascensores. Intensidad inicial reducida para conservar el amanecer/atardecer.
+- [x] Añadir pequeñas balizas blancas estroboscópicas en vértices superiores reales del GLB, con doble destello y desfases.
+- [x] Incorporar GUI para intensidad de luces de edificios, incluido cero, y control independiente de balizas.
+
+**9.2 reabierta por valoración del usuario:** la propuesta 001–004 tenía luces demasiado grandes y bastas y balizas demasiado pequeñas y duras. Revisión: ventanas más finas en filas de plantas separadas por bandas oscuras; suavizado corregido para no ensanchar luces subpíxel; balizas con halo blanco suave de mayor extensión. Se conservan las capturas anteriores. [Implementación, controles y límites](docs/phase9/9.2/ILUMINACION.md). Pendiente de valoración de la revisión antes de pasar a 9.3.
+
+**Revisión estructural a partir de la referencia anotada:** agrupaciones en columnas y bandas oscuras, márgenes en los límites de cada fachada y franja central de pirámide sin ventanas con iluminación ascendente suave simulada. Coordenadas ajustadas a las superficies inclinadas y a los volúmenes de ciudad. Capturas 9.2_008–010, diagnóstico y referencia guardados; propuesta pendiente de valoración artística. Las balizas conservan los halos revisados.
+
+**Revisión de ascensores exteriores, corregida el 21/09:** la entrega 9.2_011–013 fue rechazada por su soporte saliente. Se retiran la cuña y todos los perfiles añadidos. Los trece carriles pasan al material de la superficie original, con bajorrelieve simulado en normales, franja oscura sin emisión y surcos algo más oscuros. Ningún vértice desplazado ni volumen nuevo; se respetan las pendientes y ocultaciones originales. Punto 9.2 pendiente de valoración de esta corrección.
+
+**Resultado:** mayor riqueza y lectura de escala sin convertir las fachadas en superficies excesivamente luminosas ni oscurecer el entorno para hacerlas visibles.
+
+### 9.3 · Tráfico aéreo lejano
+
+- [ ] Crear objetos mínimos, percibidos como pequeñas manchas en movimiento, con luces blancas de posición y luces estroboscópicas.
+- [ ] Establecer uno o dos corredores y desvíos ocasionales hacia el edificio; variar discretamente velocidades y separación.
+- [ ] Añadir GUI para densidad del tráfico lejano, baja por defecto y con posibilidad de desactivarlo.
+
+**Resultado:** actividad distante discreta que refuerce la escala de la ciudad.
+
+### 9.4 · Tráfico aéreo cercano
+
+- [ ] Crear una silueta reconocible inspirada en imágenes y vídeo de `_Fuentes/Vehiculo aereo`, sin reproducción exacta ni detalle innecesario.
+- [ ] Preparar pasos por encima de las oficinas, de aproximación y alejamiento; reproducir el carácter del movimiento de referencia.
+- [ ] Evitar cruces con arquitectura y apariciones/desapariciones visibles; alternar recorridos para reducir repetición.
+- [ ] Establecer aproximadamente un paso cada 10 segundos; añadir GUI para intervalo en segundos y activación.
+
+**Resultado:** pasos ocasionales integrados con perspectiva y atmósfera, diferenciados del tráfico lejano.
+
+### 9.5 · Torres y llamaradas
+
+- [ ] Tomar como referencia `_Fuentes/Edificios ciudad/fondo ciudad y llamaradas.mp4` para torres y aspecto de las emisiones.
+- [x] Situar una torre a la derecha y dos a la izquierda, estas últimas más alejadas (geometría adelantada en revisión de 9.1 a petición del usuario).
+- [ ] Mantener las llamaradas fuera de cuadro desde CAM 01, incluida la extensión máxima del efecto; comprobar también el paneo previsto para esa cámara.
+- [ ] Usar una presencia mucho menor que en el vídeo, emisiones ocasionales y no sincronizadas, adaptadas al amanecer/atardecer.
+- [ ] Añadir GUI para activación, frecuencia e intensidad de llamaradas.
+
+**Resultado:** detalle característico visible al explorar otros encuadres, sin alterar la composición de CAM 01.
+
+### 9.6 · Integración, ajustes y validación final
+
+- [ ] Agrupar controles en «Exterior — Fase 9», con apartados de edificios, tráfico lejano, tráfico cercano y llamaradas; establecer valores iniciales sutiles.
+- [ ] Revisar CAM 01 y las vistas afectadas: escala, profundidad, niebla, oclusiones y continuidad de trayectorias.
+- [ ] Comprobar el efecto conjunto, conservando el protagonismo de las oficinas y el acabado actual.
+- [ ] Comparar coste con la referencia previa a Fase 9 y ajustar geometrías, texturas y luces; registrar resultados por calidad, sin atribuir mejoras no medidas.
+- [ ] Guardar capturas, parámetros y límites; trasladar los nuevos recursos a las revisiones finales pendientes de 8.3–8.8.
+
+**Criterio de cierre:** exterior más completo y vivo, sin cortes visibles en las vistas revisadas, efectos regulables e integración sutil. Cada subfase conserva el requisito general de captura y validación visual; una compilación correcta no la cierra por sí sola.
 
 ## Criterio de seguimiento
 

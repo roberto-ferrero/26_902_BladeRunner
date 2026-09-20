@@ -1,0 +1,66 @@
+{
+  "scope": "Candidate emitter+flame AABBs, no meshes added. 451 CAM01 pan samples at 2.4:1. Frustum only, not occlusion; not continuous proof or full viewport guarantee.",
+  "zones": [
+    {
+      "id": "torre-derecha",
+      "min": [
+        340,
+        -80,
+        -480
+      ],
+      "max": [
+        380,
+        55,
+        -440
+      ],
+      "intersections": 0,
+      "samples": 451,
+      "visiblePresets": [
+        "Camera_D",
+        "CAM_04_|_recorrido_lateral"
+      ]
+    },
+    {
+      "id": "torre-izquierda-1",
+      "min": [
+        -540,
+        -100,
+        -720
+      ],
+      "max": [
+        -500,
+        50,
+        -680
+      ],
+      "intersections": 0,
+      "samples": 451,
+      "visiblePresets": [
+        "Camera_free",
+        "Camera_F",
+        "CAM_02_|_mesa_y_juntas",
+        "CAM_03_|_perfiles_invertidos"
+      ]
+    },
+    {
+      "id": "torre-izquierda-2",
+      "min": [
+        -660,
+        -120,
+        -850
+      ],
+      "max": [
+        -620,
+        40,
+        -810
+      ],
+      "intersections": 0,
+      "samples": 451,
+      "visiblePresets": [
+        "Camera_free",
+        "Camera_F",
+        "CAM_02_|_mesa_y_juntas",
+        "CAM_03_|_perfiles_invertidos"
+      ]
+    }
+  ]
+}

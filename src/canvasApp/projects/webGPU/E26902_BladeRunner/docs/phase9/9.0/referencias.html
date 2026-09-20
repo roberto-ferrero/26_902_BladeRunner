@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>Referencias Fase 9.0</title><style>body{background:#161616;color:#eee;font:16px sans-serif;margin:20px}video{width:900px;max-width:95vw}button{padding:10px;margin:5px}canvas{max-width:100%}section{margin-bottom:40px}</style><h1>Referencias temporales · Fase 9.0</h1><p>Fotogramas de consulta de los originales; no modifica los archivos.</p><div id="app"></div><script>
+for(const [name,url] of [['Llamaradas','/_Fuentes/Edificios ciudad/fondo ciudad y llamaradas.mp4'],['Vehículo','/_Fuentes/Vehiculo aereo/spinner volando.mp4']]){
+ const s=document.createElement('section');app.append(s); const h=document.createElement('h2');h.textContent=name;s.append(h);
+ const v=document.createElement('video');v.controls=true;v.preload='auto';v.src=url;s.append(v);
+ const info=document.createElement('p');s.append(info);v.onloadedmetadata=()=>info.textContent=`Duración: ${v.duration.toFixed(3)} s; ${v.videoWidth} × ${v.videoHeight}`;
+ const b=document.createElement('button');b.textContent='Extraer secuencia '+name;s.append(b);
+ b.onclick=async()=>{b.disabled=true;v.pause();const c=document.createElement('canvas');c.width=1200;c.height=4*260;const g=c.getContext('2d');s.append(c);for(let i=0;i<12;i++){const t=Math.min(v.duration-.08,i*v.duration/12);await new Promise(resolve=>{v.onseeked=resolve;v.currentTime=t+.001});await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));const x=i%3*400,y=Math.floor(i/3)*260;g.fillStyle='#222';g.fillRect(x,y,400,260);const hh=400*v.videoHeight/v.videoWidth;g.drawImage(v,x,y,400,Math.min(230,hh));g.fillStyle='white';g.font='18px sans-serif';g.fillText(t.toFixed(2)+' s',x+8,y+250)}const a=document.createElement('a');a.download=name==='Llamaradas'?'llamaradas-secuencia.png':'vehiculo-secuencia.png';a.href=c.toDataURL();a.textContent='Descargar secuencia '+name;s.append(a);b.disabled=false;};
+}
+</script>
+
