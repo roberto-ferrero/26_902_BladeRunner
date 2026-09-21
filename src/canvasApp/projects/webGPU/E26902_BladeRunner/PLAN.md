@@ -2,7 +2,9 @@
 
 Ajustes de arranque actualizados el 10-09-2026: GUI inicialmente oculta, cabecera y FPS siempre visibles; calidad Baja; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo horizontal 2 m, vertical 0,5 m, suavidad 1,4 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos ; 6.5 queda documentado más abajo.
 
-Estado actual (21-09-2026): **9.1–9.4 implementados como propuestas visuales.** Ciudad baja oscura y mate, luces estructuradas y carriles integrados. A petición del usuario, se retira completamente la aproximación al hangar de 9.3; permanecen los tres corredores y ocho vehículos de base. **9.4 r04:** se incorpora un anillo óptico periférico y una traza diagonal sutil sobre la base de r03. Un solo vehículo al 25 % de escala repite la misma pasada horizontal; velocidad al 25 % de r02 (40 s por vuelta), inclinación máxima de 20°, carrocería oscura legible, foco central cálido, halo reducido con anillo de lente y destello diagonal tenue. GUI de duración entre 20 y 60 s. Ocho pruebas correctas, auditoría geométrica, compilación y revisión visual WebGPU. Pendiente de valoración artística. Detalles en [9.1](docs/phase9/9.1/CIUDAD.md), [9.2](docs/phase9/9.2/ILUMINACION.md), [9.3](docs/phase9/9.3/TRAFICO.md) y [9.4](docs/phase9/9.4/TRAFICO-CERCANO.md). **Siguiente: 9.5, llamaradas.** [Preparación 9.0](docs/phase9/9.0/PREPARACION.md) conservada. 8.3–8.8 siguen pendientes; se revisará el coste global antes de la entrega final.
+Estado actual (21-09-2026): **9.1–9.5 implementados como propuestas visuales.** Ciudad baja oscura y mate, luces estructuradas y carriles integrados. A petición del usuario, se retira completamente la aproximación al hangar de 9.3; permanecen los tres corredores y ocho vehículos de base. **9.4 r04:** se incorpora un anillo óptico periférico y una traza diagonal sutil sobre la base de r03. Un solo vehículo al 25 % de escala repite la misma pasada horizontal; velocidad al 25 % de r02 (40 s por vuelta), inclinación máxima de 20°, carrocería oscura legible, foco central cálido, halo reducido con anillo de lente y destello diagonal tenue. GUI de duración entre 20 y 60 s. Ocho pruebas correctas, auditoría geométrica, compilación y revisión visual WebGPU. Pendiente de valoración artística. Detalles en [9.1](docs/phase9/9.1/CIUDAD.md), [9.2](docs/phase9/9.2/ILUMINACION.md), [9.3](docs/phase9/9.3/TRAFICO.md) y [9.4](docs/phase9/9.4/TRAFICO-CERCANO.md). **9.5 r02:** llamaradas 3,5× en las tres torres laterales, una activa a la vez y nueva cadencia base de 4,5 s. GUI de activación, intervalo 2–60 s, tamaño 1–5× e intensidad. La torre derecha se desplaza 40 m hacia el exterior y las envolventes a 3,5× y 5× quedan fuera de CAM01 con paneo auditado. Revisión visual, compilación y doce pruebas correctas. [Detalle y capturas](docs/phase9/9.5/LLAMARADAS.md), pendiente de valoración artística. **Siguiente: 9.6, integración y validación final.** [Preparación 9.0](docs/phase9/9.0/PREPARACION.md) conservada. 8.3–8.8 siguen pendientes; se revisará el coste global antes de la entrega final.
+
+**Última revisión 9.5 r03:** base más estrecha y expansión en altura, aproximadamente el doble de altura visible. Nuevo GUI «Crecimiento vertical» 1–3×, inicial 2×. Auditoría de CAM01 con tamaño y crecimiento máximos sin intersecciones; cuatro pruebas de llamaradas y compilación correctas. Pendiente de valoración artística.
 
 ## Objetivo
 
@@ -230,13 +232,17 @@ La medición comienza en la fase 1; esta fase reúne los ajustes finales cuando 
 
 ### 9.5 · Torres y llamaradas
 
-- [ ] Tomar como referencia `_Fuentes/Edificios ciudad/fondo ciudad y llamaradas.mp4` para torres y aspecto de las emisiones.
+- [x] Tomar como referencia `_Fuentes/Edificios ciudad/fondo ciudad y llamaradas.mp4` para torres y aspecto de las emisiones.
 - [x] Situar una torre a la derecha y dos a la izquierda, estas últimas más alejadas (geometría adelantada en revisión de 9.1 a petición del usuario).
-- [ ] Mantener las llamaradas fuera de cuadro desde CAM 01, incluida la extensión máxima del efecto; comprobar también el paneo previsto para esa cámara.
-- [ ] Usar una presencia mucho menor que en el vídeo, emisiones ocasionales y no sincronizadas, adaptadas al amanecer/atardecer.
-- [ ] Añadir GUI para activación, frecuencia e intensidad de llamaradas.
+- [x] Mantener las llamaradas fuera de cuadro desde CAM 01, incluida la extensión máxima del efecto; comprobar también el paneo previsto para esa cámara.
+- [x] Usar una presencia mucho menor que en el vídeo, emisiones ocasionales y no sincronizadas, adaptadas al amanecer/atardecer.
+- [x] Añadir GUI para activación, frecuencia e intensidad de llamaradas.
 
 **Resultado:** detalle característico visible al explorar otros encuadres, sin alterar la composición de CAM 01.
+
+**Propuesta 21/09:** emisiones breves de chorro y lóbulos cálidos, con intensidad adaptada al amanecer. Tres torres existentes, sin emisiones simultáneas; GUI de activación, intervalo 12–60 s e intensidad 0–1,5 (iniciales 26 s y 0,65). Comprobadas las envolventes completas fuera de CAM01 con paneo; visibles desde Camera_D y CAM02. Doce pruebas, compilación y revisión WebGPU correctas. Capturas 9.5_001–005 y [registros](docs/phase9/9.5/LLAMARADAS.md). Pendiente de valoración artística; 9.6 sin iniciar.
+
+**Revisión r02, 21/09:** se amplía el efecto a 3,5× y se añade GUI de tamaño 1–5×. La cadencia base pasa a 4,5 s y el intervalo del GUI permite bajar hasta 2 s. Se mantiene una sola emisión activa. La torre derecha se desplaza de X=360 a X=400 para conservar CAM01 limpia; auditoría a 3,5× y al máximo 5× en 2,4:1 y 16:9 sin intersecciones. Doce pruebas, compilación y revisión WebGPU correctas. Capturas 9.5_006–009 y [registros r02](docs/phase9/9.5/LLAMARADAS.md). Pendiente de valoración artística.
 
 ### 9.6 · Integración, ajustes y validación final
 

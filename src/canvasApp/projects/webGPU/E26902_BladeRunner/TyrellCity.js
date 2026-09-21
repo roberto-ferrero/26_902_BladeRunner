@@ -3,6 +3,7 @@ import { MeshPhysicalNodeMaterial } from 'three/webgpu'
 import { attribute, output, vec4 } from 'three/tsl'
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js'
 import { createCityRoof, CITY_ROOF } from './TyrellCityRoof'
+import { FLAME_TOWERS } from './TyrellFlames'
 
 export const CITY_FINISH = Object.freeze({
     baseColorMultiplier: .5, roofColorMultiplier: .16, towerColorMultiplier: .16,
@@ -114,11 +115,7 @@ export default class TyrellCity {
             38 + random() * 18, 55 + random() * 30, -32 + random() * 17, 2)
         // Sparse industrial stacks in the lateral zones reserved in 9.0 for 9.5.
         // Their complete silhouette stays outside CAM01, including its permitted pan.
-        const towers = [
-            { x: 360, z: -460, top: 28 },
-            { x: -680, z: -700, top: 24 },
-            { x: -900, z: -830, top: 15 }
-        ]
+        const towers = FLAME_TOWERS
         towerFinish = true
         for (const { x, z, top } of towers) {
             box(x, -67, z, 15, 42, 15, 2)

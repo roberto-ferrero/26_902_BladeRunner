@@ -32,6 +32,7 @@ import TyrellCity from './TyrellCity'
 import TyrellBuildingLights from './TyrellBuildingLights'
 import TyrellAirTraffic from './TyrellAirTraffic'
 import TyrellNearTraffic from './TyrellNearTraffic'
+import TyrellFlames from './TyrellFlames'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -85,6 +86,7 @@ export default class E26902_BladeRunner {
             sky: enabled => { this.sky?.setEnabled(enabled); this.resetMetrics() },
             city: enabled => { this.city?.setEnabled(enabled); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             buildingLights: values => { this.buildingLights?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
+            flames: values => { this.flames?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             nearTraffic: values => { this.nearTraffic?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             airTraffic: values => { this.airTraffic?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             measure: () => { if (this.developmentControls || this.navigation?.enabled || this.stageCamera?.transition) { this.ui.comparisonStatus('Selecciona una cámara fija y espera a que termine la transición.'); return } (!this.developmentControls && !this.navigation?.enabled && !this.stageCamera?.transition && this.pan?.reset()); this.resetMetrics(); this.measuring = true; this.ui.comparisonStatus('Midiendo: espera sin cambiar controles ni mover la cámara…') },
@@ -207,6 +209,7 @@ export default class E26902_BladeRunner {
         this.buildingLights = new TyrellBuildingLights(this.world3D)
         this.airTraffic = new TyrellAirTraffic(this.world3D)
         this.nearTraffic = new TyrellNearTraffic(this.world3D)
+        this.flames = new TyrellFlames(this.world3D, this.city)
         this.floorReflection = new TyrellFloorReflection(this.world3D)
         this.scene.add(this.world3D)
         this.world3D.updateMatrixWorld(true)
@@ -439,6 +442,10 @@ export default class E26902_BladeRunner {
             this.floorReflection?.updates.invalidate()
             if (this.airTraffic.environmentNeedsRefresh) this.specularEnvironment?.invalidate()
         }
+        if (this.flames?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)) {
+            this.floorReflection?.updates.invalidate()
+            if (this.flames.environmentNeedsRefresh) this.specularEnvironment?.invalidate()
+        }
         if (this.nearTraffic?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)) {
             this.floorReflection?.updates.invalidate()
             if (this.nearTraffic.environmentNeedsRefresh) this.specularEnvironment?.invalidate()
@@ -496,7 +503,7 @@ export default class E26902_BladeRunner {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 9, step: '9.4', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 9, step: '9.5', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             referenceCapture: { ...REFERENCE_CAPTURE, aspect: 2.4 },
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
@@ -514,6 +521,7 @@ export default class E26902_BladeRunner {
             buildingLights: this.buildingLights?.diagnostics() || null,
             airTraffic: this.airTraffic?.diagnostics() || null,
             nearTraffic: this.nearTraffic?.diagnostics() || null,
+            flames: this.flames?.diagnostics() || null,
             comparison: this.comparison.rows,
             optionalFinish: { grain: false, vignette: false, depthOfField: false, decision: '6.6: retain clean image; preserve stone, floor reflections and architectural depth' },
             materialAudit: this.materialAudit || null,

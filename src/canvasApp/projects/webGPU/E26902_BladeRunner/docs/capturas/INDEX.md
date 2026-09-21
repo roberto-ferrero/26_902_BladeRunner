@@ -683,3 +683,36 @@ El usuario solicita añadir el anillo de lente en el contorno del halo y una dia
 | [9.4_013_2026-09-21_CameraE-anillo-r04.png](9.4_013_2026-09-21_CameraE-anillo-r04.png) | 2026-09-21T08:56:22.590088+00:00 |
 | [9.4_014_2026-09-21_CameraE-lente-r04.png](9.4_014_2026-09-21_CameraE-lente-r04.png) | 2026-09-21T08:56:24.395623+00:00 |
 | [9.4_015_2026-09-21_CameraE-salida-r04.png](9.4_015_2026-09-21_CameraE-salida-r04.png) | 2026-09-21T08:56:25.373975+00:00 |
+
+
+### 9.5 · Llamaradas industriales · Propuesta inicial
+
+Una torre derecha y dos izquierdas más lejanas, reutilizando las de 9.1. Emisiones de hasta 4,4 s, una activa como máximo, intervalo base 26 s con variación y brillo inicial 0,65. Chorro, lóbulos turbulentos y extinción cálida; sin nuevas luces reales ni cambio de exposición. Las cinco capturas documentan CAM01, GUI y cada torre. Las laterales se capturaron con intervalo temporal de revisión de 12 s e intensidad inicial 0,65; después se restauró 26 s. La captura 005 se acompañó del diagnóstico que confirma el emisor 2 activo. La envolvente completa queda fuera de CAM01 en 1.681 muestras de paneo por torre y aspecto (2,4:1 y 16:9, ±2 m horizontal/vertical, objetivo a 20 m). No es garantía para otros objetivos de paneo ni formatos más anchos.
+
+Baja Optimizado 8.2, exposición 1,07, Tyrell v1/luz 4.2, viewport 1280 × 720, render 960 × 399. Capturas directas del visor; sin comparación formal de rendimiento. Compilación y doce pruebas conjuntas correctas. **Propuesta pendiente de valoración artística.** [Implementación, controles y límites](../phase9/9.5/LLAMARADAS.md).
+
+| Captura | Fecha del archivo (UTC) |
+| --- | --- |
+| [9.5_001_2026-09-21_CAM01.png](9.5_001_2026-09-21_CAM01.png) | 2026-09-21T09:20:58.315443+00:00 |
+| [9.5_002_2026-09-21_GUI.png](9.5_002_2026-09-21_GUI.png) | 2026-09-21T09:20:50.543666+00:00 |
+| [9.5_003_2026-09-21_CameraD-derecha.png](9.5_003_2026-09-21_CameraD-derecha.png) | 2026-09-21T09:14:41.786706+00:00 |
+| [9.5_004_2026-09-21_CAM02-izquierda.png](9.5_004_2026-09-21_CAM02-izquierda.png) | 2026-09-21T09:17:29.784206+00:00 |
+| [9.5_005_2026-09-21_CAM02-lejana.png](9.5_005_2026-09-21_CAM02-lejana.png) | 2026-09-21T09:24:52.242616+00:00 |
+
+
+### 9.5 · Revisión r02 · Escala y frecuencia
+
+Las llamaradas pasan a 3,5× por defecto y el GUI permite regularlas entre 1× y 5×. El intervalo inicial es 4,5 s y puede bajarse hasta 2 s; continúa activa una única emisión a la vez. La torre derecha se desplaza 40 m hacia el exterior para conservar CAM01 limpia incluso con el máximo 5×. Las capturas muestran los controles, las emisiones derecha e izquierda y CAM01 sin llamaradas visibles. Baja Optimizado 8.2, exposición 1,07, viewport 1280 × 720 y render 960 × 399. Doce pruebas correctas, auditoría geométrica a 3,5× y 5× sin intersecciones y compilación correcta con tres avisos de tamaño conocidos. **Pendiente de valoración artística.** [Detalle y registros](../phase9/9.5/LLAMARADAS.md).
+
+| Captura | Fecha del archivo (UTC) |
+| --- | --- |
+| [9.5_006_2026-09-21_GUI-tamano-frecuencia-r02.png](9.5_006_2026-09-21_GUI-tamano-frecuencia-r02.png) | 2026-09-21T09:45:35.380383+00:00 |
+| [9.5_007_2026-09-21_CameraD-llamarada-3.5x-r02.png](9.5_007_2026-09-21_CameraD-llamarada-3.5x-r02.png) | 2026-09-21T09:42:41.946548+00:00 |
+| [9.5_008_2026-09-21_CAM02-llamarada-3.5x-r02.png](9.5_008_2026-09-21_CAM02-llamarada-3.5x-r02.png) | 2026-09-21T09:46:11.407737+00:00 |
+| [9.5_009_2026-09-21_CAM01-limpia-r02.png](9.5_009_2026-09-21_CAM01-limpia-r02.png) | 2026-09-21T09:47:06.362449+00:00 |
+
+### 9.5 · Revisión r03 · Ascenso y expansión superior
+
+Base estrecha y altura visible aproximadamente doble; lóbulos que ganan anchura al ascender y halo elevado. GUI «Crecimiento vertical» 1–3×, inicial 2×; tamaño 3,5×, intervalo 4,5 s e intensidad 0,65. Camera_D, Baja, viewport 1280 × 720. Cuatro pruebas correctas y auditoría de CAM01 incluyendo tamaño 5× y crecimiento 3×. Compilación correcta. Pendiente de valoración artística.
+
+![Crecimiento vertical r03](9.5_010_2026-09-21_CameraD-crecimiento-r03.png)

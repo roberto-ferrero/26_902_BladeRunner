@@ -262,6 +262,27 @@ export default class TyrellUI {
         const nearHint = document.createElement('p')
         nearHint.textContent = 'Un solo vehículo, de arriba a la izquierda hacia el lateral derecho. Repite al terminar; mayor duración: vuelo más lento.'
         cityPanel.append(nearHint)
+        const flameControls = document.createElement('div')
+        flameControls.className = 'tyrell-pan-controls'
+        flameControls.innerHTML = `<label><input type="checkbox" aria-label="Llamaradas" checked> Llamaradas</label>
+            <label>Intervalo de llamaradas<input type="range" aria-label="Intervalo de llamaradas" min="2" max="60" step="0.5" value="4.5"><output>4.5 s</output></label>
+            <label>Tamaño de llamaradas<input type="range" aria-label="Tamaño de llamaradas" min="1" max="5" step="0.25" value="3.5"><output>3.50×</output></label>
+            <label>Crecimiento vertical<input type="range" aria-label="Crecimiento vertical de llamaradas" min="1" max="3" step="0.1" value="2"><output>2.00×</output></label>
+            <label>Intensidad de llamaradas<input type="range" aria-label="Intensidad de llamaradas" min="0" max="1.5" step="0.05" value="0.65"><output>0.65</output></label>`
+        flameControls.querySelector('input[type=checkbox]').onchange = event => actions.flames({ enabled: event.target.checked })
+        const flameRanges = flameControls.querySelectorAll('input[type=range]')
+        ;['interval', 'size', 'rise', 'intensity'].forEach((key, i) => {
+            flameRanges[i].oninput = () => {
+                const value = Number(flameRanges[i].value)
+                flameRanges[i].nextElementSibling.value = key === 'interval' ? `${value} s`
+                    : key === 'size' || key === 'rise' ? `${value.toFixed(2)}×` : value.toFixed(2)
+                actions.flames({ [key]: value })
+            }
+        })
+        cityPanel.append(flameControls)
+        const flameHint = document.createElement('p')
+        flameHint.textContent = 'Emisiones en las torres laterales, fuera de CAM 01. Mayor intervalo: menos llamaradas.'
+        cityPanel.append(flameHint)
         experience.append(cityPanel)
         this.technicalPanel = document.createElement('details')
         this.technicalPanel.className = 'tyrell-technical'

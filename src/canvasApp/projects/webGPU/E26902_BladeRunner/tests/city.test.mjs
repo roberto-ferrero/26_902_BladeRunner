@@ -1,3 +1,4 @@
+import { loadFlames } from '../scripts/audit-flames.mjs'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
@@ -16,7 +17,7 @@ const roofCode = require('@babel/core').transformSync(fs.readFileSync(new URL('.
     configFile: false, babelrc: false, plugins: ['@babel/plugin-transform-modules-commonjs']
 }).code
 new Function('require', 'module', 'exports', roofCode)(() => THREE, roofModule, roofModule.exports)
-new Function('require', 'module', 'exports', code)(name => name === 'three' ? THREE : name === 'three/webgpu' ? WEBGPU : name === 'three/tsl' ? TSL : name === './TyrellCityRoof' ? roofModule.exports : utilities, module, module.exports)
+new Function('require', 'module', 'exports', code)(name => name === 'three' ? THREE : name === 'three/webgpu' ? WEBGPU : name === 'three/tsl' ? TSL : name === './TyrellCityRoof' ? roofModule.exports : name === './TyrellFlames' ? loadFlames() : utilities, module, module.exports)
 const City = module.exports.default
 
 test('City keeps room and original architecture intact, shares resources and stays deterministic', () => {

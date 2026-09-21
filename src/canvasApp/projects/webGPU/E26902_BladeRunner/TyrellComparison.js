@@ -4,7 +4,7 @@ export default class TyrellComparison {
     add(report) {
         if (!report.metrics || report.metrics.samples < 120) throw new Error('Faltan muestras estables.')
         const keys = ['qualityBudget', 'performance', 'loading', 'adapter', 'asset', 'date', 'quality', 'camera', 'cameraPan', 'exposure', 'metrics', 'floorReflection', 'specularEnvironment', 'atmosphere', 'lightVolume', 'postProcessing', 'sky', 'lighting', 'materialLook', 'indirect', 'reviewLighting']
-        keys.push('city', 'buildingLights', 'airTraffic', 'nearTraffic')
+        keys.push('city', 'buildingLights', 'airTraffic', 'nearTraffic', 'flames')
         const row = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, report[key]]))))
         row.id = this.nextId++
         row.effects = [
@@ -13,6 +13,7 @@ export default class TyrellComparison {
             [row.buildingLights?.beacons > 0, 'Balizas'],
             [row.airTraffic?.enabled && row.airTraffic?.density > 0, 'Tráfico lejano'],
             [row.nearTraffic?.enabled, 'Tráfico cercano'],
+            [row.flames?.visible && row.flames?.intensity > 0, 'Llamaradas'],
             [row.floorReflection?.enabled, 'Suelo'], [row.specularEnvironment?.enabled, 'Metal/vidrio'],
             [row.atmosphere?.exterior, 'Exterior'], [row.atmosphere?.interior, 'Bruma'],
             [row.lightVolume?.enabled, 'Haces'], [row.lightVolume?.enabled && row.lightVolume?.dust && row.lightVolume?.speed > 0, 'Polvo animado'],

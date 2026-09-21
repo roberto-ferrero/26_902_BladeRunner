@@ -1,0 +1,353 @@
+[
+  {
+    "tower": {
+      "x": 400,
+      "z": -460,
+      "top": 28
+    },
+    "bounds": {
+      "min": [
+        354.5,
+        -17.5,
+        -505.5
+      ],
+      "max": [
+        445.5,
+        96.5,
+        -414.5
+      ]
+    },
+    "samples": [
+      {
+        "size": 3.5,
+        "aspect": 2.4,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      },
+      {
+        "size": 3.5,
+        "aspect": 1.7777777777777777,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      },
+      {
+        "size": 5,
+        "aspect": 2.4,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      },
+      {
+        "size": 5,
+        "aspect": 1.7777777777777777,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      }
+    ],
+    "presets": [
+      {
+        "camera": "Camera_free",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_F",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_E",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_D",
+        "inFrustum": true,
+        "centreUnoccluded": true
+      },
+      {
+        "camera": "Camera_C",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_B",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "CAM_01_|_fotograma_general",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "CAM_02_|_mesa_y_juntas",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "CAM_03_|_perfiles_invertidos",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "CAM_04_|_recorrido_lateral",
+        "inFrustum": true,
+        "centreUnoccluded": false
+      }
+    ]
+  },
+  {
+    "tower": {
+      "x": -680,
+      "z": -700,
+      "top": 24
+    },
+    "bounds": {
+      "min": [
+        -725.5,
+        -21.5,
+        -745.5
+      ],
+      "max": [
+        -634.5,
+        92.5,
+        -654.5
+      ]
+    },
+    "samples": [
+      {
+        "size": 3.5,
+        "aspect": 2.4,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      },
+      {
+        "size": 3.5,
+        "aspect": 1.7777777777777777,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      },
+      {
+        "size": 5,
+        "aspect": 2.4,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      },
+      {
+        "size": 5,
+        "aspect": 1.7777777777777777,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      }
+    ],
+    "presets": [
+      {
+        "camera": "Camera_free",
+        "inFrustum": true,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_F",
+        "inFrustum": true,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_E",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_D",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_C",
+        "inFrustum": false,
+        "centreUnoccluded": true
+      },
+      {
+        "camera": "Camera_B",
+        "inFrustum": false,
+        "centreUnoccluded": true
+      },
+      {
+        "camera": "CAM_01_|_fotograma_general",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "CAM_02_|_mesa_y_juntas",
+        "inFrustum": true,
+        "centreUnoccluded": true
+      },
+      {
+        "camera": "CAM_03_|_perfiles_invertidos",
+        "inFrustum": true,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "CAM_04_|_recorrido_lateral",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      }
+    ]
+  },
+  {
+    "tower": {
+      "x": -900,
+      "z": -830,
+      "top": 15
+    },
+    "bounds": {
+      "min": [
+        -945.5,
+        -30.5,
+        -875.5
+      ],
+      "max": [
+        -854.5,
+        83.5,
+        -784.5
+      ]
+    },
+    "samples": [
+      {
+        "size": 3.5,
+        "aspect": 2.4,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      },
+      {
+        "size": 3.5,
+        "aspect": 1.7777777777777777,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      },
+      {
+        "size": 5,
+        "aspect": 2.4,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      },
+      {
+        "size": 5,
+        "aspect": 1.7777777777777777,
+        "count": 1681,
+        "intersections": 0,
+        "pan": [
+          2,
+          2
+        ],
+        "targetDistance": 20
+      }
+    ],
+    "presets": [
+      {
+        "camera": "Camera_free",
+        "inFrustum": true,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_F",
+        "inFrustum": true,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_E",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_D",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "Camera_C",
+        "inFrustum": false,
+        "centreUnoccluded": true
+      },
+      {
+        "camera": "Camera_B",
+        "inFrustum": false,
+        "centreUnoccluded": true
+      },
+      {
+        "camera": "CAM_01_|_fotograma_general",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "CAM_02_|_mesa_y_juntas",
+        "inFrustum": true,
+        "centreUnoccluded": true
+      },
+      {
+        "camera": "CAM_03_|_perfiles_invertidos",
+        "inFrustum": true,
+        "centreUnoccluded": false
+      },
+      {
+        "camera": "CAM_04_|_recorrido_lateral",
+        "inFrustum": false,
+        "centreUnoccluded": false
+      }
+    ]
+  }
+]
