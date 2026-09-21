@@ -86,6 +86,8 @@ export default class E26902_BladeRunner {
             post: values => { this.post?.configure(values); this.resetMetrics() },
             flare: values => { this.post?.configureFlare(values); this.resetMetrics() },
             sky: enabled => { this.sky?.setEnabled(enabled); this.resetMetrics() },
+            skyHeight: value => { this.sky?.setHeightScale(value); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
+            skyRadial: value => { this.sky?.setRadialIntensity(value); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             city: enabled => { this.city?.setEnabled(enabled); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             buildingLights: values => { this.buildingLights?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             flames: values => { this.flames?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
@@ -100,6 +102,8 @@ export default class E26902_BladeRunner {
         })
         this.ui.setPanSettings(TYRELL.pan)
         this.ui.setEffectSettings(TYRELL.effects)
+        this.ui.setSkyHeight(TYRELL.sky.heightScale)
+        this.ui.setSkyRadial(TYRELL.sky.radialIntensity)
         this.ui.lightingSelect.value = this.lightingProfile
         this.ui.setLookSettings({ profile: this.lookProfile, ev: this.exposureEV, studio: this.studio })
         app.size.update()
@@ -194,9 +198,9 @@ export default class E26902_BladeRunner {
             this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
                 (received, total, parsing) => this.ui.status(parsing ? 'Preparando geometría, materiales y cámaras…' : `Cargando escenario · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, total ? received / total : undefined))
             if (this.disposed) { disposeScene(this.asset.gltf.scene); return }
-            this.skyTexture = await new THREE.TextureLoader().loadAsync(new URL('textures/E26902_BladeRunner/sky-panorama-v2.png', new URL(this.app.pathPrefix, document.baseURI)).href)
+            this.skyTexture = await new THREE.TextureLoader().loadAsync(new URL(TYRELL.sky.texture, new URL(this.app.pathPrefix, document.baseURI)).href)
             this.skyTexture.colorSpace = THREE.SRGBColorSpace
-            this.skyTexture.wrapS = THREE.RepeatWrapping
+            this.skyTexture.wrapS = THREE.ClampToEdgeWrapping
             if (this.disposed) { this.skyTexture.dispose(); disposeScene(this.asset.gltf.scene); return }
             this.app.emitter.emit('onProjectLoaded', {})
         } catch (error) {
@@ -275,7 +279,10 @@ export default class E26902_BladeRunner {
         this.specularEnvironment = new TyrellSpecularEnvironment(this.scene, this.world3D, this.floorReflection)
         this.volume = new TyrellLightVolume(() => this.sun)
         this.atmosphere = new TyrellAtmosphere(this.scene, this.world3D, this.volume)
-        this.sky = new TyrellSky(this.scene, this.lighting.sky, this.skyTexture)
+        this.sky = new TyrellSky(this.scene, this.lighting.sky, this.skyTexture, {
+            ...TYRELL.sky, aspect: TYRELL.referenceAspect,
+            camera: this.cameras.find(camera => /^(?:Camera|CAM)[ _]D(?:\W|$)/i.test(camera.name))
+        })
         this.setLighting(this.lightingProfile)
         this.studioLights = new THREE.Group()
         this.studioLights.name = 'Tyrell / estudio de materiales'

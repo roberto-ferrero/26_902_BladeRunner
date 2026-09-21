@@ -1,15 +1,24 @@
 import { BoxGeometry, BufferAttribute, Color, DataTexture, Group, Mesh, RepeatWrapping, RGBAFormat, SRGBColorSpace, UnsignedByteType, LinearFilter, LinearMipmapLinearFilter } from 'three'
 import { MeshPhysicalNodeMaterial } from 'three/webgpu'
-import { attribute, output, vec4 } from 'three/tsl'
+import { attribute, color as colorNode, mix, normalWorld, output, vec3, vec4 } from 'three/tsl'
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js'
 import { createCityRoof, CITY_ROOF } from './TyrellCityRoof'
 import { FLAME_TOWERS } from './TyrellFlames'
 
 export const CITY_FINISH = Object.freeze({
-    baseColorMultiplier: .5, roofColorMultiplier: .16, towerColorMultiplier: .16,
-    roofOutputMultiplier: .5, towerOutputMultiplier: .28,
+    baseColor: '#42331d', edgeColor: '#342816', facadeDepth: 18,
+    // Centre of the audited pyramid footprint; keep its central 100 m warm.
+    gradientCenterX: -49.2357, gradientStart: 50, gradientEnd: 140,
+    baseColorMultiplier: 1, roofColorMultiplier: 1, towerColorMultiplier: 1,
+    roofOutputMultiplier: 1, towerOutputMultiplier: 1,
     roughness: 1, metalness: 0, specularIntensity: 0, envMapIntensity: 0
 })
+
+export function cityEdgeBlend(x) {
+    const t = Math.max(0, Math.min(1, (Math.abs(x - CITY_FINISH.gradientCenterX) - CITY_FINISH.gradientStart)
+        / (CITY_FINISH.gradientEnd - CITY_FINISH.gradientStart)))
+    return t * t * (3 - 2 * t)
+}
 
 // Deterministic architecture, in world metres. No lights: reserved for phase 9.2.
 export function createCityTexture() {
@@ -38,22 +47,28 @@ export default class TyrellCity {
         this.group.name = 'Tyrell / lower city 9.1'
         this.texture = createCityTexture()
         this.materials = [
-            ['terraces', '#796c58'], ['stonework', '#867660'], ['service recesses', '#423e36']
+            ['terraces', CITY_FINISH.baseColor], ['stonework', CITY_FINISH.baseColor], ['service recesses', '#30251a']
         ].map(([name, color]) => {
             const { roughness, metalness, specularIntensity, envMapIntensity } = CITY_FINISH
             const material = new MeshPhysicalNodeMaterial({ color, roughness, metalness, specularIntensity, envMapIntensity, map: this.texture })
             material.color.multiplyScalar(CITY_FINISH.baseColorMultiplier)
-            // The amber fog/shafts otherwise wash out even black roofing. Apply
-            // local art direction after atmospheric shading, before scene grading.
-            // NodeMaterial preserves this node when window lighting clones it.
-            material.outputNode = vec4(output.rgb.mul(attribute('tyrellCityTone', 'float')), output.a)
+            // Anchor the silhouette after atmospheric shading: fog cannot turn
+            // roofs beige again. Keep a narrow range of directional relief and
+            // scene illumination around the requested brown, before grading.
+            // Window emission is added separately by TyrellBuildingLights.
+            const relief = normalWorld.dot(vec3(.36, .8, .48)).mul(.07)
+                .add(output.rgb.clamp(0, 1).mul(.08)).add(.93)
+            const blockColor = mix(colorNode(CITY_FINISH.baseColor), colorNode(CITY_FINISH.edgeColor),
+                attribute('tyrellCityEdge', 'float')).mul(name === 'service recesses' ? .93 : 1)
+            material.outputNode = vec4(blockColor.mul(relief)
+                .mul(attribute('tyrellCityTone', 'float')), output.a)
             material.name = 'City / ' + name
             return material
         })
         const parts = this.materials.map(() => [])
         let seed = 902091
         const random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296 }
-        let boxes = 0, buildings = 0, towerFinish = false
+        let boxes = 0, buildings = 0, towerFinish = false, buildingX
         const box = (x, y, z, w, h, d, material = 0) => {
             const geometry = new BoxGeometry(w, h, d)
             // World-sized UVs avoid stretched panels across different building sizes.
@@ -70,6 +85,9 @@ export default class TyrellCity {
             }
             geometry.setAttribute('tyrellPanel', new BufferAttribute(panels, 4))
             geometry.setAttribute('tyrellCentral', new BufferAttribute(new Float32Array(positions.count), 1))
+            // All modules of a building share its centre sample, including roof equipment.
+            geometry.setAttribute('tyrellCityEdge', new BufferAttribute(new Float32Array(positions.count)
+                .fill(cityEdgeBlend(buildingX ?? x)), 1))
             geometry.setAttribute('tyrellCityTone', new BufferAttribute(new Float32Array(positions.count)
                 .fill(towerFinish ? CITY_FINISH.towerOutputMultiplier : 1), 1))
             const tint = new Color().setScalar(.84 + random() * .22)
@@ -81,8 +99,9 @@ export default class TyrellCity {
         }
         const building = (x, z, w, d, roof, tiers = 3) => {
             buildings++
+            buildingX = x
             roof -= 2.5
-            const base = -88
+            const base = roof - 5 - CITY_FINISH.facadeDepth
             box(x, (base + roof - 5) / 2, z, w, roof - 5 - base, d)
             for (let tier = 0; tier < tiers; tier++) {
                 const tw = w - tier * 3.2, td = d - tier * 2.8, y = roof - 5 + tier * 2
@@ -96,7 +115,10 @@ export default class TyrellCity {
             box(x - w * .17, top + 1.2, z - d * .12, w * .32, 2.4, d * .38, 1)
             box(x + w * .23, top + .45, z, w * .14, .9, d * .65, 2)
             for (let i = 0; i < 4; i++) box(x - w * .3 + i * w * .17, top + .35, z + d * .26, w * .1, .7, 1.8, 2)
-            for (let i = 0; i < 5; i++) box(x - w * .42 + i * w * .21, roof - 10, z + d / 2 + .25, .65, 9, .6, 1)
+            // Omit five small facade ribs (60 triangles per building). Consume
+            // their tint samples so all subsequent roofs/footprints stay fixed.
+            for (let i = 0; i < 5; i++) random()
+            buildingX = undefined
         }
         // Near belt overlaps in depth, so camera movement cannot reveal a flat cutout edge.
         for (let i = 0; i < 22; i++) {
@@ -137,6 +159,9 @@ export default class TyrellCity {
         const roof = createCityRoof(world.getObjectByName('Tyrell_Corporation_Pyramid'))
         const continuity = { roofTriangles: 0, serviceBlocks: 0 }
         if (roof) {
+            const edge = new Float32Array(roof.attributes.position.count)
+            for (let i = 0; i < edge.length; i++) edge[i] = cityEdgeBlend(roof.attributes.position.getX(i))
+            roof.setAttribute('tyrellCityEdge', new BufferAttribute(edge, 1))
             roof.setAttribute('tyrellCityTone', new BufferAttribute(new Float32Array(roof.attributes.position.count).fill(1), 1))
             parts[0].push(roof)
             continuity.roofTriangles = roof.index.count / 3
@@ -168,7 +193,8 @@ export default class TyrellCity {
             this.group.add(mesh)
         })
         this.stats = { buildings, boxes, meshes: this.group.children.length, triangles: boxes * 12 + continuity.roofTriangles,
-            roofLowering: 2.5, towers, ...CITY_FINISH, continuity,
+            roofLowering: 2.5, removedFacadeRibs: buildings * 5, savedTriangles: buildings * 60,
+            towers, ...CITY_FINISH, continuity,
             textureSize: [256, 256], seed: 902091, cityBackdrop: 'layered geometry; no photographic background', lights: 0 }
         world.add(this.group)
     }

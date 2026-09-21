@@ -126,6 +126,22 @@ export default class TyrellUI {
         skyToggle.onchange = () => actions.sky(skyToggle.checked)
         skyLabel.append(skyToggle, document.createTextNode('Cielo panorámico'))
         volumeControls.append(skyLabel)
+        const skyHeightLabel = document.createElement('label')
+        skyHeightLabel.innerHTML = 'Altura del cielo<input type="range" aria-label="Altura del cielo" min="10" max="200" step="1" value="50"><output>50 %</output>'
+        this.skyHeight = skyHeightLabel.querySelector('input')
+        this.skyHeight.oninput = () => {
+            this.skyHeight.nextElementSibling.value = `${this.skyHeight.value} %`
+            actions.skyHeight(Number(this.skyHeight.value) / 100)
+        }
+        volumeControls.append(skyHeightLabel)
+        const skyRadialLabel = document.createElement('label')
+        skyRadialLabel.innerHTML = 'Oscurecimiento radial<input type="range" aria-label="Oscurecimiento radial" min="0" max="300" step="1" value="100"><output>100 %</output>'
+        this.skyRadial = skyRadialLabel.querySelector('input')
+        this.skyRadial.oninput = () => {
+            this.skyRadial.nextElementSibling.value = `${this.skyRadial.value} %`
+            actions.skyRadial(Number(this.skyRadial.value) / 100)
+        }
+        volumeControls.append(skyRadialLabel)
         this.atmospherePanel.querySelector('p').textContent = 'Haces solares y polvo volumétrico dentro de la sala. Movimiento 0 congela el polvo para comparar; desactivar Haces vuelve a la profundidad de 6.1.'
         this.panPanel = document.createElement('details')
         this.panPanel.className = 'tyrell-pan'
@@ -412,6 +428,14 @@ export default class TyrellUI {
         const metrics = this.root.querySelector('.tyrell-metrics')
         metrics.title = available ? 'Benchmark de cálculo GPU en iteraciones/ms. Un valor mayor indica más capacidad; los cortes de LOD están pendientes de calibración.' : 'No se ha obtenido una medición válida de capacidad GPU.'
         this.metrics(this.metricsText || metrics.textContent)
+    }
+    setSkyHeight(value) {
+        this.skyHeight.value = Math.round(value * 100)
+        this.skyHeight.nextElementSibling.value = `${this.skyHeight.value} %`
+    }
+    setSkyRadial(value) {
+        this.skyRadial.value = Math.round(value * 100)
+        this.skyRadial.nextElementSibling.value = `${this.skyRadial.value} %`
     }
     metrics(text) {
         this.metricsText = text

@@ -1,5 +1,5 @@
 import { AdditiveBlending, DataTexture, LinearFilter, Sprite, SpriteMaterial, Vector3 } from 'three'
-import { attribute, normalWorld, uniform, vec3, renderGroup } from 'three/tsl'
+import { attribute, normalWorld, uniform, vec3, vec4, renderGroup } from 'three/tsl'
 import { facadeGeometry } from './TyrellFacadeLayout'
 import TyrellElevatorRails from './TyrellElevatorRails'
 
@@ -89,6 +89,10 @@ export default class TyrellBuildingLights {
             const materials = [].concat(original).map(material => {
                 const copy = material.clone()
                 copy.emissiveNode = emission
+                if (/^City \/ [012]$/.test(object.name) && copy.outputNode) {
+                    const silhouette = copy.outputNode
+                    copy.outputNode = vec4(silhouette.rgb.add(emission), silhouette.a)
+                }
                 if (object.name === 'Tyrell_Corporation_Pyramid') this.elevatorRails.apply(copy, emission)
                 copy.needsUpdate = true
                 return copy

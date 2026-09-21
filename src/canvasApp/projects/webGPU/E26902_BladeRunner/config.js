@@ -3,6 +3,10 @@ export const TYRELL = {
     asset: 'glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=1',
     assetBytes: 40552456,
     referenceAspect: 2.4,
+    sky: {
+        texture: 'textures/E26902_BladeRunner/sky-panorama-v2.png',
+        radius: 1200, centerY: 80, marginDegrees: 3, segments: 192, heightScale: 0.5, radialIntensity: 1
+    },
     initialCamera: 'CAM 01',
     exposure: 1.07,
     materialLook: 'tyrell-v1', // Reviewed material baseline; lighting/reflections still being calibrated.
