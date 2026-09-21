@@ -18,6 +18,10 @@ export default class TyrellUI {
             </div><p class="tyrell-note">Iluminación en calibración · Cámaras originales de Blender · Cámaras: 1–9 y 0 · Recorrido libre disponible en Navegación</p>
             <p class="tyrell-metrics">Preparando la primera imagen…</p></footer>`
         document.body.appendChild(this.root)
+        this.startupCover = document.createElement('div')
+        this.startupCover.className = 'tyrell-startup-cover'
+        this.startupCover.setAttribute('aria-hidden', 'true')
+        document.body.appendChild(this.startupCover)
         const navigationPanel = document.createElement('details')
         navigationPanel.className = 'tyrell-pan'
         navigationPanel.innerHTML = `<summary>Navegación</summary><div class="tyrell-pan-controls">
@@ -320,7 +324,17 @@ export default class TyrellUI {
         this.closeGUI.setAttribute('aria-expanded', 'true')
         this.openGUI.setAttribute('aria-expanded', 'true')
         this.setGUIVisible(false)
+        this.beginStartup()
     }
+    beginStartup() {
+        this.startupCover.hidden = false
+        this.startupCover.style.opacity = '1'
+        this.guiContainer.inert = true
+        this.openGUI.inert = true
+        this.openGUI.hidden = true
+        this.guiContainer.hidden = true
+    }
+    setStartupOpacity(opacity) { this.startupCover.style.opacity = String(opacity) }
     setGUIVisible(visible) {
         this.guiContainer.hidden = !visible
         this.openGUI.hidden = visible
@@ -381,12 +395,28 @@ export default class TyrellUI {
     }
     setBackend(text) { this.root.querySelector('.tyrell-backend').textContent = text }
     ready(cameras, activeIndex) {
+        this.startupCover.hidden = true
+        this.guiContainer.inert = false
+        this.openGUI.inert = false
+        this.openGUI.hidden = false
         this.statusBox.hidden = true
         this.root.querySelector('footer').hidden = false
         this.cameraSelect.replaceChildren(...cameras.map((camera, i) => new Option(camera.userData.name || camera.name, i)))
         this.cameraSelect.value = activeIndex
     }
-    metrics(text) { this.root.querySelector('.tyrell-metrics').textContent = text }
+    setGPUCapacity(capacity) {
+        const available = Number.isFinite(capacity?.gpuScore) && capacity.gpuScore > 0
+        this.gpuLabel = available
+            ? `GPU score: ${capacity.gpuScore.toLocaleString('es-ES', { maximumFractionDigits: 0 })}${capacity.reliable ? '' : ' (aproximado)'}`
+            : 'GPU score: no disponible'
+        const metrics = this.root.querySelector('.tyrell-metrics')
+        metrics.title = available ? 'Benchmark de cálculo GPU en iteraciones/ms. Un valor mayor indica más capacidad; los cortes de LOD están pendientes de calibración.' : 'No se ha obtenido una medición válida de capacidad GPU.'
+        this.metrics(this.metricsText || metrics.textContent)
+    }
+    metrics(text) {
+        this.metricsText = text
+        this.root.querySelector('.tyrell-metrics').textContent = this.gpuLabel ? `${text} · ${this.gpuLabel}` : text
+    }
     showOutput(blob, filename, text) {
         if (this.outputURL) URL.revokeObjectURL(this.outputURL)
         this.outputURL = URL.createObjectURL(blob)
@@ -406,5 +436,5 @@ export default class TyrellUI {
         link.href = this.outputURL; link.download = filename
         this.dialog.showModal()
     }
-    dispose() { if (this.outputURL) URL.revokeObjectURL(this.outputURL); this.root.remove() }
+    dispose() { if (this.outputURL) URL.revokeObjectURL(this.outputURL); this.startupCover.remove(); this.root.remove() }
 }

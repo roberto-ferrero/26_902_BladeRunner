@@ -122,6 +122,8 @@ class AppRender{
               } catch(error) { console.warn('(AppRender) GPU profiler unavailable:', error) }
             }
             if(this.disposed) return
+            await this.app.project?.measureGPUCapacity?.(this.renderer)
+            if(this.disposed) return
             this.app.emitter.emit('onRendererReady', {})
 
         }catch(error){

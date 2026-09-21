@@ -1,4 +1,4 @@
-import { Color } from 'three'
+import { Color, Vector3 } from 'three'
 import { Fn, texture, uniform, normalWorldGeometry, cameraWorldMatrix, equirectUV, vec2, vec3, vec4, mix, renderGroup } from 'three/tsl'
 
 // One continuous spherical sky. The original plane is retained only for comparison/probes.
@@ -8,11 +8,17 @@ export default class TyrellSky {
         this.previous = scene.backgroundNode
         this.originalVisible = originalSky.visible
         this.enabled = true; this.studio = false
+        this.radialCenter = uniform(new Vector3(0, 0, -1))
+        this.radialStart = uniform(0)
+        this.radialEnd = uniform(1)
+        this.radialStrength = uniform(0)
+        this.radialBoostEnd = uniform(1)
+        this.radialBoost = uniform(0)
         const radiance = uniform(new Color()).setGroup(renderGroup).onRenderUpdate(() => originalSky.material.emissive)
         const sky = texture(panorama)
         const original = texture(originalSky.material.emissiveMap)
         this.node = Fn(() => {
-            // Tilt the panorama 25 degrees to frame the detailed cloud bank above the sun.
+            // Tilt the panorama 25 degrees downward to frame the cloud bank above the sun.
             const ray = normalWorldGeometry.normalize()
             const direction = vec3(ray.x, ray.y.mul(0.906307787).sub(ray.z.mul(0.422618262)), ray.y.mul(0.422618262).add(ray.z.mul(0.906307787)))
             const uv = equirectUV(vec3(direction.z.negate(), direction.y, direction.x))
@@ -33,9 +39,50 @@ export default class TyrellSky {
                 .mul(ray.z.lessThan(-0.00001).select(1, 0))
                 .mul(camera.z.greaterThan(-900).select(1, 0))
             const authored = original.sample(photoUV.clamp(0.0001, 0.9999)).rgb
-            return vec4(mix(panoramic, authored, weight).mul(radiance), 1)
+            // Angular distance in world space keeps the gradient fixed when the viewer turns.
+            const distance = ray.dot(this.radialCenter).clamp(-1, 1).acos()
+            const darkening = distance.smoothstep(this.radialStart, this.radialEnd).mul(this.radialStrength)
+            const extraDarkening = distance.smoothstep(this.radialStart, this.radialBoostEnd).mul(this.radialBoost)
+            return vec4(mix(panoramic, authored, weight).mul(radiance).mul(darkening.oneMinus()).mul(extraDarkening.oneMinus()), 1)
         })()
         this.apply()
+    }
+    configureRadialDarkening(referenceCamera, sunDisc, aspect, leftReferenceCamera) {
+        if (!referenceCamera || !sunDisc) return
+        referenceCamera.updateWorldMatrix(true, false)
+        const camera = referenceCamera.clone(false)
+        referenceCamera.getWorldPosition(camera.position)
+        referenceCamera.getWorldQuaternion(camera.quaternion)
+        camera.scale.set(1, 1, 1)
+        camera.aspect = aspect
+        camera.updateProjectionMatrix()
+        camera.updateMatrixWorld(true)
+        const sun = sunDisc.getWorldPosition(new Vector3())
+        const center = sun.clone().sub(camera.position).normalize()
+        const solarHeight = sun.clone().project(camera).y
+        const edgeAngles = [-1, 1].map(x => new Vector3(x, solarHeight, 0.5)
+            .unproject(camera).sub(camera.position).normalize().angleTo(center))
+        // A circular gradient starts at the nearer horizontal edge when the sun is off-centre.
+        const start = Math.min(...edgeAngles)
+        this.radialCenter.value.copy(center)
+        this.radialStart.value = start
+        this.radialEnd.value = Math.min(Math.PI, start + Math.PI / 4)
+        this.radialStrength.value = 0.75
+        this.radialBoost.value = 0
+        if (leftReferenceCamera) {
+            leftReferenceCamera.updateWorldMatrix(true, false)
+            const leftCamera = leftReferenceCamera.clone(false)
+            leftReferenceCamera.getWorldPosition(leftCamera.position)
+            leftReferenceCamera.getWorldQuaternion(leftCamera.quaternion)
+            leftCamera.scale.set(1, 1, 1)
+            leftCamera.aspect = aspect
+            leftCamera.updateProjectionMatrix()
+            leftCamera.updateMatrixWorld(true)
+            // Upper-left sky in CAM02: reach one third of the previous linear radiance.
+            const leftRay = new Vector3(-0.9, 0.5, 0.5).unproject(leftCamera).sub(leftCamera.position).normalize()
+            this.radialBoostEnd.value = Math.max(start + 0.001, leftRay.angleTo(center))
+            this.radialBoost.value = 2 / 3
+        }
     }
     setEnabled(enabled) { this.enabled = Boolean(enabled); this.apply() }
     setStudio(studio) { this.studio = studio; this.apply() }

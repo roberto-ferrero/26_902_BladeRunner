@@ -1,4 +1,6 @@
 body.tyrell-viewer { background: #070807; color: #e6dfce; overflow: hidden; font-family: system-ui, sans-serif; }
+.tyrell-startup-cover { position: fixed; inset: 0; z-index: 10; background: #070807; pointer-events: auto; }
+.tyrell-startup-cover[hidden] { display: none; }
 .tyrell-viewer #content { display: none; }
 .tyrell-viewer #canvas_app { inset: 0; margin: auto; }
 .tyrell-viewer.tyrell-reference #canvas_app { width: min(100vw, 240vh); height: min(100vh, 41.666667vw); }
