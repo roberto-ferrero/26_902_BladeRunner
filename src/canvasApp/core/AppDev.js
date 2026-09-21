@@ -73,7 +73,7 @@ class AppDev{
         document.addEventListener("keydown", this.listener_keypress = (self) =>{
             if(self.key == "b"){
                 this.switch_backstage()
-            }else if(self.key == "c"){
+            }else if(self.key == "c" && !this.app.project?.setDevelopmentCamera){
                 this.switch_cameras()
             }
         }, false)

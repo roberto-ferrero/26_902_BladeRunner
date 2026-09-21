@@ -575,3 +575,111 @@ La revisión 017–019 fue rechazada por ser demasiado clara. 020 Camera_free co
 | [9.1_020_2026-09-21_Camera-free-techos-oscuros.png](9.1_020_2026-09-21_Camera-free-techos-oscuros.png) | 2026-09-20T23:04:50.1813470Z |
 | [9.1_021_2026-09-21_CAM02-torres-oscuras.png](9.1_021_2026-09-21_CAM02-torres-oscuras.png) | 2026-09-20T23:05:01.3510332Z |
 | [9.1_022_2026-09-21_CAM01-techos-oscuros.png](9.1_022_2026-09-21_CAM01-techos-oscuros.png) | 2026-09-20T23:05:18.5593418Z |
+
+## 9.3 · Tráfico aéreo lejano · 21-09-2026
+
+Dos corredores y desvío ocasional, siluetas mínimas con luces blancas y estrobos suaves. Densidad 35 % (cuatro vehículos repartidos por el exterior; pueden quedar fuera de cuadro u ocultos). 001 GUI a 1280 × 720; 002 CAM01, 003 CAM03 y 004 CAM03 en un momento posterior con otro paneo, a 1492 × 1432. Las capturas estáticas no muestran por sí solas el movimiento ni cada pulso. Tyrell v1, luz 4.2, exposición 1,07; Baja Optimizado 8.2, encuadre 2,4:1, luces 0,22 y balizas 0,70. Propuesta pendiente de valoración artística. Pruebas, diagnósticos y mediciones en [9.3 — Tráfico](../phase9/9.3/TRAFICO.md).
+
+| Archivo | Hora UTC |
+| --- | --- |
+| [9.3_001_2026-09-21_GUI-trafico.png](9.3_001_2026-09-21_GUI-trafico.png) | 2026-09-20T23:24:53.6435395Z |
+| [9.3_002_2026-09-21_CAM01-trafico.png](9.3_002_2026-09-21_CAM01-trafico.png) | 2026-09-20T23:25:08.6637623Z |
+| [9.3_003_2026-09-21_CAM03-trafico.png](9.3_003_2026-09-21_CAM03-trafico.png) | 2026-09-20T23:25:09.1131344Z |
+| [9.3_004_2026-09-21_CAM03-trafico-secuencia.png](9.3_004_2026-09-21_CAM03-trafico-secuencia.png) | 2026-09-20T23:27:00.7602179Z |
+
+### Revisión r02 · Base duplicada y circulación más continua
+
+Densidad inicial 80 % (ocho vehículos), ciclos de 60/68 s con separación estable, recorridos laterales recortados y corredor secundario más próximo. GUI, CAM01 y CAM03 a 1280 × 720, render 960 × 399, Baja Optimizado 8.2, Tyrell v1, luz 4.2, exposición 1,07. Capturas tomadas después del arranque; el diagnóstico confirma vueltas completadas. La simulación de diez minutos y sus límites están en [9.3 — Tráfico](../phase9/9.3/TRAFICO.md). Las imágenes no documentan por sí solas la cadencia ni los destellos. Se conservan 001–004 como propuesta anterior.
+
+| Captura | Fecha del archivo (UTC) |
+| --- | --- |
+| [9.3_005_2026-09-21_GUI-trafico-r02.png](9.3_005_2026-09-21_GUI-trafico-r02.png) | 2026-09-20T23:40:07.5777237Z |
+| [9.3_006_2026-09-21_CAM01-trafico-r02.png](9.3_006_2026-09-21_CAM01-trafico-r02.png) | 2026-09-20T23:41:21.8555885Z |
+| [9.3_007_2026-09-21_CAM03-trafico-r02.png](9.3_007_2026-09-21_CAM03-trafico-r02.png) | 2026-09-20T23:41:48.7929431Z |
+
+### Revisión r03 · Ruta ante las fachadas y vehículos un 25 % mayores
+
+Tres corredores, con el nuevo cruce de derecha a izquierda a menor altura y por delante de la pirámide/inclinados. Ocho vehículos de base repartidos 3 + 3 + 2; escala uniforme 1,25 para cuerpos y luces. Capturas de los encuadres CAM01, CAM03 y Camera_E, viewport 1280 × 720, render 960 × 399, Baja Optimizado 8.2, exposición 1,07. Son muestras estáticas de distintos momentos: no todos los vuelos quedan visibles en cada captura. La auditoría geométrica y los diagnósticos de repetición se conservan en [9.3 — Tráfico](../phase9/9.3/TRAFICO.md). Registros e imágenes anteriores conservados.
+
+| Captura | Fecha del archivo (UTC) |
+| --- | --- |
+| [9.3_008_2026-09-21_CAM01-cruce-frontal-r03.png](9.3_008_2026-09-21_CAM01-cruce-frontal-r03.png) | 2026-09-20T23:53:01.8045359Z |
+| [9.3_009_2026-09-21_CAM03-cruce-frontal-r03.png](9.3_009_2026-09-21_CAM03-cruce-frontal-r03.png) | 2026-09-20T23:54:13.1629662Z |
+| [9.3_010_2026-09-21_CAM03-paso-r03.png](9.3_010_2026-09-21_CAM03-paso-r03.png) | 2026-09-20T23:54:58.0842124Z |
+| [9.3_011_2026-09-21_CameraE-cruce-frontal-r03.png](9.3_011_2026-09-21_CameraE-cruce-frontal-r03.png) | 2026-09-20T23:56:02.5578133Z |
+| [9.3_012_2026-09-21_CameraE-paso-r03.png](9.3_012_2026-09-21_CameraE-paso-r03.png) | 2026-09-20T23:56:20.5131162Z |
+
+### Revisión r04 · Escala frontal reducida y aproximación al hangar
+
+Solo el tráfico frontal pasa al 25 % del tamaño de r03 y baja 2,5 m. La aproximación ocasional parte del tráfico alto, gira a la derecha, desciende y se acerca hasta ocultarse tras el bloque frontal indicado en la referencia del usuario. Capturas desde Camera_E en distintos momentos, viewport 1280 × 720 y render 960 × 399; ocho vehículos de base, Baja Optimizado 8.2, exposición 1,07. El destino oculto y la trayectoria se comprueban también contra el GLB; la captura estática final no prueba por sí sola toda la maniobra. [Recorrido, referencia y validación](../phase9/9.3/TRAFICO.md). Registros e imágenes anteriores conservados.
+
+| Captura | Fecha del archivo (UTC) |
+| --- | --- |
+| [9.3_013_2026-09-21_CameraE-aproximacion-r04.png](9.3_013_2026-09-21_CameraE-aproximacion-r04.png) | 2026-09-21T00:11:34.9916207Z |
+| [9.3_014_2026-09-21_CameraE-giro-hangar-r04.png](9.3_014_2026-09-21_CameraE-giro-hangar-r04.png) | 2026-09-21T00:12:41.4530164Z |
+| [9.3_015_2026-09-21_CameraE-descenso-hangar-r04.png](9.3_015_2026-09-21_CameraE-descenso-hangar-r04.png) | 2026-09-21T00:12:55.9502216Z |
+| [9.3_016_2026-09-21_CameraE-llegada-hangar-r04.png](9.3_016_2026-09-21_CameraE-llegada-hangar-r04.png) | 2026-09-21T00:13:04.0808333Z |
+
+### Revisión r05 · Vehículo de hangar reducido y salida detrás de la pirámide
+
+Aproximación al hangar a un cuarto del tamaño de r04; comienza oculta detrás de la pirámide, sale de su silueta y conserva el giro y descenso posteriores. El tráfico frontal mantiene su tamaño y altura de r04. Camera_E, viewport 1280 × 720, render 960 × 399, Baja Optimizado 8.2, exposición 1,07, ocho vehículos de base. Las muestras estáticas corresponden a momentos distintos; la salida oculta y la escala se verifican además con geometría y diagnóstico. [Detalle y registros](../phase9/9.3/TRAFICO.md). Historial anterior conservado.
+
+| Captura | Fecha del archivo (UTC) |
+| --- | --- |
+| [9.3_017_2026-09-21_CameraE-salida-piramide-r05.png](9.3_017_2026-09-21_CameraE-salida-piramide-r05.png) | 2026-09-21T00:26:04.5937240Z |
+| [9.3_018_2026-09-21_CameraE-hangar-reducido-r05.png](9.3_018_2026-09-21_CameraE-hangar-reducido-r05.png) | 2026-09-21T00:26:51.0466342Z |
+
+
+### Revisión r06 de 9.3 · Hangar retirado
+
+El usuario descarta el vuelo al hangar. Las capturas 9.3_013–018 quedan como **propuestas de hangar rechazadas**, conservadas como historial. Se mantienen los tres corredores de paso, ocho vehículos y el corredor frontal reducido y bajo. La captura 019 muestra solo tráfico lejano; el tráfico cercano está temporalmente apagado para verificar su independencia. Camera_E, Baja Optimizado 8.2, exposición 1,07, Tyrell v1/luz 4.2, viewport 1280 × 720, render 960 × 399; captura directa del visor.
+
+| Captura | Fecha del archivo (UTC) |
+| --- | --- |
+| [9.3_019_2026-09-21_CameraE-sin-hangar.png](9.3_019_2026-09-21_CameraE-sin-hangar.png) | 2026-09-21T06:20:26.576707+00:00 |
+
+### 9.4 · Tráfico cercano sobre las oficinas
+
+**Propuesta pendiente de valoración artística.** Vehículo simplificado inspirado en las fuentes, pasos de aproximación y alejamiento, intervalo 10 s. GUI verificada a 5/10/30 s y apagado independiente; las capturas siguientes usan el intervalo final de 10 s. Camera_E, Baja Optimizado 8.2, exposición 1,07, Tyrell v1/luz 4.2, viewport 1280 × 720, render 960 × 399. Capturas directas del visor, no exportación a 1920 × 800. En 002 el vehículo se aproxima desde la derecha; en 003 aumenta de tamaño antes del paso superior; en 004 se aprecia la salida más lejana en la zona alta central. Los fotogramas son muestras de la animación, no prueba completa de la curva. [Implementación y validación](../phase9/9.4/TRAFICO-CERCANO.md).
+
+| Captura | Fecha del archivo (UTC) |
+| --- | --- |
+| [9.4_001_2026-09-21_GUI-intervalo10.png](9.4_001_2026-09-21_GUI-intervalo10.png) | 2026-09-21T06:20:28.027440+00:00 |
+| [9.4_002_2026-09-21_CameraE-aproximacion.png](9.4_002_2026-09-21_CameraE-aproximacion.png) | 2026-09-21T06:20:44.012151+00:00 |
+| [9.4_003_2026-09-21_CameraE-sobrevuelo.png](9.4_003_2026-09-21_CameraE-sobrevuelo.png) | 2026-09-21T06:20:46.841747+00:00 |
+| [9.4_004_2026-09-21_CameraE-alejamiento.png](9.4_004_2026-09-21_CameraE-alejamiento.png) | 2026-09-21T06:20:47.835031+00:00 |
+
+
+### 9.4 · Revisión r02 · Un vehículo reducido, ruta horizontal y halo
+
+Las capturas 9.4_001–004 documentan la **propuesta r01 rechazada**. Esta revisión reduce el vehículo al 25 %, utiliza una única instancia y un único trayecto de cota constante, desde arriba a la izquierda hacia el lateral derecho. Se repite al terminar; duración inicial 10 s, banking máximo 3°. Núcleo HDR cálido, glow y destello/halo óptico, con el bloom existente. El modelo queda subordinado al resplandor. Camera_E, Baja Optimizado 8.2, exposición 1,07, Tyrell v1/luz 4.2, viewport 1280 × 720, render 960 × 399; capturas directas del visor. Las imágenes 006–008 son fotogramas sucesivos de un mismo paso. GUI verificada a 5/10/30 s y apagado independiente; valor final 10 s. Sin nueva comparativa formal de rendimiento. **Pendiente de valoración artística del usuario.** [Detalle y comprobaciones](../phase9/9.4/TRAFICO-CERCANO.md).
+
+| Captura | Fecha del archivo (UTC) |
+| --- | --- |
+| [9.4_005_2026-09-21_GUI-vehiculo-unico-r02.png](9.4_005_2026-09-21_GUI-vehiculo-unico-r02.png) | 2026-09-21T08:20:29.961792+00:00 |
+| [9.4_006_2026-09-21_CameraE-entrada-r02.png](9.4_006_2026-09-21_CameraE-entrada-r02.png) | 2026-09-21T08:18:22.235160+00:00 |
+| [9.4_007_2026-09-21_CameraE-halo-r02.png](9.4_007_2026-09-21_CameraE-halo-r02.png) | 2026-09-21T08:18:22.454898+00:00 |
+| [9.4_008_2026-09-21_CameraE-salida-r02.png](9.4_008_2026-09-21_CameraE-salida-r02.png) | 2026-09-21T08:18:22.885133+00:00 |
+
+
+### 9.4 · Revisión r03 · Paso lento, silueta oscura y foco cálido
+
+Las capturas 9.4_005–008 quedan como **propuesta r02 rechazada** por excesiva velocidad y halo que ocultaba el vehículo. La revisión r03 mantiene un único vehículo de escala 0,25 y la misma ruta; reduce la velocidad al 25 % mediante una vuelta de 40 s y permite inclinación progresiva hasta 20°. Carrocería más oscura y mate, foco central cálido compacto, halo reducido algo mayor que la silueta y estroboscópica blanca secundaria. Se elimina el gran destello cruzado. Las capturas 010–012 muestran momentos sucesivos del mismo paso. Camera_E, Baja Optimizado 8.2, exposición 1,07, Tyrell v1/luz 4.2, viewport 1280 × 720 y render 960 × 399; captura directa del visor. GUI comprobada a 20/40/60 s; valor final 40 s. Compilación correcta, ocho pruebas y consola sin errores; no se ha realizado una nueva comparación formal de rendimiento. **Pendiente de valoración artística del usuario.** [Detalle y registros](../phase9/9.4/TRAFICO-CERCANO.md).
+
+| Captura | Fecha del archivo (UTC) |
+| --- | --- |
+| [9.4_009_2026-09-21_GUI-40s-r03.png](9.4_009_2026-09-21_GUI-40s-r03.png) | 2026-09-21T08:40:28.037515+00:00 |
+| [9.4_010_2026-09-21_CameraE-entrada-r03.png](9.4_010_2026-09-21_CameraE-entrada-r03.png) | 2026-09-21T08:37:40.187159+00:00 |
+| [9.4_011_2026-09-21_CameraE-silueta-r03.png](9.4_011_2026-09-21_CameraE-silueta-r03.png) | 2026-09-21T08:37:42.038380+00:00 |
+| [9.4_012_2026-09-21_CameraE-salida-r03.png](9.4_012_2026-09-21_CameraE-salida-r03.png) | 2026-09-21T08:37:42.840609+00:00 |
+
+
+### 9.4 · Revisión r04 · Anillo óptico y destello diagonal
+
+El usuario solicita añadir el anillo de lente en el contorno del halo y una diagonal igualmente sutil. Se ha perfilado el anillo con un borde ancho y tenue y añadido una sola traza diagonal suave; la primera prueba, demasiado marcada, se suavizó antes de estas capturas. Se mantiene visible la silueta oscura con el foco cálido central. Misma escala 0,25, ruta, duración de 40 s y banking máximo de 20°. Camera_E, Baja Optimizado 8.2, exposición 1,07, viewport 1280 × 720, render 960 × 399. Las capturas son momentos sucesivos de un mismo paso y los detalles ópticos son discretos a esta resolución. Sin nuevos sprites ni pases de render. Compilación correcta, tres pruebas de tráfico cercano y consola sin errores. **Pendiente de valoración artística.** [Detalle y registros](../phase9/9.4/TRAFICO-CERCANO.md). Historial anterior conservado.
+
+| Captura | Fecha del archivo (UTC) |
+| --- | --- |
+| [9.4_013_2026-09-21_CameraE-anillo-r04.png](9.4_013_2026-09-21_CameraE-anillo-r04.png) | 2026-09-21T08:56:22.590088+00:00 |
+| [9.4_014_2026-09-21_CameraE-lente-r04.png](9.4_014_2026-09-21_CameraE-lente-r04.png) | 2026-09-21T08:56:24.395623+00:00 |
+| [9.4_015_2026-09-21_CameraE-salida-r04.png](9.4_015_2026-09-21_CameraE-salida-r04.png) | 2026-09-21T08:56:25.373975+00:00 |

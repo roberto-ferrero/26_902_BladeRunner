@@ -240,6 +240,28 @@ export default class TyrellUI {
             input.oninput = () => { input.nextElementSibling.value = Number(input.value).toFixed(2); actions.buildingLights({ [key]: Number(input.value) }) }
             cityPanel.querySelector('div').append(label)
         }
+        const trafficLabel = document.createElement('label')
+        trafficLabel.innerHTML = 'Densidad de tráfico lejano<input type="range" aria-label="Densidad de tráfico lejano" min="0" max="100" step="5" value="80"><output>80 %</output>'
+        const trafficInput = trafficLabel.querySelector('input')
+        trafficInput.oninput = () => {
+            trafficInput.nextElementSibling.value = Number(trafficInput.value) === 0 ? 'Apagado' : `${trafficInput.value} %`
+            actions.airTraffic({ density: Number(trafficInput.value) / 100 })
+        }
+        cityPanel.querySelector('div').append(trafficLabel)
+        const nearControls = document.createElement('div')
+        nearControls.className = 'tyrell-pan-controls'
+        nearControls.innerHTML = `<label><input type="checkbox" aria-label="Tráfico cercano" checked> Tráfico cercano</label>
+            <label>Duración del trayecto cercano<input type="range" aria-label="Duración del trayecto cercano" min="20" max="60" step="1" value="40"><output>40 s</output></label>`
+        nearControls.querySelector('input[type=checkbox]').onchange = event => actions.nearTraffic({ enabled: event.target.checked })
+        const nearDuration = nearControls.querySelector('input[type=range]')
+        nearDuration.oninput = () => {
+            nearDuration.nextElementSibling.value = `${nearDuration.value} s`
+            actions.nearTraffic({ duration: Number(nearDuration.value) })
+        }
+        cityPanel.append(nearControls)
+        const nearHint = document.createElement('p')
+        nearHint.textContent = 'Un solo vehículo, de arriba a la izquierda hacia el lateral derecho. Repite al terminar; mayor duración: vuelo más lento.'
+        cityPanel.append(nearHint)
         experience.append(cityPanel)
         this.technicalPanel = document.createElement('details')
         this.technicalPanel.className = 'tyrell-technical'

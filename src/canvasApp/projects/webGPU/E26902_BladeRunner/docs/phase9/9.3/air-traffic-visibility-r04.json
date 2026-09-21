@@ -1,0 +1,632 @@
+{
+  "samplesPerRoute": 199,
+  "aspect": 2.4,
+  "views": [
+    {
+      "camera": "Camera_free",
+      "routes": [
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 9,
+          "unoccluded": 8,
+          "firstVisible": {
+            "progress": 0.96,
+            "point": [
+              19.12401813052159,
+              13.939862032634222,
+              -209.21057379543902
+            ]
+          }
+        },
+        {
+          "inFrame": 80,
+          "unoccluded": 29,
+          "firstVisible": {
+            "progress": 0.46,
+            "point": [
+              13.773422407187711,
+              9.881771179069595,
+              -155.21885540736716
+            ]
+          },
+          "inFrontOfPyramid": 25
+        }
+      ],
+      "cadence": {
+        "occupiedSamples": 1961,
+        "longestEmptySeconds": 11.4,
+        "visiblePercent": 32.7
+      }
+    },
+    {
+      "camera": "Camera_F",
+      "routes": [
+        {
+          "inFrame": 53,
+          "unoccluded": 38,
+          "firstVisible": {
+            "progress": 0.005,
+            "point": [
+              -415.7902637182543,
+              60.94406982052749,
+              -559.3499865938672
+            ]
+          }
+        },
+        {
+          "inFrame": 46,
+          "unoccluded": 27,
+          "firstVisible": {
+            "progress": 0.865,
+            "point": [
+              -382.22678010748547,
+              75.07572579279719,
+              -773.4920303852572
+            ]
+          }
+        },
+        {
+          "inFrame": 53,
+          "unoccluded": 38,
+          "firstVisible": {
+            "progress": 0.005,
+            "point": [
+              -415.8118718569143,
+              60.9449384931887,
+              -559.3560103861408
+            ]
+          }
+        },
+        {
+          "inFrame": 79,
+          "unoccluded": 18,
+          "firstVisible": {
+            "progress": 0.645,
+            "point": [
+              -73.19684235475509,
+              9.495408399303201,
+              -156.95526911146575
+            ]
+          },
+          "inFrontOfPyramid": 4
+        }
+      ],
+      "cadence": {
+        "occupiedSamples": 4788,
+        "longestEmptySeconds": 5.6,
+        "visiblePercent": 79.8
+      }
+    },
+    {
+      "camera": "Camera_E",
+      "routes": [
+        {
+          "inFrame": 122,
+          "unoccluded": 73,
+          "firstVisible": {
+            "progress": 0.205,
+            "point": [
+              -248.03779636066113,
+              58.33162328856923,
+              -529.9132080096983
+            ]
+          }
+        },
+        {
+          "inFrame": 135,
+          "unoccluded": 78,
+          "firstVisible": {
+            "progress": 0.175,
+            "point": [
+              338.5405647512087,
+              76.90933796711911,
+              -725.2881358101006
+            ]
+          }
+        },
+        {
+          "inFrame": 159,
+          "unoccluded": 127,
+          "firstVisible": {
+            "progress": 0.205,
+            "point": [
+              -248.26568386821648,
+              58.5675960583261,
+              -530.9098857210976
+            ]
+          }
+        },
+        {
+          "inFrame": 61,
+          "unoccluded": 41,
+          "firstVisible": {
+            "progress": 0.34,
+            "point": [
+              70.1950756629299,
+              10.452494107002464,
+              -154.9740947181478
+            ]
+          },
+          "inFrontOfPyramid": 24
+        }
+      ],
+      "cadence": {
+        "occupiedSamples": 5858,
+        "longestEmptySeconds": 3.5,
+        "visiblePercent": 97.6
+      }
+    },
+    {
+      "camera": "Camera_D",
+      "routes": [
+        {
+          "inFrame": 57,
+          "unoccluded": 18,
+          "firstVisible": {
+            "progress": 0.715,
+            "point": [
+              184.7402341893209,
+              62.06537506446652,
+              -550.7604678035628
+            ]
+          }
+        },
+        {
+          "inFrame": 53,
+          "unoccluded": 14,
+          "firstVisible": {
+            "progress": 0.005,
+            "point": [
+              514.7901805539955,
+              80.89212421772098,
+              -759.1479488080425
+            ]
+          }
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 78,
+          "unoccluded": 28,
+          "firstVisible": {
+            "progress": 0.005,
+            "point": [
+              227.64991882713016,
+              12.469567845961683,
+              -158.93867164971098
+            ]
+          },
+          "inFrontOfPyramid": 0
+        }
+      ],
+      "cadence": {
+        "occupiedSamples": 2955,
+        "longestEmptySeconds": 6.4,
+        "visiblePercent": 49.3
+      }
+    },
+    {
+      "camera": "Camera_C",
+      "routes": [
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null,
+          "inFrontOfPyramid": 0
+        }
+      ],
+      "cadence": {
+        "occupiedSamples": 0,
+        "longestEmptySeconds": 600,
+        "visiblePercent": 0
+      }
+    },
+    {
+      "camera": "Camera_B",
+      "routes": [
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null,
+          "inFrontOfPyramid": 0
+        }
+      ],
+      "cadence": {
+        "occupiedSamples": 0,
+        "longestEmptySeconds": 600,
+        "visiblePercent": 0
+      }
+    },
+    {
+      "camera": "CAM_01_|_fotograma_general",
+      "routes": [
+        {
+          "inFrame": 129,
+          "unoccluded": 32,
+          "firstVisible": {
+            "progress": 0.28,
+            "point": [
+              -184.38466863283725,
+              57.99646590803023,
+              -524.7816491264981
+            ]
+          }
+        },
+        {
+          "inFrame": 142,
+          "unoccluded": 34,
+          "firstVisible": {
+            "progress": 0.325,
+            "point": [
+              181.60856469231146,
+              74.02095068840173,
+              -705.0764326822415
+            ]
+          }
+        },
+        {
+          "inFrame": 162,
+          "unoccluded": 45,
+          "firstVisible": {
+            "progress": 0.285,
+            "point": [
+              -180.6162264968842,
+              57.949915104000155,
+              -524.6538559825328
+            ]
+          }
+        },
+        {
+          "inFrame": 69,
+          "unoccluded": 19,
+          "firstVisible": {
+            "progress": 0.4,
+            "point": [
+              41.98376193773256,
+              10.162396237205355,
+              -154.9775599292175
+            ]
+          },
+          "inFrontOfPyramid": 12
+        }
+      ],
+      "cadence": {
+        "occupiedSamples": 4611,
+        "longestEmptySeconds": 6.2,
+        "visiblePercent": 76.8
+      }
+    },
+    {
+      "camera": "CAM_02_|_mesa_y_juntas",
+      "routes": [
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 17,
+          "unoccluded": 2,
+          "firstVisible": {
+            "progress": 0.915,
+            "point": [
+              -433.1551342168976,
+              76.21019683946476,
+              -787.3839562950733
+            ]
+          }
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 100,
+          "unoccluded": 55,
+          "firstVisible": {
+            "progress": 0.5,
+            "point": [
+              -5.0324686657120665,
+              9.719859726458761,
+              -155.48991238545483
+            ]
+          },
+          "inFrontOfPyramid": 32
+        }
+      ],
+      "cadence": {
+        "occupiedSamples": 3381,
+        "longestEmptySeconds": 5.4,
+        "visiblePercent": 56.4
+      }
+    },
+    {
+      "camera": "CAM_03_|_perfiles_invertidos",
+      "routes": [
+        {
+          "inFrame": 133,
+          "unoccluded": 52,
+          "firstVisible": {
+            "progress": 0.215,
+            "point": [
+              -239.58174178608752,
+              58.25116268531244,
+              -528.9012588332208
+            ]
+          }
+        },
+        {
+          "inFrame": 135,
+          "unoccluded": 56,
+          "firstVisible": {
+            "progress": 0.37,
+            "point": [
+              134.08936127784727,
+              73.4319315000321,
+              -703.7128525740702
+            ]
+          }
+        },
+        {
+          "inFrame": 199,
+          "unoccluded": 127,
+          "firstVisible": {
+            "progress": 0.215,
+            "point": [
+              -239.84670945026346,
+              58.46707144302846,
+              -529.7714751682522
+            ]
+          }
+        },
+        {
+          "inFrame": 93,
+          "unoccluded": 31,
+          "firstVisible": {
+            "progress": 0.43,
+            "point": [
+              27.87839102416499,
+              10.018384448186943,
+              -155.07112462004608
+            ]
+          },
+          "inFrontOfPyramid": 22
+        }
+      ],
+      "cadence": {
+        "occupiedSamples": 5260,
+        "longestEmptySeconds": 7.6,
+        "visiblePercent": 87.7
+      }
+    },
+    {
+      "camera": "CAM_04_|_recorrido_lateral",
+      "routes": [
+        {
+          "inFrame": 153,
+          "unoccluded": 58,
+          "firstVisible": {
+            "progress": 0.285,
+            "point": [
+              -180.12974281990608,
+              57.99690073739528,
+              -524.6373093858637
+            ]
+          }
+        },
+        {
+          "inFrame": 161,
+          "unoccluded": 56,
+          "firstVisible": {
+            "progress": 0.13,
+            "point": [
+              385.176879977712,
+              77.97012628329199,
+              -734.3522159577625
+            ]
+          }
+        },
+        {
+          "inFrame": 153,
+          "unoccluded": 109,
+          "firstVisible": {
+            "progress": 0.285,
+            "point": [
+              -180.6162264968842,
+              57.949915104000155,
+              -524.6538559825328
+            ]
+          }
+        },
+        {
+          "inFrame": 79,
+          "unoccluded": 28,
+          "firstVisible": {
+            "progress": 0.32,
+            "point": [
+              79.59882899833207,
+              10.545848437147722,
+              -155.03400997115705
+            ]
+          },
+          "inFrontOfPyramid": 8
+        }
+      ],
+      "cadence": {
+        "occupiedSamples": 5831,
+        "longestEmptySeconds": 2.4,
+        "visiblePercent": 97.2
+      }
+    }
+  ],
+  "simulation": {
+    "seconds": 600,
+    "stepSeconds": 0.1,
+    "density": 0.8
+  },
+  "approachProjection": {
+    "camera": "Camera_E",
+    "samples": [
+      {
+        "progress": 0.5,
+        "world": [
+          1.7792275638715664,
+          57.688475149483395,
+          -531.8879526748342
+        ],
+        "frameUV": [
+          0.5035441642786552,
+          0.21705289788886178
+        ],
+        "occluder": null,
+        "occlusionPoint": null
+      },
+      {
+        "progress": 0.6,
+        "world": [
+          71.814665372773,
+          53.41418543902664,
+          -496.284554000688
+        ],
+        "frameUV": [
+          0.6537955442586469,
+          0.2195544805032555
+        ],
+        "occluder": null,
+        "occlusionPoint": null
+      },
+      {
+        "progress": 0.7,
+        "world": [
+          80.29309496794747,
+          42.438654441620166,
+          -413.4464668016689
+        ],
+        "frameUV": [
+          0.7066650246089448,
+          0.2334250531397895
+        ],
+        "occluder": null,
+        "occlusionPoint": null
+      },
+      {
+        "progress": 0.8,
+        "world": [
+          62.25109193827455,
+          29.919076008502213,
+          -331.4049363426581
+        ],
+        "frameUV": [
+          0.7002554345835853,
+          0.26680386184414273
+        ],
+        "occluder": null,
+        "occlusionPoint": null
+      },
+      {
+        "progress": 0.9,
+        "world": [
+          45.80211141191436,
+          21.736816764815753,
+          -248.43367556872948
+        ],
+        "frameUV": [
+          0.6971712138059506,
+          0.27696147810299576
+        ],
+        "occluder": null,
+        "occlusionPoint": null
+      },
+      {
+        "progress": 0.95,
+        "world": [
+          26.87878736534741,
+          15.900913060027461,
+          -211.97255477476415
+        ],
+        "frameUV": [
+          0.6358923377326948,
+          0.3111775492436747
+        ],
+        "occluder": null,
+        "occlusionPoint": null
+      },
+      {
+        "progress": 0.98,
+        "world": [
+          2.857500567256477,
+          10.74311011063945,
+          -211.03957178011245
+        ],
+        "frameUV": [
+          0.5144873899635053,
+          0.3732812043374064
+        ],
+        "occluder": null,
+        "occlusionPoint": null
+      },
+      {
+        "progress": 1,
+        "world": [
+          -8,
+          10.699999999999996,
+          -223.99999999999997
+        ],
+        "frameUV": [
+          0.4617315775553275,
+          0.38043532849961553
+        ],
+        "occluder": "Tyrell_Corporation_Pyramid",
+        "occlusionPoint": [
+          -6.906406265640237,
+          9.434303386978442,
+          -193.82843040422242
+        ]
+      }
+    ]
+  },
+  "limitations": "Centre rays through original GLB, no pan; excludes sky/sun. Cadence uses the nearest 1/200 route sample and opacity > 0.2, so intervals are approximate. Does not measure apparent light size or perceived visibility."
+}

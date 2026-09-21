@@ -1,0 +1,233 @@
+{
+  "samplesPerRoute": 401,
+  "hullRadius": 3.4645526824798867,
+  "routes": [
+    {
+      "length": 959.392031103849,
+      "speed": 47.969601555192455,
+      "conservativeHullClearance": 0.5455293986751486,
+      "closestMesh": "Ceiling_Slab",
+      "collisions": 0,
+      "views": [
+        {
+          "camera": "Camera_E",
+          "visibleSamples": 370,
+          "firstVisible": 0,
+          "lastVisible": 0.9225,
+          "fadedVisible": [
+            0,
+            0.0025,
+            0.005,
+            0.0075,
+            0.01,
+            0.0125,
+            0.015,
+            0.0175,
+            0.02,
+            0.0225,
+            0.025,
+            0.0275,
+            0.03,
+            0.0325,
+            0.035,
+            0.0375,
+            0.04,
+            0.0425
+          ]
+        },
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "visibleSamples": 226,
+          "firstVisible": 0,
+          "lastVisible": 0.905,
+          "fadedVisible": [
+            0,
+            0.0025,
+            0.005,
+            0.0075,
+            0.01,
+            0.0125,
+            0.015,
+            0.0175,
+            0.02,
+            0.0225,
+            0.025,
+            0.0275,
+            0.03,
+            0.0325,
+            0.035,
+            0.0375,
+            0.04,
+            0.0425
+          ]
+        },
+        {
+          "camera": "CAM_03_|_perfiles_invertidos",
+          "visibleSamples": 364,
+          "firstVisible": 0,
+          "lastVisible": 0.9075,
+          "fadedVisible": [
+            0,
+            0.0025,
+            0.005,
+            0.0075,
+            0.01,
+            0.0125,
+            0.015,
+            0.0175,
+            0.02,
+            0.0225,
+            0.025,
+            0.0275,
+            0.03,
+            0.0325,
+            0.035,
+            0.0375,
+            0.04,
+            0.0425
+          ]
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "visibleSamples": 357,
+          "firstVisible": 0,
+          "lastVisible": 0.89,
+          "fadedVisible": [
+            0,
+            0.0025,
+            0.005,
+            0.0075,
+            0.01,
+            0.0125,
+            0.015,
+            0.0175,
+            0.02,
+            0.0225,
+            0.025,
+            0.0275,
+            0.03,
+            0.0325,
+            0.035,
+            0.0375,
+            0.04,
+            0.0425
+          ]
+        }
+      ]
+    },
+    {
+      "length": 952.8233809153218,
+      "speed": 47.64116904576609,
+      "conservativeHullClearance": 0.559594877045662,
+      "closestMesh": "Ceiling_Slab",
+      "collisions": 0,
+      "views": [
+        {
+          "camera": "Camera_E",
+          "visibleSamples": 342,
+          "firstVisible": 0.085,
+          "lastVisible": 1,
+          "fadedVisible": [
+            0.9575,
+            0.96,
+            0.9625,
+            0.965,
+            0.9675,
+            0.97,
+            0.9725,
+            0.975,
+            0.9775,
+            0.98,
+            0.9825,
+            0.985,
+            0.9875,
+            0.99,
+            0.9925,
+            0.995,
+            0.9975,
+            1
+          ]
+        },
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "visibleSamples": 242,
+          "firstVisible": 0.3975,
+          "lastVisible": 1,
+          "fadedVisible": [
+            0.9575,
+            0.96,
+            0.9625,
+            0.965,
+            0.9675,
+            0.97,
+            0.9725,
+            0.975,
+            0.9775,
+            0.98,
+            0.9825,
+            0.985,
+            0.9875,
+            0.99,
+            0.9925,
+            0.995,
+            0.9975,
+            1
+          ]
+        },
+        {
+          "camera": "CAM_03_|_perfiles_invertidos",
+          "visibleSamples": 365,
+          "firstVisible": 0.09,
+          "lastVisible": 1,
+          "fadedVisible": [
+            0.9575,
+            0.96,
+            0.9625,
+            0.965,
+            0.9675,
+            0.97,
+            0.9725,
+            0.975,
+            0.9775,
+            0.98,
+            0.9825,
+            0.985,
+            0.9875,
+            0.99,
+            0.9925,
+            0.995,
+            0.9975,
+            1
+          ]
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "visibleSamples": 329,
+          "firstVisible": 0.1,
+          "lastVisible": 1,
+          "fadedVisible": [
+            0.9575,
+            0.96,
+            0.9625,
+            0.965,
+            0.9675,
+            0.97,
+            0.9725,
+            0.975,
+            0.9775,
+            0.98,
+            0.9825,
+            0.985,
+            0.9875,
+            0.99,
+            0.9925,
+            0.995,
+            0.9975,
+            1
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": "Conservative hull sphere vs original GLB triangles, sampled at 1/400 arc length. Visibility uses a centre ray and sphere frustum test, no mouse pan; visual review remains necessary. Low city roofs are below both routes; lateral flare towers are outside the flight area."
+}

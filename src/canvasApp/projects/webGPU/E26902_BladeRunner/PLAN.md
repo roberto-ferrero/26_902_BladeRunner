@@ -2,7 +2,7 @@
 
 Ajustes de arranque actualizados el 10-09-2026: GUI inicialmente oculta, cabecera y FPS siempre visibles; calidad Baja; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo horizontal 2 m, vertical 0,5 m, suavidad 1,4 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos ; 6.5 queda documentado más abajo.
 
-Estado actual (21-09-2026): **9.1 y 9.2 implementados y en revisión artística.** Ciudad baja con 97 edificios, tres torres, continuidad local de cubierta y acabado más oscuro y mate; tres mallas, una textura compartida y 23.574 triángulos añadidos. Ventanas agrupadas, balizas suaves y carriles integrados en la superficie original. Última revisión: tres pruebas de ciudad/luces correctas, compilación y comprobación visual WebGPU. Detalles en [9.1 — Continuidad urbana](docs/phase9/9.1/CIUDAD.md) y [9.2 — Iluminación](docs/phase9/9.2/ILUMINACION.md). Pendiente de valoración artística del usuario. **9.3 sin iniciar.** [Preparación 9.0](docs/phase9/9.0/PREPARACION.md) conservada. 8.3–8.8 siguen pendientes; se revisará el coste global antes de la entrega final.
+Estado actual (21-09-2026): **9.1–9.4 implementados como propuestas visuales.** Ciudad baja oscura y mate, luces estructuradas y carriles integrados. A petición del usuario, se retira completamente la aproximación al hangar de 9.3; permanecen los tres corredores y ocho vehículos de base. **9.4 r04:** se incorpora un anillo óptico periférico y una traza diagonal sutil sobre la base de r03. Un solo vehículo al 25 % de escala repite la misma pasada horizontal; velocidad al 25 % de r02 (40 s por vuelta), inclinación máxima de 20°, carrocería oscura legible, foco central cálido, halo reducido con anillo de lente y destello diagonal tenue. GUI de duración entre 20 y 60 s. Ocho pruebas correctas, auditoría geométrica, compilación y revisión visual WebGPU. Pendiente de valoración artística. Detalles en [9.1](docs/phase9/9.1/CIUDAD.md), [9.2](docs/phase9/9.2/ILUMINACION.md), [9.3](docs/phase9/9.3/TRAFICO.md) y [9.4](docs/phase9/9.4/TRAFICO-CERCANO.md). **Siguiente: 9.5, llamaradas.** [Preparación 9.0](docs/phase9/9.0/PREPARACION.md) conservada. 8.3–8.8 siguen pendientes; se revisará el coste global antes de la entrega final.
 
 ## Objetivo
 
@@ -193,20 +193,40 @@ La medición comienza en la fase 1; esta fase reúne los ajustes finales cuando 
 
 ### 9.3 · Tráfico aéreo lejano
 
-- [ ] Crear objetos mínimos, percibidos como pequeñas manchas en movimiento, con luces blancas de posición y luces estroboscópicas.
-- [ ] Establecer uno o dos corredores y desvíos ocasionales hacia el edificio; variar discretamente velocidades y separación.
-- [ ] Añadir GUI para densidad del tráfico lejano, baja por defecto y con posibilidad de desactivarlo.
+- [x] Crear objetos mínimos, percibidos como pequeñas manchas en movimiento, con luces blancas de posición y luces estroboscópicas.
+- [x] Establecer dos corredores de fondo; el desvío al hangar se retira a petición del usuario en r06. Añadir un tercer corredor ante las fachadas de derecha a izquierda. Velocidades diferentes por recorrido y separación escalonada estable.
+- [x] Añadir GUI para densidad del tráfico lejano: 80 % inicial (ocho vehículos), cero para apagar y máximo diez vehículos repartidos por el exterior.
+
+**Propuesta 21/09:** implementada y revisada en WebGPU a petición del usuario. Rutas alejadas y por encima de la pirámide, cuerpos mínimos, halos blancos y destellos suaves. Seis pruebas correctas, auditoría de visibilidad y cuatro muestras A/B conservadas. Capturas 9.3_001–004. [Implementación y límites](docs/phase9/9.3/TRAFICO.md). Pendiente de valoración artística; no se adelantan los vehículos cercanos de 9.4.
+
+**Revisión r02, 21/09:** tras observar largos intervalos sin tráfico, el usuario solicita duplicar la base y hacer más continuas las regeneraciones. Ocho vehículos con ciclos de 60/68 s, tramos laterales más cortos y corredor secundario más próximo. Prueba de diez minutos sin pérdida de separación; auditoría aproximada de CAM01 con tráfico visible geométricamente en el 84,5 % de las muestras y 2,7 s de intervalo vacío máximo. Cinco pruebas correctas, compilación y diagnóstico WebGPU tras varias vueltas. Capturas 9.3_005–007 y registros r02 conservados; pendiente de valoración artística.
+
+**Revisión r03, 21/09:** se añade una ruta entre las oficinas y las fachadas, de derecha a izquierda, y se aumenta uniformemente un 25 % el cuerpo y las luces de todos los vehículos. Ocho vuelos de base repartidos 3 + 3 + 2; el corredor nuevo tiene ciclos de 40 s, con cruces separados 20 s. Pruebas de margen geométrico, sentido de vuelo y repetición correctas; auditoría con la pirámide por detrás de los vehículos en las cuatro cámaras principales. Compilación correcta y revisión WebGPU; registros r03 conservados. [Detalle](docs/phase9/9.3/TRAFICO.md).
+
+**Revisión r04, 21/09:** a petición del usuario se reduce solo el tráfico frontal a un cuarto de su tamaño en r03 y se baja 2,5 m. El desvío desde el corredor alto gira, desciende y se acerca al hangar supuesto siguiendo el dibujo; queda oculto por el bloque marcado, con opacidad completa hasta el destino. Seis pruebas correctas, incluyendo trayectoria sin cruces del eje con el edificio y ocultación del casco desde Camera_E, CAM01 y CAM03. Compilación y revisión WebGPU correctas; capturas 9.3_013–016 y registros r04. [Recorrido, escala y límites](docs/phase9/9.3/TRAFICO.md).
+
+**Revisión r05, 21/09:** el vehículo del hangar se reduce a un cuarto de su tamaño en r04 y su ruta empieza detrás de la pirámide. Las primeras muestras del recorrido quedan ocultas por el edificio desde Camera_E, CAM01 y CAM03; después emerge antes de girar y descender. La primera aproximación de la sesión también comienza oculta. Seis pruebas correctas, incluyendo reducción/restauración de escala al cambiar de ruta y continuidad durante diez minutos. Tráfico frontal y destino del hangar conservados. [Detalle y validación](docs/phase9/9.3/TRAFICO.md).
+
+**Revisión r06, 21/09:** se elimina completamente el vuelo al hangar, descartado por el usuario, incluida su regeneración. Se mantienen los tres corredores, ocho vuelos de base y el tráfico frontal pequeño y bajo. Las capturas r04/r05 del hangar se conservan como propuestas rechazadas. Captura 9.3_019; validación conjunta con 9.4.
 
 **Resultado:** actividad distante discreta que refuerce la escala de la ciudad.
 
 ### 9.4 · Tráfico aéreo cercano
 
-- [ ] Crear una silueta reconocible inspirada en imágenes y vídeo de `_Fuentes/Vehiculo aereo`, sin reproducción exacta ni detalle innecesario.
-- [ ] Preparar pasos por encima de las oficinas, de aproximación y alejamiento; reproducir el carácter del movimiento de referencia.
-- [ ] Evitar cruces con arquitectura y apariciones/desapariciones visibles; alternar recorridos para reducir repetición.
-- [ ] Establecer aproximadamente un paso cada 10 segundos; añadir GUI para intervalo en segundos y activación.
+- [x] Crear una silueta reconocible inspirada en imágenes y vídeo de `_Fuentes/Vehiculo aereo`, sin reproducción exacta ni detalle innecesario.
+- [x] Revisión r02: una única pasada en primer término, de la zona superior izquierda al lateral derecho, a cota constante sobre la altura de las oficinas; conservar un arco horizontal suave.
+- [x] Evitar cruces con arquitectura y apariciones/desapariciones visibles; un solo vehículo repite el mismo trayecto al terminar. Banking máximo de 20° (revisión r03).
+- [x] Duración inicial de 40 s por vuelta (25 % de la velocidad de r02), GUI de duración y activación; modelo al 25 % de escala, silueta oscura legible, foco central cálido, halo contenido y estroboscópica secundaria.
 
 **Resultado:** pasos ocasionales integrados con perspectiva y atmósfera, diferenciados del tráfico lejano.
+
+**Propuesta 21/09:** geometría simplificada de cabina alargada, cuerpo bajo y dos volúmenes laterales; luces blancas suaves y salida cálida. Dos rutas alternas con separación vertical y lateral, sobre el techo de las oficinas. Intervalo inicial de 10 s, regulable de 5 a 30 s, y apagado independiente. Ocho pruebas correctas, incluyendo regeneración durante diez minutos y comprobación conservadora de todo el casco frente al GLB. Compilación correcta y revisión WebGPU en CAM01 y Camera_E; capturas 9.4_001–004. [Implementación, controles y límites](docs/phase9/9.4/TRAFICO-CERCANO.md). Pendiente de valoración artística; 9.5 sin iniciar.
+
+**Revisión r02, 21/09:** propuesta 001–004 rechazada por el usuario. Se reduce el tamaño a 0,25, se elimina la alternancia y se limita a un solo vehículo y un único recorrido repetido. Altura constante, arco horizontal suave, rumbo separado de banking (≤3°) y núcleo HDR con glow/halo de lente que aprovecha el bloom actual. El control pasa de intervalo entre vehículos a duración del trayecto. Ocho pruebas correctas y revisión visual documentada en [9.4](docs/phase9/9.4/TRAFICO-CERCANO.md). Historial conservado; pendiente de valoración artística.
+
+**Revisión r03, 21/09:** r02 rechazada por rapidez y halo que ocultaba totalmente el vehículo. Se mantiene una única ruta y la escala, se reduce la velocidad al 25 % (40 s por vuelta), se permite banking hasta 20° y se recupera la masa oscura mediante materiales mates y un foco cálido más compacto. Glow y halo reducidos; destello blanco secundario. Ocho pruebas correctas y auditoría sin colisiones. [Referencia y registros](docs/phase9/9.4/TRAFICO-CERCANO.md). Compilación y revisión WebGPU correctas; capturas 9.4_009–012 archivadas. Pendiente de valoración artística.
+
+**Revisión r04, 21/09:** se refuerza el anillo en el contorno del halo con un perfil difuso y se añade un único destello diagonal sutil, siguiendo la referencia del usuario. Se conserva la silueta oscura y el tamaño contenido del halo. Misma ruta, velocidad, escala y límite de inclinación; no aumenta el número de sprites ni de pases de render. Tres pruebas de tráfico cercano correctas, compilación y revisión WebGPU sin errores. Capturas 9.4_013–015. Pendiente de valoración artística.
 
 ### 9.5 · Torres y llamaradas
 

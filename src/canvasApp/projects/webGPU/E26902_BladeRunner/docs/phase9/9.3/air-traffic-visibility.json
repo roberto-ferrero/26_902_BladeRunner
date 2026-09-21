@@ -1,0 +1,354 @@
+{
+  "samplesPerRoute": 199,
+  "aspect": 2.4,
+  "views": [
+    {
+      "camera": "Camera_free",
+      "routes": [
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 28,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        }
+      ]
+    },
+    {
+      "camera": "Camera_F",
+      "routes": [
+        {
+          "inFrame": 75,
+          "unoccluded": 20,
+          "firstVisible": {
+            "progress": 0.175,
+            "point": [
+              -616.8608846825451,
+              66.95083617597848,
+              -629.5083617597849
+            ]
+          }
+        },
+        {
+          "inFrame": 69,
+          "unoccluded": 30,
+          "firstVisible": {
+            "progress": 0.705,
+            "point": [
+              -456.32928200907594,
+              87.34270895858376,
+              -904.7173088281614
+            ]
+          }
+        },
+        {
+          "inFrame": 69,
+          "unoccluded": 21,
+          "firstVisible": {
+            "progress": 0.145,
+            "point": [
+              -638.0252223581365,
+              67.95150397993748,
+              -646.9392805914048
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "camera": "Camera_E",
+      "routes": [
+        {
+          "inFrame": 63,
+          "unoccluded": 36,
+          "firstVisible": {
+            "progress": 0.35,
+            "point": [
+              -283.2977335911352,
+              66.05460209783799,
+              -620.4830322329883
+            ]
+          }
+        },
+        {
+          "inFrame": 76,
+          "unoccluded": 43,
+          "firstVisible": {
+            "progress": 0.315,
+            "point": [
+              405.9917008324128,
+              91.80856379472758,
+              -863.8572544918856
+            ]
+          }
+        },
+        {
+          "inFrame": 78,
+          "unoccluded": 40,
+          "firstVisible": {
+            "progress": 0.315,
+            "point": [
+              -276.84570097386626,
+              65.3806568472956,
+              -604.9500270305383
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "camera": "Camera_D",
+      "routes": [
+        {
+          "inFrame": 77,
+          "unoccluded": 35,
+          "firstVisible": {
+            "progress": 0.615,
+            "point": [
+              220.98182011115088,
+              69.45036264546802,
+              -652.6481717073606
+            ]
+          }
+        },
+        {
+          "inFrame": 73,
+          "unoccluded": 39,
+          "firstVisible": {
+            "progress": 0.075,
+            "point": [
+              934.8230259032247,
+              98.02236359123808,
+              -921.1200426841979
+            ]
+          }
+        },
+        {
+          "inFrame": 73,
+          "unoccluded": 33,
+          "firstVisible": {
+            "progress": 0.635,
+            "point": [
+              197.70275423800723,
+              65.76094460029199,
+              -584.971049062266
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "camera": "Camera_C",
+      "routes": [
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        }
+      ]
+    },
+    {
+      "camera": "Camera_B",
+      "routes": [
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        },
+        {
+          "inFrame": 0,
+          "unoccluded": 0,
+          "firstVisible": null
+        }
+      ]
+    },
+    {
+      "camera": "CAM_01_|_fotograma_general",
+      "routes": [
+        {
+          "inFrame": 67,
+          "unoccluded": 17,
+          "firstVisible": {
+            "progress": 0.385,
+            "point": [
+              -216.5655423050257,
+              66.26536042901957,
+              -622.2090341281836
+            ]
+          }
+        },
+        {
+          "inFrame": 78,
+          "unoccluded": 19,
+          "firstVisible": {
+            "progress": 0.4,
+            "point": [
+              217.66868543407497,
+              90.08367595631356,
+              -858.3006579623307
+            ]
+          }
+        },
+        {
+          "inFrame": 82,
+          "unoccluded": 16,
+          "firstVisible": {
+            "progress": 0.36,
+            "point": [
+              -193.50342018725797,
+              63.546182485765506,
+              -556.4438455528555
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "camera": "CAM_02_|_mesa_y_juntas",
+      "routes": [
+        {
+          "inFrame": 50,
+          "unoccluded": 27,
+          "firstVisible": {
+            "progress": 0.06,
+            "point": [
+              -835.7426791158498,
+              68.36136011815356,
+              -643.6136011815355
+            ]
+          }
+        },
+        {
+          "inFrame": 55,
+          "unoccluded": 16,
+          "firstVisible": {
+            "progress": 0.725,
+            "point": [
+              -500.1839005215303,
+              87.57999439999796,
+              -911.2383396521345
+            ]
+          }
+        },
+        {
+          "inFrame": 45,
+          "unoccluded": 22,
+          "firstVisible": {
+            "progress": 0.055,
+            "point": [
+              -831.6999471266404,
+              68.53799809944155,
+              -647.1011294599814
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "camera": "CAM_03_|_perfiles_invertidos",
+      "routes": [
+        {
+          "inFrame": 91,
+          "unoccluded": 26,
+          "firstVisible": {
+            "progress": 0.355,
+            "point": [
+              -273.76297399391575,
+              66.07626039708319,
+              -620.6642165150909
+            ]
+          }
+        },
+        {
+          "inFrame": 120,
+          "unoccluded": 31,
+          "firstVisible": {
+            "progress": 0.425,
+            "point": [
+              162.24933141914704,
+              89.58682917509613,
+              -858.4060847780861
+            ]
+          }
+        },
+        {
+          "inFrame": 96,
+          "unoccluded": 26,
+          "firstVisible": {
+            "progress": 0.32,
+            "point": [
+              -266.93858174879585,
+              65.22806774324062,
+              -600.7779661921169
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "camera": "CAM_04_|_recorrido_lateral",
+      "routes": [
+        {
+          "inFrame": 81,
+          "unoccluded": 29,
+          "firstVisible": {
+            "progress": 0.39,
+            "point": [
+              -207.03485596834898,
+              66.30603827377388,
+              -622.5396805306247
+            ]
+          }
+        },
+        {
+          "inFrame": 93,
+          "unoccluded": 33,
+          "firstVisible": {
+            "progress": 0.295,
+            "point": [
+              450.2268407174656,
+              92.26064949124051,
+              -866.8183174500788
+            ]
+          }
+        },
+        {
+          "inFrame": 94,
+          "unoccluded": 33,
+          "firstVisible": {
+            "progress": 0.365,
+            "point": [
+              -185.2890170822856,
+              63.236169344053664,
+              -549.5041204949919
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": "Centre rays through original GLB, no pan; excludes sky/sun. Does not measure apparent light size or visibility at every moment."
+}

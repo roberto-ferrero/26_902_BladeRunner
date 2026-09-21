@@ -1,0 +1,163 @@
+{
+  "samplesPerRoute": 401,
+  "hullRadius": 0.8661381706199717,
+  "routes": [
+    {
+      "length": 286.1037730489411,
+      "speed": 7.152594326223527,
+      "conservativeHullClearance": 11.133861829380029,
+      "clearanceIsLowerBound": true,
+      "closestMesh": null,
+      "collisions": 0,
+      "views": [
+        {
+          "camera": "Camera_E",
+          "visibleSamples": 75,
+          "firstVisible": 0.3,
+          "lastVisible": 0.545,
+          "fadedVisible": [],
+          "screenSamples": [
+            {
+              "progress": 0.3,
+              "x": -0.011412073431552039,
+              "y": -0.028604523757718825
+            },
+            {
+              "progress": 0.35,
+              "x": 0.30744337863619553,
+              "y": 0.04730499359994356
+            },
+            {
+              "progress": 0.375,
+              "x": 0.43522450283018665,
+              "y": 0.07664819792864136
+            },
+            {
+              "progress": 0.4,
+              "x": 0.5477572456141717,
+              "y": 0.1019003202223111
+            },
+            {
+              "progress": 0.425,
+              "x": 0.6479215407699442,
+              "y": 0.12390440609221653
+            },
+            {
+              "progress": 0.45,
+              "x": 0.7378297286761581,
+              "y": 0.14328993041957305
+            },
+            {
+              "progress": 0.5,
+              "x": 0.8932208220670372,
+              "y": 0.1759419899439001
+            },
+            {
+              "progress": 0.525,
+              "x": 0.9614858162902126,
+              "y": 0.1897204649898448
+            }
+          ]
+        },
+        {
+          "camera": "CAM_01_|_fotograma_general",
+          "visibleSamples": 34,
+          "firstVisible": 0.305,
+          "lastVisible": 0.4725,
+          "fadedVisible": [],
+          "screenSamples": [
+            {
+              "progress": 0.35,
+              "x": 0.35294739892621196,
+              "y": 0.16426503818544436
+            },
+            {
+              "progress": 0.375,
+              "x": 0.4510261261000118,
+              "y": 0.18233008334646544
+            },
+            {
+              "progress": 0.4,
+              "x": 0.5396776733569781,
+              "y": 0.19828328050413602
+            }
+          ]
+        },
+        {
+          "camera": "CAM_03_|_perfiles_invertidos",
+          "visibleSamples": 48,
+          "firstVisible": 0.2925,
+          "lastVisible": 0.47,
+          "fadedVisible": [],
+          "screenSamples": [
+            {
+              "progress": 0.3,
+              "x": 0.4133096449045506,
+              "y": 0.3610495929982362
+            },
+            {
+              "progress": 0.375,
+              "x": 0.7046800446445709,
+              "y": 0.39162749881929776
+            },
+            {
+              "progress": 0.4,
+              "x": 0.7910325889901799,
+              "y": 0.3998612357207425
+            },
+            {
+              "progress": 0.425,
+              "x": 0.8731516360013234,
+              "y": 0.40737247216502037
+            }
+          ]
+        },
+        {
+          "camera": "CAM_04_|_recorrido_lateral",
+          "visibleSamples": 59,
+          "firstVisible": 0.305,
+          "lastVisible": 0.5775,
+          "fadedVisible": [],
+          "screenSamples": [
+            {
+              "progress": 0.375,
+              "x": 0.3759385772155144,
+              "y": 0.25091112994448433
+            },
+            {
+              "progress": 0.4,
+              "x": 0.45741455826134975,
+              "y": 0.2696190872865265
+            },
+            {
+              "progress": 0.425,
+              "x": 0.5296554764122775,
+              "y": 0.2859080234351557
+            },
+            {
+              "progress": 0.45,
+              "x": 0.59424824099145,
+              "y": 0.3002420800283079
+            },
+            {
+              "progress": 0.475,
+              "x": 0.652417241435199,
+              "y": 0.31297761408554975
+            },
+            {
+              "progress": 0.5,
+              "x": 0.7052603057188818,
+              "y": 0.3243419236124061
+            },
+            {
+              "progress": 0.575,
+              "x": 0.8397214589264757,
+              "y": 0.35202608399282104
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": "Conservative hull sphere vs original GLB triangles, sampled at 1/400 arc length. Visibility uses a centre ray and sphere frustum test, no mouse pan; visual review remains necessary. Low city roofs are below both routes; lateral flare towers are outside the flight area."
+}

@@ -48,6 +48,8 @@ Abrir `http://localhost:8081` para producción. Tras una nueva compilación hay 
 
 ## Controles y medición
 
+- **Cámara de desarrollo (C):** activa/desactiva OrbitControls desde la vista actual, sin colisiones ni altura fija. Arrastrar con botón izquierdo para orbitar, derecho para desplazar y rueda para acercar/alejar. Otra pulsación de C vuelve a la cámara seleccionada; las teclas 1–0 también salen de este modo. El atajo se ignora al escribir en campos o con un diálogo abierto.
+
 - **Atmósfera:** Profundidad exterior y Bruma interior se activan por separado, con intensidad independiente 0–2 (propuesta: 1). **Haces de luz** activa la dispersión solar; **Polvo en suspensión** añade variación volumétrica, sin partículas individuales. **Movimiento del polvo** 0 congela la deriva. Para volver a la base sin atmósfera, desactivar las dos capas y los haces. Las capturas incluyen `ext`/`int`/`volume`/`dust`; el diagnóstico registra muestras y coste. Los materiales compartidos actualizan ahora estos parámetros incluso con la cámara quieta.
 - **Reflejo del suelo:** dentro de Color y materiales, activa una reflexión planar compartida a media resolución. **Acabado del reflejo** alterna `Piedra pulida · 5.2` (rugosidad, Fresnel y normales) y `Ensayo uniforme · 5.1`. Desmarcar vuelve a R01. El control de normales afecta también a la distorsión del reflejo. Diagnóstico y capturas registran modo y activación.
 - **Resolución del reflejo:** automática (Baja 25 %, Media 50 %, Alta 75 %) o manual 25/50/100 % por eje. **Actualización del reflejo** reutiliza vistas quietas por defecto; `Cada render` sirve para comparar o para futuras escenas animadas. Movimiento, cámara, tamaño y cambios de escena fuerzan actualización.
