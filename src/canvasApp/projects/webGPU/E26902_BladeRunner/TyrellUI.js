@@ -359,6 +359,21 @@ export default class TyrellUI {
         vkSavings.innerHTML = '<input type="checkbox" aria-label="Reducir capturas de reflejos en p1" checked> Reducir capturas de reflejos en p1'
         vkSavings.querySelector('input').onchange = event => actions.vkSavings?.(event.target.checked)
         this.vkPanel.querySelector('.tyrell-pan-controls').append(vkSavings)
+        const vkColorLabel = document.createElement('label')
+        vkColorLabel.textContent = 'Color del chasis '
+        this.vkColor = document.createElement('input')
+        this.vkColor.type = 'color'
+        this.vkColor.value = '#262727'
+        this.vkColor.disabled = true
+        this.vkColor.setAttribute('aria-label', 'Color del chasis')
+        const vkColorValue = document.createElement('output')
+        vkColorValue.textContent = this.vkColor.value
+        this.vkColor.oninput = () => {
+            vkColorValue.textContent = this.vkColor.value
+            actions.vkChassisColor?.(this.vkColor.value)
+        }
+        vkColorLabel.append(this.vkColor, vkColorValue)
+        this.vkPanel.querySelector('.tyrell-pan-controls').append(vkColorLabel)
         experience.append(this.vkPanel)
         this.technicalPanel = document.createElement('details')
         this.technicalPanel.className = 'tyrell-technical'
@@ -423,6 +438,7 @@ export default class TyrellUI {
         const [button, status] = labels[state] || ['Desplegar', 'Cargando dispositivo…']
         this.vkButton.textContent = button
         this.vkButton.disabled = !['closed', 'open'].includes(state)
+        this.vkColor.disabled = !['closed', 'open', 'deploying', 'retracting'].includes(state)
         this.vkPanel.querySelector('[data-vk-status]').textContent = status
     }
     comparisonStatus(text) { this.comparisonPanel.querySelector('[data-status]').textContent = text }

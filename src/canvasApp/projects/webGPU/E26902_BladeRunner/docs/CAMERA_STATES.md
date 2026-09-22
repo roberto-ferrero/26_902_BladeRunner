@@ -44,7 +44,9 @@ Las duraciones son segundos. Curvas disponibles: `linear`, `smoothstep`, `easeIn
 
 ## Comportamiento e integración
 
-La cámara base interpola posición, target, FOV, planos de recorte y ambos ejes del offset. La cámara de render recibe el paneo en los ejes locales de esa base y sigue mirando al target interpolado. Se usa una base separada en vez de introducir un padre en el grafo: los reflejos, las capturas y las herramientas de desarrollo existentes consumen posiciones globales de la cámara.
+La cámara base interpola posición, target, FOV, planos de recorte, ambos ejes del offset y los rangos/suavidad del paneo. Cada estado incorpora `mousePan`: se resuelve desde `camera.mousePan.default` y la excepción opcional `camera.mousePan.states[id]` de `static/config/E26902_BladeRunner/gui.initial.json`. El default actual tiene 2 m horizontales, 0,5 m verticales y 1,4 s de suavidad; `p1` sobrescribe solo el rango horizontal con 0,5 m. [Configuración del paneo](GUI_CONFIGURACION.md).
+
+La cámara de render recibe el paneo en los ejes locales de esa base y sigue mirando al target interpolado. Se usa una base separada en vez de introducir un padre en el grafo: los reflejos, las capturas y las herramientas de desarrollo existentes consumen posiciones globales de la cámara.
 
 Una nueva selección parte de los valores interpolados actuales, conservando el desplazamiento y la suavidad del ratón. Se garantiza continuidad de posición y encuadre, no de velocidad al cambiar de easing. Al pasar exactamente por un punto en que cámara y target coinciden, se conserva la última orientación válida de la base.
 

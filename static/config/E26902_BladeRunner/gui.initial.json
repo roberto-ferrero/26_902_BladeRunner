@@ -7,10 +7,17 @@
       "easing": "smoothstep"
     },
     "mousePan": {
-      "enabled": true,
-      "horizontalTravelMeters": 2,
-      "verticalTravelMeters": 0.5,
-      "smoothingSeconds": 1.4
+      "default": {
+        "enabled": true,
+        "horizontalTravelMeters": 2,
+        "verticalTravelMeters": 0.5,
+        "smoothingSeconds": 1.4
+      },
+      "states": {
+        "p1": {
+          "horizontalTravelMeters": 0.5
+        }
+      }
     }
   },
   "viewer": {
@@ -117,6 +124,7 @@
     }
   },
   "voightKampff": {
+    "chassisColor": "#1f1f1f",
     "deployOnArrival": true,
     "reduceReflectionCapturesAtP1": true
   }

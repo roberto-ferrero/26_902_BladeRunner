@@ -1,8 +1,8 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
-const source = fs.readFileSync(new URL('../TyrellGUISettings.js', import.meta.url), 'utf8')
-const { GUI_BINDINGS, flattenSettings, prepareGUISettings, applyGUISettings } = await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`)
+import { loadCameraSource } from './load-camera-source.mjs'
+const { GUI_BINDINGS, flattenSettings, prepareGUISettings, applyGUISettings } = loadCameraSource('TyrellGUISettings.js')
 const initial = JSON.parse(fs.readFileSync('static/config/E26902_BladeRunner/gui.initial.json', 'utf8'))
 function fixture() {
     const values = flattenSettings(initial), calls = []
@@ -53,4 +53,31 @@ test('Numbers between valid slider steps fail instead of being rounded by the br
     const settings = structuredClone(initial)
     settings.sky.heightPercent = 50.5
     assert.throws(() => prepareGUISettings(root, settings, cameras), /paso/)
+})
+
+test('Starting in p1 initializes its effective pan instead of overwriting it with default', () => {
+    const { root, calls } = fixture(), settings = structuredClone(initial)
+    settings.camera.initialState = 'p1'
+    applyGUISettings(prepareGUISettings(root, settings, cameras))
+    assert.deepEqual(calls.find(([path]) => path === 'camera.mousePan.default.horizontalTravelMeters'), ['camera.mousePan.default.horizontalTravelMeters', '0.5'])
+    assert.deepEqual(calls.find(([path]) => path === 'camera.mousePan.default.verticalTravelMeters'), ['camera.mousePan.default.verticalTravelMeters', '0.5'])
+    assert.equal(settings.camera.mousePan.default.horizontalTravelMeters, 2)
+})
+
+test('State pan overrides reject unknown IDs, fields, types and invalid slider values before applying anything', () => {
+    for (const mutate of [
+        c => { c.camera.mousePan.states.missing = {} },
+        c => { c.camera.mousePan.states.p1.horizontalTravelMetres = .5 },
+        c => { c.camera.mousePan.states.p1.horizontalTravelMeters = '0.5' },
+        c => { c.camera.mousePan.states.p1.horizontalTravelMeters = -.5 },
+        c => { c.camera.mousePan.states.p1.horizontalTravelMeters = 3 },
+        c => { c.camera.mousePan.states.p1.horizontalTravelMeters = .005 },
+        c => { c.camera.mousePan.states.p1 = null }
+    ]) {
+        const { root, controls, calls } = fixture(), settings = structuredClone(initial)
+        Object.assign(controls.get('[aria-label="Recorrido horizontal"]'), { min: '0', max: '2', step: '.01' })
+        mutate(settings)
+        assert.throws(() => prepareGUISettings(root, settings, cameras))
+        assert.equal(calls.length, 0)
+    }
 })

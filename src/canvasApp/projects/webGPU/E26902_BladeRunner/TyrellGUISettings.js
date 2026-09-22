@@ -5,10 +5,10 @@ export const GUI_BINDINGS = [
     ["viewer.renderBudget", "Presupuesto de render"],
     ["camera.transition.durationSeconds", "Duración de transición"],
     ["camera.transition.easing", "Easing de transición"],
-    ["camera.mousePan.enabled", "Activar paneo"],
-    ["camera.mousePan.horizontalTravelMeters", "Recorrido horizontal"],
-    ["camera.mousePan.verticalTravelMeters", "Recorrido vertical"],
-    ["camera.mousePan.smoothingSeconds", "Suavidad"],
+    ["camera.mousePan.default.enabled", "Activar paneo"],
+    ["camera.mousePan.default.horizontalTravelMeters", "Recorrido horizontal"],
+    ["camera.mousePan.default.verticalTravelMeters", "Recorrido vertical"],
+    ["camera.mousePan.default.smoothingSeconds", "Suavidad"],
     ["materials.profile", "Acabado"],
     ["materials.exposureCompensationEV", "Compensación de exposición"],
     ["materials.studioLightEnabled", "Luz de estudio"],
@@ -64,6 +64,7 @@ export const GUI_BINDINGS = [
     ["city.flames.verticalGrowthMultiplier", "Crecimiento vertical de llamaradas"],
     ["city.flames.intensity", "Intensidad de llamaradas"],
     ["voightKampff.deployOnArrival", "Desplegar al llegar a p1"],
+    ["voightKampff.chassisColor", "Color del chasis"],
     ["voightKampff.reduceReflectionCapturesAtP1", "Reducir capturas de reflejos en p1"]
 ]
 
@@ -83,8 +84,20 @@ export function prepareGUISettings(root, settings, cameraStates) {
     if (values.schemaVersion !== 1) throw new Error('schemaVersion debe ser 1')
     if (!cameraStates.some(state => state.cameraStateId === values['camera.initialState'])) throw new Error('camera.initialState no existe en los estados de cámara')
     const known = new Set(['schemaVersion', 'camera.initialState', ...GUI_BINDINGS.map(([path]) => path)])
+    const overrides = []
+    for (const [id, pan] of Object.entries(settings.camera.mousePan.states || {})) {
+        if (!cameraStates.some(state => state.cameraStateId === id)) throw new Error(`Paneo de estado desconocido: ${id}`)
+        if (!pan || typeof pan !== 'object' || Array.isArray(pan)) throw new Error(`Paneo inválido: ${id}`)
+        for (const key of Object.keys(pan)) {
+            const path = `camera.mousePan.states.${id}.${key}`
+            const binding = GUI_BINDINGS.find(([name]) => name === `camera.mousePan.default.${key}`)
+            if (!binding) throw new Error(`Parámetro desconocido: ${path}`)
+            known.add(path)
+            overrides.push([path, binding[1]])
+        }
+    }
     for (const path of Object.keys(values)) if (!known.has(path)) throw new Error(`Parámetro desconocido: ${path}`)
-    return GUI_BINDINGS.map(([path, label]) => {
+    const validated = [...GUI_BINDINGS, ...overrides].map(([path, label]) => {
         const control = root.querySelector(`[aria-label="${label}"]`)
         if (!control) throw new Error(`No existe el control de ${path}`)
         const value = values[path]
@@ -92,6 +105,7 @@ export function prepareGUISettings(root, settings, cameraStates) {
         const numeric = ['range', 'number'].includes(control.type)
         const expected = checkbox ? 'boolean' : numeric ? 'number' : 'string'
         if (typeof value !== expected || (numeric && !Number.isFinite(value))) throw new Error(`${path}: se esperaba ${expected}`)
+        if (control.type === 'color' && !/^#[0-9a-f]{6}$/i.test(value)) throw new Error(`${path}: se esperaba un color hexadecimal #RRGGBB`)
         if (numeric && ((control.min !== '' && value < Number(control.min)) || (control.max !== '' && value > Number(control.max)))) throw new Error(`${path}: fuera del intervalo ${control.min}–${control.max}`)
         if (numeric && control.step && control.step !== 'any') {
             const steps = (value - Number(control.min || 0)) / Number(control.step)
@@ -99,6 +113,13 @@ export function prepareGUISettings(root, settings, cameraStates) {
         }
         if (control.tagName === 'SELECT' && !Array.from(control.options).some(option => option.value === value)) throw new Error(`${path}: opción inválida ${value}`)
         return { control, value, checkbox }
+    })
+    // Validate all defaults/overrides first; initialize the controls with the selected state's values.
+    const pan = cameraStatePan(settings.camera.mousePan, settings.camera.initialState)
+    return validated.slice(0, GUI_BINDINGS.length).map((entry, i) => {
+        const path = GUI_BINDINGS[i][0]
+        return path.startsWith('camera.mousePan.default.')
+            ? { ...entry, value: pan[PAN_SETTING_KEYS[path.split('.').at(-1)]] } : entry
     })
 }
 
@@ -112,3 +133,4 @@ export function applyGUISettings(prepared) {
         handler.call(control, { target: control })
     }
 }
+import { PAN_SETTING_KEYS, cameraStatePan } from './TyrellCameraStates'

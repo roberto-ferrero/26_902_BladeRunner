@@ -1,4 +1,4 @@
-import { Group, Mesh, CircleGeometry, PlaneGeometry, MeshStandardMaterial, MeshBasicMaterial, DataTexture, RGBAFormat, SRGBColorSpace, AdditiveBlending } from 'three'
+import { Color, Group, Mesh, CircleGeometry, PlaneGeometry, MeshStandardMaterial, MeshBasicMaterial, DataTexture, RGBAFormat, SRGBColorSpace, AdditiveBlending } from 'three'
 import TyrellVKMotion from './TyrellVKMotion'
 import TyrellVKArrival from './TyrellVKArrival'
 import placement from './vkPlacement.generated.json'
@@ -13,6 +13,14 @@ export default class TyrellVKDevice {
         this.group.add(scene)
         this.root = scene.getObjectByName('VK_Root')
         if (!this.root) throw new Error('El recurso VK no contiene su raíz mecánica.')
+        // Relative linear tint preserves the atlas detail and shared texture memory.
+        // Clone only the chassis material: the moving parts share the source material.
+        const chassis = this.root.getObjectByName('VK_Chassis')
+        chassis.material = chassis.material.clone()
+        chassis.material.name = 'VK / chasis'
+        this.chassisMaterial = chassis.material
+        this.chassisBaseColor = chassis.material.color.clone()
+        this.setChassisColor('#262727')
         this.motion = new TyrellVKMotion(this.root)
         this.arrival = new TyrellVKArrival()
         this.reflectionAge = 0
@@ -51,6 +59,16 @@ export default class TyrellVKDevice {
         this.optics.add(halo)
         this.updateOptics()
     }
+    setChassisColor(value) {
+        if (!/^#[0-9a-f]{6}$/i.test(value)) return false
+        const reference = new Color('#3e4d43')
+        const target = new Color(value)
+        this.chassisColor = value.toLowerCase()
+        this.chassisMaterial.color.copy(this.chassisBaseColor).multiply(new Color(
+            target.r / reference.r, target.g / reference.g, target.b / reference.b
+        ))
+        return true
+    }
     toggle() {
         if (this.motion.moving) return false
         this.arrival.manual()
@@ -80,7 +98,7 @@ export default class TyrellVKDevice {
     }
     diagnostics() {
         return { ...this.motion.diagnostics(), autoDeploy: this.arrival.enabled, autoConsumed: this.arrival.consumed,
-            meshes: this.meshes, triangles: this.triangles, placementSourceSha256: placement.sourceSha256,
+            meshes: this.meshes, triangles: this.triangles, chassisColor: this.chassisColor, placementSourceSha256: placement.sourceSha256,
             opticalMeshes: 2, opticalTriangles: 34,
             position: this.group.position.toArray(), quaternion: this.group.quaternion.toArray(), scale: this.group.scale.toArray() }
     }

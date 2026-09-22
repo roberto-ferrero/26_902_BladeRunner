@@ -23,7 +23,7 @@ function load(file, imports = {}) {
     return module.exports
 }
 const { TYRELL } = load(path.join(root, 'config.js'))
-const CameraRig = load(path.join(root, 'TyrellCameraRig.js'), { three: THREE, './config': { TYRELL }, './TyrellCameraStates': load(path.join(root, 'TyrellCameraStates.js')) }).default
+const CameraRig = load(path.join(root, 'TyrellCameraRig.js'), { three: THREE, './config': { TYRELL }, './TyrellCameraStates': load(path.join(root, 'TyrellCameraStates.js'), { './config': { TYRELL } }) }).default
 const { loadTyrell, disposeScene } = load(path.join(root, 'TyrellAssets.js'), { 'three/addons/loaders/GLTFLoader.js': { GLTFLoader } })
 const AppRender = load(path.resolve('src/canvasApp/core/AppRender.js'), { three: THREE, './utils/GPUProfiler': class {} }).default
 

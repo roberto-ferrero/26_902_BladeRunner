@@ -12,6 +12,7 @@ export default class TyrellCameraRig {
         this.baseCamera = this.camera.clone(false)
         this.target = new Vector3(-0.12, 1.55, -9.7)
         this.viewOffset = { x: 0, y: 0 }
+        this.mousePan = { ...TYRELL.pan }
         this.resize = () => {
             const aspect = this.app.size.CURRENT.aspect
             if (!Number.isFinite(aspect) || aspect <= 0) return
@@ -28,10 +29,10 @@ export default class TyrellCameraRig {
         const start = {
             position: this.baseCamera.position.clone(), target: this.target.clone(),
             fov: this.baseCamera.fov, near: this.baseCamera.near, far: this.baseCamera.far,
-            viewOffset: { ...this.viewOffset }
+            viewOffset: { ...this.viewOffset }, mousePan: { ...this.mousePan }
         }
         const end = { ...state, position: new Vector3(...state.position), target: new Vector3(...state.target),
-            viewOffset: { x: 0, y: 0, ...state.viewOffset } }
+            viewOffset: { x: 0, y: 0, ...state.viewOffset }, mousePan: { ...TYRELL.pan, ...state.mousePan } }
         this.cameraStateId = state.cameraStateId
         this.baseCamera.name = state.cameraStateId
         this.baseCamera.userData.cameraStateId = state.cameraStateId
@@ -46,6 +47,13 @@ export default class TyrellCameraRig {
         this.target.lerpVectors(start.target, end.target, eased)
         for (const key of ['fov', 'near', 'far']) this.baseCamera[key] = start[key] + (end[key] - start[key]) * eased
         for (const key of ['x', 'y']) this.viewOffset[key] = start.viewOffset[key] + (end.viewOffset[key] - start.viewOffset[key]) * eased
+        for (const key of ['horizontal', 'vertical', 'smoothness']) {
+            // Disabled pan has an effective range of zero, so enable/disable transitions also fade smoothly.
+            const from = key !== 'smoothness' && !start.mousePan.enabled ? 0 : start.mousePan[key]
+            const to = key !== 'smoothness' && !end.mousePan.enabled ? 0 : end.mousePan[key]
+            this.mousePan[key] = from + (to - from) * eased
+        }
+        this.mousePan.enabled = t < 1 ? start.mousePan.enabled || end.mousePan.enabled : end.mousePan.enabled
         this.baseCamera.up.set(0, 1, 0)
         if (this.baseCamera.position.distanceToSquared(this.target) > 1e-12) this.baseCamera.lookAt(this.target)
         // Normalized viewport displacement; full dimensions follow the live aspect on resize/capture.
@@ -55,6 +63,14 @@ export default class TyrellCameraRig {
         this.baseCamera.updateMatrixWorld(true)
         this.camera.copy(this.baseCamera, false)
         this.camera.updateMatrixWorld(true)
+    }
+    configurePan(values) {
+        Object.assign(this.mousePan, values)
+        // GUI edits apply to the selected state, including the remainder of an active travelling.
+        if (this.transition?.type === 'state') {
+            Object.assign(this.transition.start.mousePan, values)
+            Object.assign(this.transition.end.mousePan, values)
+        }
     }
     adoptCurrentView(targetDistance = 20) {
         this.baseCamera.copy(this.camera, false)

@@ -6,6 +6,7 @@ export default class TyrellCameraPan {
         this.camera = camera
         this.settings = { ...settings }
         this.pointer = new Vector2()
+        this.smoothedPointer = new Vector2()
         this.offset = new Vector2()
         this.right = new Vector3()
         this.up = new Vector3()
@@ -15,7 +16,7 @@ export default class TyrellCameraPan {
     setReference(source = this.camera, { preservePointer = false, target = null } = {}) {
         if (this.referenceCamera) this.referenceCamera.copy(source, false)
         else this.referenceCamera = source.clone(false)
-        if (!preservePointer) { this.pointer.set(0, 0); this.offset.set(0, 0) }
+        if (!preservePointer) { this.pointer.set(0, 0); this.smoothedPointer.set(0, 0); this.offset.set(0, 0) }
         this.right.set(1, 0, 0).applyQuaternion(this.referenceCamera.quaternion)
         this.up.set(0, 1, 0).applyQuaternion(this.referenceCamera.quaternion)
         this.authoredTarget = target
@@ -41,17 +42,28 @@ export default class TyrellCameraPan {
         if (!Number.isFinite(x) || !Number.isFinite(y)) return
         this.pointer.set(Math.max(-1, Math.min(1, x)), Math.max(-1, Math.min(1, y)))
     }
+    setStateSettings(settings) {
+        // Keep pointer smoothing independent of the animated range: no lag beyond the current bounds.
+        const changed = Object.entries(settings).some(([key, value]) => this.settings[key] !== value)
+        Object.assign(this.settings, settings)
+        this.updateOffset()
+        return changed
+    }
+    updateOffset() {
+        this.offset.set(this.smoothedPointer.x * this.settings.horizontal, this.smoothedPointer.y * this.settings.vertical)
+    }
     reset() {
-        this.pointer.set(0, 0); this.offset.set(0, 0)
+        this.pointer.set(0, 0); this.smoothedPointer.set(0, 0); this.offset.set(0, 0)
         this.apply()
     }
     update(seconds) {
         if (!Number.isFinite(seconds) || seconds < 0) return
         const alpha = this.settings.smoothness === 0 ? 1 : -Math.expm1(-Math.min(seconds, 0.1) / this.settings.smoothness)
-        const x = this.settings.enabled ? -this.pointer.x * this.settings.horizontal : 0
-        const y = this.settings.enabled ? this.pointer.y * this.settings.vertical : 0
-        this.offset.x += (x - this.offset.x) * alpha
-        this.offset.y += (y - this.offset.y) * alpha
+        const x = this.settings.enabled ? -this.pointer.x : 0
+        const y = this.settings.enabled ? this.pointer.y : 0
+        this.smoothedPointer.x += (x - this.smoothedPointer.x) * alpha
+        this.smoothedPointer.y += (y - this.smoothedPointer.y) * alpha
+        this.updateOffset()
         if (Math.abs(this.offset.x) < 1e-8) this.offset.x = 0
         if (Math.abs(this.offset.y) < 1e-8) this.offset.y = 0
         this.apply()

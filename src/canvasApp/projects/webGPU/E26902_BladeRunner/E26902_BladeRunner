@@ -9,7 +9,7 @@ import { loadTyrell, disposeScene } from './TyrellAssets'
 import TyrellCameraRig from './TyrellCameraRig'
 import cameraStateExport from './cameraStates.generated.json'
 import { CAMERA_STATES } from './cameraStates.config'
-import { createCameraStates, cameraStateForKey, cameraTransition } from './TyrellCameraStates'
+import { createCameraStates, cameraStateForKey, cameraTransition, cameraStatePan } from './TyrellCameraStates'
 import TyrellUI from './TyrellUI'
 import { prepareGUISettings, applyGUISettings } from './TyrellGUISettings'
 import { captureReference, REFERENCE_CAPTURE } from './TyrellCapture'
@@ -83,10 +83,11 @@ export default class E26902_BladeRunner {
             vkToggle: () => { if (this.vk?.toggle()) this.ui.setVKState(this.vk.motion.state) },
             vkAuto: enabled => { if (this.vk) { this.vk.arrival.enabled = enabled; this.vk.arrival.cancel() } },
             vkSavings: enabled => { this.vkDetailSavings = enabled; this.resetMetrics() },
+            vkChassisColor: color => { if (this.vk?.setChassisColor(color)) this.floorReflection?.updates.invalidate() },
             frame: enabled => { document.body.classList.toggle('tyrell-reference', enabled); app.size.update(); this.resetMetrics() },
             retry: () => this.rendererError ? location.reload() : this.load(),
             capture: () => { this.captureRequested = true }, report: () => this.downloadReport(),
-            pan: settings => { (!this.developmentControls && !this.navigation?.enabled && this.pan?.configure(settings)); this.resetMetrics() },
+            pan: settings => this.configureCameraPan(settings),
             center: () => this.pan?.reset(),
             look: values => this.setLook(values),
             lighting: profile => this.setLighting(profile),
@@ -215,6 +216,8 @@ export default class E26902_BladeRunner {
             if (!response.ok) throw new Error(`No se pudo cargar gui.initial.json (HTTP ${response.status})`)
             this.initialGUISettings = await response.json()
             this.preparedGUISettings = prepareGUISettings(this.ui.root, this.initialGUISettings, this.cameraStates)
+            this.cameraStates = this.cameraStates.map(state => ({ ...state,
+                mousePan: cameraStatePan(this.initialGUISettings.camera.mousePan, state.cameraStateId) }))
             this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
                 (received, total, parsing) => this.ui.status(parsing ? 'Preparando geometría, materiales y cámaras…' : `Cargando escenario · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, total ? received / total : undefined))
             if (this.disposed) { disposeScene(this.asset.gltf.scene); return }
@@ -372,11 +375,25 @@ export default class E26902_BladeRunner {
         this.stageCamera.setState(state, transition)
         this.vk?.arrival.cancel()
         this.pan?.setReference(this.stageCamera.baseCamera, { preservePointer: !wasExploring, target: this.stageCamera.target })
+        this.syncCameraPan()
         this.pan?.update(0)
         this.app.render.set_stageCamera(this.stageCamera.get_camera())
         this.app.dev.hide_dev_camera()
         this.resetMetrics()
         return true
+    }
+    configureCameraPan(values) {
+        if (!this.pan || this.developmentControls || this.navigation?.enabled) return
+        this.pan.configure(values)
+        const changed = Object.fromEntries(Object.keys(values).map(key => [key, this.pan.settings[key]]))
+        const state = this.cameraStates?.[this.activeCameraIndex]
+        if (state) Object.assign(state.mousePan, changed)
+        this.stageCamera.configurePan(values.enabled === true && state ? state.mousePan : changed)
+        this.syncCameraPan()
+        this.resetMetrics()
+    }
+    syncCameraPan() {
+        if (this.pan?.setStateSettings(this.stageCamera.mousePan)) this.ui?.setPanSettings(this.pan.settings)
     }
     stopDevelopmentCamera() {
         this.developmentControls?.dispose()
@@ -584,6 +601,7 @@ export default class E26902_BladeRunner {
             const seconds = this.panTime === undefined ? 0 : (now - this.panTime) / 1000
             this.stageCamera.update(seconds)
             this.pan?.setReference(this.stageCamera.baseCamera, { preservePointer: true, target: this.stageCamera.target })
+            this.syncCameraPan()
             this.pan?.update(seconds)
         }
         }

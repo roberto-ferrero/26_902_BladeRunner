@@ -1,3 +1,21 @@
+import { TYRELL } from './config'
+
+export const PAN_SETTING_KEYS = {
+    enabled: 'enabled', horizontalTravelMeters: 'horizontal',
+    verticalTravelMeters: 'vertical', smoothingSeconds: 'smoothness'
+}
+
+export function cameraStatePan(configuration, cameraStateId) {
+    const values = { ...configuration?.default, ...configuration?.states?.[cameraStateId] }
+    const pan = { ...TYRELL.pan }
+    for (const [key, value] of Object.entries(values)) {
+        if (!Object.hasOwn(PAN_SETTING_KEYS, key) || (key === 'enabled' ? typeof value !== 'boolean' :
+            !Number.isFinite(value) || value < 0 || value > 2)) throw new Error(`Paneo inválido: ${cameraStateId}.${key}`)
+        pan[PAN_SETTING_KEYS[key]] = value
+    }
+    return pan
+}
+
 export const CAMERA_EASINGS = {
     linear: t => t,
     smoothstep: t => t * t * (3 - 2 * t),
@@ -33,7 +51,7 @@ export function createCameraStates(document, settings) {
         const key = manual.key == null ? null : String(manual.key).toLowerCase()
         if (key !== null && (key.length !== 1 || keys.has(key) || key === 'c')) throw new Error(`${id}: tecla duplicada, inválida o reservada (C)`)
         if (key !== null) keys.add(key)
-        return { ...source, key, viewOffset }
+        return { ...source, key, viewOffset, mousePan: cameraStatePan(null, id) }
     })
     if (!states.some(state => state.cameraStateId === settings.initial)) throw new Error(`Falta cameraState inicial: ${settings.initial}`)
     for (const [route, override] of Object.entries(settings.transitions || {})) {

@@ -86,6 +86,7 @@ test('Selecting an authored camera exits orbit and restores the normal transitio
     project.stageCamera.setState = function(source, options) { this.baseCamera = source; this.transition = options }
     project.pan.setReference = source => { project.reference = source }
     project.pan.update = () => {}
+    project.pan.setStateSettings = () => false
     project.app.render = { set_stageCamera() {} }
     Project.prototype.selectCamera.call(project, 0)
     assert.equal(controls.disposed, true)
