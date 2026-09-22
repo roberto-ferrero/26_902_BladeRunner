@@ -29,6 +29,7 @@ import TyrellComparison from './TyrellComparison'
 import TyrellSky from './TyrellSky'
 import TyrellLensFlare from './TyrellLensFlare'
 import TyrellCity from './TyrellCity'
+import TyrellCityColorBenchmark from './TyrellCityColorBenchmark'
 import TyrellBuildingLights from './TyrellBuildingLights'
 import TyrellAirTraffic from './TyrellAirTraffic'
 import TyrellNearTraffic from './TyrellNearTraffic'
@@ -89,6 +90,8 @@ export default class E26902_BladeRunner {
             skyHeight: value => { this.sky?.setHeightScale(value); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             skyRadial: value => { this.sky?.setRadialIntensity(value); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             city: enabled => { this.city?.setEnabled(enabled); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
+            cityColor: values => { this.city?.setColorHSL(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
+            cityColorBenchmark: () => this.measureCityColor(),
             buildingLights: values => { this.buildingLights?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             flames: values => { this.flames?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             nearTraffic: values => { this.nearTraffic?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
@@ -258,6 +261,7 @@ export default class E26902_BladeRunner {
             }
         })
         this.cameras.sort((a, b) => a.name.localeCompare(b.name))
+        this.city.configureCameraReferences(this.cameras)
         this.modelStats.cameras = this.cameras.length
         if (!this.cameras.length) throw new Error('El GLB no contiene cámaras de perspectiva.')
         this.fill = new THREE.HemisphereLight(0xffdab0, 0x797e8a, TYRELL.hemisphereIntensity)
@@ -371,11 +375,47 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     renderFrame(camera) {
-        const start = this.profileEnabled ? performance.now() : 0
+        const benchmark = this.colorBenchmark
+        benchmark?.beforeFrame()
+        const start = this.profileEnabled || benchmark ? performance.now() : 0
+        const changed = this.city?.updateCamera(camera, benchmark?.yaw)
+        const colorCPU = benchmark ? performance.now() - start : 0
+        // A real yaw sweep changes the reflection camera in both A/B modes.
+        // Match that work in the fixed-view benchmark instead of favouring OFF.
+        if (changed || benchmark) this.floorReflection?.updates.invalidate()
         if (this.post) this.post.render(camera)
         else this.renderer.render(this.scene, camera)
         if (this.firstFrameMs === undefined) this.firstFrameMs = performance.now()
-        this.performanceProbe?.frame(performance.now() - start, this.warmup === 0 && !document.hidden)
+        if (!benchmark) this.performanceProbe?.frame(performance.now() - start, this.warmup === 0 && !document.hidden)
+        benchmark?.afterFrame(performance.now() - start, colorCPU, performance.now())
+    }
+    measureCityColor() {
+        if (!this.built || this.colorBenchmark) return
+        if (this.stageCamera.transition || this.navigation?.enabled) {
+            this.ui.cityColorBenchmarkStatus('Espera al final de la transición y desactiva la navegación antes de medir.')
+            return
+        }
+        const context = { quality: this.quality, camera: this.stageCamera.get_camera().name,
+            resolution: this.renderer.getDrawingBufferSize(new THREE.Vector2()).toArray(), city: this.city.diagnostics() }
+        this.colorBenchmark = new TyrellCityColorBenchmark(this.city, this.renderer,
+            text => this.ui.cityColorBenchmarkStatus(text), result => {
+                this.colorBenchmark = null
+                if (result) {
+                    this.cityColorBenchmarkResult = { context, ...result }
+                    const ms = value => Number.isFinite(value) ? `${value.toFixed(3)} ms` : 'no disponible'
+                    this.ui.cityColorBenchmarkStatus([
+                        `${context.camera} · ${context.quality} · ${context.resolution.join(' × ')}`,
+                        'Desactivado → Activo (media por fotograma)',
+                        `CPU del color: ${ms(result.off.color?.meanMs)} → ${ms(result.on.color?.meanMs)}`,
+                        `GPU: ${ms(result.off.gpu?.meanMs)} → ${ms(result.on.gpu?.meanMs)}`,
+                        `Fotograma: ${ms(result.off.frame?.meanMs)} → ${ms(result.on.frame?.meanMs)}`,
+                        'Comparación ABBA, 240 fotogramas por modo. Pequeñas diferencias pueden ser ruido.',
+                        'Para medir GPU, abre la página con ?profile=1.'
+                    ].join('\n'))
+                }
+                this.city.updateCamera(this.stageCamera.get_camera())
+                this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate()
+            })
     }
     setLighting(profile) {
         this.specularEnvironment?.invalidate()
@@ -422,6 +462,7 @@ export default class E26902_BladeRunner {
         const profile = qualityBudget(name, this.budgetMode)
         if (!profile) return
         this.quality = name
+        this.city?.setQuality(name)
         this.volume?.setQuality(name, profile.volumeSteps)
         this.post?.setQuality(name)
         this.floorReflection?.setResolution(this.floorReflection.resolution, name, profile.reflectionScale)
@@ -444,6 +485,7 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     resetMetrics() {
+        this.colorBenchmark?.finish('ha cambiado la configuración')
         this.performanceProbe?.reset()
         if (this.measuring) this.ui.comparisonStatus('Medición cancelada por un cambio de configuración. Vuelve a medir.')
         this.measuring = false
@@ -453,6 +495,7 @@ export default class E26902_BladeRunner {
     }
     update_RAF() {
         const now = performance.now()
+        if (document.hidden) this.colorBenchmark?.finish('la pestaña dejó de estar visible')
         if (this.startup && !this.revealed && !this.rendererError) {
             if (document.hidden) this.startup.pause()
             else {
@@ -465,6 +508,7 @@ export default class E26902_BladeRunner {
                 }
             }
         }
+        if (!this.colorBenchmark) {
         const volumeNode = this.volume?.node
         if (this.volume?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)) this.floorReflection?.updates.invalidate()
         if (this.buildingLights?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)) {
@@ -489,6 +533,7 @@ export default class E26902_BladeRunner {
         if (this.developmentControls) this.developmentControls.update()
         else if (this.navigation?.enabled) this.navigation.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)
         else if (!this.stageCamera.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)) this.pan?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)
+        }
         this.panTime = now
         if (this.previousFrame !== undefined && !document.hidden) {
             if (this.warmup > 0) this.warmup--
@@ -500,6 +545,7 @@ export default class E26902_BladeRunner {
         this.previousFrame = now
         if (this.samples.length >= 30 && (!this.lastReport || now - this.lastReport > 1000)) {
             this.lastReport = now
+            this.ui.cityColorStatus(this.city?.diagnostics())
             const mean = this.samples.reduce((a, b) => a + b, 0) / this.samples.length
             const sorted = [...this.samples].sort((a, b) => a - b)
             const size = this.renderer.getDrawingBufferSize(new THREE.Vector2())
@@ -552,6 +598,7 @@ export default class E26902_BladeRunner {
             postProcessing: this.post?.diagnostics() || null,
             sky: this.sky?.diagnostics() || null,
             city: this.city?.diagnostics() || null,
+            cityColorBenchmark: this.cityColorBenchmarkResult || null,
             buildingLights: this.buildingLights?.diagnostics() || null,
             airTraffic: this.airTraffic?.diagnostics() || null,
             nearTraffic: this.nearTraffic?.diagnostics() || null,
@@ -583,6 +630,7 @@ export default class E26902_BladeRunner {
     }
     dispose() {
         if (this.disposed) return
+        this.colorBenchmark?.finish('se ha cerrado la escena')
         this.disposed = true
         this.abort?.abort()
         window.removeEventListener('keydown', this.cameraKeyDown)

@@ -253,6 +253,61 @@ export default class TyrellUI {
         cityPanel.className = 'tyrell-pan'
         cityPanel.innerHTML = '<summary>Exterior — Fase 9</summary><div class="tyrell-pan-controls"><label><input type="checkbox" aria-label="Edificios bajos" checked> Edificios bajos</label></div>'
         cityPanel.querySelector('input').onchange = event => actions.city(event.target.checked)
+        const cityColor = { h: 31.4, s: 38.9, l: 18.8 }
+        const updateCityColor = () => actions.cityColor(cityColor)
+        for (const [key, title, maximum, suffix] of [['h', 'Matiz', 360, '°'], ['s', 'Saturación', 100, '%'], ['l', 'Luminosidad', 100, '%']]) {
+            const label = document.createElement('label')
+            label.innerHTML = `${title}<input type="range" aria-label="${title} de edificios de relleno" min="0" max="${maximum}" step="0.1" value="${cityColor[key]}"><output>${cityColor[key]} ${suffix}</output>`
+            const input = label.querySelector('input')
+            input.oninput = () => { cityColor[key] = Number(input.value); input.nextElementSibling.value = `${cityColor[key]} ${suffix}`; updateCityColor() }
+            cityPanel.querySelector('div').append(label)
+        }
+        const resetColor = document.createElement('button')
+        resetColor.type = 'button'
+        resetColor.textContent = 'Restablecer color'
+        resetColor.onclick = () => {
+            Object.assign(cityColor, { h: 31.4, s: 38.9, l: 18.8 })
+            for (const key of ['h', 's', 'l']) {
+                const input = cityPanel.querySelector(`[aria-label="${{ h: 'Matiz', s: 'Saturación', l: 'Luminosidad' }[key]} de edificios de relleno"]`)
+                input.value = String(cityColor[key]); input.nextElementSibling.value = `${cityColor[key]}${key === 'h' ? ' °' : ' %'}`
+            }
+            updateCityColor()
+        }
+        cityPanel.querySelector('div').append(resetColor)
+        const colorHint = document.createElement('p')
+        colorHint.textContent = 'HSL base mirando hacia la pirámide. La orientación horizontal ajusta la luminosidad entre las referencias; mirar arriba o abajo no la cambia. Las rampas restan puntos de luminosidad por edificio.'
+        cityPanel.append(colorHint)
+        this.cityColorReadout = document.createElement('p')
+        cityPanel.append(this.cityColorReadout)
+        for (const [key, title, min, max, initial] of [
+            ['cameraD', 'Luminosidad al orientar como Camera_D', 0, 100, 14],
+            ['cam02', 'Luminosidad al orientar como CAM 02', 0, 100, 14.6],
+            ['rightStep', 'Variación L por edificio a la derecha', -5, 0, -.3],
+            ['leftStep', 'Variación L por edificio a la izquierda', -5, 0, -1.3]]) {
+            const label = document.createElement('label')
+            label.innerHTML = `${title}<input type="number" aria-label="${title}" min="${min}" max="${max}" step="0.1" value="${initial}">`
+            label.querySelector('input').oninput = event => {
+                if (event.target.value !== '' && event.target.validity.valid) actions.cityColor({ [key]: Number(event.target.value) })
+            }
+            cityPanel.querySelector('div').append(label)
+        }
+        const angleMode = document.createElement('label')
+        angleMode.innerHTML = 'Color según orientación<select aria-label="Color según orientación"><option value="lod">Según LOD</option><option value="on">Siempre activo</option><option value="off">Desactivado</option></select>'
+        angleMode.querySelector('select').onchange = event => actions.cityColor({ mode: event.target.value })
+        cityPanel.querySelector('div').append(angleMode)
+        for (const level of ['Baja', 'Media', 'Alta']) {
+            const label = document.createElement('label')
+            label.innerHTML = `<input type="checkbox" checked aria-label="Color por orientación en LOD ${level}"> Activar en LOD ${level}`
+            label.querySelector('input').onchange = event => actions.cityColor({ lod: { [level]: event.target.checked } })
+            cityPanel.querySelector('div').append(label)
+        }
+        const measureColor = document.createElement('button')
+        measureColor.type = 'button'; measureColor.textContent = 'Medir coste del color angular'
+        measureColor.onclick = () => actions.cityColorBenchmark()
+        this.cityColorMeasurement = document.createElement('pre')
+        this.cityColorMeasurement.style.cssText = 'white-space:pre-wrap;max-height:260px;overflow:auto;font-size:11px'
+        cityPanel.querySelector('div').append(measureColor)
+        cityPanel.append(this.cityColorMeasurement)
         for (const [key, title, initial] of [['intensity', 'Luces de edificios', .22], ['beacons', 'Balizas blancas', .7]]) {
             const label = document.createElement('label')
             label.innerHTML = `${title}<input type="range" aria-label="${title}" min="0" max="2" step="0.01" value="${initial}"><output>${initial.toFixed(2)}</output>`
@@ -286,9 +341,9 @@ export default class TyrellUI {
         flameControls.className = 'tyrell-pan-controls'
         flameControls.innerHTML = `<label><input type="checkbox" aria-label="Llamaradas" checked> Llamaradas</label>
             <label>Intervalo de llamaradas<input type="range" aria-label="Intervalo de llamaradas" min="2" max="60" step="0.5" value="4.5"><output>4.5 s</output></label>
-            <label>Tamaño de llamaradas<input type="range" aria-label="Tamaño de llamaradas" min="1" max="5" step="0.25" value="3.5"><output>3.50×</output></label>
+            <label>Tamaño de llamaradas<input type="range" aria-label="Tamaño de llamaradas" min="1" max="5" step="0.25" value="4.25"><output>4.25×</output></label>
             <label>Crecimiento vertical<input type="range" aria-label="Crecimiento vertical de llamaradas" min="1" max="3" step="0.1" value="2"><output>2.00×</output></label>
-            <label>Intensidad de llamaradas<input type="range" aria-label="Intensidad de llamaradas" min="0" max="1.5" step="0.05" value="0.65"><output>0.65</output></label>`
+            <label>Intensidad de llamaradas<input type="range" aria-label="Intensidad de llamaradas" min="0" max="1.5" step="0.05" value="1.5"><output>1.50</output></label>`
         flameControls.querySelector('input[type=checkbox]').onchange = event => actions.flames({ enabled: event.target.checked })
         const flameRanges = flameControls.querySelectorAll('input[type=range]')
         ;['interval', 'size', 'rise', 'intensity'].forEach((key, i) => {
@@ -410,6 +465,10 @@ export default class TyrellUI {
         this.retry.textContent = renderer ? 'Recargar página' : 'Reintentar carga'
     }
     setBackend(text) { this.root.querySelector('.tyrell-backend').textContent = text }
+    cityColorBenchmarkStatus(text) { this.cityColorMeasurement.textContent = text }
+    cityColorStatus(state) {
+        if (state) this.cityColorReadout.textContent = `Ángulo horizontal: ${state.yawDegrees.toFixed(1)}° · Luminosidad base aplicada: ${state.effectiveLightness.toFixed(2)} % · Ajuste angular ${state.angleColorActive ? 'activo' : 'desactivado'}`
+    }
     ready(cameras, activeIndex) {
         this.startupCover.hidden = true
         this.guiContainer.inert = false

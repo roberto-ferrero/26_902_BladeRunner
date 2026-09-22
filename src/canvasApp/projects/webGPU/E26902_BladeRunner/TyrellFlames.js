@@ -5,7 +5,7 @@ export const FLAME_TOWERS = Object.freeze([
     Object.freeze({ x: -680, z: -700, top: 24 }),
     Object.freeze({ x: -900, z: -830, top: 15 })
 ])
-export const FLAMES = Object.freeze({ enabled: true, interval: 4.5, intensity: .65, size: 3.5, rise: 2, initialDelay: 2.5,
+export const FLAMES = Object.freeze({ enabled: true, interval: 4.5, intensity: 1.5, size: 4.25, rise: 2, initialDelay: 2.5,
     duration: 4.4, particles: 9, reflectionHz: 8, environmentHz: 1 })
 const smooth = x => { const t = Math.max(0, Math.min(1, x)); return t * t * (3 - 2 * t) }
 // Includes all billboards at their maximum extent, not just their centres.
