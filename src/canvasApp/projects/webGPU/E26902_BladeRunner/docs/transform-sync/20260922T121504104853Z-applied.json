@@ -1,0 +1,432 @@
+{
+  "source": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Blender\\20260914_BladeRunner_AUXILIAR.blend",
+  "sourceSha256": "b69e8498c2b483d7db9587a3d05ee4fba81a94b4b9df6754ebbde0619d407eaf",
+  "target": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Repo\\26_902_BladeRunner\\static\\glbs\\E26902_BladeRunner\\BladeRunner_5_6_High_v3_phase2.glb",
+  "applied": true,
+  "changed": true,
+  "beforeSha256": "6f610bf7939cd0838a46ca6c044d82789415bae734a444fa0255994b039dd31d",
+  "afterSha256": "a9afa2abb0bde11e6e307ef5e71749b8cc54924385a7755febe212d9221af4dc",
+  "beforeBytes": 40552536,
+  "afterBytes": 40502716,
+  "resourcesBefore": {
+    "nodes": 121,
+    "meshes": 107,
+    "materials": 20,
+    "textures": 37,
+    "images": 25,
+    "samplers": 1,
+    "accessors": 514,
+    "bufferViews": 539,
+    "binaryBytes": 40425000
+  },
+  "resourcesAfter": {
+    "nodes": 115,
+    "meshes": 101,
+    "materials": 20,
+    "textures": 37,
+    "images": 25,
+    "samplers": 1,
+    "accessors": 490,
+    "bufferViews": 515,
+    "binaryBytes": 40380776
+  },
+  "transforms": [
+    {
+      "name": "Paper on folio",
+      "before": {
+        "translation": [
+          -0.8999999761581421,
+          0.7757599949836731,
+          -9.933599472045898
+        ],
+        "scale": [
+          0.7200000286102295,
+          0.7200000286102295,
+          0.7200000286102295
+        ]
+      },
+      "after": {
+        "translation": [
+          -0.2165338397026062,
+          0.7757599949836731,
+          -10.690423965454102
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.7200000286102295,
+          0.7200000286102295,
+          0.7200000286102295
+        ]
+      },
+      "blenderPosition": [
+        -0.2165338397026062,
+        10.690423965454102,
+        0.7757599949836731
+      ],
+      "blenderRotationDegrees": [
+        0.0,
+        -0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Leather folio",
+      "before": {
+        "translation": [
+          -0.8999999761581421,
+          0.7620800137519836,
+          -9.933599472045898
+        ],
+        "scale": [
+          0.7200000286102295,
+          0.7200000286102295,
+          0.7200000286102295
+        ]
+      },
+      "after": {
+        "translation": [
+          -0.2165338397026062,
+          0.7620800137519836,
+          -10.690423965454102
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.7200000286102295,
+          0.7200000286102295,
+          0.7200000286102295
+        ]
+      },
+      "blenderPosition": [
+        -0.2165338397026062,
+        10.690423965454102,
+        0.7620800137519836
+      ],
+      "blenderRotationDegrees": [
+        0.0,
+        -0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Crystal tumbler",
+      "before": {
+        "translation": [
+          1.1159999370574951,
+          0.7519999742507935,
+          -9.969599723815918
+        ],
+        "scale": [
+          0.7200000286102295,
+          0.7200000286102295,
+          0.7200000286102295
+        ]
+      },
+      "after": {
+        "translation": [
+          0.6863261461257935,
+          0.7519999742507935,
+          -10.065082550048828
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.7200000286102295,
+          0.7200000286102295,
+          0.7200000286102295
+        ]
+      },
+      "blenderPosition": [
+        0.6863261461257935,
+        10.065082550048828,
+        0.7519999742507935
+      ],
+      "blenderRotationDegrees": [
+        0.0,
+        -0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Cut crystal decanter",
+      "before": {
+        "translation": [
+          1.3752000331878662,
+          0.7519999742507935,
+          -10.214400291442871
+        ],
+        "scale": [
+          0.7200000286102295,
+          0.7200000286102295,
+          0.7200000286102295
+        ]
+      },
+      "after": {
+        "translation": [
+          0.9455262422561646,
+          0.7519999742507935,
+          -10.309883117675781
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.7200000286102295,
+          0.7200000286102295,
+          0.7200000286102295
+        ]
+      },
+      "blenderPosition": [
+        0.9455262422561646,
+        10.309883117675781,
+        0.7519999742507935
+      ],
+      "blenderRotationDegrees": [
+        0.0,
+        -0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Crystal stopper",
+      "before": {
+        "translation": [
+          1.3752000331878662,
+          1.090399980545044,
+          -10.214400291442871
+        ],
+        "scale": [
+          0.04320000112056732,
+          0.046799998730421066,
+          0.04320000112056732
+        ]
+      },
+      "after": {
+        "translation": [
+          0.9455262422561646,
+          1.090399980545044,
+          -10.309883117675781
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.04320000112056732,
+          0.046799998730421066,
+          0.04320000112056732
+        ]
+      },
+      "blenderPosition": [
+        0.9455262422561646,
+        10.309883117675781,
+        1.090399980545044
+      ],
+      "blenderRotationDegrees": [
+        0.0,
+        -0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Crystal tumbler.001",
+      "before": {
+        "translation": [
+          1.5983999967575073,
+          0.7519999742507935,
+          -9.969599723815918
+        ],
+        "scale": [
+          0.7200000286102295,
+          0.7200000286102295,
+          0.7200000286102295
+        ]
+      },
+      "after": {
+        "translation": [
+          1.1687262058258057,
+          0.7519999742507935,
+          -10.065082550048828
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.7200000286102295,
+          0.7200000286102295,
+          0.7200000286102295
+        ]
+      },
+      "blenderPosition": [
+        1.1687262058258057,
+        10.065082550048828,
+        0.7519999742507935
+      ],
+      "blenderRotationDegrees": [
+        0.0,
+        -0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "Sillon 01 | frente",
+      "before": {
+        "translation": [
+          1.4130347967147827,
+          0.0,
+          -8.471920013427734
+        ],
+        "rotation": [
+          -0.0,
+          -0.9121690392494202,
+          -0.0,
+          0.40981411933898926
+        ],
+        "scale": [
+          0.7400002479553223,
+          0.7400000095367432,
+          0.7400002479553223
+        ]
+      },
+      "after": {
+        "translation": [
+          1.2316169738769531,
+          0.0,
+          -8.471920013427734
+        ],
+        "rotation": [
+          -0.0,
+          -0.9121690392494202,
+          -0.0,
+          0.40981411933898926
+        ],
+        "scale": [
+          0.7400002479553223,
+          0.7400000095367432,
+          0.7400002479553223
+        ]
+      },
+      "blenderPosition": [
+        1.2316169738769531,
+        8.471920013427734,
+        0.0
+      ],
+      "blenderRotationDegrees": [
+        0.0,
+        -0.0,
+        -131.6136881737787
+      ]
+    }
+  ],
+  "removedNodes": [
+    "Base_3",
+    "Foot_3",
+    "Instrument case",
+    "Instrument lid",
+    "Instrument clasp",
+    "Instrument clasp.001"
+  ],
+  "alreadyAbsent": [],
+  "removedMeshes": [
+    "Mesh.1783",
+    "Mesh.1878",
+    "Instrument case",
+    "Instrument lid",
+    "Instrument clasp",
+    "Instrument clasp.001"
+  ],
+  "removalSourceState": {
+    "Instrument case": {
+      "present": true,
+      "hidden": true,
+      "visible": false,
+      "collections": [
+        "Instrument"
+      ]
+    },
+    "Instrument clasp": {
+      "present": true,
+      "hidden": true,
+      "visible": false,
+      "collections": [
+        "Instrument"
+      ]
+    },
+    "Instrument clasp.001": {
+      "present": true,
+      "hidden": true,
+      "visible": false,
+      "collections": [
+        "Instrument"
+      ]
+    },
+    "Instrument lid": {
+      "present": true,
+      "hidden": true,
+      "visible": false,
+      "collections": [
+        "Instrument"
+      ]
+    },
+    "Foot_3": {
+      "present": true,
+      "hidden": false,
+      "visible": true,
+      "collections": [
+        "Scene Collection"
+      ]
+    },
+    "Base_3": {
+      "present": true,
+      "hidden": false,
+      "visible": true,
+      "collections": [
+        "Scene Collection"
+      ]
+    }
+  },
+  "retainedMaterialNames": [
+    "PBR | Caliza ocre envejecida",
+    "PBR | Caliza aristas claras",
+    "PBR | Piedra negra pulida",
+    "PBR | Juntas y cavidades",
+    "PBR | Nogal oscuro",
+    "PBR | Raiz de nogal",
+    "Walnut | quarter sawn",
+    "Leather | oxblood",
+    "Burl walnut | table rim",
+    "Brass | polished highlights",
+    "Bronze | patinated",
+    "Recesses | charcoal",
+    "PBR | Cuero oscuro",
+    "PBR | Laton envejecido",
+    "PBR | Bronce patinado",
+    "Crystal",
+    "Ivory paper",
+    "PBR | Hormigon exterior",
+    "Cielo | nubes ambar",
+    "Sol | disco emisivo"
+  ],
+  "backup": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Blender\\transform_sync\\backups\\20260922T121504104853Z_BladeRunner_5_6_High_v3_phase2.glb"
+}

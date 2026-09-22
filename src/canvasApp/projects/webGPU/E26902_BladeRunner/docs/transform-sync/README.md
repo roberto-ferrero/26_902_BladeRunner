@@ -39,3 +39,30 @@ Después de una modificación, actualizar `assetBytes`, la revisión de caché d
 Esta primera herramienta admite mallas estáticas sin padres, hijos, modificadores, constraints ni animación, con geometría local coincidente y escala positiva. Si una optimización cambia la geometría local, o se altera el origen/jerarquía, se detiene para exigir una correspondencia calibrada. No sustituye esa correspondencia por una suposición.
 
 Para revertir esta prueba, restaurar la copia anterior del GLB, `v=1`, `assetBytes: 40552456` y las expectativas previas de las tres pruebas modificadas; volver a compilar.
+
+## Segunda aplicación · elementos sobre la mesa y eliminación selectiva
+
+Aplicada el 22/09/2026 desde el auxiliar con SHA-256 `b69e8498c2b483d7db9587a3d05ee4fba81a94b4b9df6754ebbde0619d407eaf`.
+
+Se sincronizan las matrices guardadas de `Paper on folio`, `Leather folio`, `Crystal tumbler`, `Cut crystal decanter`, `Crystal stopper`, `Crystal tumbler.001` y `Sillon 01 | frente`. Las geometrías locales coinciden con el GLB y no se reexportan.
+
+Se retiran por selección expresa `Instrument case`, `Instrument lid`, `Instrument clasp`, `Instrument clasp.001`, `Foot_3` y `Base_3`. Las cuatro piezas `Instrument…` estaban ocultas en el auxiliar; `Foot_3` y `Base_3` aún figuraban visibles, pero la lista explícita de eliminación gobierna esta operación.
+
+La limpieza elimina 6 nodos, 6 mallas exclusivas, 24 accesores y 24 buffer views. El bloque binario pasa de 40.425.000 a 40.380.776 bytes. Se conservan los 20 materiales, 37 texturas y 25 imágenes porque continúan referenciados por otros elementos. El GLB pasa de 40.552.536 a 40.502.716 bytes.
+
+- SHA-256 activo: `a9afa2abb0bde11e6e307ef5e71749b8cc54924385a7755febe212d9221af4dc`; revisión de caché `v=3`.
+- Copia previa: `_Blender/transform_sync/backups/20260922T121504104853Z_BladeRunner_5_6_High_v3_phase2.glb`.
+- Informe completo: `20260922T121504104853Z-applied.json`.
+- Segunda ejecución: `changed: false`; no acumula transformaciones ni vuelve a compactar datos.
+- GLTFLoader carga 115 nodos y 101 mallas. Los seis nombres no existen ni en el JSON ni en la escena Three.js.
+- 100/100 pruebas correctas y compilación correcta con las tres advertencias de tamaño conocidas.
+- El decantador y ambos vasos apoyan sobre la mesa dentro de la precisión numérica del raycast. El folio de cuero queda a 0,36 mm de la superficie, acorde con el espesor y la superposición de papel; consultar `contacts-v3.json`.
+- El visor WebGPU se carga y renderiza correctamente. Los `.blend` permanecen sin modificaciones.
+
+Para futuras sincronizaciones que incluyan eliminaciones, usar `sync-aux-scene.py`. `--objects` transfiere matrices y `--remove` retira los nodos seleccionados y compacta únicamente los recursos que quedan huérfanos. Ejecutar primero sin `--apply` para revisar el informe.
+
+### Flujo rápido para próximas modificaciones
+
+Cuando la petición sea únicamente de posición, rotación o escala, el script abre una sola vez el Blender auxiliar, lee las matrices de los nombres solicitados y actualiza directamente sus nodos en el GLB. No importa el GLB en Blender, no inspecciona geometrías y no comprueba visibilidad ni renderabilidad. Si un nombre no existe en el auxiliar o en el GLB, no modifica nada para ese nombre y lo incluye al final en `skippedTransforms`.
+
+Para estas actualizaciones rutinarias basta una validación estructural enfocada e idempotencia. Las pruebas completas, la compilación y la revisión visual se reservan para eliminaciones, cambios de estructura o cuando se soliciten expresamente.

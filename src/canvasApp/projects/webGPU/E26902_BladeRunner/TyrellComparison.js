@@ -4,10 +4,12 @@ export default class TyrellComparison {
     add(report) {
         if (!report.metrics || report.metrics.samples < 120) throw new Error('Faltan muestras estables.')
         const keys = ['qualityBudget', 'performance', 'loading', 'adapter', 'asset', 'date', 'quality', 'camera', 'cameraPan', 'exposure', 'metrics', 'floorReflection', 'specularEnvironment', 'atmosphere', 'lightVolume', 'postProcessing', 'sky', 'lighting', 'materialLook', 'indirect', 'reviewLighting']
-        keys.push('city', 'buildingLights', 'airTraffic', 'nearTraffic', 'flames')
+        keys.push('city', 'buildingLights', 'airTraffic', 'nearTraffic', 'flames', 'voightKampff')
         const row = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, report[key]]))))
         row.id = this.nextId++
         row.effects = [
+            [row.voightKampff, `VK ${({ closed: 'cerrado', open: 'operativo', deploying: 'desplegando', retracting: 'replegando' })[row.voightKampff?.state] || ''}`],
+            [row.specularEnvironment?.minimumCaptureInterval > 0, 'Reflejos a 2 Hz'],
             [row.city?.enabled, 'Edificios bajos'],
             [row.buildingLights?.intensity > 0, 'Luces de edificios'],
             [row.buildingLights?.beacons > 0, 'Balizas'],

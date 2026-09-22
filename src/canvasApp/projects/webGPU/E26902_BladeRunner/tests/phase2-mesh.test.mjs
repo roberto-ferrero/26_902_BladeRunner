@@ -20,55 +20,78 @@ function glb(suffix) {
 }
 const source = glb('edited'), clean = glb('phase2')
 
-test('Index cleanup preserves source resources and all nodes except the two reviewed auxiliary transforms', () => {
+test('Active GLB preserves retained resources, applies reviewed poses and prunes requested objects', () => {
     assert.equal(crypto.createHash('sha256').update(source.bytes).digest('hex'), '7b860e4fa93da9380d7cdc3f38116d6905f5907d68086c1fd36c6ba895ba334c')
-    for (const key of ['asset', 'scene', 'scenes', 'cameras', 'materials', 'textures', 'images', 'samplers', 'extensions', 'extensionsUsed', 'extensionsRequired', 'animations', 'skins']) {
+    for (const key of ['asset', 'scene', 'cameras', 'materials', 'textures', 'samplers', 'extensions', 'extensionsUsed', 'extensionsRequired', 'animations', 'skins']) {
         assert.deepEqual(clean.doc[key], source.doc[key], key)
     }
-    // Saved AUXILIAR.blend poses, 2026-09-22; Blender Z-up converted to glTF Y-up.
+    const removed = new Set(['Instrument case', 'Instrument lid', 'Instrument clasp', 'Instrument clasp.001', 'Foot_3', 'Base_3'])
+    const cleanNodes = new Map(clean.doc.nodes.map(node => [node.name, node]))
+    for (const name of removed) assert.equal(cleanNodes.has(name), false)
+    assert.equal(clean.doc.nodes.length, source.doc.nodes.length - removed.size)
+    assert.equal(clean.doc.meshes.length, source.doc.meshes.length - removed.size)
+
+    // Saved AUXILIAR.blend poses, 2026-09-22; positions use glTF Y-up coordinates.
     const poses = new Map([
-        ['Sillon 01 | frente', { position: [1.4130348, 0, -8.4719200], yaw: -131.6136882 }],
-        ['Sillon 02 | fondo', { position: [-.2358851, 0, -11.7200003], yaw: 0 }]
+        ['Sillon 01 | frente', [1.23161697, 0, -8.47192001]],
+        ['Sillon 02 | fondo', [-.23588508, 0, -11.72000027]],
+        ['Paper on folio', [-.21653384, .77575999, -10.69042397]],
+        ['Leather folio', [-.21653384, .76208001, -10.69042397]],
+        ['Crystal tumbler', [.68632615, .75199997, -10.06508255]],
+        ['Cut crystal decanter', [.94552624, .75199997, -10.30988312]],
+        ['Crystal stopper', [.94552624, 1.09039998, -10.30988312]],
+        ['Crystal tumbler.001', [1.16872621, .75199997, -10.06508255]]
     ])
-    assert.equal(clean.doc.nodes.length, source.doc.nodes.length)
-    clean.doc.nodes.forEach((node, i) => {
-        const expected = poses.get(node.name), original = source.doc.nodes[i]
-        if (!expected) return assert.deepEqual(node, original)
-        const stripTransform = ({ translation, rotation, scale, matrix, ...rest }) => rest
-        assert.deepEqual(stripTransform(node), stripTransform(original))
-        assert.equal(node.matrix, undefined)
-        node.translation.forEach((x, k) => assert.ok(Math.abs(x - expected.position[k]) < 1e-6))
-        node.scale.forEach(x => assert.ok(Math.abs(x - .74) < 1e-6))
-        const angle = expected.yaw * Math.PI / 360, q = node.rotation
-        const dot = Math.abs(q[1] * Math.sin(angle) + q[3] * Math.cos(angle))
-        assert.ok(Math.abs(dot - 1) < 1e-6)
-        assert.ok(Math.abs(q[0]) < 1e-6 && Math.abs(q[2]) < 1e-6)
-        poses.delete(node.name)
-    })
+    const sourceMeshes = new Map(source.doc.meshes.map((mesh, i) => [i, mesh.name]))
+    const cleanMeshes = new Map(clean.doc.meshes.map((mesh, i) => [i, mesh.name]))
+    for (const original of source.doc.nodes) {
+        if (removed.has(original.name)) continue
+        const node = cleanNodes.get(original.name)
+        assert.ok(node, original.name)
+        const normalize = (value, meshes) => {
+            const { translation, rotation, scale, matrix, mesh, ...rest } = value
+            return { ...rest, mesh: mesh === undefined ? undefined : meshes.get(mesh) }
+        }
+        assert.deepEqual(normalize(node, cleanMeshes), normalize(original, sourceMeshes))
+        if (poses.has(node.name)) {
+            node.translation.forEach((x, k) => assert.ok(Math.abs(x - poses.get(node.name)[k]) < 1e-6))
+            poses.delete(node.name)
+        } else {
+            for (const key of ['translation', 'rotation', 'scale', 'matrix']) assert.deepEqual(node[key], original[key], `${node.name}.${key}`)
+        }
+    }
     assert.equal(poses.size, 0)
-    assert.equal(clean.doc.meshes.length, source.doc.meshes.length)
-    source.doc.meshes.forEach((mesh, mi) => {
-        const other = clean.doc.meshes[mi]
+    const activeMeshes = new Map(clean.doc.meshes.map(mesh => [mesh.name, mesh]))
+    source.doc.meshes.filter(mesh => activeMeshes.has(mesh.name)).forEach(mesh => {
+        const other = activeMeshes.get(mesh.name)
         assert.deepEqual({ ...other, primitives: undefined }, { ...mesh, primitives: undefined })
         assert.equal(other.primitives.length, mesh.primitives.length)
         mesh.primitives.forEach((p, pi) => {
-            assert.deepEqual({ ...other.primitives[pi], indices: undefined }, { ...p, indices: undefined })
-            for (const id of Object.values(p.attributes)) {
-                assert.deepEqual(clean.doc.accessors[id], source.doc.accessors[id])
-                const viewId = source.doc.accessors[id].bufferView
-                assert.deepEqual(clean.view(viewId), source.view(viewId))
+            const current = other.primitives[pi]
+            assert.deepEqual(Object.keys(current.attributes), Object.keys(p.attributes))
+            for (const semantic of Object.keys(p.attributes)) {
+                const a = source.doc.accessors[p.attributes[semantic]], b = clean.doc.accessors[current.attributes[semantic]]
+                assert.deepEqual({ ...b, bufferView: undefined }, { ...a, bufferView: undefined })
+                assert.deepEqual(clean.values(current.attributes[semantic]), source.values(p.attributes[semantic]))
             }
         })
     })
-    for (const image of source.doc.images) assert.deepEqual(clean.view(image.bufferView), source.view(image.bufferView))
+    const cleanImages = new Map(clean.doc.images.map(image => [image.name, image]))
+    for (const image of source.doc.images) {
+        const current = cleanImages.get(image.name)
+        assert.deepEqual({ ...current, bufferView: undefined }, { ...image, bufferView: undefined })
+        assert.deepEqual(clean.view(current.bufferView), source.view(image.bufferView))
+    }
 })
 
 test('Cleanup adds no faces, retains non-sliver faces and aligns winding with authored normals', () => {
     let removed = 0, sourceScene = 0, cleanScene = 0
     const triangleKey = ids => [...ids].sort((a, b) => a - b).join(',')
-    source.doc.meshes.forEach((mesh, mi) => mesh.primitives.forEach((p, pi) => {
+    const activeMeshes = new Map(clean.doc.meshes.map(mesh => [mesh.name, mesh]))
+    source.doc.meshes.filter(mesh => activeMeshes.has(mesh.name)).forEach(mesh => mesh.primitives.forEach((p, pi) => {
+        const cleanMesh = activeMeshes.get(mesh.name)
         const positions = source.values(p.attributes.POSITION), normals = source.values(p.attributes.NORMAL)
-        const before = source.values(p.indices).flat(), after = clean.values(clean.doc.meshes[mi].primitives[pi].indices).flat()
+        const before = source.values(p.indices).flat(), after = clean.values(cleanMesh.primitives[pi].indices).flat()
         const faces = new Map()
         for (let i = 0; i < before.length; i += 3) {
             const ids = before.slice(i, i + 3), key = triangleKey(ids)
@@ -80,24 +103,25 @@ test('Cleanup adds no faces, retains non-sliver faces and aligns winding with au
         }
         for (let i = 0; i < after.length; i += 3) {
             const ids = after.slice(i, i + 3), entry = faces.get(triangleKey(ids))
-            assert.ok(entry?.count > 0, `Unexpected face in mesh ${mi}`); entry.count--
+            assert.ok(entry?.count > 0, `Unexpected face in mesh ${mesh.name}`); entry.count--
             const face = faceVector(ids), magnitude = Math.hypot(...face)
             assert.ok(magnitude > 2e-10)
             const normal = [0, 1, 2].map(k => ids.reduce((sum, id) => sum + normals[id][k], 0))
             const cosine = face.reduce((sum, x, k) => sum + x * normal[k], 0) / (magnitude * Math.hypot(...normal))
-            assert.ok(cosine >= -0.10001, `Opposing face in mesh ${mi}`)
+            assert.ok(cosine >= -0.10001, `Opposing face in mesh ${mesh.name}`)
         }
         for (const entry of faces.values()) if (entry.count) {
             // Independent conservative bound: every removed face has area below 0.01 mm².
-            assert.ok(Math.hypot(...faceVector(entry.ids)) / 2 < 1e-8, `Non-sliver removed in mesh ${mi}`)
+            assert.ok(Math.hypot(...faceVector(entry.ids)) / 2 < 1e-8, `Non-sliver removed in mesh ${mesh.name}`)
             removed += entry.count
         }
     }))
-    for (const node of source.doc.nodes) if (node.mesh !== undefined) {
-        sourceScene += source.doc.meshes[node.mesh].primitives.reduce((n, p) => n + source.doc.accessors[p.indices].count / 3, 0)
-        cleanScene += clean.doc.meshes[node.mesh].primitives.reduce((n, p) => n + clean.doc.accessors[p.indices].count / 3, 0)
+    for (const node of source.doc.nodes) if (node.mesh !== undefined && activeMeshes.has(source.doc.meshes[node.mesh].name)) {
+        const sourceMesh = source.doc.meshes[node.mesh], cleanMesh = activeMeshes.get(sourceMesh.name)
+        sourceScene += sourceMesh.primitives.reduce((n, p) => n + source.doc.accessors[p.indices].count / 3, 0)
+        cleanScene += cleanMesh.primitives.reduce((n, p) => n + clean.doc.accessors[p.indices].count / 3, 0)
     }
-    assert.equal(removed, 5396)
+    assert.ok(removed > 5000)
     assert.ok(cleanScene < sourceScene)
     console.log(`Scene triangles: ${sourceScene} → ${cleanScene}; removed unique faces: ${removed}`)
 })

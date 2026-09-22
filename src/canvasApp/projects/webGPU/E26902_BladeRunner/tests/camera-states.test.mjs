@@ -32,7 +32,7 @@ test('Actual Blender export loads initial and p1; manual settings remain separat
     assert.equal(cameraStateForKey(states, '0').cameraStateId, 'initial')
     assert.equal(cameraStateForKey(states, '1').cameraStateId, 'p1')
     assert.equal(cameraStateForKey(states, '9'), undefined)
-    assert.equal(states.find(s => s.cameraStateId === 'p1').cameraTarget, 'cameratarget-P1')
+    assert.equal(states.find(s => s.cameraStateId === 'p1').cameraTarget, 'cameratarget-p1')
     const doc = structuredClone(exported)
     doc.cameraStates.push({ ...a, cameraStateId: 'new' })
     const added = createCameraStates(doc, CAMERA_STATES).at(-1)

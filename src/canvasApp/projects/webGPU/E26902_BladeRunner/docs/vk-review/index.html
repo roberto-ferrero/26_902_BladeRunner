@@ -1,0 +1,41 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VK · revisión mecánica</title>
+<style>body{margin:0;background:#191d22;color:#eee;font:14px system-ui}canvas{display:block}aside{position:absolute;left:18px;top:18px;width:270px;background:#14181dea;padding:18px;border:1px solid #46515c;border-radius:8px}h1{font-size:18px;margin:0 0 12px}button,select{background:#344453;color:white;border:1px solid #718697;border-radius:4px;padding:8px;margin:4px 2px}label{display:block;margin:12px 0}input[type=range]{width:100%}small{color:#aebdc9}output{display:block;line-height:1.6}pre{white-space:pre-wrap;font-size:11px}#error{color:#ff9c91}</style>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/webgpu":"/node_modules/three/build/three.webgpu.js","three/tsl":"/node_modules/three/build/three.tsl.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script></head>
+<body><aside><h1>Voight-Kampff · Mecánica</h1><small>Revisión aislada · escala real · WebGPU · recurso 2K</small><p id="error"></p><button id="deploy">Desplegar</button><button id="retract">Replegar</button><button id="pause">Pausar</button><label>Progreso de despliegue<input id="progress" aria-label="Progreso de despliegue" type="range" min="0" max="1" step="0.01" value="0"></label><label>Vista<select id="view" aria-label="Vista"><option value="rear">Trasera</option><option value="front">Frontal</option><option value="top">Superior</option><option value="side">Lateral</option></select></label><label><input id="colors" type="checkbox"> Colores por pieza</label><label><input id="wires" type="checkbox"> Malla de alambre</label><output id="status">Cargando…</output><pre id="diagnostics"></pre></aside>
+<script type="module">
+import * as THREE from 'three'
+import {WebGPURenderer} from 'three/webgpu'
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js'
+import VKMotion from '/src/canvasApp/projects/webGPU/E26902_BladeRunner/TyrellVKMotion.js'
+const el=id=>document.getElementById(id)
+try {
+const renderer=new WebGPURenderer({antialias:true}); await renderer.init();renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setSize(innerWidth,innerHeight);document.body.append(renderer.domElement)
+renderer.setClearColor(0x20272e);renderer.toneMapping=THREE.AgXToneMapping;renderer.toneMappingExposure=1
+const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(38,innerWidth/innerHeight,.005,40)
+scene.add(new THREE.HemisphereLight(0xe6efff,0x36302b,2))
+for(const [p,power] of [[[1,2,2],3],[[-2,1,-1],2]]){const l=new THREE.DirectionalLight(0xffffff,power);l.position.fromArray(p);scene.add(l)}
+const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,.2,-.06)
+const views={rear:[.95,.7,-1.4],front:[-.8,.6,1.3],top:[0,1.9,-.06],side:[1.5,.4,-.06]}
+function view(){camera.position.fromArray(views[el('view').value]);controls.update()}view();el('view').onchange=view
+const gltf=await new GLTFLoader().loadAsync('/static/glbs/E26902_BladeRunner/VK_Device.glb');scene.add(gltf.scene)
+const root=gltf.scene.getObjectByName('VK_Root'),motion=new VKMotion(root)
+const originals=new Map();root.traverse(o=>{if(o.isMesh){originals.set(o,o.material);o.material=o.material.clone()}})
+el('colors').onchange=()=>{let i=0;root.traverse(o=>{if(!o.isMesh)return;const m=o.material; m.map=el('colors').checked?null:originals.get(o).map;m.normalMap=el('colors').checked?null:originals.get(o).normalMap;m.emissiveIntensity=el('colors').checked?0:1;m.color.set(el('colors').checked?new THREE.Color().setHSL((i++*.137)%1,.45,.5):0xffffff);m.needsUpdate=true})}
+el('wires').onchange=()=>root.traverse(o=>{if(o.isMesh)o.material.wireframe=el('wires').checked})
+el('deploy').onclick=()=>motion.setOpen(true);el('retract').onclick=()=>motion.setOpen(false)
+let paused=false;el('pause').onclick=()=>{paused=!paused;el('pause').textContent=paused?'Continuar':'Pausar'}
+el('progress').oninput=()=>motion.seek(Number(el('progress').value))
+let last,elapsed=0,frames=[]
+renderer.setAnimationLoop(time=>{
+const dt=last===undefined?0:(time-last)/1000;last=time
+if(!document.hidden&&!paused)motion.update(dt)
+if(document.hidden){last=undefined;return}
+controls.update();renderer.render(scene,camera);elapsed+=dt
+if(dt>0&&dt<.2){frames.push(dt*1000);if(frames.length>180)frames.shift()}
+if(elapsed>.25){const sorted=[...frames].sort((a,b)=>a-b);const mean=frames.reduce((a,b)=>a+b,0)/(frames.length||1);el('progress').value=motion.progress;el('status').textContent=`${motion.state} · ${(motion.progress*100).toFixed(0)} % · ${(1000/mean).toFixed(1)} FPS · p95 ${(sorted[Math.floor(sorted.length*.95)]||0).toFixed(2)} ms`;el('diagnostics').textContent=JSON.stringify(motion.diagnostics(),null,2);el('deploy').disabled=motion.moving||motion.state==='open';el('retract').disabled=motion.moving||motion.state==='closed';elapsed=0}
+})
+addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix()})
+document.addEventListener('visibilitychange',()=>{last=undefined;frames=[]})
+} catch(error){el('error').textContent=error.message;console.error(error)}
+</script></body></html>

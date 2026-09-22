@@ -31,3 +31,26 @@ test('Room environment affects only chosen materials, captures on demand and res
     env.dispose(); assert.equal(metal.envMap, source); assert.equal(metal.envMapIntensity, .7); assert.equal(scene.environment, source)
     a.geometry.dispose(); metal.dispose(); stone.dispose(); source.dispose()
 })
+
+test('p1 capture cadence preserves preferences, restores immediately and registers the VK explicitly', () => {
+    const scene = new THREE.Scene(), root = new THREE.Group()
+    const floor = { materials: new Map(), updates: { invalidate() {} } }
+    const env = new m.exports.default(scene, root, floor)
+    const vk = new THREE.Group(), material = new THREE.MeshStandardMaterial({ envMapIntensity: .8 })
+    material.name = 'M_VKMachine.002'
+    env.register(vk, new Set([material]))
+    let captures = 0
+    env.camera.update = () => { captures++; assert.equal(vk.visible, false) }
+    env.setEnabled(true); env.setDetailMode(true)
+    env.update({}, 0); env.invalidate(); env.update({}, .1)
+    assert.equal(captures, 1); assert.equal(env.dirty, true)
+    env.update({}, .5); assert.equal(captures, 2)
+    env.setEnabled(false); env.setDetailMode(false); env.update({}, .6)
+    assert.equal(captures, 2); assert.equal(material.envMap, null)
+    assert.equal(material.envMapIntensity, .8)
+    env.setEnabled(true); env.update({}, .61); assert.equal(captures, 3)
+    env.setDetailMode(true); env.update({}, .62)
+    env.setDetailMode(false); env.update({}, .63)
+    assert.equal(captures, 5); assert.equal(vk.visible, true)
+    env.dispose(); material.dispose()
+})

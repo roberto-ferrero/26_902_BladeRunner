@@ -12,7 +12,7 @@ export default class TyrellUI {
             <footer hidden><div class="tyrell-controls">
                 <label>Cámara <select aria-label="Cámara"></select></label>
                 <label>Calidad <select aria-label="Calidad"><option selected>Baja</option><option>Media</option><option>Alta</option></select></label>
-                <label class="tyrell-check"><input type="checkbox" checked> Encuadre 2,4:1</label>
+                <label class="tyrell-check"><input type="checkbox" aria-label="Encuadre 2,4:1" checked> Encuadre 2,4:1</label>
                 <button type="button" data-action="capture">Captura 1920 × 800</button>
                 <button type="button" data-action="report">Diagnóstico</button>
             </div><p class="tyrell-note">Estados de cámara de Blender · Selección en GUI o mediante la tecla indicada</p>
@@ -138,7 +138,7 @@ export default class TyrellUI {
         this.panPanel.className = 'tyrell-pan'
         this.panPanel.innerHTML = `<summary>Paneo con el ratón</summary>
             <div class="tyrell-pan-controls">
-                <label><input type="checkbox" data-pan="enabled"> Activar paneo</label>
+                <label><input type="checkbox" aria-label="Activar paneo" data-pan="enabled"> Activar paneo</label>
                 <button type="button" data-pan-center>Volver al centro</button>
             </div>`
         this.panInputs = new Map()
@@ -349,6 +349,17 @@ export default class TyrellUI {
         flameHint.textContent = 'Emisiones en las torres laterales, fuera de CAM 01. Mayor intervalo: menos llamaradas.'
         cityPanel.append(flameHint)
         experience.append(cityPanel)
+        this.vkPanel = document.createElement('details')
+        this.vkPanel.className = 'tyrell-pan'
+        this.vkPanel.innerHTML = '<summary>Voight-Kampff</summary><div class="tyrell-pan-controls"><button type="button" data-vk-toggle disabled>Desplegar</button><label><input type="checkbox" aria-label="Desplegar al llegar a p1" checked> Desplegar al llegar a p1</label></div><p role="status" data-vk-status>Cargando dispositivo…</p>'
+        this.vkButton = this.vkPanel.querySelector('[data-vk-toggle]')
+        this.vkButton.onclick = () => actions.vkToggle?.()
+        this.vkPanel.querySelector('input').onchange = event => actions.vkAuto?.(event.target.checked)
+        const vkSavings = document.createElement('label')
+        vkSavings.innerHTML = '<input type="checkbox" aria-label="Reducir capturas de reflejos en p1" checked> Reducir capturas de reflejos en p1'
+        vkSavings.querySelector('input').onchange = event => actions.vkSavings?.(event.target.checked)
+        this.vkPanel.querySelector('.tyrell-pan-controls').append(vkSavings)
+        experience.append(this.vkPanel)
         this.technicalPanel = document.createElement('details')
         this.technicalPanel.className = 'tyrell-technical'
         this.technicalPanel.innerHTML = '<summary>Revisión técnica</summary><p class="tyrell-note">Ajustes de acabado, capturas y mediciones. Los cambios se conservan durante esta sesión aunque cierres este panel.</p>'
@@ -356,6 +367,7 @@ export default class TyrellUI {
         const budgetLabel = document.createElement('label')
         budgetLabel.textContent = 'Presupuesto de render '
         const budgetSelect = document.createElement('select')
+        budgetSelect.setAttribute('aria-label', 'Presupuesto de render')
         for (const [value, label] of [['optimized', 'Optimizado 8.2'], ['baseline', 'Referencia 8.1'], ['resolution', 'Solo resolución'], ['volume', 'Solo volumen'], ['reflection', 'Solo reflejo']]) budgetSelect.add(new Option(label, value))
         budgetSelect.onchange = () => actions.budget(budgetSelect.value)
         budgetLabel.append(budgetSelect)
@@ -403,6 +415,15 @@ export default class TyrellUI {
         this.openGUI.setAttribute('aria-expanded', String(visible))
         // Keep all controls mounted: values and expanded sections survive hiding.
         ;(visible ? this.closeGUI : this.openGUI).focus({ preventScroll: true })
+    }
+    setVKState(state) {
+        if (this.vkState === state) return
+        this.vkState = state
+        const labels = { closed: ['Desplegar', 'Cerrado'], deploying: ['Desplegando…', 'Desplegando…'], open: ['Replegar', 'Operativo · fuelle activo'], retracting: ['Replegando…', 'Replegando…'], disabled: ['Desplegar', 'Dispositivo desactivado para la comparación'] }
+        const [button, status] = labels[state] || ['Desplegar', 'Cargando dispositivo…']
+        this.vkButton.textContent = button
+        this.vkButton.disabled = !['closed', 'open'].includes(state)
+        this.vkPanel.querySelector('[data-vk-status]').textContent = status
     }
     comparisonStatus(text) { this.comparisonPanel.querySelector('[data-status]').textContent = text }
     showMeasurements(rows) {

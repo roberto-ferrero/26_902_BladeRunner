@@ -116,16 +116,18 @@ test('Active model matches its reviewed revision and retains all cameras/resourc
     const crypto = await import('node:crypto')
     const bytes = fs.readFileSync(path.join('static', TYRELL.asset.split('?')[0]))
     assert.equal(bytes.length, TYRELL.assetBytes)
-    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), '6f610bf7939cd0838a46ca6c044d82789415bae734a444fa0255994b039dd31d')
+    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), 'a9afa2abb0bde11e6e307ef5e71749b8cc54924385a7755febe212d9221af4dc')
     const json = JSON.parse(bytes.subarray(20, 20 + bytes.readUInt32LE(12)))
     assert.equal(json.cameras.length, 10)
     assert.equal(json.images.length, 25)
-    assert.equal(json.meshes.length, 107)
+    assert.equal(json.nodes.length, 115)
+    assert.equal(json.meshes.length, 101)
     const excludedNodes = [
         'Zylinder', 'Eagle_2', 'Eagle', 'Bonsai | pino y ceramica L',
         'Bonsai | pino y ceramica R', 'Consola | sobre podio original',
         'Antique urn', 'Antique urn.001', 'Pino | follaje L', 'Pino | follaje R',
-        'Atmosfera | polvo en haces de luz'
+        'Atmosfera | polvo en haces de luz', 'Instrument case', 'Instrument lid',
+        'Instrument clasp', 'Instrument clasp.001', 'Foot_3', 'Base_3'
     ]
     const names = new Set(json.nodes.map(node => node.name))
     for (const name of excludedNodes) assert.equal(names.has(name), false, `El GLB no debe incluir ${name}`)

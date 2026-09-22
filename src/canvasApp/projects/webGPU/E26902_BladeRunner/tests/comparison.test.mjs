@@ -17,3 +17,13 @@ test('Comparison rejects short windows, snapshots settings and bounds history wi
     assert.equal(history.rows.length,12);assert.equal(history.rows.at(-1).id,16)
     history.clear();assert.equal(history.rows.length,0)
 })
+
+test('Comparison records VK state and reflection cadence without retaining mutable references',()=>{
+    const history=new m.exports.default()
+    const report={metrics:{samples:120},voightKampff:{state:'open',progress:1},specularEnvironment:{minimumCaptureInterval:.5}}
+    const row=history.add(report)
+    report.voightKampff.state='closed'
+    assert.equal(row.voightKampff.state,'open')
+    assert.match(row.effects,/VK operativo/)
+    assert.match(row.effects,/Reflejos a 2 Hz/)
+})

@@ -5,6 +5,7 @@
     "build": "webpack --config ./bundler/webpack.prod.js",
     "test:tyrell": "node --test --test-isolation=none src/canvasApp/projects/webGPU/E26902_BladeRunner/tests/*.test.mjs",
     "export:camera-states": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/scripts/export-camera-states.mjs",
+    "export:vk-placement": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/scripts/export-vk-placement.mjs",
     "dev": "webpack serve --config ./bundler/webpack.dev.js",
     "dev:local": "webpack serve --config ./bundler/webpack.dev.js --env local"
   },

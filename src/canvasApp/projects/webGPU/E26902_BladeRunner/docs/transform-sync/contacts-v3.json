@@ -1,0 +1,35 @@
+{
+  "units": "metres, glTF Y up",
+  "method": "Lowest local vertices raycast against table support geometry",
+  "contacts": [
+    {
+      "name": "Cut_crystal_decanter",
+      "probes": 64,
+      "hits": 64,
+      "minGap": -1.7695128917694092e-8,
+      "maxGap": -1.7695128917694092e-8
+    },
+    {
+      "name": "Crystal_tumbler",
+      "probes": 80,
+      "hits": 80,
+      "minGap": -1.7695128917694092e-8,
+      "maxGap": -1.7695128917694092e-8
+    },
+    {
+      "name": "Crystal_tumbler001",
+      "probes": 80,
+      "hits": 80,
+      "minGap": -1.7695128917694092e-8,
+      "maxGap": -1.7695128917694092e-8
+    },
+    {
+      "name": "Leather_folio",
+      "probes": 4,
+      "hits": 4,
+      "minGap": 0.0003600211676955123,
+      "maxGap": 0.0003600211676955123
+    }
+  ],
+  "floorMisses": 0
+}

@@ -11,6 +11,7 @@ import cameraStateExport from './cameraStates.generated.json'
 import { CAMERA_STATES } from './cameraStates.config'
 import { createCameraStates, cameraStateForKey, cameraTransition } from './TyrellCameraStates'
 import TyrellUI from './TyrellUI'
+import { prepareGUISettings, applyGUISettings } from './TyrellGUISettings'
 import { captureReference, REFERENCE_CAPTURE } from './TyrellCapture'
 import { auditMaterialMaps } from './TyrellMaterialAudit'
 import TyrellCameraPan from './TyrellCameraPan'
@@ -39,6 +40,7 @@ import TyrellNearTraffic from './TyrellNearTraffic'
 import TyrellFlames from './TyrellFlames'
 import TyrellStartup from './TyrellStartup'
 import { measureGPUCapacity } from './TyrellGPUCapacity'
+import TyrellVKDevice from './TyrellVKDevice'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -58,6 +60,7 @@ export default class E26902_BladeRunner {
         this.exposureEV = 0
         this.studio = false
         this.lightingProfile = TYRELL.lightingProfile
+        this.vkDetailSavings = true
     }
     mount(app) {
         if (this.ui) return
@@ -77,6 +80,9 @@ export default class E26902_BladeRunner {
             navigationSpeed: value => { if (this.navigation) this.navigation.speed = Math.max(.25, Math.min(5, value)) },
             budget: mode => { if (BUDGET_MODES.includes(mode)) { this.budgetMode = mode; this.setQuality(this.quality) } },
             camera: index => this.selectCamera(index), quality: name => this.setQuality(name),
+            vkToggle: () => { if (this.vk?.toggle()) this.ui.setVKState(this.vk.motion.state) },
+            vkAuto: enabled => { if (this.vk) { this.vk.arrival.enabled = enabled; this.vk.arrival.cancel() } },
+            vkSavings: enabled => { this.vkDetailSavings = enabled; this.resetMetrics() },
             frame: enabled => { document.body.classList.toggle('tyrell-reference', enabled); app.size.update(); this.resetMetrics() },
             retry: () => this.rendererError ? location.reload() : this.load(),
             capture: () => { this.captureRequested = true }, report: () => this.downloadReport(),
@@ -204,20 +210,32 @@ export default class E26902_BladeRunner {
         this.ui.beginStartup()
         this.ui.status('Cargando la oficina Tyrell…')
         try {
+            const settingsURL = new URL('config/E26902_BladeRunner/gui.initial.json', new URL(this.app.pathPrefix, document.baseURI))
+            const response = await fetch(settingsURL, { signal: this.abort.signal, cache: 'no-store' })
+            if (!response.ok) throw new Error(`No se pudo cargar gui.initial.json (HTTP ${response.status})`)
+            this.initialGUISettings = await response.json()
+            this.preparedGUISettings = prepareGUISettings(this.ui.root, this.initialGUISettings, this.cameraStates)
             this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
                 (received, total, parsing) => this.ui.status(parsing ? 'Preparando geometría, materiales y cámaras…' : `Cargando escenario · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, total ? received / total : undefined))
             if (this.disposed) { disposeScene(this.asset.gltf.scene); return }
+            if (new URLSearchParams(location.search).get('vk') !== '0') {
+                this.vkAsset = await loadTyrell(new URL('glbs/E26902_BladeRunner/VK_Device.glb', new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
+                    (received, total, parsing) => this.ui.status(parsing ? 'Preparando el Voight-Kampff…' : `Cargando Voight-Kampff · ${(received / 1e6).toFixed(1)} MB`))
+                if (this.disposed) { disposeScene(this.vkAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
+            }
             this.skyTexture = await new THREE.TextureLoader().loadAsync(new URL(TYRELL.sky.texture, new URL(this.app.pathPrefix, document.baseURI)).href)
             this.skyTexture.colorSpace = THREE.SRGBColorSpace
             this.skyTexture.wrapS = THREE.ClampToEdgeWrapping
-            if (this.disposed) { this.skyTexture.dispose(); disposeScene(this.asset.gltf.scene); return }
+            if (this.disposed) { this.skyTexture.dispose(); disposeScene(this.asset.gltf.scene); disposeScene(this.vkAsset?.gltf.scene); return }
             this.app.emitter.emit('onProjectLoaded', {})
         } catch (error) {
+            // A parse/build failure must leave retry without a duplicate scene.
+            if (!this.vk?.group.parent) disposeScene(this.vkAsset?.gltf.scene)
+            disposeScene(this.asset?.gltf.scene)
+            this.vkAsset = null
+            this.asset = null
             if (error.name === 'AbortError' || this.disposed) return
             console.error('[Tyrell] Carga:', error)
-            // A parse/build failure must leave retry without a duplicate scene.
-            disposeScene(this.asset?.gltf.scene)
-            this.asset = null
             this.fill?.removeFromParent()
             this.ui.error(error)
         }
@@ -284,9 +302,15 @@ export default class E26902_BladeRunner {
             return light
         })
         this.lighting = new TyrellLighting(this.world3D, this.sun, this.fill, this.areaLights)
+        if (this.vkAsset) {
+            this.vk = new TyrellVKDevice(this.vkAsset.gltf.scene)
+            this.world3D.add(this.vk.group)
+            this.ui.setVKState(this.vk.motion.state)
+        } else this.ui.setVKState('disabled')
         this.post.flare = new TyrellLensFlare(this.lighting.disc, () => !this.studio && this.sun.visible && this.sun.intensity > 0)
         this.indirect = new TyrellIndirect(this.scene)
         this.specularEnvironment = new TyrellSpecularEnvironment(this.scene, this.world3D, this.floorReflection)
+        if (this.vk) this.specularEnvironment.register(this.vk.group, this.vk.materials)
         this.volume = new TyrellLightVolume(() => this.sun)
         this.atmosphere = new TyrellAtmosphere(this.scene, this.world3D, this.volume)
         this.sky = new TyrellSky(this.scene, this.lighting.sky, this.skyTexture, {
@@ -311,7 +335,7 @@ export default class E26902_BladeRunner {
             }
         })
         this.setLook({ profile: this.lookProfile, studio: this.studio })
-        this.selectCameraState(CAMERA_STATES.initial)
+        this.selectCameraState(this.initialGUISettings.camera.initialState)
         this.setQuality(this.quality)
         this.built = true
         // CanvasApp activates after build; run visibility reconciliation afterwards.
@@ -321,6 +345,7 @@ export default class E26902_BladeRunner {
         this.atmosphere.configure({ exterior: TYRELL.effects.exterior, interior: TYRELL.effects.interior })
         this.setVolume({ enabled: TYRELL.effects.volume })
         this.post.configure({ bloom: TYRELL.effects.bloom, grade: TYRELL.effects.grade })
+        applyGUISettings(this.preparedGUISettings)
         this.startup = new TyrellStartup({ fadeMs: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1500 })
         this.ui.status('Estabilizando la escena con los efectos activos…')
         this.resetMetrics()
@@ -345,6 +370,7 @@ export default class E26902_BladeRunner {
         this.activeCameraStateId = state.cameraStateId
         if (this.ui?.cameraSelect) this.ui.cameraSelect.value = String(index)
         this.stageCamera.setState(state, transition)
+        this.vk?.arrival.cancel()
         this.pan?.setReference(this.stageCamera.baseCamera, { preservePointer: !wasExploring, target: this.stageCamera.target })
         this.pan?.update(0)
         this.app.render.set_stageCamera(this.stageCamera.get_camera())
@@ -529,6 +555,8 @@ export default class E26902_BladeRunner {
             }
         }
         if (!this.colorBenchmark) {
+        const detailP1 = !!this.vk && this.vkDetailSavings && this.revealed && this.activeCameraStateId === 'p1' && !this.stageCamera.transition && !this.navigation?.enabled && !this.developmentControls
+        this.specularEnvironment?.setDetailMode(detailP1)
         const volumeNode = this.volume?.node
         if (this.volume?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)) this.floorReflection?.updates.invalidate()
         if (this.buildingLights?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)) {
@@ -558,6 +586,13 @@ export default class E26902_BladeRunner {
             this.pan?.setReference(this.stageCamera.baseCamera, { preservePointer: true, target: this.stageCamera.target })
             this.pan?.update(seconds)
         }
+        }
+        if (this.vk && !document.hidden && !this.colorBenchmark) {
+            const seconds = this.panTime === undefined ? 0 : (now - this.panTime) / 1000
+            const settledP1 = this.revealed && this.activeCameraStateId === 'p1' && !this.stageCamera.transition && !this.navigation?.enabled && !this.developmentControls
+            this.vk.update(seconds, settledP1)
+            if (this.vk.reflectionNeedsRefresh) this.floorReflection?.updates.invalidate()
+            this.ui.setVKState(this.vk.motion.state)
         }
         this.panTime = now
         if (this.previousFrame !== undefined && !document.hidden) {
@@ -617,6 +652,7 @@ export default class E26902_BladeRunner {
             columnRepair: this.columnCores?.userData.columnRepair || null,
             contactRepair: this.contactRepair || null,
             floorReflection: this.floorReflection?.diagnostics() || null,
+            voightKampff: this.vk?.diagnostics() || null,
             specularEnvironment: this.specularEnvironment?.diagnostics() || null,
             atmosphere: this.atmosphere?.diagnostics() || null,
             lightVolume: this.volume?.diagnostics() || null,
