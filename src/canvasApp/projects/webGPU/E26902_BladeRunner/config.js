@@ -1,7 +1,7 @@
 export const TYRELL = {
     // Revision query prevents a cached, earlier export from being reused after deployment.
-    asset: 'glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=1',
-    assetBytes: 40552456,
+    asset: 'glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=2',
+    assetBytes: 40552536,
     referenceAspect: 2.4,
     sky: {
         texture: 'textures/E26902_BladeRunner/sky-panorama-v2.png',

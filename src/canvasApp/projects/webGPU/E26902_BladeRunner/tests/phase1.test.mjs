@@ -23,7 +23,7 @@ function load(file, imports = {}) {
     return module.exports
 }
 const { TYRELL } = load(path.join(root, 'config.js'))
-const CameraRig = load(path.join(root, 'TyrellCameraRig.js'), { three: THREE, './config': { TYRELL } }).default
+const CameraRig = load(path.join(root, 'TyrellCameraRig.js'), { three: THREE, './config': { TYRELL }, './TyrellCameraStates': load(path.join(root, 'TyrellCameraStates.js')) }).default
 const { loadTyrell, disposeScene } = load(path.join(root, 'TyrellAssets.js'), { 'three/addons/loaders/GLTFLoader.js': { GLTFLoader } })
 const AppRender = load(path.resolve('src/canvasApp/core/AppRender.js'), { three: THREE, './utils/GPUProfiler': class {} }).default
 
@@ -116,7 +116,7 @@ test('Active model matches its reviewed revision and retains all cameras/resourc
     const crypto = await import('node:crypto')
     const bytes = fs.readFileSync(path.join('static', TYRELL.asset.split('?')[0]))
     assert.equal(bytes.length, TYRELL.assetBytes)
-    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), 'bf2108bbe13d32df23bfa34e598c1d98085e2322e859fbf62354240f7e6b8fa2')
+    assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), '6f610bf7939cd0838a46ca6c044d82789415bae734a444fa0255994b039dd31d')
     const json = JSON.parse(bytes.subarray(20, 20 + bytes.readUInt32LE(12)))
     assert.equal(json.cameras.length, 10)
     assert.equal(json.images.length, 25)

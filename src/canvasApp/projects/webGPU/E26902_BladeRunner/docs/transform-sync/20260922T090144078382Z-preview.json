@@ -1,0 +1,107 @@
+{
+  "source": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Blender\\20260914_BladeRunner_AUXILIAR.blend",
+  "sourceSha256": "870dbab4f75b3b0a9cf2c5c661caacb5b453b38b21b440d5091269a8d730651e",
+  "target": "D:\\Trabajo\\Proyectos_LEGION\\26_902_BladeRunner\\_Repo\\26_902_BladeRunner\\static\\glbs\\E26902_BladeRunner\\BladeRunner_5_6_High_v3_phase2.glb",
+  "applied": false,
+  "changed": false,
+  "beforeSha256": "6f610bf7939cd0838a46ca6c044d82789415bae734a444fa0255994b039dd31d",
+  "afterSha256": "6f610bf7939cd0838a46ca6c044d82789415bae734a444fa0255994b039dd31d",
+  "beforeBytes": 40552536,
+  "afterBytes": 40552536,
+  "binaryChunksUnchanged": true,
+  "onlySelectedNodeTransformsChanged": true,
+  "changes": [
+    {
+      "name": "Sillon 01 | frente",
+      "node": 67,
+      "before": {
+        "translation": [
+          1.4130347967147827,
+          0.0,
+          -8.471920013427734
+        ],
+        "rotation": [
+          -0.0,
+          -0.9121690392494202,
+          -0.0,
+          0.40981411933898926
+        ],
+        "scale": [
+          0.7400002479553223,
+          0.7400000095367432,
+          0.7400002479553223
+        ]
+      },
+      "after": {
+        "translation": [
+          1.4130347967147827,
+          0.0,
+          -8.471920013427734
+        ],
+        "rotation": [
+          -0.0,
+          -0.9121690392494202,
+          -0.0,
+          0.40981411933898926
+        ],
+        "scale": [
+          0.7400002479553223,
+          0.7400000095367432,
+          0.7400002479553223
+        ]
+      },
+      "blender_position": [
+        1.4130347967147827,
+        8.471920013427734,
+        0.0
+      ],
+      "blender_rotation_z_degrees": -131.6136881737787
+    },
+    {
+      "name": "Sillon 02 | fondo",
+      "node": 68,
+      "before": {
+        "translation": [
+          -0.23588508367538452,
+          0.0,
+          -11.720000267028809
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.7400000095367432,
+          0.7400000095367432,
+          0.7400000095367432
+        ]
+      },
+      "after": {
+        "translation": [
+          -0.23588508367538452,
+          0.0,
+          -11.720000267028809
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.7400000095367432,
+          0.7400000095367432,
+          0.7400000095367432
+        ]
+      },
+      "blender_position": [
+        -0.23588508367538452,
+        11.720000267028809,
+        0.0
+      ],
+      "blender_rotation_z_degrees": 0.0
+    }
+  ]
+}

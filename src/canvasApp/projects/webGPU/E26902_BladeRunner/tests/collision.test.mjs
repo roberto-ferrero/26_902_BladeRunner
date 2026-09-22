@@ -15,7 +15,8 @@ const { loadGeometry } = await import('../scripts/audit-contacts.mjs')
 const world = await loadGeometry(), collision = new Collision(world)
 test('Real scene blocks table, chair, columns and walls while keeping main aisle open', () => {
     assert.ok(collision.free(0, 5))
-    for (const [x,z] of [[0,-10], [.15,-8.5], [3,0], [-9,-5], [10,0], [0,-15], [6,-5]]) assert.equal(collision.free(x,z), false, `${x},${z}`)
+    for (const [x,z] of [[0,-10], [1.413,-8.472], [-.236,-11.72], [3,0], [-9,-5], [10,0], [0,-15], [6,-5]]) assert.equal(collision.free(x,z), false, `${x},${z}`)
+    assert.ok(collision.free(.15, -8.5), 'Former front-chair position is now clear')
 })
 test('Long and diagonal movement cannot tunnel into furniture and slides along it', () => {
     const p = new THREE.Vector3(1,1.65,-7)

@@ -12,15 +12,17 @@ export default class TyrellCameraPan {
         this.target = new Vector3()
         this.setReference()
     }
-    setReference(source = this.camera) {
+    setReference(source = this.camera, { preservePointer = false, target = null } = {}) {
         if (this.referenceCamera) this.referenceCamera.copy(source, false)
         else this.referenceCamera = source.clone(false)
-        this.pointer.set(0, 0); this.offset.set(0, 0)
+        if (!preservePointer) { this.pointer.set(0, 0); this.offset.set(0, 0) }
         this.right.set(1, 0, 0).applyQuaternion(this.referenceCamera.quaternion)
         this.up.set(0, 1, 0).applyQuaternion(this.referenceCamera.quaternion)
+        this.authoredTarget = target
         this.updateTarget()
     }
     updateTarget() {
+        if (this.authoredTarget) { this.target.copy(this.authoredTarget); return }
         this.target.set(0, 0, -1).applyQuaternion(this.referenceCamera.quaternion)
             .multiplyScalar(this.settings.targetDistance).add(this.referenceCamera.position)
     }
@@ -55,6 +57,8 @@ export default class TyrellCameraPan {
         this.apply()
     }
     apply() {
+        // Copy the current base lens/projection too, including animated viewOffset and resize.
+        this.camera.copy(this.referenceCamera, false)
         this.camera.position.copy(this.referenceCamera.position)
             .addScaledVector(this.right, this.offset.x).addScaledVector(this.up, this.offset.y)
         this.camera.up.copy(this.up)

@@ -3,13 +3,14 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import { createRequire } from 'node:module'
 import * as THREE from 'three'
+import { loadCameraSource } from './load-camera-source.mjs'
 const require = createRequire(import.meta.url)
 const filename = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/TyrellCameraRig.js'
 const code = require('@babel/core').transformSync(fs.readFileSync(filename, 'utf8'), {
     filename, configFile: false, babelrc: false, plugins: ['@babel/plugin-transform-modules-commonjs']
 }).code
 const module = { exports: {} }
-new Function('require', 'module', 'exports', code)((id) => id === 'three' ? THREE : { TYRELL: { referenceAspect: 2.4 } }, module, module.exports)
+new Function('require', 'module', 'exports', code)((id) => id === 'three' ? THREE : loadCameraSource(id + '.js'), module, module.exports)
 const Rig = module.exports.default
 function setup() {
     const app = { size: { CURRENT: { aspect: 2.4 } }, emitter: { on() {}, off() {} } }

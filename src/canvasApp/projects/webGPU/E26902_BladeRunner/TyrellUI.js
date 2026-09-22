@@ -15,7 +15,7 @@ export default class TyrellUI {
                 <label class="tyrell-check"><input type="checkbox" checked> Encuadre 2,4:1</label>
                 <button type="button" data-action="capture">Captura 1920 × 800</button>
                 <button type="button" data-action="report">Diagnóstico</button>
-            </div><p class="tyrell-note">Iluminación en calibración · Cámaras originales de Blender · Cámaras: 1–9 y 0 · Recorrido libre disponible en Navegación</p>
+            </div><p class="tyrell-note">Estados de cámara de Blender · Selección en GUI o mediante la tecla indicada</p>
             <p class="tyrell-metrics">Preparando la primera imagen…</p></footer>`
         document.body.appendChild(this.root)
         this.startupCover = document.createElement('div')
@@ -24,30 +24,21 @@ export default class TyrellUI {
         document.body.appendChild(this.startupCover)
         const navigationPanel = document.createElement('details')
         navigationPanel.className = 'tyrell-pan'
-        navigationPanel.innerHTML = `<summary>Navegación</summary><div class="tyrell-pan-controls">
-            <label>Modo<select aria-label="Modo de navegación"><option value="fixed">Cámaras de película</option><option value="free">Recorrido libre</option></select></label>
-            <label>Velocidad<input aria-label="Velocidad del recorrido" type="range" min="0.25" max="5" step="0.05" value="1.4"><output>1.4 m/s</output></label>
-            <button type="button" data-enter hidden>Entrar al recorrido</button></div>
-            <p>WASD o flechas: avanzar y desplazarse. Ratón: mirar. Altura constante, ajustable en la GUI. Escape: liberar el cursor. Colisiones con paredes, columnas y muebles; plataforma elevada delimitada.</p>`
-        this.navigationMode = navigationPanel.querySelector('select')
-        this.navigationMode.onchange = () => actions.navigation(this.navigationMode.value === 'free')
-        this.navigationEnter = navigationPanel.querySelector('[data-enter]')
-        this.navigationEnter.onclick = () => actions.enterNavigation()
-        const speed = navigationPanel.querySelector('input')
-        speed.oninput = () => { speed.nextElementSibling.value = `${speed.value} m/s`; actions.navigationSpeed(Number(speed.value)) }
-        const heightLabel = document.createElement('label')
-        heightLabel.innerHTML = 'Altura de los ojos<input aria-label="Altura de los ojos" type="range" min="1.2" max="1.9" step="0.05" value="1.65"><output>1.65 m</output>'
-        const height = heightLabel.querySelector('input')
-        height.oninput = () => { height.nextElementSibling.value = `${height.value} m`; actions.navigationHeight(Number(height.value)) }
-        navigationPanel.querySelector('div').append(heightLabel)
+        navigationPanel.innerHTML = `<summary>Navegación</summary><div class="tyrell-pan-controls"></div>
+            <p>Selecciona un estado de cámara o pulsa su tecla. El paneo sigue activo durante la transición. Una nueva selección continúa desde la vista actual.</p>`
         const transitionLabel = document.createElement('label')
         transitionLabel.innerHTML = 'Transición entre cámaras<input aria-label="Duración de transición" type="range" min="0" max="10" step="0.1" value="4.5"><output>4.5 s</output>'
         const transitionInput = transitionLabel.querySelector('input')
+        this.transitionInput = transitionInput
         transitionInput.oninput = () => { transitionInput.nextElementSibling.value = `${transitionInput.value} s`; actions.transitionDuration(Number(transitionInput.value)) }
         const restore = document.createElement('button')
         restore.type = 'button'; restore.textContent = 'Restaurar encuadre de referencia'
         restore.onclick = () => actions.restoreCamera()
-        navigationPanel.querySelector('div').append(transitionLabel, restore)
+        const easingLabel = document.createElement('label')
+        easingLabel.innerHTML = 'Curva de transición<select aria-label="Easing de transición"><option value="smoothstep">Suave</option><option value="linear">Lineal</option><option value="easeInOutCubic">Cúbica suave</option></select>'
+        this.transitionEasing = easingLabel.querySelector('select')
+        this.transitionEasing.onchange = () => actions.transitionEasing(this.transitionEasing.value)
+        navigationPanel.querySelector('div').append(transitionLabel, easingLabel, restore)
         this.root.querySelector('footer').append(navigationPanel)
         this.navigationHint = document.createElement('p')
         this.navigationHint.className = 'tyrell-navigation-hint'
@@ -155,8 +146,7 @@ export default class TyrellUI {
         for (const [key, title, max, step, unit, min] of [
             ['horizontal', 'Recorrido horizontal', 2, 0.01, 'm', 0],
             ['vertical', 'Recorrido vertical', 2, 0.01, 'm', 0],
-            ['smoothness', 'Suavidad', 2, 0.05, 's', 0],
-            ['targetDistance', 'Distancia al punto de mirada', 100, 1, 'm', 1]
+            ['smoothness', 'Suavidad', 2, 0.05, 's', 0]
         ]) {
             const label = document.createElement('label')
             const input = document.createElement('input'), output = document.createElement('output')
@@ -171,7 +161,7 @@ export default class TyrellUI {
         this.panEnabled.onchange = () => actions.pan({ enabled: this.panEnabled.checked })
         this.panPanel.querySelector('[data-pan-center]').onclick = () => actions.center()
         const hint = document.createElement('p')
-        hint.textContent = 'Mayor suavidad: respuesta más lenta. Recorrido máximo desde el centro en cada sentido. La mirada permanece fija; las capturas usan la cámara de referencia.'
+        hint.textContent = 'Mayor suavidad: respuesta más lenta. Recorrido máximo desde el centro en cada sentido. La mirada sigue el target de Blender, también en transición; las capturas omiten el paneo.'
         this.panPanel.append(hint)
         this.root.querySelector('footer').prepend(this.panPanel)
         const finishPanel = document.createElement('details')
@@ -221,7 +211,7 @@ export default class TyrellUI {
         this.progress = this.statusBox.querySelector('progress')
         this.retry = this.statusBox.querySelector('button')
         this.cameraSelect = this.root.querySelector('[aria-label="Cámara"]')
-        this.cameraSelect.title = 'Atajos: 1–9 y 0, en el orden del selector'
+        this.cameraSelect.title = 'Cada estado indica su tecla asignada'
         this.cameraSelect.onchange = () => actions.camera(Number(this.cameraSelect.value))
         this.root.querySelector('[aria-label="Calidad"]').onchange = event => actions.quality(event.target.value)
         this.root.querySelector('.tyrell-controls input').onchange = event => actions.frame(event.target.checked)
@@ -247,7 +237,7 @@ export default class TyrellUI {
         experience.setAttribute('aria-label', 'Controles de la experiencia')
         const intro = document.createElement('p')
         intro.className = 'tyrell-note'
-        intro.textContent = 'Cámaras: 1–9 y 0 · Explora la sala desde Navegación.'
+        intro.textContent = 'Elige un estado de cámara o pulsa su tecla. Ajusta la transición en Navegación.'
         experience.append(mainControls, intro, navigationPanel, this.panPanel)
         const cityPanel = document.createElement('details')
         cityPanel.className = 'tyrell-pan'
@@ -432,10 +422,8 @@ export default class TyrellUI {
     }
     setNavigationState(enabled, locked, message) {
         if (locked) this.setGUIVisible(false)
-        this.navigationMode.value = enabled ? 'free' : 'fixed'
-        this.navigationEnter.hidden = !enabled
         this.navigationHint.hidden = !enabled
-        this.navigationHint.textContent = message || (locked ? 'WASD · Ratón · Altura fija · Escape para pausar' : 'Recorrido pausado · Abre GUI > Navegación > Entrar al recorrido · Teclas 1–0: cámaras')
+        this.navigationHint.textContent = message || (locked ? 'WASD · Ratón · Altura fija · Escape para pausar' : 'Recorrido pausado · Selecciona un estado de cámara para volver')
         this.panPanel.querySelectorAll('input, button').forEach(input => { input.disabled = !!enabled })
     }
     setPanSettings(settings) {
@@ -469,6 +457,11 @@ export default class TyrellUI {
     cityColorStatus(state) {
         if (state) this.cityColorReadout.textContent = `Ángulo horizontal: ${state.yawDegrees.toFixed(1)}° · Luminosidad base aplicada: ${state.effectiveLightness.toFixed(2)} % · Ajuste angular ${state.angleColorActive ? 'activo' : 'desactivado'}`
     }
+    setTransitionSettings({ duration, easing }) {
+        this.transitionInput.value = duration
+        this.transitionInput.nextElementSibling.value = `${duration} s`
+        this.transitionEasing.value = easing
+    }
     ready(cameras, activeIndex) {
         this.startupCover.hidden = true
         this.guiContainer.inert = false
@@ -476,7 +469,7 @@ export default class TyrellUI {
         this.openGUI.hidden = false
         this.statusBox.hidden = true
         this.root.querySelector('footer').hidden = false
-        this.cameraSelect.replaceChildren(...cameras.map((camera, i) => new Option(camera.userData.name || camera.name, i)))
+        this.cameraSelect.replaceChildren(...cameras.map((state, i) => new Option(`${state.cameraStateId}${state.key == null ? '' : ` · tecla ${state.key}`}`, i)))
         this.cameraSelect.value = activeIndex
     }
     setGPUCapacity(capacity) {

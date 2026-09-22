@@ -20,11 +20,32 @@ function glb(suffix) {
 }
 const source = glb('edited'), clean = glb('phase2')
 
-test('Index cleanup preserves authored source, attributes, textures, materials, transforms and cameras byte-for-byte', () => {
+test('Index cleanup preserves source resources and all nodes except the two reviewed auxiliary transforms', () => {
     assert.equal(crypto.createHash('sha256').update(source.bytes).digest('hex'), '7b860e4fa93da9380d7cdc3f38116d6905f5907d68086c1fd36c6ba895ba334c')
-    for (const key of ['asset', 'scene', 'scenes', 'nodes', 'cameras', 'materials', 'textures', 'images', 'samplers', 'extensions', 'extensionsUsed', 'extensionsRequired', 'animations', 'skins']) {
+    for (const key of ['asset', 'scene', 'scenes', 'cameras', 'materials', 'textures', 'images', 'samplers', 'extensions', 'extensionsUsed', 'extensionsRequired', 'animations', 'skins']) {
         assert.deepEqual(clean.doc[key], source.doc[key], key)
     }
+    // Saved AUXILIAR.blend poses, 2026-09-22; Blender Z-up converted to glTF Y-up.
+    const poses = new Map([
+        ['Sillon 01 | frente', { position: [1.4130348, 0, -8.4719200], yaw: -131.6136882 }],
+        ['Sillon 02 | fondo', { position: [-.2358851, 0, -11.7200003], yaw: 0 }]
+    ])
+    assert.equal(clean.doc.nodes.length, source.doc.nodes.length)
+    clean.doc.nodes.forEach((node, i) => {
+        const expected = poses.get(node.name), original = source.doc.nodes[i]
+        if (!expected) return assert.deepEqual(node, original)
+        const stripTransform = ({ translation, rotation, scale, matrix, ...rest }) => rest
+        assert.deepEqual(stripTransform(node), stripTransform(original))
+        assert.equal(node.matrix, undefined)
+        node.translation.forEach((x, k) => assert.ok(Math.abs(x - expected.position[k]) < 1e-6))
+        node.scale.forEach(x => assert.ok(Math.abs(x - .74) < 1e-6))
+        const angle = expected.yaw * Math.PI / 360, q = node.rotation
+        const dot = Math.abs(q[1] * Math.sin(angle) + q[3] * Math.cos(angle))
+        assert.ok(Math.abs(dot - 1) < 1e-6)
+        assert.ok(Math.abs(q[0]) < 1e-6 && Math.abs(q[2]) < 1e-6)
+        poses.delete(node.name)
+    })
+    assert.equal(poses.size, 0)
     assert.equal(clean.doc.meshes.length, source.doc.meshes.length)
     source.doc.meshes.forEach((mesh, mi) => {
         const other = clean.doc.meshes[mi]

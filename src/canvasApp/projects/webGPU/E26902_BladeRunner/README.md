@@ -1,5 +1,7 @@
 # Oficinas Tyrell · Visor WebGPU
 
+**Nuevo sistema de cámaras (22/09/2026):** estados `initial` y `p1` del Blender auxiliar, seleccionables en GUI o con `0` y `1`. Transición de posición, target, FOV y viewOffset, con paneo activo e interrupciones desde la vista actual. Configuración manual en `cameraStates.config.js`; actualizar desde Blender con `npm run export:camera-states`. [Flujo y configuración](docs/CAMERA_STATES.md). Esta navegación sustituye el selector de diez cámaras y el recorrido libre descritos en las notas históricas inferiores.
+
 **Arranque actualizado:** GUI oculta con botón «Abrir GUI»; cabecera y FPS siempre visibles. Calidad Baja. Paneo horizontal 2 m, vertical 0,5 m y suavidad 1,4 s. Los controles conservan sus valores al ocultarse.
 
 **Capacidad GPU y revelado:** antes de cargar el GLB se ejecuta `tyrell-compute-v1` (4096 grupos × 64 hilos × 1024 iteraciones; 3 pasadas de calentamiento y hasta 12 muestras). El diagnóstico incluye `gpuCapacity.gpuScore` en iteraciones/ms, mediana, p90, variabilidad, método y fiabilidad. Los timestamps GPU son la medida preferida; sin soporte se usa tiempo de envío/completado de cola, marcado como aproximación no fiable. Una medición fallida devuelve `null`, nunca potencia cero. No se aplican todavía cortes de LOD: el índice mide cálculo entero sintético, no rendimiento geométrico. Comparar únicamente la misma versión y método. El bucle limita su presupuesto a 1,5 s y un watchdog permite continuar tras 4 s.

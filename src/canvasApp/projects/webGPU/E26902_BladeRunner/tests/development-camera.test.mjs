@@ -4,6 +4,7 @@ import fs from 'node:fs'
 import { createRequire } from 'node:module'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+import { loadCameraSource } from './load-camera-source.mjs'
 const require = createRequire(import.meta.url)
 const filename = 'src/canvasApp/projects/webGPU/E26902_BladeRunner/E26902_BladeRunner'
 const code = require('@babel/core').transformSync(fs.readFileSync(filename, 'utf8'), {
@@ -17,6 +18,7 @@ const module = { exports: {} }
 new Function('require', 'module', 'exports', code)(id => {
     if (id === 'three') return THREE
     if (id.includes('OrbitControls')) return { OrbitControls: Controls }
+    if (['./TyrellCameraStates', './cameraStates.config'].includes(id)) return loadCameraSource(id + '.js')
     return {}
 }, module, module.exports)
 const Project = module.exports.default
@@ -77,15 +79,18 @@ test('Selecting an authored camera exits orbit and restores the normal transitio
     globalThis.window = { matchMedia: () => ({ matches: false }) }
     project.setDevelopmentCamera(true)
     const controls = project.developmentControls
-    project.cameras = [camera.clone()]
+    project.cameraStates = [{ cameraStateId: 'initial' }]
     project.transitionDuration = 1
-    project.stageCamera.setSource = function(source, duration) { this.destination = source; this.transition = { duration } }
+    project.transitionEasing = 'linear'
+    project.stageCamera.adoptCurrentView = () => {}
+    project.stageCamera.setState = function(source, options) { this.baseCamera = source; this.transition = options }
     project.pan.setReference = source => { project.reference = source }
+    project.pan.update = () => {}
     project.app.render = { set_stageCamera() {} }
     Project.prototype.selectCamera.call(project, 0)
     assert.equal(controls.disposed, true)
     assert.equal(project.developmentControls, null)
     assert.equal(project.activeCameraIndex, 0)
-    assert.equal(project.reference, project.cameras[0])
+    assert.equal(project.reference, project.cameraStates[0])
     assert.equal(project.stageCamera.transition.duration, 1)
 })

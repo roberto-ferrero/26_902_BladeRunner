@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "source": "20260914_BladeRunner_AUXILIAR.blend",
+  "sourceSha256": "870dbab4f75b3b0a9cf2c5c661caacb5b453b38b21b440d5091269a8d730651e",
+  "coordinates": "metres, Y up; Blender (x, y, z) -> (x, z, -y)",
+  "fovUnits": "vertical degrees",
+  "warnings": [
+    "cameraspot-p1: accepted target casing cameratarget-P1 (expected cameratarget-p1)"
+  ],
+  "cameraStates": [
+    {
+      "cameraStateId": "initial",
+      "cameraSpot": "cameraspot-initial",
+      "cameraTarget": "cameratarget-initial",
+      "position": [
+        -0.11999999731779099,
+        1.550000786781311,
+        10.300000190734863
+      ],
+      "target": [
+        0.0,
+        1.9514189958572388,
+        -10.378293991088867
+      ],
+      "fov": 22.917504404217937,
+      "near": 0.029999999329447746,
+      "far": 2500.0
+    },
+    {
+      "cameraStateId": "p1",
+      "cameraSpot": "cameraspot-p1",
+      "cameraTarget": "cameratarget-P1",
+      "position": [
+        1.3377670049667358,
+        1.307905673980713,
+        -8.555198669433594
+      ],
+      "target": [
+        0.4587066173553467,
+        1.0849730968475342,
+        -10.378293991088867
+      ],
+      "fov": 37.51750443826372,
+      "near": 0.029999999329447746,
+      "far": 2500.0
+    }
+  ]
+}
