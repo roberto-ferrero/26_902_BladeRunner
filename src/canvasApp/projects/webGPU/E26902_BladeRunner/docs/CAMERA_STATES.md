@@ -9,27 +9,24 @@ El visor inicia en `initial`. `0` activa `initial` y `1` activa `p1`; el GUI mue
 2. Añade a la cámara un **Track To** hacia ese empty: **Track -Z**, **Up Y**, influencia **1**, **Target Z desactivado**.
 3. Ajusta la posición de ambos objetos y la lente/FOV de la cámara. Guarda el `.blend`.
 4. Desde la raíz del repositorio, ejecuta `npm run export:camera-states`.
-5. Opcionalmente añade `miEstado: { key: '2', viewOffset: { x: 0, y: 0 } }` en `cameraStates.config.js`.
+5. El nuevo estado aparece automáticamente en el selector del GUI, con `viewOffset` cero y el paneo `default`. Si quieres un atajo numérico, añade `"miEstado": "2"` a `camera.stateKeys` en `static/config/E26902_BladeRunner/gui.initial.json`.
 6. En desarrollo, webpack recarga el visor al cambiar el archivo generado. Para distribución, ejecuta `npm run build`.
 
-No se modifica ni guarda el Blender al exportar; tampoco se toca el GLB de geometría. Se genera `cameraStates.generated.json` con posiciones globales en metros, coordenadas Y arriba y FOV vertical en grados. Se respetan jerarquías, transformaciones evaluadas y el sensor fit/aspect de render de Blender. La escala visual de la cámara no escala la vista. El FOV vertical puede diferir del FOV horizontal que muestre Blender.
+No se modifica ni guarda el Blender al exportar; tampoco se toca el GLB de geometría. Se genera `cameraStates.generated.json` con posiciones globales en metros, coordenadas Y arriba y FOV vertical en grados. El comando sincroniza además `vkPlacement.generated.json`, que usa el mismo Blender auxiliar. Se respetan jerarquías, transformaciones evaluadas y el sensor fit/aspect de render de Blender. La escala visual de la cámara no escala la vista. El FOV vertical puede diferir del FOV horizontal que muestre Blender.
 
 El exportador busca Blender instalado en Windows, empezando por la versión más reciente. También admite `$env:BLENDER_BIN = 'C:\ruta\blender.exe'` o `blender` en PATH. Para otras rutas: `npm run export:camera-states -- --source RUTA --output RUTA`.
 
-El ID de la cámara conserva mayúsculas/minúsculas y debe coincidir exactamente en la configuración. Se toleran diferencias de mayúsculas en el nombre del target, con aviso, siempre que el Track To apunte a ese empty. El auxiliar actual contiene `cameratarget-P1` para `cameraspot-p1`. Los nombres originales quedan intactos. Una exportación inválida falla antes de sustituir el archivo generado.
+El ID de la cámara conserva mayúsculas/minúsculas y debe coincidir exactamente en la configuración. Se toleran diferencias de mayúsculas en el nombre del target, con aviso, siempre que el Track To apunte a ese empty. Los nombres originales quedan intactos. Una exportación inválida falla antes de sustituir el archivo generado.
 
 ## Configuración manual
 
-`cameraStates.config.js` no se sobrescribe al exportar:
+`cameraStates.config.js` solo se usa para offsets y excepciones de transición; no hace falta editarlo al crear estados:
 
 ```js
 export const CAMERA_STATES = {
     initial: 'initial',
     transition: { duration: 4.5, easing: 'smoothstep' },
-    states: {
-        initial: { key: '0', viewOffset: { x: 0, y: 0 } },
-        p1: { key: '1', viewOffset: { x: 0.1, y: -0.05 } }
-    },
+    states: { p1: { viewOffset: { x: 0.1, y: -0.05 } } },
     transitions: {
         'initial->p1': { duration: 3, easing: 'easeInOutCubic' }
     }
@@ -38,13 +35,13 @@ export const CAMERA_STATES = {
 
 El ejemplo de offset es ilustrativo: ambos estados incluidos usan cero. `viewOffset.x` se expresa como fracción del ancho; `y`, como fracción del alto. Un `x` positivo desplaza la ventana de proyección hacia la derecha (el contenido aparece más a la izquierda). Un `y` positivo desplaza la ventana hacia abajo (el contenido aparece más arriba). `0.1` equivale al 10 %. El offset no rota la cámara ni cambia el target y se conserva al redimensionar o capturar.
 
-Si falta `viewOffset` o uno de sus ejes, vale cero. Un estado sin tecla sigue disponible en el GUI. Las teclas se indican como un carácter; se ignoran mientras se escribe en campos, hay un diálogo abierto o se pulsan modificadores. `C` continúa reservada para la cámara de desarrollo. El recorrido libre anterior ya no se ofrece en el GUI de navegación.
+Si falta `viewOffset` o uno de sus ejes, vale cero. Un estado sin tecla sigue disponible en el GUI. Las teclas numéricas se asignan en `camera.stateKeys` del JSON, con el ID como clave: `"initial": "0", "p1": "1"`. Se ignoran mientras se escribe en campos, hay un diálogo abierto o se pulsan modificadores. `C` continúa reservada para la cámara de desarrollo y `V` abre o cierra el Voight-Kampff. El recorrido libre anterior ya no se ofrece en el GUI de navegación.
 
 Las duraciones son segundos. Curvas disponibles: `linear`, `smoothstep`, `easeInOutCubic`. El GUI modifica los valores generales durante esa sesión; las excepciones `origen->destino` tienen prioridad. La ruta se identifica por el último estado seleccionado, incluso si su transición todavía no ha terminado. Duración cero aplica el estado inmediatamente; también se respeta la preferencia del sistema de movimiento reducido.
 
 ## Comportamiento e integración
 
-La cámara base interpola posición, target, FOV, planos de recorte, ambos ejes del offset y los rangos/suavidad del paneo. Cada estado incorpora `mousePan`: se resuelve desde `camera.mousePan.default` y la excepción opcional `camera.mousePan.states[id]` de `static/config/E26902_BladeRunner/gui.initial.json`. El default actual tiene 2 m horizontales, 0,5 m verticales y 1,4 s de suavidad; `p1` sobrescribe solo el rango horizontal con 0,5 m. [Configuración del paneo](GUI_CONFIGURACION.md).
+La cámara base interpola posición, target, FOV, planos de recorte, ambos ejes del offset y los rangos/suavidad del paneo. Cada estado incorpora `mousePan`: se resuelve desde `camera.mousePan.default` y la excepción opcional `camera.mousePan.states[id]` de `static/config/E26902_BladeRunner/gui.initial.json`. El default actual tiene 2 m horizontales, 0,5 m verticales y 1,4 s de suavidad; `p1` sobrescribe los rangos horizontal y vertical con 0,5 m y 0,2 m. [Configuración del paneo](GUI_CONFIGURACION.md).
 
 La cámara de render recibe el paneo en los ejes locales de esa base y sigue mirando al target interpolado. Se usa una base separada en vez de introducir un padre en el grafo: los reflejos, las capturas y las herramientas de desarrollo existentes consumen posiciones globales de la cámara.
 

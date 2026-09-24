@@ -16,4 +16,14 @@ const script = fileURLToPath(new URL('./export-camera-states.py', import.meta.ur
 const result = spawnSync(blender || 'blender', ['--background', '--disable-autoexec', '--python-exit-code', '1',
     '--python', resolve(script), '--', ...process.argv.slice(2)], { stdio: 'inherit' })
 if (result.error) console.error('No se pudo iniciar Blender. Configura BLENDER_BIN con la ruta al ejecutable.', result.error.message)
-process.exit(result.status ?? 1)
+if (result.status !== 0) process.exit(result.status ?? 1)
+
+// The default camera source is also the VK placement source. Keep their provenance
+// and placement in sync when this command is run without custom export paths.
+if (process.argv.length === 2) {
+    const vkScript = fileURLToPath(new URL('./export-vk-placement.py', import.meta.url))
+    const vk = spawnSync(blender || 'blender', ['--background', '--disable-autoexec', '--python-exit-code', '1',
+        '--python', vkScript], { stdio: 'inherit' })
+    if (vk.error) console.error('No se pudo actualizar la posición del Voight-Kampff.', vk.error.message)
+    process.exit(vk.status ?? 1)
+}

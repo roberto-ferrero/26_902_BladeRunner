@@ -16,7 +16,7 @@ JSON permite un árbol explícito sin añadir dependencias. No admite comentario
 
 Los sufijos `Seconds`, `Meters`, `Degrees`, `Percent` y `EV` expresan las unidades. `rightBuildingLightnessStep` y `leftBuildingLightnessStep` son puntos porcentuales de luminosidad por edificio. `resolutionScale` acepta `"auto"`, `"0.25"`, `"0.5"` o `"1"`. Los booleanos se escriben como `true` o `false`, sin comillas.
 
-`camera.initialState` utiliza el identificador del estado exportado de Blender (actualmente `initial` o `p1`). Las poses, teclas y excepciones de transición por pareja siguen en los archivos de estados de cámara. Los botones de acción, resultados de mediciones y estados temporales del dispositivo no son parámetros iniciales.
+`camera.initialState` utiliza el identificador del estado exportado de Blender. Las poses nuevas se incorporan al selector con `npm run export:camera-states`. Para asignar atajos numéricos, añade el ID exacto y una cifra de `0` a `9` en `camera.stateKeys`, por ejemplo `"p2": "2"`. Un ID puede quedar sin tecla y seguir disponible en el GUI. Los IDs desconocidos, las teclas repetidas y los valores que no son una sola cifra se rechazan al cargar. `V` abre o cierra el Voight-Kampff; su botón en el GUI hace lo mismo. Las excepciones de transición por pareja siguen en `cameraStates.config.js`. Los botones de acción, resultados de mediciones y estados temporales del dispositivo no son parámetros iniciales.
 
 El paneo pertenece a cada `cameraState`. `camera.mousePan.default` contiene el juego completo de valores y `camera.mousePan.states` permite sobrescribir solo las propiedades que cambian en cada estado:
 
@@ -29,12 +29,12 @@ El paneo pertenece a cada `cameraState`. `camera.mousePan.default` contiene el j
     "smoothingSeconds": 1.4
   },
   "states": {
-    "p1": { "horizontalTravelMeters": 0.5 }
+    "p1": { "horizontalTravelMeters": 0.5, "verticalTravelMeters": 0.2 }
   }
 }
 ```
 
-Los estados sin excepción usan `default`; `p1` hereda activación, rango vertical y suavidad. `states` es opcional y los IDs deben existir en el catálogo exportado. Las propiedades numéricas mantienen los límites y pasos de los controles del GUI (rangos de 0 a 2 m; suavidad de 0 a 2 s).
+Los estados sin excepción usan `default`; `p1` hereda activación y suavidad. `states` es opcional y los IDs deben existir en el catálogo exportado. Las propiedades numéricas mantienen los límites y pasos de los controles del GUI (rangos de 0 a 2 m; suavidad de 0 a 2 s).
 
 Durante el travelling se interpolan rango horizontal, rango vertical y suavidad con el mismo easing de la cámara. Si el paneo está desactivado en un extremo, sus rangos efectivos se interpolan hacia o desde cero. La posición suavizada del ratón se conserva independientemente del rango, incluso al interrumpir el travelling. Al iniciar directamente en `p1`, se aplica su excepción desde el primer fotograma.
 

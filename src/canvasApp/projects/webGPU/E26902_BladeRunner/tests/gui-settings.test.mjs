@@ -14,7 +14,7 @@ function fixture() {
     }))
     return { root: { querySelector: selector => controls.get(selector) }, controls, calls }
 }
-const cameras = [{ cameraStateId: 'initial' }, { cameraStateId: 'p1' }]
+const cameras = [{ cameraStateId: 'initial' }, { cameraStateId: 'p1' }, { cameraStateId: 'p2' }]
 test('Startup configuration covers each binding and applies falsy values through the UI actions', () => {
     const { root, calls } = fixture(), settings = structuredClone(initial)
     settings.atmosphere.dust.enabled = false
@@ -60,8 +60,28 @@ test('Starting in p1 initializes its effective pan instead of overwriting it wit
     settings.camera.initialState = 'p1'
     applyGUISettings(prepareGUISettings(root, settings, cameras))
     assert.deepEqual(calls.find(([path]) => path === 'camera.mousePan.default.horizontalTravelMeters'), ['camera.mousePan.default.horizontalTravelMeters', '0.5'])
-    assert.deepEqual(calls.find(([path]) => path === 'camera.mousePan.default.verticalTravelMeters'), ['camera.mousePan.default.verticalTravelMeters', '0.5'])
+    assert.deepEqual(calls.find(([path]) => path === 'camera.mousePan.default.verticalTravelMeters'), ['camera.mousePan.default.verticalTravelMeters', '0.2'])
     assert.equal(settings.camera.mousePan.default.horizontalTravelMeters, 2)
+})
+
+test('State key bindings validate IDs, digit types and uniqueness before applying GUI settings', () => {
+    const { root, calls } = fixture(), valid = structuredClone(initial)
+    valid.camera.stateKeys.p2 = '2'
+    assert.equal(prepareGUISettings(root, valid, cameras).length, GUI_BINDINGS.length)
+    for (const mutate of [
+        c => { c.camera.stateKeys.missing = '2' },
+        c => { c.camera.stateKeys.p2 = '1' },
+        c => { c.camera.stateKeys.p2 = 'v' },
+        c => { c.camera.stateKeys.p2 = 2 },
+        c => { c.camera.stateKeys.p2 = '10' },
+        c => { delete c.camera.stateKeys },
+        c => { c.camera.stateKeys = [] }
+    ]) {
+        const settings = structuredClone(initial)
+        mutate(settings)
+        assert.throws(() => prepareGUISettings(root, settings, cameras), /stateKeys/)
+        assert.equal(calls.length, 0)
+    }
 })
 
 test('State pan overrides reject unknown IDs, fields, types and invalid slider values before applying anything', () => {

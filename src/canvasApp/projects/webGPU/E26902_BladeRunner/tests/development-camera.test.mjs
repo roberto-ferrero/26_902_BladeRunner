@@ -95,3 +95,28 @@ test('Selecting an authored camera exits orbit and restores the normal transitio
     assert.equal(project.reference, project.cameraStates[0])
     assert.equal(project.stageCamera.transition.duration, 1)
 })
+
+test('V shares the device toggle with the GUI; numeric shortcuts respect input focus and modifiers', () => {
+    const { project } = setup()
+    let toggles = 0, states = [], selected = []
+    project.revealed = true
+    project.disposed = false
+    project.ui = { dialog: { open: false }, setVKState: state => states.push(state) }
+    project.vk = { motion: { state: 'closed' }, toggle() { toggles++; this.motion.state = this.motion.state === 'closed' ? 'open' : 'closed'; return true } }
+    project.cameraStates = [{ cameraStateId: 'initial', key: '0' }, { cameraStateId: 'p1', key: '1' }]
+    project.selectCameraState = id => selected.push(id)
+    const press = (key, extras = {}) => {
+        const event = { key, preventDefault() { this.prevented = true }, ...extras }
+        project.handleShortcut(event)
+        return event.prevented === true
+    }
+    assert.equal(press('v'), true)
+    assert.equal(press('V'), true)
+    assert.deepEqual(states, ['open', 'closed']); assert.equal(toggles, 2)
+    assert.equal(press('1'), true); assert.deepEqual(selected, ['p1'])
+    assert.equal(press('2'), false)
+    assert.equal(press('v', { repeat: true }), false)
+    assert.equal(press('v', { target: { closest: () => ({}) } }), false)
+    assert.equal(press('1', { ctrlKey: true }), false)
+    assert.equal(toggles, 2); assert.deepEqual(selected, ['p1'])
+})

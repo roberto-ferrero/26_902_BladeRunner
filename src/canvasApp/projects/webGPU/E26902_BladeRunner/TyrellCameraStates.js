@@ -34,7 +34,7 @@ export function createCameraStates(document, settings) {
     if (document.version !== 1 || !Array.isArray(document.cameraStates) || !document.cameraStates.length) {
         throw new Error('Exportación de cameraStates vacía o incompatible.')
     }
-    const ids = new Set(), keys = new Set()
+    const ids = new Set()
     cameraTransition(settings.transition)
     const states = document.cameraStates.map(source => {
         const id = source.cameraStateId
@@ -46,12 +46,10 @@ export function createCameraStates(document, settings) {
         if (source.position.every((v, i) => v === source.target[i]) || !Number.isFinite(source.fov) || source.fov <= 0 || source.fov >= 180 ||
             !Number.isFinite(source.near) || source.near <= 0 || !Number.isFinite(source.far) || source.far <= source.near) throw new Error(`${id}: lente o target inválidos`)
         const manual = Object.hasOwn(settings.states || {}, id) ? settings.states[id] : {}
+        if (Object.hasOwn(manual, 'key')) throw new Error(`${id}: configura la tecla en camera.stateKeys de gui.initial.json`)
         const viewOffset = { x: 0, y: 0, ...manual.viewOffset }
         if (![viewOffset.x, viewOffset.y].every(Number.isFinite)) throw new Error(`${id}: viewOffset inválido`)
-        const key = manual.key == null ? null : String(manual.key).toLowerCase()
-        if (key !== null && (key.length !== 1 || keys.has(key) || key === 'c')) throw new Error(`${id}: tecla duplicada, inválida o reservada (C)`)
-        if (key !== null) keys.add(key)
-        return { ...source, key, viewOffset, mousePan: cameraStatePan(null, id) }
+        return { ...source, key: null, viewOffset, mousePan: cameraStatePan(null, id) }
     })
     if (!states.some(state => state.cameraStateId === settings.initial)) throw new Error(`Falta cameraState inicial: ${settings.initial}`)
     for (const [route, override] of Object.entries(settings.transitions || {})) {
@@ -59,6 +57,21 @@ export function createCameraStates(document, settings) {
         cameraTransition(settings.transition, override)
     }
     return states
+}
+
+export function applyCameraStateKeys(states, bindings) {
+    if (!bindings || typeof bindings !== 'object' || Array.isArray(bindings)) {
+        throw new Error('camera.stateKeys debe ser un objeto de IDs y teclas numéricas')
+    }
+    const ids = new Set(states.map(state => state.cameraStateId))
+    const keys = new Set()
+    for (const [id, key] of Object.entries(bindings)) {
+        if (!ids.has(id)) throw new Error(`camera.stateKeys: estado desconocido ${id}`)
+        if (typeof key !== 'string' || !/^[0-9]$/.test(key)) throw new Error(`camera.stateKeys.${id}: se esperaba una tecla numérica de 0 a 9`)
+        if (keys.has(key)) throw new Error(`camera.stateKeys: tecla ${key} duplicada`)
+        keys.add(key)
+    }
+    return states.map(state => ({ ...state, key: Object.hasOwn(bindings, state.cameraStateId) ? bindings[state.cameraStateId] : null }))
 }
 
 export function cameraStateForKey(states, key) {

@@ -84,6 +84,9 @@ export function prepareGUISettings(root, settings, cameraStates) {
     if (values.schemaVersion !== 1) throw new Error('schemaVersion debe ser 1')
     if (!cameraStates.some(state => state.cameraStateId === values['camera.initialState'])) throw new Error('camera.initialState no existe en los estados de cámara')
     const known = new Set(['schemaVersion', 'camera.initialState', ...GUI_BINDINGS.map(([path]) => path)])
+    const stateKeys = settings.camera?.stateKeys
+    applyCameraStateKeys(cameraStates, stateKeys)
+    for (const id of Object.keys(stateKeys)) known.add(`camera.stateKeys.${id}`)
     const overrides = []
     for (const [id, pan] of Object.entries(settings.camera.mousePan.states || {})) {
         if (!cameraStates.some(state => state.cameraStateId === id)) throw new Error(`Paneo de estado desconocido: ${id}`)
@@ -133,4 +136,4 @@ export function applyGUISettings(prepared) {
         handler.call(control, { target: control })
     }
 }
-import { PAN_SETTING_KEYS, cameraStatePan } from './TyrellCameraStates'
+import { PAN_SETTING_KEYS, cameraStatePan, applyCameraStateKeys } from './TyrellCameraStates'

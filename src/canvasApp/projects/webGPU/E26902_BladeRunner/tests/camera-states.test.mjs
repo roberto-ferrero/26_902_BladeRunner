@@ -6,7 +6,7 @@ import { loadCameraSource } from './load-camera-source.mjs'
 
 const Rig = loadCameraSource('TyrellCameraRig.js').default
 const Pan = loadCameraSource('TyrellCameraPan.js').default
-const { createCameraStates, cameraStateForKey, cameraTransition, cameraStatePan } = loadCameraSource('TyrellCameraStates.js')
+const { createCameraStates, applyCameraStateKeys, cameraStateForKey, cameraTransition, cameraStatePan } = loadCameraSource('TyrellCameraStates.js')
 const { CAMERA_STATES } = loadCameraSource('cameraStates.config.js')
 const exported = loadCameraSource('cameraStates.generated.json')
 const a = { cameraStateId: 'a', position: [0, 2, 10], target: [0, 1, 0], fov: 30, near: .03, far: 2500, viewOffset: { x: 0, y: 0 } }
@@ -29,33 +29,46 @@ function setup() {
 const near = (actual, expected) => assert.ok(Math.abs(actual - expected) < 1e-8, `${actual} != ${expected}`)
 const vector = (actual, expected) => assert.ok(actual.distanceTo(new THREE.Vector3(...expected)) < 1e-8)
 
-test('Actual Blender export loads initial and p1; manual settings remain separate and new states need no key', () => {
+test('Current Blender export integrates every state without manual entries in cameraStates.config.js', () => {
     const states = createCameraStates(exported, CAMERA_STATES)
-    assert.equal(cameraStateForKey(states, '0').cameraStateId, 'initial')
-    assert.equal(cameraStateForKey(states, '1').cameraStateId, 'p1')
-    assert.equal(cameraStateForKey(states, '9'), undefined)
+    assert.deepEqual(states.map(state => state.cameraStateId), exported.cameraStates.map(state => state.cameraStateId))
+    assert.equal(states.every(state => state.key === null), true)
     assert.equal(states.find(s => s.cameraStateId === 'p1').cameraTarget, 'cameratarget-p1')
     const doc = structuredClone(exported)
     doc.cameraStates.push({ ...a, cameraStateId: 'new' })
     const added = createCameraStates(doc, CAMERA_STATES).at(-1)
     assert.equal(added.key, null); assert.deepEqual(added.viewOffset, { x: 0, y: 0 })
     const settings = structuredClone(CAMERA_STATES)
-    settings.states.p1.viewOffset = { x: .1 }
+    settings.states.p1 = { viewOffset: { x: .1 } }
     settings.transitions = { 'initial->p1': { duration: 2, easing: 'linear' } }
     assert.deepEqual(createCameraStates(exported, settings)[1].viewOffset, { x: .1, y: 0 })
     assert.deepEqual(cameraTransition(settings.transition, settings.transitions['initial->p1']), { duration: 2, easing: 'linear' })
 })
 
-test('Malformed states, duplicate keys and invalid transition settings are rejected', () => {
+test('Malformed states and invalid transition settings are rejected', () => {
     const bad = mutate => { const doc = structuredClone(exported), settings = structuredClone(CAMERA_STATES); mutate(doc, settings); assert.throws(() => createCameraStates(doc, settings)) }
     bad(doc => { doc.cameraStates[1].cameraStateId = 'INITIAL' })
     bad(doc => { doc.cameraStates[0].target = doc.cameraStates[0].position })
     bad(doc => { doc.cameraStates[0].fov = NaN })
-    bad((doc, settings) => { settings.states.p1.key = 0 })
-    bad((doc, settings) => { settings.states.p1.viewOffset.x = Infinity })
+    bad((doc, settings) => { settings.states.p1 = { key: '1' } })
+    bad((doc, settings) => { settings.states.p1 = { viewOffset: { x: Infinity } } })
     bad((doc, settings) => { settings.transitions = { 'missing->p1': { duration: 2 } } })
     assert.throws(() => cameraTransition({ duration: -1, easing: 'linear' }))
     assert.throws(() => cameraTransition({ duration: 1, easing: 'unknown' }))
+})
+
+test('Numeric shortcuts come only from gui.initial.json and do not limit GUI-only states', () => {
+    const states = createCameraStates(exported, CAMERA_STATES)
+    const configured = applyCameraStateKeys(states, { initial: '0', p1: '1' })
+    assert.equal(cameraStateForKey(configured, '0').cameraStateId, 'initial')
+    assert.equal(cameraStateForKey(configured, '1').cameraStateId, 'p1')
+    assert.equal(cameraStateForKey(configured, '9'), undefined)
+    assert.equal(configured.find(state => state.cameraStateId === 'p2').key, null)
+    assert.equal(applyCameraStateKeys(configured, { p2: '2' }).find(state => state.cameraStateId === 'p2').key, '2')
+    assert.equal(states.every(state => state.key === null), true)
+    for (const invalid of [{ missing: '2' }, { initial: '1', p1: '1' }, { p2: 'v' }, { p2: 2 }, { p2: '10' }, [], null]) {
+        assert.throws(() => applyCameraStateKeys(states, invalid))
+    }
 })
 
 test('Position, target, vertical FOV and both offset axes interpolate independently', () => {
@@ -132,11 +145,12 @@ test('Configured duration measures elapsed seconds even on slow frames', () => {
     frame(.4); assert.equal(rig.transition, null); vector(rig.camera.position, b.position)
 })
 
-test('Each cameraState owns pan defaults; p1 overrides only its horizontal range from gui.initial.json', () => {
+test('Each cameraState owns pan defaults; p1 keeps the configured horizontal and vertical overrides', () => {
     const config = JSON.parse(fs.readFileSync('static/config/E26902_BladeRunner/gui.initial.json', 'utf8')).camera.mousePan
     const initial = cameraStatePan(config, 'initial'), p1 = cameraStatePan(config, 'p1')
     assert.equal(initial.horizontal, 2); assert.equal(p1.horizontal, .5)
-    for (const key of ['enabled', 'vertical', 'smoothness']) assert.equal(initial[key], p1[key])
+    assert.equal(p1.vertical, .2)
+    for (const key of ['enabled', 'smoothness']) assert.equal(initial[key], p1[key])
     assert.deepEqual(cameraStatePan(config, 'newState'), initial)
     const states = createCameraStates(exported, CAMERA_STATES)
     states[0].mousePan.horizontal = .3

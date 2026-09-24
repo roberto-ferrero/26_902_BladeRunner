@@ -9,7 +9,7 @@ import { loadTyrell, disposeScene } from './TyrellAssets'
 import TyrellCameraRig from './TyrellCameraRig'
 import cameraStateExport from './cameraStates.generated.json'
 import { CAMERA_STATES } from './cameraStates.config'
-import { createCameraStates, cameraStateForKey, cameraTransition, cameraStatePan } from './TyrellCameraStates'
+import { createCameraStates, applyCameraStateKeys, cameraStateForKey, cameraTransition, cameraStatePan } from './TyrellCameraStates'
 import TyrellUI from './TyrellUI'
 import { prepareGUISettings, applyGUISettings } from './TyrellGUISettings'
 import { captureReference, REFERENCE_CAPTURE } from './TyrellCapture'
@@ -80,7 +80,7 @@ export default class E26902_BladeRunner {
             navigationSpeed: value => { if (this.navigation) this.navigation.speed = Math.max(.25, Math.min(5, value)) },
             budget: mode => { if (BUDGET_MODES.includes(mode)) { this.budgetMode = mode; this.setQuality(this.quality) } },
             camera: index => this.selectCamera(index), quality: name => this.setQuality(name),
-            vkToggle: () => { if (this.vk?.toggle()) this.ui.setVKState(this.vk.motion.state) },
+            vkToggle: () => this.toggleVK(),
             vkAuto: enabled => { if (this.vk) { this.vk.arrival.enabled = enabled; this.vk.arrival.cancel() } },
             vkSavings: enabled => { this.vkDetailSavings = enabled; this.resetMetrics() },
             vkChassisColor: color => { if (this.vk?.setChassisColor(color)) this.floorReflection?.updates.invalidate() },
@@ -151,19 +151,7 @@ export default class E26902_BladeRunner {
         }
         this.pointerLeave = () => this.pan.setPointer(0, 0)
         this.windowBlur = () => { if (!this.developmentControls && !this.navigation?.enabled) this.pan.reset(); this.panTime = undefined }
-        this.cameraKeyDown = event => {
-            if (!this.revealed || !this.built || this.disposed || event.repeat || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return
-            if (event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable], [role="textbox"]') || this.ui.dialog.open) return
-            if (event.key.toLowerCase() === 'c') {
-                event.preventDefault()
-                this.setDevelopmentCamera(!this.developmentControls)
-                return
-            }
-            const state = cameraStateForKey(this.cameraStates, event.key)
-            if (!state) return
-            event.preventDefault()
-            this.selectCameraState(state.cameraStateId)
-        }
+        this.cameraKeyDown = event => this.handleShortcut(event)
         window.addEventListener('keydown', this.cameraKeyDown)
         window.addEventListener('pointermove', this.pointerMove)
         document.documentElement.addEventListener('pointerleave', this.pointerLeave)
@@ -216,7 +204,7 @@ export default class E26902_BladeRunner {
             if (!response.ok) throw new Error(`No se pudo cargar gui.initial.json (HTTP ${response.status})`)
             this.initialGUISettings = await response.json()
             this.preparedGUISettings = prepareGUISettings(this.ui.root, this.initialGUISettings, this.cameraStates)
-            this.cameraStates = this.cameraStates.map(state => ({ ...state,
+            this.cameraStates = applyCameraStateKeys(this.cameraStates, this.initialGUISettings.camera.stateKeys).map(state => ({ ...state,
                 mousePan: cameraStatePan(this.initialGUISettings.camera.mousePan, state.cameraStateId) }))
             this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
                 (received, total, parsing) => this.ui.status(parsing ? 'Preparando geometría, materiales y cámaras…' : `Cargando escenario · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, total ? received / total : undefined))
@@ -357,6 +345,29 @@ export default class E26902_BladeRunner {
         const index = this.cameraStates.findIndex(state => state.cameraStateId === cameraStateId)
         if (index < 0) return false
         return this.selectCamera(index, options)
+    }
+    handleShortcut(event) {
+        if (!this.revealed || !this.built || this.disposed || event.repeat || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return
+        if (event.target?.isContentEditable || event.target?.closest?.('input, textarea, select, [contenteditable], [role="textbox"]') || this.ui.dialog.open) return
+        if (event.key.toLowerCase() === 'c') {
+            event.preventDefault()
+            this.setDevelopmentCamera(!this.developmentControls)
+            return
+        }
+        if (event.key.toLowerCase() === 'v') {
+            event.preventDefault()
+            this.toggleVK()
+            return
+        }
+        const state = cameraStateForKey(this.cameraStates, event.key)
+        if (!state) return
+        event.preventDefault()
+        this.selectCameraState(state.cameraStateId)
+    }
+    toggleVK() {
+        if (!this.vk?.toggle()) return false
+        this.ui.setVKState(this.vk.motion.state)
+        return true
     }
     selectCamera(index, options = {}) {
         const state = this.cameraStates?.[index]

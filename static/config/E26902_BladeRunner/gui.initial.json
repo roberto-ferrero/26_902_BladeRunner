@@ -2,6 +2,11 @@
   "schemaVersion": 1,
   "camera": {
     "initialState": "initial",
+    "stateKeys": {
+      "initial": "0",
+      "p1": "1",
+      "p2": "2"
+    },
     "transition": {
       "durationSeconds": 4.5,
       "easing": "smoothstep"
@@ -15,7 +20,8 @@
       },
       "states": {
         "p1": {
-          "horizontalTravelMeters": 0.5
+          "horizontalTravelMeters": 0.5,
+          "verticalTravelMeters": 0.2
         }
       }
     }
