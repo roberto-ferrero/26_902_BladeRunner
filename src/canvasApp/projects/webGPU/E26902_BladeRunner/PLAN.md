@@ -1,8 +1,10 @@
 # E26902 Blade Runner · Plan de trabajo
 
+Actualización de navegación (24-09-2026): la navegación vigente usa `cameraStates` exportados de `_Blender/20260914_BladeRunner_AUXILIAR.blend`. Cada par `cameraspot-[id]` / `cameratarget-[id]` se incorpora al selector con `npm run export:camera-states`; las teclas numéricas se asignan por ID en `static/config/E26902_BladeRunner/gui.initial.json`. El paneo pertenece a cada estado y se interpola durante el travelling. `V` despliega o repliega el Voight-Kampff. Las fases 7.1–7.3 y 7.6 describen implementaciones históricas sustituidas; no son tareas pendientes ni requisitos de la navegación actual. [Flujo y límites](docs/CAMERA_STATES.md).
+
 Ampliación iniciada (22-09-2026): [integración del dispositivo Voight-Kampff](docs/VK_PLAN.md). Primera versión funcional con colocación desde el auxiliar, despliegue manual/automático al llegar a `p1`, fuelle, cables, óptica roja y cadencia reducida de la sonda en p1. [Implementación, capturas y mediciones](docs/VK_IMPLEMENTACION.md). Acabado artístico y validación ampliada de rendimiento pendientes.
 
-Ajustes de arranque actualizados el 10-09-2026: GUI inicialmente oculta, cabecera y FPS siempre visibles; calidad Baja; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo horizontal 2 m, vertical 0,5 m, suavidad 1,4 s. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos ; 6.5 queda documentado más abajo.
+Ajustes de arranque actualizados el 10-09-2026: GUI inicialmente oculta, cabecera y FPS siempre visibles; calidad Baja; bloom, color cinematográfico, profundidad exterior, bruma interior, haces y ambos reflejos activos. Paneo `default` actual: horizontal 2 m, vertical 0,5 m, suavidad 1,4 s; `p1` sobrescribe los recorridos con 0,5 m y 0,2 m. FPS visibles incluso con GUI oculta. Esta preferencia sustituye las notas históricas de arranque sin efectos; 6.5 queda documentado más abajo.
 
 Estado actual (21-09-2026): **9.1–9.5 implementados como propuestas visuales.** Ciudad baja oscura y mate, luces estructuradas y carriles integrados. A petición del usuario, se retira completamente la aproximación al hangar de 9.3; permanecen los tres corredores y ocho vehículos de base. **9.4 r04:** se incorpora un anillo óptico periférico y una traza diagonal sutil sobre la base de r03. Un solo vehículo al 25 % de escala repite la misma pasada horizontal; velocidad al 25 % de r02 (40 s por vuelta), inclinación máxima de 20°, carrocería oscura legible, foco central cálido, halo reducido con anillo de lente y destello diagonal tenue. GUI de duración entre 20 y 60 s. Ocho pruebas correctas, auditoría geométrica, compilación y revisión visual WebGPU. Pendiente de valoración artística. Detalles en [9.1](docs/phase9/9.1/CIUDAD.md), [9.2](docs/phase9/9.2/ILUMINACION.md), [9.3](docs/phase9/9.3/TRAFICO.md) y [9.4](docs/phase9/9.4/TRAFICO-CERCANO.md). **9.5 r02:** llamaradas 3,5× en las tres torres laterales, una activa a la vez y nueva cadencia base de 4,5 s. GUI de activación, intervalo 2–60 s, tamaño 1–5× e intensidad. La torre derecha se desplaza 40 m hacia el exterior y las envolventes a 3,5× y 5× quedan fuera de CAM01 con paneo auditado. Revisión visual, compilación y doce pruebas correctas. [Detalle y capturas](docs/phase9/9.5/LLAMARADAS.md), pendiente de valoración artística. **Siguiente: 9.6, integración y validación final.** [Preparación 9.0](docs/phase9/9.0/PREPARACION.md) conservada. 8.3–8.8 siguen pendientes; se revisará el coste global antes de la entrega final.
 
@@ -29,11 +31,12 @@ Trabajar por entregas pequeñas, en el orden de esta lista. Cada entrega actuali
 
 ## Decisiones de producto
 
-- [x] Navegación confirmada por el usuario: **recorrido libre y cámaras de la película**.
-- [x] Dispositivos prioritarios confirmados por el usuario: **ordenadores con GPU dedicada**.
-- [ ] Concretar GPU/navegador/resolución de referencia y objetivo de fluidez al comenzar la medición. No prometer un número de FPS sin medirlo.
+- [x] Decisión inicial: recorrido libre y cámaras de la película. **Sustituida en la navegación vigente** por selección de `cameraStates` desde GUI o tecla numérica; otras formas de navegación podrán añadirse después.
+- [x] Dispositivos de referencia ampliados el 24-09-2026: GTX 1650 dedicada para **Alta**, Radeon 660M integrada para **Baja** y Redmi Note 14 Pro para **Extra baja en modo móvil**; especificaciones y scores en fase 10.
+- [x] Objetivo de fluidez definido: **aproximadamente 60 FPS por nivel en su hardware de referencia**, sujeto a validación de fase 10.
+- [ ] Fijar navegador, resolución de salida y condiciones de medición en 10.1. No prometer un número de FPS sin medirlo.
 
-Priorizar la fidelidad visual en esos equipos. Las cámaras fijas proporcionarán la referencia de comparación antes de incorporar el recorrido libre. El objetivo de fluidez se fijará a partir de mediciones del dispositivo de referencia.
+Priorizar la fidelidad visual dentro del presupuesto de rendimiento de cada equipo. Los `cameraStates` proporcionan las vistas de comparación actuales; el recorrido libre histórico no forma parte de la navegación ofrecida. La fase 10 calibra los cinco niveles con mediciones reales.
 
 ## 0 · Revisión inicial
 
@@ -126,15 +129,19 @@ El `context.md` de la raíz describe un ejemplo anterior y no coincide completam
 
 ## 7 · Navegación y presentación
 
-- [x] **7.1** Recorrido libre WASD/flechas, ratón con captura o arrastre alternativo, Q/E para altura, velocidad regulable y Escape. Cámaras y atajos conservados; paneo sólo en modo fijo. Sin colisiones (7.3).
-- [x] **7.2** Transiciones suaves entre cámaras (4,5 s, regulables 0–10 s desde 7.3), cambios durante el movimiento y restauración del encuadre desde paneo o recorrido libre. Preferencia de movimiento reducido respetada.
-- [x] **7.3** Altura fija ajustable (1,65 m), velocidad 1,4 m/s, colisiones XZ contra 111 volúmenes y límites de la sala, deslizamiento y entrada válida desde todos los presets. UV de mesa/pared reevaluadas: se conservan; ver límites y auditoría en docs/phase7/7.3/WALKING.md.
+- [x] **7.1 · Histórico, sustituido** Recorrido libre WASD/flechas, ratón con captura o arrastre alternativo, Q/E para altura, velocidad regulable y Escape. Ya no se ofrece como modo de navegación; su trabajo y pruebas quedan registrados.
+- [x] **7.2 · Histórico, sustituido** Transiciones suaves entre cámaras antiguas (4,5 s, regulables 0–10 s), cambios durante el movimiento y restauración del encuadre desde paneo o recorrido libre. La transición actual entre `cameraStates` se recoge en 7.7.
+- [x] **7.3 · Histórico, sustituido** Altura fija ajustable (1,65 m), velocidad 1,4 m/s, colisiones XZ contra 111 volúmenes y límites de la sala. No procede mantener estas colisiones como tarea de la navegación actual. Auditoría histórica en docs/phase7/7.3/WALKING.md.
 - [x] **7.4** Observación del tamaño del contenedor, protección de proyección, pausa de entrada al perder foco/usar GUI, pausa al ocultar incluso durante carga y aviso de recarga por pérdida WebGPU. Objetivo escritorio GPU dedicada; límites de validación en docs/phase7/7.4/LIFECYCLE.md.
 - [x] **7.5** GUI principal con cámara, calidad, encuadre, navegación y paneo. Herramientas de acabado, captura, diagnóstico y medición agrupadas en Revisión técnica, plegada inicialmente. Cabecera y FPS siempre visibles; valores conservados.
 
-- [x] **7.6** Adelanto solicitado durante 3.1: paneo con el ratón, mirada fija, recorridos y suavidad configurables, retorno al centro y captura sin paneo. Pruebas automatizadas correctas; **revisión visual pendiente por falta de navegador conectado**. Detalles en [PANEO.md](docs/PANEO.md).
+- [x] **7.6 · Histórico, sustituido** Primer paneo con el ratón, documentado en [PANEO.md](docs/PANEO.md). Sus valores globales y su reinicio al cambiar de cámara no describen el comportamiento vigente, recogido en 7.8.
 
-**Resultado comprobable:** navegación cómoda y estable sin perder acceso a las cámaras de comparación.
+- [x] **7.7** Sustituir los destinos de navegación por pares de cámara y target del Blender auxiliar, con ID común, FOV de cámara, `viewOffset` manual y transición interpolada de posición, target, FOV y offset. `npm run export:camera-states` actualiza el catálogo y la colocación del VK desde el mismo archivo; un nuevo estado aparece en el GUI sin editar código. El GUI o `selectCameraState(id)` seleccionan por ID; cambios de destino durante el travelling y movimiento reducido están cubiertos. [Procedimiento](docs/CAMERA_STATES.md).
+- [x] **7.8** Incorporar paneo por `cameraState`: valores `default` y excepciones por ID en `gui.initial.json`, con interpolación de rango horizontal, vertical y suavidad durante el travelling, incluso si se interrumpe. La cámara de render conserva el paneo mientras la base viaja y apunta al target interpolado. [Configuración](docs/GUI_CONFIGURACION.md).
+- [x] **7.9** Configurar `camera.stateKeys` en `gui.initial.json`; asociar opcionalmente cada ID a una cifra única de `0` a `9` y rechazar IDs o teclas inválidos. El GUI incluye también los estados sin atajo. La tecla `V` usa la misma acción que el botón para desplegar/replegar el Voight-Kampff. Comprobado en navegador con `p2` exportado, selección desde GUI, `1` y `V`; 123 pruebas Node y compilación de producción correctas el 23-09-2026.
+
+**Resultado comprobable:** crear un par en el auxiliar, ejecutar la exportación y encontrar su estado en el GUI; asignarle una tecla solo si se desea. Paneo y encuadre continúan durante los cambios de estado. Los nombres CAM 01–04 en las fases históricas designan vistas de aquella revisión, no el catálogo actual de destinos.
 
 ## 8 · Optimización y entrega
 
@@ -145,7 +152,7 @@ La medición comienza en la fase 1; esta fase reúne los ajustes finales cuando 
 - [ ] **8.3** Evaluar Meshopt/Draco y KTX2/Basis con sus decodificadores y comprobar que no dañen juntas, normales, cuero o degradados del cielo.
 - [ ] **8.4** Revisar culling, instancias y agrupaciones sin perder control de materiales ni iluminación.
 - [ ] **8.5** Acotar los recursos copiados a producción: el andamiaje copia actualmente ejemplos ajenos y archivos fuente `.psd`, `.blend` y `.blend1` desde `static/`. Conservar esos originales y excluirlos de la entrega de Tyrell cuando no sean necesarios.
-- [ ] **8.6** Establecer perfiles de calidad medidos; comprobarlos siempre desde las mismas cámaras.
+- [ ] **8.6** Establecer perfiles de calidad medidos; comprobarlos siempre desde los mismos `cameraStates`, FOV, offset y paneo, registrando los IDs usados.
 - [ ] **8.7** Compilar producción y probar carga, errores, redimensionado y liberación de recursos.
 - [ ] **8.8** Documentar recursos, parámetros artísticos, capturas finales, dispositivos probados y diferencias conocidas frente a Blender.
 
@@ -248,13 +255,87 @@ La medición comienza en la fase 1; esta fase reúne los ajustes finales cuando 
 
 ### 9.6 · Integración, ajustes y validación final
 
-- [ ] Agrupar controles en «Exterior — Fase 9», con apartados de edificios, tráfico lejano, tráfico cercano y llamaradas; establecer valores iniciales sutiles.
-- [ ] Revisar CAM 01 y las vistas afectadas: escala, profundidad, niebla, oclusiones y continuidad de trayectorias.
+- [x] Agrupar controles en «Exterior — Fase 9», con apartados de edificios, tráfico lejano, tráfico cercano y llamaradas; ya existe en el GUI.
+- [ ] Validar artísticamente los valores iniciales del exterior y ajustarlos si dejan de ser sutiles al combinar los efectos.
+- [ ] Revisar `initial` y los demás `cameraStates` afectados (incluidos `p1` y `p2`): escala, profundidad, niebla, oclusiones y continuidad de trayectorias con su FOV, offset y paneo actuales.
 - [ ] Comprobar el efecto conjunto, conservando el protagonismo de las oficinas y el acabado actual.
 - [ ] Comparar coste con la referencia previa a Fase 9 y ajustar geometrías, texturas y luces; registrar resultados por calidad, sin atribuir mejoras no medidas.
 - [ ] Guardar capturas, parámetros y límites; trasladar los nuevos recursos a las revisiones finales pendientes de 8.3–8.8.
 
 **Criterio de cierre:** exterior más completo y vivo, sin cortes visibles en las vistas revisadas, efectos regulables e integración sutil. Cada subfase conserva el requisito general de captura y validación visual; una compilación correcta no la cierra por sí sola.
+
+## 10 · Niveles de calidad y optimización a aproximadamente 60 FPS
+
+**Planificada el 24-09-2026; implementación pendiente.** Crear cinco perfiles globales de calidad (denominados LOD en esta fase) y optimizar el escenario completo para aproximarse a 60 FPS en los equipos correspondientes. Estos perfiles pueden regular resolución, efectos y detalle geométrico; no equivalen únicamente a LOD de mallas por distancia. La creación de esta fase no modifica todavía los tres presets actuales ni cierra tareas pendientes de fases 8 y 9.
+
+### 10.1 · Umbrales, referencias y protocolo de medida
+
+| Calidad | GPU Score: límite inferior incluido, superior excluido |
+| --- | --- |
+| Extra baja | Mayor que 0 y menor que 25.000.000 |
+| Baja | Desde 25.000.000 hasta menos de 60.000.000 |
+| Media | Desde 60.000.000 hasta menos de 120.000.000 |
+| Alta | Desde 120.000.000 hasta menos de 240.000.000 |
+| UltraAlta | 240.000.000 o más |
+
+Referencias aportadas por el usuario, todavía sin repetir bajo un protocolo común:
+
+- **Alta:** Lenovo Legion Y540-17IRH, Intel Core i7-9750HF a 2,60 GHz, 16 GB RAM, NVIDIA GeForce GTX 1650; GPU Score aproximado **170.000.000**, escenario actual cerca de **60 FPS**.
+- **Baja:** Lenovo ThinkBook 16 G7 ARP, Radeon 660M; GPU Score aproximado **33.500.000**, escenario actual cerca de **20 FPS**. Alcanzar 60 FPS requiere pasar aproximadamente de 50 a 16,67 ms por fotograma; cambiar el nombre del preset no constituye una optimización.
+- **Extra baja / modo móvil:** Redmi Note 14 Pro; GPU Score aproximado **11.000.000**, escenario actual cerca de **10 FPS**. Variante exacta, GPU, navegador y resolución pendientes de registrar en el dispositivo. Alcanzar 60 FPS requiere pasar aproximadamente de 100 a 16,67 ms por fotograma: reducir el tiempo a una sexta parte. Es un objetivo de optimización pendiente de verificar, no una prestación garantizada.
+
+- [ ] Registrar la versión `tyrell-compute-v1`, método de medida y fiabilidad junto al score; comparar scores obtenidos con la misma versión y método. El benchmark sintético orienta la selección inicial, no predice por sí solo los FPS.
+- [ ] Fijar y registrar resolución de salida, tamaño del viewport, DPR, resolución interna, navegador/versión, backend, GPU efectiva y modo de energía; medir los portátiles conectados a corriente y sin carga externa relevante. Propuesta inicial de comparación: pantalla 1920 × 1080, anotando el área real de escena y su relación de aspecto.
+- [ ] Guardar una base del escenario completo por equipo antes de ajustar presets, incluida la calidad actualmente seleccionada y sus parámetros. No asumir que los 60 FPS aportados corresponden al preset Alta actual.
+- [ ] Definir un recorrido repetible con `initial`, `p1`, `p2` y los demás `cameraStates` vigentes, extremos de paneo, travelling, Voight-Kampff desplegado y animaciones exteriores activas. Incluir las vistas de mayor coste.
+- [ ] Medir tras calentamiento y compilación, con tres pasadas de al menos 60 s por caso; recoger FPS, tiempo medio y p95 de fotograma, tiempos CPU/GPU cuando estén disponibles, draw calls y triángulos. Separar carga inicial de rendimiento sostenido y excluir pausas de pestaña oculta.
+
+### 10.2 · Creación y selección de los cinco perfiles
+
+- [ ] Centralizar nombres y umbrales e integrar **Extra baja, Baja, Media, Alta y UltraAlta** en configuración, GUI, diagnósticos y comparador de rendimiento; auditar consumidores que asuman tres niveles.
+- [ ] Seleccionar inicialmente el perfil por GPU Score válido. Tratar `null`, cero, negativos, NaN, errores y timeout como medición no disponible, nunca como potencia cero; usar Baja como fallback provisional en escritorio y Extra baja en modo móvil, mostrando el motivo en diagnóstico. Los scores aproximados requieren confirmación con rendimiento real.
+- [ ] Conservar selección manual y distinguir en la GUI el modo automático, el nivel recomendado y el aplicado. Respetar la elección manual durante la sesión y definir la compatibilidad con ajustes guardados.
+- [ ] Probar valores justo por debajo, exactamente en y justo por encima de cada umbral, además de score inválido y cambios de calidad sin recarga ni pérdida de recursos.
+
+### 10.3 · Presupuestos visuales y optimización del escenario
+
+- [ ] Tomar el aspecto actual del Legion como referencia visual de Alta, registrando primero sus parámetros reales. Definir una tabla de presupuestos por nivel con resolución interna, sombras, muestras volumétricas, escala/cadencia de reflejos, posprocesado, texturas y detalle/densidad exterior.
+- [ ] Perfilar CPU y GPU y hacer comparaciones A/B de un cambio cada vez, priorizando los costes medidos. Revisar también reflejos y sonda del Voight-Kampff, transparencias, tráfico y llamaradas del escenario completo.
+- [ ] Calibrar primero **Baja en Radeon 660M** y **Alta en GTX 1650**. Reducir primero costes de efectos y resolución preservando composición, iluminación y siluetas; aplicar simplificación geométrica, instancias o culling donde las mediciones lo justifiquen.
+- [ ] Definir Media entre las dos referencias; Extra baja como presupuesto mínimo visualmente aceptable; UltraAlta como mejora visible que utilice margen de hardware superior manteniendo el objetivo temporal. No subir costes sin mejora visual comprobable.
+- [ ] Comprobar cambios entre todos los perfiles, redimensionado, navegación y estabilidad de reflejos/sombras. Archivar capturas comparables por nivel y documentar pérdidas visuales aceptadas.
+
+### 10.4 · Ajuste por rendimiento real
+
+**Propuesta a evaluar durante la fase:** complementar el score inicial con resolución dinámica acotada y, si resulta insuficiente, descenso de perfil en modo automático.
+
+- [ ] Definir límites mínimo/máximo de resolución por perfil y ventanas de medida sostenida con histéresis y espera entre cambios para evitar oscilaciones y saltos visibles.
+- [ ] Ignorar carga, compilaciones iniciales y pestaña oculta; no subir calidad solo por observar 60 FPS bajo un límite de refresco. Validar margen con tiempos CPU/GPU disponibles o una prueba controlada.
+- [ ] Mantener el preset manual fijo; cualquier ajuste dinámico en modo manual deberá ser una opción explícita. Mostrar en diagnóstico el nivel inicial, nivel efectivo, escala interna y motivo de cada ajuste automático.
+- [ ] Si el mínimo de Extra baja no alcanza el objetivo, registrar el límite de hardware y los FPS medidos. El intervalo abierto por abajo no permite garantizar 60 FPS en cualquier dispositivo.
+
+### 10.5 · Validación y cierre
+
+- [ ] Validar Baja y Alta en los dos ordenadores aportados y Extra baja con modo móvil en el Redmi Note 14 Pro; conseguir hardware representativo para Media y UltraAlta y comprobar Extra baja en escritorio, preferiblemente cerca del extremo inferior de los tramos. Las pruebas de un preset en una GPU más potente no validan su tramo ni sustituyen la validación móvil.
+- [ ] Usar como criterio inicial de aceptación por caso una media de **al menos 55 FPS** (objetivo 60; media de fotograma ideal de **16,67 ms**) y **p95 de fotograma ≤ 20 ms**, sin caídas sostenidas ni degradación visual inaceptable. Registrar cada pasada; no ocultar vistas lentas dentro de una media global.
+- [ ] Comprobar calidad visual en los `cameraStates` actuales, paneos y transiciones, con comparación a la referencia de Alta y capturas según el registro general del proyecto.
+- [ ] Guardar en `docs/phase10/` la matriz equipo × modo (escritorio/móvil) × calidad × vista × resolución, parámetros, mediciones antes/después, capturas y limitaciones. Marcar como pendientes los niveles sin hardware real de validación.
+- [ ] Actualizar documentación de arranque, selector, benchmark y calidad; ejecutar las pruebas relevantes y compilación, además de la revisión en navegador.
+
+### 10.6 · Modo móvil y calibración en Redmi Note 14 Pro
+
+**Ampliación solicitada el 24-09-2026.** Añadir un modo móvil compatible con los cinco niveles de calidad, con presupuestos y controles adaptados. No constituye un sexto tramo de score: el Redmi de referencia corresponde a Extra baja por sus 11.000.000 puntos. Mantener separados en configuración y diagnóstico el modo de dispositivo y el nivel de calidad; una GPU de escritorio lenta también puede pertenecer a Extra baja.
+
+- [ ] Definir selección de modo Auto / Escritorio / Móvil, con detección inicial que combine capacidades de entrada y características del dispositivo, sin depender solo del ancho de pantalla ni del score. Permitir corrección manual y verificar que el cambio no pierde el estado de cámara.
+- [ ] Crear presupuestos móviles por calidad con límite explícito de píxeles internos y DPR efectivo; calibrar resolución dinámica con un mínimo de legibilidad. No aplicar sin límite el DPR nativo. Registrar resolución de salida e interna en vertical y horizontal; el protocolo de escritorio a 1920 × 1080 no se impone al teléfono.
+- [ ] Perfilar en el Redmi y probar variantes de bajo coste: reflejos simplificados o precalculados, sombras reducidas, atmósfera analítica en lugar de integración volumétrica costosa, posprocesado reducido y menor detalle/densidad del exterior. Medir cada cambio y preservar encuadre, siluetas e iluminación característica; los valores definitivos dependen de las pruebas.
+- [ ] Auditar memoria y carga de texturas/geometrías, recursos temporales y pasadas de render; evitar cargar recursos exclusivos de niveles superiores cuando no se utilicen y liberar correctamente al cambiar de modo.
+- [ ] Adaptar selector de cámaras, calidad y control Voight-Kampff a interacción táctil sin necesidad de teclado ni hover. Comprobar legibilidad de GUI/FPS, áreas seguras, orientación y paneo táctil sin conflictos con los controles.
+- [ ] Registrar variante exacta del Redmi, GPU efectiva, sistema, navegador, backend, refresco, batería y ahorro de energía. Verificar compatibilidad WebGPU en el dispositivo y una salida clara si no está disponible; no asumirla por el nombre comercial.
+- [ ] Repetir el protocolo 10.1 en el teléfono real y añadir una sesión continua de al menos 15 minutos, registrando evolución de FPS y posibles caídas sostenidas por calentamiento. Comprobar también pausa/reanudación, cambio de orientación y recuperación de recursos.
+- [ ] Mantener **60 FPS aproximados** como objetivo y aplicar los criterios 10.5 al rendimiento sostenido. Si no se alcanza tras optimizar, documentar el mejor resultado y el coste visual; presentar **30 FPS estables** como alternativa para decisión del usuario, sin rebajar automáticamente el objetivo ni declarar la fase completada.
+
+**Criterio de cierre:** cinco perfiles operativos con los umbrales acordados, modo móvil validado en el Redmi Note 14 Pro, selección automática y manual comprobadas, optimizaciones respaldadas por mediciones y objetivo aproximado de 60 FPS verificado en las condiciones documentadas de cada equipo. Los umbrales son iniciales; cualquier recalibración deberá quedar justificada y registrada. La fase no se cierra globalmente mientras falte validar algún nivel o el modo móvil.
 
 ## Criterio de seguimiento
 
