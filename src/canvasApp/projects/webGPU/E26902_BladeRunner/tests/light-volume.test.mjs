@@ -35,6 +35,14 @@ test('Volume waits for solar depth, freezes dust, follows light replacement and 
     volume.update(0)
     assert.equal(volume.radiance.value.r, 0)
     assert.equal(volume.node, node)
+    volume.resetShadow()
+    assert.equal(volume.node, null)
+    sun.shadow.map = null
+    assert.equal(volume.update(0), false)
+    sun.shadow.map = { depthTexture: new THREE.DepthTexture(32, 32) }
+    volume.update(0)
+    assert.notEqual(volume.node, node)
+    sun.shadow.map.depthTexture.dispose()
     volume.configure({ enabled: false })
     assert.equal(volume.strength.value, 0)
     assert.equal(volume.update(1), false)

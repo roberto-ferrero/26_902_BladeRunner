@@ -1,0 +1,4500 @@
+{
+  "initial": {
+    "note": "RAF, CPU de envío y GPU de pases (opcional con profile=1). Comparar misma cámara y luz; consultar qualityBudget y resolución efectiva.",
+    "rows": [
+      {
+        "qualityBudget": {
+          "mode": "optimized",
+          "pixelRatio": 0.75,
+          "shadowSize": 1024,
+          "volumeSteps": 24,
+          "reflectionScale": 0.25
+        },
+        "qualitySelection": {
+          "selection": "Alta",
+          "recommended": "Media",
+          "deviceSelection": "auto",
+          "detectedDevice": "desktop",
+          "device": "desktop",
+          "reason": "manual",
+          "calibrated": false,
+          "dynamicResolution": false
+        },
+        "gpuCapacity": {
+          "version": "tyrell-compute-v1",
+          "workgroups": 4096,
+          "workgroupSize": 64,
+          "iterations": 1024,
+          "gpuScore": 87148936.17021278,
+          "method": "gpu-timestamp",
+          "samples": 12,
+          "medianMs": 3.080192,
+          "p90Ms": 3.473408,
+          "minMs": 3.014656,
+          "variability": 0.14893617021276598,
+          "reliable": true,
+          "units": "shader iterations/ms; higher is faster",
+          "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only."
+        },
+        "display": {
+          "viewport": [
+            1920,
+            1080
+          ],
+          "scene": {
+            "width": 1920,
+            "height": 800,
+            "aspect": 2.4
+          },
+          "nativeDPR": 1,
+          "effectivePixelRatio": 0.75,
+          "internal": [
+            1440,
+            600
+          ],
+          "mobilePixelCap": null
+        },
+        "performance": {
+          "enabled": true,
+          "cpuRender": {
+            "samples": 120,
+            "meanMs": 9.832499999801318,
+            "p95Ms": 17.400000005960464
+          },
+          "gpuRender": {
+            "samples": 120,
+            "meanMs": 12.571989333333331,
+            "p95Ms": 17.104896000000004
+          },
+          "gpuSupported": true,
+          "gpuError": null,
+          "heap": {
+            "usedBytes": 168838855,
+            "totalBytes": 243604691,
+            "limitBytes": 4395630592
+          },
+          "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+        },
+        "loading": {
+          "firstRenderedFrameSinceNavigationMs": 16568.399999976158,
+          "glbFetchDecodeMs": 457.5,
+          "glbBytes": 40502716,
+          "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+        },
+        "adapter": {
+          "vendor": "nvidia",
+          "architecture": "turing",
+          "device": "",
+          "description": ""
+        },
+        "asset": {
+          "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=3",
+          "bytes": 40502716,
+          "loadMs": 457.5
+        },
+        "date": "2026-09-24T18:46:46.884Z",
+        "quality": "Alta",
+        "camera": {
+          "name": "initial",
+          "position": [
+            -0.11999999731779099,
+            1.550000786781311,
+            10.300000190734863
+          ],
+          "target": [
+            0,
+            1.9514189958572388,
+            -10.378293991088867
+          ],
+          "viewOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "quaternion": [
+            0.00970469435664169,
+            -0.0029014199589480626,
+            0.00002815883848905532,
+            0.9999486986224572
+          ],
+          "fov": 22.917504404217937,
+          "aspect": 2.4,
+          "near": 0.029999999329447746,
+          "far": 2500
+        },
+        "cameraPan": {
+          "enabled": true,
+          "horizontal": 2,
+          "vertical": 0.5,
+          "smoothness": 1.4,
+          "targetDistance": 20,
+          "units": "metres; smoothness in seconds",
+          "offset": [
+            0,
+            0
+          ],
+          "referencePosition": [
+            -0.11999999731779099,
+            1.550000786781311,
+            10.300000190734863
+          ],
+          "target": [
+            0,
+            1.9514189958572388,
+            -10.378293991088867
+          ]
+        },
+        "exposure": 1.07,
+        "metrics": {
+          "fps": 59.23126023920142,
+          "frameMeanMs": 16.88297692741245,
+          "frameP95Ms": 24.19999998807907,
+          "samples": 3554,
+          "resolution": [
+            1440,
+            600
+          ],
+          "drawCalls": 458,
+          "renderedTriangles": 838494,
+          "geometries": 162,
+          "textures": 65,
+          "pass": 1,
+          "passes": 3,
+          "elapsedMs": 60002.10000002384,
+          "warmupMs": 5000,
+          "frameMaxMs": 216.30000001192093
+        },
+        "floorReflection": {
+          "enabled": true,
+          "mode": "stone",
+          "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+          "planeY": 0,
+          "gain": 0.32,
+          "fresnelF0": 0.04,
+          "roughnessLodScale": 10,
+          "maxLod": 5,
+          "normalDistortion": 0.045,
+          "resolutionScale": 0.25,
+          "resolution": "auto",
+          "mipLodOffset": -1,
+          "mipmaps": true,
+          "bounces": false,
+          "updates": {
+            "mode": "adaptive",
+            "rendered": 3103,
+            "reused": 3953
+          },
+          "meshes": 21,
+          "sharedMaterials": 1,
+          "targets": [
+            {
+              "width": 360,
+              "height": 150
+            }
+          ]
+        },
+        "specularEnvironment": {
+          "enabled": true,
+          "dirty": false,
+          "captures": 1139,
+          "size": 128,
+          "minimumCaptureInterval": 0,
+          "position": [
+            0,
+            1.4,
+            -10.2
+          ],
+          "materials": [
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "PBR | Laton envejecido",
+            "PBR | Bronce patinado",
+            "Crystal",
+            "M_VKMachine.002",
+            "VK / chasis"
+          ],
+          "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+          "metalIntensity": 0.6,
+          "glassIntensity": 0.35
+        },
+        "atmosphere": {
+          "exterior": true,
+          "interior": true,
+          "exteriorStrength": 1,
+          "interiorStrength": 1,
+          "boundary": -14.4,
+          "interiorPath": 24,
+          "exteriorDensity": 0.00025,
+          "interiorDensity": 0.0015,
+          "effectiveDensity": [
+            0.00025,
+            0.0015
+          ],
+          "excludedMaterials": [
+            "Cielo | nubes ambar",
+            "Sol | disco emisivo"
+          ],
+          "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+          "extraRenderPasses": 0
+        },
+        "lightVolume": {
+          "enabled": true,
+          "dust": true,
+          "strength": 1,
+          "speed": 1,
+          "ready": true,
+          "steps": 24,
+          "bounds": [
+            [
+              -9,
+              0.08,
+              -14.4
+            ],
+            [
+              9,
+              8,
+              2
+            ]
+          ],
+          "time": 119.1617999999812,
+          "reflectionRefreshHz": 10,
+          "scatteringDensity": 0.004,
+          "solarRadianceScale": 0.18,
+          "sampling": "deterministic midpoint; no temporal jitter or history",
+          "emptyIntervalSkipped": true,
+          "source": "solar shadow depth; bounded single scattering; procedural dust density",
+          "extraRenderPasses": 0
+        },
+        "postProcessing": {
+          "bloom": true,
+          "grade": true,
+          "strength": 0.16,
+          "radius": 0.25,
+          "threshold": 1.5,
+          "gradeStrength": 1,
+          "flare": {
+            "enabled": true,
+            "intensity": 0.18,
+            "size": 1,
+            "source": "visible solar disc only",
+            "screenPosition": [
+              0.5066674048090382,
+              0.3950422317191246
+            ],
+            "energyBeforeOcclusion": 0.18,
+            "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+            "extraRenderPasses": 0
+          },
+          "ready": true,
+          "quality": "Alta",
+          "bloomResolutionScale": 0.25,
+          "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+          "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+          "bloomLuminanceLimit": 4,
+          "extraFullscreenPasses": 13
+        },
+        "sky": {
+          "enabled": true,
+          "studio": false,
+          "projection": "cylinder",
+          "version": 5,
+          "radius": 1200,
+          "centerY": 80,
+          "halfArc": 1.5280368169646088,
+          "arc": 3.0560736339292176,
+          "height": 1833.6441803575306,
+          "referenceCamera": "Camera_D",
+          "aspect": 2.4,
+          "heightScale": 0.5,
+          "effectiveHeight": 916.8220901787653,
+          "arcDegrees": 175.10012110535274,
+          "originalProjection": false,
+          "originalPlaneVisible": false,
+          "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+          "size": [
+            1774,
+            887
+          ],
+          "visualOnly": true,
+          "probeUsesOriginalBackground": true
+        },
+        "lighting": {
+          "profile": "tyrell-light-v2",
+          "contribution": "all",
+          "sunPosition": [
+            0.24709783776834474,
+            8.042288376397824,
+            -84.68905268029118
+          ],
+          "target": [
+            0,
+            1,
+            -5
+          ],
+          "directionToSun": [
+            0.0030887229721043093,
+            0.08802860470497281,
+            -0.9961131585036398
+          ],
+          "sunIntensity": 2.5,
+          "sunColor": "ffd093",
+          "discPosition": [
+            8,
+            42.5,
+            -650
+          ],
+          "discScale": [
+            0.5600000095367431,
+            0.5600000095367431,
+            0.5600000095367431
+          ],
+          "skyEmission": [
+            0.7500000298023224,
+            0.7500000298023224,
+            0.7500000298023224
+          ],
+          "hemisphereIntensity": 0.86,
+          "areaIntensities": [
+            0.08,
+            0.08,
+            0.2,
+            0.2
+          ],
+          "areas": [
+            {
+              "role": "window",
+              "position": [
+                0,
+                4.2,
+                -13.8
+              ],
+              "emissionDirection": [
+                0,
+                -0.28408832969137404,
+                0.9587981127083873
+              ],
+              "width": 6,
+              "height": 6,
+              "intensity": 0.08,
+              "power": 9.047786842338605,
+              "castShadow": false
+            },
+            {
+              "role": "front",
+              "position": [
+                0,
+                4.5,
+                7
+              ],
+              "emissionDirection": [
+                0,
+                -0.12752174253952622,
+                -0.9918357753074262
+              ],
+              "width": 7,
+              "height": 7,
+              "intensity": 0.08,
+              "power": 12.31504320207199,
+              "castShadow": false
+            },
+            {
+              "role": "left",
+              "position": [
+                -7.7,
+                4.3,
+                -3.4
+              ],
+              "emissionDirection": [
+                0.8589580613952029,
+                -0.42034117898063117,
+                -0.2924112549430478
+              ],
+              "width": 4,
+              "height": 4,
+              "intensity": 0.2,
+              "power": 10.053096491487338,
+              "castShadow": false
+            },
+            {
+              "role": "right",
+              "position": [
+                7.7,
+                4.1,
+                -7.2
+              ],
+              "emissionDirection": [
+                -0.9024909124636484,
+                -0.41166252147464655,
+                -0.12666539122296816
+              ],
+              "width": 4,
+              "height": 4,
+              "intensity": 0.2,
+              "power": 10.053096491487338,
+              "castShadow": false
+            }
+          ]
+        },
+        "materialLook": {
+          "profile": "tyrell-v1",
+          "floorNormal": true,
+          "status": "v1 reviewed baseline; final lighting and reflections pending",
+          "materialCount": 38,
+          "adjusted": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras",
+            "PBR | Piedra negra pulida",
+            "PBR | Nogal oscuro",
+            "PBR | Raiz de nogal",
+            "Walnut | quarter sawn",
+            "Leather | oxblood",
+            "Burl walnut | table rim",
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "PBR | Cuero oscuro",
+            "PBR | Laton envejecido",
+            "PBR | Bronce patinado",
+            "Crystal"
+          ]
+        },
+        "indirect": {
+          "mode": "reference",
+          "probeIntensity": 0,
+          "environmentActive": false,
+          "environmentIntensity": 1,
+          "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+          "ambientRetention": 0.92
+        },
+        "reviewLighting": "tyrell-light-v2",
+        "city": {
+          "enabled": true,
+          "buildings": 97,
+          "boxes": 1478,
+          "meshes": 3,
+          "triangles": 17754,
+          "roofLowering": 2.5,
+          "removedFacadeRibs": 485,
+          "savedTriangles": 5820,
+          "towers": [
+            {
+              "x": 400,
+              "z": -460,
+              "top": 28
+            },
+            {
+              "x": -680,
+              "z": -700,
+              "top": 24
+            },
+            {
+              "x": -900,
+              "z": -830,
+              "top": 15
+            }
+          ],
+          "baseColor": "#43311d",
+          "baseHSL": [
+            31.4,
+            38.9,
+            18.8
+          ],
+          "facadeDepth": 18,
+          "gradientCenterX": -49.2357,
+          "pyramidZ": -264.7806,
+          "blockSpacing": 27,
+          "baseColorMultiplier": 1,
+          "roofColorMultiplier": 1,
+          "towerColorMultiplier": 1,
+          "leftTowerLightnessOffset": 2,
+          "roughness": 1,
+          "metalness": 0,
+          "specularIntensity": 0,
+          "envMapIntensity": 0,
+          "continuity": {
+            "roofTriangles": 18,
+            "serviceBlocks": 3
+          },
+          "textureSize": [
+            256,
+            256
+          ],
+          "seed": 902091,
+          "cityBackdrop": "layered geometry; no photographic background",
+          "lights": 0,
+          "colorHSL": {
+            "h": 31.4,
+            "s": 38.9,
+            "l": 18.8,
+            "cameraD": 14,
+            "cam02": 14.6,
+            "rightStep": -0.3,
+            "leftStep": -1.3,
+            "mode": "lod"
+          },
+          "colorLOD": {
+            "Extra baja": true,
+            "Baja": true,
+            "Media": true,
+            "Alta": true,
+            "UltraAlta": true
+          },
+          "angleColorActive": true,
+          "yawDegrees": 10.45598806271372,
+          "effectiveLightness": 18.438936101228496,
+          "referenceYawDegrees": -10.123493701860795,
+          "anchorDegrees": {
+            "cameraD": 62.223491591153575,
+            "cam02": -21.5779439685011
+          }
+        },
+        "buildingLights": {
+          "intensity": 0.22,
+          "beacons": 0.7,
+          "materials": 4,
+          "beaconCount": 5,
+          "windowPitch": [
+            0.42,
+            0.9
+          ],
+          "windowSize": [
+            0.1176,
+            0.063
+          ],
+          "beaconHaloSize": 1.8,
+          "facadeLayouts": [
+            {
+              "facades": 122,
+              "central": 21,
+              "method": "Planar convex envelopes in surface coordinates"
+            }
+          ],
+          "elevatorRails": {
+            "baseY": -5.8,
+            "topY": 32.6,
+            "bottomWidth": 14,
+            "topWidth": 8,
+            "axis": -62.12,
+            "railCount": 13,
+            "recessDepth": 0.025,
+            "meshes": 0,
+            "triangles": 0,
+            "displacement": 0,
+            "method": "Original facade material; dark unlit band and darker recessed grooves; normal-only relief"
+          },
+          "method": "Facade-aligned columns and floor rows; edge margins; window-free uplight spine; Gaussian beacons",
+          "realLights": 0
+        },
+        "airTraffic": {
+          "density": 0.8,
+          "enabled": true,
+          "capacity": 10,
+          "activeVehicles": 8,
+          "corridors": 3,
+          "foregroundRoute": "right to left in front of the exterior facades",
+          "vehicleScale": 1.25,
+          "foregroundVehicleScale": 0.3125,
+          "foregroundLowering": 2.5,
+          "corridorPeriods": [
+            60,
+            68,
+            40
+          ],
+          "time": 119.8955999999931,
+          "reflectionRefreshHz": 5,
+          "environmentRefreshHz": 1,
+          "realLights": 0,
+          "trianglesPerVehicle": 14,
+          "sharedGeometries": 1,
+          "sharedGlowTextures": 1,
+          "flights": [
+            {
+              "id": "Traffic / vehicle 1",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                -24.11789179551494,
+                59.16259607718985,
+                -528.0718454311134
+              ],
+              "scale": 1.25,
+              "progress": 0.4682599999998991,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 2,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 2",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                -380.3626250625103,
+                75.0346320278353,
+                -772.9867387373826
+              ],
+              "scale": 1.25,
+              "progress": 0.8631705882352022,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 1,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 3",
+              "corridor": 2,
+              "route": 2,
+              "position": [
+                33.80740324081154,
+                10.078309556685268,
+                -155.02487304487158
+              ],
+              "scale": 0.3125,
+              "progress": 0.41738999999984755,
+              "speed": 11.755406120616597,
+              "period": 40,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 4",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                256.9674639328918,
+                63.165648968003026,
+                -565.592439098162
+              ],
+              "scale": 1.25,
+              "progress": 0.8015933333332331,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 2,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 5",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                316.2012084853582,
+                76.42059804231522,
+                -721.2392194253755
+              ],
+              "scale": 1.25,
+              "progress": 0.19650392156853103,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 2,
+              "strobe": true
+            },
+            {
+              "id": "Traffic / vehicle 6",
+              "corridor": 2,
+              "route": 2,
+              "position": [
+                -201.18776652048544,
+                10.965950003246611,
+                -161.51068638076433
+              ],
+              "scale": 0.3125,
+              "progress": 0.9173899999998475,
+              "speed": 11.755406120616597,
+              "period": 40,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 7",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                -306.9879301699194,
+                59.1345919587555,
+                -539.197578861957
+              ],
+              "scale": 1.25,
+              "progress": 0.13492666666656283,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 2,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 8",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                -34.475076216967096,
+                71.97379926430088,
+                -710.9008718731093
+              ],
+              "scale": 1.25,
+              "progress": 0.5298372549018714,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 2,
+              "strobe": false
+            }
+          ],
+          "method": "Arc-length routes; pooled minimal silhouettes; white position lights and soft double strobes; depth-tested; density 0 disables all"
+        },
+        "nearTraffic": {
+          "enabled": true,
+          "duration": 40,
+          "time": 119.8955999999931,
+          "passes": 3,
+          "nextPassIn": 2.104400000005647,
+          "capacity": 1,
+          "vehicleScale": 0.25,
+          "realLights": 0,
+          "maxBankDegrees": 20,
+          "trianglesPerVehicle": 1308,
+          "routes": [
+            "single level arc, upper left to right; repeat after completing the route"
+          ],
+          "optics": "Compact warm core, soft peripheral lens ring and subtle diagonal streak around a dark hull; secondary white strobe and existing bloom",
+          "flights": [
+            {
+              "route": 0,
+              "age": 37.89559999999435,
+              "position": [
+                141.5791545264754,
+                10.5,
+                -135.18770919898975
+              ],
+              "scale": 0.25,
+              "quaternion": [
+                -0.00402326015980676,
+                0.8515680274004437,
+                -0.0024767073835985235,
+                0.5242228285829793
+              ]
+            }
+          ],
+          "reflectionRefreshHz": 8,
+          "environmentRefreshHz": 1
+        },
+        "flames": {
+          "enabled": true,
+          "interval": 4.5,
+          "intensity": 1.5,
+          "size": 4.25,
+          "rise": 2,
+          "visible": true,
+          "emissions": 26,
+          "nextIn": -0.49019443080647845,
+          "active": null,
+          "towers": [
+            {
+              "x": 400,
+              "z": -460,
+              "top": 28
+            },
+            {
+              "x": -680,
+              "z": -700,
+              "top": 24
+            },
+            {
+              "x": -900,
+              "z": -830,
+              "top": 15
+            }
+          ],
+          "maximumSimultaneous": 1,
+          "spritesPerEmitter": 11,
+          "realLights": 0,
+          "bounds": [
+            {
+              "min": [
+                361,
+                -11,
+                -499
+              ],
+              "max": [
+                439,
+                136,
+                -421
+              ]
+            },
+            {
+              "min": [
+                -719,
+                -15,
+                -739
+              ],
+              "max": [
+                -641,
+                132,
+                -661
+              ]
+            },
+            {
+              "min": [
+                -939,
+                -24,
+                -869
+              ],
+              "max": [
+                -861,
+                123,
+                -791
+              ]
+            }
+          ]
+        },
+        "voightKampff": {
+          "state": "closed",
+          "progress": 0,
+          "compression": 1,
+          "light": 0,
+          "flexibleVertices": 2223,
+          "rigidBellowsPlates": 4,
+          "breathingPeriod": 3.8,
+          "autoDeploy": true,
+          "autoConsumed": false,
+          "meshes": 16,
+          "triangles": 14891,
+          "chassisColor": "#1f1f1f",
+          "placementSourceSha256": "a3abe91631ed18c3b86522d038029965cc72cb1e7e91d4b5fd5a30ea5e536224",
+          "opticalMeshes": 2,
+          "opticalTriangles": 34,
+          "position": [
+            -0.8259305953979492,
+            0.7515769004821777,
+            -9.97750473022461
+          ],
+          "quaternion": [
+            0,
+            -0.9152841763425742,
+            0,
+            0.4028087344347134
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "measurement": {
+          "type": "sustained",
+          "pass": 1,
+          "passes": 3,
+          "elapsedMs": 60002.10000002384,
+          "warmupMs": 5000,
+          "note": "RAF completo de la pasada. CPU/GPU y contadores son ventanas cortas, no estadísticas de toda la pasada."
+        },
+        "automaticQuality": {
+          "enabled": false,
+          "initialQuality": "Alta",
+          "quality": "Alta",
+          "resolutionScale": 1,
+          "targetFPS": 60,
+          "lowerFPS": 55,
+          "windowMs": 4000,
+          "warmupMs": 4000,
+          "minimumScale": 0.75,
+          "atMinimum": false,
+          "lastWindow": null,
+          "history": []
+        },
+        "id": 1,
+        "effects": "VK cerrado, Edificios bajos, Luces de edificios, Balizas, Tráfico lejano, Tráfico cercano, Llamaradas, Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+      },
+      {
+        "qualityBudget": {
+          "mode": "optimized",
+          "pixelRatio": 0.75,
+          "shadowSize": 1024,
+          "volumeSteps": 24,
+          "reflectionScale": 0.25
+        },
+        "qualitySelection": {
+          "selection": "Alta",
+          "recommended": "Media",
+          "deviceSelection": "auto",
+          "detectedDevice": "desktop",
+          "device": "desktop",
+          "reason": "manual",
+          "calibrated": false,
+          "dynamicResolution": false
+        },
+        "gpuCapacity": {
+          "version": "tyrell-compute-v1",
+          "workgroups": 4096,
+          "workgroupSize": 64,
+          "iterations": 1024,
+          "gpuScore": 87148936.17021278,
+          "method": "gpu-timestamp",
+          "samples": 12,
+          "medianMs": 3.080192,
+          "p90Ms": 3.473408,
+          "minMs": 3.014656,
+          "variability": 0.14893617021276598,
+          "reliable": true,
+          "units": "shader iterations/ms; higher is faster",
+          "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only."
+        },
+        "display": {
+          "viewport": [
+            1920,
+            1080
+          ],
+          "scene": {
+            "width": 1920,
+            "height": 800,
+            "aspect": 2.4
+          },
+          "nativeDPR": 1,
+          "effectivePixelRatio": 0.75,
+          "internal": [
+            1440,
+            600
+          ],
+          "mobilePixelCap": null
+        },
+        "performance": {
+          "enabled": true,
+          "cpuRender": {
+            "samples": 120,
+            "meanMs": 8.641666668405135,
+            "p95Ms": 13.100000023841858
+          },
+          "gpuRender": {
+            "samples": 120,
+            "meanMs": 12.72108373333334,
+            "p95Ms": 17.039360000000006
+          },
+          "gpuSupported": true,
+          "gpuError": null,
+          "heap": {
+            "usedBytes": 179310020,
+            "totalBytes": 242290332,
+            "limitBytes": 4395630592
+          },
+          "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+        },
+        "loading": {
+          "firstRenderedFrameSinceNavigationMs": 16568.399999976158,
+          "glbFetchDecodeMs": 457.5,
+          "glbBytes": 40502716,
+          "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+        },
+        "adapter": {
+          "vendor": "nvidia",
+          "architecture": "turing",
+          "device": "",
+          "description": ""
+        },
+        "asset": {
+          "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=3",
+          "bytes": 40502716,
+          "loadMs": 457.5
+        },
+        "date": "2026-09-24T18:47:51.891Z",
+        "quality": "Alta",
+        "camera": {
+          "name": "initial",
+          "position": [
+            -0.11999999731779099,
+            1.550000786781311,
+            10.300000190734863
+          ],
+          "target": [
+            0,
+            1.9514189958572388,
+            -10.378293991088867
+          ],
+          "viewOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "quaternion": [
+            0.00970469435664169,
+            -0.0029014199589480626,
+            0.00002815883848905532,
+            0.9999486986224572
+          ],
+          "fov": 22.917504404217937,
+          "aspect": 2.4,
+          "near": 0.029999999329447746,
+          "far": 2500
+        },
+        "cameraPan": {
+          "enabled": true,
+          "horizontal": 2,
+          "vertical": 0.5,
+          "smoothness": 1.4,
+          "targetDistance": 20,
+          "units": "metres; smoothness in seconds",
+          "offset": [
+            0,
+            0
+          ],
+          "referencePosition": [
+            -0.11999999731779099,
+            1.550000786781311,
+            10.300000190734863
+          ],
+          "target": [
+            0,
+            1.9514189958572388,
+            -10.378293991088867
+          ]
+        },
+        "exposure": 1.07,
+        "metrics": {
+          "fps": 58.69373933446516,
+          "frameMeanMs": 17.037592277116968,
+          "frameP95Ms": 24.600000023841858,
+          "samples": 3522,
+          "resolution": [
+            1440,
+            600
+          ],
+          "drawCalls": 451,
+          "renderedTriangles": 840850,
+          "geometries": 162,
+          "textures": 65,
+          "pass": 2,
+          "passes": 3,
+          "elapsedMs": 60006.40000000596,
+          "warmupMs": 5000,
+          "frameMaxMs": 658.4000000059605
+        },
+        "floorReflection": {
+          "enabled": true,
+          "mode": "stone",
+          "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+          "planeY": 0,
+          "gain": 0.32,
+          "fresnelF0": 0.04,
+          "roughnessLodScale": 10,
+          "maxLod": 5,
+          "normalDistortion": 0.045,
+          "resolutionScale": 0.25,
+          "resolution": "auto",
+          "mipLodOffset": -1,
+          "mipmaps": true,
+          "bounces": false,
+          "updates": {
+            "mode": "adaptive",
+            "rendered": 4773,
+            "reused": 6094
+          },
+          "meshes": 21,
+          "sharedMaterials": 1,
+          "targets": [
+            {
+              "width": 360,
+              "height": 150
+            }
+          ]
+        },
+        "specularEnvironment": {
+          "enabled": true,
+          "dirty": false,
+          "captures": 1749,
+          "size": 128,
+          "minimumCaptureInterval": 0,
+          "position": [
+            0,
+            1.4,
+            -10.2
+          ],
+          "materials": [
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "PBR | Laton envejecido",
+            "PBR | Bronce patinado",
+            "Crystal",
+            "M_VKMachine.002",
+            "VK / chasis"
+          ],
+          "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+          "metalIntensity": 0.6,
+          "glassIntensity": 0.35
+        },
+        "atmosphere": {
+          "exterior": true,
+          "interior": true,
+          "exteriorStrength": 1,
+          "interiorStrength": 1,
+          "boundary": -14.4,
+          "interiorPath": 24,
+          "exteriorDensity": 0.00025,
+          "interiorDensity": 0.0015,
+          "effectiveDensity": [
+            0.00025,
+            0.0015
+          ],
+          "excludedMaterials": [
+            "Cielo | nubes ambar",
+            "Sol | disco emisivo"
+          ],
+          "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+          "extraRenderPasses": 0
+        },
+        "lightVolume": {
+          "enabled": true,
+          "dust": true,
+          "strength": 1,
+          "speed": 1,
+          "ready": true,
+          "steps": 24,
+          "bounds": [
+            [
+              -9,
+              0.08,
+              -14.4
+            ],
+            [
+              9,
+              8,
+              2
+            ]
+          ],
+          "time": 183.52710000002148,
+          "reflectionRefreshHz": 10,
+          "scatteringDensity": 0.004,
+          "solarRadianceScale": 0.18,
+          "sampling": "deterministic midpoint; no temporal jitter or history",
+          "emptyIntervalSkipped": true,
+          "source": "solar shadow depth; bounded single scattering; procedural dust density",
+          "extraRenderPasses": 0
+        },
+        "postProcessing": {
+          "bloom": true,
+          "grade": true,
+          "strength": 0.16,
+          "radius": 0.25,
+          "threshold": 1.5,
+          "gradeStrength": 1,
+          "flare": {
+            "enabled": true,
+            "intensity": 0.18,
+            "size": 1,
+            "source": "visible solar disc only",
+            "screenPosition": [
+              0.5066674048090382,
+              0.3950422317191246
+            ],
+            "energyBeforeOcclusion": 0.18,
+            "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+            "extraRenderPasses": 0
+          },
+          "ready": true,
+          "quality": "Alta",
+          "bloomResolutionScale": 0.25,
+          "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+          "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+          "bloomLuminanceLimit": 4,
+          "extraFullscreenPasses": 13
+        },
+        "sky": {
+          "enabled": true,
+          "studio": false,
+          "projection": "cylinder",
+          "version": 5,
+          "radius": 1200,
+          "centerY": 80,
+          "halfArc": 1.5280368169646088,
+          "arc": 3.0560736339292176,
+          "height": 1833.6441803575306,
+          "referenceCamera": "Camera_D",
+          "aspect": 2.4,
+          "heightScale": 0.5,
+          "effectiveHeight": 916.8220901787653,
+          "arcDegrees": 175.10012110535274,
+          "originalProjection": false,
+          "originalPlaneVisible": false,
+          "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+          "size": [
+            1774,
+            887
+          ],
+          "visualOnly": true,
+          "probeUsesOriginalBackground": true
+        },
+        "lighting": {
+          "profile": "tyrell-light-v2",
+          "contribution": "all",
+          "sunPosition": [
+            0.24709783776834474,
+            8.042288376397824,
+            -84.68905268029118
+          ],
+          "target": [
+            0,
+            1,
+            -5
+          ],
+          "directionToSun": [
+            0.0030887229721043093,
+            0.08802860470497281,
+            -0.9961131585036398
+          ],
+          "sunIntensity": 2.5,
+          "sunColor": "ffd093",
+          "discPosition": [
+            8,
+            42.5,
+            -650
+          ],
+          "discScale": [
+            0.5600000095367431,
+            0.5600000095367431,
+            0.5600000095367431
+          ],
+          "skyEmission": [
+            0.7500000298023224,
+            0.7500000298023224,
+            0.7500000298023224
+          ],
+          "hemisphereIntensity": 0.86,
+          "areaIntensities": [
+            0.08,
+            0.08,
+            0.2,
+            0.2
+          ],
+          "areas": [
+            {
+              "role": "window",
+              "position": [
+                0,
+                4.2,
+                -13.8
+              ],
+              "emissionDirection": [
+                0,
+                -0.28408832969137404,
+                0.9587981127083873
+              ],
+              "width": 6,
+              "height": 6,
+              "intensity": 0.08,
+              "power": 9.047786842338605,
+              "castShadow": false
+            },
+            {
+              "role": "front",
+              "position": [
+                0,
+                4.5,
+                7
+              ],
+              "emissionDirection": [
+                0,
+                -0.12752174253952622,
+                -0.9918357753074262
+              ],
+              "width": 7,
+              "height": 7,
+              "intensity": 0.08,
+              "power": 12.31504320207199,
+              "castShadow": false
+            },
+            {
+              "role": "left",
+              "position": [
+                -7.7,
+                4.3,
+                -3.4
+              ],
+              "emissionDirection": [
+                0.8589580613952029,
+                -0.42034117898063117,
+                -0.2924112549430478
+              ],
+              "width": 4,
+              "height": 4,
+              "intensity": 0.2,
+              "power": 10.053096491487338,
+              "castShadow": false
+            },
+            {
+              "role": "right",
+              "position": [
+                7.7,
+                4.1,
+                -7.2
+              ],
+              "emissionDirection": [
+                -0.9024909124636484,
+                -0.41166252147464655,
+                -0.12666539122296816
+              ],
+              "width": 4,
+              "height": 4,
+              "intensity": 0.2,
+              "power": 10.053096491487338,
+              "castShadow": false
+            }
+          ]
+        },
+        "materialLook": {
+          "profile": "tyrell-v1",
+          "floorNormal": true,
+          "status": "v1 reviewed baseline; final lighting and reflections pending",
+          "materialCount": 38,
+          "adjusted": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras",
+            "PBR | Piedra negra pulida",
+            "PBR | Nogal oscuro",
+            "PBR | Raiz de nogal",
+            "Walnut | quarter sawn",
+            "Leather | oxblood",
+            "Burl walnut | table rim",
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "PBR | Cuero oscuro",
+            "PBR | Laton envejecido",
+            "PBR | Bronce patinado",
+            "Crystal"
+          ]
+        },
+        "indirect": {
+          "mode": "reference",
+          "probeIntensity": 0,
+          "environmentActive": false,
+          "environmentIntensity": 1,
+          "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+          "ambientRetention": 0.92
+        },
+        "reviewLighting": "tyrell-light-v2",
+        "city": {
+          "enabled": true,
+          "buildings": 97,
+          "boxes": 1478,
+          "meshes": 3,
+          "triangles": 17754,
+          "roofLowering": 2.5,
+          "removedFacadeRibs": 485,
+          "savedTriangles": 5820,
+          "towers": [
+            {
+              "x": 400,
+              "z": -460,
+              "top": 28
+            },
+            {
+              "x": -680,
+              "z": -700,
+              "top": 24
+            },
+            {
+              "x": -900,
+              "z": -830,
+              "top": 15
+            }
+          ],
+          "baseColor": "#43311d",
+          "baseHSL": [
+            31.4,
+            38.9,
+            18.8
+          ],
+          "facadeDepth": 18,
+          "gradientCenterX": -49.2357,
+          "pyramidZ": -264.7806,
+          "blockSpacing": 27,
+          "baseColorMultiplier": 1,
+          "roofColorMultiplier": 1,
+          "towerColorMultiplier": 1,
+          "leftTowerLightnessOffset": 2,
+          "roughness": 1,
+          "metalness": 0,
+          "specularIntensity": 0,
+          "envMapIntensity": 0,
+          "continuity": {
+            "roofTriangles": 18,
+            "serviceBlocks": 3
+          },
+          "textureSize": [
+            256,
+            256
+          ],
+          "seed": 902091,
+          "cityBackdrop": "layered geometry; no photographic background",
+          "lights": 0,
+          "colorHSL": {
+            "h": 31.4,
+            "s": 38.9,
+            "l": 18.8,
+            "cameraD": 14,
+            "cam02": 14.6,
+            "rightStep": -0.3,
+            "leftStep": -1.3,
+            "mode": "lod"
+          },
+          "colorLOD": {
+            "Extra baja": true,
+            "Baja": true,
+            "Media": true,
+            "Alta": true,
+            "UltraAlta": true
+          },
+          "angleColorActive": true,
+          "yawDegrees": 10.45598806271372,
+          "effectiveLightness": 18.438936101228496,
+          "referenceYawDegrees": -10.123493701860795,
+          "anchorDegrees": {
+            "cameraD": 62.223491591153575,
+            "cam02": -21.5779439685011
+          }
+        },
+        "buildingLights": {
+          "intensity": 0.22,
+          "beacons": 0.7,
+          "materials": 4,
+          "beaconCount": 5,
+          "windowPitch": [
+            0.42,
+            0.9
+          ],
+          "windowSize": [
+            0.1176,
+            0.063
+          ],
+          "beaconHaloSize": 1.8,
+          "facadeLayouts": [
+            {
+              "facades": 122,
+              "central": 21,
+              "method": "Planar convex envelopes in surface coordinates"
+            }
+          ],
+          "elevatorRails": {
+            "baseY": -5.8,
+            "topY": 32.6,
+            "bottomWidth": 14,
+            "topWidth": 8,
+            "axis": -62.12,
+            "railCount": 13,
+            "recessDepth": 0.025,
+            "meshes": 0,
+            "triangles": 0,
+            "displacement": 0,
+            "method": "Original facade material; dark unlit band and darker recessed grooves; normal-only relief"
+          },
+          "method": "Facade-aligned columns and floor rows; edge margins; window-free uplight spine; Gaussian beacons",
+          "realLights": 0
+        },
+        "airTraffic": {
+          "density": 0.8,
+          "enabled": true,
+          "capacity": 10,
+          "activeVehicles": 8,
+          "corridors": 3,
+          "foregroundRoute": "right to left in front of the exterior facades",
+          "vehicleScale": 1.25,
+          "foregroundVehicleScale": 0.3125,
+          "foregroundLowering": 2.5,
+          "corridorPeriods": [
+            60,
+            68,
+            40
+          ],
+          "time": 184.34729999997967,
+          "reflectionRefreshHz": 5,
+          "environmentRefreshHz": 1,
+          "realLights": 0,
+          "trianglesPerVehicle": 14,
+          "sharedGeometries": 1,
+          "sharedGlowTextures": 1,
+          "flights": [
+            {
+              "id": "Traffic / vehicle 1",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                38.89289339017162,
+                59.98211932165179,
+                -532.9074783803793
+              ],
+              "scale": 1.25,
+              "progress": 0.5424549999997024,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 2",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                -327.0974387912132,
+                73.91001084744548,
+                -758.91629778411
+              ],
+              "scale": 1.25,
+              "progress": 0.8109897058820827,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 2,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 3",
+              "corridor": 2,
+              "route": 2,
+              "position": [
+                216.51926894215254,
+                12.322747693084136,
+                -158.63135344254718
+              ],
+              "scale": 0.3125,
+              "progress": 0.02868249999955142,
+              "speed": 11.755406120616597,
+              "period": 40,
+              "cycles": 5,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 4",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                318.0307390660931,
+                64.21487139518672,
+                -581.8396406399454
+              ],
+              "scale": 1.25,
+              "progress": 0.8757883333330315,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 5",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                370.3449788079549,
+                77.62857193191329,
+                -731.4062729190736
+              ],
+              "scale": 1.25,
+              "progress": 0.1443230392154108,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 6",
+              "corridor": 2,
+              "route": 2,
+              "position": [
+                -18.51690990401791,
+                9.62394123179321,
+                -155.72891632380126
+              ],
+              "scale": 0.3125,
+              "progress": 0.5286824999995463,
+              "speed": 11.755406120616597,
+              "period": 40,
+              "cycles": 5,
+              "strobe": true
+            },
+            {
+              "id": "Traffic / vehicle 7",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                -244.5533931921026,
+                58.2972339311374,
+                -529.4848497880572
+              ],
+              "scale": 1.25,
+              "progress": 0.20912166666636411,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 8",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                20.472057768754713,
+                72.31795101691084,
+                -706.774117673783
+              ],
+              "scale": 1.25,
+              "progress": 0.47765637254875243,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 3,
+              "strobe": false
+            }
+          ],
+          "method": "Arc-length routes; pooled minimal silhouettes; white position lights and soft double strobes; depth-tested; density 0 disables all"
+        },
+        "nearTraffic": {
+          "enabled": true,
+          "duration": 40,
+          "time": 184.34729999997967,
+          "passes": 5,
+          "nextPassIn": 17.652700000017305,
+          "capacity": 1,
+          "vehicleScale": 0.25,
+          "realLights": 0,
+          "maxBankDegrees": 20,
+          "trianglesPerVehicle": 1308,
+          "routes": [
+            "single level arc, upper left to right; repeat after completing the route"
+          ],
+          "optics": "Compact warm core, soft peripheral lens ring and subtle diagonal streak around a dark hull; secondary white strobe and existing bloom",
+          "flights": [
+            {
+              "route": 0,
+              "age": 22.347299999982695,
+              "position": [
+                42.30772554859039,
+                10.5,
+                -85.0568932727763
+              ],
+              "scale": 0.25,
+              "quaternion": [
+                -0.1437940987111678,
+                0.8444280004254748,
+                -0.08662196917583372,
+                0.5086858005973612
+              ]
+            }
+          ],
+          "reflectionRefreshHz": 8,
+          "environmentRefreshHz": 1
+        },
+        "flames": {
+          "enabled": true,
+          "interval": 4.5,
+          "intensity": 1.5,
+          "size": 4.25,
+          "rise": 2,
+          "visible": true,
+          "emissions": 41,
+          "nextIn": 2.1495068235805057,
+          "active": {
+            "index": 0,
+            "age": 2.1336744537319987
+          },
+          "towers": [
+            {
+              "x": 400,
+              "z": -460,
+              "top": 28
+            },
+            {
+              "x": -680,
+              "z": -700,
+              "top": 24
+            },
+            {
+              "x": -900,
+              "z": -830,
+              "top": 15
+            }
+          ],
+          "maximumSimultaneous": 1,
+          "spritesPerEmitter": 11,
+          "realLights": 0,
+          "bounds": [
+            {
+              "min": [
+                361,
+                -11,
+                -499
+              ],
+              "max": [
+                439,
+                136,
+                -421
+              ]
+            },
+            {
+              "min": [
+                -719,
+                -15,
+                -739
+              ],
+              "max": [
+                -641,
+                132,
+                -661
+              ]
+            },
+            {
+              "min": [
+                -939,
+                -24,
+                -869
+              ],
+              "max": [
+                -861,
+                123,
+                -791
+              ]
+            }
+          ]
+        },
+        "voightKampff": {
+          "state": "closed",
+          "progress": 0,
+          "compression": 1,
+          "light": 0,
+          "flexibleVertices": 2223,
+          "rigidBellowsPlates": 4,
+          "breathingPeriod": 3.8,
+          "autoDeploy": true,
+          "autoConsumed": false,
+          "meshes": 16,
+          "triangles": 14891,
+          "chassisColor": "#1f1f1f",
+          "placementSourceSha256": "a3abe91631ed18c3b86522d038029965cc72cb1e7e91d4b5fd5a30ea5e536224",
+          "opticalMeshes": 2,
+          "opticalTriangles": 34,
+          "position": [
+            -0.8259305953979492,
+            0.7515769004821777,
+            -9.97750473022461
+          ],
+          "quaternion": [
+            0,
+            -0.9152841763425742,
+            0,
+            0.4028087344347134
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "measurement": {
+          "type": "sustained",
+          "pass": 2,
+          "passes": 3,
+          "elapsedMs": 60006.40000000596,
+          "warmupMs": 5000,
+          "note": "RAF completo de la pasada. CPU/GPU y contadores son ventanas cortas, no estadísticas de toda la pasada."
+        },
+        "automaticQuality": {
+          "enabled": false,
+          "initialQuality": "Alta",
+          "quality": "Alta",
+          "resolutionScale": 1,
+          "targetFPS": 60,
+          "lowerFPS": 55,
+          "windowMs": 4000,
+          "warmupMs": 4000,
+          "minimumScale": 0.75,
+          "atMinimum": false,
+          "lastWindow": null,
+          "history": []
+        },
+        "id": 2,
+        "effects": "VK cerrado, Edificios bajos, Luces de edificios, Balizas, Tráfico lejano, Tráfico cercano, Llamaradas, Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+      },
+      {
+        "qualityBudget": {
+          "mode": "optimized",
+          "pixelRatio": 0.75,
+          "shadowSize": 1024,
+          "volumeSteps": 24,
+          "reflectionScale": 0.25
+        },
+        "qualitySelection": {
+          "selection": "Alta",
+          "recommended": "Media",
+          "deviceSelection": "auto",
+          "detectedDevice": "desktop",
+          "device": "desktop",
+          "reason": "manual",
+          "calibrated": false,
+          "dynamicResolution": false
+        },
+        "gpuCapacity": {
+          "version": "tyrell-compute-v1",
+          "workgroups": 4096,
+          "workgroupSize": 64,
+          "iterations": 1024,
+          "gpuScore": 87148936.17021278,
+          "method": "gpu-timestamp",
+          "samples": 12,
+          "medianMs": 3.080192,
+          "p90Ms": 3.473408,
+          "minMs": 3.014656,
+          "variability": 0.14893617021276598,
+          "reliable": true,
+          "units": "shader iterations/ms; higher is faster",
+          "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only."
+        },
+        "display": {
+          "viewport": [
+            1920,
+            1080
+          ],
+          "scene": {
+            "width": 1920,
+            "height": 800,
+            "aspect": 2.4
+          },
+          "nativeDPR": 1,
+          "effectivePixelRatio": 0.75,
+          "internal": [
+            1440,
+            600
+          ],
+          "mobilePixelCap": null
+        },
+        "performance": {
+          "enabled": true,
+          "cpuRender": {
+            "samples": 120,
+            "meanMs": 8.265000001589458,
+            "p95Ms": 12.199999988079071
+          },
+          "gpuRender": {
+            "samples": 120,
+            "meanMs": 12.873454933333333,
+            "p95Ms": 17.301504000000005
+          },
+          "gpuSupported": true,
+          "gpuError": null,
+          "heap": {
+            "usedBytes": 176226837,
+            "totalBytes": 246477321,
+            "limitBytes": 4395630592
+          },
+          "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+        },
+        "loading": {
+          "firstRenderedFrameSinceNavigationMs": 16568.399999976158,
+          "glbFetchDecodeMs": 457.5,
+          "glbBytes": 40502716,
+          "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+        },
+        "adapter": {
+          "vendor": "nvidia",
+          "architecture": "turing",
+          "device": "",
+          "description": ""
+        },
+        "asset": {
+          "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=3",
+          "bytes": 40502716,
+          "loadMs": 457.5
+        },
+        "date": "2026-09-24T18:48:56.896Z",
+        "quality": "Alta",
+        "camera": {
+          "name": "initial",
+          "position": [
+            -0.11999999731779099,
+            1.550000786781311,
+            10.300000190734863
+          ],
+          "target": [
+            0,
+            1.9514189958572388,
+            -10.378293991088867
+          ],
+          "viewOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "quaternion": [
+            0.00970469435664169,
+            -0.0029014199589480626,
+            0.00002815883848905532,
+            0.9999486986224572
+          ],
+          "fov": 22.917504404217937,
+          "aspect": 2.4,
+          "near": 0.029999999329447746,
+          "far": 2500
+        },
+        "cameraPan": {
+          "enabled": true,
+          "horizontal": 2,
+          "vertical": 0.5,
+          "smoothness": 1.4,
+          "targetDistance": 20,
+          "units": "metres; smoothness in seconds",
+          "offset": [
+            0,
+            0
+          ],
+          "referencePosition": [
+            -0.11999999731779099,
+            1.550000786781311,
+            10.300000190734863
+          ],
+          "target": [
+            0,
+            1.9514189958572388,
+            -10.378293991088867
+          ]
+        },
+        "exposure": 1.07,
+        "metrics": {
+          "fps": 58.910677414468715,
+          "frameMeanMs": 16.97485148514683,
+          "frameP95Ms": 24.399999976158142,
+          "samples": 3535,
+          "resolution": [
+            1440,
+            600
+          ],
+          "drawCalls": 454,
+          "renderedTriangles": 838474,
+          "geometries": 162,
+          "textures": 65,
+          "pass": 3,
+          "passes": 3,
+          "elapsedMs": 60006.09999999404,
+          "warmupMs": 5000,
+          "frameMaxMs": 303.19999998807907
+        },
+        "floorReflection": {
+          "enabled": true,
+          "mode": "stone",
+          "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+          "planeY": 0,
+          "gain": 0.32,
+          "fresnelF0": 0.04,
+          "roughnessLodScale": 10,
+          "maxLod": 5,
+          "normalDistortion": 0.045,
+          "resolutionScale": 0.25,
+          "resolution": "auto",
+          "mipLodOffset": -1,
+          "mipmaps": true,
+          "bounces": false,
+          "updates": {
+            "mode": "adaptive",
+            "rendered": 6443,
+            "reused": 8256
+          },
+          "meshes": 21,
+          "sharedMaterials": 1,
+          "targets": [
+            {
+              "width": 360,
+              "height": 150
+            }
+          ]
+        },
+        "specularEnvironment": {
+          "enabled": true,
+          "dirty": false,
+          "captures": 2364,
+          "size": 128,
+          "minimumCaptureInterval": 0,
+          "position": [
+            0,
+            1.4,
+            -10.2
+          ],
+          "materials": [
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "PBR | Laton envejecido",
+            "PBR | Bronce patinado",
+            "Crystal",
+            "M_VKMachine.002",
+            "VK / chasis"
+          ],
+          "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+          "metalIntensity": 0.6,
+          "glassIntensity": 0.35
+        },
+        "atmosphere": {
+          "exterior": true,
+          "interior": true,
+          "exteriorStrength": 1,
+          "interiorStrength": 1,
+          "boundary": -14.4,
+          "interiorPath": 24,
+          "exteriorDensity": 0.00025,
+          "interiorDensity": 0.0015,
+          "effectiveDensity": [
+            0.00025,
+            0.0015
+          ],
+          "excludedMaterials": [
+            "Cielo | nubes ambar",
+            "Sol | disco emisivo"
+          ],
+          "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+          "extraRenderPasses": 0
+        },
+        "lightVolume": {
+          "enabled": true,
+          "dust": true,
+          "strength": 1,
+          "speed": 1,
+          "ready": true,
+          "steps": 24,
+          "bounds": [
+            [
+              -9,
+              0.08,
+              -14.4
+            ],
+            [
+              9,
+              8,
+              2
+            ]
+          ],
+          "time": 247.9729000000317,
+          "reflectionRefreshHz": 10,
+          "scatteringDensity": 0.004,
+          "solarRadianceScale": 0.18,
+          "sampling": "deterministic midpoint; no temporal jitter or history",
+          "emptyIntervalSkipped": true,
+          "source": "solar shadow depth; bounded single scattering; procedural dust density",
+          "extraRenderPasses": 0
+        },
+        "postProcessing": {
+          "bloom": true,
+          "grade": true,
+          "strength": 0.16,
+          "radius": 0.25,
+          "threshold": 1.5,
+          "gradeStrength": 1,
+          "flare": {
+            "enabled": true,
+            "intensity": 0.18,
+            "size": 1,
+            "source": "visible solar disc only",
+            "screenPosition": [
+              0.5066674048090382,
+              0.3950422317191246
+            ],
+            "energyBeforeOcclusion": 0.18,
+            "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+            "extraRenderPasses": 0
+          },
+          "ready": true,
+          "quality": "Alta",
+          "bloomResolutionScale": 0.25,
+          "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+          "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+          "bloomLuminanceLimit": 4,
+          "extraFullscreenPasses": 13
+        },
+        "sky": {
+          "enabled": true,
+          "studio": false,
+          "projection": "cylinder",
+          "version": 5,
+          "radius": 1200,
+          "centerY": 80,
+          "halfArc": 1.5280368169646088,
+          "arc": 3.0560736339292176,
+          "height": 1833.6441803575306,
+          "referenceCamera": "Camera_D",
+          "aspect": 2.4,
+          "heightScale": 0.5,
+          "effectiveHeight": 916.8220901787653,
+          "arcDegrees": 175.10012110535274,
+          "originalProjection": false,
+          "originalPlaneVisible": false,
+          "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+          "size": [
+            1774,
+            887
+          ],
+          "visualOnly": true,
+          "probeUsesOriginalBackground": true
+        },
+        "lighting": {
+          "profile": "tyrell-light-v2",
+          "contribution": "all",
+          "sunPosition": [
+            0.24709783776834474,
+            8.042288376397824,
+            -84.68905268029118
+          ],
+          "target": [
+            0,
+            1,
+            -5
+          ],
+          "directionToSun": [
+            0.0030887229721043093,
+            0.08802860470497281,
+            -0.9961131585036398
+          ],
+          "sunIntensity": 2.5,
+          "sunColor": "ffd093",
+          "discPosition": [
+            8,
+            42.5,
+            -650
+          ],
+          "discScale": [
+            0.5600000095367431,
+            0.5600000095367431,
+            0.5600000095367431
+          ],
+          "skyEmission": [
+            0.7500000298023224,
+            0.7500000298023224,
+            0.7500000298023224
+          ],
+          "hemisphereIntensity": 0.86,
+          "areaIntensities": [
+            0.08,
+            0.08,
+            0.2,
+            0.2
+          ],
+          "areas": [
+            {
+              "role": "window",
+              "position": [
+                0,
+                4.2,
+                -13.8
+              ],
+              "emissionDirection": [
+                0,
+                -0.28408832969137404,
+                0.9587981127083873
+              ],
+              "width": 6,
+              "height": 6,
+              "intensity": 0.08,
+              "power": 9.047786842338605,
+              "castShadow": false
+            },
+            {
+              "role": "front",
+              "position": [
+                0,
+                4.5,
+                7
+              ],
+              "emissionDirection": [
+                0,
+                -0.12752174253952622,
+                -0.9918357753074262
+              ],
+              "width": 7,
+              "height": 7,
+              "intensity": 0.08,
+              "power": 12.31504320207199,
+              "castShadow": false
+            },
+            {
+              "role": "left",
+              "position": [
+                -7.7,
+                4.3,
+                -3.4
+              ],
+              "emissionDirection": [
+                0.8589580613952029,
+                -0.42034117898063117,
+                -0.2924112549430478
+              ],
+              "width": 4,
+              "height": 4,
+              "intensity": 0.2,
+              "power": 10.053096491487338,
+              "castShadow": false
+            },
+            {
+              "role": "right",
+              "position": [
+                7.7,
+                4.1,
+                -7.2
+              ],
+              "emissionDirection": [
+                -0.9024909124636484,
+                -0.41166252147464655,
+                -0.12666539122296816
+              ],
+              "width": 4,
+              "height": 4,
+              "intensity": 0.2,
+              "power": 10.053096491487338,
+              "castShadow": false
+            }
+          ]
+        },
+        "materialLook": {
+          "profile": "tyrell-v1",
+          "floorNormal": true,
+          "status": "v1 reviewed baseline; final lighting and reflections pending",
+          "materialCount": 38,
+          "adjusted": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras",
+            "PBR | Piedra negra pulida",
+            "PBR | Nogal oscuro",
+            "PBR | Raiz de nogal",
+            "Walnut | quarter sawn",
+            "Leather | oxblood",
+            "Burl walnut | table rim",
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "PBR | Cuero oscuro",
+            "PBR | Laton envejecido",
+            "PBR | Bronce patinado",
+            "Crystal"
+          ]
+        },
+        "indirect": {
+          "mode": "reference",
+          "probeIntensity": 0,
+          "environmentActive": false,
+          "environmentIntensity": 1,
+          "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+          "ambientRetention": 0.92
+        },
+        "reviewLighting": "tyrell-light-v2",
+        "city": {
+          "enabled": true,
+          "buildings": 97,
+          "boxes": 1478,
+          "meshes": 3,
+          "triangles": 17754,
+          "roofLowering": 2.5,
+          "removedFacadeRibs": 485,
+          "savedTriangles": 5820,
+          "towers": [
+            {
+              "x": 400,
+              "z": -460,
+              "top": 28
+            },
+            {
+              "x": -680,
+              "z": -700,
+              "top": 24
+            },
+            {
+              "x": -900,
+              "z": -830,
+              "top": 15
+            }
+          ],
+          "baseColor": "#43311d",
+          "baseHSL": [
+            31.4,
+            38.9,
+            18.8
+          ],
+          "facadeDepth": 18,
+          "gradientCenterX": -49.2357,
+          "pyramidZ": -264.7806,
+          "blockSpacing": 27,
+          "baseColorMultiplier": 1,
+          "roofColorMultiplier": 1,
+          "towerColorMultiplier": 1,
+          "leftTowerLightnessOffset": 2,
+          "roughness": 1,
+          "metalness": 0,
+          "specularIntensity": 0,
+          "envMapIntensity": 0,
+          "continuity": {
+            "roofTriangles": 18,
+            "serviceBlocks": 3
+          },
+          "textureSize": [
+            256,
+            256
+          ],
+          "seed": 902091,
+          "cityBackdrop": "layered geometry; no photographic background",
+          "lights": 0,
+          "colorHSL": {
+            "h": 31.4,
+            "s": 38.9,
+            "l": 18.8,
+            "cameraD": 14,
+            "cam02": 14.6,
+            "rightStep": -0.3,
+            "leftStep": -1.3,
+            "mode": "lod"
+          },
+          "colorLOD": {
+            "Extra baja": true,
+            "Baja": true,
+            "Media": true,
+            "Alta": true,
+            "UltraAlta": true
+          },
+          "angleColorActive": true,
+          "yawDegrees": 10.45598806271372,
+          "effectiveLightness": 18.438936101228496,
+          "referenceYawDegrees": -10.123493701860795,
+          "anchorDegrees": {
+            "cameraD": 62.223491591153575,
+            "cam02": -21.5779439685011
+          }
+        },
+        "buildingLights": {
+          "intensity": 0.22,
+          "beacons": 0.7,
+          "materials": 4,
+          "beaconCount": 5,
+          "windowPitch": [
+            0.42,
+            0.9
+          ],
+          "windowSize": [
+            0.1176,
+            0.063
+          ],
+          "beaconHaloSize": 1.8,
+          "facadeLayouts": [
+            {
+              "facades": 122,
+              "central": 21,
+              "method": "Planar convex envelopes in surface coordinates"
+            }
+          ],
+          "elevatorRails": {
+            "baseY": -5.8,
+            "topY": 32.6,
+            "bottomWidth": 14,
+            "topWidth": 8,
+            "axis": -62.12,
+            "railCount": 13,
+            "recessDepth": 0.025,
+            "meshes": 0,
+            "triangles": 0,
+            "displacement": 0,
+            "method": "Original facade material; dark unlit band and darker recessed grooves; normal-only relief"
+          },
+          "method": "Facade-aligned columns and floor rows; edge margins; window-free uplight spine; Gaussian beacons",
+          "realLights": 0
+        },
+        "airTraffic": {
+          "density": 0.8,
+          "enabled": true,
+          "capacity": 10,
+          "activeVehicles": 8,
+          "corridors": 3,
+          "foregroundRoute": "right to left in front of the exterior facades",
+          "vehicleScale": 1.25,
+          "foregroundVehicleScale": 0.3125,
+          "foregroundLowering": 2.5,
+          "corridorPeriods": [
+            60,
+            68,
+            40
+          ],
+          "time": 248.94309999998984,
+          "reflectionRefreshHz": 5,
+          "environmentRefreshHz": 1,
+          "realLights": 0,
+          "trianglesPerVehicle": 14,
+          "sharedGeometries": 1,
+          "sharedGlowTextures": 1,
+          "flights": [
+            {
+              "id": "Traffic / vehicle 1",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                103.7852441023159,
+                60.9080487647157,
+                -539.6188834459368
+              ],
+              "scale": 1.25,
+              "progress": 0.6190516666665657,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 4,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 2",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                -275.720519158257,
+                72.98075147849171,
+                -746.4973628489089
+              ],
+              "scale": 1.25,
+              "progress": 0.7609279411763725,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 3",
+              "corridor": 2,
+              "route": 2,
+              "position": [
+                -72.52826905463907,
+                9.4938682237164,
+                -156.93872005409483
+              ],
+              "scale": 0.3125,
+              "progress": 0.6435774999998476,
+              "speed": 11.755406120616597,
+              "period": 40,
+              "cycles": 6,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 4",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                380.79534356389536,
+                65.32829807739236,
+                -599.6290014515595
+              ],
+              "scale": 1.25,
+              "progress": 0.9523849999998978,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 4,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 5",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                422.1680816369585,
+                78.8278710743541,
+                -741.7885744652266
+              ],
+              "scale": 1.25,
+              "progress": 0.09426127450970156,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 4,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 6",
+              "corridor": 2,
+              "route": 2,
+              "position": [
+                162.525453859884,
+                11.578177787529304,
+                -156.9375045225696
+              ],
+              "scale": 0.3125,
+              "progress": 0.1435774999998414,
+              "speed": 11.755406120616597,
+              "period": 40,
+              "cycles": 7,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 7",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                -179.5166323831162,
+                57.99717601285715,
+                -524.6179625529576
+              ],
+              "scale": 1.25,
+              "progress": 0.28571833333322993,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 4,
+              "strobe": true
+            },
+            {
+              "id": "Traffic / vehicle 8",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                73.27878570300805,
+                72.77651097158935,
+                -704.3510364737409
+              ],
+              "scale": 1.25,
+              "progress": 0.4275946078430395,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 4,
+              "strobe": false
+            }
+          ],
+          "method": "Arc-length routes; pooled minimal silhouettes; white position lights and soft double strobes; depth-tested; density 0 disables all"
+        },
+        "nearTraffic": {
+          "enabled": true,
+          "duration": 40,
+          "time": 248.94309999998984,
+          "passes": 7,
+          "nextPassIn": 33.056900000004845,
+          "capacity": 1,
+          "vehicleScale": 0.25,
+          "realLights": 0,
+          "maxBankDegrees": 20,
+          "trianglesPerVehicle": 1308,
+          "routes": [
+            "single level arc, upper left to right; repeat after completing the route"
+          ],
+          "optics": "Compact warm core, soft peripheral lens ring and subtle diagonal streak around a dark hull; secondary white strobe and existing bloom",
+          "flights": [
+            {
+              "route": 0,
+              "age": 6.943099999995153,
+              "position": [
+                -51.12232130717051,
+                10.5,
+                -26.897514771402033
+              ],
+              "scale": 0.25,
+              "quaternion": [
+                -0.042095201960374105,
+                0.8958429763405356,
+                -0.020763942117194303,
+                0.4418848429410085
+              ]
+            }
+          ],
+          "reflectionRefreshHz": 8,
+          "environmentRefreshHz": 1
+        },
+        "flames": {
+          "enabled": true,
+          "interval": 4.5,
+          "intensity": 1.5,
+          "size": 4.25,
+          "rise": 2,
+          "visible": true,
+          "emissions": 55,
+          "nextIn": 1.4245626112561587,
+          "active": {
+            "index": 0,
+            "age": 3.739461053431349
+          },
+          "towers": [
+            {
+              "x": 400,
+              "z": -460,
+              "top": 28
+            },
+            {
+              "x": -680,
+              "z": -700,
+              "top": 24
+            },
+            {
+              "x": -900,
+              "z": -830,
+              "top": 15
+            }
+          ],
+          "maximumSimultaneous": 1,
+          "spritesPerEmitter": 11,
+          "realLights": 0,
+          "bounds": [
+            {
+              "min": [
+                361,
+                -11,
+                -499
+              ],
+              "max": [
+                439,
+                136,
+                -421
+              ]
+            },
+            {
+              "min": [
+                -719,
+                -15,
+                -739
+              ],
+              "max": [
+                -641,
+                132,
+                -661
+              ]
+            },
+            {
+              "min": [
+                -939,
+                -24,
+                -869
+              ],
+              "max": [
+                -861,
+                123,
+                -791
+              ]
+            }
+          ]
+        },
+        "voightKampff": {
+          "state": "closed",
+          "progress": 0,
+          "compression": 1,
+          "light": 0,
+          "flexibleVertices": 2223,
+          "rigidBellowsPlates": 4,
+          "breathingPeriod": 3.8,
+          "autoDeploy": true,
+          "autoConsumed": false,
+          "meshes": 16,
+          "triangles": 14891,
+          "chassisColor": "#1f1f1f",
+          "placementSourceSha256": "a3abe91631ed18c3b86522d038029965cc72cb1e7e91d4b5fd5a30ea5e536224",
+          "opticalMeshes": 2,
+          "opticalTriangles": 34,
+          "position": [
+            -0.8259305953979492,
+            0.7515769004821777,
+            -9.97750473022461
+          ],
+          "quaternion": [
+            0,
+            -0.9152841763425742,
+            0,
+            0.4028087344347134
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "measurement": {
+          "type": "sustained",
+          "pass": 3,
+          "passes": 3,
+          "elapsedMs": 60006.09999999404,
+          "warmupMs": 5000,
+          "note": "RAF completo de la pasada. CPU/GPU y contadores son ventanas cortas, no estadísticas de toda la pasada."
+        },
+        "automaticQuality": {
+          "enabled": false,
+          "initialQuality": "Alta",
+          "quality": "Alta",
+          "resolutionScale": 1,
+          "targetFPS": 60,
+          "lowerFPS": 55,
+          "windowMs": 4000,
+          "warmupMs": 4000,
+          "minimumScale": 0.75,
+          "atMinimum": false,
+          "lastWindow": null,
+          "history": []
+        },
+        "id": 3,
+        "effects": "VK cerrado, Edificios bajos, Luces de edificios, Balizas, Tráfico lejano, Tráfico cercano, Llamaradas, Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+      }
+    ]
+  },
+  "additionalViews": {
+    "note": "RAF, CPU de envío y GPU de pases (opcional con profile=1). Comparar misma cámara y luz; consultar qualityBudget y resolución efectiva.",
+    "rows": [
+      {
+        "qualityBudget": {
+          "mode": "optimized",
+          "pixelRatio": 0.75,
+          "shadowSize": 1024,
+          "volumeSteps": 24,
+          "reflectionScale": 0.25
+        },
+        "qualitySelection": {
+          "selection": "auto",
+          "recommended": "Alta",
+          "deviceSelection": "auto",
+          "detectedDevice": "desktop",
+          "device": "desktop",
+          "reason": "gpu-score",
+          "calibrated": false,
+          "dynamicResolution": true
+        },
+        "gpuCapacity": {
+          "version": "tyrell-compute-v1",
+          "workgroups": 4096,
+          "workgroupSize": 64,
+          "iterations": 1024,
+          "gpuScore": 163840000,
+          "method": "gpu-timestamp",
+          "samples": 12,
+          "medianMs": 1.6384,
+          "p90Ms": 1.96608,
+          "minMs": 1.572864,
+          "variability": 0.24,
+          "reliable": true,
+          "units": "shader iterations/ms; higher is faster",
+          "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only."
+        },
+        "display": {
+          "viewport": [
+            1920,
+            1080
+          ],
+          "scene": {
+            "width": 1920,
+            "height": 800,
+            "aspect": 2.4
+          },
+          "nativeDPR": 1,
+          "effectivePixelRatio": 0.75,
+          "internal": [
+            1440,
+            600
+          ],
+          "mobilePixelCap": null
+        },
+        "performance": {
+          "enabled": true,
+          "cpuRender": {
+            "samples": 120,
+            "meanMs": 7.888333331545194,
+            "p95Ms": 10
+          },
+          "gpuRender": {
+            "samples": 73,
+            "meanMs": 9.306111999999997,
+            "p95Ms": 9.961471999999997
+          },
+          "gpuSupported": true,
+          "gpuError": null,
+          "heap": {
+            "usedBytes": 170242593,
+            "totalBytes": 278565489,
+            "limitBytes": 4395630592
+          },
+          "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+        },
+        "loading": {
+          "firstRenderedFrameSinceNavigationMs": 3737.5,
+          "glbFetchDecodeMs": 541.7999999821186,
+          "glbBytes": 40502716,
+          "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+        },
+        "adapter": {
+          "vendor": "nvidia",
+          "architecture": "turing",
+          "device": "",
+          "description": ""
+        },
+        "asset": {
+          "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=3",
+          "bytes": 40502716,
+          "loadMs": 541.7999999821186
+        },
+        "date": "2026-09-24T18:56:27.550Z",
+        "quality": "Alta",
+        "camera": {
+          "name": "p1",
+          "position": [
+            1.0380754470825195,
+            0.9417622685432434,
+            -8.501016616821289
+          ],
+          "target": [
+            -0.20999068021774292,
+            1.0849730968475342,
+            -10.368745803833008
+          ],
+          "viewOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "quaternion": [
+            0.030457251950227866,
+            0.2901534304614902,
+            -0.009239656567552941,
+            0.9564507155842287
+          ],
+          "fov": 33.21750452013781,
+          "aspect": 2.4,
+          "near": 0.029999999329447746,
+          "far": 2500
+        },
+        "cameraPan": {
+          "enabled": true,
+          "horizontal": 0.5,
+          "vertical": 0.2,
+          "smoothness": 1.4,
+          "targetDistance": 20,
+          "units": "metres; smoothness in seconds",
+          "offset": [
+            0,
+            0
+          ],
+          "referencePosition": [
+            1.0380754470825195,
+            0.9417622685432434,
+            -8.501016616821289
+          ],
+          "target": [
+            -0.20999068021774292,
+            1.0849730968475342,
+            -10.368745803833008
+          ]
+        },
+        "exposure": 1.07,
+        "metrics": {
+          "fps": 59.8,
+          "frameMeanMs": 16.72,
+          "frameP95Ms": 20.3,
+          "samples": 120,
+          "resolution": [
+            1440,
+            600
+          ],
+          "drawCalls": 325,
+          "renderedTriangles": 569031,
+          "geometries": 164,
+          "textures": 66
+        },
+        "floorReflection": {
+          "enabled": true,
+          "mode": "stone",
+          "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+          "planeY": 0,
+          "gain": 0.32,
+          "fresnelF0": 0.04,
+          "roughnessLodScale": 10,
+          "maxLod": 5,
+          "normalDistortion": 0.045,
+          "resolutionScale": 0.25,
+          "resolution": "auto",
+          "mipLodOffset": -1,
+          "mipmaps": true,
+          "bounces": false,
+          "updates": {
+            "mode": "adaptive",
+            "rendered": 3679,
+            "reused": 3234
+          },
+          "meshes": 21,
+          "sharedMaterials": 1,
+          "targets": [
+            {
+              "width": 360,
+              "height": 150
+            }
+          ]
+        },
+        "specularEnvironment": {
+          "enabled": true,
+          "dirty": true,
+          "captures": 925,
+          "size": 128,
+          "minimumCaptureInterval": 0.5,
+          "position": [
+            0,
+            1.4,
+            -10.2
+          ],
+          "materials": [
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "PBR | Laton envejecido",
+            "PBR | Bronce patinado",
+            "Crystal",
+            "M_VKMachine.002",
+            "VK / chasis"
+          ],
+          "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+          "metalIntensity": 0.6,
+          "glassIntensity": 0.35
+        },
+        "atmosphere": {
+          "exterior": true,
+          "interior": true,
+          "exteriorStrength": 1,
+          "interiorStrength": 1,
+          "boundary": -14.4,
+          "interiorPath": 24,
+          "exteriorDensity": 0.00025,
+          "interiorDensity": 0.0015,
+          "effectiveDensity": [
+            0.00025,
+            0.0015
+          ],
+          "excludedMaterials": [
+            "Cielo | nubes ambar",
+            "Sol | disco emisivo"
+          ],
+          "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+          "extraRenderPasses": 0
+        },
+        "lightVolume": {
+          "enabled": true,
+          "dust": true,
+          "strength": 1,
+          "speed": 1,
+          "ready": true,
+          "steps": 24,
+          "bounds": [
+            [
+              -9,
+              0.08,
+              -14.4
+            ],
+            [
+              9,
+              8,
+              2
+            ]
+          ],
+          "time": 135.3926999999867,
+          "reflectionRefreshHz": 10,
+          "scatteringDensity": 0.004,
+          "solarRadianceScale": 0.18,
+          "sampling": "deterministic midpoint; no temporal jitter or history",
+          "emptyIntervalSkipped": true,
+          "source": "solar shadow depth; bounded single scattering; procedural dust density",
+          "extraRenderPasses": 0
+        },
+        "postProcessing": {
+          "bloom": true,
+          "grade": true,
+          "strength": 0.16,
+          "radius": 0.25,
+          "threshold": 1.5,
+          "gradeStrength": 1,
+          "flare": {
+            "enabled": true,
+            "intensity": 0.18,
+            "size": 1,
+            "source": "visible solar disc only",
+            "screenPosition": [
+              0.9763543724648933,
+              0.47542790620707553
+            ],
+            "energyBeforeOcclusion": 0.03787962367225426,
+            "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+            "extraRenderPasses": 0
+          },
+          "ready": true,
+          "quality": "Alta",
+          "bloomResolutionScale": 0.25,
+          "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+          "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+          "bloomLuminanceLimit": 4,
+          "extraFullscreenPasses": 13
+        },
+        "sky": {
+          "enabled": true,
+          "studio": false,
+          "projection": "cylinder",
+          "version": 5,
+          "radius": 1200,
+          "centerY": 80,
+          "halfArc": 1.5280368169646088,
+          "arc": 3.0560736339292176,
+          "height": 1833.6441803575306,
+          "referenceCamera": "Camera_D",
+          "aspect": 2.4,
+          "heightScale": 0.5,
+          "effectiveHeight": 916.8220901787653,
+          "arcDegrees": 175.10012110535274,
+          "originalProjection": false,
+          "originalPlaneVisible": false,
+          "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+          "size": [
+            1774,
+            887
+          ],
+          "visualOnly": true,
+          "probeUsesOriginalBackground": true
+        },
+        "lighting": {
+          "profile": "tyrell-light-v2",
+          "contribution": "all",
+          "sunPosition": [
+            0.24709783776834474,
+            8.042288376397824,
+            -84.68905268029118
+          ],
+          "target": [
+            0,
+            1,
+            -5
+          ],
+          "directionToSun": [
+            0.0030887229721043093,
+            0.08802860470497281,
+            -0.9961131585036398
+          ],
+          "sunIntensity": 2.5,
+          "sunColor": "ffd093",
+          "discPosition": [
+            8,
+            42.5,
+            -650
+          ],
+          "discScale": [
+            0.5600000095367431,
+            0.5600000095367431,
+            0.5600000095367431
+          ],
+          "skyEmission": [
+            0.7500000298023224,
+            0.7500000298023224,
+            0.7500000298023224
+          ],
+          "hemisphereIntensity": 0.86,
+          "areaIntensities": [
+            0.08,
+            0.08,
+            0.2,
+            0.2
+          ],
+          "areas": [
+            {
+              "role": "window",
+              "position": [
+                0,
+                4.2,
+                -13.8
+              ],
+              "emissionDirection": [
+                0,
+                -0.28408832969137404,
+                0.9587981127083873
+              ],
+              "width": 6,
+              "height": 6,
+              "intensity": 0.08,
+              "power": 9.047786842338605,
+              "castShadow": false
+            },
+            {
+              "role": "front",
+              "position": [
+                0,
+                4.5,
+                7
+              ],
+              "emissionDirection": [
+                0,
+                -0.12752174253952622,
+                -0.9918357753074262
+              ],
+              "width": 7,
+              "height": 7,
+              "intensity": 0.08,
+              "power": 12.31504320207199,
+              "castShadow": false
+            },
+            {
+              "role": "left",
+              "position": [
+                -7.7,
+                4.3,
+                -3.4
+              ],
+              "emissionDirection": [
+                0.8589580613952029,
+                -0.42034117898063117,
+                -0.2924112549430478
+              ],
+              "width": 4,
+              "height": 4,
+              "intensity": 0.2,
+              "power": 10.053096491487338,
+              "castShadow": false
+            },
+            {
+              "role": "right",
+              "position": [
+                7.7,
+                4.1,
+                -7.2
+              ],
+              "emissionDirection": [
+                -0.9024909124636484,
+                -0.41166252147464655,
+                -0.12666539122296816
+              ],
+              "width": 4,
+              "height": 4,
+              "intensity": 0.2,
+              "power": 10.053096491487338,
+              "castShadow": false
+            }
+          ]
+        },
+        "materialLook": {
+          "profile": "tyrell-v1",
+          "floorNormal": true,
+          "status": "v1 reviewed baseline; final lighting and reflections pending",
+          "materialCount": 38,
+          "adjusted": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras",
+            "PBR | Piedra negra pulida",
+            "PBR | Nogal oscuro",
+            "PBR | Raiz de nogal",
+            "Walnut | quarter sawn",
+            "Leather | oxblood",
+            "Burl walnut | table rim",
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "PBR | Cuero oscuro",
+            "PBR | Laton envejecido",
+            "PBR | Bronce patinado",
+            "Crystal"
+          ]
+        },
+        "indirect": {
+          "mode": "reference",
+          "probeIntensity": 0,
+          "environmentActive": false,
+          "environmentIntensity": 1,
+          "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+          "ambientRetention": 0.92
+        },
+        "reviewLighting": "tyrell-light-v2",
+        "city": {
+          "enabled": true,
+          "buildings": 97,
+          "boxes": 1478,
+          "meshes": 3,
+          "triangles": 17754,
+          "roofLowering": 2.5,
+          "removedFacadeRibs": 485,
+          "savedTriangles": 5820,
+          "towers": [
+            {
+              "x": 400,
+              "z": -460,
+              "top": 28
+            },
+            {
+              "x": -680,
+              "z": -700,
+              "top": 24
+            },
+            {
+              "x": -900,
+              "z": -830,
+              "top": 15
+            }
+          ],
+          "baseColor": "#43311d",
+          "baseHSL": [
+            31.4,
+            38.9,
+            18.8
+          ],
+          "facadeDepth": 18,
+          "gradientCenterX": -49.2357,
+          "pyramidZ": -264.7806,
+          "blockSpacing": 27,
+          "baseColorMultiplier": 1,
+          "roofColorMultiplier": 1,
+          "towerColorMultiplier": 1,
+          "leftTowerLightnessOffset": 2,
+          "roughness": 1,
+          "metalness": 0,
+          "specularIntensity": 0,
+          "envMapIntensity": 0,
+          "continuity": {
+            "roofTriangles": 18,
+            "serviceBlocks": 3
+          },
+          "textureSize": [
+            256,
+            256
+          ],
+          "seed": 902091,
+          "cityBackdrop": "layered geometry; no photographic background",
+          "lights": 0,
+          "colorHSL": {
+            "h": 31.4,
+            "s": 38.9,
+            "l": 18.8,
+            "cameraD": 14,
+            "cam02": 14.6,
+            "rightStep": -0.3,
+            "leftStep": -1.3,
+            "mode": "lod"
+          },
+          "colorLOD": {
+            "Extra baja": true,
+            "Baja": true,
+            "Media": true,
+            "Alta": true,
+            "UltraAlta": true
+          },
+          "angleColorActive": true,
+          "yawDegrees": -23.62840190120541,
+          "effectiveLightness": 14.599901286480598,
+          "referenceYawDegrees": -10.123493701860795,
+          "anchorDegrees": {
+            "cameraD": 62.223491591153575,
+            "cam02": -21.5779439685011
+          }
+        },
+        "buildingLights": {
+          "intensity": 0.22,
+          "beacons": 0.7,
+          "materials": 4,
+          "beaconCount": 5,
+          "windowPitch": [
+            0.42,
+            0.9
+          ],
+          "windowSize": [
+            0.1176,
+            0.063
+          ],
+          "beaconHaloSize": 1.8,
+          "facadeLayouts": [
+            {
+              "facades": 122,
+              "central": 21,
+              "method": "Planar convex envelopes in surface coordinates"
+            }
+          ],
+          "elevatorRails": {
+            "baseY": -5.8,
+            "topY": 32.6,
+            "bottomWidth": 14,
+            "topWidth": 8,
+            "axis": -62.12,
+            "railCount": 13,
+            "recessDepth": 0.025,
+            "meshes": 0,
+            "triangles": 0,
+            "displacement": 0,
+            "method": "Original facade material; dark unlit band and darker recessed grooves; normal-only relief"
+          },
+          "method": "Facade-aligned columns and floor rows; edge margins; window-free uplight spine; Gaussian beacons",
+          "realLights": 0
+        },
+        "airTraffic": {
+          "density": 0.8,
+          "enabled": true,
+          "capacity": 10,
+          "activeVehicles": 8,
+          "corridors": 3,
+          "foregroundRoute": "right to left in front of the exterior facades",
+          "vehicleScale": 1.25,
+          "foregroundVehicleScale": 0.3125,
+          "foregroundLowering": 2.5,
+          "corridorPeriods": [
+            60,
+            68,
+            40
+          ],
+          "time": 138.1108999999448,
+          "reflectionRefreshHz": 5,
+          "environmentRefreshHz": 1,
+          "realLights": 0,
+          "trianglesPerVehicle": 14,
+          "sharedGeometries": 1,
+          "sharedGlowTextures": 1,
+          "flights": [
+            {
+              "id": "Traffic / vehicle 1",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                232.28633206316553,
+                62.76888597966138,
+                -559.8766661185981
+              ],
+              "scale": 1.25,
+              "progress": 0.7718483333324379,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 2,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 2",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                384.0974364400919,
+                77.94518342937083,
+                -734.1365301318966
+              ],
+              "scale": 1.25,
+              "progress": 0.13104264705803095,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 2,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 3",
+              "corridor": 2,
+              "route": 2,
+              "position": [
+                -180.22696855655903,
+                10.64977198631976,
+                -160.67234347907066
+              ],
+              "scale": 0.3125,
+              "progress": 0.8727724999986668,
+              "speed": 11.755406120616597,
+              "period": 40,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 4",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                -331.87983111117944,
+                59.559386591996024,
+                -543.9077430012574
+              ],
+              "scale": 1.25,
+              "progress": 0.10518166666577383,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 5",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                34.473223291077794,
+                72.42827484021925,
+                -705.976391145117
+              ],
+              "scale": 1.25,
+              "progress": 0.4643759803913667,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 2,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 6",
+              "corridor": 2,
+              "route": 2,
+              "position": [
+                54.78575618101209,
+                10.295262444638125,
+                -154.94408934661703
+              ],
+              "scale": 0.3125,
+              "progress": 0.3727724999986595,
+              "speed": 11.755406120616597,
+              "period": 40,
+              "cycles": 4,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 7",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                -49.412746512967146,
+                58.87081348137945,
+                -526.6121855670391
+              ],
+              "scale": 1.25,
+              "progress": 0.43851499999910704,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 2,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 8",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                -313.5001181740551,
+                73.64543461138635,
+                -755.4913422177275
+              ],
+              "scale": 1.25,
+              "progress": 0.7977093137247032,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 2,
+              "strobe": false
+            }
+          ],
+          "method": "Arc-length routes; pooled minimal silhouettes; white position lights and soft double strobes; depth-tested; density 0 disables all"
+        },
+        "nearTraffic": {
+          "enabled": true,
+          "duration": 40,
+          "time": 138.1108999999448,
+          "passes": 4,
+          "nextPassIn": 23.889100000052938,
+          "capacity": 1,
+          "vehicleScale": 0.25,
+          "realLights": 0,
+          "maxBankDegrees": 20,
+          "trianglesPerVehicle": 1308,
+          "routes": [
+            "single level arc, upper left to right; repeat after completing the route"
+          ],
+          "optics": "Compact warm core, soft peripheral lens ring and subtle diagonal streak around a dark hull; secondary white strobe and existing bloom",
+          "flights": [
+            {
+              "route": 0,
+              "age": 16.110899999947062,
+              "position": [
+                3.3876210277225733,
+                10.5,
+                -63.27418355751919
+              ],
+              "scale": 0.25,
+              "quaternion": [
+                -0.13730389537797383,
+                0.8576323509792648,
+                -0.078345321226032,
+                0.4893632612996232
+              ]
+            }
+          ],
+          "reflectionRefreshHz": 8,
+          "environmentRefreshHz": 1
+        },
+        "flames": {
+          "enabled": true,
+          "interval": 4.5,
+          "intensity": 1.5,
+          "size": 4.25,
+          "rise": 2,
+          "visible": true,
+          "emissions": 31,
+          "nextIn": 3.949658867053735,
+          "active": {
+            "index": 0,
+            "age": 0.09006356213376761
+          },
+          "towers": [
+            {
+              "x": 400,
+              "z": -460,
+              "top": 28
+            },
+            {
+              "x": -680,
+              "z": -700,
+              "top": 24
+            },
+            {
+              "x": -900,
+              "z": -830,
+              "top": 15
+            }
+          ],
+          "maximumSimultaneous": 1,
+          "spritesPerEmitter": 11,
+          "realLights": 0,
+          "bounds": [
+            {
+              "min": [
+                361,
+                -11,
+                -499
+              ],
+              "max": [
+                439,
+                136,
+                -421
+              ]
+            },
+            {
+              "min": [
+                -719,
+                -15,
+                -739
+              ],
+              "max": [
+                -641,
+                132,
+                -661
+              ]
+            },
+            {
+              "min": [
+                -939,
+                -24,
+                -869
+              ],
+              "max": [
+                -861,
+                123,
+                -791
+              ]
+            }
+          ]
+        },
+        "voightKampff": {
+          "state": "open",
+          "progress": 1,
+          "compression": 0.3783963213439214,
+          "light": 1,
+          "flexibleVertices": 2223,
+          "rigidBellowsPlates": 4,
+          "breathingPeriod": 3.8,
+          "autoDeploy": true,
+          "autoConsumed": true,
+          "meshes": 16,
+          "triangles": 14891,
+          "chassisColor": "#1f1f1f",
+          "placementSourceSha256": "a3abe91631ed18c3b86522d038029965cc72cb1e7e91d4b5fd5a30ea5e536224",
+          "opticalMeshes": 2,
+          "opticalTriangles": 34,
+          "position": [
+            -0.8259305953979492,
+            0.7515769004821777,
+            -9.97750473022461
+          ],
+          "quaternion": [
+            0,
+            -0.9152841763425742,
+            0,
+            0.4028087344347134
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "automaticQuality": {
+          "enabled": true,
+          "initialQuality": "Alta",
+          "quality": "Alta",
+          "resolutionScale": 1,
+          "targetFPS": 60,
+          "lowerFPS": 55,
+          "windowMs": 4000,
+          "warmupMs": 4000,
+          "minimumScale": 0.75,
+          "atMinimum": false,
+          "lastWindow": {
+            "fps": 59.57722604455955,
+            "medianMs": 16.599999994039536,
+            "p95Ms": 20.400000005960464,
+            "durationMs": 4011.5999999940395,
+            "samples": 239
+          },
+          "history": []
+        },
+        "id": 1,
+        "effects": "VK operativo, Reflejos a 2 Hz, Edificios bajos, Luces de edificios, Balizas, Tráfico lejano, Tráfico cercano, Llamaradas, Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+      },
+      {
+        "qualityBudget": {
+          "mode": "optimized",
+          "pixelRatio": 0.75,
+          "shadowSize": 1024,
+          "volumeSteps": 24,
+          "reflectionScale": 0.25
+        },
+        "qualitySelection": {
+          "selection": "auto",
+          "recommended": "Alta",
+          "deviceSelection": "auto",
+          "detectedDevice": "desktop",
+          "device": "desktop",
+          "reason": "gpu-score",
+          "calibrated": false,
+          "dynamicResolution": true
+        },
+        "gpuCapacity": {
+          "version": "tyrell-compute-v1",
+          "workgroups": 4096,
+          "workgroupSize": 64,
+          "iterations": 1024,
+          "gpuScore": 163840000,
+          "method": "gpu-timestamp",
+          "samples": 12,
+          "medianMs": 1.6384,
+          "p90Ms": 1.96608,
+          "minMs": 1.572864,
+          "variability": 0.24,
+          "reliable": true,
+          "units": "shader iterations/ms; higher is faster",
+          "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only."
+        },
+        "display": {
+          "viewport": [
+            1920,
+            1080
+          ],
+          "scene": {
+            "width": 1920,
+            "height": 800,
+            "aspect": 2.4
+          },
+          "nativeDPR": 1,
+          "effectivePixelRatio": 0.75,
+          "internal": [
+            1440,
+            600
+          ],
+          "mobilePixelCap": null
+        },
+        "performance": {
+          "enabled": true,
+          "cpuRender": {
+            "samples": 120,
+            "meanMs": 10.526666667560736,
+            "p95Ms": 14.5
+          },
+          "gpuRender": {
+            "samples": 56,
+            "meanMs": 11.232402285714285,
+            "p95Ms": 11.993087999999998
+          },
+          "gpuSupported": true,
+          "gpuError": null,
+          "heap": {
+            "usedBytes": 185580209,
+            "totalBytes": 256020913,
+            "limitBytes": 4395630592
+          },
+          "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+        },
+        "loading": {
+          "firstRenderedFrameSinceNavigationMs": 3737.5,
+          "glbFetchDecodeMs": 541.7999999821186,
+          "glbBytes": 40502716,
+          "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+        },
+        "adapter": {
+          "vendor": "nvidia",
+          "architecture": "turing",
+          "device": "",
+          "description": ""
+        },
+        "asset": {
+          "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=3",
+          "bytes": 40502716,
+          "loadMs": 541.7999999821186
+        },
+        "date": "2026-09-24T18:57:20.293Z",
+        "quality": "Alta",
+        "camera": {
+          "name": "p2",
+          "position": [
+            -8.745309829711914,
+            1.9016311168670654,
+            -3.9683480262756348
+          ],
+          "target": [
+            -0.20999068021774292,
+            1.0849730968475342,
+            -10.368745803833008
+          ],
+          "viewOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "quaternion": [
+            -0.03415792385592782,
+            -0.44692392226997124,
+            -0.017080709457906313,
+            0.8937563948331178
+          ],
+          "fov": 33.000002206351546,
+          "aspect": 2.4,
+          "near": 0.029999999329447746,
+          "far": 2500
+        },
+        "cameraPan": {
+          "enabled": true,
+          "horizontal": 2,
+          "vertical": 0.5,
+          "smoothness": 1.4,
+          "targetDistance": 20,
+          "units": "metres; smoothness in seconds",
+          "offset": [
+            0,
+            0
+          ],
+          "referencePosition": [
+            -8.745309829711914,
+            1.9016311168670654,
+            -3.9683480262756348
+          ],
+          "target": [
+            -0.20999068021774292,
+            1.0849730968475342,
+            -10.368745803833008
+          ]
+        },
+        "exposure": 1.07,
+        "metrics": {
+          "fps": 59.7,
+          "frameMeanMs": 16.75,
+          "frameP95Ms": 27.9,
+          "samples": 120,
+          "resolution": [
+            1440,
+            600
+          ],
+          "drawCalls": 433,
+          "renderedTriangles": 770324,
+          "geometries": 164,
+          "textures": 66
+        },
+        "floorReflection": {
+          "enabled": true,
+          "mode": "stone",
+          "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+          "planeY": 0,
+          "gain": 0.32,
+          "fresnelF0": 0.04,
+          "roughnessLodScale": 10,
+          "maxLod": 5,
+          "normalDistortion": 0.045,
+          "resolutionScale": 0.25,
+          "resolution": "auto",
+          "mipLodOffset": -1,
+          "mipmaps": true,
+          "bounces": false,
+          "updates": {
+            "mode": "adaptive",
+            "rendered": 5400,
+            "reused": 4582
+          },
+          "meshes": 21,
+          "sharedMaterials": 1,
+          "targets": [
+            {
+              "width": 360,
+              "height": 150
+            }
+          ]
+        },
+        "specularEnvironment": {
+          "enabled": true,
+          "dirty": false,
+          "captures": 1320,
+          "size": 128,
+          "minimumCaptureInterval": 0,
+          "position": [
+            0,
+            1.4,
+            -10.2
+          ],
+          "materials": [
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "PBR | Laton envejecido",
+            "PBR | Bronce patinado",
+            "Crystal",
+            "M_VKMachine.002",
+            "VK / chasis"
+          ],
+          "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+          "metalIntensity": 0.6,
+          "glassIntensity": 0.35
+        },
+        "atmosphere": {
+          "exterior": true,
+          "interior": true,
+          "exteriorStrength": 1,
+          "interiorStrength": 1,
+          "boundary": -14.4,
+          "interiorPath": 24,
+          "exteriorDensity": 0.00025,
+          "interiorDensity": 0.0015,
+          "effectiveDensity": [
+            0.00025,
+            0.0015
+          ],
+          "excludedMaterials": [
+            "Cielo | nubes ambar",
+            "Sol | disco emisivo"
+          ],
+          "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+          "extraRenderPasses": 0
+        },
+        "lightVolume": {
+          "enabled": true,
+          "dust": true,
+          "strength": 1,
+          "speed": 1,
+          "ready": true,
+          "steps": 24,
+          "bounds": [
+            [
+              -9,
+              0.08,
+              -14.4
+            ],
+            [
+              9,
+              8,
+              2
+            ]
+          ],
+          "time": 187.80940000000336,
+          "reflectionRefreshHz": 10,
+          "scatteringDensity": 0.004,
+          "solarRadianceScale": 0.18,
+          "sampling": "deterministic midpoint; no temporal jitter or history",
+          "emptyIntervalSkipped": true,
+          "source": "solar shadow depth; bounded single scattering; procedural dust density",
+          "extraRenderPasses": 0
+        },
+        "postProcessing": {
+          "bloom": true,
+          "grade": true,
+          "strength": 0.16,
+          "radius": 0.25,
+          "threshold": 1.5,
+          "gradeStrength": 1,
+          "flare": {
+            "enabled": true,
+            "intensity": 0.18,
+            "size": 1,
+            "source": "visible solar disc only",
+            "screenPosition": [
+              0.0051813925599020205,
+              0.27818333986993593
+            ],
+            "energyBeforeOcclusion": 0,
+            "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+            "extraRenderPasses": 0
+          },
+          "ready": true,
+          "quality": "Alta",
+          "bloomResolutionScale": 0.25,
+          "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+          "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+          "bloomLuminanceLimit": 4,
+          "extraFullscreenPasses": 13
+        },
+        "sky": {
+          "enabled": true,
+          "studio": false,
+          "projection": "cylinder",
+          "version": 5,
+          "radius": 1200,
+          "centerY": 80,
+          "halfArc": 1.5280368169646088,
+          "arc": 3.0560736339292176,
+          "height": 1833.6441803575306,
+          "referenceCamera": "Camera_D",
+          "aspect": 2.4,
+          "heightScale": 0.5,
+          "effectiveHeight": 916.8220901787653,
+          "arcDegrees": 175.10012110535274,
+          "originalProjection": false,
+          "originalPlaneVisible": false,
+          "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+          "size": [
+            1774,
+            887
+          ],
+          "visualOnly": true,
+          "probeUsesOriginalBackground": true
+        },
+        "lighting": {
+          "profile": "tyrell-light-v2",
+          "contribution": "all",
+          "sunPosition": [
+            0.24709783776834474,
+            8.042288376397824,
+            -84.68905268029118
+          ],
+          "target": [
+            0,
+            1,
+            -5
+          ],
+          "directionToSun": [
+            0.0030887229721043093,
+            0.08802860470497281,
+            -0.9961131585036398
+          ],
+          "sunIntensity": 2.5,
+          "sunColor": "ffd093",
+          "discPosition": [
+            8,
+            42.5,
+            -650
+          ],
+          "discScale": [
+            0.5600000095367431,
+            0.5600000095367431,
+            0.5600000095367431
+          ],
+          "skyEmission": [
+            0.7500000298023224,
+            0.7500000298023224,
+            0.7500000298023224
+          ],
+          "hemisphereIntensity": 0.86,
+          "areaIntensities": [
+            0.08,
+            0.08,
+            0.2,
+            0.2
+          ],
+          "areas": [
+            {
+              "role": "window",
+              "position": [
+                0,
+                4.2,
+                -13.8
+              ],
+              "emissionDirection": [
+                0,
+                -0.28408832969137404,
+                0.9587981127083873
+              ],
+              "width": 6,
+              "height": 6,
+              "intensity": 0.08,
+              "power": 9.047786842338605,
+              "castShadow": false
+            },
+            {
+              "role": "front",
+              "position": [
+                0,
+                4.5,
+                7
+              ],
+              "emissionDirection": [
+                0,
+                -0.12752174253952622,
+                -0.9918357753074262
+              ],
+              "width": 7,
+              "height": 7,
+              "intensity": 0.08,
+              "power": 12.31504320207199,
+              "castShadow": false
+            },
+            {
+              "role": "left",
+              "position": [
+                -7.7,
+                4.3,
+                -3.4
+              ],
+              "emissionDirection": [
+                0.8589580613952029,
+                -0.42034117898063117,
+                -0.2924112549430478
+              ],
+              "width": 4,
+              "height": 4,
+              "intensity": 0.2,
+              "power": 10.053096491487338,
+              "castShadow": false
+            },
+            {
+              "role": "right",
+              "position": [
+                7.7,
+                4.1,
+                -7.2
+              ],
+              "emissionDirection": [
+                -0.9024909124636484,
+                -0.41166252147464655,
+                -0.12666539122296816
+              ],
+              "width": 4,
+              "height": 4,
+              "intensity": 0.2,
+              "power": 10.053096491487338,
+              "castShadow": false
+            }
+          ]
+        },
+        "materialLook": {
+          "profile": "tyrell-v1",
+          "floorNormal": true,
+          "status": "v1 reviewed baseline; final lighting and reflections pending",
+          "materialCount": 38,
+          "adjusted": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras",
+            "PBR | Piedra negra pulida",
+            "PBR | Nogal oscuro",
+            "PBR | Raiz de nogal",
+            "Walnut | quarter sawn",
+            "Leather | oxblood",
+            "Burl walnut | table rim",
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "PBR | Cuero oscuro",
+            "PBR | Laton envejecido",
+            "PBR | Bronce patinado",
+            "Crystal"
+          ]
+        },
+        "indirect": {
+          "mode": "reference",
+          "probeIntensity": 0,
+          "environmentActive": false,
+          "environmentIntensity": 1,
+          "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+          "ambientRetention": 0.92
+        },
+        "reviewLighting": "tyrell-light-v2",
+        "city": {
+          "enabled": true,
+          "buildings": 97,
+          "boxes": 1478,
+          "meshes": 3,
+          "triangles": 17754,
+          "roofLowering": 2.5,
+          "removedFacadeRibs": 485,
+          "savedTriangles": 5820,
+          "towers": [
+            {
+              "x": 400,
+              "z": -460,
+              "top": 28
+            },
+            {
+              "x": -680,
+              "z": -700,
+              "top": 24
+            },
+            {
+              "x": -900,
+              "z": -830,
+              "top": 15
+            }
+          ],
+          "baseColor": "#43311d",
+          "baseHSL": [
+            31.4,
+            38.9,
+            18.8
+          ],
+          "facadeDepth": 18,
+          "gradientCenterX": -49.2357,
+          "pyramidZ": -264.7806,
+          "blockSpacing": 27,
+          "baseColorMultiplier": 1,
+          "roofColorMultiplier": 1,
+          "towerColorMultiplier": 1,
+          "leftTowerLightnessOffset": 2,
+          "roughness": 1,
+          "metalness": 0,
+          "specularIntensity": 0,
+          "envMapIntensity": 0,
+          "continuity": {
+            "roofTriangles": 18,
+            "serviceBlocks": 3
+          },
+          "textureSize": [
+            256,
+            256
+          ],
+          "seed": 902091,
+          "cityBackdrop": "layered geometry; no photographic background",
+          "lights": 0,
+          "colorHSL": {
+            "h": 31.4,
+            "s": 38.9,
+            "l": 18.8,
+            "cameraD": 14,
+            "cam02": 14.6,
+            "rightStep": -0.3,
+            "leftStep": -1.3,
+            "mode": "lod"
+          },
+          "colorLOD": {
+            "Extra baja": true,
+            "Baja": true,
+            "Media": true,
+            "Alta": true,
+            "UltraAlta": true
+          },
+          "angleColorActive": true,
+          "yawDegrees": 63.258285991701996,
+          "effectiveLightness": 14.000025202969512,
+          "referenceYawDegrees": -10.123493701860795,
+          "anchorDegrees": {
+            "cameraD": 62.223491591153575,
+            "cam02": -21.5779439685011
+          }
+        },
+        "buildingLights": {
+          "intensity": 0.22,
+          "beacons": 0.7,
+          "materials": 4,
+          "beaconCount": 5,
+          "windowPitch": [
+            0.42,
+            0.9
+          ],
+          "windowSize": [
+            0.1176,
+            0.063
+          ],
+          "beaconHaloSize": 1.8,
+          "facadeLayouts": [
+            {
+              "facades": 122,
+              "central": 21,
+              "method": "Planar convex envelopes in surface coordinates"
+            }
+          ],
+          "elevatorRails": {
+            "baseY": -5.8,
+            "topY": 32.6,
+            "bottomWidth": 14,
+            "topWidth": 8,
+            "axis": -62.12,
+            "railCount": 13,
+            "recessDepth": 0.025,
+            "meshes": 0,
+            "triangles": 0,
+            "displacement": 0,
+            "method": "Original facade material; dark unlit band and darker recessed grooves; normal-only relief"
+          },
+          "method": "Facade-aligned columns and floor rows; edge margins; window-free uplight spine; Gaussian beacons",
+          "realLights": 0
+        },
+        "airTraffic": {
+          "density": 0.8,
+          "enabled": true,
+          "capacity": 10,
+          "activeVehicles": 8,
+          "corridors": 3,
+          "foregroundRoute": "right to left in front of the exterior facades",
+          "vehicleScale": 1.25,
+          "foregroundVehicleScale": 0.3125,
+          "foregroundLowering": 2.5,
+          "corridorPeriods": [
+            60,
+            68,
+            40
+          ],
+          "time": 190.68529999994948,
+          "reflectionRefreshHz": 5,
+          "environmentRefreshHz": 1,
+          "realLights": 0,
+          "trianglesPerVehicle": 14,
+          "sharedGeometries": 1,
+          "sharedGlowTextures": 1,
+          "flights": [
+            {
+              "id": "Traffic / vehicle 1",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                128.33461648582818,
+                61.265415102464594,
+                -542.6391038840925
+              ],
+              "scale": 1.25,
+              "progress": 0.6480883333325371,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 2",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                -422.14964606024154,
+                75.96529799366908,
+                -784.3838550151075
+              ],
+              "scale": 1.25,
+              "progress": 0.9041955882345886,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 2,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 3",
+              "corridor": 2,
+              "route": 2,
+              "position": [
+                142.0566189146805,
+                11.29856211207272,
+                -156.31199014254298
+              ],
+              "scale": 0.3125,
+              "progress": 0.187132499998817,
+              "speed": 11.755406120616597,
+              "period": 40,
+              "cycles": 5,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 4",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                404.67118031762607,
+                65.74143974888318,
+                -606.0718436296921
+              ],
+              "scale": 1.25,
+              "progress": 0.9814216666658714,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 5",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                273.44242032644377,
+                75.54097674977356,
+                -714.3330311193354
+              ],
+              "scale": 1.25,
+              "progress": 0.23752892156792255,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 6",
+              "corridor": 2,
+              "route": 2,
+              "position": [
+                -93.00089691293162,
+                9.58523814167982,
+                -157.49160152663833
+              ],
+              "scale": 0.3125,
+              "progress": 0.6871324999988103,
+              "speed": 11.755406120616597,
+              "period": 40,
+              "cycles": 5,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 7",
+              "corridor": 0,
+              "route": 0,
+              "position": [
+                -154.78901269865673,
+                58.04850828035064,
+                -524.1176563964258
+              ],
+              "scale": 1.25,
+              "progress": 0.3147549999992071,
+              "speed": 14.197086730619647,
+              "period": 60,
+              "cycles": 3,
+              "strobe": false
+            },
+            {
+              "id": "Traffic / vehicle 8",
+              "corridor": 1,
+              "route": 1,
+              "position": [
+                -77.58740007124125,
+                71.81625612240398,
+                -715.1650618648841
+              ],
+              "scale": 1.25,
+              "progress": 0.5708622549012591,
+              "speed": 15.52979356847734,
+              "period": 68,
+              "cycles": 3,
+              "strobe": false
+            }
+          ],
+          "method": "Arc-length routes; pooled minimal silhouettes; white position lights and soft double strobes; depth-tested; density 0 disables all"
+        },
+        "nearTraffic": {
+          "enabled": true,
+          "duration": 40,
+          "time": 190.68529999994948,
+          "passes": 5,
+          "nextPassIn": 11.314700000046837,
+          "capacity": 1,
+          "vehicleScale": 0.25,
+          "realLights": 0,
+          "maxBankDegrees": 20,
+          "trianglesPerVehicle": 1308,
+          "routes": [
+            "single level arc, upper left to right; repeat after completing the route"
+          ],
+          "optics": "Compact warm core, soft peripheral lens ring and subtle diagonal streak around a dark hull; secondary white strobe and existing bloom",
+          "flights": [
+            {
+              "route": 0,
+              "age": 28.685299999953163,
+              "position": [
+                82.65134079520351,
+                10.5,
+                -105.73233335122227
+              ],
+              "scale": 0.25,
+              "quaternion": [
+                -0.08933277548427701,
+                0.8463580169102671,
+                -0.055114711011943714,
+                0.5221686806636966
+              ]
+            }
+          ],
+          "reflectionRefreshHz": 8,
+          "environmentRefreshHz": 1
+        },
+        "flames": {
+          "enabled": true,
+          "interval": 4.5,
+          "intensity": 1.5,
+          "size": 4.25,
+          "rise": 2,
+          "visible": true,
+          "emissions": 42,
+          "nextIn": 0.9290339857353231,
+          "active": {
+            "index": 2,
+            "age": 4.188493176389682
+          },
+          "towers": [
+            {
+              "x": 400,
+              "z": -460,
+              "top": 28
+            },
+            {
+              "x": -680,
+              "z": -700,
+              "top": 24
+            },
+            {
+              "x": -900,
+              "z": -830,
+              "top": 15
+            }
+          ],
+          "maximumSimultaneous": 1,
+          "spritesPerEmitter": 11,
+          "realLights": 0,
+          "bounds": [
+            {
+              "min": [
+                361,
+                -11,
+                -499
+              ],
+              "max": [
+                439,
+                136,
+                -421
+              ]
+            },
+            {
+              "min": [
+                -719,
+                -15,
+                -739
+              ],
+              "max": [
+                -641,
+                132,
+                -661
+              ]
+            },
+            {
+              "min": [
+                -939,
+                -24,
+                -869
+              ],
+              "max": [
+                -861,
+                123,
+                -791
+              ]
+            }
+          ]
+        },
+        "voightKampff": {
+          "state": "open",
+          "progress": 1,
+          "compression": 0.320368821583873,
+          "light": 1,
+          "flexibleVertices": 2223,
+          "rigidBellowsPlates": 4,
+          "breathingPeriod": 3.8,
+          "autoDeploy": true,
+          "autoConsumed": true,
+          "meshes": 16,
+          "triangles": 14891,
+          "chassisColor": "#1f1f1f",
+          "placementSourceSha256": "a3abe91631ed18c3b86522d038029965cc72cb1e7e91d4b5fd5a30ea5e536224",
+          "opticalMeshes": 2,
+          "opticalTriangles": 34,
+          "position": [
+            -0.8259305953979492,
+            0.7515769004821777,
+            -9.97750473022461
+          ],
+          "quaternion": [
+            0,
+            -0.9152841763425742,
+            0,
+            0.4028087344347134
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "automaticQuality": {
+          "enabled": true,
+          "initialQuality": "Alta",
+          "quality": "Alta",
+          "resolutionScale": 1,
+          "targetFPS": 60,
+          "lowerFPS": 55,
+          "windowMs": 4000,
+          "warmupMs": 4000,
+          "minimumScale": 0.75,
+          "atMinimum": false,
+          "lastWindow": {
+            "fps": 54.65708295880714,
+            "medianMs": 16.700000017881393,
+            "p95Ms": 32.19999998807907,
+            "durationMs": 4006.800000011921,
+            "samples": 219
+          },
+          "history": []
+        },
+        "id": 2,
+        "effects": "VK operativo, Edificios bajos, Luces de edificios, Balizas, Tráfico lejano, Tráfico cercano, Llamaradas, Suelo, Metal/vidrio, Exterior, Bruma, Haces, Polvo animado, Bloom, Color, Lens flare"
+      }
+    ]
+  }
+}

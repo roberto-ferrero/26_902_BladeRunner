@@ -27,7 +27,8 @@
     }
   },
   "viewer": {
-    "quality": "Baja",
+    "deviceMode": "auto",
+    "quality": "auto",
     "referenceFrameEnabled": true,
     "renderBudget": "optimized"
   },
@@ -105,9 +106,11 @@
         "rightBuildingLightnessStep": -0.3,
         "leftBuildingLightnessStep": -1.3,
         "mode": "lod",
+        "extraLowQualityEnabled": true,
         "lowQualityEnabled": true,
         "mediumQualityEnabled": true,
-        "highQualityEnabled": true
+        "highQualityEnabled": true,
+        "ultraHighQualityEnabled": true
       }
     },
     "lights": {

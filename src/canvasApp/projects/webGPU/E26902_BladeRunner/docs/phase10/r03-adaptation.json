@@ -1,0 +1,2952 @@
+{
+  "phase": 10,
+  "step": "10.4",
+  "date": "2026-09-24T18:55:07.335Z",
+  "backend": "WebGPU",
+  "referenceCapture": {
+    "width": 1920,
+    "height": 800,
+    "aspect": 2.4
+  },
+  "three": "185",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+  "secureContext": true,
+  "adapter": {
+    "vendor": "nvidia",
+    "architecture": "turing",
+    "device": "",
+    "description": ""
+  },
+  "benchmarkOnStart": true,
+  "gpuCapacity": {
+    "version": "tyrell-compute-v1",
+    "workgroups": 4096,
+    "workgroupSize": 64,
+    "iterations": 1024,
+    "gpuScore": 163840000,
+    "method": "gpu-timestamp",
+    "samples": 12,
+    "medianMs": 1.6384,
+    "p90Ms": 1.96608,
+    "minMs": 1.572864,
+    "variability": 0.24,
+    "reliable": true,
+    "units": "shader iterations/ms; higher is faster",
+    "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only."
+  },
+  "startup": {
+    "phase": "ready",
+    "reason": "timeout",
+    "warmupMs": 12417.40000000596,
+    "fadeMs": 1500,
+    "maxWaitMs": 12000,
+    "frames": 27,
+    "frameStats": {
+      "samples": 27,
+      "meanMs": 459.90370370392446,
+      "medianMs": 33,
+      "p95Ms": 1260.699999988079,
+      "maxMs": 3951.5
+    }
+  },
+  "qualitySelection": {
+    "selection": "auto",
+    "recommended": "Alta",
+    "deviceSelection": "auto",
+    "detectedDevice": "desktop",
+    "device": "desktop",
+    "reason": "sustained-fps",
+    "calibrated": false,
+    "dynamicResolution": true
+  },
+  "automaticQuality": {
+    "enabled": true,
+    "initialQuality": "Alta",
+    "quality": "Baja",
+    "resolutionScale": 0.9375,
+    "targetFPS": 60,
+    "lowerFPS": 55,
+    "windowMs": 4000,
+    "warmupMs": 4000,
+    "minimumScale": 0.75,
+    "atMinimum": false,
+    "lastWindow": {
+      "fps": 55.83111088964203,
+      "medianMs": 16.80000001192093,
+      "p95Ms": 29.099999994039536,
+      "durationMs": 4012.0999999940395,
+      "samples": 224
+    },
+    "history": [
+      {
+        "atMs": 30402.09999999404,
+        "reason": "sustained-fps-below-55",
+        "before": {
+          "quality": "Alta",
+          "scale": 1
+        },
+        "quality": "Alta",
+        "scale": 0.8,
+        "fps": 22.117296222664017,
+        "medianMs": 45.80000001192093,
+        "p95Ms": 72.30000001192093,
+        "durationMs": 4024,
+        "samples": 89
+      },
+      {
+        "atMs": 38489.79999998212,
+        "reason": "sustained-fps-below-55",
+        "before": {
+          "quality": "Alta",
+          "scale": 0.8
+        },
+        "quality": "Alta",
+        "scale": 0.75,
+        "fps": 31.97442046372431,
+        "medianMs": 32.400000005960464,
+        "p95Ms": 50,
+        "durationMs": 4003.199999988079,
+        "samples": 128
+      },
+      {
+        "atMs": 46545.79999998212,
+        "reason": "sustained-fps-below-55",
+        "before": {
+          "quality": "Alta",
+          "scale": 0.75
+        },
+        "quality": "Media",
+        "scale": 0.9,
+        "fps": 35.9730078397944,
+        "medianMs": 28,
+        "p95Ms": 44.89999997615814,
+        "durationMs": 4030.7999999821186,
+        "samples": 145
+      },
+      {
+        "atMs": 54607,
+        "reason": "sustained-fps-below-55",
+        "before": {
+          "quality": "Media",
+          "scale": 0.9
+        },
+        "quality": "Media",
+        "scale": 0.75,
+        "fps": 37.79214321233217,
+        "medianMs": 25.299999982118607,
+        "p95Ms": 40.5,
+        "durationMs": 4022,
+        "samples": 152
+      },
+      {
+        "atMs": 66664,
+        "reason": "sustained-fps-below-55",
+        "before": {
+          "quality": "Media",
+          "scale": 0.75
+        },
+        "quality": "Baja",
+        "scale": 0.9375,
+        "fps": 52.36254831068445,
+        "medianMs": 17.600000023841858,
+        "p95Ms": 31.799999982118607,
+        "durationMs": 4010.5,
+        "samples": 210
+      }
+    ]
+  },
+  "display": {
+    "viewport": [
+      3840,
+      2160
+    ],
+    "scene": {
+      "width": 3840,
+      "height": 1600,
+      "aspect": 2.4
+    },
+    "nativeDPR": 1,
+    "effectivePixelRatio": 0.46875,
+    "internal": [
+      1800,
+      750
+    ],
+    "mobilePixelCap": null
+  },
+  "qualityBudget": {
+    "mode": "optimized",
+    "pixelRatio": 0.5,
+    "shadowSize": 512,
+    "volumeSteps": 12,
+    "reflectionScale": 0.125
+  },
+  "quality": "Baja",
+  "exposure": 1.07,
+  "model": {
+    "meshes": 160,
+    "triangles": 365013,
+    "cameras": 10
+  },
+  "asset": {
+    "path": "glbs/E26902_BladeRunner/BladeRunner_5_6_High_v3_phase2.glb?v=3",
+    "bytes": 40502716,
+    "loadMs": 541.7999999821186
+  },
+  "columnRepair": {
+    "cores": 18,
+    "addedMeshes": 1,
+    "addedTriangles": 7944,
+    "darkReturnTriangles": 211,
+    "recessedPlanarScale": 0.97
+  },
+  "contactRepair": {
+    "assembly": "Instrument_case",
+    "applied": false,
+    "offsetY": 0,
+    "reason": "missing assembly or support"
+  },
+  "floorReflection": {
+    "enabled": true,
+    "mode": "stone",
+    "status": "5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion",
+    "planeY": 0,
+    "gain": 0.32,
+    "fresnelF0": 0.04,
+    "roughnessLodScale": 10,
+    "maxLod": 5,
+    "normalDistortion": 0.045,
+    "resolutionScale": 0.125,
+    "resolution": "auto",
+    "mipLodOffset": -2,
+    "mipmaps": true,
+    "bounces": false,
+    "updates": {
+      "mode": "adaptive",
+      "rendered": 1424,
+      "reused": 1217
+    },
+    "meshes": 21,
+    "sharedMaterials": 1,
+    "targets": [
+      {
+        "width": 225,
+        "height": 94
+      }
+    ]
+  },
+  "voightKampff": {
+    "state": "closed",
+    "progress": 0,
+    "compression": 1,
+    "light": 0,
+    "flexibleVertices": 2223,
+    "rigidBellowsPlates": 4,
+    "breathingPeriod": 3.8,
+    "autoDeploy": true,
+    "autoConsumed": false,
+    "meshes": 16,
+    "triangles": 14891,
+    "chassisColor": "#1f1f1f",
+    "placementSourceSha256": "a3abe91631ed18c3b86522d038029965cc72cb1e7e91d4b5fd5a30ea5e536224",
+    "opticalMeshes": 2,
+    "opticalTriangles": 34,
+    "position": [
+      -0.8259305953979492,
+      0.7515769004821777,
+      -9.97750473022461
+    ],
+    "quaternion": [
+      0,
+      -0.9152841763425742,
+      0,
+      0.4028087344347134
+    ],
+    "scale": [
+      1,
+      1,
+      1
+    ]
+  },
+  "specularEnvironment": {
+    "enabled": true,
+    "dirty": false,
+    "captures": 576,
+    "size": 128,
+    "minimumCaptureInterval": 0,
+    "position": [
+      0,
+      1.4,
+      -10.2
+    ],
+    "materials": [
+      "Brass | polished highlights",
+      "Bronze | patinated",
+      "PBR | Laton envejecido",
+      "PBR | Bronce patinado",
+      "Crystal",
+      "M_VKMachine.002",
+      "VK / chasis"
+    ],
+    "source": "six-face scene capture; reflective receivers excluded; one probe, no parallax correction",
+    "metalIntensity": 0.6,
+    "glassIntensity": 0.35
+  },
+  "atmosphere": {
+    "exterior": true,
+    "interior": true,
+    "exteriorStrength": 1,
+    "interiorStrength": 1,
+    "boundary": -14.4,
+    "interiorPath": 24,
+    "exteriorDensity": 0.00025,
+    "interiorDensity": 0.0015,
+    "effectiveDensity": [
+      0.00025,
+      0.0015
+    ],
+    "excludedMaterials": [
+      "Cielo | nubes ambar",
+      "Sol | disco emisivo"
+    ],
+    "method": "Analytic split depth; no light shafts, dust or volumetric occlusion",
+    "extraRenderPasses": 0
+  },
+  "lightVolume": {
+    "enabled": true,
+    "dust": true,
+    "strength": 1,
+    "speed": 1,
+    "ready": true,
+    "steps": 12,
+    "bounds": [
+      [
+        -9,
+        0.08,
+        -14.4
+      ],
+      [
+        9,
+        8,
+        2
+      ]
+    ],
+    "time": 61.120800000072485,
+    "reflectionRefreshHz": 10,
+    "scatteringDensity": 0.004,
+    "solarRadianceScale": 0.18,
+    "sampling": "deterministic midpoint; no temporal jitter or history",
+    "emptyIntervalSkipped": true,
+    "source": "solar shadow depth; bounded single scattering; procedural dust density",
+    "extraRenderPasses": 0
+  },
+  "postProcessing": {
+    "bloom": true,
+    "grade": true,
+    "strength": 0.16,
+    "radius": 0.25,
+    "threshold": 1.5,
+    "gradeStrength": 1,
+    "flare": {
+      "enabled": true,
+      "intensity": 0.18,
+      "size": 1,
+      "source": "visible solar disc only",
+      "screenPosition": [
+        0.5066674048090382,
+        0.3950422317191246
+      ],
+      "energyBeforeOcclusion": 0.18,
+      "occlusion": "13 scene-depth samples over solar disc; partial coverage",
+      "extraRenderPasses": 0
+    },
+    "ready": true,
+    "quality": "Baja",
+    "bloomResolutionScale": 0.25,
+    "method": "HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output",
+    "reference": "6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1",
+    "bloomLuminanceLimit": 4,
+    "extraFullscreenPasses": 13
+  },
+  "sky": {
+    "enabled": true,
+    "studio": false,
+    "projection": "cylinder",
+    "version": 5,
+    "radius": 1200,
+    "centerY": 80,
+    "halfArc": 1.5280368169646088,
+    "arc": 3.0560736339292176,
+    "height": 1833.6441803575306,
+    "referenceCamera": "Camera_D",
+    "aspect": 2.4,
+    "heightScale": 0.5,
+    "effectiveHeight": 916.8220901787653,
+    "arcDegrees": 175.10012110535274,
+    "originalProjection": false,
+    "originalPlaneVisible": false,
+    "source": "textures/E26902_BladeRunner/sky-panorama-v2.png",
+    "size": [
+      1774,
+      887
+    ],
+    "visualOnly": true,
+    "probeUsesOriginalBackground": true
+  },
+  "city": {
+    "enabled": true,
+    "buildings": 97,
+    "boxes": 1478,
+    "meshes": 3,
+    "triangles": 17754,
+    "roofLowering": 2.5,
+    "removedFacadeRibs": 485,
+    "savedTriangles": 5820,
+    "towers": [
+      {
+        "x": 400,
+        "z": -460,
+        "top": 28
+      },
+      {
+        "x": -680,
+        "z": -700,
+        "top": 24
+      },
+      {
+        "x": -900,
+        "z": -830,
+        "top": 15
+      }
+    ],
+    "baseColor": "#43311d",
+    "baseHSL": [
+      31.4,
+      38.9,
+      18.8
+    ],
+    "facadeDepth": 18,
+    "gradientCenterX": -49.2357,
+    "pyramidZ": -264.7806,
+    "blockSpacing": 27,
+    "baseColorMultiplier": 1,
+    "roofColorMultiplier": 1,
+    "towerColorMultiplier": 1,
+    "leftTowerLightnessOffset": 2,
+    "roughness": 1,
+    "metalness": 0,
+    "specularIntensity": 0,
+    "envMapIntensity": 0,
+    "continuity": {
+      "roofTriangles": 18,
+      "serviceBlocks": 3
+    },
+    "textureSize": [
+      256,
+      256
+    ],
+    "seed": 902091,
+    "cityBackdrop": "layered geometry; no photographic background",
+    "lights": 0,
+    "colorHSL": {
+      "h": 31.4,
+      "s": 38.9,
+      "l": 18.8,
+      "cameraD": 14,
+      "cam02": 14.6,
+      "rightStep": -0.3,
+      "leftStep": -1.3,
+      "mode": "lod"
+    },
+    "colorLOD": {
+      "Extra baja": true,
+      "Baja": true,
+      "Media": true,
+      "Alta": true,
+      "UltraAlta": true
+    },
+    "angleColorActive": true,
+    "yawDegrees": 10.45598806271372,
+    "effectiveLightness": 18.438936101228496,
+    "referenceYawDegrees": -10.123493701860795,
+    "anchorDegrees": {
+      "cameraD": 62.223491591153575,
+      "cam02": -21.5779439685011
+    }
+  },
+  "cityColorBenchmark": null,
+  "buildingLights": {
+    "intensity": 0.22,
+    "beacons": 0.7,
+    "materials": 4,
+    "beaconCount": 5,
+    "windowPitch": [
+      0.42,
+      0.9
+    ],
+    "windowSize": [
+      0.1176,
+      0.063
+    ],
+    "beaconHaloSize": 1.8,
+    "facadeLayouts": [
+      {
+        "facades": 122,
+        "central": 21,
+        "method": "Planar convex envelopes in surface coordinates"
+      }
+    ],
+    "elevatorRails": {
+      "baseY": -5.8,
+      "topY": 32.6,
+      "bottomWidth": 14,
+      "topWidth": 8,
+      "axis": -62.12,
+      "railCount": 13,
+      "recessDepth": 0.025,
+      "meshes": 0,
+      "triangles": 0,
+      "displacement": 0,
+      "method": "Original facade material; dark unlit band and darker recessed grooves; normal-only relief"
+    },
+    "method": "Facade-aligned columns and floor rows; edge margins; window-free uplight spine; Gaussian beacons",
+    "realLights": 0
+  },
+  "airTraffic": {
+    "density": 0.8,
+    "enabled": true,
+    "capacity": 10,
+    "activeVehicles": 8,
+    "corridors": 3,
+    "foregroundRoute": "right to left in front of the exterior facades",
+    "vehicleScale": 1.25,
+    "foregroundVehicleScale": 0.3125,
+    "foregroundLowering": 2.5,
+    "corridorPeriods": [
+      60,
+      68,
+      40
+    ],
+    "time": 63.19140000000696,
+    "reflectionRefreshHz": 5,
+    "environmentRefreshHz": 1,
+    "realLights": 0,
+    "trianglesPerVehicle": 14,
+    "sharedGeometries": 1,
+    "sharedGlowTextures": 1,
+    "flights": [
+      {
+        "id": "Traffic / vehicle 1",
+        "corridor": 0,
+        "route": 0,
+        "position": [
+          22.544230872526494,
+          59.759320625248236,
+          -531.4935843842019
+        ],
+        "scale": 1.25,
+        "progress": 0.5231900000000994,
+        "speed": 14.197086730619647,
+        "period": 60,
+        "cycles": 1,
+        "strobe": false
+      },
+      {
+        "id": "Traffic / vehicle 2",
+        "corridor": 1,
+        "route": 1,
+        "position": [
+          489.5257041991169,
+          80.35308134659522,
+          -754.7756917028923
+        ],
+        "scale": 1.25,
+        "progress": 0.029285294117736317,
+        "speed": 15.52979356847734,
+        "period": 68,
+        "cycles": 1,
+        "strobe": false
+      },
+      {
+        "id": "Traffic / vehicle 3",
+        "corridor": 2,
+        "route": 2,
+        "position": [
+          -239.8990123321589,
+          11.4987753403582,
+          -162.996327026507
+        ],
+        "scale": 0.3125,
+        "progress": 0.9997850000001528,
+        "speed": 11.755406120616597,
+        "period": 40,
+        "cycles": 1,
+        "strobe": false
+      },
+      {
+        "id": "Traffic / vehicle 4",
+        "corridor": 0,
+        "route": 0,
+        "position": [
+          302.22799252147564,
+          63.93661070394794,
+          -577.4253354825964
+        ],
+        "scale": 1.25,
+        "progress": 0.8565233333334344,
+        "speed": 14.197086730619647,
+        "period": 60,
+        "cycles": 1,
+        "strobe": false
+      },
+      {
+        "id": "Traffic / vehicle 5",
+        "corridor": 1,
+        "route": 1,
+        "position": [
+          141.8839471210857,
+          73.52436848847094,
+          -703.8167568600932
+        ],
+        "scale": 1.25,
+        "progress": 0.362618627451067,
+        "speed": 15.52979356847734,
+        "period": 68,
+        "cycles": 1,
+        "strobe": true
+      },
+      {
+        "id": "Traffic / vehicle 6",
+        "corridor": 2,
+        "route": 2,
+        "position": [
+          -4.931393909408809,
+          9.72064975598237,
+          -155.48825196369754
+        ],
+        "scale": 0.3125,
+        "progress": 0.49978500000014753,
+        "speed": 11.755406120616597,
+        "period": 40,
+        "cycles": 2,
+        "strobe": false
+      },
+      {
+        "id": "Traffic / vehicle 7",
+        "corridor": 0,
+        "route": 0,
+        "position": [
+          -260.8245355389052,
+          58.47203879439284,
+          -531.6161183572291
+        ],
+        "scale": 1.25,
+        "progress": 0.18985666666676818,
+        "speed": 14.197086730619647,
+        "period": 60,
+        "cycles": 1,
+        "strobe": false
+      },
+      {
+        "id": "Traffic / vehicle 8",
+        "corridor": 1,
+        "route": 1,
+        "position": [
+          -208.45679506961585,
+          72.13757095243668,
+          -733.0065091340638
+        ],
+        "scale": 1.25,
+        "progress": 0.6959519607844027,
+        "speed": 15.52979356847734,
+        "period": 68,
+        "cycles": 1,
+        "strobe": false
+      }
+    ],
+    "method": "Arc-length routes; pooled minimal silhouettes; white position lights and soft double strobes; depth-tested; density 0 disables all"
+  },
+  "nearTraffic": {
+    "enabled": true,
+    "duration": 40,
+    "time": 63.19140000000696,
+    "passes": 2,
+    "nextPassIn": 18.808599999993802,
+    "capacity": 1,
+    "vehicleScale": 0.25,
+    "realLights": 0,
+    "maxBankDegrees": 20,
+    "trianglesPerVehicle": 1308,
+    "routes": [
+      "single level arc, upper left to right; repeat after completing the route"
+    ],
+    "optics": "Compact warm core, soft peripheral lens ring and subtle diagonal streak around a dark hull; secondary white strobe and existing bloom",
+    "flights": [
+      {
+        "route": 0,
+        "age": 21.191400000006198,
+        "position": [
+          35.01361483612741,
+          10.5,
+          -81.16510854639638
+        ],
+        "scale": 0.25,
+        "quaternion": [
+          -0.1477998418224501,
+          0.8457482417071538,
+          -0.08826061879085029,
+          0.5050496822859833
+        ]
+      }
+    ],
+    "reflectionRefreshHz": 8,
+    "environmentRefreshHz": 1
+  },
+  "flames": {
+    "enabled": true,
+    "interval": 4.5,
+    "intensity": 1.5,
+    "size": 4.25,
+    "rise": 2,
+    "visible": true,
+    "emissions": 14,
+    "nextIn": 2.16491790530656,
+    "active": {
+      "index": 2,
+      "age": 2.540924482068442
+    },
+    "towers": [
+      {
+        "x": 400,
+        "z": -460,
+        "top": 28
+      },
+      {
+        "x": -680,
+        "z": -700,
+        "top": 24
+      },
+      {
+        "x": -900,
+        "z": -830,
+        "top": 15
+      }
+    ],
+    "maximumSimultaneous": 1,
+    "spritesPerEmitter": 11,
+    "realLights": 0,
+    "bounds": [
+      {
+        "min": [
+          361,
+          -11,
+          -499
+        ],
+        "max": [
+          439,
+          136,
+          -421
+        ]
+      },
+      {
+        "min": [
+          -719,
+          -15,
+          -739
+        ],
+        "max": [
+          -641,
+          132,
+          -661
+        ]
+      },
+      {
+        "min": [
+          -939,
+          -24,
+          -869
+        ],
+        "max": [
+          -861,
+          123,
+          -791
+        ]
+      }
+    ]
+  },
+  "comparison": [],
+  "optionalFinish": {
+    "grain": false,
+    "vignette": false,
+    "depthOfField": false,
+    "decision": "6.6: retain clean image; preserve stone, floor reflections and architectural depth"
+  },
+  "materialAudit": {
+    "scope": "3.1 · Loaded material map bindings; read-only",
+    "materialCount": 42,
+    "textureCount": 31,
+    "issues": [],
+    "materials": [
+      {
+        "name": "PBR | Caliza ocre envejecida",
+        "instances": 27,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Limestone_aged_honey_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Limestone_aged_honey_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Limestone_aged_honey_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Limestone_aged_honey_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          0.28,
+          -0.28
+        ]
+      },
+      {
+        "name": "PBR | Caliza aristas claras",
+        "instances": 40,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Limestone_worn_edges_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Limestone_worn_edges_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Limestone_worn_edges_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Limestone_worn_edges_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          0.26,
+          -0.26
+        ]
+      },
+      {
+        "name": "PBR | Piedra negra pulida",
+        "instances": 21,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Obsidian_polished_and_scuffed_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Obsidian_polished_and_scuffed_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Obsidian_polished_and_scuffed_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Obsidian_polished_and_scuffed_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          0.025,
+          -0.025
+        ]
+      },
+      {
+        "name": "PBR | Juntas y cavidades",
+        "instances": 1,
+        "maps": [],
+        "roughness": 0.8500000238418579,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "PBR | Nogal oscuro",
+        "instances": 5,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Walnut_quarter_sawn_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Walnut_quarter_sawn_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Walnut_quarter_sawn_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Walnut_quarter_sawn_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          0.16,
+          -0.16
+        ]
+      },
+      {
+        "name": "PBR | Raiz de nogal",
+        "instances": 1,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Burl_walnut_table_rim_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Burl_walnut_table_rim_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Burl_walnut_table_rim_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Burl_walnut_table_rim_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          0.16,
+          -0.16
+        ]
+      },
+      {
+        "name": "Walnut | quarter sawn",
+        "instances": 5,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Walnut_quarter_sawn_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Walnut_quarter_sawn_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Walnut_quarter_sawn_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Walnut_quarter_sawn_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          0.22,
+          -0.22
+        ]
+      },
+      {
+        "name": "Leather | oxblood",
+        "instances": 4,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Leather_oxblood_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Leather_oxblood_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Leather_oxblood_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Leather_oxblood_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          0.32,
+          -0.32
+        ]
+      },
+      {
+        "name": "Burl walnut | table rim",
+        "instances": 4,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Burl_walnut_table_rim_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Burl_walnut_table_rim_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Burl_walnut_table_rim_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Burl_walnut_table_rim_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          0.22,
+          -0.22
+        ]
+      },
+      {
+        "name": "Brass | polished highlights",
+        "instances": 4,
+        "maps": [],
+        "roughness": 0.28,
+        "metalness": 0.82,
+        "normalScale": [
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "Bronze | patinated",
+        "instances": 4,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Bronze_patinated_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Bronze_patinated_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Bronze_patinated_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Bronze_patinated_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0.72,
+        "normalScale": [
+          0.28,
+          -0.28
+        ]
+      },
+      {
+        "name": "Recesses | charcoal",
+        "instances": 4,
+        "maps": [],
+        "roughness": 0.7200000286102295,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "PBR | Cuero oscuro",
+        "instances": 1,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Leather_oxblood_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Leather_oxblood_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Leather_oxblood_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Leather_oxblood_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          0.22,
+          -0.22
+        ]
+      },
+      {
+        "name": "PBR | Laton envejecido",
+        "instances": 4,
+        "maps": [],
+        "roughness": 0.34,
+        "metalness": 0.8,
+        "normalScale": [
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "PBR | Bronce patinado",
+        "instances": 9,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Bronze_patinated_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Bronze_patinated_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Bronze_patinated_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Bronze_patinated_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0.72,
+        "normalScale": [
+          0.18,
+          -0.18
+        ]
+      },
+      {
+        "name": "Crystal",
+        "instances": 4,
+        "maps": [],
+        "roughness": 0.035,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "Ivory paper",
+        "instances": 1,
+        "maps": [],
+        "roughness": 0.7799999713897705,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "PBR | Hormigon exterior",
+        "instances": 1,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "Exterior_weathered_concrete_color",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "Exterior_weathered_concrete_normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "Exterior_weathered_concrete_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "Exterior_weathered_concrete_roughness",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              1024,
+              1024
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          0.30000001192092896,
+          -0.30000001192092896
+        ]
+      },
+      {
+        "name": "Cielo | nubes ambar",
+        "instances": 1,
+        "maps": [
+          {
+            "slot": "emissiveMap",
+            "name": "amber_clouds",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              1774,
+              887
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "Sol | disco emisivo",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "Tyrell | interior oscuro de juntas",
+        "instances": 1,
+        "maps": []
+      },
+      {
+        "name": "City / terraces",
+        "instances": 1,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "City / unlit panel and service recesses",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              256,
+              256
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "City / stonework",
+        "instances": 1,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "City / unlit panel and service recesses",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              256,
+              256
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "City / service recesses",
+        "instances": 1,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "City / unlit panel and service recesses",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              256,
+              256
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Traffic / distant silhouette",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Traffic / distant silhouette",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Traffic / distant silhouette",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Traffic / distant silhouette",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Traffic / distant silhouette",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Traffic / distant silhouette",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Traffic / distant silhouette",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Traffic / distant silhouette",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Traffic / distant silhouette",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Traffic / distant silhouette",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Near traffic / body",
+        "instances": 1,
+        "maps": [],
+        "roughness": 0.94,
+        "metalness": 0.08,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Near traffic / trim",
+        "instances": 1,
+        "maps": [],
+        "roughness": 0.96,
+        "metalness": 0.05,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Near traffic / glass",
+        "instances": 1,
+        "maps": [],
+        "roughness": 0.75,
+        "metalness": 0.12,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "Near traffic / lamps",
+        "instances": 1,
+        "maps": [],
+        "roughness": 1,
+        "metalness": 0,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "M_VKMachine.002",
+        "instances": 15,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "M_VKMachine_BaseColor",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              2048,
+              2048
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "emissiveMap",
+            "name": "M_VKMachine_Emission",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 1,
+            "size": [
+              2048,
+              2048
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "M_VKMachine_Normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 1,
+            "size": [
+              2048,
+              2048
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "M_VKMachine_ORM",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              2048,
+              2048
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "M_VKMachine_ORM",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              2048,
+              2048
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 1,
+        "normalScale": [
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "VK / chasis",
+        "instances": 1,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "M_VKMachine_BaseColor",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              2048,
+              2048
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "emissiveMap",
+            "name": "M_VKMachine_Emission",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 1,
+            "size": [
+              2048,
+              2048
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "normalMap",
+            "name": "M_VKMachine_Normal",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "RGB",
+            "uv": 1,
+            "size": [
+              2048,
+              2048
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "roughnessMap",
+            "name": "M_VKMachine_ORM",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "G",
+            "uv": 0,
+            "size": [
+              2048,
+              2048
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "slot": "metalnessMap",
+            "name": "M_VKMachine_ORM",
+            "colorSpace": "NoColorSpace",
+            "expectedColorSpace": "NoColorSpace",
+            "channel": "B",
+            "uv": 0,
+            "size": [
+              2048,
+              2048
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "roughness": 1,
+        "metalness": 1,
+        "normalScale": [
+          1,
+          -1
+        ]
+      },
+      {
+        "name": "",
+        "instances": 1,
+        "maps": [],
+        "roughness": 0.22,
+        "metalness": 0.15,
+        "normalScale": [
+          1,
+          1
+        ]
+      },
+      {
+        "name": "",
+        "instances": 1,
+        "maps": [
+          {
+            "slot": "map",
+            "name": "",
+            "colorSpace": "srgb",
+            "expectedColorSpace": "srgb",
+            "channel": "RGB",
+            "uv": 0,
+            "size": [
+              64,
+              64
+            ],
+            "flipY": false,
+            "repeat": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "colorReference": {
+    "workingColorSpace": "srgb-linear",
+    "outputColorSpace": "srgb",
+    "toneMapping": "AgX",
+    "baseExposure": 1.07,
+    "compensationEV": 0,
+    "exposure": 1.07
+  },
+  "lighting": {
+    "profile": "tyrell-light-v2",
+    "contribution": "all",
+    "sunPosition": [
+      0.24709783776834474,
+      8.042288376397824,
+      -84.68905268029118
+    ],
+    "target": [
+      0,
+      1,
+      -5
+    ],
+    "directionToSun": [
+      0.0030887229721043093,
+      0.08802860470497281,
+      -0.9961131585036398
+    ],
+    "sunIntensity": 2.5,
+    "sunColor": "ffd093",
+    "discPosition": [
+      8,
+      42.5,
+      -650
+    ],
+    "discScale": [
+      0.5600000095367431,
+      0.5600000095367431,
+      0.5600000095367431
+    ],
+    "skyEmission": [
+      0.7500000298023224,
+      0.7500000298023224,
+      0.7500000298023224
+    ],
+    "hemisphereIntensity": 0.86,
+    "areaIntensities": [
+      0.08,
+      0.08,
+      0.2,
+      0.2
+    ],
+    "areas": [
+      {
+        "role": "window",
+        "position": [
+          0,
+          4.2,
+          -13.8
+        ],
+        "emissionDirection": [
+          0,
+          -0.28408832969137404,
+          0.9587981127083873
+        ],
+        "width": 6,
+        "height": 6,
+        "intensity": 0.08,
+        "power": 9.047786842338605,
+        "castShadow": false
+      },
+      {
+        "role": "front",
+        "position": [
+          0,
+          4.5,
+          7
+        ],
+        "emissionDirection": [
+          0,
+          -0.12752174253952622,
+          -0.9918357753074262
+        ],
+        "width": 7,
+        "height": 7,
+        "intensity": 0.08,
+        "power": 12.31504320207199,
+        "castShadow": false
+      },
+      {
+        "role": "left",
+        "position": [
+          -7.7,
+          4.3,
+          -3.4
+        ],
+        "emissionDirection": [
+          0.8589580613952029,
+          -0.42034117898063117,
+          -0.2924112549430478
+        ],
+        "width": 4,
+        "height": 4,
+        "intensity": 0.2,
+        "power": 10.053096491487338,
+        "castShadow": false
+      },
+      {
+        "role": "right",
+        "position": [
+          7.7,
+          4.1,
+          -7.2
+        ],
+        "emissionDirection": [
+          -0.9024909124636484,
+          -0.41166252147464655,
+          -0.12666539122296816
+        ],
+        "width": 4,
+        "height": 4,
+        "intensity": 0.2,
+        "power": 10.053096491487338,
+        "castShadow": false
+      }
+    ]
+  },
+  "indirect": {
+    "mode": "reference",
+    "probeIntensity": 0,
+    "environmentActive": false,
+    "environmentIntensity": 1,
+    "source": "artistic 64x32 linear radiance field; no scene capture, occlusion or baked GI",
+    "ambientRetention": 0.92
+  },
+  "shadows": {
+    "camera": {
+      "left": -14,
+      "right": 14,
+      "top": 10,
+      "bottom": -4,
+      "near": 50,
+      "far": 115
+    },
+    "bias": -0.00015,
+    "normalBias": 0.025,
+    "radius": 1.5,
+    "glassOpacity": 0.22,
+    "mapSize": [
+      512,
+      512
+    ],
+    "transmitted": true
+  },
+  "materialLook": {
+    "profile": "tyrell-v1",
+    "floorNormal": true,
+    "status": "v1 reviewed baseline; final lighting and reflections pending",
+    "materialCount": 38,
+    "adjusted": [
+      "PBR | Caliza ocre envejecida",
+      "PBR | Caliza aristas claras",
+      "PBR | Piedra negra pulida",
+      "PBR | Nogal oscuro",
+      "PBR | Raiz de nogal",
+      "Walnut | quarter sawn",
+      "Leather | oxblood",
+      "Burl walnut | table rim",
+      "Brass | polished highlights",
+      "Bronze | patinated",
+      "PBR | Cuero oscuro",
+      "PBR | Laton envejecido",
+      "PBR | Bronce patinado",
+      "Crystal"
+    ]
+  },
+  "reviewLighting": "tyrell-light-v2",
+  "collision": {
+    "obstacles": 106,
+    "bodyWidth": 0.5,
+    "bounds": {
+      "minX": -8.9,
+      "maxX": 8.9,
+      "minZ": -14.26,
+      "maxZ": 12
+    },
+    "method": "Conservative XZ boxes, 5 cm substeps, sliding; raised platform blocked"
+  },
+  "lifecycle": {
+    "hidden": false,
+    "focused": true,
+    "gpuLost": false,
+    "target": "Desktop and mobile; WebGPU on localhost or HTTPS; mobile hardware validation pending"
+  },
+  "cameraStateId": "initial",
+  "cameraStates": [
+    {
+      "cameraStateId": "initial",
+      "cameraSpot": "cameraspot-initial",
+      "cameraTarget": "cameratarget-initial",
+      "position": [
+        -0.11999999731779099,
+        1.550000786781311,
+        10.300000190734863
+      ],
+      "target": [
+        0,
+        1.9514189958572388,
+        -10.378293991088867
+      ],
+      "fov": 22.917504404217937,
+      "near": 0.029999999329447746,
+      "far": 2500,
+      "key": "0",
+      "viewOffset": {
+        "x": 0,
+        "y": 0
+      },
+      "mousePan": {
+        "enabled": true,
+        "horizontal": 2,
+        "vertical": 0.5,
+        "smoothness": 1.4,
+        "targetDistance": 20
+      }
+    },
+    {
+      "cameraStateId": "p1",
+      "cameraSpot": "cameraspot-p1",
+      "cameraTarget": "cameratarget-p1",
+      "position": [
+        1.0380754470825195,
+        0.9417622685432434,
+        -8.501016616821289
+      ],
+      "target": [
+        -0.20999068021774292,
+        1.0849730968475342,
+        -10.368745803833008
+      ],
+      "fov": 33.21750452013781,
+      "near": 0.029999999329447746,
+      "far": 2500,
+      "key": "1",
+      "viewOffset": {
+        "x": 0,
+        "y": 0
+      },
+      "mousePan": {
+        "enabled": true,
+        "horizontal": 0.5,
+        "vertical": 0.2,
+        "smoothness": 1.4,
+        "targetDistance": 20
+      }
+    },
+    {
+      "cameraStateId": "p2",
+      "cameraSpot": "cameraspot-p2",
+      "cameraTarget": "cameratarget-p2",
+      "position": [
+        -8.745309829711914,
+        1.9016311168670654,
+        -3.9683480262756348
+      ],
+      "target": [
+        -0.20999068021774292,
+        1.0849730968475342,
+        -10.368745803833008
+      ],
+      "fov": 33.000002206351546,
+      "near": 0.029999999329447746,
+      "far": 2500,
+      "key": "2",
+      "viewOffset": {
+        "x": 0,
+        "y": 0
+      },
+      "mousePan": {
+        "enabled": true,
+        "horizontal": 2,
+        "vertical": 0.5,
+        "smoothness": 1.4,
+        "targetDistance": 20
+      }
+    }
+  ],
+  "cameraTransition": {
+    "duration": 4.5,
+    "easing": "smoothstep",
+    "active": false
+  },
+  "navigation": {
+    "mode": "fixed",
+    "locked": false,
+    "speed": 1.4
+  },
+  "cameraPan": {
+    "enabled": true,
+    "horizontal": 2,
+    "vertical": 0.5,
+    "smoothness": 1.4,
+    "targetDistance": 20,
+    "units": "metres; smoothness in seconds",
+    "offset": [
+      0,
+      0
+    ],
+    "referencePosition": [
+      -0.11999999731779099,
+      1.550000786781311,
+      10.300000190734863
+    ],
+    "target": [
+      0,
+      1.9514189958572388,
+      -10.378293991088867
+    ]
+  },
+  "camera": {
+    "name": "initial",
+    "position": [
+      -0.11999999731779099,
+      1.550000786781311,
+      10.300000190734863
+    ],
+    "target": [
+      0,
+      1.9514189958572388,
+      -10.378293991088867
+    ],
+    "viewOffset": {
+      "x": 0,
+      "y": 0
+    },
+    "quaternion": [
+      0.00970469435664169,
+      -0.0029014199589480626,
+      0.00002815883848905532,
+      0.9999486986224572
+    ],
+    "fov": 22.917504404217937,
+    "aspect": 2.4,
+    "near": 0.029999999329447746,
+    "far": 2500
+  },
+  "metrics": null,
+  "performance": {
+    "enabled": true,
+    "cpuRender": null,
+    "gpuRender": null,
+    "gpuSupported": true,
+    "gpuError": null,
+    "heap": {
+      "usedBytes": 159173626,
+      "totalBytes": 177198694,
+      "limitBytes": 4395630592
+    },
+    "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+  },
+  "loading": {
+    "firstRenderedFrameSinceNavigationMs": 3737.5,
+    "glbFetchDecodeMs": 541.7999999821186,
+    "glbBytes": 40502716,
+    "note": "First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately."
+  },
+  "metricNote": "Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.",
+  "pending": [
+    "Fase 8: optimización y validación final",
+    "Fase 10: calibración a 60 FPS, resolución dinámica y validación en hardware móvil"
+  ]
+}

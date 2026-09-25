@@ -2,14 +2,15 @@
 export default class TyrellComparison {
     constructor() { this.rows = []; this.nextId = 1 }
     add(report) {
-        if (!report.metrics || report.metrics.samples < 120) throw new Error('Faltan muestras estables.')
-        const keys = ['qualityBudget', 'performance', 'loading', 'adapter', 'asset', 'date', 'quality', 'camera', 'cameraPan', 'exposure', 'metrics', 'floorReflection', 'specularEnvironment', 'atmosphere', 'lightVolume', 'postProcessing', 'sky', 'lighting', 'materialLook', 'indirect', 'reviewLighting']
-        keys.push('city', 'buildingLights', 'airTraffic', 'nearTraffic', 'flames', 'voightKampff')
+        const sustained = report.measurement?.type === 'sustained' && report.measurement.elapsedMs >= 60000
+        if (!report.metrics || report.metrics.samples < (sustained ? 1 : 120)) throw new Error('Faltan muestras estables.')
+        const keys = ['qualityBudget', 'qualitySelection', 'gpuCapacity', 'display', 'performance', 'loading', 'adapter', 'asset', 'date', 'quality', 'camera', 'cameraPan', 'exposure', 'metrics', 'floorReflection', 'specularEnvironment', 'atmosphere', 'lightVolume', 'postProcessing', 'sky', 'lighting', 'materialLook', 'indirect', 'reviewLighting']
+        keys.push('city', 'buildingLights', 'airTraffic', 'nearTraffic', 'flames', 'voightKampff', 'measurement', 'automaticQuality', 'qualityEffects')
         const row = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, report[key]]))))
         row.id = this.nextId++
         row.effects = [
             [row.voightKampff, `VK ${({ closed: 'cerrado', open: 'operativo', deploying: 'desplegando', retracting: 'replegando' })[row.voightKampff?.state] || ''}`],
-            [row.specularEnvironment?.minimumCaptureInterval > 0, 'Reflejos a 2 Hz'],
+            [row.specularEnvironment?.minimumCaptureInterval > 0, `Reflejos a ${1 / row.specularEnvironment?.minimumCaptureInterval} Hz`],
             [row.city?.enabled, 'Edificios bajos'],
             [row.buildingLights?.intensity > 0, 'Luces de edificios'],
             [row.buildingLights?.beacons > 0, 'Balizas'],

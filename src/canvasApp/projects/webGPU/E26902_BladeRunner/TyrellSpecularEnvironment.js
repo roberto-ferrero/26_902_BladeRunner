@@ -6,6 +6,7 @@ export default class TyrellSpecularEnvironment {
         this.scene = scene; this.floor = floor
         this.enabled = false; this.dirty = true; this.captures = 0
         this.minimumInterval = 0; this.lastCapture = -Infinity
+        this.budgetInterval = 0; this.detailMode = false
         this.target = new WebGLCubeRenderTarget(128, { type: HalfFloatType })
         this.target.texture.name = 'Tyrell / reflejo local de sala'
         this.camera = new CubeCamera(.05, 1100, this.target)
@@ -23,8 +24,14 @@ export default class TyrellSpecularEnvironment {
         })
     }
     invalidate() { this.dirty = true }
+    setCaptureInterval(seconds) {
+        if (!Number.isFinite(seconds) || seconds < 0) return
+        this.budgetInterval = seconds
+        this.setDetailMode(this.detailMode)
+    }
     setDetailMode(enabled) {
-        const interval = enabled ? .5 : 0
+        this.detailMode = enabled
+        const interval = Math.max(this.budgetInterval, enabled ? .5 : 0)
         if (interval === this.minimumInterval) return
         this.minimumInterval = interval
         this.lastCapture = -Infinity

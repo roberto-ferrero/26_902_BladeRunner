@@ -98,6 +98,36 @@ test('Adaptive reflection refreshes movement/lens/size/scene and rebinds the cor
     updates.dispose(); assert.equal(base.updateBefore, original)
 })
 
+test('Quality resize updates all existing planar targets before nested rendering', () => {
+    const floor = new m.exports.default(new THREE.Group())
+    const camera = new THREE.PerspectiveCamera()
+    const target = floor.node.reflector.getRenderTarget(floor.node.reflector.getVirtualCamera(camera))
+    floor.setResolution('auto', 'Extra baja', .125)
+    floor.resizeTargets({ getDrawingBufferSize: v => v.set(746, 311) })
+    assert.deepEqual([target.width, target.height], [93, 39])
+    floor.setResolution('auto', 'Alta', .5)
+    floor.resizeTargets({ getDrawingBufferSize: v => v.set(1492, 622) })
+    assert.deepEqual([target.width, target.height], [746, 311])
+    floor.dispose()
+})
+
+test('Quality restriction preserves floor reflection intent across mode and profile changes', () => {
+    const floor = new m.exports.default(new THREE.Group())
+    floor.setEnabled(true)
+    floor.setQualityAllowed(false)
+    floor.setMode('prototype')
+    assert.equal(floor.enabled, false)
+    assert.equal(floor.requestedEnabled, true)
+    floor.setEnabled(true)
+    assert.equal(floor.enabled, false)
+    floor.setQualityAllowed(true)
+    assert.equal(floor.enabled, true)
+    floor.setEnabled(false)
+    floor.setQualityAllowed(false); floor.setQualityAllowed(true)
+    assert.equal(floor.enabled, false)
+    floor.dispose()
+})
+
 test('Adaptive cache keeps the outer camera when nested rendering mutates NodeFrame', () => {
     const camera = new THREE.PerspectiveCamera(), virtual = camera.clone(), texture = {}
     const base = { resolutionScale: .5, getVirtualCamera: c => c, getRenderTarget: () => ({ texture }),

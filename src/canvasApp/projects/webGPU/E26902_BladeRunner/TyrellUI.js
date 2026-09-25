@@ -1,4 +1,5 @@
 import './tyrell.css'
+import { QUALITY_LEVELS } from './TyrellQuality'
 
 export default class TyrellUI {
     constructor(actions) {
@@ -11,7 +12,9 @@ export default class TyrellUI {
             <div class="tyrell-status" role="status" aria-live="polite"><p>Preparando el motor…</p><progress aria-label="Carga del escenario"></progress><button type="button" hidden>Reintentar</button></div>
             <footer hidden><div class="tyrell-controls">
                 <label>Cámara <select aria-label="Cámara"></select></label>
-                <label>Calidad <select aria-label="Calidad"><option selected>Baja</option><option>Media</option><option>Alta</option></select></label>
+                <label>Calidad <select aria-label="Calidad"><option value="auto">Automática</option>${QUALITY_LEVELS.map(name => `<option>${name}</option>`).join('')}</select></label>
+                <label>Dispositivo <select aria-label="Modo de dispositivo"><option value="auto">Automático</option><option value="desktop">Escritorio</option><option value="mobile">Móvil</option></select></label>
+                <span class="tyrell-quality-state" role="status"></span>
                 <label class="tyrell-check"><input type="checkbox" aria-label="Encuadre 2,4:1" checked> Encuadre 2,4:1</label>
                 <button type="button" data-action="capture">Captura 1920 × 800</button>
                 <button type="button" data-action="report">Diagnóstico</button>
@@ -199,10 +202,12 @@ export default class TyrellUI {
         this.comparisonPanel = document.createElement('details')
         this.comparisonPanel.className = 'tyrell-pan'
         this.comparisonPanel.innerHTML = `<summary>Comparar efectos y coste</summary><div class="tyrell-pan-controls">
-            <button type="button" data-measure>Medir configuración</button><button type="button" data-export>Exportar comparación</button><button type="button" data-clear>Borrar mediciones</button></div>
+            <button type="button" data-measure>Medir configuración</button><button type="button" data-sustained>Medir 3 × 60 s</button><button type="button" data-export>Exportar comparación</button><button type="button" data-clear>Borrar mediciones</button></div>
+            <p>La prueba sostenida mide tres pasadas de 60 s, con 5 s de calentamiento por pasada. Se cancela al cambiar ajustes, mover la cámara u ocultar la pestaña. Sus FPS y p95 cubren la pasada completa; CPU/GPU conservan la ventana corta del diagnóstico. Las medidas congelan el ajuste automático: espera a que se estabilice la calidad antes de medir.</p>
             <p>Activa o desactiva efectos en sus paneles. Medir centra la cámara, descarta 60 fotogramas y recoge 120. Compara con la misma cámara, calidad, resolución y luz. Los FPS pueden estar limitados por la pantalla. CPU/GPU se registran al abrir con ?profile=1; — significa sin medición. CPU mide envío del render; GPU, pases de render, sin presentación.</p>
             <p role="status" data-status>Sin mediciones. Se conservan las últimas 12 durante la sesión.</p><div class="tyrell-comparison-table"></div>`
         this.comparisonPanel.querySelector('[data-measure]').onclick = () => actions.measure()
+        this.comparisonPanel.querySelector('[data-sustained]').onclick = () => actions.measureSustained()
         this.comparisonPanel.querySelector('[data-export]').onclick = () => actions.exportMeasurements()
         this.comparisonPanel.querySelector('[data-clear]').onclick = () => actions.clearMeasurements()
         this.root.querySelector('footer').append(this.comparisonPanel)
@@ -214,6 +219,7 @@ export default class TyrellUI {
         this.cameraSelect.title = 'Cada estado indica su tecla asignada'
         this.cameraSelect.onchange = () => actions.camera(Number(this.cameraSelect.value))
         this.root.querySelector('[aria-label="Calidad"]').onchange = event => actions.quality(event.target.value)
+        this.root.querySelector('[aria-label="Modo de dispositivo"]').onchange = event => actions.deviceMode(event.target.value)
         this.root.querySelector('.tyrell-controls input').onchange = event => actions.frame(event.target.checked)
         this.retry.onclick = () => actions.retry()
         this.root.querySelector('[data-action="capture"]').onclick = () => actions.capture()
@@ -285,7 +291,7 @@ export default class TyrellUI {
         angleMode.innerHTML = 'Color según orientación<select aria-label="Color según orientación"><option value="lod">Según LOD</option><option value="on">Siempre activo</option><option value="off">Desactivado</option></select>'
         angleMode.querySelector('select').onchange = event => actions.cityColor({ mode: event.target.value })
         cityPanel.querySelector('div').append(angleMode)
-        for (const level of ['Baja', 'Media', 'Alta']) {
+        for (const level of QUALITY_LEVELS) {
             const label = document.createElement('label')
             label.innerHTML = `<input type="checkbox" checked aria-label="Color por orientación en LOD ${level}"> Activar en LOD ${level}`
             label.querySelector('input').onchange = event => actions.cityColor({ lod: { [level]: event.target.checked } })
@@ -383,10 +389,14 @@ export default class TyrellUI {
         budgetLabel.textContent = 'Presupuesto de render '
         const budgetSelect = document.createElement('select')
         budgetSelect.setAttribute('aria-label', 'Presupuesto de render')
-        for (const [value, label] of [['optimized', 'Optimizado 8.2'], ['baseline', 'Referencia 8.1'], ['resolution', 'Solo resolución'], ['volume', 'Solo volumen'], ['reflection', 'Solo reflejo']]) budgetSelect.add(new Option(label, value))
+        for (const [value, label] of [['optimized', 'Actual · fase 10'], ['previous', 'Anterior · fase 10 R03'], ['baseline', 'Referencia 8.1 · tres niveles originales'], ['resolution', 'Solo resolución'], ['volume', 'Solo volumen'], ['reflection', 'Solo reflejo']]) budgetSelect.add(new Option(label, value))
         budgetSelect.onchange = () => actions.budget(budgetSelect.value)
         budgetLabel.append(budgetSelect)
         technicalActions.append(budgetLabel)
+        const probeLabel = document.createElement('label')
+        probeLabel.innerHTML = 'Reflejos de metal y vidrio <select aria-label="Cadencia de reflejos metálicos"><option value="0">Sin límite de cadencia</option><option value="0.25">Hasta 4 actualizaciones/s</option><option value="0.5">Hasta 2 actualizaciones/s</option></select>'
+        probeLabel.querySelector('select').onchange = event => actions.probeInterval(Number(event.target.value))
+        technicalActions.append(probeLabel)
         technicalActions.className = 'tyrell-controls tyrell-technical-actions'
         technicalActions.append(mainControls.querySelector('[data-action="capture"]'), mainControls.querySelector('[data-action="report"]'))
         this.technicalPanel.append(this.atmospherePanel, finishPanel, this.lookPanel, technicalActions, this.comparisonPanel)
@@ -408,7 +418,10 @@ export default class TyrellUI {
         this.openGUI.setAttribute('aria-controls', this.guiContainer.id)
         this.openGUI.hidden = true
         this.openGUI.onclick = () => this.setGUIVisible(true)
-        this.root.append(this.openGUI)
+        const hud = document.createElement('div')
+        hud.className = 'tyrell-hud'
+        hud.append(this.openGUI, this.root.querySelector('.tyrell-metrics'))
+        this.root.append(hud)
         this.closeGUI.setAttribute('aria-expanded', 'true')
         this.openGUI.setAttribute('aria-expanded', 'true')
         this.setGUIVisible(false)
@@ -453,7 +466,8 @@ export default class TyrellUI {
         const body = table.createTBody()
         for (const row of rows) {
             const tr = body.insertRow()
-            for (const value of [row.id, `${row.camera?.name || 'Cámara'} / ${row.quality} (${row.qualityBudget?.mode || 'baseline'}) / ${row.metrics.resolution.join(' × ')}`, row.effects, row.metrics.fps, row.metrics.frameMeanMs, row.metrics.frameP95Ms, row.performance?.cpuRender?.meanMs?.toFixed(2) ?? '—', row.performance?.gpuRender?.meanMs?.toFixed(2) ?? '—']) tr.insertCell().textContent = value
+            const window = row.measurement?.type === 'sustained' ? ` · 60 s, pasada ${row.measurement.pass}/${row.measurement.passes}` : ' · 120 fotogramas'
+            for (const value of [row.id, `${row.camera?.name || 'Cámara'} / ${row.quality} (${row.qualityBudget?.mode || 'baseline'}) / ${row.metrics.resolution.join(' × ')}${window}`, row.effects, row.metrics.fps.toFixed(1), row.metrics.frameMeanMs.toFixed(2), row.metrics.frameP95Ms.toFixed(2), row.performance?.cpuRender?.meanMs?.toFixed(2) ?? '—', row.performance?.gpuRender?.meanMs?.toFixed(2) ?? '—']) tr.insertCell().textContent = value
         }
         container.append(table)
     }
@@ -515,8 +529,25 @@ export default class TyrellUI {
             ? `GPU score: ${capacity.gpuScore.toLocaleString('es-ES', { maximumFractionDigits: 0 })}${capacity.reliable ? '' : ' (aproximado)'}`
             : 'GPU score: no disponible'
         const metrics = this.root.querySelector('.tyrell-metrics')
-        metrics.title = available ? 'Benchmark de cálculo GPU en iteraciones/ms. Un valor mayor indica más capacidad; los cortes de LOD están pendientes de calibración.' : 'No se ha obtenido una medición válida de capacidad GPU.'
+        metrics.title = available ? 'Benchmark de cálculo GPU en iteraciones/ms. Selección inicial por score; rendimiento real pendiente de calibración.' : 'No se ha obtenido una medición válida de capacidad GPU.'
         this.metrics(this.metricsText || metrics.textContent)
+    }
+    setQualityState({ selection, quality, recommended, deviceSelection, device, resolutionScale = 1, resolutionFirst = false }) {
+        this.root.querySelector('[aria-label="Calidad"]').value = selection
+        this.root.querySelector('[aria-label="Modo de dispositivo"]').value = deviceSelection
+        this.root.querySelector('.tyrell-quality-state').textContent = `${device === 'mobile' ? 'Móvil' : 'Escritorio'} · Aplicada: ${quality} · Inicial por score: ${recommended}${resolutionFirst ? ' · Sin bloom ni reflejo del suelo' : ''}`
+        this.lodLabel = selection === 'auto'
+            ? `LOD auto: ${quality}${quality !== recommended ? ` · Inicial: ${recommended}` : ''}${resolutionScale < .999 ? ` · Resolución: ${Math.round(resolutionScale * 100)} %` : ''}`
+            : `LOD por score: ${recommended} · LOD manual: ${quality}`
+        this.metrics(this.metricsText || 'Estabilizando la medición…')
+    }
+    setQualityEffects(allowed, active) {
+        for (const [key, label] of [['bloom', 'Bloom'], ['floorReflection', 'Reflejo del suelo']]) {
+            const input = this.root.querySelector(`[aria-label="${label}"]`)
+            input.disabled = !allowed[key]
+            input.checked = active[key]
+            input.title = allowed[key] ? '' : 'Desactivado por este perfil para dedicar más resolución a la imagen.'
+        }
     }
     setSkyHeight(value) {
         this.skyHeight.value = Math.round(value * 100)
@@ -528,7 +559,7 @@ export default class TyrellUI {
     }
     metrics(text) {
         this.metricsText = text
-        this.root.querySelector('.tyrell-metrics').textContent = this.gpuLabel ? `${text} · ${this.gpuLabel}` : text
+        this.root.querySelector('.tyrell-metrics').textContent = [text, this.lodLabel, this.gpuLabel].filter(Boolean).join(' · ')
     }
     showOutput(blob, filename, text) {
         if (this.outputURL) URL.revokeObjectURL(this.outputURL)

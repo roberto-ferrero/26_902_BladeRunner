@@ -1,5 +1,6 @@
 // Paths are the public configuration API; labels bind to the existing UI actions.
 export const GUI_BINDINGS = [
+    ["viewer.deviceMode", "Modo de dispositivo"],
     ["viewer.quality", "Calidad"],
     ["viewer.referenceFrameEnabled", "Encuadre 2,4:1"],
     ["viewer.renderBudget", "Presupuesto de render"],
@@ -50,9 +51,11 @@ export const GUI_BINDINGS = [
     ["city.buildings.orientationColor.rightBuildingLightnessStep", "Variación L por edificio a la derecha"],
     ["city.buildings.orientationColor.leftBuildingLightnessStep", "Variación L por edificio a la izquierda"],
     ["city.buildings.orientationColor.mode", "Color según orientación"],
+    ["city.buildings.orientationColor.extraLowQualityEnabled", "Color por orientación en LOD Extra baja"],
     ["city.buildings.orientationColor.lowQualityEnabled", "Color por orientación en LOD Baja"],
     ["city.buildings.orientationColor.mediumQualityEnabled", "Color por orientación en LOD Media"],
     ["city.buildings.orientationColor.highQualityEnabled", "Color por orientación en LOD Alta"],
+    ["city.buildings.orientationColor.ultraHighQualityEnabled", "Color por orientación en LOD UltraAlta"],
     ["city.lights.buildingIntensity", "Luces de edificios"],
     ["city.lights.whiteBeaconIntensity", "Balizas blancas"],
     ["city.distantTraffic.densityPercent", "Densidad de tráfico lejano"],
@@ -81,6 +84,12 @@ export function flattenSettings(value, prefix = '', result = {}) {
 // Validate every setting before changing any control or scene component.
 export function prepareGUISettings(root, settings, cameraStates) {
     const values = flattenSettings(settings)
+    // Optional additions to schema 1 preserve previously saved configurations.
+    if (!('viewer.deviceMode' in values)) values['viewer.deviceMode'] = 'auto'
+    for (const [added, original] of [['extraLowQualityEnabled', 'lowQualityEnabled'], ['ultraHighQualityEnabled', 'highQualityEnabled']]) {
+        const key = `city.buildings.orientationColor.${added}`
+        if (!(key in values)) values[key] = values[`city.buildings.orientationColor.${original}`]
+    }
     if (values.schemaVersion !== 1) throw new Error('schemaVersion debe ser 1')
     if (!cameraStates.some(state => state.cameraStateId === values['camera.initialState'])) throw new Error('camera.initialState no existe en los estados de cámara')
     const known = new Set(['schemaVersion', 'camera.initialState', ...GUI_BINDINGS.map(([path]) => path)])

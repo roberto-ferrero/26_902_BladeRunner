@@ -716,3 +716,56 @@ Las llamaradas pasan a 3,5× por defecto y el GUI permite regularlas entre 1× y
 Base estrecha y altura visible aproximadamente doble; lóbulos que ganan anchura al ascender y halo elevado. GUI «Crecimiento vertical» 1–3×, inicial 2×; tamaño 3,5×, intervalo 4,5 s e intensidad 0,65. Camera_D, Baja, viewport 1280 × 720. Cuatro pruebas correctas y auditoría de CAM01 incluyendo tamaño 5× y crecimiento 3×. Compilación correcta. Pendiente de valoración artística.
 
 ![Crecimiento vertical r03](9.5_010_2026-09-21_CameraD-crecimiento-r03.png)
+
+### 10.2 / 10.6 · Primera entrega de calidad · 24-09-2026
+
+Propuesta técnica, pendiente de calibración y valoración visual. Tyrell v1, luz tyrell-light-v2, exposición 1,07 y efectos configurados activos. Capturas de pantalla del navegador integrado (no exportaciones 1920 × 800). Los tamaños móviles simulan viewport en GPU NVIDIA de escritorio; sus FPS no son resultados del Redmi. [Informe y límites](../phase10/INICIO.md).
+
+| Captura | Fecha UTC | Calidad / modo / vista | Estado |
+| --- | --- | --- | --- |
+| [10.2_001](10.2_001_2026-09-24_initial-Extra-baja.png) | 17:25:43 | Extra baja / escritorio / initial; 1492 × 1432 | Primera revisión, antes de correcciones GPU |
+| [10.2_002](10.2_002_2026-09-24_initial-UltraAlta-GUI.png) | 17:26:17 | UltraAlta / escritorio / initial; GUI visible | Primera revisión, antes de correcciones GPU |
+| [10.2_003](10.2_003_2026-09-24_p1-Alta.png) | 17:27:18 | Alta / escritorio / p1; Voight-Kampff desplegado | Primera revisión, antes de correcciones GPU |
+| [10.2_004](10.2_004_2026-09-24_initial-auto-corregido.png) | 17:35:48 | Automática → Media / escritorio / initial; 1492 × 1432 | Revisión corregida; pendiente de calibración |
+| [10.6_001](10.6_001_2026-09-24_initial-movil-vertical.png) | 17:26:28 | Extra baja / móvil manual / initial; 393 × 852 | Simulación de interfaz vertical |
+| [10.6_002](10.6_002_2026-09-24_initial-movil-horizontal.png) | 17:27:03 | Extra baja / móvil manual / initial; 852 × 393 | Simulación de interfaz horizontal |
+
+Repetida la secuencia de cambios de calidad y tamaños móviles después de corregir las referencias de volumen/sombras y el tamaño de los reflejos: sin errores WebGPU en la comprobación final registrada. No se declara validado el objetivo de 60 FPS.
+
+### 10.3 · R02 · Comparación de presupuestos y LOD en FPS
+
+2026-09-24, capturas de pantalla a viewport 1920 × 1080, vista `initial`, Tyrell v1, luz tyrell-light-v2, exposición 1,07. Estado: propuestas de calibración, pendientes de valoración visual y validación de rendimiento. Escena 2,4:1; instantes de animación distintos. [Resultados sostenidos](../phase10/R02_PERFORMANCE.md).
+
+| Captura | Fecha UTC | Calidad / resolución interna |
+| --- | --- | --- |
+| [10.3_001](10.3_001_2026-09-24_initial-Alta-referencia.png) | 2026-09-24T18:00:25.312Z | Alta, escritorio, 1920 × 800; referencia A |
+| [10.3_002](10.3_002_2026-09-24_initial-presupuesto-anterior.png) | 2026-09-24T18:15:01.086Z | Baja manual, LOD auto Alta, escritorio, 1440 × 600; candidato E |
+
+### 10.2 / 10.6 · R02 · Indicador LOD y distribución adaptable
+
+Capturas de pantalla de la revisión funcional final, `initial`, Tyrell v1, tyrell-light-v2, exposición 1,07. Propuesta técnica; no certifican rendimiento sostenido. En móvil se verifica disposición del texto sobre GPU de escritorio.
+
+| Captura | Fecha UTC | Condición |
+| --- | --- | --- |
+| [10.2_005](10.2_005_2026-09-24_initial-LOD-auto-FPS.png) | 2026-09-24T18:23:24.808Z | Automática → Alta, escritorio, viewport restaurado 1492 × 1432 |
+| [10.6_003](10.6_003_2026-09-24_initial-LOD-movil-FPS.png) | 2026-09-24T18:22:37.960Z | Extra baja manual, recomendada Alta, móvil manual, viewport 393 × 852; texto sin solapar botón |
+
+### 10.3 / 10.4 · R03 · Presupuestos para 60 FPS y adaptación automática
+
+Capturas de pantalla, vista `initial`, Tyrell v1, tyrell-light-v2, exposición 1,07. Propuesta técnica; pendiente valoración visual y validación del resto de hardware. [Medidas y límites](../phase10/R03_AUTO.md).
+
+| Captura | Fecha UTC | Condición |
+| --- | --- | --- |
+| [10.3_003](10.3_003_2026-09-24_initial-Alta-r03.png) | 2026-09-24T18:49:27.891Z | Alta manual, presupuesto R03, viewport 1920 × 1080, interno 1440 × 600, tras tres pasadas de 60 s |
+| [10.4_001](10.4_001_2026-09-24_initial-auto-carga-r03.png) | 2026-09-24T18:55:32.245Z | Auto inicial Alta → Baja, escala 93,75 %, viewport 3840 × 2160; prueba funcional de carga |
+| [10.4_002](10.4_002_2026-09-24_initial-auto-r03.png) | 2026-09-24T18:58:08.095Z | Auto Alta, viewport restaurado 1280 × 720; HUD final |
+
+### 10.3 / 10.6 · R04 · Resolución frente a bloom y reflejo planar
+
+Capturas de pantalla, vista `initial`, Tyrell v1, tyrell-light-v2, exposición 1,07. Propuesta pendiente de valoración visual y prueba en Radeon 660M/Redmi. Comparación de escritorio a viewport 1920 × 1080, instantes de animación distintos; móvil es simulación en GPU de escritorio. [Resultados y límites](../phase10/R04_RESOLUCION.md).
+
+| Captura | Fecha UTC | Condición |
+| --- | --- | --- |
+| [10.3_004](10.3_004_2026-09-24_initial-Baja-R03-referencia.png) | 2026-09-24T20:11:08.860Z | Baja manual, R03, interno 960 × 400, bloom/reflejo activos; referencia |
+| [10.3_005](10.3_005_2026-09-24_initial-Baja-R04-resolucion.png) | 2026-09-24T20:15:01.875Z | Baja manual, R04, interno 1152 × 480, bloom/reflejo planar desactivados; propuesta |
+| [10.6_004](10.6_004_2026-09-24_initial-movil-R04-resolucion.png) | 2026-09-24T20:16:25.132Z | Extra baja móvil manual, viewport 852 × 393, interno 426 × 177; propuesta |

@@ -4,7 +4,7 @@ import { vec4 } from 'three/tsl'
 import { RectAreaLightNode } from 'three/webgpu'
 import { RectAreaLightTexturesLib } from 'three/addons/lights/RectAreaLightTexturesLib.js'
 import { TYRELL } from './config'
-import { qualityBudget, BUDGET_MODES } from './TyrellQuality'
+import { qualityBudget, qualityEffects, BUDGET_MODES, QUALITY_LEVELS, DEVICE_MODES, recommendQuality, detectDeviceMode, renderPixelRatio } from './TyrellQuality'
 import { loadTyrell, disposeScene } from './TyrellAssets'
 import TyrellCameraRig from './TyrellCameraRig'
 import cameraStateExport from './cameraStates.generated.json'
@@ -30,6 +30,8 @@ import TyrellAtmosphere from './TyrellAtmosphere'
 import TyrellLightVolume from './TyrellLightVolume'
 import TyrellPostProcessing from './TyrellPostProcessing'
 import TyrellComparison from './TyrellComparison'
+import TyrellSustainedMeasurement from './TyrellSustainedMeasurement'
+import TyrellAdaptiveQuality from './TyrellAdaptiveQuality'
 import TyrellSky from './TyrellSky'
 import TyrellLensFlare from './TyrellLensFlare'
 import TyrellCity from './TyrellCity'
@@ -49,7 +51,12 @@ export default class E26902_BladeRunner {
         this.rendererOptions = { requireWebGPU: true, benchmarkOnStart: false, powerPreference: 'high-performance', trackTimestamp: this.profileEnabled }
         this.ownsMetrics = true
         this.quality = TYRELL.quality
+        this.qualitySelection = 'auto'
+        this.deviceSelection = 'auto'
+        this.detectedDevice = detectDeviceMode({ mobileHint: navigator.userAgentData?.mobile || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent), coarsePointer: window.matchMedia('(pointer: coarse)').matches, touchPoints: navigator.maxTouchPoints })
+        this.deviceMode = this.detectedDevice
         this.budgetMode = 'optimized'
+        this.adaptiveQuality = new TyrellAdaptiveQuality()
         this.samples = []
         this.transitionDuration = CAMERA_STATES.transition.duration
         this.transitionEasing = CAMERA_STATES.transition.easing
@@ -78,8 +85,10 @@ export default class E26902_BladeRunner {
                 if (this.navigation.enabled) this.navigation.camera.position.y = this.navigation.height
             },
             navigationSpeed: value => { if (this.navigation) this.navigation.speed = Math.max(.25, Math.min(5, value)) },
-            budget: mode => { if (BUDGET_MODES.includes(mode)) { this.budgetMode = mode; this.setQuality(this.quality) } },
-            camera: index => this.selectCamera(index), quality: name => this.setQuality(name),
+            budget: mode => { if (BUDGET_MODES.includes(mode)) { this.budgetMode = mode; this.selectQuality(this.qualitySelection) } },
+            probeInterval: seconds => { this.specularEnvironment?.setCaptureInterval(seconds); this.resetMetrics() },
+            camera: index => this.selectCamera(index), quality: name => this.selectQuality(name),
+            deviceMode: mode => this.selectDeviceMode(mode),
             vkToggle: () => this.toggleVK(),
             vkAuto: enabled => { if (this.vk) { this.vk.arrival.enabled = enabled; this.vk.arrival.cancel() } },
             vkSavings: enabled => { this.vkDetailSavings = enabled; this.resetMetrics() },
@@ -91,13 +100,13 @@ export default class E26902_BladeRunner {
             center: () => this.pan?.reset(),
             look: values => this.setLook(values),
             lighting: profile => this.setLighting(profile),
-            reflection: enabled => { this.floorReflection?.setEnabled(enabled); this.resetMetrics() },
+            reflection: enabled => { this.floorReflection?.setEnabled(enabled); this.syncQualityEffects(); this.resetMetrics() },
             reflectionMode: mode => { this.floorReflection?.setMode(mode); this.resetMetrics() },
             reflectionResolution: value => { this.floorReflection?.setResolution(value); this.resetMetrics() },
             reflectionUpdates: value => { this.floorReflection?.updates.setMode(value); this.resetMetrics() },
             specularEnvironment: enabled => { this.specularEnvironment?.setEnabled(enabled); this.resetMetrics() },
             volume: values => this.setVolume(values),
-            post: values => { this.post?.configure(values); this.resetMetrics() },
+            post: values => { this.post?.configure(values); this.syncQualityEffects(); this.resetMetrics() },
             flare: values => { this.post?.configureFlare(values); this.resetMetrics() },
             sky: enabled => { this.sky?.setEnabled(enabled); this.resetMetrics() },
             skyHeight: value => { this.sky?.setHeightScale(value); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
@@ -110,7 +119,8 @@ export default class E26902_BladeRunner {
             nearTraffic: values => { this.nearTraffic?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             airTraffic: values => { this.airTraffic?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             measure: () => { if (this.developmentControls || this.navigation?.enabled || this.stageCamera?.transition) { this.ui.comparisonStatus('Selecciona una cámara fija y espera a que termine la transición.'); return } (!this.developmentControls && !this.navigation?.enabled && !this.stageCamera?.transition && this.pan?.reset()); this.resetMetrics(); this.measuring = true; this.ui.comparisonStatus('Midiendo: espera sin cambiar controles ni mover la cámara…') },
-            clearMeasurements: () => { this.measuring = false; this.comparison.clear(); this.ui.showMeasurements([]); this.ui.comparisonStatus('Registro vacío.') },
+            measureSustained: () => this.startSustainedMeasurement(),
+            clearMeasurements: () => { this.measuring = false; this.sustainedMeasurement = null; this.comparison.clear(); this.ui.showMeasurements([]); this.ui.comparisonStatus('Registro vacío.') },
             exportMeasurements: () => { const text = JSON.stringify({ note: 'RAF, CPU de envío y GPU de pases (opcional con profile=1). Comparar misma cámara y luz; consultar qualityBudget y resolución efectiva.', rows: this.comparison.rows }, null, 2); this.ui.showOutput(new Blob([text], { type: 'application/json' }), 'tyrell-comparacion.json', text) },
             atmosphere: values => { this.atmosphere?.configure(values); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             indirect: mode => { this.indirect?.setMode(mode); this.setLighting(this.lightingProfile) },
@@ -130,7 +140,7 @@ export default class E26902_BladeRunner {
     async measureGPUCapacity(renderer) {
         this.ui.status('Midiendo la capacidad de la GPU…')
         this.gpuCapacity = await measureGPUCapacity(renderer, () => this.disposed)
-        if (!this.disposed) this.ui.setGPUCapacity(this.gpuCapacity)
+        if (!this.disposed) { this.ui.setGPUCapacity(this.gpuCapacity); this.selectQuality(this.qualitySelection) }
     }
     onRendererError(error, app) {
         this.mount(app)
@@ -146,7 +156,7 @@ export default class E26902_BladeRunner {
         this.pointerMove = event => {
             if (event.pointerType !== 'mouse' || !this.revealed || !this.built || this.developmentControls || this.navigation?.enabled) return
             if (event.target?.closest?.('.tyrell-gui-panel footer, .tyrell-gui-toggle, .tyrell-controls, .tyrell-pan, .tyrell-look, dialog')) { this.pan.setPointer(0, 0); return }
-            if (this.measuring) this.resetMetrics()
+            if (this.measuring || this.sustainedMeasurement) this.resetMetrics()
             this.pan.setPointer(event.clientX / window.innerWidth * 2 - 1, event.clientY / window.innerHeight * 2 - 1)
         }
         this.pointerLeave = () => this.pan.setPointer(0, 0)
@@ -167,7 +177,7 @@ export default class E26902_BladeRunner {
         this.renderer.setClearColor(0x171512, 1)
         this.ui.setBackend(`WebGPU · Three.js r${THREE.REVISION}`)
         this.setQuality(this.quality)
-        this.resizeListener = () => this.resetMetrics()
+        this.resizeListener = () => { this.updateQualityResolution(); this.resetMetrics() }
         app.emitter.on('onAppSizeUpdate', this.resizeListener)
         this.lifecycle = new TyrellLifecycle({
             pauseInput: () => { this.navigation?.pause(); this.pan?.setPointer(0, 0) },
@@ -532,40 +542,110 @@ export default class E26902_BladeRunner {
         }
         this.resetMetrics()
     }
+    selectQuality(selection) {
+        if (selection !== 'auto' && !QUALITY_LEVELS.includes(selection)) return false
+        this.qualitySelection = selection
+        const quality = selection === 'auto' ? recommendQuality(this.gpuCapacity?.gpuScore, this.deviceMode) : selection
+        this.adaptiveQuality.reset(quality, this.deviceMode)
+        this.setQuality(quality)
+        return true
+    }
+    selectDeviceMode(selection) {
+        if (!DEVICE_MODES.includes(selection)) return false
+        this.deviceSelection = selection
+        this.deviceMode = selection === 'auto' ? this.detectedDevice : selection
+        document.body.classList.toggle('tyrell-mobile', this.deviceMode === 'mobile')
+        this.selectQuality(this.qualitySelection)
+        return true
+    }
+    updateQualityResolution() {
+        const profile = qualityBudget(this.quality, this.budgetMode, this.deviceMode)
+        if (!profile || !this.renderer) return
+        const { width, height } = this.app.size.CURRENT
+        const scale = this.automaticQualityEnabled() ? this.adaptiveQuality.scale : 1
+        this.renderer.setPixelRatio(renderPixelRatio(profile, this.deviceMode, width, height) * scale)
+        this.app.render?.update_resize()
+        this.floorReflection?.resizeTargets(this.renderer)
+    }
     setQuality(name) {
-        const profile = qualityBudget(name, this.budgetMode)
+        const profile = qualityBudget(name, this.budgetMode, this.deviceMode)
         if (!profile) return
         this.quality = name
         this.city?.setQuality(name)
         this.volume?.setQuality(name, profile.volumeSteps)
-        this.post?.setQuality(name)
+        this.post?.setQuality(name, this.budgetMode)
+        this.syncQualityEffects()
         this.floorReflection?.setResolution(this.floorReflection.resolution, name, profile.reflectionScale)
         this.specularEnvironment?.invalidate()
-        this.renderer?.setPixelRatio(profile.pixelRatio)
-        this.app.render?.update_resize()
+        this.updateQualityResolution()
+        this.ui?.setQualityState({ selection: this.qualitySelection, quality: name, recommended: recommendQuality(this.gpuCapacity?.gpuScore, this.deviceMode), deviceSelection: this.deviceSelection, device: this.deviceMode, resolutionScale: this.automaticQualityEnabled() ? this.adaptiveQuality.scale : 1, resolutionFirst: qualityEffects(name, this.budgetMode, this.deviceMode).resolutionFirst })
         if (this.sun && this.sun.shadow.mapSize.x !== profile.shadowSize) {
-            // A new light identity rebuilds r182's cached shadow nodes and bindings.
-            // Keep the authored transform/target; LightShadow.clone omits GPU targets.
+            // Detach volume samplers before retiring the light's depth texture.
+            // They are rebuilt once the replacement shadow map has rendered.
+            this.volume?.resetShadow()
+            this.atmosphere?.refreshVolume()
             const previous = this.sun
             const replacement = previous.clone(false)
             replacement.target = previous.target
             replacement.shadow.mapSize.setScalar(profile.shadowSize)
             previous.parent.add(replacement)
             previous.removeFromParent()
-            previous.dispose()
             this.sun = replacement
             if (this.lighting) this.lighting.sun = replacement
+            previous.dispose()
         }
         this.resetMetrics()
     }
+    syncQualityEffects() {
+        const allowed = qualityEffects(this.quality, this.budgetMode, this.deviceMode)
+        this.post?.setBloomAllowed(allowed.bloom)
+        this.floorReflection?.setQualityAllowed(allowed.floorReflection)
+        this.ui?.setQualityEffects(allowed, { bloom: this.post?.bloomActive() || false, floorReflection: this.floorReflection?.enabled || false })
+    }
     resetMetrics() {
+        this.adaptiveQuality?.pause()
         this.colorBenchmark?.finish('ha cambiado la configuración')
         this.performanceProbe?.reset()
-        if (this.measuring) this.ui.comparisonStatus('Medición cancelada por un cambio de configuración. Vuelve a medir.')
+        if (this.measuring || this.sustainedMeasurement) this.ui.comparisonStatus('Medición cancelada por un cambio de configuración o visibilidad. Vuelve a medir.')
         this.measuring = false
+        this.sustainedMeasurement = null
         this.floorReflection?.updates.invalidate()
         this.samples = []; this.warmup = 60; this.previousFrame = undefined; this.metrics = undefined
         if (this.built) this.ui.metrics('Estabilizando la medición…')
+    }
+    startSustainedMeasurement() {
+        if (!this.revealed || this.developmentControls || this.navigation?.enabled || this.stageCamera?.transition) {
+            this.ui.comparisonStatus('Selecciona una cámara fija y espera a que termine la transición.'); return
+        }
+        this.pan?.reset()
+        this.resetMetrics()
+        this.sustainedMeasurement = new TyrellSustainedMeasurement()
+        this.ui.comparisonStatus(this.sustainedMeasurement.status())
+    }
+    automaticQualityEnabled() { return this.qualitySelection === 'auto' && this.budgetMode === 'optimized' }
+    updateAutomaticQuality(now) {
+        const enabled = this.automaticQualityEnabled() && this.revealed && !document.hidden && !this.rendererError
+            && !this.stageCamera?.transition && !this.developmentControls && !this.measuring
+            && !this.sustainedMeasurement && !this.colorBenchmark && !this.captureRequested
+        const change = this.adaptiveQuality.frame(now, enabled)
+        if (change) this.setQuality(change.quality)
+    }
+    updateSustainedMeasurement(now) {
+        const run = this.sustainedMeasurement
+        if (!run) return
+        const result = run.frame(now, document.hidden)
+        if (run.stage === 'cancelled') { this.resetMetrics(); return }
+        if (result) {
+            const report = this.getDiagnostics()
+            report.metrics = { ...report.metrics, ...result, resolution: report.display.internal }
+            report.measurement = { type: 'sustained', pass: result.pass, passes: result.passes, elapsedMs: result.elapsedMs,
+                warmupMs: result.warmupMs, note: 'RAF completo de la pasada. CPU/GPU y contadores son ventanas cortas, no estadísticas de toda la pasada.' }
+            this.comparison.add(report)
+            this.ui.showMeasurements(this.comparison.rows)
+        }
+        const text = run.status()
+        if (text !== this.sustainedStatus) { this.ui.comparisonStatus(text); this.sustainedStatus = text }
+        if (run.stage === 'done') this.sustainedMeasurement = null
     }
     update_RAF() {
         const now = performance.now()
@@ -632,6 +712,8 @@ export default class E26902_BladeRunner {
             }
         }
         this.previousFrame = now
+        this.updateAutomaticQuality(now)
+        this.updateSustainedMeasurement(now)
         if (this.samples.length >= 30 && (!this.lastReport || now - this.lastReport > 1000)) {
             this.lastReport = now
             this.ui.cityColorStatus(this.city?.diagnostics())
@@ -671,12 +753,16 @@ export default class E26902_BladeRunner {
         const camera = this.stageCamera?.get_camera()
         const info = this.renderer?.backend?.device?.adapterInfo
         return {
-            phase: 9, step: '9.5', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
+            phase: 10, step: '10.4', date: new Date().toISOString(), backend: this.renderer?.backend?.isWebGPUBackend ? 'WebGPU' : 'unavailable',
             referenceCapture: { ...REFERENCE_CAPTURE, aspect: 2.4 },
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
             benchmarkOnStart: true, gpuCapacity: this.gpuCapacity || null, startup: this.startup?.diagnostics() || null,
-            qualityBudget: { mode: this.budgetMode, ...qualityBudget(this.quality, this.budgetMode) }, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
+            qualitySelection: { selection: this.qualitySelection, recommended: recommendQuality(this.gpuCapacity?.gpuScore, this.deviceMode), deviceSelection: this.deviceSelection, detectedDevice: this.detectedDevice, device: this.deviceMode, reason: this.qualitySelection !== 'auto' ? 'manual' : this.adaptiveQuality.history.length ? 'sustained-fps' : Number.isFinite(this.gpuCapacity?.gpuScore) && this.gpuCapacity.gpuScore > 0 ? 'gpu-score' : 'score-unavailable-fallback', calibrated: false, dynamicResolution: this.automaticQualityEnabled() },
+            automaticQuality: { enabled: this.automaticQualityEnabled(), ...this.adaptiveQuality.diagnostics() },
+            display: { viewport: [window.innerWidth, window.innerHeight], scene: { ...this.app.size.CURRENT }, nativeDPR: window.devicePixelRatio, effectivePixelRatio: this.renderer?.getPixelRatio(), internal: [this.renderer?.domElement.width, this.renderer?.domElement.height], mobilePixelCap: this.deviceMode === 'mobile' ? 1280 * 720 : null },
+            qualityBudget: { mode: this.budgetMode, ...qualityBudget(this.quality, this.budgetMode, this.deviceMode) }, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
+            qualityEffects: qualityEffects(this.quality, this.budgetMode, this.deviceMode),
             model: this.modelStats, asset: { path: TYRELL.asset, bytes: this.asset?.bytes, loadMs: this.asset?.loadMs },
             columnRepair: this.columnCores?.userData.columnRepair || null,
             contactRepair: this.contactRepair || null,
@@ -702,7 +788,7 @@ export default class E26902_BladeRunner {
             shadows: { ...TYRELL.shadows, mapSize: this.sun?.shadow.mapSize.toArray(), transmitted: this.renderer.shadowMap.transmitted },
             materialLook: this.look?.diagnostics(), reviewLighting: this.studio ? 'neutral-studio' : this.lightingProfile,
             collision: this.navigation?.collision?.diagnostics(),
-            lifecycle: { hidden: document.hidden, focused: document.hasFocus(), gpuLost: !!this.rendererError, target: 'Desktop with dedicated GPU, keyboard and mouse; WebGPU on localhost or HTTPS' },
+            lifecycle: { hidden: document.hidden, focused: document.hasFocus(), gpuLost: !!this.rendererError, target: 'Desktop and mobile; WebGPU on localhost or HTTPS; mobile hardware validation pending' },
             cameraStateId: this.activeCameraStateId,
             cameraStates: this.cameraStates,
             cameraTransition: { duration: this.stageCamera?.transition?.duration ?? this.transitionDuration, easing: this.stageCamera?.transition?.easing ?? this.transitionEasing, active: !!this.stageCamera?.transition },
@@ -713,7 +799,7 @@ export default class E26902_BladeRunner {
             performance: this.performanceProbe?.report(),
             loading: { firstRenderedFrameSinceNavigationMs: this.firstFrameMs, glbFetchDecodeMs: this.asset?.loadMs, glbBytes: this.asset?.bytes, note: 'First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately.' },
             metricNote: 'Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.',
-            pending: ['Fase 8: optimización y validación final']
+            pending: ['Fase 8: optimización y validación final', 'Fase 10: calibración a 60 FPS, resolución dinámica y validación en hardware móvil']
         }
     }
     downloadReport() {
@@ -756,7 +842,7 @@ export default class E26902_BladeRunner {
             for (const name of ['LTC_FLOAT_1', 'LTC_FLOAT_2', 'LTC_HALF_1', 'LTC_HALF_2']) RectAreaLightTexturesLib[name].dispose()
         }
         this.ui?.dispose()
-        document.body.classList.remove('tyrell-viewer', 'tyrell-reference')
+        document.body.classList.remove('tyrell-viewer', 'tyrell-reference', 'tyrell-mobile')
     }
 }
 const _position = new THREE.Vector3()

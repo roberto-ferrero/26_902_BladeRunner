@@ -10,6 +10,22 @@ const code = require('@babel/core').transformSync(fs.readFileSync(new URL('../Ty
 const m = { exports: {} }
 new Function('require', 'module', 'exports', code)(() => THREE, m, m.exports)
 
+test('A global capture budget survives leaving p1 and coalesces repeated invalidations', () => {
+    const env = new m.exports.default(new THREE.Scene(), new THREE.Group(), { materials: new Map(), updates: { invalidate() {} } })
+    let captures = 0
+    env.camera.update = () => { captures++ }
+    env.setEnabled(true); env.setCaptureInterval(.25)
+    env.update({}, 0)
+    for (let i = 1; i < 25; i++) { env.invalidate(); env.update({}, i / 100) }
+    assert.equal(captures, 1)
+    env.update({}, .25); assert.equal(captures, 2)
+    env.setDetailMode(true); assert.equal(env.minimumInterval, .5)
+    env.setDetailMode(false); assert.equal(env.minimumInterval, .25)
+    env.setCaptureInterval(NaN); assert.equal(env.minimumInterval, .25)
+    env.setCaptureInterval(0); assert.equal(env.minimumInterval, 0)
+    env.dispose()
+})
+
 test('Room environment affects only chosen materials, captures on demand and restores state after failure', () => {
     const scene = new THREE.Scene(), root = new THREE.Group(), source = new THREE.Texture()
     scene.environment = source; scene.add(root)

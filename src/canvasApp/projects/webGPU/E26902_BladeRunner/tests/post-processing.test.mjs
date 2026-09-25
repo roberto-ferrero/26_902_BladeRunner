@@ -5,13 +5,14 @@ import { createRequire } from 'node:module'
 import * as THREE from 'three/webgpu'
 import * as TSL from 'three/tsl'
 import * as Bloom from 'three/addons/tsl/display/BloomNode.js'
+import * as Quality from '../TyrellQuality.js'
 const require=createRequire(import.meta.url)
 function load(file,imports){
     const code=require('@babel/core').transformSync(fs.readFileSync(new URL('../'+file,import.meta.url),'utf8'),{
         configFile:false,babelrc:false,plugins:['@babel/plugin-transform-modules-commonjs']
     }).code
     const m={exports:{}}
-    new Function('require','module','exports',code)(key=>imports[key],m,m.exports)
+    new Function('require','module','exports',code)(key=>key === './TyrellQuality' ? Quality : imports[key],m,m.exports)
     return m.exports
 }
 const Post=load('TyrellPostProcessing.js',{'three/webgpu':THREE,'three/tsl':TSL,'three/addons/tsl/display/BloomNode.js':Bloom}).default
@@ -45,6 +46,8 @@ test('Final processing bypasses R01, follows each camera, excludes disabled bloo
     post.configure({bloom:true,strength:100,threshold:NaN});assert.equal(post.bloomInGraph,true)
     assert.equal(post.bloomNode.strength.value,.6);assert.equal(post.bloomNode.threshold.value,1.5)
     post.setQuality('Baja');assert.equal(post.bloomNode.getResolutionScale(),.25)
+    post.setQuality('Alta', 'baseline');assert.equal(post.bloomNode.getResolutionScale(),.5)
+    post.setQuality('Alta');assert.equal(post.bloomNode.getResolutionScale(),.25)
     post.configure({bloom:false});assert.equal(post.bloomInGraph,false)
     post.pipeline.render=()=>{renderer.toneMapping=0;renderer.outputColorSpace='';throw new Error('GPU failure')}
     assert.throws(()=>post.render(a),/GPU failure/)
@@ -52,6 +55,26 @@ test('Final processing bypasses R01, follows each camera, excludes disabled bloo
     post.configure({grade:false});post.render(a);assert.equal(direct.length,2)
     let released=0;post.scenePass.renderTarget.addEventListener('dispose',()=>released++)
     post.dispose();assert.equal(released,1)
+})
+
+test('Quality restriction removes bloom from rendering without losing the requested setting', () => {
+    let direct = 0
+    const renderer = { render() { direct++ } }, camera = new THREE.PerspectiveCamera()
+    const post = new Post(renderer, new THREE.Scene())
+    post.configure({ bloom: true }); post.initialize(camera)
+    assert.equal(post.bloomInGraph, true)
+    post.setBloomAllowed(false)
+    post.configure({ bloom: true, strength: .2 })
+    assert.equal(post.bloomInGraph, false)
+    assert.equal(post.diagnostics().bloom, false)
+    assert.equal(post.diagnostics().bloomRequested, true)
+    assert.equal(post.diagnostics().extraFullscreenPasses, 0)
+    post.render(camera); assert.equal(direct, 1)
+    post.setBloomAllowed(true); assert.equal(post.bloomInGraph, true)
+    post.configure({ bloom: false })
+    post.setBloomAllowed(false); post.setBloomAllowed(true)
+    assert.equal(post.bloomInGraph, false)
+    post.dispose()
 })
 
 test('Reference capture routes both resolutions through the final pipeline and restores size on failure',async()=>{

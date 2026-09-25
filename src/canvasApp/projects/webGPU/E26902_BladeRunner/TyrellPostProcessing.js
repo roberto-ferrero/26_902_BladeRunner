@@ -1,6 +1,7 @@
 import { RenderPipeline, NodeUpdateType } from 'three/webgpu'
 import { Fn, pass, uniform, vec3, vec4, mix, luminance } from 'three/tsl'
 import { bloom } from 'three/addons/tsl/display/BloomNode.js'
+import { bloomScale } from './TyrellQuality'
 
 // Final-camera processing only: probes and planar mirrors retain linear scene radiance.
 export default class TyrellPostProcessing {
@@ -10,6 +11,7 @@ export default class TyrellPostProcessing {
         this.settings = { bloom: false, grade: false, strength: 0.16, radius: 0.25, threshold: 1.5, gradeStrength: 1 }
         this.gradeStrength = uniform(0)
         this.quality = 'Media'
+        this.bloomAllowed = true
     }
     configure(values) {
         for (const key of ['bloom', 'grade']) if (typeof values[key] === 'boolean') this.settings[key] = values[key]
@@ -19,7 +21,7 @@ export default class TyrellPostProcessing {
         this.gradeStrength.value = this.settings.grade ? this.settings.gradeStrength : 0
         if (this.bloomNode) {
             for (const key of ['strength', 'radius', 'threshold']) this.bloomNode[key].value = this.settings[key]
-            const active = this.settings.bloom && this.settings.strength > 0
+            const active = this.bloomActive()
             if (active !== this.bloomInGraph) this.setGraph(active)
         }
     }
@@ -29,9 +31,15 @@ export default class TyrellPostProcessing {
         const active = this.flare?.settings.enabled && this.flare.settings.intensity > 0
         if (this.pipeline && active !== wasActive) this.setGraph(this.bloomInGraph)
     }
-    setQuality(quality) {
+    setQuality(quality, budgetMode = 'optimized') {
         this.quality = quality
-        this.bloomNode?.setResolutionScale(quality === 'Baja' ? 0.25 : 0.5)
+        this.budgetMode = budgetMode
+        this.bloomNode?.setResolutionScale(bloomScale(quality, budgetMode))
+    }
+    bloomActive() { return this.bloomAllowed && this.settings.bloom && this.settings.strength > 0 }
+    setBloomAllowed(allowed) {
+        this.bloomAllowed = Boolean(allowed)
+        if (this.pipeline && this.bloomInGraph !== this.bloomActive()) this.setGraph(this.bloomActive())
     }
     initialize(camera) {
         this.scenePass = pass(this.scene, camera)
@@ -58,8 +66,8 @@ export default class TyrellPostProcessing {
         })
         this.bloomNode.updateBeforeType = NodeUpdateType.RENDER
         this.pipeline = new RenderPipeline(this.renderer)
-        this.setQuality(this.quality)
-        this.setGraph(this.settings.bloom && this.settings.strength > 0)
+        this.setQuality(this.quality, this.budgetMode)
+        this.setGraph(this.bloomActive())
     }
     setGraph(withBloom) {
         const base = withBloom ? this.color.rgb.add(this.bloomNode.rgb) : this.color.rgb
@@ -74,7 +82,7 @@ export default class TyrellPostProcessing {
     }
     render(camera) {
         this.flare?.update(camera)
-        const active = (this.flare?.settings.enabled && this.flare.settings.intensity > 0) || (this.settings.bloom && this.settings.strength > 0) || (this.settings.grade && this.settings.gradeStrength > 0)
+        const active = (this.flare?.settings.enabled && this.flare.settings.intensity > 0) || this.bloomActive() || (this.settings.grade && this.settings.gradeStrength > 0)
         if (!active) { this.renderer.render(this.scene, camera); return }
         if (!this.pipeline) this.initialize(camera)
         this.scenePass.camera = camera
@@ -88,10 +96,10 @@ export default class TyrellPostProcessing {
         }
     }
     diagnostics() {
-        return { ...this.settings, flare: this.flare?.diagnostics() || null, ready: !!this.pipeline, quality: this.quality, bloomResolutionScale: this.quality === 'Baja' ? 0.25 : 0.5,
+        return { ...this.settings, bloom: this.bloomActive(), bloomRequested: this.settings.bloom, bloomAllowed: this.bloomAllowed, flare: this.flare?.diagnostics() || null, ready: !!this.pipeline, quality: this.quality, bloomResolutionScale: bloomScale(this.quality, this.budgetMode),
             method: 'HDR scene + threshold bloom + mild linear grade; single AgX/sRGB output',
             reference: '6.4 | bloom 0.16 / radius 0.25 / threshold 1.5 / grade 1', bloomLuminanceLimit: 4,
-            extraFullscreenPasses: this.settings.bloom && this.settings.strength > 0 ? 13 : (this.settings.grade && this.settings.gradeStrength > 0) || (this.flare?.settings.enabled && this.flare.settings.intensity > 0) ? 1 : 0 }
+            extraFullscreenPasses: this.bloomActive() ? 13 : (this.settings.grade && this.settings.gradeStrength > 0) || (this.flare?.settings.enabled && this.flare.settings.intensity > 0) ? 1 : 0 }
     }
     dispose() { this.bloomNode?.dispose(); this.scenePass?.dispose(); this.pipeline?.dispose() }
 }

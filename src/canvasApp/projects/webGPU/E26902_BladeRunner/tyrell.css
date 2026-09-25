@@ -13,7 +13,8 @@ body.tyrell-viewer { background: #070807; color: #e6dfce; overflow: hidden; font
 .tyrell-ui footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 26px; }
 .tyrell-gui-panel footer { bottom: 30px; max-height: calc(100dvh - 140px); overflow-y: auto; box-sizing: border-box; pointer-events: auto; }
 .tyrell-gui-toolbar { margin-bottom: 12px; }
-.tyrell-gui-toggle { position: absolute; bottom: 42px; left: 26px; pointer-events: auto; }
+.tyrell-hud { position: absolute; bottom: max(8px, env(safe-area-inset-bottom)); left: 26px; right: 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.tyrell-gui-toggle { pointer-events: auto; }
 .tyrell-controls { display: flex; align-items: end; gap: 14px; flex-wrap: wrap; pointer-events: auto; }
 .tyrell-controls label { display: grid; gap: 3px; font-size: 11px; color: #c7ae7c; }
 .tyrell-ui select, .tyrell-ui button, .tyrell-ui input[type="number"] { border: 1px solid #746344; border-radius: 3px; background: #11130ff0; color: #e6dfce; padding: 7px 10px; font: 12px system-ui, sans-serif; cursor: pointer; }
@@ -35,7 +36,7 @@ body.tyrell-viewer { background: #070807; color: #e6dfce; overflow: hidden; font
 .tyrell-pan p { max-width: 620px; color: #b0ada2; font-size: 11px; margin: 10px 0 0; }
 .tyrell-note { font-size: 11px; margin-top: 9px; color: #b0ada2; }
 .tyrell-metrics { font: 11px ui-monospace, monospace; color: #c7ae7c; margin-top: 3px; }
-.tyrell-ui > .tyrell-metrics { position: absolute; bottom: 8px; left: 26px; right: 12px; margin: 0; width: fit-content; max-width: calc(100% - 38px); padding: 3px 5px; border-radius: 3px; background: #070807d9; }
+.tyrell-hud .tyrell-metrics { margin: 0; max-width: 100%; box-sizing: border-box; padding: 3px 5px; border-radius: 3px; background: #070807d9; }
 .tyrell-status { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(460px, 80vw); padding: 28px; background: #0b0d0bf5; border: 1px solid #746344; text-align: center; pointer-events: auto; font-size: 14px; }
 .tyrell-status progress { display: block; width: 100%; height: 5px; accent-color: #c7ae7c; margin-top: 22px; }
 .tyrell-status button { margin-top: 20px; }
@@ -56,3 +57,10 @@ body.tyrell-viewer { background: #070807; color: #e6dfce; overflow: hidden; font
 .tyrell-technical > summary { cursor: pointer; color: #c7ae7c; padding: 4px 0; }
 .tyrell-technical > .tyrell-note { margin: 10px 0 14px; }
 .tyrell-technical-actions { margin: 12px 0; }
+.tyrell-quality-state { font-size: 11px; color: #c7ae7c; align-self: center; }
+.tyrell-mobile .tyrell-ui select, .tyrell-mobile .tyrell-ui button { min-height: 44px; }
+.tyrell-mobile .tyrell-pan summary, .tyrell-mobile .tyrell-technical > summary { padding: 12px 0; }
+.tyrell-mobile .tyrell-ui header { padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) 12px max(12px, env(safe-area-inset-left)); }
+.tyrell-mobile .tyrell-gui-panel footer { bottom: calc(90px + env(safe-area-inset-bottom)); max-height: calc(100dvh - 185px); }
+.tyrell-mobile .tyrell-hud { left: max(12px, env(safe-area-inset-left)); right: max(12px, env(safe-area-inset-right)); }
+@media (max-width: 700px) { .tyrell-hud { left: 12px; } .tyrell-gui-panel footer { bottom: calc(90px + env(safe-area-inset-bottom)); max-height: calc(100dvh - 185px); } }

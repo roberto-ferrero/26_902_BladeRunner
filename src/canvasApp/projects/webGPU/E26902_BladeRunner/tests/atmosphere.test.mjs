@@ -62,3 +62,22 @@ test('Volumetric comparison restores depth-only and original fog without creatin
     assert.equal(scene.fogNode, original)
     atmosphere.dispose()
 })
+
+test('Replacing a shadow detaches the old volume graph until a new sampler is ready', () => {
+    const scene = new THREE.Scene(), volume = { settings: { enabled: true }, node: TSL.vec4(.1) }
+    const atmosphere = new m.exports.default(scene, new THREE.Group(), volume)
+    atmosphere.refreshVolume()
+    const oldGraph = scene.fogNode
+    volume.node = null
+    atmosphere.refreshVolume()
+    assert.equal(scene.fogNode, atmosphere.baseNode)
+    assert.equal(atmosphere.volumeNode, null)
+    volume.node = TSL.vec4(.2)
+    atmosphere.refreshVolume()
+    assert.notEqual(scene.fogNode, oldGraph)
+    assert.notEqual(scene.fogNode, atmosphere.baseNode)
+    const restored = scene.fogNode
+    atmosphere.refreshVolume()
+    assert.equal(scene.fogNode, restored)
+    atmosphere.dispose()
+})

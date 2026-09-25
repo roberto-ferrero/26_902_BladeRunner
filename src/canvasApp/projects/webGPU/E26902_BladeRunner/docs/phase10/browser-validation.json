@@ -1,0 +1,12 @@
+{
+  "since": "2026-09-24T17:33:10.867Z",
+  "checkedAt": "2026-09-24T17:35:49.363Z",
+  "cases": [
+    "five desktop levels",
+    "manual selection preserved across device mode changes",
+    "mobile portrait 393x852",
+    "mobile landscape 852x393",
+    "restore desktop and automatic quality"
+  ],
+  "errors": []
+}

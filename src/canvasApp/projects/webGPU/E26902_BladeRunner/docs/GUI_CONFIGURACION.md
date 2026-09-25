@@ -40,8 +40,14 @@ Durante el travelling se interpolan rango horizontal, rango vertical y suavidad 
 
 El GUI muestra los valores efectivos durante la transición. Editarlos cambia el estado seleccionado durante esa sesión; los demás estados y el JSON conservan sus valores. Para cambios permanentes, editar `default` o la excepción del estado en el archivo.
 
-El archivo es completo y requiere `schemaVersion: 1`. Se rechazan campos ausentes o desconocidos, tipos erróneos, cámaras inexistentes, opciones inválidas y números fuera de los rangos del GUI. Los errores aparecen en el estado de carga; corregir el archivo y pulsar Reintentar. No se ocultan errores usando silenciosamente otros valores.
+El archivo es completo y requiere `schemaVersion: 1`. Se rechazan campos ausentes o desconocidos, tipos erróneos, cámaras inexistentes, opciones inválidas y números fuera de los rangos del GUI. Los errores aparecen en el estado de carga; corregir el archivo y pulsar Reintentar.
+
+Compatibilidad de fase 10: `viewer.quality` admite `auto`, `Extra baja`, `Baja`, `Media`, `Alta` y `UltraAlta`. El archivo inicial usa `auto`; los archivos anteriores con una calidad explícita conservan esa elección manual. `viewer.deviceMode` admite `auto`, `desktop` o `mobile`, y su ausencia equivale a `auto`. Los nuevos campos `city.buildings.orientationColor.extraLowQualityEnabled` y `ultraHighQualityEnabled` heredan respectivamente `lowQualityEnabled` y `highQualityEnabled` si faltan. Son las únicas adiciones opcionales; valores explícitos incorrectos siguen rechazándose. Los cambios de modo y calidad se conservan durante la sesión, sin escribir automáticamente en el archivo.
 
 Los ajustes se validan antes de cargar los modelos y se aplican cuando todos los componentes están creados, antes de estabilizar y revelar la escena. Se reutilizan las mismas acciones del GUI para actualizar controles, lecturas y componentes. Los cambios interactivos duran la sesión y no sobrescriben el JSON.
+
+R03: con `viewer.quality: auto` y `viewer.renderBudget: optimized`, la calidad por score es inicial. Ventanas de FPS reales pueden reducir resolución y LOD efectivo; el diagnóstico conserva la selección original. Las calidades explícitas y modos A/B no se adaptan. Cambiar dispositivo o volver a Automática reinicia la adaptación. Las mediciones técnicas congelan el ajuste mientras duran. [Detalles](phase10/R03_AUTO.md).
+
+R04: en presupuesto `optimized`, Baja/Extra baja y modo móvil excluyen bloom/reflejo planar aunque el JSON solicite activarlos. Esas preferencias se conservan para los perfiles que sí los permiten. `viewer.renderBudget: previous` permite comparar con R03, sin adaptación automática. El JSON inicial sigue usando `optimized`; no se introduce almacenamiento local ni se sobrescribe la configuración al cambiar perfil.
 
 Al añadir un control configurable, añadir su ruta descriptiva a `TyrellGUISettings.js` y su valor al JSON. Los valores locales de construcción del HTML y de los componentes son provisionales: el archivo externo prevalece al arrancar.

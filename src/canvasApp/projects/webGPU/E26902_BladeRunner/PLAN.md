@@ -1,5 +1,7 @@
 # E26902 Blade Runner · Plan de trabajo
 
+**Fase 10 iniciada (24-09-2026):** cinco niveles y selección automática por score implementados, con elección manual y modo Auto/Escritorio/Móvil. Presupuestos nuevos provisionales, resolución móvil acotada y compatibilidad con configuración anterior. Pruebas y revisión WebGPU de cambios de calidad; calibración sostenida y pruebas en ThinkBook/Redmi pendientes. [Entrega inicial, parámetros y evidencias](docs/phase10/INICIO.md).
+
 Actualización de navegación (24-09-2026): la navegación vigente usa `cameraStates` exportados de `_Blender/20260914_BladeRunner_AUXILIAR.blend`. Cada par `cameraspot-[id]` / `cameratarget-[id]` se incorpora al selector con `npm run export:camera-states`; las teclas numéricas se asignan por ID en `static/config/E26902_BladeRunner/gui.initial.json`. El paneo pertenece a cada estado y se interpola durante el travelling. `V` despliega o repliega el Voight-Kampff. Las fases 7.1–7.3 y 7.6 describen implementaciones históricas sustituidas; no son tareas pendientes ni requisitos de la navegación actual. [Flujo y límites](docs/CAMERA_STATES.md).
 
 Ampliación iniciada (22-09-2026): [integración del dispositivo Voight-Kampff](docs/VK_PLAN.md). Primera versión funcional con colocación desde el auxiliar, despliegue manual/automático al llegar a `p1`, fuelle, cables, óptica roja y cadencia reducida de la sonda en p1. [Implementación, capturas y mediciones](docs/VK_IMPLEMENTACION.md). Acabado artístico y validación ampliada de rendimiento pendientes.
@@ -266,7 +268,7 @@ La medición comienza en la fase 1; esta fase reúne los ajustes finales cuando 
 
 ## 10 · Niveles de calidad y optimización a aproximadamente 60 FPS
 
-**Planificada el 24-09-2026; implementación pendiente.** Crear cinco perfiles globales de calidad (denominados LOD en esta fase) y optimizar el escenario completo para aproximarse a 60 FPS en los equipos correspondientes. Estos perfiles pueden regular resolución, efectos y detalle geométrico; no equivalen únicamente a LOD de mallas por distancia. La creación de esta fase no modifica todavía los tres presets actuales ni cierra tareas pendientes de fases 8 y 9.
+**Iniciada el 24-09-2026; R03 implementada.** Cinco perfiles globales de calidad (denominados LOD) con presupuestos reducidos y adaptación por FPS después de seleccionar por score. Regulan resolución y efectos; conservan geometría. Alta registra 58,7–59,2 FPS en tres pasadas de `initial`; p95 y equipos reales siguen pendientes. La adaptación baja de LOD cuando la resolución por sí sola no basta. No se cierran tareas pendientes de fases 8 y 9. [Estado vigente y límites](docs/phase10/R03_AUTO.md).
 
 ### 10.1 · Umbrales, referencias y protocolo de medida
 
@@ -290,14 +292,22 @@ Referencias aportadas por el usuario, todavía sin repetir bajo un protocolo com
 - [ ] Definir un recorrido repetible con `initial`, `p1`, `p2` y los demás `cameraStates` vigentes, extremos de paneo, travelling, Voight-Kampff desplegado y animaciones exteriores activas. Incluir las vistas de mayor coste.
 - [ ] Medir tras calentamiento y compilación, con tres pasadas de al menos 60 s por caso; recoger FPS, tiempo medio y p95 de fotograma, tiempos CPU/GPU cuando estén disponibles, draw calls y triángulos. Separar carga inicial de rendimiento sostenido y excluir pausas de pestaña oculta.
 
+**Avance 10.1, R02:** implementado el botón de tres pasadas de 60 s con 5 s de calentamiento por pasada, cancelación por cambios/visibilidad y exportación de estadísticas RAF completas. Quince pasadas exploratorias en `initial` registradas; faltan control de energía, identificación exacta del equipo, resto de vistas y dispositivos reales. [Condiciones y resultados](docs/phase10/R02_PERFORMANCE.md).
+
 ### 10.2 · Creación y selección de los cinco perfiles
 
-- [ ] Centralizar nombres y umbrales e integrar **Extra baja, Baja, Media, Alta y UltraAlta** en configuración, GUI, diagnósticos y comparador de rendimiento; auditar consumidores que asuman tres niveles.
-- [ ] Seleccionar inicialmente el perfil por GPU Score válido. Tratar `null`, cero, negativos, NaN, errores y timeout como medición no disponible, nunca como potencia cero; usar Baja como fallback provisional en escritorio y Extra baja en modo móvil, mostrando el motivo en diagnóstico. Los scores aproximados requieren confirmación con rendimiento real.
-- [ ] Conservar selección manual y distinguir en la GUI el modo automático, el nivel recomendado y el aplicado. Respetar la elección manual durante la sesión y definir la compatibilidad con ajustes guardados.
+- [x] Centralizar nombres y umbrales e integrar **Extra baja, Baja, Media, Alta y UltraAlta** en configuración, GUI, diagnósticos y comparador de rendimiento; auditar consumidores que asuman tres niveles.
+- [x] Seleccionar inicialmente el perfil por GPU Score válido. Tratar `null`, cero, negativos, NaN, errores y timeout como medición no disponible, nunca como potencia cero; usar Baja como fallback provisional en escritorio y Extra baja en modo móvil, mostrando el motivo en diagnóstico. Los scores aproximados requieren confirmación con rendimiento real.
+- [x] Conservar selección manual y distinguir en la GUI el modo automático, el nivel recomendado y el aplicado. Respetar la elección manual durante la sesión y definir la compatibilidad con ajustes guardados.
 - [ ] Probar valores justo por debajo, exactamente en y justo por encima de cada umbral, además de score inválido y cambios de calidad sin recarga ni pérdida de recursos.
 
+**Avance 10.2:** límites, scores inválidos y compatibilidad cubiertos por pruebas; cambios entre los cinco niveles y ambos modos revisados en WebGPU sin errores tras corregir referencias de volumen/sombras y redimensionado de reflejos. Queda pendiente la auditoría prolongada de recursos y valoración visual de los nuevos presupuestos; por ello no se cierra la subfase completa.
+
 ### 10.3 · Presupuestos visuales y optimización del escenario
+
+**R04, prueba solicitada:** Baja/Extra baja y todos los perfiles móviles excluyen bloom global y reflejo planar para aumentar resolución. Baja pasa de ratio 0,5 a 0,6 (+44 % píxeles); Extra baja de 0,4 a 0,5 (+56,25 %). Móvil Media/Alta también suben dentro del límite de píxeles. La comparación R03 sigue disponible y las preferencias de efectos se restauran al salir del perfil. Seis pasadas de Baja: R03 ~59,6 FPS; R04 59,8 / 59,6 / 57,3 FPS, p95 ~20 ms, con una pausa aislada de 2 s registrada en la última. Menos CPU, algo más GPU en muestras cortas; no se extrapola al hardware débil. 147 pruebas correctas, build y cambios de perfil sin errores WebGPU. [Propuesta y límites](docs/phase10/R04_RESOLUCION.md). No se cierra la calibración del hardware ni la aprobación visual.
+
+**Avance R02:** LOD automático visible junto a FPS incluso con GUI oculta; elección manual identificada por separado. Comparadas resolución, cadencia de sonda y presupuesto anterior en 15 pasadas. Alta actual ~33 FPS; menos píxeles ~52 FPS; presupuesto anterior ~58 FPS, todavía con p95 de 27–28 ms. No se adopta el límite de sonda como valor global ni se da por calibrada Alta. [Informe y siguiente trabajo](docs/phase10/R02_PERFORMANCE.md).
 
 - [ ] Tomar el aspecto actual del Legion como referencia visual de Alta, registrando primero sus parámetros reales. Definir una tabla de presupuestos por nivel con resolución interna, sombras, muestras volumétricas, escala/cadencia de reflejos, posprocesado, texturas y detalle/densidad exterior.
 - [ ] Perfilar CPU y GPU y hacer comparaciones A/B de un cambio cada vez, priorizando los costes medidos. Revisar también reflejos y sonda del Voight-Kampff, transparencias, tráfico y llamaradas del escenario completo.
@@ -307,12 +317,14 @@ Referencias aportadas por el usuario, todavía sin repetir bajo un protocolo com
 
 ### 10.4 · Ajuste por rendimiento real
 
-**Propuesta a evaluar durante la fase:** complementar el score inicial con resolución dinámica acotada y, si resulta insuficiente, descenso de perfil en modo automático.
+**Implementada en R03:** el score fija el perfil inicial y el rendimiento sostenido corrige resolución y LOD efectivo. Alta inicia con el presupuesto previamente medido cerca de 58 FPS. Dos ventanas de 4 s por debajo de 55 FPS —una si baja de 40— reducen resolución y después LOD, con 4 s de estabilización entre ajustes. Manual fijo; pausas/carga y medidas quedan excluidas. Sin subidas automáticas basadas únicamente en 60 FPS. [Presupuestos, comportamiento y validación](docs/phase10/R03_AUTO.md).
 
-- [ ] Definir límites mínimo/máximo de resolución por perfil y ventanas de medida sostenida con histéresis y espera entre cambios para evitar oscilaciones y saltos visibles.
-- [ ] Ignorar carga, compilaciones iniciales y pestaña oculta; no subir calidad solo por observar 60 FPS bajo un límite de refresco. Validar margen con tiempos CPU/GPU disponibles o una prueba controlada.
-- [ ] Mantener el preset manual fijo; cualquier ajuste dinámico en modo manual deberá ser una opción explícita. Mostrar en diagnóstico el nivel inicial, nivel efectivo, escala interna y motivo de cada ajuste automático.
-- [ ] Si el mínimo de Extra baja no alcanza el objetivo, registrar el límite de hardware y los FPS medidos. El intervalo abierto por abajo no permite garantizar 60 FPS en cualquier dispositivo.
+- [x] Definir límites de resolución por perfil (75–100 %), ventanas de al menos 4 s / 30 fotogramas y espera de 4 s entre cambios. Dos ventanas lentas; vía rápida si también la mediana confirma lentitud. Sin subidas automáticas ni oscilación entre niveles.
+- [x] Ignorar carga, estabilización y pestaña oculta; una pausa aislada no activa la vía rápida. No elevar calidad basándose en 60 FPS. Suspender adaptación durante mediciones técnicas y capturas.
+- [x] Mantener el preset manual fijo. Mostrar nivel inicial, nivel efectivo, escala y motivos en diagnóstico/exportación e identificar el LOD aplicado junto a FPS.
+- [x] Acotar Extra baja al mínimo y registrar `atMinimum` y FPS cuando siga lento. Prueba automatizada del límite; no se garantiza 60 FPS para cualquier dispositivo.
+
+**Validación R03:** 143 pruebas correctas, compilación y revisión WebGPU sin errores. Bajo carga elevada real, score 163,84 M inició Alta a unos 22 FPS y terminó en Baja a unos 56 FPS. Las ventanas del controlador no son aceptación sostenida del hardware. Restan p95, tres pasadas de las demás vistas y validación en ThinkBook/Redmi; la fase no se cierra.
 
 ### 10.5 · Validación y cierre
 
@@ -326,7 +338,7 @@ Referencias aportadas por el usuario, todavía sin repetir bajo un protocolo com
 
 **Ampliación solicitada el 24-09-2026.** Añadir un modo móvil compatible con los cinco niveles de calidad, con presupuestos y controles adaptados. No constituye un sexto tramo de score: el Redmi de referencia corresponde a Extra baja por sus 11.000.000 puntos. Mantener separados en configuración y diagnóstico el modo de dispositivo y el nivel de calidad; una GPU de escritorio lenta también puede pertenecer a Extra baja.
 
-- [ ] Definir selección de modo Auto / Escritorio / Móvil, con detección inicial que combine capacidades de entrada y características del dispositivo, sin depender solo del ancho de pantalla ni del score. Permitir corrección manual y verificar que el cambio no pierde el estado de cámara.
+- [x] Definir selección de modo Auto / Escritorio / Móvil, con detección inicial que combine capacidades de entrada y características del dispositivo, sin depender solo del ancho de pantalla ni del score. Permitir corrección manual y verificar que el cambio no pierde el estado de cámara.
 - [ ] Crear presupuestos móviles por calidad con límite explícito de píxeles internos y DPR efectivo; calibrar resolución dinámica con un mínimo de legibilidad. No aplicar sin límite el DPR nativo. Registrar resolución de salida e interna en vertical y horizontal; el protocolo de escritorio a 1920 × 1080 no se impone al teléfono.
 - [ ] Perfilar en el Redmi y probar variantes de bajo coste: reflejos simplificados o precalculados, sombras reducidas, atmósfera analítica en lugar de integración volumétrica costosa, posprocesado reducido y menor detalle/densidad del exterior. Medir cada cambio y preservar encuadre, siluetas e iluminación característica; los valores definitivos dependen de las pruebas.
 - [ ] Auditar memoria y carga de texturas/geometrías, recursos temporales y pasadas de render; evitar cargar recursos exclusivos de niveles superiores cuando no se utilicen y liberar correctamente al cambiar de modo.

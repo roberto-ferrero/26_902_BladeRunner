@@ -1,4 +1,4 @@
-import { Object3D } from 'three'
+import { Object3D, Vector2 } from 'three'
 import { MeshStandardNodeMaterial } from 'three/webgpu'
 import { reflector, normalWorldGeometry, normalView, normalViewGeometry, positionViewDirection,
     materialRoughness, screenUV, vec2, float, uniform } from 'three/tsl'
@@ -8,6 +8,8 @@ import TyrellReflectionUpdates from './TyrellReflectionUpdates'
 export default class TyrellFloorReflection {
     constructor(root) {
         this.enabled = false
+        this.requestedEnabled = false
+        this.qualityAllowed = true
         this.mode = 'stone'
         this.resolution = 'auto'
         this.quality = 'Media'
@@ -51,8 +53,18 @@ export default class TyrellFloorReflection {
         })
     }
     setEnabled(enabled) {
+        this.requestedEnabled = Boolean(enabled)
+        this.applyEnabled()
+    }
+    setQualityAllowed(allowed) {
+        this.qualityAllowed = Boolean(allowed)
+        this.applyEnabled()
+    }
+    applyEnabled(force = false) {
+        const enabled = this.requestedEnabled && this.qualityAllowed
+        if (!force && enabled === this.enabled) return
         this.updates.invalidate()
-        this.enabled = Boolean(enabled)
+        this.enabled = enabled
         for (const material of this.materials.values()) {
             material.emissiveNode = this.enabled ? (this.mode === 'stone' ? this.stoneContribution : this.contribution) : null
             material.needsUpdate = true
@@ -61,18 +73,27 @@ export default class TyrellFloorReflection {
     setResolution(value = this.resolution, quality = this.quality, autoScale = this.autoScale) {
         if (!['auto', '0.25', '0.5', '1'].includes(value)) return
         this.resolution = value; this.quality = quality; this.autoScale = autoScale
-        const scale = value === 'auto' ? (autoScale ?? ({ Baja: .25, Media: .5, Alta: .75 }[quality] || .5)) : Number(value)
+        const scale = value === 'auto' ? (autoScale ?? ({ 'Extra baja': .125, Baja: .25, Media: .5, Alta: .75, UltraAlta: .75 }[quality] || .5)) : Number(value)
         this.node.reflector.resolutionScale = scale
         this.lodOffset.value = Math.log2(scale / .5)
+        this.updates.invalidate()
+    }
+    resizeTargets(renderer) {
+        // Resize before nested render contexts/transmission copies are prepared.
+        const size = renderer.getDrawingBufferSize(new Vector2())
+        const scale = this.node.reflector.resolutionScale
+        for (const target of this.node.reflector.renderTargets.values()) {
+            target.setSize(Math.max(1, Math.round(size.x * scale)), Math.max(1, Math.round(size.y * scale)))
+        }
         this.updates.invalidate()
     }
     setMode(mode) {
         if (!['stone', 'prototype'].includes(mode)) return
         this.mode = mode
-        this.setEnabled(this.enabled)
+        this.applyEnabled(true)
     }
     diagnostics() {
-        return { enabled: this.enabled, mode: this.mode, status: '5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion',
+        return { enabled: this.enabled, requestedEnabled: this.requestedEnabled, qualityAllowed: this.qualityAllowed, mode: this.mode, status: '5.2 art-directed planar specular; Schlick, roughness mip blur and mapped-normal distortion',
             planeY: 0, gain: this.mode === 'stone' ? .32 : .18, fresnelF0: .04, roughnessLodScale: 10,
             maxLod: 5, normalDistortion: .045, resolutionScale: this.node.reflector.resolutionScale, resolution: this.resolution,
             mipLodOffset: this.lodOffset.value, mipmaps: true, bounces: false,

@@ -62,7 +62,7 @@ export default class TyrellCity {
         this.group.name = 'Tyrell / lower city 9.1'
         this.texture = createCityTexture()
         this.colorSettings = { ...CITY_COLOR_DEFAULTS }
-        this.colorLOD = { Baja: true, Media: true, Alta: true }
+        this.colorLOD = { 'Extra baja': true, Baja: true, Media: true, Alta: true, UltraAlta: true }
         this.quality = 'Baja'
         this.hueBasis = uniform(new Vector3()).setGroup(renderGroup)
         this.lightness = uniform(.188).setGroup(renderGroup)
@@ -246,7 +246,7 @@ export default class TyrellCity {
             if (Number.isFinite(values?.[key])) this.colorSettings[key] = Math.max(min, Math.min(max, values[key]))
         }
         if (['lod', 'on', 'off'].includes(values?.mode)) this.colorSettings.mode = values.mode
-        for (const level of ['Baja', 'Media', 'Alta'])
+        for (const level of Object.keys(this.colorLOD))
             if (typeof values?.lod?.[level] === 'boolean') this.colorLOD[level] = values.lod[level]
         const { h, s, l, rightStep, leftStep } = this.colorSettings
         const basis = new Color().setHSL(h / 360, s / 100, .5, SRGBColorSpace).convertLinearToSRGB()

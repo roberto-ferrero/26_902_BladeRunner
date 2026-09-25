@@ -78,9 +78,16 @@ export default class TyrellAtmosphere {
     }
     refreshVolume() {
         if (this.volume?.node) {
-            if (!this.volumeNode) this.volumeNode = this.makeNode(true)
+            if (this.volumeSource !== this.volume.node) {
+                this.volumeSource = this.volume.node
+                this.volumeNode = this.makeNode(true)
+            }
             this.node = this.volumeNode
-        } else this.node = this.baseNode
+        } else {
+            this.volumeSource = null
+            this.volumeNode = null
+            this.node = this.baseNode
+        }
         this.configure({})
     }
     diagnostics() {

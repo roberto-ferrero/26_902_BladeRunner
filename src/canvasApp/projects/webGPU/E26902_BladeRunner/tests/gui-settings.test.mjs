@@ -54,6 +54,19 @@ test('Numbers between valid slider steps fail instead of being rounded by the br
     settings.sky.heightPercent = 50.5
     assert.throws(() => prepareGUISettings(root, settings, cameras), /paso/)
 })
+test('Legacy schema 1 preserves manual quality and inherits new orientation flags', () => {
+    const { root, controls, calls } = fixture(), settings = structuredClone(initial)
+    delete settings.viewer.deviceMode
+    settings.viewer.quality = 'Baja'
+    controls.get('[aria-label="Calidad"]').options.push({ value: 'Baja' })
+    delete settings.city.buildings.orientationColor.extraLowQualityEnabled
+    delete settings.city.buildings.orientationColor.ultraHighQualityEnabled
+    settings.city.buildings.orientationColor.lowQualityEnabled = false
+    applyGUISettings(prepareGUISettings(root, settings, cameras))
+    assert.deepEqual(calls.find(([path]) => path === 'viewer.deviceMode'), ['viewer.deviceMode', 'auto'])
+    assert.deepEqual(calls.find(([path]) => path === 'viewer.quality'), ['viewer.quality', 'Baja'])
+    assert.deepEqual(calls.find(([path]) => path.endsWith('extraLowQualityEnabled')), ['city.buildings.orientationColor.extraLowQualityEnabled', false])
+})
 
 test('Starting in p1 initializes its effective pan instead of overwriting it with default', () => {
     const { root, calls } = fixture(), settings = structuredClone(initial)

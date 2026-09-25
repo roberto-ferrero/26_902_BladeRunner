@@ -1,0 +1,90 @@
+{
+  "date": "2026-09-24T18:58:31.276Z",
+  "errors": [],
+  "captures": [
+    {
+      "name": "10.3_003_2026-09-24_initial-Alta-r03.png",
+      "date": "2026-09-24T18:49:27.891Z"
+    },
+    {
+      "name": "10.4_001_2026-09-24_initial-auto-carga-r03.png",
+      "date": "2026-09-24T18:55:32.245Z"
+    },
+    {
+      "name": "10.4_002_2026-09-24_initial-auto-r03.png",
+      "date": "2026-09-24T18:58:08.095Z"
+    }
+  ],
+  "viewportRestored": true,
+  "manualStress": {
+    "quality": {
+      "selection": "Alta",
+      "recommended": "Media",
+      "deviceSelection": "auto",
+      "detectedDevice": "desktop",
+      "device": "desktop",
+      "reason": "manual",
+      "calibrated": false,
+      "dynamicResolution": false
+    },
+    "display": {
+      "viewport": [
+        3840,
+        2160
+      ],
+      "scene": {
+        "width": 3840,
+        "height": 1600,
+        "aspect": 2.4
+      },
+      "nativeDPR": 1,
+      "effectivePixelRatio": 0.75,
+      "internal": [
+        2880,
+        1200
+      ],
+      "mobilePixelCap": null
+    },
+    "observedFPS": 20.4
+  },
+  "initialScore": {
+    "version": "tyrell-compute-v1",
+    "workgroups": 4096,
+    "workgroupSize": 64,
+    "iterations": 1024,
+    "gpuScore": 87148936.17021278,
+    "method": "gpu-timestamp",
+    "samples": 12,
+    "medianMs": 3.080192,
+    "p90Ms": 3.473408,
+    "minMs": 3.014656,
+    "variability": 0.14893617021276598,
+    "reliable": true,
+    "units": "shader iterations/ms; higher is faster",
+    "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only."
+  },
+  "detailView": {
+    "camera": "p1",
+    "voightKampffState": "open",
+    "automatic": {
+      "enabled": true,
+      "initialQuality": "Alta",
+      "quality": "Alta",
+      "resolutionScale": 1,
+      "targetFPS": 60,
+      "lowerFPS": 55,
+      "windowMs": 4000,
+      "warmupMs": 4000,
+      "minimumScale": 0.75,
+      "atMinimum": false,
+      "lastWindow": {
+        "fps": 59.85634477263487,
+        "medianMs": 16.69999998807907,
+        "p95Ms": 20.200000017881393,
+        "durationMs": 4009.5999999940395,
+        "samples": 240
+      },
+      "history": []
+    }
+  }
+}

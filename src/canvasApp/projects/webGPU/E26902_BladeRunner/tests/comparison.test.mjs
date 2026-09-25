@@ -27,3 +27,10 @@ test('Comparison records VK state and reflection cadence without retaining mutab
     assert.match(row.effects,/VK operativo/)
     assert.match(row.effects,/Reflejos a 2 Hz/)
 })
+
+test('Sustained low-FPS results are kept even when 60 seconds contain fewer than 120 frames', () => {
+    const history = new m.exports.default()
+    const row = history.add({ metrics: { samples: 90 }, measurement: { type: 'sustained', elapsedMs: 60001, pass: 1 }, specularEnvironment: { minimumCaptureInterval: .25 } })
+    assert.equal(row.measurement.elapsedMs, 60001)
+    assert.match(row.effects, /4 Hz/)
+})
