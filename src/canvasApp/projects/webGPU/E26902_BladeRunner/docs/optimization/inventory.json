@@ -1,0 +1,6543 @@
+{
+  "date": "2026-09-25",
+  "threeRevision": "185",
+  "scope": "Offline source GLB inventory plus current procedural constructors; no GPU or occlusion measurement. Frustum AABB sampling only, 2.4 aspect, 9 pan positions, 101 route points, no interrupted routes, shadows, reflection or mobile aspect coverage. False does not authorize hiding.",
+  "assets": [
+    {
+      "file": "BladeRunner_5_6_High_v3_phase2.glb",
+      "bytes": 40502716,
+      "sha256": "a9afa2abb0bde11e6e307ef5e71749b8cc54924385a7755febe212d9221af4dc",
+      "nodes": 104,
+      "primitives": 142,
+      "triangles": 337941,
+      "materials": 20,
+      "images": 25,
+      "rows": [
+        {
+          "node": 0,
+          "name": "Wall_Side_R",
+          "family": "Arquitectura restante",
+          "triangles": 212,
+          "primitives": 1,
+          "mesh": 0,
+          "materials": [
+            "PBR | Caliza ocre envejecida"
+          ],
+          "bounds": {
+            "min": [
+              8.905135154724121,
+              -9.642300256018643e-7,
+              -12.775613784790039
+            ],
+            "max": [
+              9.556492805480957,
+              5.800000190734863,
+              7.980706214904785
+            ]
+          }
+        },
+        {
+          "node": 1,
+          "name": "Parapet",
+          "family": "Arquitectura restante",
+          "triangles": 68,
+          "primitives": 1,
+          "mesh": 1,
+          "materials": [
+            "PBR | Caliza ocre envejecida"
+          ],
+          "bounds": {
+            "min": [
+              -8.5,
+              -0.0000012008746352876187,
+              -15.908698081970215
+            ],
+            "max": [
+              8.5,
+              0.9999988675117493,
+              -14.402381896972656
+            ]
+          }
+        },
+        {
+          "node": 2,
+          "name": "Lintel",
+          "family": "Arquitectura restante",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 2,
+          "materials": [
+            "PBR | Caliza ocre envejecida"
+          ],
+          "bounds": {
+            "min": [
+              -8.41878604888916,
+              5.473803997039795,
+              -13.69999885559082
+            ],
+            "max": [
+              8.418818473815918,
+              5.7994842529296875,
+              -12.90965747833252
+            ]
+          }
+        },
+        {
+          "node": 3,
+          "name": "Wing_R",
+          "family": "Arquitectura restante",
+          "triangles": 192,
+          "primitives": 1,
+          "mesh": 3,
+          "materials": [
+            "PBR | Caliza ocre envejecida"
+          ],
+          "bounds": {
+            "min": [
+              -9.423144340515137,
+              -2.384185791015625e-7,
+              -6.200000286102295
+            ],
+            "max": [
+              -9.373143196105957,
+              3.8399996757507324,
+              -5.400000095367432
+            ]
+          }
+        },
+        {
+          "node": 4,
+          "name": "Ceiling_Slab",
+          "family": "Arquitectura restante",
+          "triangles": 124,
+          "primitives": 1,
+          "mesh": 4,
+          "materials": [
+            "PBR | Caliza ocre envejecida"
+          ],
+          "bounds": {
+            "min": [
+              -9,
+              5.7999982833862305,
+              -13.199999809265137
+            ],
+            "max": [
+              9,
+              6.800000190734863,
+              12.09999942779541
+            ]
+          }
+        },
+        {
+          "node": 5,
+          "name": "Podest",
+          "family": "Arquitectura restante",
+          "triangles": 112,
+          "primitives": 1,
+          "mesh": 5,
+          "materials": [
+            "PBR | Caliza ocre envejecida"
+          ],
+          "bounds": {
+            "min": [
+              4.799999237060547,
+              -0.0000011002000519511057,
+              -8.3057222366333
+            ],
+            "max": [
+              9.27912425994873,
+              0.36000025272369385,
+              -2.465000629425049
+            ]
+          }
+        },
+        {
+          "node": 6,
+          "name": "Wall_Side_L",
+          "family": "Arquitectura restante",
+          "triangles": 484,
+          "primitives": 1,
+          "mesh": 6,
+          "materials": [
+            "PBR | Caliza ocre envejecida"
+          ],
+          "bounds": {
+            "min": [
+              -9.556492805480957,
+              -9.642300256018643e-7,
+              -12.775613784790039
+            ],
+            "max": [
+              -8.905135154724121,
+              5.800000190734863,
+              7.980706214904785
+            ]
+          }
+        },
+        {
+          "node": 7,
+          "name": "Wing_L",
+          "family": "Arquitectura restante",
+          "triangles": 189,
+          "primitives": 1,
+          "mesh": 7,
+          "materials": [
+            "PBR | Caliza ocre envejecida"
+          ],
+          "bounds": {
+            "min": [
+              -9.42314338684082,
+              -2.384185791015625e-7,
+              -5.400000095367432
+            ],
+            "max": [
+              -9.373144149780273,
+              3.8399996757507324,
+              -4.599999904632568
+            ]
+          }
+        },
+        {
+          "node": 8,
+          "name": "Door_Frame",
+          "family": "Marco de puerta",
+          "triangles": 1122,
+          "primitives": 1,
+          "mesh": 8,
+          "materials": [
+            "PBR | Caliza ocre envejecida"
+          ],
+          "bounds": {
+            "min": [
+              -9.398143768310547,
+              -4.4051625991414767e-7,
+              -6.4979119300842285
+            ],
+            "max": [
+              -9.248143196105957,
+              4.139888763427734,
+              -4.302088737487793
+            ]
+          }
+        },
+        {
+          "node": 9,
+          "name": "Alfeizar | canto de piedra pulida",
+          "family": "Arquitectura restante",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 9,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -8.5,
+              0.9799999911338091,
+              -14.440000385046005
+            ],
+            "max": [
+              8.5,
+              1.0399999897927046,
+              -14.260000377893448
+            ]
+          }
+        },
+        {
+          "node": 10,
+          "name": "Columna 01 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8818,
+          "primitives": 2,
+          "mesh": 10,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -3.7257555723190308,
+              -0.0000351735288859345,
+              7.375739276409149
+            ],
+            "max": [
+              -2.2742358446121216,
+              5.800000190734863,
+              8.827259004116058
+            ]
+          }
+        },
+        {
+          "node": 11,
+          "name": "Columna 02 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8138,
+          "primitives": 2,
+          "mesh": 11,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -3.7257555723190308,
+              -4.494271266253236e-8,
+              -0.725760281085968
+            ],
+            "max": [
+              -2.2742358446121216,
+              5.80003547668457,
+              0.7257594466209412
+            ]
+          }
+        },
+        {
+          "node": 12,
+          "name": "Columna 03 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8140,
+          "primitives": 2,
+          "mesh": 12,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -3.7257555723190308,
+              -4.526313261976611e-7,
+              -6.125760078430176
+            ],
+            "max": [
+              -2.2742358446121216,
+              5.800034999847412,
+              -4.674240827560425
+            ]
+          }
+        },
+        {
+          "node": 13,
+          "name": "Columna 04 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 5687,
+          "primitives": 2,
+          "mesh": 13,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -3.72575706243515,
+              -0.0000029480781904567266,
+              -15.910064697265625
+            ],
+            "max": [
+              -2.274234354496002,
+              5.799998760223389,
+              -12.474238276481628
+            ]
+          }
+        },
+        {
+          "node": 14,
+          "name": "Columna 05 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 6673,
+          "primitives": 2,
+          "mesh": 14,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -9.725757539272308,
+              -5.475457101056236e-7,
+              7.37573778629303
+            ],
+            "max": [
+              -8.27423483133316,
+              5.800000190734863,
+              8.827260494232178
+            ]
+          }
+        },
+        {
+          "node": 15,
+          "name": "Columna 06 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8817,
+          "primitives": 2,
+          "mesh": 15,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -9.725756049156189,
+              -0.000035501823731465265,
+              1.9757400155067444
+            ],
+            "max": [
+              -8.27423632144928,
+              5.800000190734863,
+              3.4272597432136536
+            ]
+          }
+        },
+        {
+          "node": 16,
+          "name": "Columna 07 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 7225,
+          "primitives": 2,
+          "mesh": 16,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -9.725757539272308,
+              -0.0000013629202157972031,
+              -3.424261212348938
+            ],
+            "max": [
+              -8.27423483133316,
+              5.799999713897705,
+              -1.9727386236190796
+            ]
+          }
+        },
+        {
+          "node": 17,
+          "name": "Columna 08 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8806,
+          "primitives": 2,
+          "mesh": 17,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -9.725756049156189,
+              -0.00003629724960774183,
+              -8.827259004116058
+            ],
+            "max": [
+              -8.27423632144928,
+              5.799999237060547,
+              -7.375739276409149
+            ]
+          }
+        },
+        {
+          "node": 18,
+          "name": "Columna 09 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 5014,
+          "primitives": 2,
+          "mesh": 18,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -9.595285296440125,
+              -0.0000371160167560447,
+              -15.910053014755249
+            ],
+            "max": [
+              -8.274236381053925,
+              5.799998760223389,
+              -12.474239826202393
+            ]
+          }
+        },
+        {
+          "node": 19,
+          "name": "Columna 10 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8803,
+          "primitives": 2,
+          "mesh": 19,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              2.274245023727417,
+              -0.0002424367849016562,
+              7.375748455524445
+            ],
+            "max": [
+              3.7257463932037354,
+              5.800000190734863,
+              8.827249825000763
+            ]
+          }
+        },
+        {
+          "node": 20,
+          "name": "Columna 11 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8137,
+          "primitives": 2,
+          "mesh": 20,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              2.2742358446121216,
+              -4.494271266253236e-8,
+              -0.725760281085968
+            ],
+            "max": [
+              3.7257555723190308,
+              5.80003547668457,
+              0.7257594466209412
+            ]
+          }
+        },
+        {
+          "node": 21,
+          "name": "Columna 12 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8143,
+          "primitives": 2,
+          "mesh": 21,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              2.2742358446121216,
+              -4.526313261976611e-7,
+              -6.125760078430176
+            ],
+            "max": [
+              3.7257555723190308,
+              5.800034999847412,
+              -4.674240827560425
+            ]
+          }
+        },
+        {
+          "node": 22,
+          "name": "Columna 13 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 6778,
+          "primitives": 2,
+          "mesh": 22,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              2.274235785007477,
+              -0.0000349259571521543,
+              -15.910053730010986
+            ],
+            "max": [
+              3.7257556319236755,
+              5.799998760223389,
+              -12.474239706993103
+            ]
+          }
+        },
+        {
+          "node": 23,
+          "name": "Columna 14 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8137,
+          "primitives": 2,
+          "mesh": 23,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              8.274245500564575,
+              -0.00024243679945357144,
+              7.375748455524445
+            ],
+            "max": [
+              9.725746870040894,
+              5.800000190734863,
+              8.827249825000763
+            ]
+          }
+        },
+        {
+          "node": 24,
+          "name": "Columna 15 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8803,
+          "primitives": 2,
+          "mesh": 24,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              8.274245500564575,
+              -0.00024297137861140072,
+              1.9757491946220398
+            ],
+            "max": [
+              9.725746870040894,
+              5.800000190734863,
+              3.427250564098358
+            ]
+          }
+        },
+        {
+          "node": 25,
+          "name": "Columna 16 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8808,
+          "primitives": 2,
+          "mesh": 25,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              8.27423632144928,
+              -0.000035892604500986636,
+              -3.4242597222328186
+            ],
+            "max": [
+              9.725756049156189,
+              5.799999713897705,
+              -1.972740113735199
+            ]
+          }
+        },
+        {
+          "node": 26,
+          "name": "Columna 17 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 8805,
+          "primitives": 2,
+          "mesh": 26,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              8.274245500564575,
+              -0.00024397722154390067,
+              -8.827249825000763
+            ],
+            "max": [
+              9.725746870040894,
+              5.799999237060547,
+              -7.375748455524445
+            ]
+          }
+        },
+        {
+          "node": 27,
+          "name": "Columna 18 | perfil original y 24 hiladas",
+          "family": "Columnas",
+          "triangles": 5013,
+          "primitives": 2,
+          "mesh": 27,
+          "materials": [
+            "PBR | Caliza ocre envejecida",
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              8.274238049983978,
+              -0.00007528809510404244,
+              -15.910039901733398
+            ],
+            "max": [
+              9.595253884792328,
+              5.799998760223389,
+              -12.474241495132446
+            ]
+          }
+        },
+        {
+          "node": 28,
+          "name": "Pavimento | sector (3, 1)",
+          "family": "Pavimento",
+          "triangles": 4400,
+          "primitives": 1,
+          "mesh": 28,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              1.7999958992004395,
+              -0.029999999329447746,
+              -2.9802322387695312e-8
+            ],
+            "max": [
+              7.7999958992004395,
+              4.5262277126312256e-7,
+              6
+            ]
+          }
+        },
+        {
+          "node": 29,
+          "name": "Pavimento | sector (1, 2)",
+          "family": "Pavimento",
+          "triangles": 3696,
+          "primitives": 1,
+          "mesh": 29,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              -9.600004196166992,
+              -0.03000045195221901,
+              -6.000000476837158
+            ],
+            "max": [
+              -4.200003623962402,
+              -9.313225746154785e-10,
+              2.9802322387695312e-8
+            ]
+          }
+        },
+        {
+          "node": 30,
+          "name": "Pavimento | sector (3, 3)",
+          "family": "Pavimento",
+          "triangles": 4400,
+          "primitives": 1,
+          "mesh": 30,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              1.7999958992004395,
+              -0.030000906437635422,
+              -12
+            ],
+            "max": [
+              7.7999958992004395,
+              -4.5355409383773804e-7,
+              -6
+            ]
+          }
+        },
+        {
+          "node": 31,
+          "name": "Pavimento | sector (2, 1)",
+          "family": "Pavimento",
+          "triangles": 4400,
+          "primitives": 1,
+          "mesh": 31,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              -4.2000041007995605,
+              -0.029999999329447746,
+              -2.9802322387695312e-8
+            ],
+            "max": [
+              1.79999577999115,
+              4.5262277126312256e-7,
+              6
+            ]
+          }
+        },
+        {
+          "node": 32,
+          "name": "Pavimento | sector (3, 2)",
+          "family": "Pavimento",
+          "triangles": 4400,
+          "primitives": 1,
+          "mesh": 32,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              1.7999958992004395,
+              -0.03000045195221901,
+              -6.000000476837158
+            ],
+            "max": [
+              7.7999958992004395,
+              -9.313225746154785e-10,
+              2.9802322387695312e-8
+            ]
+          }
+        },
+        {
+          "node": 33,
+          "name": "Pavimento | sector (2, 3)",
+          "family": "Pavimento",
+          "triangles": 4400,
+          "primitives": 1,
+          "mesh": 33,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              -4.2000041007995605,
+              -0.030000906437635422,
+              -12
+            ],
+            "max": [
+              1.79999577999115,
+              -4.5355409383773804e-7,
+              -6
+            ]
+          }
+        },
+        {
+          "node": 34,
+          "name": "Pavimento | sector (3, 0)",
+          "family": "Pavimento",
+          "triangles": 3344,
+          "primitives": 1,
+          "mesh": 34,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              1.7999958992004395,
+              -0.029999546706676483,
+              5.999999523162842
+            ],
+            "max": [
+              7.7999958992004395,
+              9.052455425262451e-7,
+              11.999999046325684
+            ]
+          }
+        },
+        {
+          "node": 35,
+          "name": "Pavimento | sector (1, 4)",
+          "family": "Pavimento",
+          "triangles": 1408,
+          "primitives": 1,
+          "mesh": 35,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              -9.000003814697266,
+              -0.030001085251569748,
+              -14.40000057220459
+            ],
+            "max": [
+              -4.200003623962402,
+              -9.061768651008606e-7,
+              -12
+            ]
+          }
+        },
+        {
+          "node": 36,
+          "name": "Pavimento | sector (2, 2)",
+          "family": "Pavimento",
+          "triangles": 4400,
+          "primitives": 1,
+          "mesh": 36,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              -4.2000041007995605,
+              -0.03000045195221901,
+              -6.000000476837158
+            ],
+            "max": [
+              1.79999577999115,
+              -9.313225746154785e-10,
+              2.9802322387695312e-8
+            ]
+          }
+        },
+        {
+          "node": 37,
+          "name": "Pavimento | sector (1, 3)",
+          "family": "Pavimento",
+          "triangles": 3608,
+          "primitives": 1,
+          "mesh": 37,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              -9.600004196166992,
+              -0.030000906437635422,
+              -12
+            ],
+            "max": [
+              -4.200003623962402,
+              -4.5355409383773804e-7,
+              -6
+            ]
+          }
+        },
+        {
+          "node": 38,
+          "name": "Pavimento | sector (2, 0)",
+          "family": "Pavimento",
+          "triangles": 4400,
+          "primitives": 1,
+          "mesh": 38,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              -4.2000041007995605,
+              -0.029999546706676483,
+              5.999999523162842
+            ],
+            "max": [
+              1.79999577999115,
+              9.052455425262451e-7,
+              11.999999046325684
+            ]
+          }
+        },
+        {
+          "node": 39,
+          "name": "Pavimento | sector (1, 1)",
+          "family": "Pavimento",
+          "triangles": 3520,
+          "primitives": 1,
+          "mesh": 39,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              -9.000003814697266,
+              -0.029999999329447746,
+              -2.9802322387695312e-8
+            ],
+            "max": [
+              -4.200003623962402,
+              4.5262277126312256e-7,
+              6
+            ]
+          }
+        },
+        {
+          "node": 40,
+          "name": "Pavimento | sector (4, 3)",
+          "family": "Pavimento",
+          "triangles": 880,
+          "primitives": 1,
+          "mesh": 40,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              7.799995422363281,
+              -0.030000906437635422,
+              -12
+            ],
+            "max": [
+              8.999996185302734,
+              -4.5355409383773804e-7,
+              -6
+            ]
+          }
+        },
+        {
+          "node": 41,
+          "name": "Pavimento | sector (2, 4)",
+          "family": "Pavimento",
+          "triangles": 1760,
+          "primitives": 1,
+          "mesh": 41,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              -4.2000041007995605,
+              -0.030001085251569748,
+              -14.40000057220459
+            ],
+            "max": [
+              1.79999577999115,
+              -9.061768651008606e-7,
+              -12
+            ]
+          }
+        },
+        {
+          "node": 42,
+          "name": "Pavimento | sector (3, 4)",
+          "family": "Pavimento",
+          "triangles": 1760,
+          "primitives": 1,
+          "mesh": 42,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              1.7999958992004395,
+              -0.030001085251569748,
+              -14.40000057220459
+            ],
+            "max": [
+              7.7999958992004395,
+              -9.061768651008606e-7,
+              -12
+            ]
+          }
+        },
+        {
+          "node": 43,
+          "name": "Pavimento | sector (1, 0)",
+          "family": "Pavimento",
+          "triangles": 1936,
+          "primitives": 1,
+          "mesh": 43,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              -9.000003814697266,
+              -0.029999546706676483,
+              5.999999523162842
+            ],
+            "max": [
+              -4.200003623962402,
+              9.052455425262451e-7,
+              11.999999046325684
+            ]
+          }
+        },
+        {
+          "node": 44,
+          "name": "Pavimento | sector (4, 1)",
+          "family": "Pavimento",
+          "triangles": 880,
+          "primitives": 1,
+          "mesh": 44,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              7.799995422363281,
+              -0.029999999329447746,
+              -2.9802322387695312e-8
+            ],
+            "max": [
+              8.999996185302734,
+              4.5262277126312256e-7,
+              6
+            ]
+          }
+        },
+        {
+          "node": 45,
+          "name": "Pavimento | sector (4, 4)",
+          "family": "Pavimento",
+          "triangles": 352,
+          "primitives": 1,
+          "mesh": 45,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              7.799995422363281,
+              -0.030001085251569748,
+              -14.40000057220459
+            ],
+            "max": [
+              8.999996185302734,
+              -9.061768651008606e-7,
+              -12
+            ]
+          }
+        },
+        {
+          "node": 46,
+          "name": "Pavimento | sector (4, 2)",
+          "family": "Pavimento",
+          "triangles": 880,
+          "primitives": 1,
+          "mesh": 46,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              7.799995422363281,
+              -0.03000045195221901,
+              -6.000000476837158
+            ],
+            "max": [
+              8.999996185302734,
+              -9.313225746154785e-10,
+              2.9802322387695312e-8
+            ]
+          }
+        },
+        {
+          "node": 47,
+          "name": "Pavimento | sector (0, 2)",
+          "family": "Pavimento",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 47,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              -13.600004196166992,
+              -0.030000021681189537,
+              -0.6000000238418579
+            ],
+            "max": [
+              -13.000003814697266,
+              2.2351741790771484e-8,
+              -2.9802322387695312e-8
+            ]
+          }
+        },
+        {
+          "node": 48,
+          "name": "Pavimento | sector (4, 0)",
+          "family": "Pavimento",
+          "triangles": 352,
+          "primitives": 1,
+          "mesh": 48,
+          "materials": [
+            "PBR | Piedra negra pulida"
+          ],
+          "bounds": {
+            "min": [
+              7.799995422363281,
+              -0.029999546706676483,
+              5.999999523162842
+            ],
+            "max": [
+              8.999996185302734,
+              6.332993507385254e-7,
+              8.399999618530273
+            ]
+          }
+        },
+        {
+          "node": 49,
+          "name": "Mortero bajo pavimento",
+          "family": "Mortero",
+          "triangles": 12,
+          "primitives": 1,
+          "mesh": 49,
+          "materials": [
+            "PBR | Juntas y cavidades"
+          ],
+          "bounds": {
+            "min": [
+              -13.75,
+              -0.05100000090897083,
+              -14.700000047683716
+            ],
+            "max": [
+              9.75,
+              -0.03100000135600567,
+              12.299999952316284
+            ]
+          }
+        },
+        {
+          "node": 50,
+          "name": "Relieves y celosias | sector (1, 3)",
+          "family": "Relieves y celosias",
+          "triangles": 21775,
+          "primitives": 1,
+          "mesh": 50,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -9.378143310546875,
+              0.10798582434654236,
+              -6.062160491943359
+            ],
+            "max": [
+              -9.318142890930176,
+              3.7079858779907227,
+              -4.737839698791504
+            ]
+          }
+        },
+        {
+          "node": 51,
+          "name": "Relieves y celosias | sector (2, 4)",
+          "family": "Relieves y celosias",
+          "triangles": 2270,
+          "primitives": 1,
+          "mesh": 51,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -2.4000000953674316,
+              5.484549522399902,
+              -12.909658432006836
+            ],
+            "max": [
+              -0.8999998569488525,
+              5.784549713134766,
+              -12.80965805053711
+            ]
+          }
+        },
+        {
+          "node": 52,
+          "name": "Relieves y celosias | sector (1, 2)",
+          "family": "Relieves y celosias",
+          "triangles": 6356,
+          "primitives": 1,
+          "mesh": 52,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -9.2379732131958,
+              2.0521368980407715,
+              -2.250580310821533
+            ],
+            "max": [
+              -9.137972831726074,
+              2.352137565612793,
+              1.9494197368621826
+            ]
+          }
+        },
+        {
+          "node": 53,
+          "name": "Relieves y celosias | sector (5, 4)",
+          "family": "Relieves y celosias",
+          "triangles": 6810,
+          "primitives": 1,
+          "mesh": 53,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              9.139056205749512,
+              2.052136182785034,
+              -12.900701522827148
+            ],
+            "max": [
+              9.239056587219238,
+              2.3521368503570557,
+              -8.400701522827148
+            ]
+          }
+        },
+        {
+          "node": 54,
+          "name": "Relieves y celosias | sector (5, 3)",
+          "family": "Relieves y celosias",
+          "triangles": 6810,
+          "primitives": 1,
+          "mesh": 54,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              9.139056205749512,
+              2.0521364212036133,
+              -7.650580406188965
+            ],
+            "max": [
+              9.239056587219238,
+              2.3521370887756348,
+              -3.1505801677703857
+            ]
+          }
+        },
+        {
+          "node": 55,
+          "name": "Relieves y celosias | sector (1, 4)",
+          "family": "Relieves y celosias",
+          "triangles": 6810,
+          "primitives": 1,
+          "mesh": 55,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -9.2379732131958,
+              2.052136182785034,
+              -12.900701522827148
+            ],
+            "max": [
+              -9.137972831726074,
+              2.3521368503570557,
+              -8.400701522827148
+            ]
+          }
+        },
+        {
+          "node": 56,
+          "name": "Relieves y celosias | sector (3, 4)",
+          "family": "Relieves y celosias",
+          "triangles": 4994,
+          "primitives": 1,
+          "mesh": 56,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -0.8999999165534973,
+              5.484549522399902,
+              -12.909658432006836
+            ],
+            "max": [
+              2.3999998569488525,
+              5.784549713134766,
+              -12.80965805053711
+            ]
+          }
+        },
+        {
+          "node": 57,
+          "name": "Relieves y celosias | sector (5, 2)",
+          "family": "Relieves y celosias",
+          "triangles": 6356,
+          "primitives": 1,
+          "mesh": 57,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              9.139056205749512,
+              2.0521368980407715,
+              -2.250580310821533
+            ],
+            "max": [
+              9.239056587219238,
+              2.352137565612793,
+              1.9494197368621826
+            ]
+          }
+        },
+        {
+          "node": 58,
+          "name": "Relieves y celosias | sector (5, 1)",
+          "family": "Relieves y celosias",
+          "triangles": 454,
+          "primitives": 1,
+          "mesh": 58,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              9.139056205749512,
+              2.0521373748779297,
+              1.9494198560714722
+            ],
+            "max": [
+              9.239056587219238,
+              2.352137565612793,
+              2.249419927597046
+            ]
+          }
+        },
+        {
+          "node": 59,
+          "name": "Relieves y celosias | sector (1, 1)",
+          "family": "Relieves y celosias",
+          "triangles": 454,
+          "primitives": 1,
+          "mesh": 59,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -9.2379732131958,
+              2.0521373748779297,
+              1.9494198560714722
+            ],
+            "max": [
+              -9.137972831726074,
+              2.352137565612793,
+              2.249419927597046
+            ]
+          }
+        },
+        {
+          "node": 60,
+          "name": "Relieves y celosias | sector (0, 2)",
+          "family": "Relieves y celosias",
+          "triangles": 454,
+          "primitives": 1,
+          "mesh": 60,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -15.555835723876953,
+              1.9738878011703491,
+              -0.2445719689130783
+            ],
+            "max": [
+              -15.455835342407227,
+              2.273887872695923,
+              0.05542804300785065
+            ]
+          }
+        },
+        {
+          "node": 61,
+          "name": "Beam",
+          "family": "Arquitectura restante",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 61,
+          "materials": [
+            "PBR | Nogal oscuro"
+          ],
+          "bounds": {
+            "min": [
+              -1.5,
+              0.5903140306472778,
+              -10.420000076293945
+            ],
+            "max": [
+              1.5,
+              0.6599992513656616,
+              -9.979999542236328
+            ]
+          }
+        },
+        {
+          "node": 62,
+          "name": "Foot_5",
+          "family": "Mesa y soportes",
+          "triangles": 300,
+          "primitives": 1,
+          "mesh": 62,
+          "materials": [
+            "PBR | Nogal oscuro"
+          ],
+          "bounds": {
+            "min": [
+              -2.0999999046325684,
+              -7.77091031523014e-7,
+              -10.500000953674316
+            ],
+            "max": [
+              -1.5,
+              0.6599991917610168,
+              -9.90000057220459
+            ]
+          }
+        },
+        {
+          "node": 63,
+          "name": "Table_Slab",
+          "family": "Mesa y soportes",
+          "triangles": 253,
+          "primitives": 1,
+          "mesh": 63,
+          "materials": [
+            "PBR | Raiz de nogal"
+          ],
+          "bounds": {
+            "min": [
+              -2.5,
+              0.6599993109703064,
+              -11.19997501373291
+            ],
+            "max": [
+              2.5,
+              0.7399992942810059,
+              -9.19997501373291
+            ]
+          }
+        },
+        {
+          "node": 64,
+          "name": "Foot_4",
+          "family": "Mesa y soportes",
+          "triangles": 300,
+          "primitives": 1,
+          "mesh": 64,
+          "materials": [
+            "PBR | Nogal oscuro"
+          ],
+          "bounds": {
+            "min": [
+              1.5,
+              -7.77091031523014e-7,
+              -10.500000953674316
+            ],
+            "max": [
+              2.0999999046325684,
+              0.6599991917610168,
+              -9.90000057220459
+            ]
+          }
+        },
+        {
+          "node": 65,
+          "name": "Sillon 01 | frente",
+          "family": "Sillones",
+          "triangles": 6008,
+          "primitives": 6,
+          "mesh": 65,
+          "materials": [
+            "Walnut | quarter sawn",
+            "Leather | oxblood",
+            "Burl walnut | table rim",
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "Recesses | charcoal"
+          ],
+          "bounds": {
+            "min": [
+              0.6240095552582239,
+              0.00007839915603736862,
+              -9.085977516469132
+            ],
+            "max": [
+              1.8187149240090403,
+              1.5255044275426144,
+              -7.874614428098446
+            ]
+          }
+        },
+        {
+          "node": 66,
+          "name": "Sillon 02 | fondo",
+          "family": "Sillones",
+          "triangles": 6008,
+          "primitives": 6,
+          "mesh": 65,
+          "materials": [
+            "Walnut | quarter sawn",
+            "Leather | oxblood",
+            "Burl walnut | table rim",
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "Recesses | charcoal"
+          ],
+          "bounds": {
+            "min": [
+              -0.7072157515233357,
+              0.00007839915603736862,
+              -12.134030477375987
+            ],
+            "max": [
+              0.23607010138299245,
+              1.5255044275426144,
+              -11.305715292121462
+            ]
+          }
+        },
+        {
+          "node": 67,
+          "name": "Sillon 03 | izquierda",
+          "family": "Sillones",
+          "triangles": 6008,
+          "primitives": 6,
+          "mesh": 65,
+          "materials": [
+            "Walnut | quarter sawn",
+            "Leather | oxblood",
+            "Burl walnut | table rim",
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "Recesses | charcoal"
+          ],
+          "bounds": {
+            "min": [
+              -3.534030209463924,
+              0.00007839915603736862,
+              -10.671955105923944
+            ],
+            "max": [
+              -2.705714806966493,
+              1.5255044275426144,
+              -9.728669028833743
+            ]
+          }
+        },
+        {
+          "node": 68,
+          "name": "Sillon 04 | derecha",
+          "family": "Sillones",
+          "triangles": 6008,
+          "primitives": 6,
+          "mesh": 65,
+          "materials": [
+            "Walnut | quarter sawn",
+            "Leather | oxblood",
+            "Burl walnut | table rim",
+            "Brass | polished highlights",
+            "Bronze | patinated",
+            "Recesses | charcoal"
+          ],
+          "bounds": {
+            "min": [
+              2.7057147970598425,
+              0.00007839915603736862,
+              -10.671330593380885
+            ],
+            "max": [
+              3.534030199557273,
+              1.5255044275426144,
+              -9.728044526865748
+            ]
+          }
+        },
+        {
+          "node": 69,
+          "name": "Mesa | campo de cuero",
+          "family": "Mesa y soportes",
+          "triangles": 36,
+          "primitives": 1,
+          "mesh": 66,
+          "materials": [
+            "PBR | Cuero oscuro"
+          ],
+          "bounds": {
+            "min": [
+              -2.259999990463257,
+              0.7399999918416142,
+              -10.98499983549118
+            ],
+            "max": [
+              2.259999990463257,
+              0.7519999919459224,
+              -9.414999783039093
+            ]
+          }
+        },
+        {
+          "node": 70,
+          "name": "Mesa | filete de laton",
+          "family": "Mesa y soportes",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 67,
+          "materials": [
+            "PBR | Laton envejecido"
+          ],
+          "bounds": {
+            "min": [
+              -2.434999942779541,
+              0.7510000290349126,
+              -9.2409996567294
+            ],
+            "max": [
+              2.434999942779541,
+              0.7630000291392207,
+              -9.228999656625092
+            ]
+          }
+        },
+        {
+          "node": 71,
+          "name": "Mesa | faldon tallado",
+          "family": "Mesa y soportes",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 68,
+          "materials": [
+            "PBR | Nogal oscuro"
+          ],
+          "bounds": {
+            "min": [
+              -2.375,
+              0.5339999832212925,
+              -9.266999658197165
+            ],
+            "max": [
+              2.375,
+              0.6539999805390835,
+              -9.202999655157328
+            ]
+          }
+        },
+        {
+          "node": 72,
+          "name": "Mesa | filete de laton.001",
+          "family": "Mesa y soportes",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 69,
+          "materials": [
+            "PBR | Laton envejecido"
+          ],
+          "bounds": {
+            "min": [
+              -2.434999942779541,
+              0.7510000290349126,
+              -11.170999961905181
+            ],
+            "max": [
+              2.434999942779541,
+              0.7630000291392207,
+              -11.158999961800873
+            ]
+          }
+        },
+        {
+          "node": 73,
+          "name": "Mesa | faldon tallado.001",
+          "family": "Mesa y soportes",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 70,
+          "materials": [
+            "PBR | Nogal oscuro"
+          ],
+          "bounds": {
+            "min": [
+              -2.375,
+              0.5339999832212925,
+              -11.196999963372946
+            ],
+            "max": [
+              2.375,
+              0.6539999805390835,
+              -11.132999960333109
+            ]
+          }
+        },
+        {
+          "node": 74,
+          "name": "Mesa | filete transversal",
+          "family": "Mesa y soportes",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 71,
+          "materials": [
+            "PBR | Laton envejecido"
+          ],
+          "bounds": {
+            "min": [
+              -2.45600004773587,
+              0.7510000290349126,
+              -11.169999837875366
+            ],
+            "max": [
+              -2.4440000476315618,
+              0.7630000291392207,
+              -9.229999780654907
+            ]
+          }
+        },
+        {
+          "node": 75,
+          "name": "Mesa | filete transversal.001",
+          "family": "Mesa y soportes",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 72,
+          "materials": [
+            "PBR | Laton envejecido"
+          ],
+          "bounds": {
+            "min": [
+              2.4440000476315618,
+              0.7510000290349126,
+              -11.169999837875366
+            ],
+            "max": [
+              2.45600004773587,
+              0.7630000291392207,
+              -9.229999780654907
+            ]
+          }
+        },
+        {
+          "node": 76,
+          "name": "Mesa | remate del soporte",
+          "family": "Mesa y soportes",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 73,
+          "materials": [
+            "PBR | Bronce patinado"
+          ],
+          "bounds": {
+            "min": [
+              -2.179999977350235,
+              0.10500000044703484,
+              -10.629999816417694
+            ],
+            "max": [
+              -1.879999965429306,
+              0.17500000074505806,
+              -9.76999980211258
+            ]
+          }
+        },
+        {
+          "node": 77,
+          "name": "Mesa | remate del soporte.001",
+          "family": "Mesa y soportes",
+          "triangles": 44,
+          "primitives": 1,
+          "mesh": 74,
+          "materials": [
+            "PBR | Bronce patinado"
+          ],
+          "bounds": {
+            "min": [
+              1.879999965429306,
+              0.10500000044703484,
+              -10.629999816417694
+            ],
+            "max": [
+              2.179999977350235,
+              0.17500000074505806,
+              -9.76999980211258
+            ]
+          }
+        },
+        {
+          "node": 78,
+          "name": "Base_7",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 404,
+          "primitives": 1,
+          "mesh": 75,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              2.8949661254882812,
+              1.1466156244277954,
+              -12.171298027038574
+            ],
+            "max": [
+              3.1032934188842773,
+              1.2966643571853638,
+              -11.962969779968262
+            ]
+          }
+        },
+        {
+          "node": 79,
+          "name": "Base_2",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 58,
+          "primitives": 1,
+          "mesh": 76,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              2.7920448780059814,
+              1.6000003814697266,
+              6.590094566345215
+            ],
+            "max": [
+              3.1955244541168213,
+              1.6650949716567993,
+              6.989808082580566
+            ]
+          }
+        },
+        {
+          "node": 80,
+          "name": "Vase_Big_2",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 1720,
+          "primitives": 1,
+          "mesh": 77,
+          "materials": [
+            "PBR | Bronce patinado"
+          ],
+          "bounds": {
+            "min": [
+              -7.749894142150879,
+              0.8500639200210571,
+              -7.749889850616455
+            ],
+            "max": [
+              -7.250114440917969,
+              1.650147557258606,
+              -7.250110626220703
+            ]
+          }
+        },
+        {
+          "node": 81,
+          "name": "Stand",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 60,
+          "primitives": 1,
+          "mesh": 78,
+          "materials": [
+            "PBR | Bronce patinado"
+          ],
+          "bounds": {
+            "min": [
+              6.554470539093018,
+              -6.767829177078966e-7,
+              -8.964262008666992
+            ],
+            "max": [
+              7.094470500946045,
+              1.4603866338729858,
+              -8.424261093139648
+            ]
+          }
+        },
+        {
+          "node": 82,
+          "name": "Base_5",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 140,
+          "primitives": 1,
+          "mesh": 79,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -7.794529438018799,
+              -5.884801339561818e-7,
+              -7.794525146484375
+            ],
+            "max": [
+              -7.205479145050049,
+              0.8499994277954102,
+              -7.205474853515625
+            ]
+          }
+        },
+        {
+          "node": 83,
+          "name": "Postament",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 1478,
+          "primitives": 1,
+          "mesh": 80,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -3.2400407791137695,
+              -0.0003660802321974188,
+              -12.425110816955566
+            ],
+            "max": [
+              -2.7600252628326416,
+              1.1499990224838257,
+              -11.944855690002441
+            ]
+          }
+        },
+        {
+          "node": 84,
+          "name": "Zylinder_2",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 144,
+          "primitives": 1,
+          "mesh": 81,
+          "materials": [
+            "PBR | Bronce patinado"
+          ],
+          "bounds": {
+            "min": [
+              6.8119707107543945,
+              1.452797293663025,
+              -8.706761360168457
+            ],
+            "max": [
+              6.836970329284668,
+              1.702797293663025,
+              -8.681761741638184
+            ]
+          }
+        },
+        {
+          "node": 85,
+          "name": "Zylinder_1",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 144,
+          "primitives": 1,
+          "mesh": 82,
+          "materials": [
+            "PBR | Bronce patinado"
+          ],
+          "bounds": {
+            "min": [
+              6.8094706535339355,
+              1.6877973079681396,
+              -8.81926155090332
+            ],
+            "max": [
+              6.839470386505127,
+              1.7177972793579102,
+              -8.56926155090332
+            ]
+          }
+        },
+        {
+          "node": 86,
+          "name": "Sphere",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 1017,
+          "primitives": 1,
+          "mesh": 83,
+          "materials": [
+            "PBR | Bronce patinado"
+          ],
+          "bounds": {
+            "min": [
+              -3.15415358543396,
+              1.6556804180145264,
+              6.63501501083374
+            ],
+            "max": [
+              -2.845088243484497,
+              1.7619301080703735,
+              6.944080829620361
+            ]
+          }
+        },
+        {
+          "node": 87,
+          "name": "Foot",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 248,
+          "primitives": 1,
+          "mesh": 84,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -3.287710428237915,
+              4.985951136404765e-7,
+              6.572962284088135
+            ],
+            "max": [
+              -2.7122809886932373,
+              1.6000003814697266,
+              7.018219947814941
+            ]
+          }
+        },
+        {
+          "node": 88,
+          "name": "Postament_2",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 1478,
+          "primitives": 1,
+          "mesh": 85,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              2.7589614391326904,
+              -0.00036586335045285523,
+              -12.307332992553711
+            ],
+            "max": [
+              3.239330530166626,
+              1.1499990224838257,
+              -11.826977729797363
+            ]
+          }
+        },
+        {
+          "node": 89,
+          "name": "Foot_2",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 248,
+          "primitives": 1,
+          "mesh": 86,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              2.712285280227661,
+              4.985951136404765e-7,
+              6.572962284088135
+            ],
+            "max": [
+              3.287714719772339,
+              1.6000003814697266,
+              7.018219947814941
+            ]
+          }
+        },
+        {
+          "node": 90,
+          "name": "Base",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 58,
+          "primitives": 1,
+          "mesh": 87,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -3.2079508304595947,
+              1.6000003814697266,
+              6.590094566345215
+            ],
+            "max": [
+              -2.804471254348755,
+              1.6650949716567993,
+              6.989808082580566
+            ]
+          }
+        },
+        {
+          "node": 91,
+          "name": "Sphere_2",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 1017,
+          "primitives": 1,
+          "mesh": 88,
+          "materials": [
+            "PBR | Bronce patinado"
+          ],
+          "bounds": {
+            "min": [
+              2.845842123031616,
+              1.6556804180145264,
+              6.63501501083374
+            ],
+            "max": [
+              3.154907464981079,
+              1.7619301080703735,
+              6.944080829620361
+            ]
+          }
+        },
+        {
+          "node": 92,
+          "name": "Base_6",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 404,
+          "primitives": 1,
+          "mesh": 89,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -3.104163646697998,
+              1.1466156244277954,
+              -12.289093971252441
+            ],
+            "max": [
+              -2.895836353302002,
+              1.2966643571853638,
+              -12.080765724182129
+            ]
+          }
+        },
+        {
+          "node": 93,
+          "name": "Vase_Big",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 1720,
+          "primitives": 1,
+          "mesh": 90,
+          "materials": [
+            "PBR | Bronce patinado"
+          ],
+          "bounds": {
+            "min": [
+              -7.754291534423828,
+              0.8500221967697144,
+              -3.54988956451416
+            ],
+            "max": [
+              -7.254512786865234,
+              1.650154948234558,
+              -3.050110340118408
+            ]
+          }
+        },
+        {
+          "node": 94,
+          "name": "Base_4",
+          "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+          "triangles": 140,
+          "primitives": 1,
+          "mesh": 91,
+          "materials": [
+            "PBR | Caliza aristas claras"
+          ],
+          "bounds": {
+            "min": [
+              -7.798927307128906,
+              -2.606545876915334e-7,
+              -3.59452486038208
+            ],
+            "max": [
+              -7.209877014160156,
+              0.849999725818634,
+              -3.0054750442504883
+            ]
+          }
+        },
+        {
+          "node": 95,
+          "name": "Cut crystal decanter",
+          "family": "Cristaleria original sustituida",
+          "triangles": 768,
+          "primitives": 1,
+          "mesh": 92,
+          "materials": [
+            "Crystal"
+          ],
+          "bounds": {
+            "min": [
+              0.8483262345314024,
+              0.7519999742507935,
+              -10.407083125400543
+            ],
+            "max": [
+              1.0427262499809267,
+              1.0615999917030337,
+              -10.21268310995102
+            ]
+          }
+        },
+        {
+          "node": 96,
+          "name": "Crystal stopper",
+          "family": "Cristaleria original sustituida",
+          "triangles": 256,
+          "primitives": 1,
+          "mesh": 93,
+          "materials": [
+            "Crystal"
+          ],
+          "bounds": {
+            "min": [
+              0.9023262411355972,
+              1.0435999818146229,
+              -10.353083118796349
+            ],
+            "max": [
+              0.9887262433767319,
+              1.137199979275465,
+              -10.266683116555214
+            ]
+          }
+        },
+        {
+          "node": 97,
+          "name": "Crystal tumbler",
+          "family": "Cristaleria original sustituida",
+          "triangles": 480,
+          "primitives": 1,
+          "mesh": 94,
+          "materials": [
+            "Crystal"
+          ],
+          "bounds": {
+            "min": [
+              0.6280061436367035,
+              0.7519999742507935,
+              -10.123402552537918
+            ],
+            "max": [
+              0.7446461486148834,
+              0.8815999845504763,
+              -10.006762547559738
+            ]
+          }
+        },
+        {
+          "node": 98,
+          "name": "Crystal tumbler.001",
+          "family": "Cristaleria original sustituida",
+          "triangles": 480,
+          "primitives": 1,
+          "mesh": 95,
+          "materials": [
+            "Crystal"
+          ],
+          "bounds": {
+            "min": [
+              1.1104062033367157,
+              0.7519999742507935,
+              -10.123402552537918
+            ],
+            "max": [
+              1.2270462083148956,
+              0.8815999845504763,
+              -10.006762547559738
+            ]
+          }
+        },
+        {
+          "node": 99,
+          "name": "Leather folio",
+          "family": "Carpeta y papel",
+          "triangles": 167,
+          "primitives": 1,
+          "mesh": 96,
+          "materials": [
+            "Walnut | quarter sawn"
+          ],
+          "bounds": {
+            "min": [
+              -0.47573386030197184,
+              0.7523600131136179,
+              -10.866823975896835
+            ],
+            "max": [
+              0.04266618089675944,
+              0.7718000143903494,
+              -10.514023955011368
+            ]
+          }
+        },
+        {
+          "node": 100,
+          "name": "Paper on folio",
+          "family": "Carpeta y papel",
+          "triangles": 164,
+          "primitives": 1,
+          "mesh": 97,
+          "materials": [
+            "Ivory paper"
+          ],
+          "bounds": {
+            "min": [
+              -0.4505338404178616,
+              0.7735999948790669,
+              -10.848823970890045
+            ],
+            "max": [
+              0.017466161012649195,
+              0.7779199950882792,
+              -10.532023960018158
+            ]
+          }
+        },
+        {
+          "node": 101,
+          "name": "Tyrell_Corporation_Pyramid",
+          "family": "Exterior original combinado",
+          "triangles": 39654,
+          "primitives": 1,
+          "mesh": 98,
+          "materials": [
+            "PBR | Hormigon exterior"
+          ],
+          "bounds": {
+            "min": [
+              -141.41505432128906,
+              -24.21087074279785,
+              -356.90655517578125
+            ],
+            "max": [
+              42.94364547729492,
+              37.59683609008789,
+              -172.65457153320312
+            ]
+          }
+        },
+        {
+          "node": 102,
+          "name": "Cielo | fondo a 900 m",
+          "family": "Cielo y sol originales",
+          "triangles": 2,
+          "primitives": 1,
+          "mesh": 99,
+          "materials": [
+            "Cielo | nubes ambar"
+          ],
+          "bounds": {
+            "min": [
+              -500,
+              -240,
+              -900
+            ],
+            "max": [
+              500,
+              260,
+              -900
+            ]
+          }
+        },
+        {
+          "node": 103,
+          "name": "Sol | disco a 650 m",
+          "family": "Cielo y sol originales",
+          "triangles": 64,
+          "primitives": 1,
+          "mesh": 100,
+          "materials": [
+            "Sol | disco emisivo"
+          ],
+          "bounds": {
+            "min": [
+              -5.0000001192092896,
+              38.99999988079071,
+              -650
+            ],
+            "max": [
+              9.00000011920929,
+              53.00000011920929,
+              -650
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "Glassware.glb",
+      "bytes": 543460,
+      "sha256": "2dcf815d23b179024408b66cbfd0ece90eceff1c3ae16eb22d797fe509492059",
+      "nodes": 3,
+      "primitives": 3,
+      "triangles": 26512,
+      "rows": [
+        {
+          "node": 0,
+          "name": "Vaso",
+          "family": "Cristaleria importada",
+          "triangles": 5520,
+          "primitives": 1,
+          "mesh": 0,
+          "materials": [
+            "(default)"
+          ],
+          "bounds": {
+            "min": [
+              -0.0403929203748703,
+              0,
+              -0.04039291664958
+            ],
+            "max": [
+              0.04039291664958,
+              0.0851999968290329,
+              0.0403929129242897
+            ]
+          }
+        },
+        {
+          "node": 2,
+          "name": "Licorera",
+          "family": "Cristaleria importada",
+          "triangles": 17152,
+          "primitives": 1,
+          "mesh": 2,
+          "materials": [
+            "(default)"
+          ],
+          "bounds": {
+            "min": [
+              -0.0689999982714653,
+              0,
+              -0.0689999982714653
+            ],
+            "max": [
+              0.0689999982714653,
+              0.18520000576972961,
+              0.0689999982714653
+            ]
+          }
+        },
+        {
+          "node": 1,
+          "name": "Tapon",
+          "family": "Cristaleria importada",
+          "triangles": 3840,
+          "primitives": 1,
+          "mesh": 1,
+          "materials": [
+            "(default)"
+          ],
+          "bounds": {
+            "min": [
+              -0.037700001150369644,
+              0.15950000286102295,
+              -0.03770000487565994
+            ],
+            "max": [
+              0.03770000487565994,
+              0.23019999265670776,
+              0.037700001150369644
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "file": "VK_Device.glb",
+      "bytes": 7298380,
+      "sha256": "64332942a878656cd2c80a2b5f77834731ac88860f3b80ece10137c9742706fb",
+      "nodes": 16,
+      "primitives": 16,
+      "triangles": 14891,
+      "materials": 1,
+      "images": 4,
+      "rows": [
+        {
+          "node": 0,
+          "name": "VK_Bellows_Layer_01",
+          "family": "Voight-Kampff",
+          "triangles": 124,
+          "primitives": 1,
+          "mesh": 0,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              0.061621323227882385,
+              0.07453031092882156,
+              -0.2326098084449768
+            ],
+            "max": [
+              0.35237498581409454,
+              0.11040449142456055,
+              -0.06898181885480881
+            ]
+          }
+        },
+        {
+          "node": 2,
+          "name": "VK_Bellows_Layer_02",
+          "family": "Voight-Kampff",
+          "triangles": 172,
+          "primitives": 1,
+          "mesh": 1,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              0.06700024008750916,
+              0.08814060688018799,
+              -0.22898291051387787
+            ],
+            "max": [
+              0.34726954996585846,
+              0.14182452484965324,
+              -0.07285603880882263
+            ]
+          }
+        },
+        {
+          "node": 4,
+          "name": "VK_Bellows_Layer_03",
+          "family": "Voight-Kampff",
+          "triangles": 172,
+          "primitives": 1,
+          "mesh": 2,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              0.06840742379426956,
+              0.09562962502241135,
+              -0.22898291051387787
+            ],
+            "max": [
+              0.34520651400089264,
+              0.16742969676852226,
+              -0.07285603880882263
+            ]
+          }
+        },
+        {
+          "node": 6,
+          "name": "VK_Bellows_Lid",
+          "family": "Voight-Kampff",
+          "triangles": 182,
+          "primitives": 1,
+          "mesh": 3,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              0.0699118822813034,
+              0.10331733524799347,
+              -0.22898291051387787
+            ],
+            "max": [
+              0.34189219772815704,
+              0.19308486208319664,
+              -0.07285603135824203
+            ]
+          }
+        },
+        {
+          "node": 8,
+          "name": "VK_Bellows_Layer_00",
+          "family": "Voight-Kampff",
+          "triangles": 124,
+          "primitives": 1,
+          "mesh": 4,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              0.060371626168489456,
+              0.0565996989607811,
+              -0.2326098084449768
+            ],
+            "max": [
+              0.3518352657556534,
+              0.07353698462247849,
+              -0.06898181885480881
+            ]
+          }
+        },
+        {
+          "node": 9,
+          "name": "VK_Bellows_Skirt",
+          "family": "Voight-Kampff",
+          "triangles": 16,
+          "primitives": 1,
+          "mesh": 5,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              0.08394461125135422,
+              0.05682440102100372,
+              -0.21381619572639465
+            ],
+            "max": [
+              0.3263396769762039,
+              0.17887027189135551,
+              -0.08779159188270569
+            ]
+          }
+        },
+        {
+          "node": 11,
+          "name": "VK_Cable_Head_Lower",
+          "family": "Voight-Kampff",
+          "triangles": 300,
+          "primitives": 1,
+          "mesh": 6,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              -0.23394836485385895,
+              0.23648211359977722,
+              -0.3020334243774414
+            ],
+            "max": [
+              -0.11009426414966583,
+              0.3589434325695038,
+              -0.28286388516426086
+            ]
+          }
+        },
+        {
+          "node": 12,
+          "name": "VK_Cable_Head_Upper",
+          "family": "Voight-Kampff",
+          "triangles": 408,
+          "primitives": 1,
+          "mesh": 7,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              -0.24472039937973022,
+              0.3584585189819336,
+              -0.30931711196899414
+            ],
+            "max": [
+              -0.20343856513500214,
+              0.4653512239456177,
+              -0.2927471101284027
+            ]
+          }
+        },
+        {
+          "node": 13,
+          "name": "VK_Cable_Mast",
+          "family": "Voight-Kampff",
+          "triangles": 768,
+          "primitives": 1,
+          "mesh": 8,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              -0.02544485777616501,
+              0.09875809401273727,
+              -0.3051646053791046
+            ],
+            "max": [
+              0.27065595984458923,
+              0.3087085783481598,
+              -0.25919780135154724
+            ]
+          }
+        },
+        {
+          "node": 14,
+          "name": "VK_Cable_Rail",
+          "family": "Voight-Kampff",
+          "triangles": 416,
+          "primitives": 1,
+          "mesh": 9,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              0.044288571923971176,
+              0.12045646458864212,
+              -0.3091757893562317
+            ],
+            "max": [
+              0.21232949197292328,
+              0.20017991960048676,
+              -0.28567686676979065
+            ]
+          }
+        },
+        {
+          "node": 16,
+          "name": "VK_Chassis",
+          "family": "Voight-Kampff",
+          "triangles": 5005,
+          "primitives": 1,
+          "mesh": 10,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              -0.3621242940425873,
+              0.00042306474642828107,
+              -0.32342687249183655
+            ],
+            "max": [
+              0.35796624422073364,
+              0.23642851412296295,
+              0.20388345420360565
+            ]
+          }
+        },
+        {
+          "node": 17,
+          "name": "VK_Mast_Outer",
+          "family": "Voight-Kampff",
+          "triangles": 2202,
+          "primitives": 1,
+          "mesh": 11,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              0.10322509706020355,
+              0.07992161065340042,
+              -0.3002530634403229
+            ],
+            "max": [
+              0.2901937961578369,
+              0.1906549036502838,
+              -0.2534339129924774
+            ]
+          }
+        },
+        {
+          "node": 18,
+          "name": "VK_Camera_Body",
+          "family": "Voight-Kampff",
+          "triangles": 2560,
+          "primitives": 1,
+          "mesh": 12,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              -0.23109547793865204,
+              0.29113316535949707,
+              -0.31269392371177673
+            ],
+            "max": [
+              -0.039764538407325745,
+              0.5435453057289124,
+              -0.250822514295578
+            ]
+          }
+        },
+        {
+          "node": 19,
+          "name": "VK_Lens",
+          "family": "Voight-Kampff",
+          "triangles": 752,
+          "primitives": 1,
+          "mesh": 13,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              -0.16291891038417816,
+              0.37791264057159424,
+              -0.29422786831855774
+            ],
+            "max": [
+              -0.09650690853595734,
+              0.4403078556060791,
+              -0.2603920102119446
+            ]
+          }
+        },
+        {
+          "node": 22,
+          "name": "VK_Head_Motor",
+          "family": "Voight-Kampff",
+          "triangles": 1526,
+          "primitives": 1,
+          "mesh": 14,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              -0.1565096229314804,
+              0.2115667164325714,
+              -0.31747010350227356
+            ],
+            "max": [
+              -0.019184714183211327,
+              0.3374083936214447,
+              -0.23724927008152008
+            ]
+          }
+        },
+        {
+          "node": 24,
+          "name": "VK_Mast_Inner",
+          "family": "Voight-Kampff",
+          "triangles": 164,
+          "primitives": 1,
+          "mesh": 15,
+          "materials": [
+            "M_VKMachine.002"
+          ],
+          "bounds": {
+            "min": [
+              -0.04222477972507477,
+              0.1600593477487564,
+              -0.2900182604789734
+            ],
+            "max": [
+              0.11674023419618607,
+              0.2443503886461258,
+              -0.2552976906299591
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "families": {
+    "Arquitectura restante": {
+      "nodes": 10,
+      "primitives": 10,
+      "triangles": 1513
+    },
+    "Marco de puerta": {
+      "nodes": 1,
+      "primitives": 1,
+      "triangles": 1122
+    },
+    "Columnas": {
+      "nodes": 18,
+      "primitives": 36,
+      "triangles": 138745
+    },
+    "Pavimento": {
+      "nodes": 21,
+      "primitives": 21,
+      "triangles": 55220
+    },
+    "Mortero": {
+      "nodes": 1,
+      "primitives": 1,
+      "triangles": 12
+    },
+    "Relieves y celosias": {
+      "nodes": 11,
+      "primitives": 11,
+      "triangles": 63543
+    },
+    "Mesa y soportes": {
+      "nodes": 12,
+      "primitives": 12,
+      "triangles": 1241
+    },
+    "Sillones": {
+      "nodes": 4,
+      "primitives": 24,
+      "triangles": 24032
+    },
+    "Pedestales y ornamentos (clasificacion por confirmar visualmente)": {
+      "nodes": 17,
+      "primitives": 17,
+      "triangles": 10478
+    },
+    "Cristaleria original sustituida": {
+      "nodes": 4,
+      "primitives": 4,
+      "triangles": 1984
+    },
+    "Carpeta y papel": {
+      "nodes": 2,
+      "primitives": 2,
+      "triangles": 331
+    },
+    "Exterior original combinado": {
+      "nodes": 1,
+      "primitives": 1,
+      "triangles": 39654
+    },
+    "Cielo y sol originales": {
+      "nodes": 2,
+      "primitives": 2,
+      "triangles": 66
+    }
+  },
+  "procedural": {
+    "city": {
+      "enabled": true,
+      "buildings": 97,
+      "boxes": 1478,
+      "meshes": 3,
+      "triangles": 17754,
+      "roofLowering": 2.5,
+      "removedFacadeRibs": 485,
+      "savedTriangles": 5820,
+      "towers": [
+        {
+          "x": 400,
+          "z": -460,
+          "top": 28
+        },
+        {
+          "x": -680,
+          "z": -700,
+          "top": 24
+        },
+        {
+          "x": -900,
+          "z": -830,
+          "top": 15
+        }
+      ],
+      "baseColor": "#43311d",
+      "baseHSL": [
+        31.4,
+        38.9,
+        18.8
+      ],
+      "facadeDepth": 18,
+      "gradientCenterX": -49.2357,
+      "pyramidZ": -264.7806,
+      "blockSpacing": 27,
+      "baseColorMultiplier": 1,
+      "roofColorMultiplier": 1,
+      "towerColorMultiplier": 1,
+      "leftTowerLightnessOffset": 2,
+      "roughness": 1,
+      "metalness": 0,
+      "specularIntensity": 0,
+      "envMapIntensity": 0,
+      "continuity": {
+        "roofTriangles": 18,
+        "serviceBlocks": 3
+      },
+      "textureSize": [
+        256,
+        256
+      ],
+      "seed": 902091,
+      "cityBackdrop": "layered geometry; no photographic background",
+      "lights": 0,
+      "colorHSL": {
+        "h": 31.4,
+        "s": 38.9,
+        "l": 18.8,
+        "cameraD": 14,
+        "cam02": 14.6,
+        "rightStep": -0.3,
+        "leftStep": -1.3,
+        "mode": "lod"
+      },
+      "colorLOD": {
+        "Extra baja": true,
+        "Baja": true,
+        "Media": true,
+        "Alta": true,
+        "UltraAlta": true
+      },
+      "yawDegrees": 0,
+      "effectiveLightness": 18.8,
+      "referenceYawDegrees": 0,
+      "anchorDegrees": {
+        "cameraD": 59.99999999999999,
+        "cam02": -59.99999999999999
+      }
+    },
+    "buildingLights": {
+      "intensity": 0.22,
+      "beacons": 0.7,
+      "materials": 4,
+      "beaconCount": 5,
+      "windowPitch": [
+        0.42,
+        0.9
+      ],
+      "windowSize": [
+        0.1176,
+        0.063
+      ],
+      "beaconHaloSize": 1.8,
+      "facadeLayouts": [
+        {
+          "facades": 122,
+          "central": 21,
+          "method": "Planar convex envelopes in surface coordinates"
+        }
+      ],
+      "elevatorRails": {
+        "baseY": -5.8,
+        "topY": 32.6,
+        "bottomWidth": 14,
+        "topWidth": 8,
+        "axis": -62.12,
+        "railCount": 13,
+        "recessDepth": 0.025,
+        "meshes": 0,
+        "triangles": 0,
+        "displacement": 0,
+        "method": "Original facade material; dark unlit band and darker recessed grooves; normal-only relief"
+      },
+      "method": "Facade-aligned columns and floor rows; edge margins; window-free uplight spine; Gaussian beacons",
+      "realLights": 0
+    },
+    "air": {
+      "density": 0.8,
+      "enabled": true,
+      "capacity": 10,
+      "activeVehicles": 8,
+      "corridors": 3,
+      "foregroundRoute": "right to left in front of the exterior facades",
+      "vehicleScale": 1.25,
+      "foregroundVehicleScale": 0.3125,
+      "foregroundLowering": 2.5,
+      "corridorPeriods": [
+        60,
+        68,
+        40
+      ],
+      "time": 0,
+      "reflectionRefreshHz": 5,
+      "environmentRefreshHz": 1,
+      "realLights": 0,
+      "trianglesPerVehicle": 14,
+      "sharedGeometries": 1,
+      "sharedGlowTextures": 1,
+      "flights": [],
+      "method": "Arc-length routes; pooled minimal silhouettes; white position lights and soft double strobes; depth-tested; density 0 disables all"
+    },
+    "near": {
+      "enabled": true,
+      "duration": 40,
+      "time": 0,
+      "passes": 0,
+      "nextPassIn": 2,
+      "capacity": 1,
+      "vehicleScale": 0.25,
+      "realLights": 0,
+      "maxBankDegrees": 20,
+      "trianglesPerVehicle": 1308,
+      "routes": [
+        "single level arc, upper left to right; repeat after completing the route"
+      ],
+      "optics": "Compact warm core, soft peripheral lens ring and subtle diagonal streak around a dark hull; secondary white strobe and existing bloom",
+      "flights": [],
+      "reflectionRefreshHz": 8,
+      "environmentRefreshHz": 1
+    },
+    "cores": {
+      "cores": 18,
+      "addedMeshes": 1,
+      "addedTriangles": 7944,
+      "darkReturnTriangles": 211,
+      "recessedPlanarScale": 0.97
+    }
+  },
+  "cameraStates": [
+    {
+      "cameraStateId": "initial",
+      "cameraSpot": "cameraspot-initial",
+      "cameraTarget": "cameratarget-initial",
+      "position": [
+        -0.11999999731779099,
+        1.550000786781311,
+        10.300000190734863
+      ],
+      "target": [
+        0,
+        1.9514189958572388,
+        -10.378293991088867
+      ],
+      "fov": 22.917504404217937,
+      "near": 0.029999999329447746,
+      "far": 2500
+    },
+    {
+      "cameraStateId": "p1",
+      "cameraSpot": "cameraspot-p1",
+      "cameraTarget": "cameratarget-p1",
+      "position": [
+        1.0380754470825195,
+        0.9417622685432434,
+        -8.501016616821289
+      ],
+      "target": [
+        -0.20999068021774292,
+        1.0849730968475342,
+        -10.368745803833008
+      ],
+      "fov": 33.21750452013781,
+      "near": 0.029999999329447746,
+      "far": 2500
+    },
+    {
+      "cameraStateId": "p2",
+      "cameraSpot": "cameraspot-p2",
+      "cameraTarget": "cameratarget-p2",
+      "position": [
+        -8.745309829711914,
+        1.9016311168670654,
+        -3.9683480262756348
+      ],
+      "target": [
+        -0.20999068021774292,
+        1.0849730968475342,
+        -10.368745803833008
+      ],
+      "fov": 33.000002206351546,
+      "near": 0.029999999329447746,
+      "far": 2500
+    }
+  ],
+  "potentialVisibility": [
+    {
+      "node": 0,
+      "name": "Wall_Side_R",
+      "family": "Arquitectura restante",
+      "triangles": 212,
+      "primitives": 1,
+      "mesh": 0,
+      "materials": [
+        "PBR | Caliza ocre envejecida"
+      ],
+      "bounds": {
+        "min": [
+          8.905135154724121,
+          -9.642300256018643e-7,
+          -12.775613784790039
+        ],
+        "max": [
+          9.556492805480957,
+          5.800000190734863,
+          7.980706214904785
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 1,
+      "name": "Parapet",
+      "family": "Arquitectura restante",
+      "triangles": 68,
+      "primitives": 1,
+      "mesh": 1,
+      "materials": [
+        "PBR | Caliza ocre envejecida"
+      ],
+      "bounds": {
+        "min": [
+          -8.5,
+          -0.0000012008746352876187,
+          -15.908698081970215
+        ],
+        "max": [
+          8.5,
+          0.9999988675117493,
+          -14.402381896972656
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 2,
+      "name": "Lintel",
+      "family": "Arquitectura restante",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 2,
+      "materials": [
+        "PBR | Caliza ocre envejecida"
+      ],
+      "bounds": {
+        "min": [
+          -8.41878604888916,
+          5.473803997039795,
+          -13.69999885559082
+        ],
+        "max": [
+          8.418818473815918,
+          5.7994842529296875,
+          -12.90965747833252
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 3,
+      "name": "Wing_R",
+      "family": "Arquitectura restante",
+      "triangles": 192,
+      "primitives": 1,
+      "mesh": 3,
+      "materials": [
+        "PBR | Caliza ocre envejecida"
+      ],
+      "bounds": {
+        "min": [
+          -9.423144340515137,
+          -2.384185791015625e-7,
+          -6.200000286102295
+        ],
+        "max": [
+          -9.373143196105957,
+          3.8399996757507324,
+          -5.400000095367432
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": false,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 4,
+      "name": "Ceiling_Slab",
+      "family": "Arquitectura restante",
+      "triangles": 124,
+      "primitives": 1,
+      "mesh": 4,
+      "materials": [
+        "PBR | Caliza ocre envejecida"
+      ],
+      "bounds": {
+        "min": [
+          -9,
+          5.7999982833862305,
+          -13.199999809265137
+        ],
+        "max": [
+          9,
+          6.800000190734863,
+          12.09999942779541
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 5,
+      "name": "Podest",
+      "family": "Arquitectura restante",
+      "triangles": 112,
+      "primitives": 1,
+      "mesh": 5,
+      "materials": [
+        "PBR | Caliza ocre envejecida"
+      ],
+      "bounds": {
+        "min": [
+          4.799999237060547,
+          -0.0000011002000519511057,
+          -8.3057222366333
+        ],
+        "max": [
+          9.27912425994873,
+          0.36000025272369385,
+          -2.465000629425049
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 6,
+      "name": "Wall_Side_L",
+      "family": "Arquitectura restante",
+      "triangles": 484,
+      "primitives": 1,
+      "mesh": 6,
+      "materials": [
+        "PBR | Caliza ocre envejecida"
+      ],
+      "bounds": {
+        "min": [
+          -9.556492805480957,
+          -9.642300256018643e-7,
+          -12.775613784790039
+        ],
+        "max": [
+          -8.905135154724121,
+          5.800000190734863,
+          7.980706214904785
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 7,
+      "name": "Wing_L",
+      "family": "Arquitectura restante",
+      "triangles": 189,
+      "primitives": 1,
+      "mesh": 7,
+      "materials": [
+        "PBR | Caliza ocre envejecida"
+      ],
+      "bounds": {
+        "min": [
+          -9.42314338684082,
+          -2.384185791015625e-7,
+          -5.400000095367432
+        ],
+        "max": [
+          -9.373144149780273,
+          3.8399996757507324,
+          -4.599999904632568
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": false,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 8,
+      "name": "Door_Frame",
+      "family": "Marco de puerta",
+      "triangles": 1122,
+      "primitives": 1,
+      "mesh": 8,
+      "materials": [
+        "PBR | Caliza ocre envejecida"
+      ],
+      "bounds": {
+        "min": [
+          -9.398143768310547,
+          -4.4051625991414767e-7,
+          -6.4979119300842285
+        ],
+        "max": [
+          -9.248143196105957,
+          4.139888763427734,
+          -4.302088737487793
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": false,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 9,
+      "name": "Alfeizar | canto de piedra pulida",
+      "family": "Arquitectura restante",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 9,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -8.5,
+          0.9799999911338091,
+          -14.440000385046005
+        ],
+        "max": [
+          8.5,
+          1.0399999897927046,
+          -14.260000377893448
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 10,
+      "name": "Columna 01 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8818,
+      "primitives": 2,
+      "mesh": 10,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -3.7257555723190308,
+          -0.0000351735288859345,
+          7.375739276409149
+        ],
+        "max": [
+          -2.2742358446121216,
+          5.800000190734863,
+          8.827259004116058
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 11,
+      "name": "Columna 02 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8138,
+      "primitives": 2,
+      "mesh": 11,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -3.7257555723190308,
+          -4.494271266253236e-8,
+          -0.725760281085968
+        ],
+        "max": [
+          -2.2742358446121216,
+          5.80003547668457,
+          0.7257594466209412
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 12,
+      "name": "Columna 03 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8140,
+      "primitives": 2,
+      "mesh": 12,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -3.7257555723190308,
+          -4.526313261976611e-7,
+          -6.125760078430176
+        ],
+        "max": [
+          -2.2742358446121216,
+          5.800034999847412,
+          -4.674240827560425
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 13,
+      "name": "Columna 04 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 5687,
+      "primitives": 2,
+      "mesh": 13,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -3.72575706243515,
+          -0.0000029480781904567266,
+          -15.910064697265625
+        ],
+        "max": [
+          -2.274234354496002,
+          5.799998760223389,
+          -12.474238276481628
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 14,
+      "name": "Columna 05 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 6673,
+      "primitives": 2,
+      "mesh": 14,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -9.725757539272308,
+          -5.475457101056236e-7,
+          7.37573778629303
+        ],
+        "max": [
+          -8.27423483133316,
+          5.800000190734863,
+          8.827260494232178
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 15,
+      "name": "Columna 06 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8817,
+      "primitives": 2,
+      "mesh": 15,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -9.725756049156189,
+          -0.000035501823731465265,
+          1.9757400155067444
+        ],
+        "max": [
+          -8.27423632144928,
+          5.800000190734863,
+          3.4272597432136536
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 16,
+      "name": "Columna 07 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 7225,
+      "primitives": 2,
+      "mesh": 16,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -9.725757539272308,
+          -0.0000013629202157972031,
+          -3.424261212348938
+        ],
+        "max": [
+          -8.27423483133316,
+          5.799999713897705,
+          -1.9727386236190796
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 17,
+      "name": "Columna 08 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8806,
+      "primitives": 2,
+      "mesh": 17,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -9.725756049156189,
+          -0.00003629724960774183,
+          -8.827259004116058
+        ],
+        "max": [
+          -8.27423632144928,
+          5.799999237060547,
+          -7.375739276409149
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 18,
+      "name": "Columna 09 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 5014,
+      "primitives": 2,
+      "mesh": 18,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -9.595285296440125,
+          -0.0000371160167560447,
+          -15.910053014755249
+        ],
+        "max": [
+          -8.274236381053925,
+          5.799998760223389,
+          -12.474239826202393
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 19,
+      "name": "Columna 10 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8803,
+      "primitives": 2,
+      "mesh": 19,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          2.274245023727417,
+          -0.0002424367849016562,
+          7.375748455524445
+        ],
+        "max": [
+          3.7257463932037354,
+          5.800000190734863,
+          8.827249825000763
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 20,
+      "name": "Columna 11 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8137,
+      "primitives": 2,
+      "mesh": 20,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          2.2742358446121216,
+          -4.494271266253236e-8,
+          -0.725760281085968
+        ],
+        "max": [
+          3.7257555723190308,
+          5.80003547668457,
+          0.7257594466209412
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 21,
+      "name": "Columna 12 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8143,
+      "primitives": 2,
+      "mesh": 21,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          2.2742358446121216,
+          -4.526313261976611e-7,
+          -6.125760078430176
+        ],
+        "max": [
+          3.7257555723190308,
+          5.800034999847412,
+          -4.674240827560425
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 22,
+      "name": "Columna 13 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 6778,
+      "primitives": 2,
+      "mesh": 22,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          2.274235785007477,
+          -0.0000349259571521543,
+          -15.910053730010986
+        ],
+        "max": [
+          3.7257556319236755,
+          5.799998760223389,
+          -12.474239706993103
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 23,
+      "name": "Columna 14 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8137,
+      "primitives": 2,
+      "mesh": 23,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          8.274245500564575,
+          -0.00024243679945357144,
+          7.375748455524445
+        ],
+        "max": [
+          9.725746870040894,
+          5.800000190734863,
+          8.827249825000763
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 24,
+      "name": "Columna 15 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8803,
+      "primitives": 2,
+      "mesh": 24,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          8.274245500564575,
+          -0.00024297137861140072,
+          1.9757491946220398
+        ],
+        "max": [
+          9.725746870040894,
+          5.800000190734863,
+          3.427250564098358
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 25,
+      "name": "Columna 16 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8808,
+      "primitives": 2,
+      "mesh": 25,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          8.27423632144928,
+          -0.000035892604500986636,
+          -3.4242597222328186
+        ],
+        "max": [
+          9.725756049156189,
+          5.799999713897705,
+          -1.972740113735199
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": false,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 26,
+      "name": "Columna 17 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 8805,
+      "primitives": 2,
+      "mesh": 26,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          8.274245500564575,
+          -0.00024397722154390067,
+          -8.827249825000763
+        ],
+        "max": [
+          9.725746870040894,
+          5.799999237060547,
+          -7.375748455524445
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 27,
+      "name": "Columna 18 | perfil original y 24 hiladas",
+      "family": "Columnas",
+      "triangles": 5013,
+      "primitives": 2,
+      "mesh": 27,
+      "materials": [
+        "PBR | Caliza ocre envejecida",
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          8.274238049983978,
+          -0.00007528809510404244,
+          -15.910039901733398
+        ],
+        "max": [
+          9.595253884792328,
+          5.799998760223389,
+          -12.474241495132446
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 28,
+      "name": "Pavimento | sector (3, 1)",
+      "family": "Pavimento",
+      "triangles": 4400,
+      "primitives": 1,
+      "mesh": 28,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          1.7999958992004395,
+          -0.029999999329447746,
+          -2.9802322387695312e-8
+        ],
+        "max": [
+          7.7999958992004395,
+          4.5262277126312256e-7,
+          6
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 29,
+      "name": "Pavimento | sector (1, 2)",
+      "family": "Pavimento",
+      "triangles": 3696,
+      "primitives": 1,
+      "mesh": 29,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          -9.600004196166992,
+          -0.03000045195221901,
+          -6.000000476837158
+        ],
+        "max": [
+          -4.200003623962402,
+          -9.313225746154785e-10,
+          2.9802322387695312e-8
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 30,
+      "name": "Pavimento | sector (3, 3)",
+      "family": "Pavimento",
+      "triangles": 4400,
+      "primitives": 1,
+      "mesh": 30,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          1.7999958992004395,
+          -0.030000906437635422,
+          -12
+        ],
+        "max": [
+          7.7999958992004395,
+          -4.5355409383773804e-7,
+          -6
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 31,
+      "name": "Pavimento | sector (2, 1)",
+      "family": "Pavimento",
+      "triangles": 4400,
+      "primitives": 1,
+      "mesh": 31,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          -4.2000041007995605,
+          -0.029999999329447746,
+          -2.9802322387695312e-8
+        ],
+        "max": [
+          1.79999577999115,
+          4.5262277126312256e-7,
+          6
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 32,
+      "name": "Pavimento | sector (3, 2)",
+      "family": "Pavimento",
+      "triangles": 4400,
+      "primitives": 1,
+      "mesh": 32,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          1.7999958992004395,
+          -0.03000045195221901,
+          -6.000000476837158
+        ],
+        "max": [
+          7.7999958992004395,
+          -9.313225746154785e-10,
+          2.9802322387695312e-8
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 33,
+      "name": "Pavimento | sector (2, 3)",
+      "family": "Pavimento",
+      "triangles": 4400,
+      "primitives": 1,
+      "mesh": 33,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          -4.2000041007995605,
+          -0.030000906437635422,
+          -12
+        ],
+        "max": [
+          1.79999577999115,
+          -4.5355409383773804e-7,
+          -6
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 34,
+      "name": "Pavimento | sector (3, 0)",
+      "family": "Pavimento",
+      "triangles": 3344,
+      "primitives": 1,
+      "mesh": 34,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          1.7999958992004395,
+          -0.029999546706676483,
+          5.999999523162842
+        ],
+        "max": [
+          7.7999958992004395,
+          9.052455425262451e-7,
+          11.999999046325684
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 35,
+      "name": "Pavimento | sector (1, 4)",
+      "family": "Pavimento",
+      "triangles": 1408,
+      "primitives": 1,
+      "mesh": 35,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          -9.000003814697266,
+          -0.030001085251569748,
+          -14.40000057220459
+        ],
+        "max": [
+          -4.200003623962402,
+          -9.061768651008606e-7,
+          -12
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 36,
+      "name": "Pavimento | sector (2, 2)",
+      "family": "Pavimento",
+      "triangles": 4400,
+      "primitives": 1,
+      "mesh": 36,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          -4.2000041007995605,
+          -0.03000045195221901,
+          -6.000000476837158
+        ],
+        "max": [
+          1.79999577999115,
+          -9.313225746154785e-10,
+          2.9802322387695312e-8
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 37,
+      "name": "Pavimento | sector (1, 3)",
+      "family": "Pavimento",
+      "triangles": 3608,
+      "primitives": 1,
+      "mesh": 37,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          -9.600004196166992,
+          -0.030000906437635422,
+          -12
+        ],
+        "max": [
+          -4.200003623962402,
+          -4.5355409383773804e-7,
+          -6
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 38,
+      "name": "Pavimento | sector (2, 0)",
+      "family": "Pavimento",
+      "triangles": 4400,
+      "primitives": 1,
+      "mesh": 38,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          -4.2000041007995605,
+          -0.029999546706676483,
+          5.999999523162842
+        ],
+        "max": [
+          1.79999577999115,
+          9.052455425262451e-7,
+          11.999999046325684
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 39,
+      "name": "Pavimento | sector (1, 1)",
+      "family": "Pavimento",
+      "triangles": 3520,
+      "primitives": 1,
+      "mesh": 39,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          -9.000003814697266,
+          -0.029999999329447746,
+          -2.9802322387695312e-8
+        ],
+        "max": [
+          -4.200003623962402,
+          4.5262277126312256e-7,
+          6
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 40,
+      "name": "Pavimento | sector (4, 3)",
+      "family": "Pavimento",
+      "triangles": 880,
+      "primitives": 1,
+      "mesh": 40,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          7.799995422363281,
+          -0.030000906437635422,
+          -12
+        ],
+        "max": [
+          8.999996185302734,
+          -4.5355409383773804e-7,
+          -6
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 41,
+      "name": "Pavimento | sector (2, 4)",
+      "family": "Pavimento",
+      "triangles": 1760,
+      "primitives": 1,
+      "mesh": 41,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          -4.2000041007995605,
+          -0.030001085251569748,
+          -14.40000057220459
+        ],
+        "max": [
+          1.79999577999115,
+          -9.061768651008606e-7,
+          -12
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 42,
+      "name": "Pavimento | sector (3, 4)",
+      "family": "Pavimento",
+      "triangles": 1760,
+      "primitives": 1,
+      "mesh": 42,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          1.7999958992004395,
+          -0.030001085251569748,
+          -14.40000057220459
+        ],
+        "max": [
+          7.7999958992004395,
+          -9.061768651008606e-7,
+          -12
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 43,
+      "name": "Pavimento | sector (1, 0)",
+      "family": "Pavimento",
+      "triangles": 1936,
+      "primitives": 1,
+      "mesh": 43,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          -9.000003814697266,
+          -0.029999546706676483,
+          5.999999523162842
+        ],
+        "max": [
+          -4.200003623962402,
+          9.052455425262451e-7,
+          11.999999046325684
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 44,
+      "name": "Pavimento | sector (4, 1)",
+      "family": "Pavimento",
+      "triangles": 880,
+      "primitives": 1,
+      "mesh": 44,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          7.799995422363281,
+          -0.029999999329447746,
+          -2.9802322387695312e-8
+        ],
+        "max": [
+          8.999996185302734,
+          4.5262277126312256e-7,
+          6
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 45,
+      "name": "Pavimento | sector (4, 4)",
+      "family": "Pavimento",
+      "triangles": 352,
+      "primitives": 1,
+      "mesh": 45,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          7.799995422363281,
+          -0.030001085251569748,
+          -14.40000057220459
+        ],
+        "max": [
+          8.999996185302734,
+          -9.061768651008606e-7,
+          -12
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 46,
+      "name": "Pavimento | sector (4, 2)",
+      "family": "Pavimento",
+      "triangles": 880,
+      "primitives": 1,
+      "mesh": 46,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          7.799995422363281,
+          -0.03000045195221901,
+          -6.000000476837158
+        ],
+        "max": [
+          8.999996185302734,
+          -9.313225746154785e-10,
+          2.9802322387695312e-8
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 47,
+      "name": "Pavimento | sector (0, 2)",
+      "family": "Pavimento",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 47,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          -13.600004196166992,
+          -0.030000021681189537,
+          -0.6000000238418579
+        ],
+        "max": [
+          -13.000003814697266,
+          2.2351741790771484e-8,
+          -2.9802322387695312e-8
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 48,
+      "name": "Pavimento | sector (4, 0)",
+      "family": "Pavimento",
+      "triangles": 352,
+      "primitives": 1,
+      "mesh": 48,
+      "materials": [
+        "PBR | Piedra negra pulida"
+      ],
+      "bounds": {
+        "min": [
+          7.799995422363281,
+          -0.029999546706676483,
+          5.999999523162842
+        ],
+        "max": [
+          8.999996185302734,
+          6.332993507385254e-7,
+          8.399999618530273
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 49,
+      "name": "Mortero bajo pavimento",
+      "family": "Mortero",
+      "triangles": 12,
+      "primitives": 1,
+      "mesh": 49,
+      "materials": [
+        "PBR | Juntas y cavidades"
+      ],
+      "bounds": {
+        "min": [
+          -13.75,
+          -0.05100000090897083,
+          -14.700000047683716
+        ],
+        "max": [
+          9.75,
+          -0.03100000135600567,
+          12.299999952316284
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 50,
+      "name": "Relieves y celosias | sector (1, 3)",
+      "family": "Relieves y celosias",
+      "triangles": 21775,
+      "primitives": 1,
+      "mesh": 50,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -9.378143310546875,
+          0.10798582434654236,
+          -6.062160491943359
+        ],
+        "max": [
+          -9.318142890930176,
+          3.7079858779907227,
+          -4.737839698791504
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": false,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 51,
+      "name": "Relieves y celosias | sector (2, 4)",
+      "family": "Relieves y celosias",
+      "triangles": 2270,
+      "primitives": 1,
+      "mesh": 51,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -2.4000000953674316,
+          5.484549522399902,
+          -12.909658432006836
+        ],
+        "max": [
+          -0.8999998569488525,
+          5.784549713134766,
+          -12.80965805053711
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 52,
+      "name": "Relieves y celosias | sector (1, 2)",
+      "family": "Relieves y celosias",
+      "triangles": 6356,
+      "primitives": 1,
+      "mesh": 52,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -9.2379732131958,
+          2.0521368980407715,
+          -2.250580310821533
+        ],
+        "max": [
+          -9.137972831726074,
+          2.352137565612793,
+          1.9494197368621826
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 53,
+      "name": "Relieves y celosias | sector (5, 4)",
+      "family": "Relieves y celosias",
+      "triangles": 6810,
+      "primitives": 1,
+      "mesh": 53,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          9.139056205749512,
+          2.052136182785034,
+          -12.900701522827148
+        ],
+        "max": [
+          9.239056587219238,
+          2.3521368503570557,
+          -8.400701522827148
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 54,
+      "name": "Relieves y celosias | sector (5, 3)",
+      "family": "Relieves y celosias",
+      "triangles": 6810,
+      "primitives": 1,
+      "mesh": 54,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          9.139056205749512,
+          2.0521364212036133,
+          -7.650580406188965
+        ],
+        "max": [
+          9.239056587219238,
+          2.3521370887756348,
+          -3.1505801677703857
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": false,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 55,
+      "name": "Relieves y celosias | sector (1, 4)",
+      "family": "Relieves y celosias",
+      "triangles": 6810,
+      "primitives": 1,
+      "mesh": 55,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -9.2379732131958,
+          2.052136182785034,
+          -12.900701522827148
+        ],
+        "max": [
+          -9.137972831726074,
+          2.3521368503570557,
+          -8.400701522827148
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 56,
+      "name": "Relieves y celosias | sector (3, 4)",
+      "family": "Relieves y celosias",
+      "triangles": 4994,
+      "primitives": 1,
+      "mesh": 56,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -0.8999999165534973,
+          5.484549522399902,
+          -12.909658432006836
+        ],
+        "max": [
+          2.3999998569488525,
+          5.784549713134766,
+          -12.80965805053711
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 57,
+      "name": "Relieves y celosias | sector (5, 2)",
+      "family": "Relieves y celosias",
+      "triangles": 6356,
+      "primitives": 1,
+      "mesh": 57,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          9.139056205749512,
+          2.0521368980407715,
+          -2.250580310821533
+        ],
+        "max": [
+          9.239056587219238,
+          2.352137565612793,
+          1.9494197368621826
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 58,
+      "name": "Relieves y celosias | sector (5, 1)",
+      "family": "Relieves y celosias",
+      "triangles": 454,
+      "primitives": 1,
+      "mesh": 58,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          9.139056205749512,
+          2.0521373748779297,
+          1.9494198560714722
+        ],
+        "max": [
+          9.239056587219238,
+          2.352137565612793,
+          2.249419927597046
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 59,
+      "name": "Relieves y celosias | sector (1, 1)",
+      "family": "Relieves y celosias",
+      "triangles": 454,
+      "primitives": 1,
+      "mesh": 59,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -9.2379732131958,
+          2.0521373748779297,
+          1.9494198560714722
+        ],
+        "max": [
+          -9.137972831726074,
+          2.352137565612793,
+          2.249419927597046
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 60,
+      "name": "Relieves y celosias | sector (0, 2)",
+      "family": "Relieves y celosias",
+      "triangles": 454,
+      "primitives": 1,
+      "mesh": 60,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -15.555835723876953,
+          1.9738878011703491,
+          -0.2445719689130783
+        ],
+        "max": [
+          -15.455835342407227,
+          2.273887872695923,
+          0.05542804300785065
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": false,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 61,
+      "name": "Beam",
+      "family": "Arquitectura restante",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 61,
+      "materials": [
+        "PBR | Nogal oscuro"
+      ],
+      "bounds": {
+        "min": [
+          -1.5,
+          0.5903140306472778,
+          -10.420000076293945
+        ],
+        "max": [
+          1.5,
+          0.6599992513656616,
+          -9.979999542236328
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 62,
+      "name": "Foot_5",
+      "family": "Mesa y soportes",
+      "triangles": 300,
+      "primitives": 1,
+      "mesh": 62,
+      "materials": [
+        "PBR | Nogal oscuro"
+      ],
+      "bounds": {
+        "min": [
+          -2.0999999046325684,
+          -7.77091031523014e-7,
+          -10.500000953674316
+        ],
+        "max": [
+          -1.5,
+          0.6599991917610168,
+          -9.90000057220459
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 63,
+      "name": "Table_Slab",
+      "family": "Mesa y soportes",
+      "triangles": 253,
+      "primitives": 1,
+      "mesh": 63,
+      "materials": [
+        "PBR | Raiz de nogal"
+      ],
+      "bounds": {
+        "min": [
+          -2.5,
+          0.6599993109703064,
+          -11.19997501373291
+        ],
+        "max": [
+          2.5,
+          0.7399992942810059,
+          -9.19997501373291
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 64,
+      "name": "Foot_4",
+      "family": "Mesa y soportes",
+      "triangles": 300,
+      "primitives": 1,
+      "mesh": 64,
+      "materials": [
+        "PBR | Nogal oscuro"
+      ],
+      "bounds": {
+        "min": [
+          1.5,
+          -7.77091031523014e-7,
+          -10.500000953674316
+        ],
+        "max": [
+          2.0999999046325684,
+          0.6599991917610168,
+          -9.90000057220459
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 65,
+      "name": "Sillon 01 | frente",
+      "family": "Sillones",
+      "triangles": 6008,
+      "primitives": 6,
+      "mesh": 65,
+      "materials": [
+        "Walnut | quarter sawn",
+        "Leather | oxblood",
+        "Burl walnut | table rim",
+        "Brass | polished highlights",
+        "Bronze | patinated",
+        "Recesses | charcoal"
+      ],
+      "bounds": {
+        "min": [
+          0.6240095552582239,
+          0.00007839915603736862,
+          -9.085977516469132
+        ],
+        "max": [
+          1.8187149240090403,
+          1.5255044275426144,
+          -7.874614428098446
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 66,
+      "name": "Sillon 02 | fondo",
+      "family": "Sillones",
+      "triangles": 6008,
+      "primitives": 6,
+      "mesh": 65,
+      "materials": [
+        "Walnut | quarter sawn",
+        "Leather | oxblood",
+        "Burl walnut | table rim",
+        "Brass | polished highlights",
+        "Bronze | patinated",
+        "Recesses | charcoal"
+      ],
+      "bounds": {
+        "min": [
+          -0.7072157515233357,
+          0.00007839915603736862,
+          -12.134030477375987
+        ],
+        "max": [
+          0.23607010138299245,
+          1.5255044275426144,
+          -11.305715292121462
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 67,
+      "name": "Sillon 03 | izquierda",
+      "family": "Sillones",
+      "triangles": 6008,
+      "primitives": 6,
+      "mesh": 65,
+      "materials": [
+        "Walnut | quarter sawn",
+        "Leather | oxblood",
+        "Burl walnut | table rim",
+        "Brass | polished highlights",
+        "Bronze | patinated",
+        "Recesses | charcoal"
+      ],
+      "bounds": {
+        "min": [
+          -3.534030209463924,
+          0.00007839915603736862,
+          -10.671955105923944
+        ],
+        "max": [
+          -2.705714806966493,
+          1.5255044275426144,
+          -9.728669028833743
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 68,
+      "name": "Sillon 04 | derecha",
+      "family": "Sillones",
+      "triangles": 6008,
+      "primitives": 6,
+      "mesh": 65,
+      "materials": [
+        "Walnut | quarter sawn",
+        "Leather | oxblood",
+        "Burl walnut | table rim",
+        "Brass | polished highlights",
+        "Bronze | patinated",
+        "Recesses | charcoal"
+      ],
+      "bounds": {
+        "min": [
+          2.7057147970598425,
+          0.00007839915603736862,
+          -10.671330593380885
+        ],
+        "max": [
+          3.534030199557273,
+          1.5255044275426144,
+          -9.728044526865748
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 69,
+      "name": "Mesa | campo de cuero",
+      "family": "Mesa y soportes",
+      "triangles": 36,
+      "primitives": 1,
+      "mesh": 66,
+      "materials": [
+        "PBR | Cuero oscuro"
+      ],
+      "bounds": {
+        "min": [
+          -2.259999990463257,
+          0.7399999918416142,
+          -10.98499983549118
+        ],
+        "max": [
+          2.259999990463257,
+          0.7519999919459224,
+          -9.414999783039093
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 70,
+      "name": "Mesa | filete de laton",
+      "family": "Mesa y soportes",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 67,
+      "materials": [
+        "PBR | Laton envejecido"
+      ],
+      "bounds": {
+        "min": [
+          -2.434999942779541,
+          0.7510000290349126,
+          -9.2409996567294
+        ],
+        "max": [
+          2.434999942779541,
+          0.7630000291392207,
+          -9.228999656625092
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 71,
+      "name": "Mesa | faldon tallado",
+      "family": "Mesa y soportes",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 68,
+      "materials": [
+        "PBR | Nogal oscuro"
+      ],
+      "bounds": {
+        "min": [
+          -2.375,
+          0.5339999832212925,
+          -9.266999658197165
+        ],
+        "max": [
+          2.375,
+          0.6539999805390835,
+          -9.202999655157328
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 72,
+      "name": "Mesa | filete de laton.001",
+      "family": "Mesa y soportes",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 69,
+      "materials": [
+        "PBR | Laton envejecido"
+      ],
+      "bounds": {
+        "min": [
+          -2.434999942779541,
+          0.7510000290349126,
+          -11.170999961905181
+        ],
+        "max": [
+          2.434999942779541,
+          0.7630000291392207,
+          -11.158999961800873
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 73,
+      "name": "Mesa | faldon tallado.001",
+      "family": "Mesa y soportes",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 70,
+      "materials": [
+        "PBR | Nogal oscuro"
+      ],
+      "bounds": {
+        "min": [
+          -2.375,
+          0.5339999832212925,
+          -11.196999963372946
+        ],
+        "max": [
+          2.375,
+          0.6539999805390835,
+          -11.132999960333109
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 74,
+      "name": "Mesa | filete transversal",
+      "family": "Mesa y soportes",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 71,
+      "materials": [
+        "PBR | Laton envejecido"
+      ],
+      "bounds": {
+        "min": [
+          -2.45600004773587,
+          0.7510000290349126,
+          -11.169999837875366
+        ],
+        "max": [
+          -2.4440000476315618,
+          0.7630000291392207,
+          -9.229999780654907
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 75,
+      "name": "Mesa | filete transversal.001",
+      "family": "Mesa y soportes",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 72,
+      "materials": [
+        "PBR | Laton envejecido"
+      ],
+      "bounds": {
+        "min": [
+          2.4440000476315618,
+          0.7510000290349126,
+          -11.169999837875366
+        ],
+        "max": [
+          2.45600004773587,
+          0.7630000291392207,
+          -9.229999780654907
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 76,
+      "name": "Mesa | remate del soporte",
+      "family": "Mesa y soportes",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 73,
+      "materials": [
+        "PBR | Bronce patinado"
+      ],
+      "bounds": {
+        "min": [
+          -2.179999977350235,
+          0.10500000044703484,
+          -10.629999816417694
+        ],
+        "max": [
+          -1.879999965429306,
+          0.17500000074505806,
+          -9.76999980211258
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 77,
+      "name": "Mesa | remate del soporte.001",
+      "family": "Mesa y soportes",
+      "triangles": 44,
+      "primitives": 1,
+      "mesh": 74,
+      "materials": [
+        "PBR | Bronce patinado"
+      ],
+      "bounds": {
+        "min": [
+          1.879999965429306,
+          0.10500000044703484,
+          -10.629999816417694
+        ],
+        "max": [
+          2.179999977350235,
+          0.17500000074505806,
+          -9.76999980211258
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 78,
+      "name": "Base_7",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 404,
+      "primitives": 1,
+      "mesh": 75,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          2.8949661254882812,
+          1.1466156244277954,
+          -12.171298027038574
+        ],
+        "max": [
+          3.1032934188842773,
+          1.2966643571853638,
+          -11.962969779968262
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 79,
+      "name": "Base_2",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 58,
+      "primitives": 1,
+      "mesh": 76,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          2.7920448780059814,
+          1.6000003814697266,
+          6.590094566345215
+        ],
+        "max": [
+          3.1955244541168213,
+          1.6650949716567993,
+          6.989808082580566
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 80,
+      "name": "Vase_Big_2",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 1720,
+      "primitives": 1,
+      "mesh": 77,
+      "materials": [
+        "PBR | Bronce patinado"
+      ],
+      "bounds": {
+        "min": [
+          -7.749894142150879,
+          0.8500639200210571,
+          -7.749889850616455
+        ],
+        "max": [
+          -7.250114440917969,
+          1.650147557258606,
+          -7.250110626220703
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 81,
+      "name": "Stand",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 60,
+      "primitives": 1,
+      "mesh": 78,
+      "materials": [
+        "PBR | Bronce patinado"
+      ],
+      "bounds": {
+        "min": [
+          6.554470539093018,
+          -6.767829177078966e-7,
+          -8.964262008666992
+        ],
+        "max": [
+          7.094470500946045,
+          1.4603866338729858,
+          -8.424261093139648
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 82,
+      "name": "Base_5",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 140,
+      "primitives": 1,
+      "mesh": 79,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -7.794529438018799,
+          -5.884801339561818e-7,
+          -7.794525146484375
+        ],
+        "max": [
+          -7.205479145050049,
+          0.8499994277954102,
+          -7.205474853515625
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 83,
+      "name": "Postament",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 1478,
+      "primitives": 1,
+      "mesh": 80,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -3.2400407791137695,
+          -0.0003660802321974188,
+          -12.425110816955566
+        ],
+        "max": [
+          -2.7600252628326416,
+          1.1499990224838257,
+          -11.944855690002441
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 84,
+      "name": "Zylinder_2",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 144,
+      "primitives": 1,
+      "mesh": 81,
+      "materials": [
+        "PBR | Bronce patinado"
+      ],
+      "bounds": {
+        "min": [
+          6.8119707107543945,
+          1.452797293663025,
+          -8.706761360168457
+        ],
+        "max": [
+          6.836970329284668,
+          1.702797293663025,
+          -8.681761741638184
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 85,
+      "name": "Zylinder_1",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 144,
+      "primitives": 1,
+      "mesh": 82,
+      "materials": [
+        "PBR | Bronce patinado"
+      ],
+      "bounds": {
+        "min": [
+          6.8094706535339355,
+          1.6877973079681396,
+          -8.81926155090332
+        ],
+        "max": [
+          6.839470386505127,
+          1.7177972793579102,
+          -8.56926155090332
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 86,
+      "name": "Sphere",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 1017,
+      "primitives": 1,
+      "mesh": 83,
+      "materials": [
+        "PBR | Bronce patinado"
+      ],
+      "bounds": {
+        "min": [
+          -3.15415358543396,
+          1.6556804180145264,
+          6.63501501083374
+        ],
+        "max": [
+          -2.845088243484497,
+          1.7619301080703735,
+          6.944080829620361
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 87,
+      "name": "Foot",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 248,
+      "primitives": 1,
+      "mesh": 84,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -3.287710428237915,
+          4.985951136404765e-7,
+          6.572962284088135
+        ],
+        "max": [
+          -2.7122809886932373,
+          1.6000003814697266,
+          7.018219947814941
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 88,
+      "name": "Postament_2",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 1478,
+      "primitives": 1,
+      "mesh": 85,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          2.7589614391326904,
+          -0.00036586335045285523,
+          -12.307332992553711
+        ],
+        "max": [
+          3.239330530166626,
+          1.1499990224838257,
+          -11.826977729797363
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 89,
+      "name": "Foot_2",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 248,
+      "primitives": 1,
+      "mesh": 86,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          2.712285280227661,
+          4.985951136404765e-7,
+          6.572962284088135
+        ],
+        "max": [
+          3.287714719772339,
+          1.6000003814697266,
+          7.018219947814941
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 90,
+      "name": "Base",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 58,
+      "primitives": 1,
+      "mesh": 87,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -3.2079508304595947,
+          1.6000003814697266,
+          6.590094566345215
+        ],
+        "max": [
+          -2.804471254348755,
+          1.6650949716567993,
+          6.989808082580566
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 91,
+      "name": "Sphere_2",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 1017,
+      "primitives": 1,
+      "mesh": 88,
+      "materials": [
+        "PBR | Bronce patinado"
+      ],
+      "bounds": {
+        "min": [
+          2.845842123031616,
+          1.6556804180145264,
+          6.63501501083374
+        ],
+        "max": [
+          3.154907464981079,
+          1.7619301080703735,
+          6.944080829620361
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 92,
+      "name": "Base_6",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 404,
+      "primitives": 1,
+      "mesh": 89,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -3.104163646697998,
+          1.1466156244277954,
+          -12.289093971252441
+        ],
+        "max": [
+          -2.895836353302002,
+          1.2966643571853638,
+          -12.080765724182129
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 93,
+      "name": "Vase_Big",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 1720,
+      "primitives": 1,
+      "mesh": 90,
+      "materials": [
+        "PBR | Bronce patinado"
+      ],
+      "bounds": {
+        "min": [
+          -7.754291534423828,
+          0.8500221967697144,
+          -3.54988956451416
+        ],
+        "max": [
+          -7.254512786865234,
+          1.650154948234558,
+          -3.050110340118408
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": false,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 94,
+      "name": "Base_4",
+      "family": "Pedestales y ornamentos (clasificacion por confirmar visualmente)",
+      "triangles": 140,
+      "primitives": 1,
+      "mesh": 91,
+      "materials": [
+        "PBR | Caliza aristas claras"
+      ],
+      "bounds": {
+        "min": [
+          -7.798927307128906,
+          -2.606545876915334e-7,
+          -3.59452486038208
+        ],
+        "max": [
+          -7.209877014160156,
+          0.849999725818634,
+          -3.0054750442504883
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": false,
+        "initial<->p1": false,
+        "initial<->p2": true,
+        "p1<->p2": false
+      }
+    },
+    {
+      "node": 95,
+      "name": "Cut crystal decanter",
+      "family": "Cristaleria original sustituida",
+      "triangles": 768,
+      "primitives": 1,
+      "mesh": 92,
+      "materials": [
+        "Crystal"
+      ],
+      "bounds": {
+        "min": [
+          0.8483262345314024,
+          0.7519999742507935,
+          -10.407083125400543
+        ],
+        "max": [
+          1.0427262499809267,
+          1.0615999917030337,
+          -10.21268310995102
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 96,
+      "name": "Crystal stopper",
+      "family": "Cristaleria original sustituida",
+      "triangles": 256,
+      "primitives": 1,
+      "mesh": 93,
+      "materials": [
+        "Crystal"
+      ],
+      "bounds": {
+        "min": [
+          0.9023262411355972,
+          1.0435999818146229,
+          -10.353083118796349
+        ],
+        "max": [
+          0.9887262433767319,
+          1.137199979275465,
+          -10.266683116555214
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 97,
+      "name": "Crystal tumbler",
+      "family": "Cristaleria original sustituida",
+      "triangles": 480,
+      "primitives": 1,
+      "mesh": 94,
+      "materials": [
+        "Crystal"
+      ],
+      "bounds": {
+        "min": [
+          0.6280061436367035,
+          0.7519999742507935,
+          -10.123402552537918
+        ],
+        "max": [
+          0.7446461486148834,
+          0.8815999845504763,
+          -10.006762547559738
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 98,
+      "name": "Crystal tumbler.001",
+      "family": "Cristaleria original sustituida",
+      "triangles": 480,
+      "primitives": 1,
+      "mesh": 95,
+      "materials": [
+        "Crystal"
+      ],
+      "bounds": {
+        "min": [
+          1.1104062033367157,
+          0.7519999742507935,
+          -10.123402552537918
+        ],
+        "max": [
+          1.2270462083148956,
+          0.8815999845504763,
+          -10.006762547559738
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 99,
+      "name": "Leather folio",
+      "family": "Carpeta y papel",
+      "triangles": 167,
+      "primitives": 1,
+      "mesh": 96,
+      "materials": [
+        "Walnut | quarter sawn"
+      ],
+      "bounds": {
+        "min": [
+          -0.47573386030197184,
+          0.7523600131136179,
+          -10.866823975896835
+        ],
+        "max": [
+          0.04266618089675944,
+          0.7718000143903494,
+          -10.514023955011368
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 100,
+      "name": "Paper on folio",
+      "family": "Carpeta y papel",
+      "triangles": 164,
+      "primitives": 1,
+      "mesh": 97,
+      "materials": [
+        "Ivory paper"
+      ],
+      "bounds": {
+        "min": [
+          -0.4505338404178616,
+          0.7735999948790669,
+          -10.848823970890045
+        ],
+        "max": [
+          0.017466161012649195,
+          0.7779199950882792,
+          -10.532023960018158
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 101,
+      "name": "Tyrell_Corporation_Pyramid",
+      "family": "Exterior original combinado",
+      "triangles": 39654,
+      "primitives": 1,
+      "mesh": 98,
+      "materials": [
+        "PBR | Hormigon exterior"
+      ],
+      "bounds": {
+        "min": [
+          -141.41505432128906,
+          -24.21087074279785,
+          -356.90655517578125
+        ],
+        "max": [
+          42.94364547729492,
+          37.59683609008789,
+          -172.65457153320312
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 102,
+      "name": "Cielo | fondo a 900 m",
+      "family": "Cielo y sol originales",
+      "triangles": 2,
+      "primitives": 1,
+      "mesh": 99,
+      "materials": [
+        "Cielo | nubes ambar"
+      ],
+      "bounds": {
+        "min": [
+          -500,
+          -240,
+          -900
+        ],
+        "max": [
+          500,
+          260,
+          -900
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": true,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "node": 103,
+      "name": "Sol | disco a 650 m",
+      "family": "Cielo y sol originales",
+      "triangles": 64,
+      "primitives": 1,
+      "mesh": 100,
+      "materials": [
+        "Sol | disco emisivo"
+      ],
+      "bounds": {
+        "min": [
+          -5.0000001192092896,
+          38.99999988079071,
+          -650
+        ],
+        "max": [
+          9.00000011920929,
+          53.00000011920929,
+          -650
+        ]
+      },
+      "potentialVisibility": {
+        "initial": true,
+        "p1": true,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "name": "Llamarada 1 (envolvente por defecto)",
+      "family": "Llamaradas",
+      "triangles": 0,
+      "primitives": 0,
+      "bounds": {
+        "min": [
+          361,
+          -11,
+          -499
+        ],
+        "max": [
+          439,
+          136,
+          -421
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": false,
+        "p2": true,
+        "initial<->p1": false,
+        "initial<->p2": true,
+        "p1<->p2": true
+      }
+    },
+    {
+      "name": "Llamarada 2 (envolvente por defecto)",
+      "family": "Llamaradas",
+      "triangles": 0,
+      "primitives": 0,
+      "bounds": {
+        "min": [
+          -719,
+          -15,
+          -739
+        ],
+        "max": [
+          -641,
+          132,
+          -661
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": true,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": false,
+        "p1<->p2": true
+      }
+    },
+    {
+      "name": "Llamarada 3 (envolvente por defecto)",
+      "family": "Llamaradas",
+      "triangles": 0,
+      "primitives": 0,
+      "bounds": {
+        "min": [
+          -939,
+          -24,
+          -869
+        ],
+        "max": [
+          -861,
+          123,
+          -791
+        ]
+      },
+      "potentialVisibility": {
+        "initial": false,
+        "p1": true,
+        "p2": false,
+        "initial<->p1": true,
+        "initial<->p2": false,
+        "p1<->p2": true
+      }
+    }
+  ]
+}
