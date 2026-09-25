@@ -29,7 +29,9 @@ const previousAdjustments = {
 }
 const adjustments = { ...previousAdjustments,
     'Extra baja': { ...previousAdjustments['Extra baja'], pixelRatio: .5 },
-    Baja: { ...previousAdjustments.Baja, pixelRatio: .6 }
+    Baja: { ...previousAdjustments.Baja, pixelRatio: .6 },
+    Alta: { ...previousAdjustments.Alta, pixelRatio: 1 },
+    UltraAlta: { ...previousAdjustments.UltraAlta, pixelRatio: 1.5 }
 }
 // R04 trades the planar mirror and global bloom for more pixels. Keep R03 for A/B.
 export function qualityEffects(quality, mode = 'optimized', device = 'desktop') {

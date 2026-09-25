@@ -37,6 +37,7 @@ export default class TyrellLook {
         root.traverse(object => {
             if (!object.isMesh) return
             for (const mat of [].concat(object.material || [])) if (!this.original.has(mat)) {
+                if (mat.userData.tyrellGlass) continue // The Cristalería controls own these materials.
                 this.original.set(mat, { color: mat.color?.clone(), normalScale: mat.normalScale?.clone(),
                     roughness: mat.roughness, metalness: mat.metalness, transmission: mat.transmission, thickness: mat.thickness })
             }

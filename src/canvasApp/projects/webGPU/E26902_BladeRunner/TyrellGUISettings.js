@@ -1,5 +1,8 @@
+import { GLASSWARE_CONTROLS } from './TyrellGlasswareSettings'
+
 // Paths are the public configuration API; labels bind to the existing UI actions.
 export const GUI_BINDINGS = [
+    ...GLASSWARE_CONTROLS.map(({ key, label }) => [`glassware.${key}`, label]),
     ["viewer.deviceMode", "Modo de dispositivo"],
     ["viewer.quality", "Calidad"],
     ["viewer.referenceFrameEnabled", "Encuadre 2,4:1"],
@@ -85,6 +88,9 @@ export function flattenSettings(value, prefix = '', result = {}) {
 export function prepareGUISettings(root, settings, cameraStates) {
     const values = flattenSettings(settings)
     // Optional additions to schema 1 preserve previously saved configurations.
+    for (const { key, value } of GLASSWARE_CONTROLS) {
+        if (!(`glassware.${key}` in values)) values[`glassware.${key}`] = value
+    }
     if (!('viewer.deviceMode' in values)) values['viewer.deviceMode'] = 'auto'
     for (const [added, original] of [['extraLowQualityEnabled', 'lowQualityEnabled'], ['ultraHighQualityEnabled', 'highQualityEnabled']]) {
         const key = `city.buildings.orientationColor.${added}`

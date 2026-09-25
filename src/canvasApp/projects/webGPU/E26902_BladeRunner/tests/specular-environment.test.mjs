@@ -70,3 +70,37 @@ test('p1 capture cadence preserves preferences, restores immediately and registe
     assert.equal(captures, 5); assert.equal(vk.visible, true)
     env.dispose(); material.dispose()
 })
+
+test('Crystal highlight cards stay confined to the glass probe and are hidden after capture failure', () => {
+    const scene = new THREE.Scene(), root = new THREE.Group(); scene.add(root)
+    const glass = new THREE.MeshPhysicalMaterial({ envMapIntensity: .8 })
+    glass.userData = { tyrellGlass: true, glassEnvironmentIntensity: 1.15 }
+    const metal = new THREE.MeshStandardMaterial(); metal.name = 'Bronze'
+    const geometry = new THREE.BoxGeometry()
+    const bottle = new THREE.Mesh(geometry, glass); bottle.name = 'Licorera'
+    root.add(bottle, new THREE.Mesh(geometry, metal))
+    const floor = { materials: new Map(), updates: { invalidate() {} } }
+    const env = new m.exports.default(scene, root, floor)
+    let glassCaptures = 0
+    env.camera.update = () => assert.equal(env.glassCards.visible, false)
+    env.glassCamera.update = () => {
+        glassCaptures++
+        assert.equal(env.glassCards.visible, true)
+        assert.equal(bottle.visible, false)
+    }
+    env.setEnabled(true); env.update({}, 0)
+    assert.equal(glass.envMap, env.glassTarget.texture)
+    assert.equal(metal.envMap, env.target.texture)
+    assert.equal(glassCaptures, 1)
+    assert.equal(env.glassCards.visible, false)
+    assert.equal(bottle.visible, true)
+    env.glassCamera.update = () => { throw new Error('glass probe failed') }
+    env.invalidate(); assert.throws(() => env.update({}, 1), /glass probe failed/)
+    assert.equal(env.glassCards.visible, false)
+    assert.equal(bottle.visible, true)
+    env.dispose()
+    assert.equal(glass.envMap, null)
+    assert.equal(glass.envMapIntensity, .8)
+    assert.equal(env.glassCards.parent, null)
+    glass.dispose(); metal.dispose(); geometry.dispose()
+})

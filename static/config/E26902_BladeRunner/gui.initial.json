@@ -38,6 +38,19 @@
     "studioLightEnabled": false,
     "blackStoneNormalEnabled": true
   },
+  "glassware": {
+    "color": "#f4efdf",
+    "transmission": 0.985,
+    "roughness": 0.065,
+    "ior": 1.93,
+    "thicknessScale": 3.25,
+    "attenuationColor": "#d4a268",
+    "attenuationDistance": 0.04,
+    "clearcoat": 0.61,
+    "clearcoatRoughness": 0.035,
+    "imperfections": 1,
+    "bottleHeightScale": 1.3
+  },
   "lighting": {
     "profile": "tyrell-light-v2",
     "contribution": "all",

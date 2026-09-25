@@ -1,8 +1,10 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { qualityBudget, qualityEffects, QUALITY_LEVELS, bloomScale } from '../TyrellQuality.js'
-test('Alta starts with the former startup budget measured near 58 FPS; historical reference stays available', () => {
-    assert.deepEqual(qualityBudget('Alta'), qualityBudget('Baja', 'baseline'))
+test('Alta renders native CSS resolution and UltraAlta supersamples; historical reference stays available', () => {
+    assert.equal(qualityBudget('Alta').pixelRatio, 1)
+    assert.equal(qualityBudget('UltraAlta').pixelRatio, 1.5)
+    assert.equal(qualityBudget('Alta', 'previous').pixelRatio, .75)
     assert.equal(bloomScale('Alta'), .25)
     assert.equal(bloomScale('Alta', 'baseline'), .5)
     assert.deepEqual(qualityBudget('Alta', 'baseline'), { pixelRatio: 1.5, shadowSize: 2048, volumeSteps: 64, reflectionScale: .75 })
@@ -39,7 +41,7 @@ test('Low tiers and every mobile tier trade bloom and planar reflections for res
         assert.equal(qualityEffects(level, 'optimized', device).floorReflection, !trade)
         assert.equal(qualityEffects(level, 'previous', device).bloom, true)
         const old = qualityBudget(level, 'previous', device), current = qualityBudget(level, 'optimized', device)
-        if (trade && level !== 'UltraAlta') assert.ok(current.pixelRatio > old.pixelRatio)
+        if (trade && level !== 'UltraAlta' || device === 'desktop' && ['Alta', 'UltraAlta'].includes(level)) assert.ok(current.pixelRatio > old.pixelRatio)
         else assert.equal(current.pixelRatio, old.pixelRatio)
         assert.equal(current.shadowSize, old.shadowSize)
         assert.equal(current.volumeSteps, old.volumeSteps)

@@ -31,6 +31,13 @@ export const TYRELL = {
         { position: [7.7, 3.8, -7.2], target: [2, 3.2, -8], width: 2, height: 3 }
     ],
     quality: 'Baja',
+    // Initial score plus one check at settled p1 with the visor open; no continuous adaptation.
+    gpuCapacity: {
+        timeoutMs: 10000,
+        warmupRuns: 3,
+        sampleRuns: 12,
+        settleMs: 1000
+    },
     shadows: {
         camera: { left: -14, right: 14, top: 10, bottom: -4, near: 50, far: 115 },
         bias: -0.00015, normalBias: 0.025, radius: 1.5, glassOpacity: 0.22

@@ -15,45 +15,74 @@ export function capacityResult(samples, method) {
         note: 'Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only.' }
 }
 
-export async function measureGPUCapacity(renderer, cancelled = () => false) {
+export async function measureGPUCapacity(renderer, cancelled = () => false, { timeoutMs = 10000, warmupRuns = 3, sampleRuns = 12 } = {}) {
     const profiler = new GPUProfiler({ renderer, ringSize: 2 })
-    let expired = false, timer
+    let expired = false, timer, best = capacityResult([], 'unavailable'), fallbackReason
+    const interrupted = () => cancelled() ? 'cancelled' : typeof document !== 'undefined' && document.hidden ? 'hidden-tab' : null
+    const finish = reason => ({ ...best, ...(reason ? { reason } : {}), ...(fallbackReason ? { fallbackReason } : {}) })
     const run = async () => {
         try {
-            profiler.init()
-            const device = profiler.device
-            const method = profiler.supported ? 'gpu-timestamp' : 'queue-wall-time'
-            const times = [], start = performance.now()
-            if (!profiler.supported) profiler.bench = profiler.createBenchPipeline(CAPACITY_WORKLOAD.workgroupSize)
-            for (let i = 0; i < 15 && !expired && !cancelled(); i++) {
-                if (document.hidden) return { ...capacityResult([], method), reason: 'hidden-tab' }
-                let ms
-                if (profiler.supported) ms = await profiler.benchmarkCompute(CAPACITY_WORKLOAD) / 1e6
-                else {
-                    const { pipeline, bindGroup, paramsBuffer } = profiler.bench
-                    device.queue.writeBuffer(paramsBuffer, 0, new Uint32Array([CAPACITY_WORKLOAD.iterations]))
-                    const encoder = device.createCommandEncoder()
-                    const pass = encoder.beginComputePass()
-                    pass.setPipeline(pipeline); pass.setBindGroup(0, bindGroup)
-                    pass.dispatchWorkgroups(CAPACITY_WORKLOAD.workgroups); pass.end()
-                    const before = performance.now()
-                    device.queue.submit([encoder.finish()])
-                    await device.queue.onSubmittedWorkDone()
-                    ms = performance.now() - before
-                }
-                if (document.hidden) return { ...capacityResult([], method), reason: 'hidden-tab' }
-                if (i >= 3) times.push(ms)
-                if (performance.now() - start > 1500) break
+            try { profiler.init() }
+            catch (error) {
+                if (!profiler.device) throw error
+                profiler.supported = false; fallbackReason = error.message
             }
-            return capacityResult(times, method)
-        } catch (error) {
-            return { ...capacityResult([], 'unavailable'), reason: error.message }
-        } finally { profiler.dispose() }
+            const device = profiler.device
+            if (!device) throw new Error('GPUDevice no disponible')
+            const methods = profiler.supported ? ['gpu-timestamp', 'queue-wall-time'] : ['queue-wall-time']
+            for (const method of methods) {
+                const times = []
+                try {
+                    if (method === 'queue-wall-time') {
+                        profiler.bench ||= profiler.createBenchPipeline(CAPACITY_WORKLOAD.workgroupSize)
+                        // Do not include previously submitted scene work in the fallback timer.
+                        await device.queue.onSubmittedWorkDone()
+                    }
+                    // Pipeline preparation/warmup no longer consume a 1.5 s sample window.
+                    for (let i = 0; i < warmupRuns + sampleRuns; i++) {
+                        const stop = interrupted()
+                        if (stop) return { ...capacityResult([], method), reason: stop }
+                        if (expired) return finish('timeout')
+                        let ms
+                        if (method === 'gpu-timestamp') ms = await profiler.benchmarkCompute(CAPACITY_WORKLOAD) / 1e6
+                        else {
+                            const { pipeline, bindGroup, paramsBuffer } = profiler.bench
+                            device.queue.writeBuffer(paramsBuffer, 0, new Uint32Array([CAPACITY_WORKLOAD.iterations]))
+                            const encoder = device.createCommandEncoder(), pass = encoder.beginComputePass()
+                            pass.setPipeline(pipeline); pass.setBindGroup(0, bindGroup)
+                            pass.dispatchWorkgroups(CAPACITY_WORKLOAD.workgroups); pass.end()
+                            const before = performance.now()
+                            device.queue.submit([encoder.finish()])
+                            await device.queue.onSubmittedWorkDone()
+                            ms = performance.now() - before
+                        }
+                        const stopAfter = interrupted()
+                        if (stopAfter) return { ...capacityResult([], method), reason: stopAfter }
+                        if (expired) return finish('timeout')
+                        if (i >= warmupRuns && Number.isFinite(ms) && ms > 0) {
+                            times.push(ms)
+                            best = capacityResult(times, method)
+                        }
+                    }
+                    if (times.length) return finish()
+                    fallbackReason = `${method}: no valid samples`
+                } catch (error) {
+                    if (times.length) return finish(error.message)
+                    fallbackReason = error.message
+                }
+            }
+            return finish(fallbackReason || 'no-valid-samples')
+        } catch (error) { return finish(error.message) }
+        finally { profiler.dispose() }
     }
-    // Do not destroy in-flight readback buffers on timeout; run() owns cleanup.
+    // Timeout preserves completed samples; cleanup waits for outstanding GPU reads.
     try {
         return await Promise.race([run(), new Promise(resolve => {
-            timer = setTimeout(() => { expired = true; resolve({ ...capacityResult([], 'unavailable'), reason: 'timeout' }) }, 4000)
+            timer = setTimeout(() => {
+                expired = true
+                const stop = interrupted()
+                resolve(stop ? { ...capacityResult([], 'unavailable'), reason: stop } : finish('timeout'))
+            }, timeoutMs)
         })])
     } finally { clearTimeout(timer) }
 }

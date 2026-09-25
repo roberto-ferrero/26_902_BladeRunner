@@ -9,6 +9,7 @@ JSON permite un árbol explícito sin añadir dependencias. No admite comentario
 - `viewer`: calidad, encuadre y presupuesto de render.
 - `camera`: estado inicial, transición y paneo del ratón.
 - `materials`, `lighting`, `reflections`: acabado, exposición, iluminación y reflejos.
+- `glassware`: color, transmisión, rugosidad, refracción, espesor óptico, absorción, capa pulida, imperfecciones y altura de botella. [Controles y rangos](GLASSWARE.md).
 - `atmosphere`, `sky`: bruma, haces, polvo y panorama.
 - `postProcessing`: bloom, color y destello solar.
 - `city`: edificios, HSL, color por orientación, luces, tráfico y llamaradas.
@@ -42,12 +43,14 @@ El GUI muestra los valores efectivos durante la transición. Editarlos cambia el
 
 El archivo es completo y requiere `schemaVersion: 1`. Se rechazan campos ausentes o desconocidos, tipos erróneos, cámaras inexistentes, opciones inválidas y números fuera de los rangos del GUI. Los errores aparecen en el estado de carga; corregir el archivo y pulsar Reintentar.
 
-Compatibilidad de fase 10: `viewer.quality` admite `auto`, `Extra baja`, `Baja`, `Media`, `Alta` y `UltraAlta`. El archivo inicial usa `auto`; los archivos anteriores con una calidad explícita conservan esa elección manual. `viewer.deviceMode` admite `auto`, `desktop` o `mobile`, y su ausencia equivale a `auto`. Los nuevos campos `city.buildings.orientationColor.extraLowQualityEnabled` y `ultraHighQualityEnabled` heredan respectivamente `lowQualityEnabled` y `highQualityEnabled` si faltan. Son las únicas adiciones opcionales; valores explícitos incorrectos siguen rechazándose. Los cambios de modo y calidad se conservan durante la sesión, sin escribir automáticamente en el archivo.
+Compatibilidad de fase 10: `viewer.quality` admite `auto`, `Extra baja`, `Baja`, `Media`, `Alta` y `UltraAlta`. El archivo inicial usa `auto`; los archivos anteriores con una calidad explícita conservan esa elección manual. `viewer.deviceMode` admite `auto`, `desktop` o `mobile`, y su ausencia equivale a `auto`. Los nuevos campos `city.buildings.orientationColor.extraLowQualityEnabled` y `ultraHighQualityEnabled` heredan respectivamente `lowQualityEnabled` y `highQualityEnabled` si faltan. Junto con el bloque glassware, son adiciones opcionales; valores explícitos incorrectos siguen rechazándose. Los cambios de modo y calidad se conservan durante la sesión, sin escribir automáticamente en el archivo.
 
 Los ajustes se validan antes de cargar los modelos y se aplican cuando todos los componentes están creados, antes de estabilizar y revelar la escena. Se reutilizan las mismas acciones del GUI para actualizar controles, lecturas y componentes. Los cambios interactivos duran la sesión y no sobrescriben el JSON.
 
-R03: con `viewer.quality: auto` y `viewer.renderBudget: optimized`, la calidad por score es inicial. Ventanas de FPS reales pueden reducir resolución y LOD efectivo; el diagnóstico conserva la selección original. Las calidades explícitas y modos A/B no se adaptan. Cambiar dispositivo o volver a Automática reinicia la adaptación. Las mediciones técnicas congelan el ajuste mientras duran. [Detalles](phase10/R03_AUTO.md).
+R05: `viewer.quality: auto` selecciona por GPU Score al arrancar y permite una única segunda comprobación al llegar a p1 con el visor completamente abierto. Después no hay adaptación continua de resolución ni LOD por FPS. La selección manual se respeta. Cambiar dispositivo, volver a Automática o volver a p1 no reinicia la comprobación. [Detalles](phase10/R05_SCORE.md).
 
 R04: en presupuesto `optimized`, Baja/Extra baja y modo móvil excluyen bloom/reflejo planar aunque el JSON solicite activarlos. Esas preferencias se conservan para los perfiles que sí los permiten. `viewer.renderBudget: previous` permite comparar con R03, sin adaptación automática. El JSON inicial sigue usando `optimized`; no se introduce almacenamiento local ni se sobrescribe la configuración al cambiar perfil.
+
+El bloque `glassware` es una adición opcional a schema 1: los archivos anteriores heredan los valores de cristal actuales y altura de botella 1,2. Sus valores explícitos pasan la misma validación de tipos, rangos y pasos que los demás controles.
 
 Al añadir un control configurable, añadir su ruta descriptiva a `TyrellGUISettings.js` y su valor al JSON. Los valores locales de construcción del HTML y de los componentes son provisionales: el archivo externo prevalece al arrancar.

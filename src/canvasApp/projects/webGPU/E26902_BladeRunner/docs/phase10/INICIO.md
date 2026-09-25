@@ -45,6 +45,10 @@ Revisión en navegador integrado, Windows, Chrome 153 / Three.js r185 / WebGPU, 
 
 Las muestras breves de FPS observadas y los diagnósticos con `metrics: null` no satisfacen el protocolo de tres pasadas de 60 s. No existe aún una base sostenida controlada antes/después; tampoco una auditoría prolongada de memoria. No se cierra 10.1, 10.2 ni 10.6 globalmente.
 
+## Actualización R05
+
+La política actual de score usa una medición inicial y una única comprobación en p1 con visor abierto, sin reajuste continuo por FPS. Sustituye el controlador R03; los resultados anteriores se conservan como historial. [Detalles y validación](R05_SCORE.md).
+
 ## Siguiente entrega
 
-Completar 10.1: fijar condiciones de energía/navegador/resolución, obtener tres pasadas sostenidas por vista y perfil de referencia e identificar costes de GPU/CPU con `?profile=1`. Calibrar Alta en Legion y Baja en ThinkBook antes de atribuir mejoras; medir Extra baja/móvil en Redmi real, incluida sesión térmica de 15 minutos. La resolución muy reducida en vertical necesita valoración de legibilidad. Paneo táctil, recursos móviles específicos, resolución dinámica por FPS y validación Media/UltraAlta permanecen pendientes.
+Completar 10.1: fijar condiciones de energía/navegador/resolución, obtener tres pasadas sostenidas por vista y perfil de referencia e identificar costes de GPU/CPU con `?profile=1`. Calibrar Alta en Legion y Baja en ThinkBook antes de atribuir mejoras; medir Extra baja/móvil en Redmi real, incluida sesión térmica de 15 minutos. La resolución muy reducida en vertical necesita valoración de legibilidad. Paneo táctil, recursos móviles específicos y validación Media/UltraAlta permanecen pendientes. R05 excluye la adaptación continua por FPS a petición del usuario.

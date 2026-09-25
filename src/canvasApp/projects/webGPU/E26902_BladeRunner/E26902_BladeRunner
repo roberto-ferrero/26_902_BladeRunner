@@ -6,6 +6,8 @@ import { RectAreaLightTexturesLib } from 'three/addons/lights/RectAreaLightTextu
 import { TYRELL } from './config'
 import { qualityBudget, qualityEffects, BUDGET_MODES, QUALITY_LEVELS, DEVICE_MODES, recommendQuality, detectDeviceMode, renderPixelRatio } from './TyrellQuality'
 import { loadTyrell, disposeScene } from './TyrellAssets'
+import { addGlassware, GLASSWARE_ASSET } from './TyrellGlassware'
+import TyrellGlasswareTable from './TyrellGlasswareTable'
 import TyrellCameraRig from './TyrellCameraRig'
 import cameraStateExport from './cameraStates.generated.json'
 import { CAMERA_STATES } from './cameraStates.config'
@@ -31,7 +33,7 @@ import TyrellLightVolume from './TyrellLightVolume'
 import TyrellPostProcessing from './TyrellPostProcessing'
 import TyrellComparison from './TyrellComparison'
 import TyrellSustainedMeasurement from './TyrellSustainedMeasurement'
-import TyrellAdaptiveQuality from './TyrellAdaptiveQuality'
+import TyrellCapacityChecks from './TyrellCapacityChecks'
 import TyrellSky from './TyrellSky'
 import TyrellLensFlare from './TyrellLensFlare'
 import TyrellCity from './TyrellCity'
@@ -56,7 +58,8 @@ export default class E26902_BladeRunner {
         this.detectedDevice = detectDeviceMode({ mobileHint: navigator.userAgentData?.mobile || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent), coarsePointer: window.matchMedia('(pointer: coarse)').matches, touchPoints: navigator.maxTouchPoints })
         this.deviceMode = this.detectedDevice
         this.budgetMode = 'optimized'
-        this.adaptiveQuality = new TyrellAdaptiveQuality()
+        this.gpuCapacitySettings = TYRELL.gpuCapacity
+        this.capacityChecks = new TyrellCapacityChecks(this.gpuCapacitySettings)
         this.samples = []
         this.transitionDuration = CAMERA_STATES.transition.duration
         this.transitionEasing = CAMERA_STATES.transition.easing
@@ -93,6 +96,10 @@ export default class E26902_BladeRunner {
             vkAuto: enabled => { if (this.vk) { this.vk.arrival.enabled = enabled; this.vk.arrival.cancel() } },
             vkSavings: enabled => { this.vkDetailSavings = enabled; this.resetMetrics() },
             vkChassisColor: color => { if (this.vk?.setChassisColor(color)) this.floorReflection?.updates.invalidate() },
+            glassware: values => {
+                this.glassware?.configure(values)
+                this.floorReflection?.updates.invalidate()
+            },
             frame: enabled => { document.body.classList.toggle('tyrell-reference', enabled); app.size.update(); this.resetMetrics() },
             retry: () => this.rendererError ? location.reload() : this.load(),
             capture: () => { this.captureRequested = true }, report: () => this.downloadReport(),
@@ -139,7 +146,8 @@ export default class E26902_BladeRunner {
     onRendererProgress(app) { this.mount(app) }
     async measureGPUCapacity(renderer) {
         this.ui.status('Midiendo la capacidad de la GPU…')
-        this.gpuCapacity = await measureGPUCapacity(renderer, () => this.disposed)
+        this.gpuCapacity = await measureGPUCapacity(renderer, () => this.disposed, this.gpuCapacitySettings)
+        this.capacityChecks.initial(this.gpuCapacity)
         if (!this.disposed) { this.ui.setGPUCapacity(this.gpuCapacity); this.selectQuality(this.qualitySelection) }
     }
     onRendererError(error, app) {
@@ -219,20 +227,25 @@ export default class E26902_BladeRunner {
             this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
                 (received, total, parsing) => this.ui.status(parsing ? 'Preparando geometría, materiales y cámaras…' : `Cargando escenario · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, total ? received / total : undefined))
             if (this.disposed) { disposeScene(this.asset.gltf.scene); return }
+            this.glasswareAsset = await loadTyrell(new URL(GLASSWARE_ASSET, new URL(this.app.pathPrefix, document.baseURI)).href,
+                this.abort.signal, () => this.ui.status('Cargando la licorera y los vasos…'))
+            if (this.disposed) { disposeScene(this.glasswareAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             if (new URLSearchParams(location.search).get('vk') !== '0') {
                 this.vkAsset = await loadTyrell(new URL('glbs/E26902_BladeRunner/VK_Device.glb', new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
                     (received, total, parsing) => this.ui.status(parsing ? 'Preparando el Voight-Kampff…' : `Cargando Voight-Kampff · ${(received / 1e6).toFixed(1)} MB`))
-                if (this.disposed) { disposeScene(this.vkAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
+                if (this.disposed) { disposeScene(this.vkAsset.gltf.scene); disposeScene(this.glasswareAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             }
             this.skyTexture = await new THREE.TextureLoader().loadAsync(new URL(TYRELL.sky.texture, new URL(this.app.pathPrefix, document.baseURI)).href)
             this.skyTexture.colorSpace = THREE.SRGBColorSpace
             this.skyTexture.wrapS = THREE.ClampToEdgeWrapping
-            if (this.disposed) { this.skyTexture.dispose(); disposeScene(this.asset.gltf.scene); disposeScene(this.vkAsset?.gltf.scene); return }
+            if (this.disposed) { this.skyTexture.dispose(); disposeScene(this.asset.gltf.scene); disposeScene(this.glasswareAsset?.gltf.scene); disposeScene(this.vkAsset?.gltf.scene); return }
             this.app.emitter.emit('onProjectLoaded', {})
         } catch (error) {
             // A parse/build failure must leave retry without a duplicate scene.
             if (!this.vk?.group.parent) disposeScene(this.vkAsset?.gltf.scene)
             disposeScene(this.asset?.gltf.scene)
+            disposeScene(this.glasswareAsset?.gltf.scene)
+            this.glasswareAsset = null
             this.vkAsset = null
             this.asset = null
             if (error.name === 'AbortError' || this.disposed) return
@@ -243,6 +256,8 @@ export default class E26902_BladeRunner {
     }
     build() {
         this.world3D = this.asset.gltf.scene
+        this.glassware = addGlassware(this.world3D, this.glasswareAsset.gltf.scene)
+        this.glasswareTable = new TyrellGlasswareTable(this.world3D, this.glassware.groups)
         this.navigation.collision = new TyrellCollision(this.world3D)
         this.columnCores = addColumnCores(this.world3D)
         this.contactRepair = settleInstrumentCase(this.world3D)
@@ -266,11 +281,11 @@ export default class E26902_BladeRunner {
                 object.receiveShadow = true
                 // Keep the distant pyramid/sky out of the room's shadow pass.
                 object.getWorldPosition(_position)
-                object.castShadow = !object.name.startsWith('City /') && _position.length() < 50
+                object.castShadow = !object.userData.noCastShadow && !object.name.startsWith('City /') && _position.length() < 50
                 if (object.name.startsWith('City /')) object.receiveShadow = false
                 const materials = Array.isArray(object.material) ? object.material : [object.material]
                 for (const material of materials) {
-                    if (material.name === 'Crystal') material.castShadowNode = vec4(0, 0, 0, TYRELL.shadows.glassOpacity)
+                    if (material.name === 'Crystal' || material.userData.tyrellGlass) material.castShadowNode = vec4(.09, .065, .025, material.userData.glassShadowOpacity ?? TYRELL.shadows.glassOpacity)
                 }
             }
             if (object.isDirectionalLight) {
@@ -347,6 +362,14 @@ export default class E26902_BladeRunner {
         this.setVolume({ enabled: TYRELL.effects.volume })
         this.post.configure({ bloom: TYRELL.effects.bloom, grade: TYRELL.effects.grade })
         applyGUISettings(this.preparedGUISettings)
+        // Reproducible close-up for material/geometry review; normal startup is unchanged.
+        if (new URLSearchParams(location.search).has('glasswareReview')) {
+            this.stageCamera.setState({ cameraStateId: 'glassware-review',
+                position: [.48, 1.14, -9.36], target: [.94, .92, -10.20],
+                fov: 34, near: .01, far: 2500, mousePan: { enabled: false } })
+            this.pan.setReference(this.stageCamera.baseCamera, { target: this.stageCamera.target })
+            this.syncCameraPan()
+        }
         this.startup = new TyrellStartup({ fadeMs: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1500 })
         this.ui.status('Estabilizando la escena con los efectos activos…')
         this.resetMetrics()
@@ -459,6 +482,7 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     renderFrame(camera) {
+        if (this.capacityChecks.state === 'running') return
         const benchmark = this.colorBenchmark
         benchmark?.beforeFrame()
         const start = this.profileEnabled || benchmark ? performance.now() : 0
@@ -546,7 +570,6 @@ export default class E26902_BladeRunner {
         if (selection !== 'auto' && !QUALITY_LEVELS.includes(selection)) return false
         this.qualitySelection = selection
         const quality = selection === 'auto' ? recommendQuality(this.gpuCapacity?.gpuScore, this.deviceMode) : selection
-        this.adaptiveQuality.reset(quality, this.deviceMode)
         this.setQuality(quality)
         return true
     }
@@ -562,8 +585,7 @@ export default class E26902_BladeRunner {
         const profile = qualityBudget(this.quality, this.budgetMode, this.deviceMode)
         if (!profile || !this.renderer) return
         const { width, height } = this.app.size.CURRENT
-        const scale = this.automaticQualityEnabled() ? this.adaptiveQuality.scale : 1
-        this.renderer.setPixelRatio(renderPixelRatio(profile, this.deviceMode, width, height) * scale)
+        this.renderer.setPixelRatio(renderPixelRatio(profile, this.deviceMode, width, height))
         this.app.render?.update_resize()
         this.floorReflection?.resizeTargets(this.renderer)
     }
@@ -578,7 +600,7 @@ export default class E26902_BladeRunner {
         this.floorReflection?.setResolution(this.floorReflection.resolution, name, profile.reflectionScale)
         this.specularEnvironment?.invalidate()
         this.updateQualityResolution()
-        this.ui?.setQualityState({ selection: this.qualitySelection, quality: name, recommended: recommendQuality(this.gpuCapacity?.gpuScore, this.deviceMode), deviceSelection: this.deviceSelection, device: this.deviceMode, resolutionScale: this.automaticQualityEnabled() ? this.adaptiveQuality.scale : 1, resolutionFirst: qualityEffects(name, this.budgetMode, this.deviceMode).resolutionFirst })
+        this.refreshQualityState()
         if (this.sun && this.sun.shadow.mapSize.x !== profile.shadowSize) {
             // Detach volume samplers before retiring the light's depth texture.
             // They are rebuilt once the replacement shadow map has rendered.
@@ -602,8 +624,12 @@ export default class E26902_BladeRunner {
         this.floorReflection?.setQualityAllowed(allowed.floorReflection)
         this.ui?.setQualityEffects(allowed, { bloom: this.post?.bloomActive() || false, floorReflection: this.floorReflection?.enabled || false })
     }
+    refreshQualityState() {
+        this.ui?.setQualityState({ selection: this.qualitySelection, quality: this.quality,
+            recommended: recommendQuality(this.gpuCapacity?.gpuScore, this.deviceMode), deviceSelection: this.deviceSelection,
+            device: this.deviceMode, resolutionFirst: qualityEffects(this.quality, this.budgetMode, this.deviceMode).resolutionFirst })
+    }
     resetMetrics() {
-        this.adaptiveQuality?.pause()
         this.colorBenchmark?.finish('ha cambiado la configuración')
         this.performanceProbe?.reset()
         if (this.measuring || this.sustainedMeasurement) this.ui.comparisonStatus('Medición cancelada por un cambio de configuración o visibilidad. Vuelve a medir.')
@@ -622,13 +648,26 @@ export default class E26902_BladeRunner {
         this.sustainedMeasurement = new TyrellSustainedMeasurement()
         this.ui.comparisonStatus(this.sustainedMeasurement.status())
     }
-    automaticQualityEnabled() { return this.qualitySelection === 'auto' && this.budgetMode === 'optimized' }
-    updateAutomaticQuality(now) {
-        const enabled = this.automaticQualityEnabled() && this.revealed && !document.hidden && !this.rendererError
-            && !this.stageCamera?.transition && !this.developmentControls && !this.measuring
-            && !this.sustainedMeasurement && !this.colorBenchmark && !this.captureRequested
-        const change = this.adaptiveQuality.frame(now, enabled)
-        if (change) this.setQuality(change.quality)
+    capacityCheckReady() {
+        return this.revealed && !document.hidden && !this.rendererError && this.activeCameraStateId === 'p1'
+            && !this.stageCamera?.transition && !this.navigation?.enabled && !this.developmentControls && this.vk?.motion.state === 'open'
+    }
+    async recheckGPUCapacity() {
+        this.ui.metrics('Segunda comprobación GPU (única)…')
+        try {
+            const result = await measureGPUCapacity(this.renderer, () => this.disposed || !this.capacityCheckReady(), this.gpuCapacitySettings)
+            const previous = this.gpuCapacity
+            this.gpuCapacity = this.capacityChecks.complete(result)
+            if (this.disposed) return
+            this.ui.setGPUCapacity(this.gpuCapacity)
+            if (this.qualitySelection === 'auto' && this.gpuCapacity !== previous) this.selectQuality('auto')
+            else this.refreshQualityState()
+        } catch (error) {
+            this.capacityChecks.complete({ gpuScore: null, reason: error.message })
+        } finally {
+            this.panTime = undefined
+            if (!this.disposed) this.resetMetrics()
+        }
     }
     updateSustainedMeasurement(now) {
         const run = this.sustainedMeasurement
@@ -649,6 +688,12 @@ export default class E26902_BladeRunner {
     }
     update_RAF() {
         const now = performance.now()
+        if (this.capacityChecks.state === 'running') return
+        if (this.capacityChecks.beginIfReady(now, this.capacityCheckReady() && !this.measuring
+            && !this.sustainedMeasurement && !this.colorBenchmark && !this.captureRequested)) {
+            void this.recheckGPUCapacity()
+            return
+        }
         if (document.hidden) this.colorBenchmark?.finish('la pestaña dejó de estar visible')
         if (this.startup && !this.revealed && !this.rendererError) {
             if (document.hidden) this.startup.pause()
@@ -712,7 +757,6 @@ export default class E26902_BladeRunner {
             }
         }
         this.previousFrame = now
-        this.updateAutomaticQuality(now)
         this.updateSustainedMeasurement(now)
         if (this.samples.length >= 30 && (!this.lastReport || now - this.lastReport > 1000)) {
             this.lastReport = now
@@ -758,8 +802,9 @@ export default class E26902_BladeRunner {
             three: THREE.REVISION, userAgent: navigator.userAgent, secureContext: isSecureContext,
             adapter: info ? { vendor: info.vendor, architecture: info.architecture, device: info.device, description: info.description } : null,
             benchmarkOnStart: true, gpuCapacity: this.gpuCapacity || null, startup: this.startup?.diagnostics() || null,
-            qualitySelection: { selection: this.qualitySelection, recommended: recommendQuality(this.gpuCapacity?.gpuScore, this.deviceMode), deviceSelection: this.deviceSelection, detectedDevice: this.detectedDevice, device: this.deviceMode, reason: this.qualitySelection !== 'auto' ? 'manual' : this.adaptiveQuality.history.length ? 'sustained-fps' : Number.isFinite(this.gpuCapacity?.gpuScore) && this.gpuCapacity.gpuScore > 0 ? 'gpu-score' : 'score-unavailable-fallback', calibrated: false, dynamicResolution: this.automaticQualityEnabled() },
-            automaticQuality: { enabled: this.automaticQualityEnabled(), ...this.adaptiveQuality.diagnostics() },
+            qualitySelection: { selection: this.qualitySelection, recommended: recommendQuality(this.gpuCapacity?.gpuScore, this.deviceMode), deviceSelection: this.deviceSelection, detectedDevice: this.detectedDevice, device: this.deviceMode, reason: this.qualitySelection !== 'auto' ? 'manual' : Number.isFinite(this.gpuCapacity?.gpuScore) && this.gpuCapacity.gpuScore > 0 ? 'gpu-score' : 'score-unavailable-fallback', calibrated: false, dynamicResolution: false },
+            automaticQuality: { enabled: false, policy: 'score-only-two-checks', quality: this.quality, resolutionScale: 1 },
+            capacityChecks: this.capacityChecks.diagnostics(),
             display: { viewport: [window.innerWidth, window.innerHeight], scene: { ...this.app.size.CURRENT }, nativeDPR: window.devicePixelRatio, effectivePixelRatio: this.renderer?.getPixelRatio(), internal: [this.renderer?.domElement.width, this.renderer?.domElement.height], mobilePixelCap: this.deviceMode === 'mobile' ? 1280 * 720 : null },
             qualityBudget: { mode: this.budgetMode, ...qualityBudget(this.quality, this.budgetMode, this.deviceMode) }, quality: this.quality, exposure: this.renderer?.toneMappingExposure,
             qualityEffects: qualityEffects(this.quality, this.budgetMode, this.deviceMode),
@@ -799,7 +844,7 @@ export default class E26902_BladeRunner {
             performance: this.performanceProbe?.report(),
             loading: { firstRenderedFrameSinceNavigationMs: this.firstFrameMs, glbFetchDecodeMs: this.asset?.loadMs, glbBytes: this.asset?.bytes, note: 'First render submitted, not guaranteed presented. Cache/network conditions must be recorded separately.' },
             metricNote: 'Intervalos RAF después de 60 fotogramas de calentamiento, ventana móvil de hasta 120 muestras. Incluyen presentación; no son tiempo GPU ni un benchmark de hardware.',
-            pending: ['Fase 8: optimización y validación final', 'Fase 10: calibración a 60 FPS, resolución dinámica y validación en hardware móvil']
+            pending: ['Fase 8: optimización y validación final', 'Fase 10: calibración de perfiles a 60 FPS y validación en hardware móvil']
         }
     }
     downloadReport() {
@@ -830,7 +875,9 @@ export default class E26902_BladeRunner {
         this.buildingLights?.dispose()
         this.volume?.dispose()
         this.floorReflection?.dispose()
+        this.glasswareTable?.dispose()
         disposeScene(this.world3D)
+        disposeScene(this.glasswareAsset?.gltf.scene)
         this.fill?.removeFromParent()
         this.fill?.dispose()
         this.indirect?.dispose()

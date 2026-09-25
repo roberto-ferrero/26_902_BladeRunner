@@ -317,6 +317,8 @@ Referencias aportadas por el usuario, todavía sin repetir bajo un protocolo com
 
 ### 10.4 · Ajuste por rendimiento real
 
+**Actualización R05, 2026-09-25:** por petición del usuario se sustituye la adaptación continua por medición inicial y una comprobación única en p1, tras travelling y despliegue. Se mejora el muestreo y el fallback del score, se conserva el resultado anterior si falla la comprobación y se respeta el LOD manual. No se rearman intentos al volver a p1. Los puntos R03 siguientes son históricos; el controlador ya no está conectado al escenario. 159 pruebas correctas. [Política actual y validación](docs/phase10/R05_SCORE.md).
+
 **Implementada en R03:** el score fija el perfil inicial y el rendimiento sostenido corrige resolución y LOD efectivo. Alta inicia con el presupuesto previamente medido cerca de 58 FPS. Dos ventanas de 4 s por debajo de 55 FPS —una si baja de 40— reducen resolución y después LOD, con 4 s de estabilización entre ajustes. Manual fijo; pausas/carga y medidas quedan excluidas. Sin subidas automáticas basadas únicamente en 60 FPS. [Presupuestos, comportamiento y validación](docs/phase10/R03_AUTO.md).
 
 - [x] Definir límites de resolución por perfil (75–100 %), ventanas de al menos 4 s / 30 fotogramas y espera de 4 s entre cambios. Dos ventanas lentas; vía rápida si también la mediana confirma lentitud. Sin subidas automáticas ni oscilación entre niveles.

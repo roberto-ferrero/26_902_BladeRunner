@@ -1,0 +1,445 @@
+{
+  "captureDate": "2026-09-25T13:45:19.442Z",
+  "conditions": "Functional WebGPU check; NVIDIA Turing, exact model and power state unconfirmed. Initial startup overlapped a build; scores are not calibration evidence.",
+  "reports": [
+    {
+      "date": "2026-09-25T13:43:21.350Z",
+      "backend": "WebGPU",
+      "adapter": {
+        "architecture": "turing",
+        "description": "",
+        "device": "",
+        "vendor": "nvidia"
+      },
+      "gpuCapacity": {
+        "gpuScore": 124121212.12121212,
+        "iterations": 1024,
+        "medianMs": 2.162688,
+        "method": "gpu-timestamp",
+        "minMs": 2.097152,
+        "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only.",
+        "p90Ms": 2.162688,
+        "reliable": true,
+        "samples": 12,
+        "units": "shader iterations/ms; higher is faster",
+        "variability": 0.030303030303030425,
+        "version": "tyrell-compute-v1",
+        "workgroupSize": 64,
+        "workgroups": 4096
+      },
+      "capacityChecks": {
+        "initial": {
+          "gpuScore": 124121212.12121212,
+          "iterations": 1024,
+          "medianMs": 2.162688,
+          "method": "gpu-timestamp",
+          "minMs": 2.097152,
+          "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only.",
+          "p90Ms": 2.162688,
+          "reliable": true,
+          "samples": 12,
+          "units": "shader iterations/ms; higher is faster",
+          "variability": 0.030303030303030425,
+          "version": "tyrell-compute-v1",
+          "workgroupSize": 64,
+          "workgroups": 4096
+        },
+        "policy": "startup-and-p1-once",
+        "second": null,
+        "secondAttempts": 0,
+        "source": "initial",
+        "state": "pending"
+      },
+      "qualitySelection": {
+        "calibrated": false,
+        "detectedDevice": "desktop",
+        "device": "desktop",
+        "deviceSelection": "auto",
+        "dynamicResolution": false,
+        "reason": "gpu-score",
+        "recommended": "Alta",
+        "selection": "auto"
+      },
+      "automaticQuality": {
+        "enabled": false,
+        "policy": "score-only-two-checks",
+        "quality": "Alta",
+        "resolutionScale": 1
+      },
+      "quality": "Alta",
+      "display": {
+        "effectivePixelRatio": 1,
+        "internal": [
+          1492,
+          622
+        ],
+        "mobilePixelCap": null,
+        "nativeDPR": 1,
+        "scene": {
+          "aspect": 2.3987138263665595,
+          "height": 622,
+          "width": 1492
+        },
+        "viewport": [
+          1492,
+          1432
+        ]
+      },
+      "cameraStateId": "initial",
+      "cameraTransition": {
+        "active": false,
+        "duration": 4.5,
+        "easing": "smoothstep"
+      },
+      "voightKampff": {
+        "autoConsumed": false,
+        "autoDeploy": true,
+        "breathingPeriod": 3.8,
+        "chassisColor": "#1f1f1f",
+        "compression": 1,
+        "flexibleVertices": 2223,
+        "light": 0,
+        "meshes": 16,
+        "opticalMeshes": 2,
+        "opticalTriangles": 34,
+        "placementSourceSha256": "a3abe91631ed18c3b86522d038029965cc72cb1e7e91d4b5fd5a30ea5e536224",
+        "position": [
+          -0.8259305953979492,
+          0.7515769004821777,
+          -9.97750473022461
+        ],
+        "progress": 0,
+        "quaternion": [
+          0,
+          -0.9152841763425742,
+          0,
+          0.4028087344347134
+        ],
+        "rigidBellowsPlates": 4,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "state": "closed",
+        "triangles": 14891
+      },
+      "performance": {
+        "cpuRender": null,
+        "enabled": true,
+        "gpuError": null,
+        "gpuRender": null,
+        "gpuSupported": true,
+        "heap": {
+          "limitBytes": 4395630592,
+          "totalBytes": 177294568,
+          "usedBytes": 160618724
+        },
+        "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+      }
+    },
+    {
+      "date": "2026-09-25T13:44:21.746Z",
+      "backend": "WebGPU",
+      "adapter": {
+        "architecture": "turing",
+        "description": "",
+        "device": "",
+        "vendor": "nvidia"
+      },
+      "gpuCapacity": {
+        "gpuScore": 124121212.12121212,
+        "iterations": 1024,
+        "medianMs": 2.162688,
+        "method": "gpu-timestamp",
+        "minMs": 2.097152,
+        "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only.",
+        "p90Ms": 2.162688,
+        "reliable": true,
+        "samples": 12,
+        "units": "shader iterations/ms; higher is faster",
+        "variability": 0.030303030303030425,
+        "version": "tyrell-compute-v1",
+        "workgroupSize": 64,
+        "workgroups": 4096
+      },
+      "capacityChecks": {
+        "initial": {
+          "gpuScore": 124121212.12121212,
+          "iterations": 1024,
+          "medianMs": 2.162688,
+          "method": "gpu-timestamp",
+          "minMs": 2.097152,
+          "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only.",
+          "p90Ms": 2.162688,
+          "reliable": true,
+          "samples": 12,
+          "units": "shader iterations/ms; higher is faster",
+          "variability": 0.030303030303030425,
+          "version": "tyrell-compute-v1",
+          "workgroupSize": 64,
+          "workgroups": 4096
+        },
+        "policy": "startup-and-p1-once",
+        "second": {
+          "gpuScore": 151703703.7037037,
+          "iterations": 1024,
+          "medianMs": 1.769472,
+          "method": "gpu-timestamp",
+          "minMs": 1.703936,
+          "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only.",
+          "p90Ms": 2.162688,
+          "reliable": false,
+          "samples": 12,
+          "units": "shader iterations/ms; higher is faster",
+          "variability": 0.2592592592592594,
+          "version": "tyrell-compute-v1",
+          "workgroupSize": 64,
+          "workgroups": 4096
+        },
+        "secondAttempts": 1,
+        "source": "initial",
+        "state": "complete"
+      },
+      "qualitySelection": {
+        "calibrated": false,
+        "detectedDevice": "desktop",
+        "device": "desktop",
+        "deviceSelection": "auto",
+        "dynamicResolution": false,
+        "reason": "gpu-score",
+        "recommended": "Alta",
+        "selection": "auto"
+      },
+      "automaticQuality": {
+        "enabled": false,
+        "policy": "score-only-two-checks",
+        "quality": "Alta",
+        "resolutionScale": 1
+      },
+      "quality": "Alta",
+      "display": {
+        "effectivePixelRatio": 1,
+        "internal": [
+          1492,
+          622
+        ],
+        "mobilePixelCap": null,
+        "nativeDPR": 1,
+        "scene": {
+          "aspect": 2.3987138263665595,
+          "height": 622,
+          "width": 1492
+        },
+        "viewport": [
+          1492,
+          1432
+        ]
+      },
+      "cameraStateId": "p1",
+      "cameraTransition": {
+        "active": false,
+        "duration": 4.5,
+        "easing": "smoothstep"
+      },
+      "voightKampff": {
+        "autoConsumed": true,
+        "autoDeploy": true,
+        "breathingPeriod": 3.8,
+        "chassisColor": "#1f1f1f",
+        "compression": 0.08497845595345807,
+        "flexibleVertices": 2223,
+        "light": 1,
+        "meshes": 16,
+        "opticalMeshes": 2,
+        "opticalTriangles": 34,
+        "placementSourceSha256": "a3abe91631ed18c3b86522d038029965cc72cb1e7e91d4b5fd5a30ea5e536224",
+        "position": [
+          -0.8259305953979492,
+          0.7515769004821777,
+          -9.97750473022461
+        ],
+        "progress": 1,
+        "quaternion": [
+          0,
+          -0.9152841763425742,
+          0,
+          0.4028087344347134
+        ],
+        "rigidBellowsPlates": 4,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "state": "open",
+        "triangles": 14891
+      },
+      "performance": {
+        "cpuRender": null,
+        "enabled": true,
+        "gpuError": null,
+        "gpuRender": null,
+        "gpuSupported": true,
+        "heap": {
+          "limitBytes": 4395630592,
+          "totalBytes": 218209794,
+          "usedBytes": 175339754
+        },
+        "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+      }
+    },
+    {
+      "date": "2026-09-25T13:45:06.751Z",
+      "backend": "WebGPU",
+      "adapter": {
+        "architecture": "turing",
+        "description": "",
+        "device": "",
+        "vendor": "nvidia"
+      },
+      "gpuCapacity": {
+        "gpuScore": 124121212.12121212,
+        "iterations": 1024,
+        "medianMs": 2.162688,
+        "method": "gpu-timestamp",
+        "minMs": 2.097152,
+        "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only.",
+        "p90Ms": 2.162688,
+        "reliable": true,
+        "samples": 12,
+        "units": "shader iterations/ms; higher is faster",
+        "variability": 0.030303030303030425,
+        "version": "tyrell-compute-v1",
+        "workgroupSize": 64,
+        "workgroups": 4096
+      },
+      "capacityChecks": {
+        "initial": {
+          "gpuScore": 124121212.12121212,
+          "iterations": 1024,
+          "medianMs": 2.162688,
+          "method": "gpu-timestamp",
+          "minMs": 2.097152,
+          "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only.",
+          "p90Ms": 2.162688,
+          "reliable": true,
+          "samples": 12,
+          "units": "shader iterations/ms; higher is faster",
+          "variability": 0.030303030303030425,
+          "version": "tyrell-compute-v1",
+          "workgroupSize": 64,
+          "workgroups": 4096
+        },
+        "policy": "startup-and-p1-once",
+        "second": {
+          "gpuScore": 151703703.7037037,
+          "iterations": 1024,
+          "medianMs": 1.769472,
+          "method": "gpu-timestamp",
+          "minMs": 1.703936,
+          "note": "Synthetic integer compute throughput, not FPS or a geometry LOD threshold. Compare identical versions and timing methods only.",
+          "p90Ms": 2.162688,
+          "reliable": false,
+          "samples": 12,
+          "units": "shader iterations/ms; higher is faster",
+          "variability": 0.2592592592592594,
+          "version": "tyrell-compute-v1",
+          "workgroupSize": 64,
+          "workgroups": 4096
+        },
+        "secondAttempts": 1,
+        "source": "initial",
+        "state": "complete"
+      },
+      "qualitySelection": {
+        "calibrated": false,
+        "detectedDevice": "desktop",
+        "device": "desktop",
+        "deviceSelection": "auto",
+        "dynamicResolution": false,
+        "reason": "gpu-score",
+        "recommended": "Alta",
+        "selection": "auto"
+      },
+      "automaticQuality": {
+        "enabled": false,
+        "policy": "score-only-two-checks",
+        "quality": "Alta",
+        "resolutionScale": 1
+      },
+      "quality": "Alta",
+      "display": {
+        "effectivePixelRatio": 1,
+        "internal": [
+          1492,
+          622
+        ],
+        "mobilePixelCap": null,
+        "nativeDPR": 1,
+        "scene": {
+          "aspect": 2.3987138263665595,
+          "height": 622,
+          "width": 1492
+        },
+        "viewport": [
+          1492,
+          1432
+        ]
+      },
+      "cameraStateId": "p1",
+      "cameraTransition": {
+        "active": false,
+        "duration": 4.5,
+        "easing": "smoothstep"
+      },
+      "voightKampff": {
+        "autoConsumed": true,
+        "autoDeploy": true,
+        "breathingPeriod": 3.8,
+        "chassisColor": "#1f1f1f",
+        "compression": 0.13682922518204516,
+        "flexibleVertices": 2223,
+        "light": 1,
+        "meshes": 16,
+        "opticalMeshes": 2,
+        "opticalTriangles": 34,
+        "placementSourceSha256": "a3abe91631ed18c3b86522d038029965cc72cb1e7e91d4b5fd5a30ea5e536224",
+        "position": [
+          -0.8259305953979492,
+          0.7515769004821777,
+          -9.97750473022461
+        ],
+        "progress": 1,
+        "quaternion": [
+          0,
+          -0.9152841763425742,
+          0,
+          0.4028087344347134
+        ],
+        "rigidBellowsPlates": 4,
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "state": "open",
+        "triangles": 14891
+      },
+      "performance": {
+        "cpuRender": null,
+        "enabled": true,
+        "gpuError": null,
+        "gpuRender": null,
+        "gpuSupported": true,
+        "heap": {
+          "limitBytes": 4395630592,
+          "totalBytes": 238658061,
+          "usedBytes": 174623281
+        },
+        "note": "CPU: synchronous render submission only, not whole app CPU. GPU: timestamp sum of render passes for sampled frames, excludes compute/presentation; asynchronous samples. Heap is browser JS estimate, not VRAM."
+      }
+    }
+  ],
+  "consoleErrors": []
+}

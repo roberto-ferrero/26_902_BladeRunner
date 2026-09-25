@@ -5,7 +5,7 @@ export default class TyrellComparison {
         const sustained = report.measurement?.type === 'sustained' && report.measurement.elapsedMs >= 60000
         if (!report.metrics || report.metrics.samples < (sustained ? 1 : 120)) throw new Error('Faltan muestras estables.')
         const keys = ['qualityBudget', 'qualitySelection', 'gpuCapacity', 'display', 'performance', 'loading', 'adapter', 'asset', 'date', 'quality', 'camera', 'cameraPan', 'exposure', 'metrics', 'floorReflection', 'specularEnvironment', 'atmosphere', 'lightVolume', 'postProcessing', 'sky', 'lighting', 'materialLook', 'indirect', 'reviewLighting']
-        keys.push('city', 'buildingLights', 'airTraffic', 'nearTraffic', 'flames', 'voightKampff', 'measurement', 'automaticQuality', 'qualityEffects')
+        keys.push('city', 'buildingLights', 'airTraffic', 'nearTraffic', 'flames', 'voightKampff', 'measurement', 'automaticQuality', 'qualityEffects', 'capacityChecks')
         const row = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, report[key]]))))
         row.id = this.nextId++
         row.effects = [

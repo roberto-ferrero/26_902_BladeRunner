@@ -1,5 +1,6 @@
 import './tyrell.css'
 import { QUALITY_LEVELS } from './TyrellQuality'
+import { GLASSWARE_CONTROLS } from './TyrellGlasswareSettings'
 
 export default class TyrellUI {
     constructor(actions) {
@@ -203,7 +204,7 @@ export default class TyrellUI {
         this.comparisonPanel.className = 'tyrell-pan'
         this.comparisonPanel.innerHTML = `<summary>Comparar efectos y coste</summary><div class="tyrell-pan-controls">
             <button type="button" data-measure>Medir configuración</button><button type="button" data-sustained>Medir 3 × 60 s</button><button type="button" data-export>Exportar comparación</button><button type="button" data-clear>Borrar mediciones</button></div>
-            <p>La prueba sostenida mide tres pasadas de 60 s, con 5 s de calentamiento por pasada. Se cancela al cambiar ajustes, mover la cámara u ocultar la pestaña. Sus FPS y p95 cubren la pasada completa; CPU/GPU conservan la ventana corta del diagnóstico. Las medidas congelan el ajuste automático: espera a que se estabilice la calidad antes de medir.</p>
+            <p>La prueba sostenida mide tres pasadas de 60 s, con 5 s de calentamiento por pasada. Se cancela al cambiar ajustes, mover la cámara u ocultar la pestaña. Sus FPS y p95 cubren la pasada completa; CPU/GPU conservan la ventana corta del diagnóstico. La comprobación única de GPU en p1 espera a que terminen las mediciones técnicas.</p>
             <p>Activa o desactiva efectos en sus paneles. Medir centra la cámara, descarta 60 fotogramas y recoge 120. Compara con la misma cámara, calidad, resolución y luz. Los FPS pueden estar limitados por la pantalla. CPU/GPU se registran al abrir con ?profile=1; — significa sin medición. CPU mide envío del render; GPU, pases de render, sin presentación.</p>
             <p role="status" data-status>Sin mediciones. Se conservan las últimas 12 durante la sesión.</p><div class="tyrell-comparison-table"></div>`
         this.comparisonPanel.querySelector('[data-measure]').onclick = () => actions.measure()
@@ -355,6 +356,27 @@ export default class TyrellUI {
         flameHint.textContent = 'Emisiones en las torres laterales, fuera de CAM 01. Mayor intervalo: menos llamaradas.'
         cityPanel.append(flameHint)
         experience.append(cityPanel)
+        const glassPanel = document.createElement('details')
+        glassPanel.className = 'tyrell-pan'
+        glassPanel.innerHTML = '<summary>Cristalería</summary><div class="tyrell-pan-controls"></div><p>Material común para botella, tapón y vasos. Transparencia: 0 opaco, 1 máxima transmisión de luz. Menor distancia de absorción: color más intenso. Los cambios duran esta sesión.</p>'
+        for (const { key, label, type = 'range', value, min, max, step, unit = '' } of GLASSWARE_CONTROLS) {
+            const row = document.createElement('label')
+            row.textContent = label
+            const input = document.createElement('input'), output = document.createElement('output')
+            input.type = type
+            input.setAttribute('aria-label', label)
+            if (type === 'range') Object.assign(input, { min, max, step })
+            input.value = value
+            const refresh = () => { output.textContent = `${input.value}${unit ? ` ${unit}` : ''}` }
+            input.oninput = () => {
+                refresh()
+                actions.glassware({ [key]: type === 'color' ? input.value : Number(input.value) })
+            }
+            refresh()
+            row.append(input, output)
+            glassPanel.querySelector('div').append(row)
+        }
+        experience.append(glassPanel)
         this.vkPanel = document.createElement('details')
         this.vkPanel.className = 'tyrell-pan'
         this.vkPanel.innerHTML = '<summary>Voight-Kampff</summary><div class="tyrell-pan-controls"><button type="button" data-vk-toggle disabled>Desplegar</button><label><input type="checkbox" aria-label="Desplegar al llegar a p1" checked> Desplegar al llegar a p1</label></div><p role="status" data-vk-status>Cargando dispositivo…</p>'
@@ -529,13 +551,13 @@ export default class TyrellUI {
             ? `GPU score: ${capacity.gpuScore.toLocaleString('es-ES', { maximumFractionDigits: 0 })}${capacity.reliable ? '' : ' (aproximado)'}`
             : 'GPU score: no disponible'
         const metrics = this.root.querySelector('.tyrell-metrics')
-        metrics.title = available ? 'Benchmark de cálculo GPU en iteraciones/ms. Selección inicial por score; rendimiento real pendiente de calibración.' : 'No se ha obtenido una medición válida de capacidad GPU.'
+        metrics.title = available ? 'Benchmark GPU en iteraciones/ms: al arrancar y una única comprobación en p1 con el visor desplegado. Sin ajuste continuo.' : 'No se ha obtenido una medición válida de capacidad GPU.'
         this.metrics(this.metricsText || metrics.textContent)
     }
     setQualityState({ selection, quality, recommended, deviceSelection, device, resolutionScale = 1, resolutionFirst = false }) {
         this.root.querySelector('[aria-label="Calidad"]').value = selection
         this.root.querySelector('[aria-label="Modo de dispositivo"]').value = deviceSelection
-        this.root.querySelector('.tyrell-quality-state').textContent = `${device === 'mobile' ? 'Móvil' : 'Escritorio'} · Aplicada: ${quality} · Inicial por score: ${recommended}${resolutionFirst ? ' · Sin bloom ni reflejo del suelo' : ''}`
+        this.root.querySelector('.tyrell-quality-state').textContent = `${device === 'mobile' ? 'Móvil' : 'Escritorio'} · Aplicada: ${quality} · Por score: ${recommended}${resolutionFirst ? ' · Sin bloom ni reflejo del suelo' : ''}`
         this.lodLabel = selection === 'auto'
             ? `LOD auto: ${quality}${quality !== recommended ? ` · Inicial: ${recommended}` : ''}${resolutionScale < .999 ? ` · Resolución: ${Math.round(resolutionScale * 100)} %` : ''}`
             : `LOD por score: ${recommended} · LOD manual: ${quality}`

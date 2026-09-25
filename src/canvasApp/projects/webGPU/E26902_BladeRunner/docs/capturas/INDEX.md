@@ -769,3 +769,11 @@ Capturas de pantalla, vista `initial`, Tyrell v1, tyrell-light-v2, exposición 1
 | [10.3_004](10.3_004_2026-09-24_initial-Baja-R03-referencia.png) | 2026-09-24T20:11:08.860Z | Baja manual, R03, interno 960 × 400, bloom/reflejo activos; referencia |
 | [10.3_005](10.3_005_2026-09-24_initial-Baja-R04-resolucion.png) | 2026-09-24T20:15:01.875Z | Baja manual, R04, interno 1152 × 480, bloom/reflejo planar desactivados; propuesta |
 | [10.6_004](10.6_004_2026-09-24_initial-movil-R04-resolucion.png) | 2026-09-24T20:16:25.132Z | Extra baja móvil manual, viewport 852 × 393, interno 426 × 177; propuesta |
+
+### 10.1 · R05 · Score al arranque y comprobación única en p1
+
+Revisión funcional; sin cambios de acabado solicitados. Tyrell v1, tyrell-light-v2, exposición 1,07, Alta automática. [Diagnósticos y condiciones](../phase10/R05_SCORE.md).
+
+| Captura | Fecha UTC | Condición |
+| --- | --- | --- |
+| [10.1_001](10.1_001_2026-09-25_p1-score-dos-comprobaciones.png) | 2026-09-25T13:45:19.442Z | p1 con visor abierto, después de volver a p1 y reabrirlo; sigue un único segundo intento. Viewport 1492 × 1432; score efectivo 124.121.212, Alta, GUI oculta. |

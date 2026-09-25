@@ -57,6 +57,7 @@ test('Numbers between valid slider steps fail instead of being rounded by the br
 test('Legacy schema 1 preserves manual quality and inherits new orientation flags', () => {
     const { root, controls, calls } = fixture(), settings = structuredClone(initial)
     delete settings.viewer.deviceMode
+    delete settings.glassware
     settings.viewer.quality = 'Baja'
     controls.get('[aria-label="Calidad"]').options.push({ value: 'Baja' })
     delete settings.city.buildings.orientationColor.extraLowQualityEnabled
@@ -64,8 +65,22 @@ test('Legacy schema 1 preserves manual quality and inherits new orientation flag
     settings.city.buildings.orientationColor.lowQualityEnabled = false
     applyGUISettings(prepareGUISettings(root, settings, cameras))
     assert.deepEqual(calls.find(([path]) => path === 'viewer.deviceMode'), ['viewer.deviceMode', 'auto'])
+    assert.deepEqual(calls.find(([path]) => path === 'glassware.bottleHeightScale'), ['glassware.bottleHeightScale', '1.2'])
     assert.deepEqual(calls.find(([path]) => path === 'viewer.quality'), ['viewer.quality', 'Baja'])
     assert.deepEqual(calls.find(([path]) => path.endsWith('extraLowQualityEnabled')), ['city.buildings.orientationColor.extraLowQualityEnabled', false])
+})
+
+test('Glass color and optical properties are validated before touching the scene', () => {
+    for (const [key, value] of [['color', 'red'], ['transmission', 1.1], ['ior', .9], ['bottleHeightScale', 0]]) {
+        const { root, controls, calls } = fixture(), settings = structuredClone(initial)
+        Object.assign(controls.get('[aria-label="Color base del cristal"]'), { type: 'color', tagName: 'INPUT' })
+        Object.assign(controls.get('[aria-label="Transparencia del cristal"]'), { min: '0', max: '1', step: '.005' })
+        Object.assign(controls.get('[aria-label="Índice de refracción del cristal"]'), { min: '1', max: '2.5', step: '.01' })
+        Object.assign(controls.get('[aria-label="Altura de la botella"]'), { min: '.5', max: '2', step: '.05' })
+        settings.glassware[key] = value
+        assert.throws(() => prepareGUISettings(root, settings, cameras), /glassware/)
+        assert.equal(calls.length, 0)
+    }
 })
 
 test('Starting in p1 initializes its effective pan instead of overwriting it with default', () => {
