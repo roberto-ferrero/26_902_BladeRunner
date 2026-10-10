@@ -1,4 +1,6 @@
-# R05 · Score GPU y comprobación única en p1
+# R05 · Historial del score GPU
+
+**Actualización posterior — portfolio:** por petición del usuario se elimina la segunda comprobación en p1. Solo se mide al arrancar, sin pausas del render al navegar. Se elimina `settleMs`; el diagnóstico indica `startup-only`, `secondAttempts: 0` y `second: null`. El resto de este documento conserva el historial de R05.
 
 2026-09-25. Petición: mejorar la disponibilidad del score y comprobarlo una segunda vez al terminar de llegar a p1 con el visor desplegado, sin comprobaciones ni reajustes continuos. Se interpreta «cpu score» como el GPU Score existente que selecciona el LOD.
 

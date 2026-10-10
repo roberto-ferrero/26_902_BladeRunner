@@ -81,18 +81,38 @@ test('rest pose reconstructs original flexible meshes and all poses remain finit
     assert.deepEqual(motion.diagnostics(),snapshot)
 })
 
-test('arrival waits for confirmed p1, cancels pending dwell and respects manual intervention',()=>{
+test('arrival waits one second at confirmed p1, cancels pending dwell and respects manual intervention',()=>{
     const arrival=new Arrival()
     for(let i=0;i<600;i++)assert.equal(arrival.update(1/60,false),false)
     for(let i=0;i<12;i++)assert.equal(arrival.update(1/60,true),false)
     arrival.update(1/60,false)
-    for(let i=0;i<17;i++)assert.equal(arrival.update(1/60,true),false)
+    for(let i=0;i<59;i++)assert.equal(arrival.update(1/60,true),false)
     assert.equal(arrival.update(1/60,true),true)
     for(let i=0;i<60;i++)assert.equal(arrival.update(1/60,true),false)
     const manual=new Arrival();manual.manual();assert.equal(manual.update(1,true),false)
     const disabled=new Arrival();disabled.enabled=false;assert.equal(disabled.update(1,true),false)
     disabled.enabled=true;assert.equal(disabled.update(NaN,true),false)
     assert.equal(disabled.elapsed,0)
+})
+
+test('p1 startup finishes its black fade before the one-second deployment countdown',()=>{
+    const { default: Startup } = loadCameraSource('TyrellStartup.js')
+    const startup = new Startup({ maxMs: 0, fadeMs: 1500 }), arrival = new Arrival()
+    const settings = JSON.parse(fs.readFileSync('static/config/E26902_BladeRunner/gui.initial.json','utf8'))
+    assert.equal(settings.camera.initialState, 'p1')
+    assert.equal(settings.voightKampff.deployOnArrival, true)
+    startup.frame(0)
+    for(let t=100;t<1500;t+=100) {
+        startup.frame(t)
+        assert.ok(startup.opacity>0)
+        assert.equal(arrival.update(.1, startup.phase==='ready'),false)
+    }
+    startup.frame(1500)
+    assert.equal(startup.opacity,0); assert.equal(startup.phase,'ready')
+    assert.equal(arrival.update(0,true),false)
+    assert.equal(arrival.elapsed,0)
+    for(let i=0;i<59;i++)assert.equal(arrival.update(1/60,true),false)
+    assert.equal(arrival.update(1/60,true),true)
 })
 
 test('retraction smoothly settles the breathing phase and ends with optics off',()=>{

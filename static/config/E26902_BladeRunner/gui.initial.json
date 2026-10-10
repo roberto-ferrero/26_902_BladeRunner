@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "camera": {
-    "initialState": "initial",
+    "initialState": "p1",
     "stateKeys": {
       "initial": "0",
       "p1": "1",

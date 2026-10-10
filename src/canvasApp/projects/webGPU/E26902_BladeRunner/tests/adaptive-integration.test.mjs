@@ -11,9 +11,9 @@ const code = require('@babel/core').transformSync(fs.readFileSync(new URL('../E2
 }).code
 const m = { exports: {} }
 // Exercise the real orchestration methods without constructing the GPU scene.
-let measuredResult
-new Function('require', 'module', 'exports', 'document', code)(name => name === './TyrellQuality' ? Quality : name === 'three' ? THREE
-    : name === './TyrellGPUCapacity' ? { measureGPUCapacity: async () => measuredResult } : {}, m, m.exports, { hidden: false })
+let measuredResult, measuredCalls = 0, frameTime = 0
+new Function('require', 'module', 'exports', 'document', 'performance', code)(name => name === './TyrellQuality' ? Quality : name === 'three' ? THREE
+    : name === './TyrellGPUCapacity' ? { measureGPUCapacity: async () => { measuredCalls++; return measuredResult } } : {}, m, m.exports, { hidden: false }, { now: () => frameTime += 2000 })
 function fixture() {
     const app = Object.create(m.exports.default.prototype)
     Object.assign(app, { qualitySelection: 'auto', budgetMode: 'optimized', revealed: true, deviceMode: 'desktop', quality: 'Alta',
@@ -23,18 +23,6 @@ function fixture() {
     app.capacityChecks.initial(app.gpuCapacity)
     return app
 }
-test('Second check requires settled p1 with the VK completely open', () => {
-    const app = fixture()
-    Object.assign(app, { activeCameraStateId: 'p1', vk: { motion: { state: 'open' } } })
-    assert.equal(app.capacityCheckReady(), true)
-    for (const state of ['deploying', 'retracting', 'closed']) {
-        app.vk.motion.state = state; assert.equal(app.capacityCheckReady(), false)
-    }
-    app.vk.motion.state = 'open'; app.stageCamera.transition = {}
-    assert.equal(app.capacityCheckReady(), false)
-    app.stageCamera.transition = null; app.activeCameraStateId = 'p2'
-    assert.equal(app.capacityCheckReady(), false)
-})
 test('Automatic and manual resolution now remain at the profile budget without continuous feedback', () => {
     const app = fixture()
     let ratio, resizes = 0, mirrors = 0
@@ -47,20 +35,33 @@ test('Automatic and manual resolution now remain at the profile budget without c
     assert.equal(resizes, 2); assert.equal(mirrors, 2)
 })
 
-test('Second result adjusts auto only, preserves manual and retains a valid score on failure', async () => {
-    for (const [selection, result, expected] of [['auto', { gpuScore: 70e6, reliable: true }, 'Media'],
-        ['Alta', { gpuScore: 70e6, reliable: true }, 'Alta'], ['auto', { gpuScore: null, reason: 'timeout' }, 'Alta']]) {
-        const app = fixture(); app.qualitySelection = selection
-        app.ui = { metrics() {}, setGPUCapacity() {}, setQualityState() {} }
-        measuredResult = result
-        await app.recheckGPUCapacity()
-        assert.equal(app.quality, expected)
-        assert.equal(app.capacityChecks.state, 'complete')
-        assert.ok(app.gpuCapacity.gpuScore > 0)
-        assert.equal(typeof app.updateAutomaticQuality, 'undefined')
+test('The initial GPU score persists through p1, visor opening and revisits without another benchmark', async () => {
+    const app = fixture()
+    measuredCalls = 0
+    measuredResult = { gpuScore: 132e6, reliable: true, method: 'gpu-timestamp' }
+    let updates = 0, portfolioFrames = 0
+    Object.assign(app, { samples: [], warmup: 100,
+        ui: { status() {}, setGPUCapacity() {}, setVKState() {}, metrics() {} },
+        stageCamera: { update() {} },
+        vk: { motion: { state: 'closed' }, update() { updates++ } },
+        portfolio: { update() { portfolioFrames++ } },
+        selectQuality(selection) { this.qualitySelection = selection }
+    })
+    await app.measureGPUCapacity({})
+    assert.equal(measuredCalls, 1)
+    for (const state of ['initial', 'p1', 'p2', 'p1']) {
+        app.activeCameraStateId = state
+        for (const visor of ['deploying', 'open', 'open', 'open']) {
+            app.vk.motion.state = visor
+            app.update_RAF()
+        }
     }
+    assert.equal(measuredCalls, 1)
+    assert.equal(updates, 16); assert.equal(portfolioFrames, 16)
+    assert.equal(app.gpuCapacity, measuredResult)
+    assert.equal(app.capacityChecks.diagnostics().policy, 'startup-only')
+    assert.equal(app.capacityChecks.diagnostics().secondAttempts, 0)
 })
-
 test('Real profile policy reaches both effects and UI, including mobile Alta and historical A/B', () => {
     const app = fixture()
     let bloom, floor, ui

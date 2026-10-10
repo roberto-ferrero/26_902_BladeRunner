@@ -47,7 +47,7 @@ Las muestras breves de FPS observadas y los diagnósticos con `metrics: null` no
 
 ## Actualización R05
 
-La política actual de score usa una medición inicial y una única comprobación en p1 con visor abierto, sin reajuste continuo por FPS. Sustituye el controlador R03; los resultados anteriores se conservan como historial. [Detalles y validación](R05_SCORE.md).
+La política actual de score usa únicamente una medición inicial, sin comprobación en p1 y sin reajuste continuo por FPS. Sustituye el controlador R03; los resultados anteriores se conservan como historial. [Detalles y validación](R05_SCORE.md).
 
 ## Siguiente entrega
 

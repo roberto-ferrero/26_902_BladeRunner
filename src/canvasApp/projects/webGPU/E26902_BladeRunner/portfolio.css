@@ -1,0 +1,50 @@
+.tyrell-portfolio { position: fixed; z-index: 15; overflow: hidden; pointer-events: none; color: #fff; font-family: Asap, sans-serif; }
+.tyrell-portfolio[hidden] { display: none; }
+.tyrell-portfolio .portfolio-beams { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.tyrell-portfolio .portfolio-scroll { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scrollbar-width: none; pointer-events: auto; overflow-anchor: none; }
+.tyrell-portfolio .portfolio-scroll::-webkit-scrollbar { display: none; }
+.tyrell-portfolio .cards { position: relative; width: min(830px, 43.2vw); margin: 38px 9% 80px auto; will-change: transform; }
+.tyrell-portfolio .project_card { position: relative; margin-bottom: 50px; }
+.tyrell-portfolio .card_black_area { position: relative; background: #000c; width: 100%; }
+.tyrell-portfolio .card_vertical_stripe { position: absolute; width: 150px; height: 25px; transform-origin: 0 0; transform: rotate(-90deg) translate(-100%, -25px); background: var(--project-color); }
+.tyrell-portfolio .card_vertical_stripe_text { padding-top: 2px; font-size: 18px; text-align: center; color: #fff; }
+.tyrell-portfolio .card_title { color: var(--project-color); font-size: 37px; font-weight: 500; margin: 0 10px 0 34px; padding-top: 18px; line-height: 1.2; }
+.tyrell-portfolio .card_client { color: #fff; font-size: 20px; font-weight: 500; margin: 0 14px 0 34px; padding-top: 10px; }
+.tyrell-portfolio .card_client span, .tyrell-portfolio .card_visit a { color: var(--project-color); }
+.tyrell-portfolio a { text-decoration: none; color: inherit; }
+.tyrell-portfolio a:hover { text-decoration: underline; }
+.tyrell-portfolio :focus-visible { outline: 2px solid var(--project-color, #ffae5b); outline-offset: 3px; }
+.tyrell-portfolio .card_tags { padding-top: 15px; margin: 0 10px 20px 34px; line-height: 1.5; }
+.tyrell-portfolio .card_tech_tag { font-size: 15px; font-weight: 500; padding: 2px 5px; border-radius: 4px; white-space: nowrap; }
+.tyrell-portfolio .card_main_media, .tyrell-portfolio .card_extra_media { margin-left: 30px; width: calc(100% - 40px); text-align: center; }
+.tyrell-portfolio .card_main_media { margin-top: 20px; }
+.tyrell-portfolio .card_tags + .card_main_media { margin-top: 0; }
+.tyrell-portfolio .card_media_item { position: relative; display: inline-block; vertical-align: top; box-sizing: border-box; padding-bottom: 25px; }
+.tyrell-portfolio .half_width_item { width: 49%; padding-left: 1%; }
+.tyrell-portfolio .full_width_item { width: 100%; }
+.tyrell-portfolio .custom_width_item { max-width: 100%; margin: auto; }
+.tyrell-portfolio .card_media_item img { width: 100%; height: auto; display: block; }
+.tyrell-portfolio .card_media_item .img_external_link { position: absolute; top: 10px; right: 10px; width: auto; }
+.tyrell-portfolio .card_extra_media { overflow: hidden; }
+.tyrell-portfolio .card_extra_media[hidden] { display: none; }
+.tyrell-portfolio .card_more_info_bt { display: block; position: relative; width: 100%; border: 0; border-radius: 0; padding: 0; height: 20px; font: 600 18px/20px Asap, sans-serif; cursor: pointer; color: #000; background: var(--project-color); opacity: .5; }
+.tyrell-portfolio .card_more_info_bt:hover, .tyrell-portfolio .card_more_info_bt:focus-visible { opacity: 1; }
+.tyrell-portfolio .youtube_container { position: relative; width: 95%; aspect-ratio: 16/9; margin: 0 auto 30px; }
+.tyrell-portfolio .youtube_video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.tyrell-portfolio .card_visit { padding-top: 10px; margin-left: 34px; font-size: 20px; font-weight: 400; }
+.tyrell-portfolio .external_icon { display: inline-block; margin-left: 5px; width: 14px; height: 14px; }
+.tyrell-portfolio .color_green { color: #139ea0; }
+.tyrell-portfolio .color_tomatto { color: #f07549; }
+@media (max-width: 1100px) {
+    .tyrell-portfolio .cards { width: 52vw; margin-right: 5%; }
+    .tyrell-portfolio .card_title { font-size: 28px; }
+    .tyrell-portfolio #content_bio { padding: 26px; }
+    .tyrell-portfolio .bio_split { grid-template-columns: 1fr; gap: 12px; }
+    .tyrell-portfolio .bio_award_item { flex-direction: column; }
+}
+@media (max-width: 650px) {
+    .tyrell-portfolio .cards { width: calc(100% - 65px); margin: 30px 15px 60px 50px; }
+    .tyrell-portfolio .card_title { font-size: 24px; margin-left: 18px; }
+    .tyrell-portfolio .card_client, .tyrell-portfolio .card_visit { font-size: 16px; margin-left: 18px; }
+    .tyrell-portfolio .card_main_media, .tyrell-portfolio .card_extra_media { margin-left: 15px; width: calc(100% - 25px); }
+}

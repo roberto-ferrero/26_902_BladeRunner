@@ -45,6 +45,7 @@ import TyrellFlames from './TyrellFlames'
 import TyrellStartup from './TyrellStartup'
 import { measureGPUCapacity } from './TyrellGPUCapacity'
 import TyrellVKDevice from './TyrellVKDevice'
+import TyrellPortfolio from './TyrellPortfolio'
 
 export default class E26902_BladeRunner {
     constructor() {
@@ -59,7 +60,7 @@ export default class E26902_BladeRunner {
         this.deviceMode = this.detectedDevice
         this.budgetMode = 'optimized'
         this.gpuCapacitySettings = TYRELL.gpuCapacity
-        this.capacityChecks = new TyrellCapacityChecks(this.gpuCapacitySettings)
+        this.capacityChecks = new TyrellCapacityChecks()
         this.samples = []
         this.transitionDuration = CAMERA_STATES.transition.duration
         this.transitionEasing = CAMERA_STATES.transition.easing
@@ -174,6 +175,7 @@ export default class E26902_BladeRunner {
         window.addEventListener('pointermove', this.pointerMove)
         document.documentElement.addEventListener('pointerleave', this.pointerLeave)
         this.renderer = app.render.renderer
+        this.portfolio = new TyrellPortfolio(this)
         this.navigation = new TyrellNavigation(this.stageCamera.get_camera(), this.renderer.domElement,
             message => this.ui.setNavigationState(this.navigation?.enabled, this.navigation?.locked, message), () => this.ui.dialog.open)
         this.performanceProbe = new TyrellPerformance(this.renderer, this.profileEnabled)
@@ -482,7 +484,6 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     renderFrame(camera) {
-        if (this.capacityChecks.state === 'running') return
         const benchmark = this.colorBenchmark
         benchmark?.beforeFrame()
         const start = this.profileEnabled || benchmark ? performance.now() : 0
@@ -648,27 +649,6 @@ export default class E26902_BladeRunner {
         this.sustainedMeasurement = new TyrellSustainedMeasurement()
         this.ui.comparisonStatus(this.sustainedMeasurement.status())
     }
-    capacityCheckReady() {
-        return this.revealed && !document.hidden && !this.rendererError && this.activeCameraStateId === 'p1'
-            && !this.stageCamera?.transition && !this.navigation?.enabled && !this.developmentControls && this.vk?.motion.state === 'open'
-    }
-    async recheckGPUCapacity() {
-        this.ui.metrics('Segunda comprobación GPU (única)…')
-        try {
-            const result = await measureGPUCapacity(this.renderer, () => this.disposed || !this.capacityCheckReady(), this.gpuCapacitySettings)
-            const previous = this.gpuCapacity
-            this.gpuCapacity = this.capacityChecks.complete(result)
-            if (this.disposed) return
-            this.ui.setGPUCapacity(this.gpuCapacity)
-            if (this.qualitySelection === 'auto' && this.gpuCapacity !== previous) this.selectQuality('auto')
-            else this.refreshQualityState()
-        } catch (error) {
-            this.capacityChecks.complete({ gpuScore: null, reason: error.message })
-        } finally {
-            this.panTime = undefined
-            if (!this.disposed) this.resetMetrics()
-        }
-    }
     updateSustainedMeasurement(now) {
         const run = this.sustainedMeasurement
         if (!run) return
@@ -688,12 +668,7 @@ export default class E26902_BladeRunner {
     }
     update_RAF() {
         const now = performance.now()
-        if (this.capacityChecks.state === 'running') return
-        if (this.capacityChecks.beginIfReady(now, this.capacityCheckReady() && !this.measuring
-            && !this.sustainedMeasurement && !this.colorBenchmark && !this.captureRequested)) {
-            void this.recheckGPUCapacity()
-            return
-        }
+        const wasRevealed = this.revealed
         if (document.hidden) this.colorBenchmark?.finish('la pestaña dejó de estar visible')
         if (this.startup && !this.revealed && !this.rendererError) {
             if (document.hidden) this.startup.pause()
@@ -744,10 +719,12 @@ export default class E26902_BladeRunner {
         if (this.vk && !document.hidden && !this.colorBenchmark) {
             const seconds = this.panTime === undefined ? 0 : (now - this.panTime) / 1000
             const settledP1 = this.revealed && this.activeCameraStateId === 'p1' && !this.stageCamera.transition && !this.navigation?.enabled && !this.developmentControls
-            this.vk.update(seconds, settledP1)
+            // Do not count the last fade frame toward the one-second opening delay.
+            this.vk.update(wasRevealed ? seconds : 0, settledP1)
             if (this.vk.reflectionNeedsRefresh) this.floorReflection?.updates.invalidate()
             this.ui.setVKState(this.vk.motion.state)
         }
+        this.portfolio?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)
         this.panTime = now
         if (this.previousFrame !== undefined && !document.hidden) {
             if (this.warmup > 0) this.warmup--
@@ -813,6 +790,7 @@ export default class E26902_BladeRunner {
             contactRepair: this.contactRepair || null,
             floorReflection: this.floorReflection?.diagnostics() || null,
             voightKampff: this.vk?.diagnostics() || null,
+            portfolio: this.portfolio?.diagnostics() || null,
             specularEnvironment: this.specularEnvironment?.diagnostics() || null,
             atmosphere: this.atmosphere?.diagnostics() || null,
             lightVolume: this.volume?.diagnostics() || null,
@@ -857,6 +835,7 @@ export default class E26902_BladeRunner {
         this.disposed = true
         this.abort?.abort()
         window.removeEventListener('keydown', this.cameraKeyDown)
+        this.portfolio?.dispose()
         window.removeEventListener('pointermove', this.pointerMove)
         document.documentElement.removeEventListener('pointerleave', this.pointerLeave)
         this.performanceProbe?.dispose()

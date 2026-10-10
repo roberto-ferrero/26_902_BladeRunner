@@ -1,0 +1,1180 @@
+{
+    "tags":[
+        {
+            "id":"html5",
+            "name":"HTML5",
+            "text_color":"#ffffff",
+            "bg_color":"#006ebb"
+        },
+        {
+            "id":"canvas",
+            "name":"Canvas",
+            "text_color":"#ffffff",
+            "bg_color":"#4092cc"
+        },
+        {
+            "id":"css3",
+            "name":"CSS3",
+            "text_color":"#ffffff",
+            "bg_color":"#dd4b25"
+        },
+        {
+            "id":"js",
+            "name":"JS",
+            "text_color":"#000000",
+            "bg_color":"#e2c430"
+        },
+        {
+            "id":"tweenmax",
+            "name":"TweenMax",
+            "text_color":"#000000",
+            "bg_color":"#e9d364"
+        },
+        {
+            "id":"jquery",
+            "name":"jQuery",
+            "text_color":"#000000",
+            "bg_color":"#e9d364"
+        },
+        {
+            "id":"d3",
+            "name":"D3.js",
+            "text_color":"#000000",
+            "bg_color":"#e9d364"
+        },
+        {
+            "id":"three",
+            "name":"Three.js",
+            "text_color":"#000000",
+            "bg_color":"#e9d364"
+        },
+        {
+            "id":"phaser",
+            "name":"Phaser.js",
+            "text_color":"#000000",
+            "bg_color":"#e9d364"
+        },
+        {
+            "id":"svg",
+            "name":"SVG",
+            "text_color":"#ffffff",
+            "bg_color":"#ff9a00"
+        },
+        {
+            "id":"snap_svg",
+            "name":"SnapSVG",
+            "text_color":"#ffffff",
+            "bg_color":"#ff9a00"
+        },
+        {
+            "id":"photoshop",
+            "name":"Photoshop",
+            "text_color":"#00a5f7",
+            "bg_color":"#001732"
+        },
+        {
+            "id":"illustrator",
+            "name":"Illustrator",
+            "text_color":"#f79500",
+            "bg_color":"#310000"
+        },
+        {
+            "id":"flash",
+            "name":"Flash",
+            "text_color":"#e83921",
+            "bg_color":"#221210"
+        },
+        {
+            "id":"as2",
+            "name":"AS2",
+            "text_color":"#ffffff",
+            "bg_color":"#e83921"
+        },
+        {
+            "id":"as3",
+            "name":"AS3",
+            "text_color":"#ffffff",
+            "bg_color":"#e83921"
+        },
+        {
+            "id":"scorm",
+            "name":"SCORM",
+            "text_color":"#ffffff",
+            "bg_color":"#d60b4f"
+        },
+        {
+            "id":"php",
+            "name":"PHP",
+            "text_color":"#000000",
+            "bg_color":"#7377ad"
+        },
+        {
+            "id":"mysql",
+            "name":"MySQL",
+            "text_color":"#00668a",
+            "bg_color":"#d78a25"
+        },
+        {
+            "id":"node",
+            "name":"node.js",
+            "text_color":"#404137",
+            "bg_color":"#83cd29"
+        },
+        {
+            "id":"git",
+            "name":"GIT",
+            "text_color":"#ffffff",
+            "bg_color":"#e84e31"
+        },
+        {
+            "id":"blender",
+            "name":"Blender",
+            "text_color":"#ffffff",
+            "bg_color":"#eb7700"
+        },
+        {
+            "id":"webgL",
+            "name":"WebGL",
+            "text_color":"#ffffff",
+            "bg_color":"#940000"
+        },
+        {
+            "id":"glsl",
+            "name":"GLSL",
+            "text_color":"#ffffff",
+            "bg_color":"#c24040"
+        },
+        {
+            "id":"r3f",
+            "name":"R3F",
+            "text_color":"#ffffff",
+            "bg_color":"#61dafb"
+        },
+        {
+            "id":"webgpu",
+            "name":"webgpu",
+            "text_color":"#ffffff",
+            "bg_color":"#005a9c"
+        }
+        
+    ],
+    "projects":[
+        {
+            "id":"p_bio",
+            "alias": "About myself",
+            "name" :"About myself",
+            "color" : "#f07549",
+            "content_id":"#content_bio",
+            "tags" :"",
+            "main_media":[
+
+            ],
+            "extra_media":[
+ 
+            ]
+        },
+        {
+            "id":"p_25601",
+            "alias": "Project 25601",
+            "name" :"The Scentuary",
+            "color" : "#ffae5b",
+            "agency" :"We are FIRMA Studio",
+            "role" :"WebGL/Web3D animations and transitions.",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/25_601_Scentuary/20250910/",
+            "visit_url": "https://www.scentuary.com/explore-the-maison-of-unique-fragrances/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.scentuary.com/explore-the-maison-of-unique-fragrances/",
+                    "path": "assets/img/p_25601/25601_Cover.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "7jpGwB2sMfM"
+                },
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "hkTIyWxsUXY"
+                }
+            ]
+        },
+        {
+            "id":"p_25508",
+            "alias": "Project 25508",
+            "name" :"Tresmares Capital",
+            "color" : "#e41613",
+            "agency" :"Dgrees Studio",
+            "role" :"WebGL interactive cloudsea background & SVG animations.",
+            "awards": "Awwwards SOTD & DEV Mention - 12th June, 2026",
+            "awards_url": "https://www.awwwards.com/sites/tresmares-capital",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/dgrees/tresmares/tresmares_cloudSea_3js/20250916/",
+            "visit_dev_url2": "https://www.robertoferrero.es/visor/dgrees/tresmares/tresmares_morphings_svg/20251106/",
+            "visit_url": "https://www.tresmarescapital.com/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.tresmarescapital.com/",
+                    "path": "assets/img/p_25508/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "KlANfo9KK9A"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://www.tresmarescapital.com/",
+                    "path": "assets/img/p_25508/half1.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://www.tresmarescapital.com/",
+                    "path": "assets/img/p_25508/half2.jpg"
+                }
+            ]
+        },
+        {
+            "id":"p_25509",
+            "alias": "Project 25509",
+            "name" :"Tenity",
+            "color" : "#ff3e60",
+            "agency" :"Dgrees Studio",
+            "role" :"WebGL interactive background for Tenity website.",
+            "awards": "Awwwards Honorable Mention - May 23, 2026",
+            "awards_url": "https://www.awwwards.com/sites/tenity",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/dgrees/tenity/tenity_psychoBackground_3js/20250924/",
+            "visit_url": "https://tenity.dgrees.studio/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://tenity.dgrees.studio/",
+                    "path": "assets/img/p_25509/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "bym0uM7L9tQ"
+                }
+            ]
+        },
+       
+        {
+            "id":"p_25507",
+            "alias": "Project 25507",
+            "name" :"Autonomy Capital",
+            "color" : "#c59608",
+            "agency" :"Dgrees Studio",
+            "role" :"WebGL interactive background. ",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/dgrees/autonomy/autonomy_smudgeBuffer_3js/20250905/",
+            "visit_url": "https://autonomycapital.com/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://autonomycapital.com/",
+                    "path": "assets/img/p_25507/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "hadrZ77z6Co"
+                }
+            ]
+        },
+        {
+            "id":"p_25503",
+            "alias": "Project 25503",
+            "name" :"<b>blit.</b>",
+            "color" : "#4f4f4f",
+            "agency" :"Dgrees Studio",
+            "role" :"WebGL Particle background for 'Unfolded' section ",
+            "awards": "Awwwards Honorable Mention - May 26, 2026",
+            "awards_url": "https://www.awwwards.com/sites/blit-studio",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/dgrees/blit/blit_wavesBg_3js/20250620_divs/",
+            "visit_url": "https://blit.studio/unfolded/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://blit.studio/unfolded/",
+                    "path": "assets/img/p_25503/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "UnwIMJ2DMuw"
+                }
+            ]
+        },
+        {
+            "id":"p_25502",
+            "alias": "Project 25502",
+            "name" :"Spain Collection",
+            "color" : "#d582af",
+            "agency" :"Dgrees Studio",
+            "role" :"Interactive WebGL animation of petals in the Weddings section.",
+            "awards": "Awwwards Honorable Mention - Oct 26, 2025",
+            "awards_url": "https://www.awwwards.com/sites/spain-collection-travel",
+            "codrops": "Codrops Post - 18th December, 2025",
+            "codrops_url": "https://tympanus.net/codrops/2025/12/18/spain-collection-evolving-a-luxury-website-into-a-digital-ecosystem/",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/dgrees/spaincollection/spaincol_petals_3js/20250429/",
+            "visit_url": "https://spaincollection.com/weddings/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://dgrees.studio/en/contact/",
+                    "path": "assets/img/p_25502/25502_Main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://tympanus.net/codrops/2025/12/18/spain-collection-evolving-a-luxury-website-into-a-digital-ecosystem/",
+                    "path": "assets/img/p_25502/25502_Codrops.jpg"
+                },
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "AwZx7FKs77o"
+                },
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "JwJivcQoRVw"
+                }
+            ]
+        },
+        {
+            "id":"p_25501",
+            "alias": "Project 25501",
+            "name" :"Dgrees Studio v2025",
+            "color" : "#ff4400",
+            "agency" :"Dgrees Studio",
+            "role" :"WebGL: Tiles animation and pixelated background",
+            "awards": "Awwwards SOTD & DEV Mention - 17th April, 2025",
+            "awards_url": "https://www.awwwards.com/sites/dgrees-studio-2",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/dgrees/dgrees/dgrees_pacman_3js/20250207/",
+            "visit_url": "https://dgrees.studio/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://dgrees.studio/en/contact/",
+                    "path": "assets/img/p_25501/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "Vn3RK7fbneQ"
+                },
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "f1aJjGSnSgk"
+                }
+            ]
+        },
+        {
+            "id":"p_24506",
+            "alias": "Project 24506",
+            "name" :"Valid Trusted Connectivity",
+            "color" : "#277fb1",
+            "agency" :"Dgrees Studio",
+            "role" :"WebGL/Web3D interactive earth.",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/dgrees/valid/valid_earth_3js/20241205/",
+            "visit_url": "https://trustedconnectivity.valid.com/about/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://trustedconnectivity.valid.com/about/",
+                    "path": "assets/img/p_24506/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "QldNwsT5PlY"
+                },
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "jyqZqoGBNs0"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://trustedconnectivity.valid.com/about/",
+                    "path": "assets/img/p_24506/extra_img_1.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://trustedconnectivity.valid.com/about/",
+                    "path": "assets/img/p_24506/extra_img_2.jpg"
+                }
+            ]
+        },
+        {
+            "id":"p_24505",
+            "alias": "Project 24505",
+            "name" :"PWC Strategy",
+            "color" : "#981e1e",
+            "agency" :"Dgrees Studio",
+            "role" :"WebGL/Web3D Particles and morphings.",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/dgrees/pwc/pwc_lighthouse_3js/20250110_1410/",
+            "visit_url": "https://www.strategyand.pwc.com/m1/en/z-archive/wp-ideation-center.html",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.strategyand.pwc.com/m1/en/z-archive/wp-ideation-center.html",
+                    "path": "assets/img/p_24505/24505_MainCover.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "mKlVyN2HCXE"
+                }
+            ]
+        },
+        {
+            "id":"p_24504",
+            "alias": "Project 24504",
+            "name" :"Vigo Cura",
+            "color" : "#e85bfe",
+            "agency" :"Dgrees Studio",
+            "role" :"WebGL/Web3D animations and transitions.",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/dgrees/bdc/bdc_app.3js/20240717/",
+            "visit_url": "https://vigocura.com",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://vigocura.com/diorama/",
+                    "path": "assets/img/p_24504/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "kW2aeVsFkK4"
+                },
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "TMM6xj_BMF8"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://vigocura.com/",
+                    "path": "assets/img/p_24504/extra_img_1.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://vigocura.com/diorama/",
+                    "path": "assets/img/p_24504/extra_img_2.jpg"
+                    
+                }
+            ]
+        },
+        {
+            "id":"p_24502",
+            "alias": "Project 24502",
+            "name" :"Ceer Motor",
+            "color" : "#3b581e",
+            "agency" :"Dgrees Studio",
+            "role" :"WebGL interactive background.",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/dgrees/ceer/ceer_ceerapp_3js/20231228/",
+            "visit_url": "https://ceermotors.com/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://ceermotors.com/",
+                    "path": "assets/img/p_24502/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "x73SJ1ifCqs"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://ceermotors.com/",
+                    "path": "assets/img/p_24502/extra_img_1.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://ceermotors.com/",
+                    "path": "assets/img/p_24502/extra_img_2.jpg"
+                }
+            ]
+        },
+       
+        {
+            "id":"p_23501",
+            "alias": "Project 23501",
+            "name" :"Be the One - VIP Sport Experiences",
+            "color" : "#294495",
+            "agency" :"Dgrees Studio",
+            "role" :"WebGL animation. Home grid intro. Faces. Approach.",
+            "awards": "Awwwards Honorable Mention - Sep 6, 2024",
+            "awards_url": "https://www.awwwards.com/sites/bto-vip-sports-experiences",
+            "visit_dev_url": "https://www.robertoferrero.es/visor/dgrees/bto/bto_background_test/20230223/",
+            "visit_url": "https://bto.dgrees.studio/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://dgrees.studio/en/contact/",
+                    "path": "assets/img/p_23501/23501_Main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "j6CTpLvr2UU"
+                },
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "Q6zI_fjEwNI"
+                }
+                
+                
+            ]
+        },
+        {
+            "id":"p_22506",
+            "alias": "Project 22506",
+            "name" :"Dgrees Studio v2022",
+            "color" : "#ff4400",
+            "agency" :"Dgrees Studio",
+            "role" :"WebGL animation. Home grid intro. Faces. Approach.",
+            "awards": "Awwwards Honorable Mention - Jun 16, 2023",
+            "awards_url": "https://www.awwwards.com/sites/dgrees-studio-1",
+            "fwa": "FWA of the Day - June 9, 2023",
+            "fwa_url": "https://thefwa.com/cases/dgrees",
+            "visit_url": "https://dgrees.studio/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://dgrees.studio/en/contact/",
+                    "path": "assets/img/p_22506/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://dgrees.studio/en/",
+                    "path": "assets/img/p_22506/extra_img_1.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://dgrees.studio/en/about/",
+                    "path": "assets/img/p_22506/extra_img_2.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://dgrees.studio/en/approach/",
+                    "path": "assets/img/p_22506/extra_img_3.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://dgrees.studio/en/about/",
+                    "path": "assets/img/p_22506/extra_img_4.jpg"
+                }
+            ]
+        },
+        {
+            "id":"p_22505",
+            "alias": "Project 22505",
+            "name" :"Terraza Balear",
+            "color" : "#978f88",
+            "agency" :"Dgrees Studio > Terraza Balear",
+            "role" :"WebGL animation. Gallery, Magazine and Brands sections.",
+            "awards": "Awwwards SOTD - May 8, 2023 & DEV Mention",
+            "awards_url": "https://www.awwwards.com/sites/terraza-balear",
+            "fwa": "FWA of the Day - May 6, 2023",
+            "fwa_url": "https://thefwa.com/cases/terraza-balear",
+            "visit_url": "https://terrazabalear.dgrees.studio/",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://terrazabalear.dgrees.studio/",
+                    "path": "assets/img/p_22505/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://terrazabalear.dgrees.studio/brands/",
+                    "path": "assets/img/p_22505/extra_img_1.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://terrazabalear.dgrees.studio/magazine/",
+                    "path": "assets/img/p_22505/extra_img_2.jpg"
+                }
+            ]
+        },
+        {
+            "id":"p_22504",
+            "alias": "Project 22504",
+            "name" :"Perfif ai",
+            "color" : "#cfe736",
+            "agency" :"Dgrees Studio > Perif",
+            "role" :"WebGL and Web3D. Inteactive car 3D model. ",
+            "visit_url": "https://perif.dgrees.studio/",
+            "tags" :["three", "webgL", "glsl", "js", "blender"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://perif.dgrees.studio/",
+                    "path": "assets/img/p_22504/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://perif.dgrees.studio/",
+                    "path": "assets/img/p_22504/extra_img_1.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://perif.dgrees.studio/",
+                    "path": "assets/img/p_22504/extra_img_2.jpg"
+                }
+            ]
+        },
+        {
+            "id":"p_22501",
+            "alias": "Project 22501",
+            "name" :"MIOTI Consulting",
+            "color" : "#1c4fa0",
+            "agency" :"Dgrees Studio > Mioti",
+            "role" :"WebGL. Interactive particles background.",
+            "visit_url": "https://mioticonsulting.dgrees.studio/",
+            "awards": "Awwwards Honorable Mention - Nov 3, 2022",
+            "awards_url": "https://www.awwwards.com/sites/mioti-consulting-1",
+            "tags" :["three", "webgL", "glsl", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://mioticonsulting.dgrees.studio/",
+                    "path": "assets/img/p_22501/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://mioticonsulting.dgrees.studio/ai-strategy/",
+                    "path": "assets/img/p_22501/extra_img_1.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "link": "https://mioticonsulting.dgrees.studio/nosotros/",
+                    "path": "assets/img/p_22501/extra_img_2.jpg"
+                }
+            ]
+        },
+
+        {
+            "id":"p_21010",
+            "alias": "Project 21010",
+            "name" :"Cartoon Network & Boomerang. Fashion Quiz",
+            "color" : "#bfaf6f",
+            "agency" :"Warner Media",
+            "role" :"UX & UI design and frontend development.",
+            "visit_url": "https://www.robertoferrero.es/visor/21_010_QuizzCNPT/",
+            "tags" :["html5", "css3", "js", "tweenmax", "jquery", "svg", "snap_svg"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "path": "assets/img/p_21010/main_img_1.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "path": "assets/img/p_21010/main_img_2.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "UObj0i99F4g"
+                },
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "Zb2Z3Zk7v30"
+                }
+            ]
+        },
+        {
+            "id":"p_21009",
+            "alias": "Project 21009",
+            "name" :"Cartoon Network. Sales dept. Infographics",
+            "color" : "#ffe200",
+            "agency" :"Warner Media",
+            "role" :"Visual design.",
+            "visit_url": "",
+            "tags" :["photoshop", "illustrator"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "path": "assets/img/p_21009/main_img_1.png"
+                }
+            ],
+            "extra_media":[
+            ]
+        },
+        {
+            "id":"p_21008",
+            "alias": "Project 21008",
+            "name" :"Red Bull. Batalla de Gallos TV cairons/displays",
+            "color" : "#cd004a",
+            "agency" :"Guud TV > Red Bull",
+            "role" :"Programing animations, transitions and mutations.",
+            "visit_url": "",
+            "tags" :["html5", "css3", "js", "tweenmax", "node", "git"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "path": "assets/img/p_21008/main_img_1.png"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "Y7tEufzygEE"
+                }
+            ]
+        },
+        {
+            "id":"p_21005",
+            "alias": "Project 21005",
+            "name" :"Linknovate. Isometric Quiz",
+            "color" : "#139ea0",
+            "agency" :"Linknovate",
+            "role" :"UX & UI design and frontend development.",
+            "visit_url": "https://www.robertoferrero.es/visor/21_004_Quizz/",
+            "tags" :["html5", "css3", "js", "tweenmax", "jquery"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "path": "assets/img/p_21005/main_img_1.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "pA0ruJhqUL0"
+                }
+            ]
+        },
+        {
+            "id":"p_21003",
+            "alias": "Project 21003",
+            "name" :"Linknovate. D3.js interactive graph",
+            "color" : "#ec615f",
+            "agency" :"Linknovate",
+            "role" :"UX & UI design and frontend development.",
+            "visit_url": "https://www.robertoferrero.es/visor/21_003_GraficaD3/",
+            "tags" :["html5", "css3", "js", "tweenmax", "jquery", "d3"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "path": "assets/img/p_21003/main_img_1.png"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "AnEKqzc-Rjw"
+                }
+            ]
+        },
+        {
+            "id":"p_21000",
+            "alias": "Project 21000",
+            "name" :"El Chiringuito Show. TV cairons/displays",
+            "color" : "#6daeff",
+            "agency" :"Guud TV > El Chiringuito",
+            "role" :"Programing animations, transitions and mutations.",
+            "visit_url": "",
+            "tags" :["html5", "css3", "js", "tweenmax", "node", "git"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "path": "assets/img/p_21000/main_img_1.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "klV6g0Lc6p0"
+                }
+            ]
+        },
+        {
+            "id":"p_19003",
+            "alias": "Project 19003",
+            "name" :"El Corte Inglés. E-Learning course for employees.<br>Personal shopper.",
+            "color" : "#f18012",
+            "agency" :"El Corte Inglés",
+            "role" :"UX & UI design and frontend development.",
+            "tags" :["html5", "css3", "js", "tweenmax", "jquery", "scorm"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "path": "assets/img/p_19003/main_img_1.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "path": "assets/img/p_19003/main_img_2.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "path": "assets/img/p_19003/main_img_3.jpg"
+                }
+            ]
+        },
+        {
+            "id":"p_18014_24",
+            "alias": "Project 18014-24",
+            "name" :"Iberdrola. Infographic animation #24.<br><span class='_project_name_s'>Oceanos a la deriva.</span>",
+            "color" : "#3b8383",
+            "agency" :"Flowing Bytes > MRM > Iberdrola",
+            "role" :"Interactive animation coding of a given illustration.",
+            "visit_url": "https://www.robertoferrero.es/visor/18_014_Iberdrola/24_OceanosDeriva/portfolio.html",
+            "tags" :["html5", "css3", "js", "tweenmax", "jquery", "svg", "snap_svg"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"custom_width_item",
+                    "path": "assets/img/p_18014_24/main_img_1.jpg"
+                }
+            ],
+            "extra_media":[
+            ]
+        },
+        {
+            "id":"p_18014_17",
+            "alias": "Project 18014-17",
+            "name" :"Iberdrola. Infographic animation #17.<br><span class='_project_name_s'>Mindfulness.</span>",
+            "color" : "#dfa8a2",
+            "agency" :"Flowing Bytes > MRM > Iberdrola",
+            "role" :"Interactive animation coding of a given illustration.",
+            "visit_url": "https://www.robertoferrero.es/visor/18_014_Iberdrola/17_Mindfulness/porfolio.html",
+            "tags" :["html5", "css3", "js", "tweenmax", "jquery", "svg", "snap_svg"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"custom_width_item",
+                    "path": "assets/img/p_18014_17/main_img_1.png"
+                }
+            ],
+            "extra_media":[
+            ]
+        },
+        {
+            "id":"p_17007",
+            "alias": "Project 17007",
+            "name" :"Cinetika. Brand design",
+            "color" : "#dc0676",
+            "agency" :"Cinetika",
+            "role" : "Full brand design. Logo, flyers and web.",
+            "visit_url": "https://www.cinetika.es",
+            "tags" :["photoshop", "illustrator", "html5", "css3", "php", "js"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "path": "assets/img/p_17007/extra_img_1.png"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "path": "assets/img/p_17007/main_img_2.jpg"
+                },
+                {
+                    "type":"IMG",
+                    "class":"half_width_item",
+                    "path": "assets/img/p_17007/main_img_3.jpg"
+                }
+                
+            ]
+        },
+        {
+            "id":"p_15020",
+            "alias": "Project 15020",
+            "name" :"Boomerang. Who's your best friend quiz.",
+            "color" : "#993799",
+            "agency" :"Turner Broadcasting System > Boomerang",
+            "role" : "UX & UI design and frontend development.",
+            "visit_url": "http://www.robertoferrero.es/visor/15_020_BestFriendQuiz/Deploy/UK/index_UK.html",
+            "tags" :["html5", "css3", "js", "tweenmax", "canvas", "phaser"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/34441623/2016-Best-friend-Quiz-Turner-UK/modules/217152699",
+                    "path": "assets/img/p_15020/img_1.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/34441623/2016-Best-friend-Quiz-Turner-UK/modules/217152703",
+                    "path": "assets/img/p_15020/img_2.png"
+                }
+                
+            ]
+        },
+        {
+            "id":"p_15019",
+            "alias": "Project 15019",
+            "name" :"Nike. San Silvestre Madrileña.",
+            "color" : "#fb5500",
+            "agency" :"Optima Studio > Nike",
+            "role" : "UX & UI design and frontend development.",
+            "tags" :["html5", "css3", "js", "tweenmax", "canvas", "phaser"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/34442311/2015-San-Silvestre-Vallecana-OptimaStudio/modules/217158117",
+                    "path": "assets/img/p_15019/img_1.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/34442311/2015-San-Silvestre-Vallecana-OptimaStudio/modules/217158121",
+                    "path": "assets/img/p_15019/img_2.jpg"
+                }
+                
+            ]
+        },
+        {
+            "id":"p_14016",
+            "alias": "Project 14016",
+            "name" :"Cartoon Network. Perlim event.",
+            "color" : "#68b0d3",
+            "agency" :"Turner Broadcasting System > Cartoon Network",
+            "role" : "UX & UI design and frontend & backend development.",
+            "tags" :["flash", "as3", "php", "mysql"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/30016807/2014-Micro-Natal-Perlim-CNTurner",
+                    "path": "assets/img/p_14016/img_1.png"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "wC2xIQ9-6fE"
+                }
+            ]
+        },
+        {
+            "id":"p_13016",
+            "alias": "Project 13016",
+            "name" :"Adventure Time cosplay online contest.",
+            "color" : "#008973",
+            "agency" :"Turner Broadcasting System > Boing",
+            "role" : "UX & UI design and frontend & backend development.",
+            "tags" :["flash", "as3", "php", "mysql"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/30015827/2013-Micro-Concurso-Cosplay-BoingTurner",
+                    "path": "assets/img/p_13016/img_1.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/30015827/2013-Micro-Concurso-Cosplay-BoingTurner",
+                    "path": "assets/img/p_13016/img_2.png"
+                },
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/30015827/2013-Micro-Concurso-Cosplay-BoingTurner",
+                    "path": "assets/img/p_13016/img_3.jpg"
+                }
+            ]
+        },
+        {
+            "id":"p_13015",
+            "alias": "Project 13015",
+            "name" :"El Corte Inglés. Novedades de Videojuegos.",
+            "color" : "#890125",
+            "agency" :"El Corte Inglés",
+            "role" : "UX & UI design and frontend development.",
+            "tags" :["flash", "as3"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/30015057/2013-App-Novedades-Videojuegos-ECI",
+                    "path": "assets/img/p_13015/img_0.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/30015057/2013-App-Novedades-Videojuegos-ECI",
+                    "path": "assets/img/p_13015/img_1.png"
+                }
+            ]
+        },
+        {
+            "id":"p_13007",
+            "alias": "Project 13007",
+            "name" :"El Corte Inglés. Novedades Editoriales.",
+            "color" : "#0097e0",
+            "agency" :"El Corte Inglés",
+            "role" : "UX & UI design and frontend development.",
+            "tags" :["flash", "as3"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/29778249/2013-App-Novedades-Editoriales-ECI",
+                    "path": "assets/img/p_13007/img_1.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/29778249/2013-App-Novedades-Editoriales-ECI",
+                    "path": "assets/img/p_13007/img_2.png"
+                }
+            ]
+        },
+        {
+            "id":"p_12016",
+            "alias": "Project 12016",
+            "name" :"Leonardo Interactivo. Códice Madrid.",
+            "color" : "#eaa500",
+            "agency" :"Mad Pixel > Biblioteca Nacional",
+            "role" : "UX design and frontend development.",
+            "tags" :["flash", "as3"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/29722529/2012-App-Leonardo-Interactivo-MadPixel",
+                    "path": "assets/img/p_12016/img_0.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/29722529/2012-App-Leonardo-Interactivo-MadPixel",
+                    "path": "assets/img/p_12016/img_1.png"
+                },
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/29722529/2012-App-Leonardo-Interactivo-MadPixel",
+                    "path": "assets/img/p_12016/img_2.png"
+                }
+                
+            ]
+        },
+        {
+            "id":"p_11006",
+            "alias": "Project 11006",
+            "name" :"Falling Skies. Microsite.",
+            "color" : "#5fa4c4",
+            "agency" :"Turner Broadcasting System > TNT",
+            "role" : "UX & UI design and frontend development.",
+            "tags" :["flash", "as3"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/29777617/2011-Web-Falling-Skies-TNTTurner",
+                    "path": "assets/img/p_11006/img_1.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.behance.net/gallery/29777617/2011-Web-Falling-Skies-TNTTurner",
+                    "path": "assets/img/p_11006/img_2.png"
+                }
+                
+            ]
+        }
+    ]
+}

@@ -1,0 +1,281 @@
+﻿{
+    "tags":[
+        {
+            "id":"html5",
+            "name":"HTML5",
+            "text_color":"#ffffff",
+            "bg_color":"#006ebb"
+        },
+        {
+            "id":"canvas",
+            "name":"Canvas",
+            "text_color":"#ffffff",
+            "bg_color":"#4092cc"
+        },
+        {
+            "id":"css3",
+            "name":"CSS3",
+            "text_color":"#ffffff",
+            "bg_color":"#dd4b25"
+        },
+        {
+            "id":"js",
+            "name":"JS",
+            "text_color":"#000000",
+            "bg_color":"#e2c430"
+        },
+        {
+            "id":"tweenmax",
+            "name":"TweenMax",
+            "text_color":"#000000",
+            "bg_color":"#e9d364"
+        },
+        {
+            "id":"jquery",
+            "name":"jQuery",
+            "text_color":"#000000",
+            "bg_color":"#e9d364"
+        },
+        {
+            "id":"d3",
+            "name":"D3.js",
+            "text_color":"#000000",
+            "bg_color":"#e9d364"
+        },
+        {
+            "id":"three",
+            "name":"Three.js",
+            "text_color":"#000000",
+            "bg_color":"#e9d364"
+        },
+        {
+            "id":"phaser",
+            "name":"Phaser.js",
+            "text_color":"#000000",
+            "bg_color":"#e9d364"
+        },
+        {
+            "id":"svg",
+            "name":"SVG",
+            "text_color":"#ffffff",
+            "bg_color":"#ff9a00"
+        },
+        {
+            "id":"snap_svg",
+            "name":"SnapSVG",
+            "text_color":"#ffffff",
+            "bg_color":"#ff9a00"
+        },
+        {
+            "id":"photoshop",
+            "name":"Photoshop",
+            "text_color":"#00a5f7",
+            "bg_color":"#001732"
+        },
+        {
+            "id":"illustrator",
+            "name":"Illustrator",
+            "text_color":"#f79500",
+            "bg_color":"#310000"
+        },
+        {
+            "id":"flash",
+            "name":"Flash",
+            "text_color":"#e83921",
+            "bg_color":"#221210"
+        },
+        {
+            "id":"as2",
+            "name":"AS2",
+            "text_color":"#ffffff",
+            "bg_color":"#e83921"
+        },
+        {
+            "id":"as3",
+            "name":"AS3",
+            "text_color":"#ffffff",
+            "bg_color":"#e83921"
+        },
+        {
+            "id":"scorm",
+            "name":"SCORM",
+            "text_color":"#ffffff",
+            "bg_color":"#d60b4f"
+        },
+        {
+            "id":"php",
+            "name":"PHP",
+            "text_color":"#000000",
+            "bg_color":"#7377ad"
+        },
+        {
+            "id":"mysql",
+            "name":"MySQL",
+            "text_color":"#00668a",
+            "bg_color":"#d78a25"
+        },
+        {
+            "id":"node",
+            "name":"node.js",
+            "text_color":"#404137",
+            "bg_color":"#83cd29"
+        },
+        {
+            "id":"git",
+            "name":"GIT",
+            "text_color":"#ffffff",
+            "bg_color":"#e84e31"
+        },
+        {
+            "id":"blender",
+            "name":"Blender",
+            "text_color":"#ffffff",
+            "bg_color":"#eb7700"
+        },
+        {
+            "id":"webgL",
+            "name":"WebGL",
+            "text_color":"#ffffff",
+            "bg_color":"#940000"
+        },
+        {
+            "id":"glsl",
+            "name":"GLSL",
+            "text_color":"#ffffff",
+            "bg_color":"#c24040"
+        },
+        {
+            "id":"r3f",
+            "name":"R3F",
+            "text_color":"#ffffff",
+            "bg_color":"#61dafb"
+        },
+        {
+            "id":"webgpu",
+            "name":"webgpu",
+            "text_color":"#ffffff",
+            "bg_color":"#005a9c"
+        }
+        
+    ],
+    "projects":[
+        
+        {
+            "id":"p_26602",
+            "alias": "Experiment 26602",
+            "name" :"WebGL Strand Morphology Experiment",
+            "color" : "#7349a7",
+            "description": "A real-time WebGL animation that shapes organic strands through procedural morphology and motion.",
+            "visit_url": "https://www.robertoferrero.es/lab/E26602_Strand_morphology_gl/",
+            "tags" :["js", "three", "webgL"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.robertoferrero.es/lab/E26602_Strand_morphology_gl/",
+                    "path": "assets/img/e_26602/main.jpg"
+                }
+            ]
+        },
+        {
+            "id":"p_26002",
+            "alias": "Experiment 26002",
+            "name" :"WebGPU 2 million Particles Experiment",
+            "color" : "#ff9947",
+            "description" :"A real-time WebGPU simulation that handles 2 million particles efficiently.",
+            "visit_url": "https://www.robertoferrero.es/lab/E26002_BlownPixels_mars_gpu/",
+            "tags" :["js", "three", "webgpu"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.robertoferrero.es/lab/E26002_BlownPixels_mars_gpu/",
+                    "path": "assets/img/e_26002/main.jpg"
+                }
+            ]
+        },
+        {
+            "id":"p_22504",
+            "alias": "Experiment 22504",
+            "name" :"Interactive WebGL Page Curl Simulation",
+            "color" : "#3888eb",
+            "description" :"A real-time WebGL simulation that utilizes custom vertex shaders to dynamically deform a 3D mesh, creating a fluid, mouse-interactive magazine page curl effect.",
+            "visit_url": "https://www.robertoferrero.es/lab/E22504_PageCurl_gl/",
+            "tags" :["js", "three", "webgL", "glsl"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.robertoferrero.es/lab/E22504_PageCurl_gl/",
+                    "path": "assets/img/e_22505/main.jpg"
+                }
+            ]
+        },
+        {
+            "id":"p_22803",
+            "alias": "Experiment 22803",
+            "name" :"Polygon Runway Episode 2 baked to ThreeJs + Water Shader",
+            "color" : "#98ae14",
+            "description" :"3D modeling. Baking. ThreeJs and Shader",
+            "visit_url": "https://www.robertoferrero.es/visor/22_803_PolygonRunway/22_803_PolygonRunway_episode2_v2/index.html",
+            "tags" :["html5", "js", "three", "blender", "glsl", "node", "git"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.robertoferrero.es/visor/22_803_PolygonRunway/22_803_PolygonRunway_episode2_v2/index.html",
+                    "path": "assets/img/p_22803/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "NqrzoOKnQeI"
+                }
+            ]
+        },
+        
+        {
+            "id":"p_21803",
+            "alias": "Experiment 21803",
+            "name" :"Bruno Simon ThreeJs Journey course final project",
+            "color" : "#6b86e6",
+            "description" :"3D modeling. Baking. ThreeJs and Shader",
+            "visit_url": "https://www.robertoferrero.es/visor/21_803_ThreeJsJourney/lesson39/index.html",
+            "tags" :["html5", "js", "three", "blender", "glsl", "node", "git"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"full_width_item",
+                    "link": "https://www.robertoferrero.es/visor/21_803_ThreeJsJourney/lesson39/index.html",
+                    "path": "assets/img/p_21803/main.jpg"
+                }
+            ],
+            "extra_media":[
+                {
+                    "type":"YOUTUBE",
+                    "videoid": "fPmSfEzZIGw"
+                }
+            ]
+        },
+        
+        {
+            "id":"p_19002",
+            "alias": "Experiment 19002",
+            "name" :"Experiment. Procedural tree.",
+            "color" : "#c02ddf",
+            "description" :"Procedural generation of a tree. (AS3 to JavaScript port)",
+            "visit_url": "https://www.robertoferrero.es/visor/19_002_SVGs/05_PortacionAS3/index.html",
+            "tags" :["html5", "css3", "js", "tweenmax", "svg", "snap_svg"],
+            "main_media":[
+                {
+                    "type":"IMG",
+                    "class":"custom_width_item",
+                    "path": "assets/img/p_19002/img_1.png"
+                }
+            ],
+            "extra_media":[
+            ]
+        }
+    ]
+}

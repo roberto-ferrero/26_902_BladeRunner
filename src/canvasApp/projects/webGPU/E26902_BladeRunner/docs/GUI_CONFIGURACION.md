@@ -47,7 +47,7 @@ Compatibilidad de fase 10: `viewer.quality` admite `auto`, `Extra baja`, `Baja`,
 
 Los ajustes se validan antes de cargar los modelos y se aplican cuando todos los componentes están creados, antes de estabilizar y revelar la escena. Se reutilizan las mismas acciones del GUI para actualizar controles, lecturas y componentes. Los cambios interactivos duran la sesión y no sobrescriben el JSON.
 
-R05: `viewer.quality: auto` selecciona por GPU Score al arrancar y permite una única segunda comprobación al llegar a p1 con el visor completamente abierto. Después no hay adaptación continua de resolución ni LOD por FPS. La selección manual se respeta. Cambiar dispositivo, volver a Automática o volver a p1 no reinicia la comprobación. [Detalles](phase10/R05_SCORE.md).
+Actualización: `viewer.quality: auto` selecciona por GPU Score únicamente al arrancar. No se vuelve a medir al llegar a p1 ni al abrir el visor. No hay adaptación continua de resolución ni LOD por FPS. La selección manual se respeta; cambiar dispositivo o volver a Automática reutiliza el score inicial. [Detalles](phase10/R05_SCORE.md).
 
 R04: en presupuesto `optimized`, Baja/Extra baja y modo móvil excluyen bloom/reflejo planar aunque el JSON solicite activarlos. Esas preferencias se conservan para los perfiles que sí los permiten. `viewer.renderBudget: previous` permite comparar con R03, sin adaptación automática. El JSON inicial sigue usando `optimized`; no se introduce almacenamiento local ni se sobrescribe la configuración al cambiar perfil.
 

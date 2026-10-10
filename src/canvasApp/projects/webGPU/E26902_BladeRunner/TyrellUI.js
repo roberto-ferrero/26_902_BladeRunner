@@ -204,7 +204,7 @@ export default class TyrellUI {
         this.comparisonPanel.className = 'tyrell-pan'
         this.comparisonPanel.innerHTML = `<summary>Comparar efectos y coste</summary><div class="tyrell-pan-controls">
             <button type="button" data-measure>Medir configuración</button><button type="button" data-sustained>Medir 3 × 60 s</button><button type="button" data-export>Exportar comparación</button><button type="button" data-clear>Borrar mediciones</button></div>
-            <p>La prueba sostenida mide tres pasadas de 60 s, con 5 s de calentamiento por pasada. Se cancela al cambiar ajustes, mover la cámara u ocultar la pestaña. Sus FPS y p95 cubren la pasada completa; CPU/GPU conservan la ventana corta del diagnóstico. La comprobación única de GPU en p1 espera a que terminen las mediciones técnicas.</p>
+            <p>La prueba sostenida mide tres pasadas de 60 s, con 5 s de calentamiento por pasada. Se cancela al cambiar ajustes, mover la cámara u ocultar la pestaña. Sus FPS y p95 cubren la pasada completa; CPU/GPU conservan la ventana corta del diagnóstico.</p>
             <p>Activa o desactiva efectos en sus paneles. Medir centra la cámara, descarta 60 fotogramas y recoge 120. Compara con la misma cámara, calidad, resolución y luz. Los FPS pueden estar limitados por la pantalla. CPU/GPU se registran al abrir con ?profile=1; — significa sin medición. CPU mide envío del render; GPU, pases de render, sin presentación.</p>
             <p role="status" data-status>Sin mediciones. Se conservan las últimas 12 durante la sesión.</p><div class="tyrell-comparison-table"></div>`
         this.comparisonPanel.querySelector('[data-measure]').onclick = () => actions.measure()
@@ -551,7 +551,7 @@ export default class TyrellUI {
             ? `GPU score: ${capacity.gpuScore.toLocaleString('es-ES', { maximumFractionDigits: 0 })}${capacity.reliable ? '' : ' (aproximado)'}`
             : 'GPU score: no disponible'
         const metrics = this.root.querySelector('.tyrell-metrics')
-        metrics.title = available ? 'Benchmark GPU en iteraciones/ms: al arrancar y una única comprobación en p1 con el visor desplegado. Sin ajuste continuo.' : 'No se ha obtenido una medición válida de capacidad GPU.'
+        metrics.title = available ? 'Benchmark GPU en iteraciones/ms: solo al arrancar. Entrar en p1 no repite la medición. Sin ajuste continuo.' : 'No se ha obtenido una medición válida de capacidad GPU.'
         this.metrics(this.metricsText || metrics.textContent)
     }
     setQualityState({ selection, quality, recommended, deviceSelection, device, resolutionScale = 1, resolutionFirst = false }) {

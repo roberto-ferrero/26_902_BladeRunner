@@ -31,12 +31,11 @@ export const TYRELL = {
         { position: [7.7, 3.8, -7.2], target: [2, 3.2, -8], width: 2, height: 3 }
     ],
     quality: 'Baja',
-    // Initial score plus one check at settled p1 with the visor open; no continuous adaptation.
+    // Measure only at startup; entering p1 never interrupts the scene for a benchmark.
     gpuCapacity: {
         timeoutMs: 10000,
         warmupRuns: 3,
-        sampleRuns: 12,
-        settleMs: 1000
+        sampleRuns: 12
     },
     shadows: {
         camera: { left: -14, right: 14, top: 10, bottom: -4, near: 50, far: 115 },
