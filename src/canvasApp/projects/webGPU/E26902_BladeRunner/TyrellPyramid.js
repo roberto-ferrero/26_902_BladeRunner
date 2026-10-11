@@ -8,11 +8,12 @@ import TyrellPyramidElevators from './TyrellPyramidElevators'
 export const PYRAMID = Object.freeze({
     asset: 'glbs/E26902_BladeRunner/Tyrell_Pyramid_v3.glb?v=1',
     replaces: 'Tyrell_Corporation_Pyramid',
-    building: 'Tyrell_Pyramid_v1'
+    building: 'Tyrell_Pyramid_v1',
+    leaning: 'Tyrell_Pyramid_v1001'   // the leaning buildings (glTF 'Tyrell_Pyramid_v1.001', sanitized by GLTFLoader): the only part kept with { main: false }
 })
 
 export default class TyrellPyramid {
-    constructor(world, scene, { windows = true } = {}) {
+    constructor(world, scene, { windows = true, main = true } = {}) {
         const old = world.getObjectByName(PYRAMID.replaces)
         this.removed = old ? old.name : null
         if (old) { old.removeFromParent(); old.traverse(object => object.geometry?.dispose()) }   // its concrete material may be shared
@@ -63,18 +64,27 @@ export default class TyrellPyramid {
         })
         this.materials = [...replaced.values()]
         this.elevators = new TyrellPyramidElevators(scene, this.building)
+        // Temporary: without the main building, only the leaning buildings stay (no elevators, windows or beacons).
+        this.main = main
+        if (!main) {
+            this.elevators.dispose()
+            for (const object of [...scene.children]) {
+                if (object.name === PYRAMID.leaning) continue
+                object.removeFromParent(); object.traverse(child => child.geometry?.dispose())
+            }
+        }
     }
     configure(group, values) {
-        if (group === 'elevators') this.elevators.configure(values)
+        if (group === 'elevators') { if (this.main) this.elevators.configure(values) }
         else this.windows[group]?.configure(values)
     }
-    update(delta) { return this.elevators.update(delta) }
+    update(delta) { return this.main ? this.elevators.update(delta) : false }
     diagnostics() {
         return { asset: PYRAMID.asset, replaced: this.removed, ...this.stats, windowMaterials: this.materials.length, sharedTextures: this.sharedTextures,
-            elevators: this.elevators.diagnostics() }
+            main: this.main, elevators: this.main ? this.elevators.diagnostics() : null }
     }
     dispose() {
-        this.elevators.dispose()
+        if (this.main) this.elevators.dispose()
         this.materials.forEach(material => material.dispose())
         // Geometry, textures and the remaining materials belong to the GLB scene (disposeScene).
     }

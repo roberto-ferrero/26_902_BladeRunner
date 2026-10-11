@@ -8,6 +8,9 @@ export const TYRELL = {
         radius: 1200, centerY: 80, marginDegrees: 3, segments: 192, heightScale: 0.5, radialIntensity: 1
     },
     initialCamera: 'CAM 01',
+    // Scene contents. glassware: decanter and tumblers on the table (removed).
+    // pyramidMain: main body of the v3 pyramid; false hides it temporarily and keeps the leaning buildings.
+    scene: { glassware: false, pyramidMain: false },
     exposure: 1.07,
     materialLook: 'tyrell-v1', // Reviewed material baseline; lighting/reflections still being calibrated.
     lightingProfile: 'tyrell-light-v2', // Accepted recovery baseline; 4.3 requires visual revision.

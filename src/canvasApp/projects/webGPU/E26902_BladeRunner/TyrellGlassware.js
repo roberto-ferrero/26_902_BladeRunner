@@ -31,6 +31,14 @@ function glassMaterial(name, thickness, detail, thicknessScale) {
     return material
 }
 
+// Without the imported glassware, the original decanter, stopper and tumblers leave the scene too.
+export function removeOriginalGlassware(root) {
+    for (const name of ['Cut_crystal_decanter', 'Crystal_stopper', 'Crystal_tumbler', 'Crystal_tumbler001']) {
+        const object = root.getObjectByName(name)
+        if (object) { object.removeFromParent(); object.traverse(child => child.geometry?.dispose()) }
+    }
+}
+
 export function addGlassware(root, imported) {
     const models = Object.fromEntries(['Licorera', 'Tapon', 'Vaso'].map(name => [name, imported?.getObjectByName(name)]))
     for (const [name, model] of Object.entries(models)) {

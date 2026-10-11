@@ -6,7 +6,7 @@ import { RectAreaLightTexturesLib } from 'three/addons/lights/RectAreaLightTextu
 import { TYRELL } from './config'
 import { qualityBudget, qualityEffects, BUDGET_MODES, QUALITY_LEVELS, DEVICE_MODES, recommendQuality, detectDeviceMode, renderPixelRatio } from './TyrellQuality'
 import { loadTyrell, disposeScene } from './TyrellAssets'
-import { addGlassware, GLASSWARE_ASSET } from './TyrellGlassware'
+import { addGlassware, removeOriginalGlassware, GLASSWARE_ASSET } from './TyrellGlassware'
 import TyrellGlasswareTable from './TyrellGlasswareTable'
 import TyrellCameraRig from './TyrellCameraRig'
 import cameraStateExport from './cameraStates.generated.json'
@@ -236,13 +236,15 @@ export default class E26902_BladeRunner {
                     this.abort.signal, () => this.ui.status('Cargando la pirámide Tyrell…'))
                 if (this.disposed) { disposeScene(this.pyramidAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             }
-            this.glasswareAsset = await loadTyrell(new URL(GLASSWARE_ASSET, new URL(this.app.pathPrefix, document.baseURI)).href,
-                this.abort.signal, () => this.ui.status('Cargando la licorera y los vasos…'))
-            if (this.disposed) { disposeScene(this.glasswareAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
+            if (TYRELL.scene.glassware) {
+                this.glasswareAsset = await loadTyrell(new URL(GLASSWARE_ASSET, new URL(this.app.pathPrefix, document.baseURI)).href,
+                    this.abort.signal, () => this.ui.status('Cargando la licorera y los vasos…'))
+                if (this.disposed) { disposeScene(this.glasswareAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
+            }
             if (new URLSearchParams(location.search).get('vk') !== '0') {
                 this.vkAsset = await loadTyrell(new URL('glbs/E26902_BladeRunner/VK_Device.glb', new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
                     (received, total, parsing) => this.ui.status(parsing ? 'Preparando el Voight-Kampff…' : `Cargando Voight-Kampff · ${(received / 1e6).toFixed(1)} MB`))
-                if (this.disposed) { disposeScene(this.vkAsset.gltf.scene); disposeScene(this.glasswareAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
+                if (this.disposed) { disposeScene(this.vkAsset.gltf.scene); disposeScene(this.glasswareAsset?.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             }
             this.skyTexture = await new THREE.TextureLoader().loadAsync(new URL(TYRELL.sky.texture, new URL(this.app.pathPrefix, document.baseURI)).href)
             this.skyTexture.colorSpace = THREE.SRGBColorSpace
@@ -267,13 +269,14 @@ export default class E26902_BladeRunner {
     }
     build() {
         this.world3D = this.asset.gltf.scene
-        this.glassware = addGlassware(this.world3D, this.glasswareAsset.gltf.scene)
-        this.glasswareTable = new TyrellGlasswareTable(this.world3D, this.glassware.groups)
+        if (this.glasswareAsset) this.glassware = addGlassware(this.world3D, this.glasswareAsset.gltf.scene)
+        else removeOriginalGlassware(this.world3D)
+        this.glasswareTable = new TyrellGlasswareTable(this.world3D, this.glassware?.groups || [])
         this.navigation.collision = new TyrellCollision(this.world3D)
         this.columnCores = addColumnCores(this.world3D)
         this.contactRepair = settleInstrumentCase(this.world3D)
         // Replaces the original building before the city and the building lights look for it.
-        if (this.pyramidAsset) this.pyramid = new TyrellPyramid(this.world3D, this.pyramidAsset.gltf.scene, { windows: this.pyramidMode !== 'plain' })
+        if (this.pyramidAsset) this.pyramid = new TyrellPyramid(this.world3D, this.pyramidAsset.gltf.scene, { windows: this.pyramidMode !== 'plain', main: TYRELL.scene.pyramidMain })
         this.city = new TyrellCity(this.world3D)
         this.buildingLights = new TyrellBuildingLights(this.world3D)
         this.airTraffic = new TyrellAirTraffic(this.world3D)
