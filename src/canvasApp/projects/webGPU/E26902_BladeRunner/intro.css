@@ -1,6 +1,6 @@
 /* Cinematic bands: the canvas renders only between them, so they cost no pixels. */
 body.tyrell-viewer.tyrell-cinema { background: #000; }
-body.tyrell-viewer.tyrell-cinema #canvas_app { top: var(--tyrell-cinema-band, 10vh); bottom: auto; margin: 0; width: 100vw; height: calc(100dvh - var(--tyrell-cinema-band, 10vh) - var(--tyrell-cinema-band-bottom, 6vh)); }
+body.tyrell-viewer.tyrell-cinema #canvas_app { top: var(--tyrell-cinema-band, 10vh); bottom: auto; margin: 0; width: 100vw; height: calc(100dvh - var(--tyrell-cinema-band, 10vh) - var(--tyrell-cinema-band-bottom, 7vh)); }
 body.tyrell-cinema .tyrell-ui header { display: none; }
 
 /* Type from robertoferrero.es: Asap 400, name 38 px / role 33 px, contact 26 px (here smaller). */
@@ -9,7 +9,7 @@ body.tyrell-cinema .tyrell-ui header { display: none; }
 .tyrell-cinema-title { top: 0; font-size: var(--band-font); }
 .tyrell-cinema-title strong { font-weight: 400; color: #f07549; }
 .tyrell-cinema-title span { font-size: .87em; color: #fff; white-space: pre; }
-.tyrell-cinema-contact { bottom: 0; height: var(--tyrell-cinema-band-bottom, 6vh); flex-direction: column; align-items: flex-start; justify-content: center; font-size: max(13px, calc(var(--band-font) * .55)); transition-duration: 1.6s; }
+.tyrell-cinema-contact { bottom: 0; height: var(--tyrell-cinema-band-bottom, 7vh); flex-direction: column; align-items: flex-start; justify-content: center; font-size: max(13px, calc(var(--band-font) * .55)); transition-duration: 1.6s; }
 .tyrell-cinema-contact a { color: #139ea0; text-decoration: none; }
 .tyrell-cinema-contact a + a { color: #bcc2df; }
 .tyrell-cinema-contact a:hover, .tyrell-cinema-contact a:focus-visible { color: #fff; }

@@ -25,7 +25,7 @@ export default class TyrellVKMotion {
         this.progress = 0
         this.state = 'closed'
         this.breathTime = 0
-        this.duration = 5
+        this.duration = 5 / 1.5
         this.settleBreath = 0
         this.inverseRoot = new Matrix4()
         this.a = new Vector3(); this.b = new Vector3(); this.normal = new Vector3()
@@ -76,7 +76,7 @@ export default class TyrellVKMotion {
         if (this.moving || (open && this.state === 'open') || (!open && this.state === 'closed')) return false
         this.settleBreath = open ? 0 : this.compression - vkPose(this.progress).compression
         this.state = open ? 'deploying' : 'retracting'
-        this.duration = open ? 5 : 4.2
+        this.duration = open ? 5 / 1.5 : 4.2
         this.breathTime = 0
         return true
     }

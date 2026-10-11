@@ -6,7 +6,7 @@ export const INTRO = {
     from: 'initial0',
     steps: [{ state: 'initial', duration: 4, easing: 'smoothstep' }, { state: 'p1', duration: 10, easing: 'smoothstep' }],
     // Share of the viewport height of each black band; overridable with ?bands=0.12&bandBottom=0.05.
-    band: .1, bandBottom: .06,
+    band: .1, bandBottom: .07,
     name: 'ROBERTO FERRERO', role: 'Creative Developer',
     email: 'hola@robertoferrero.es', phone: '+34 678 55 23 80', phoneHref: 'tel:+34678552380'
 }
