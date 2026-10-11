@@ -28,7 +28,7 @@
   },
   "viewer": {
     "deviceMode": "auto",
-    "quality": "auto",
+    "quality": "Alta",
     "referenceFrameEnabled": true,
     "renderBudget": "optimized"
   },

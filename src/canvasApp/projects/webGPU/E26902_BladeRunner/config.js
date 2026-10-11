@@ -10,7 +10,8 @@ export const TYRELL = {
     initialCamera: 'CAM 01',
     // Scene contents. glassware: decanter and tumblers on the table (removed).
     // pyramidMain: main body of the v3 pyramid; false hides it temporarily and keeps the leaning buildings.
-    scene: { glassware: false, pyramidMain: true },
+    // cullHiddenFaces: drop the pyramid faces (and their leaning buildings) that no camera sees.
+    scene: { glassware: false, pyramidMain: true, cullHiddenFaces: true },
     exposure: 1.07,
     materialLook: 'tyrell-v1', // Reviewed material baseline; lighting/reflections still being calibrated.
     lightingProfile: 'tyrell-light-v2', // Accepted recovery baseline; 4.3 requires visual revision.
@@ -35,7 +36,10 @@ export const TYRELL = {
     ],
     quality: 'Baja',
     // Measure only at startup; entering p1 never interrupts the scene for a benchmark.
+    // Always start in Alta: the startup GPU measurement (and the 'auto' recommendation) is skipped.
+    startQuality: 'Alta',
     gpuCapacity: {
+        enabled: false,
         timeoutMs: 10000,
         warmupRuns: 3,
         sampleRuns: 12

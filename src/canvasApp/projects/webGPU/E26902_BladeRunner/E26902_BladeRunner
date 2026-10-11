@@ -54,7 +54,7 @@ export default class E26902_BladeRunner {
         this.rendererOptions = { requireWebGPU: true, benchmarkOnStart: false, powerPreference: 'high-performance', trackTimestamp: this.profileEnabled }
         this.ownsMetrics = true
         this.quality = TYRELL.quality
-        this.qualitySelection = 'auto'
+        this.qualitySelection = TYRELL.startQuality || 'auto'
         this.deviceSelection = 'auto'
         this.detectedDevice = detectDeviceMode({ mobileHint: navigator.userAgentData?.mobile || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent), coarsePointer: window.matchMedia('(pointer: coarse)').matches, touchPoints: navigator.maxTouchPoints })
         this.deviceMode = this.detectedDevice
@@ -146,6 +146,7 @@ export default class E26902_BladeRunner {
     }
     onRendererProgress(app) { this.mount(app) }
     async measureGPUCapacity(renderer) {
+        if (this.gpuCapacitySettings?.enabled === false) return
         this.ui.status('Midiendo la capacidad de la GPU…')
         this.gpuCapacity = await measureGPUCapacity(renderer, () => this.disposed, this.gpuCapacitySettings)
         this.capacityChecks.initial(this.gpuCapacity)
@@ -276,7 +277,7 @@ export default class E26902_BladeRunner {
         this.columnCores = addColumnCores(this.world3D)
         this.contactRepair = settleInstrumentCase(this.world3D)
         // Replaces the original building before the city and the building lights look for it.
-        if (this.pyramidAsset) this.pyramid = new TyrellPyramid(this.world3D, this.pyramidAsset.gltf.scene, { windows: this.pyramidMode !== 'plain', main: TYRELL.scene.pyramidMain })
+        if (this.pyramidAsset) this.pyramid = new TyrellPyramid(this.world3D, this.pyramidAsset.gltf.scene, { windows: this.pyramidMode !== 'plain', main: TYRELL.scene.pyramidMain, cullHidden: TYRELL.scene.cullHiddenFaces })
         this.city = new TyrellCity(this.world3D)
         this.buildingLights = new TyrellBuildingLights(this.world3D)
         this.airTraffic = new TyrellAirTraffic(this.world3D)
