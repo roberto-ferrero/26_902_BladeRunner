@@ -8,13 +8,14 @@
 .tyrell-loader-fill { position: absolute; inset: 0 auto 0 0; width: 0; background: rgb(var(--loader-accent)); box-shadow: 0 0 6px rgba(var(--loader-accent), .85), 0 0 16px rgba(var(--loader-accent), .45); transition: width .45s ease-out; }
 .tyrell-loader-status { margin: 16px 0 0; min-height: 1.4em; font: 11px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; color: #f3eee873; animation: tyrell-loader-in 1s .9s ease-out backwards; }
 
-/* 100 %: line, subtitle and status first, then the black, then the name (total LOADER_LEAVE_MS). */
+/* 100 %: name, subtitle and line leave one after another, the black holds 0.5 s,
+   then fades to the scene (LOADER_REVEAL_MS / LOADER_LEAVE_MS in TyrellLoader.js). */
 .tyrell-loader.is-leaving { pointer-events: none; }
+.tyrell-loader.is-leaving .tyrell-loader-title { animation: tyrell-loader-out .7s .45s ease-in both; }
+.tyrell-loader.is-leaving .tyrell-loader-subtitle { animation: tyrell-loader-out .7s .6s ease-in both; }
 .tyrell-loader.is-leaving .tyrell-loader-track,
-.tyrell-loader.is-leaving .tyrell-loader-subtitle,
-.tyrell-loader.is-leaving .tyrell-loader-status { animation: tyrell-loader-out .6s ease-in both; }
-.tyrell-loader.is-leaving::before { animation: tyrell-loader-out 1.3s .35s ease-in-out both; }
-.tyrell-loader.is-leaving .tyrell-loader-title { animation: tyrell-loader-out 1.1s .7s ease-in-out both; }
+.tyrell-loader.is-leaving .tyrell-loader-status { animation: tyrell-loader-out .7s .75s ease-in both; }
+.tyrell-loader.is-leaving::before { animation: tyrell-loader-out 1.5s 1.95s ease-in-out both; }
 
 /* Errors use the viewer's status box above; keep only the black behind it. */
 .tyrell-loader.is-error { z-index: 15; }

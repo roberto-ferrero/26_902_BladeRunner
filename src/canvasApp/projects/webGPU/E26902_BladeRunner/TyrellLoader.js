@@ -5,8 +5,10 @@ export const LOADER_STAGES = {
     renderer: [0, .04], gpu: [.04, .1], settings: [.1, .12], scene: [.12, .56], pyramid: [.56, .64],
     glassware: [.64, .68], vk: [.68, .76], sky: [.76, .79], build: [.79, .84], warmup: [.84, 1]
 }
-// Must match the leave transitions in loader.css (last one ends at 1.8 s).
-export const LOADER_LEAVE_MS = 1800
+// Must match the leave animations in loader.css: the full bar shows briefly, texts are
+// gone at 1.45 s, black held until 1.95 s (the scene starts moving), clear at 3.45 s.
+export const LOADER_REVEAL_MS = 1950
+export const LOADER_LEAVE_MS = 3450
 
 const clamp = value => Math.min(1, Math.max(0, Number.isFinite(value) ? value : 0))
 

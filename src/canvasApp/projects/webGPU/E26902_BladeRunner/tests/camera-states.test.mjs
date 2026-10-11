@@ -41,7 +41,7 @@ test('Current Blender export integrates every state without manual entries in ca
     const settings = structuredClone(CAMERA_STATES)
     settings.states.p1 = { viewOffset: { x: .1 } }
     settings.transitions = { 'initial->p1': { duration: 2, easing: 'linear' } }
-    assert.deepEqual(createCameraStates(exported, settings)[1].viewOffset, { x: .1, y: 0 })
+    assert.deepEqual(createCameraStates(exported, settings).find(s => s.cameraStateId === 'p1').viewOffset, { x: .1, y: 0 })
     assert.deepEqual(cameraTransition(settings.transition, settings.transitions['initial->p1']), { duration: 2, easing: 'linear' })
 })
 

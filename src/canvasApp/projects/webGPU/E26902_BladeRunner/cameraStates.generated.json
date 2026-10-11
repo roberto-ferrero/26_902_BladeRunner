@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "20260914_BladeRunner_AUXILIAR.blend",
-  "sourceSha256": "a3abe91631ed18c3b86522d038029965cc72cb1e7e91d4b5fd5a30ea5e536224",
+  "sourceSha256": "cd03bc271f0d1da01dbd6e58705a19df48e291817b9a036611b78ecbb89e890b",
   "coordinates": "metres, Y up; Blender (x, y, z) -> (x, z, -y)",
   "fovUnits": "vertical degrees",
   "warnings": [],
@@ -12,6 +12,24 @@
       "cameraTarget": "cameratarget-initial",
       "position": [
         -0.11999999731779099,
+        1.550000786781311,
+        10.300000190734863
+      ],
+      "target": [
+        0.0,
+        1.9514189958572388,
+        -10.378293991088867
+      ],
+      "fov": 22.917504404217937,
+      "near": 0.029999999329447746,
+      "far": 2500.0
+    },
+    {
+      "cameraStateId": "initial0",
+      "cameraSpot": "cameraspot-initial0",
+      "cameraTarget": "cameratarget-initial0",
+      "position": [
+        -2.9737355709075928,
         1.550000786781311,
         10.300000190734863
       ],

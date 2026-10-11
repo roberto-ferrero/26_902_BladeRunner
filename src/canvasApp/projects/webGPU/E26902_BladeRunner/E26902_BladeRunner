@@ -43,7 +43,8 @@ import TyrellPyramid, { PYRAMID } from './TyrellPyramid'
 import TyrellAirTraffic from './TyrellAirTraffic'
 import TyrellNearTraffic from './TyrellNearTraffic'
 import TyrellStartup from './TyrellStartup'
-import { LOADER_LEAVE_MS } from './TyrellLoader'
+import { LOADER_LEAVE_MS, LOADER_REVEAL_MS } from './TyrellLoader'
+import TyrellIntro, { introEnabled } from './TyrellIntro'
 import { measureGPUCapacity } from './TyrellGPUCapacity'
 import TyrellVKDevice from './TyrellVKDevice'
 import TyrellPortfolio from './TyrellPortfolio'
@@ -135,6 +136,8 @@ export default class E26902_BladeRunner {
             indirect: mode => { this.indirect?.setMode(mode); this.setLighting(this.lightingProfile) },
             contribution: value => { this.lighting?.setContribution(value); this.indirect?.apply(this.lighting, this.studio); this.specularEnvironment?.invalidate(); this.resetMetrics() }
         }, { fontsHref: new URL('portfolio/fonts.css', new URL(app.pathPrefix, document.baseURI)).href })
+        // Before the first resize: the bands set the canvas size the warm-up renders at.
+        if (introEnabled()) this.intro = new TyrellIntro(this)
         this.ui.setPanSettings(TYRELL.pan)
         this.ui.setTransitionSettings({ duration: this.transitionDuration, easing: this.transitionEasing })
         this.ui.setEffectSettings(TYRELL.effects)
@@ -379,7 +382,7 @@ export default class E26902_BladeRunner {
             }
         })
         this.setLook({ profile: this.lookProfile, studio: this.studio })
-        this.selectCameraState(this.initialGUISettings.camera.initialState)
+        if (!this.intro || !this.selectCameraState(this.intro.initialState)) this.selectCameraState(this.initialGUISettings.camera.initialState)
         this.setQuality(this.quality)
         this.built = true
         // CanvasApp activates after build; run visibility reconciliation afterwards.
@@ -702,6 +705,8 @@ export default class E26902_BladeRunner {
                 this.startup.frame(now)
                 if (this.startup.phase === 'warming') this.ui.loading('warmup', 'Compilando shaders y estabilizando la escena', this.startup.progress())
                 else { this.ui.statusBox.hidden = true; this.ui.finishLoading() }
+                // The camera starts moving when the black begins to clear, not under it.
+                if (this.startup.phase === 'ready' || this.startup.fadeElapsedMs >= LOADER_REVEAL_MS) this.intro?.start()
                 if (this.startup.phase === 'ready') {
                     this.revealed = true
                     this.ui.ready(this.cameraStates, this.activeCameraIndex)
@@ -755,6 +760,7 @@ export default class E26902_BladeRunner {
             if (this.vk.reflectionNeedsRefresh) this.floorReflection?.updates.invalidate()
             this.ui.setVKState(this.vk.motion.state)
         }
+        this.intro?.update()
         this.portfolio?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)
         this.panTime = now
         if (this.previousFrame !== undefined && !document.hidden) {
@@ -821,7 +827,7 @@ export default class E26902_BladeRunner {
             contactRepair: this.contactRepair || null,
             floorReflection: this.floorReflection?.diagnostics() || null,
             voightKampff: this.vk?.diagnostics() || null,
-            portfolio: this.portfolio?.diagnostics() || null,
+            portfolio: this.portfolio?.diagnostics() || null, intro: this.intro?.diagnostics() || null,
             specularEnvironment: this.specularEnvironment?.diagnostics() || null,
             atmosphere: this.atmosphere?.diagnostics() || null,
             lightVolume: this.volume?.diagnostics() || null,
@@ -867,6 +873,7 @@ export default class E26902_BladeRunner {
         this.abort?.abort()
         window.removeEventListener('keydown', this.cameraKeyDown)
         this.portfolio?.dispose()
+        this.intro?.dispose()
         window.removeEventListener('pointermove', this.pointerMove)
         document.documentElement.removeEventListener('pointerleave', this.pointerLeave)
         this.performanceProbe?.dispose()
