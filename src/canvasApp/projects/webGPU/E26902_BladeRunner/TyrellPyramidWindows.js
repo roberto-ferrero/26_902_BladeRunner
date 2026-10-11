@@ -1,6 +1,6 @@
 import { Color } from 'three'
 import { MeshStandardNodeMaterial } from 'three/webgpu'
-import { uv, uniform, float, select, mix, materialColor } from 'three/tsl'
+import { Fn, If, uv, uniform, float, vec4, select, mix, materialColor } from 'three/tsl'
 import { TOWER_WINDOWS, FACE_WINDOWS, hexToComponents } from './TyrellPyramidDefaults'
 
 // Office windows of the v3 building, procedural in TSL (no textures, no lights).
@@ -19,54 +19,60 @@ const LANE_HALF = 231 * 0.03          // elevator lane half-width in metres (sec
 
 const hashWith = seed => (x, y) => x.mul(127.1).add(y.mul(311.7)).add(seed).sin().mul(43758.5453).fract()
 
-// Coverage of the periodic band [lo, hi] (fractions of one period) over the pixel footprint: no swollen tiny windows.
-function band(t, lo, hi) {
-    const w = t.fwidth().max(0.0001), span = hi.sub(lo)
+// Coverage of the periodic band [lo, hi] (fractions of one period) over the pixel footprint w: no swollen tiny windows.
+// The footprint is passed in: derivatives must stay in uniform control flow (WGSL).
+function band(t, w, lo, hi) {
+    const span = hi.sub(lo)
     const integral = x => x.floor().mul(span).add(x.fract().sub(lo).clamp(0, span))
     return integral(t.add(w.mul(0.5))).sub(integral(t.sub(w.mul(0.5)))).div(w).clamp(0, 1)
 }
 
-// gu, gv: grid coordinates in metres; insideAt(cellCentreU, cellCentreV) -> bool node; zoneMask: 0/1 window area.
+// Antialiased inside test of a signed distance in metres (positive inside): soft over one pixel, no stair-stepping.
+export const coverage = distance => distance.div(distance.fwidth().max(1e-4)).add(0.5).clamp(0, 1)
+
+// gu, gv: grid coordinates in metres; insideAt(cellCentreU, cellCentreV) -> bool node; zoneMask: 0-1 window area.
+// Returns vec4(emission, glass mask). Where a window is smaller than a pixel the pattern fades to its average; past that
+// point (most of the building from the office) the per-window work is skipped.
 function windowPattern(P, { gu, gv, seed, insideAt, zoneMask }) {
-    const hash = hashWith(P.seed.add(seed).mul(17.17))
     const U = gu.div(P.colPitch), R = gv.div(P.rowPitch)
-    const col = U.floor(), row = R.floor()
-    const inside = insideAt(col.add(0.5).mul(P.colPitch), row.add(0.5).mul(P.rowPitch))
-
-    const len = hash(row, float(7.31)).mul(6).floor().add(2)
-    const officeCoord = U.add(hash(row, float(3.7)).mul(len)).div(len)
-    const office = officeCoord.floor()
-    const lit = hash(office, row).lessThan(P.lit)
-    const strip = hash(office.add(17.3), row).lessThan(P.strips)
-    const on = strip.or(hash(col, row.add(91.7)).greaterThan(P.windowOff))
-    const floorOn = P.darkFloors.lessThan(1).or(row.mod(P.darkFloors.max(1)).greaterThan(0.5))
-
-    const gapU = P.width.oneMinus().mul(0.5)
-    const sxWindow = band(U, gapU, P.width.add(1).mul(0.5))
-    const gapStrip = gapU.div(len)
-    const sxStrip = band(officeCoord, gapStrip, gapStrip.oneMinus())
-    const sy = band(R, P.height.oneMinus().mul(0.5), P.height.add(1).mul(0.5))
-    const insideF = select(inside, 1, 0)
-    const glass = sxWindow.mul(sy).mul(insideF)
-    const shape = select(strip, sxStrip, sxWindow).mul(sy).mul(insideF)
-
-    const level = hash(office.add(5.1), row.add(2.3)).mul(0.65).add(0.35)
-        .mul(select(hash(office.add(9.9), row).lessThan(P.boost), P.boostGain, 1))
-        .mul(hash(col, row.add(13.1)).mul(0.25).add(0.75))
-    const tint = select(hash(office.add(33.3), row).lessThan(P.warm), P.warmColor, P.coolColor)
-    const pattern = tint.mul(level).mul(shape).mul(select(lit.and(on).and(floorOn), 1, 0))
-
-    // Far away a window is smaller than a pixel: fade to the average instead of sparkling.
-    const fade = U.fwidth().max(R.fwidth()).smoothstep(0.45, 1.3)
+    const wU = U.fwidth().max(1e-4), wR = R.fwidth().max(1e-4)
+    const fade = wU.max(wR).smoothstep(0.45, 1.3)
     const meanLevel = float(0.675).mul(P.boost.mul(P.boostGain.sub(1)).add(1)).mul(0.875)
     const meanCover = P.width.mul(P.height).mul(zoneMask)
     const average = mix(P.coolColor, P.warmColor, P.warm).mul(meanLevel).mul(meanCover).mul(P.lit)
         .mul(P.windowOff.oneMinus().mul(P.strips.oneMinus()).add(P.strips))
-    return {
-        emission: mix(pattern, average, fade).mul(P.intensity),
-        glassMask: mix(glass, meanCover, fade),
-        zoneMask
-    }
+    return Fn(() => {
+        const result = vec4(average, meanCover).toVar()
+        If(fade.lessThan(0.999), () => {
+            const hash = hashWith(P.seed.add(seed).mul(17.17))
+            const col = U.floor(), row = R.floor()
+            const inside = insideAt(col.add(0.5).mul(P.colPitch), row.add(0.5).mul(P.rowPitch))
+            const len = hash(row, float(7.31)).mul(6).floor().add(2)
+            const officeCoord = U.add(hash(row, float(3.7)).mul(len)).div(len)
+            const office = officeCoord.floor()
+            const lit = hash(office, row).lessThan(P.lit)
+            const strip = hash(office.add(17.3), row).lessThan(P.strips)
+            const on = strip.or(hash(col, row.add(91.7)).greaterThan(P.windowOff))
+            const floorOn = P.darkFloors.lessThan(1).or(row.mod(P.darkFloors.max(1)).greaterThan(0.5))
+
+            const gapU = P.width.oneMinus().mul(0.5)
+            const sxWindow = band(U, wU, gapU, P.width.add(1).mul(0.5))
+            const gapStrip = gapU.div(len)
+            const sxStrip = band(officeCoord, wU.div(len), gapStrip, gapStrip.oneMinus())
+            const sy = band(R, wR, P.height.oneMinus().mul(0.5), P.height.add(1).mul(0.5))
+            const insideF = select(inside, 1, 0)
+            const glass = sxWindow.mul(sy).mul(insideF)
+            const shape = select(strip, sxStrip, sxWindow).mul(sy).mul(insideF)
+
+            const level = hash(office.add(5.1), row.add(2.3)).mul(0.65).add(0.35)
+                .mul(select(hash(office.add(9.9), row).lessThan(P.boost), P.boostGain, 1))
+                .mul(hash(col, row.add(13.1)).mul(0.25).add(0.75))
+            const tint = select(hash(office.add(33.3), row).lessThan(P.warm), P.warmColor, P.coolColor)
+            const pattern = tint.mul(level).mul(shape).mul(select(lit.and(on).and(floorOn), 1, 0))
+            result.assign(vec4(mix(pattern, average, fade), mix(glass, meanCover, fade)))
+        })
+        return result
+    })().toVar('tyrellWindows')
 }
 
 function windowSystem(defaults, build) {
@@ -93,8 +99,8 @@ function windowSystem(defaults, build) {
             if (source.normalScale) m.normalScale.copy(source.normalScale)
             m.side = source.side            // glTF doubleSided: part of the upper pyramid has inward-facing normals
             m.name = source.name
-            m.colorNode = materialColor.mul(out.zoneMask.mul(P.zoneDark).oneMinus()).mul(out.glassMask.mul(P.offGlass).oneMinus())
-            m.emissiveNode = out.emission
+            m.colorNode = materialColor.mul(out.zoneMask.mul(P.zoneDark).oneMinus()).mul(out.windows.w.mul(P.offGlass).oneMinus())
+            m.emissiveNode = out.windows.xyz.mul(P.intensity)
             return m
         }
     }
@@ -116,8 +122,8 @@ export function createTowerWindows(defaults = TOWER_WINDOWS) {
             const cu = select(side, gcu.mul(C).sub(gcv.mul(S)), gcu), cv = select(side, gcu.mul(S).add(gcv.mul(C)), gcv)
             return cu.greaterThan(mU).and(cu.lessThan(W.sub(mU))).and(cv.greaterThan(mV)).and(cv.lessThan(L.sub(mV)))
         }
-        const zoneMask = u.sub(mU).min(W.sub(mU).sub(u)).min(v.sub(mV)).min(L.sub(mV).sub(v)).step(0)
-        return windowPattern(P, { gu, gv, seed: id.mul(7.31), insideAt, zoneMask })
+        const zoneMask = coverage(u.sub(mU).min(W.sub(mU).sub(u)).min(v.sub(mV)).min(L.sub(mV).sub(v)))
+        return { windows: windowPattern(P, { gu, gv, seed: id.mul(7.31), insideAt, zoneMask }), zoneMask }
     })
 }
 
@@ -141,14 +147,13 @@ export function createFaceWindows(defaults = FACE_WINDOWS) {
         const limit = halfWidth.sub(P.cornerMargin)
         const panel = x.greaterThan(0).and(y.greaterThan(0)).and(xIn.lessThan(P.panelWidth)).and(yIn.lessThan(P.panelHeight))
         const mU = P.zoneMarginU, mV = P.zoneMarginV
-        const zoneMask = select(panel.and(absLat.lessThan(limit)), 1, 0)
-            .mul(xIn.sub(mU).min(P.panelWidth.sub(mU).sub(xIn)).min(yIn.sub(mV)).min(P.panelHeight.sub(mV).sub(yIn)).step(0))
-            .mul(enabled)
+        const zoneMask = coverage(xIn.sub(mU).min(P.panelWidth.sub(mU).sub(xIn)).min(yIn.sub(mV)).min(P.panelHeight.sub(mV).sub(yIn))
+            .min(x).min(y).min(limit.sub(absLat))).mul(enabled)
         const insideAt = (cu, cv) => cu.greaterThan(mU).and(cu.lessThan(P.panelWidth.sub(mU)))
             .and(cv.greaterThan(mV)).and(cv.lessThan(P.panelHeight.sub(mV)))
             .and(start.add(column.mul(pitchX)).add(cu).add(P.colPitch.mul(0.5)).lessThan(limit))
             .and(panel).and(enabled.greaterThan(0.5))
         const seed = face.mul(13.7).add(section.mul(5.3)).add(column.mul(1.91)).add(sector.mul(3.37)).add(select(right, 23.1, 0)).add(11)
-        return windowPattern(P, { gu: xIn, gv: yIn, seed, insideAt, zoneMask })
+        return { windows: windowPattern(P, { gu: xIn, gv: yIn, seed, insideAt, zoneMask }), zoneMask }
     })
 }

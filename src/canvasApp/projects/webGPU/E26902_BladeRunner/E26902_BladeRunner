@@ -231,9 +231,13 @@ export default class E26902_BladeRunner {
             this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
                 (received, total, parsing) => this.ui.status(parsing ? 'Preparando geometría, materiales y cámaras…' : `Cargando escenario · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, total ? received / total : undefined))
             if (this.disposed) { disposeScene(this.asset.gltf.scene); return }
-            this.pyramidAsset = await loadTyrell(new URL(PYRAMID.asset, new URL(this.app.pathPrefix, document.baseURI)).href,
-                this.abort.signal, () => this.ui.status('Cargando la pirámide Tyrell…'))
-            if (this.disposed) { disposeScene(this.pyramidAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
+            // Diagnostics: ?pyramid=old keeps the original building; ?pyramid=plain loads v3 without window shaders.
+            this.pyramidMode = new URLSearchParams(location.search).get('pyramid')
+            if (this.pyramidMode !== 'old') {
+                this.pyramidAsset = await loadTyrell(new URL(PYRAMID.asset, new URL(this.app.pathPrefix, document.baseURI)).href,
+                    this.abort.signal, () => this.ui.status('Cargando la pirámide Tyrell…'))
+                if (this.disposed) { disposeScene(this.pyramidAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
+            }
             this.glasswareAsset = await loadTyrell(new URL(GLASSWARE_ASSET, new URL(this.app.pathPrefix, document.baseURI)).href,
                 this.abort.signal, () => this.ui.status('Cargando la licorera y los vasos…'))
             if (this.disposed) { disposeScene(this.glasswareAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
@@ -271,7 +275,7 @@ export default class E26902_BladeRunner {
         this.columnCores = addColumnCores(this.world3D)
         this.contactRepair = settleInstrumentCase(this.world3D)
         // Replaces the original building before the city and the building lights look for it.
-        this.pyramid = new TyrellPyramid(this.world3D, this.pyramidAsset.gltf.scene)
+        if (this.pyramidAsset) this.pyramid = new TyrellPyramid(this.world3D, this.pyramidAsset.gltf.scene, { windows: this.pyramidMode !== 'plain' })
         this.city = new TyrellCity(this.world3D)
         this.buildingLights = new TyrellBuildingLights(this.world3D)
         this.airTraffic = new TyrellAirTraffic(this.world3D)

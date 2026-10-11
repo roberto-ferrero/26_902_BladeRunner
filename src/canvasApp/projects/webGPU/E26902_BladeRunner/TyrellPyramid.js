@@ -12,7 +12,7 @@ export const PYRAMID = Object.freeze({
 })
 
 export default class TyrellPyramid {
-    constructor(world, scene) {
+    constructor(world, scene, { windows = true } = {}) {
         const old = world.getObjectByName(PYRAMID.replaces)
         this.removed = old ? old.name : null
         if (old) { old.removeFromParent(); old.traverse(object => object.geometry?.dispose()) }   // its concrete material may be shared
@@ -20,10 +20,26 @@ export default class TyrellPyramid {
         scene.name = 'Tyrell / pirámide v3'
         world.add(scene)
         scene.updateMatrixWorld(true)
+        // Same weathered concrete as the scene GLB: reuse its GPU textures and drop the copies of the building GLB.
+        const source = old && [].concat(old.material).find(material => material.map)
+        this.sharedTextures = 0
+        if (source) {
+            const copies = new Set()
+            scene.traverse(object => {
+                for (const material of object.isMesh ? [].concat(object.material) : []) {
+                    for (const key of ['map', 'normalMap', 'roughnessMap', 'metalnessMap']) {
+                        if (!material[key] || !source[key] || material[key] === source[key]) continue
+                        copies.add(material[key]); material[key] = source[key]; material.needsUpdate = true
+                    }
+                }
+            })
+            for (const texture of copies) { texture.source?.data?.close?.(); texture.dispose() }
+            this.sharedTextures = copies.size
+        }
         this.building = scene.getObjectByName(PYRAMID.building)
         if (!this.building) throw new Error(`Falta ${PYRAMID.building} en el GLB de la pirámide.`)
         this.windows = { towerWindows: createTowerWindows(), faceWindows: createFaceWindows() }
-        const systems = { 'Torres | ventanas': this.windows.towerWindows, 'Piramide | ventanas': this.windows.faceWindows }
+        const systems = windows ? { 'Torres | ventanas': this.windows.towerWindows, 'Piramide | ventanas': this.windows.faceWindows } : {}
         const replaced = new Map()
         this.stats = { meshes: 0, triangles: 0 }
         scene.traverse(object => {
@@ -54,7 +70,7 @@ export default class TyrellPyramid {
     }
     update(delta) { return this.elevators.update(delta) }
     diagnostics() {
-        return { asset: PYRAMID.asset, replaced: this.removed, ...this.stats, windowMaterials: this.materials.length,
+        return { asset: PYRAMID.asset, replaced: this.removed, ...this.stats, windowMaterials: this.materials.length, sharedTextures: this.sharedTextures,
             elevators: this.elevators.diagnostics() }
     }
     dispose() {
