@@ -2,16 +2,17 @@ import './tyrell.css'
 import { QUALITY_LEVELS } from './TyrellQuality'
 import { GLASSWARE_CONTROLS } from './TyrellGlasswareSettings'
 import { PYRAMID_GROUPS } from './TyrellPyramidSettings'
+import TyrellLoader from './TyrellLoader'
 
 export default class TyrellUI {
-    constructor(actions) {
+    constructor(actions, { fontsHref } = {}) {
         this.root = document.createElement('section')
         this.root.className = 'tyrell-ui'
         this.root.setAttribute('aria-label', 'Visor Tyrell')
         this.root.innerHTML = `
             <header><div><span class="tyrell-eyebrow">BLADE RUNNER / ESTUDIO 01</span><h1>Oficinas Tyrell</h1></div>
                 <span class="tyrell-backend">Iniciando WebGPU…</span></header>
-            <div class="tyrell-status" role="status" aria-live="polite"><p>Preparando el motor…</p><progress aria-label="Carga del escenario"></progress><button type="button" hidden>Reintentar</button></div>
+            <div class="tyrell-status" role="status" hidden aria-live="polite"><p>Preparando el motor…</p><progress aria-label="Carga del escenario"></progress><button type="button" hidden>Reintentar</button></div>
             <footer hidden><div class="tyrell-controls">
                 <label>Cámara <select aria-label="Cámara"></select></label>
                 <label>Calidad <select aria-label="Calidad"><option value="auto">Automática</option>${QUALITY_LEVELS.map(name => `<option>${name}</option>`).join('')}</select></label>
@@ -23,10 +24,7 @@ export default class TyrellUI {
             </div><p class="tyrell-note">Estados de cámara de Blender · Selección en GUI o mediante la tecla indicada</p>
             <p class="tyrell-metrics">Preparando la primera imagen…</p></footer>`
         document.body.appendChild(this.root)
-        this.startupCover = document.createElement('div')
-        this.startupCover.className = 'tyrell-startup-cover'
-        this.startupCover.setAttribute('aria-hidden', 'true')
-        document.body.appendChild(this.startupCover)
+        this.loader = new TyrellLoader(fontsHref)
         const navigationPanel = document.createElement('details')
         navigationPanel.className = 'tyrell-pan'
         navigationPanel.innerHTML = `<summary>Navegación</summary><div class="tyrell-pan-controls"></div>
@@ -458,14 +456,16 @@ export default class TyrellUI {
         this.beginStartup()
     }
     beginStartup() {
-        this.startupCover.hidden = false
-        this.startupCover.style.opacity = '1'
+        this.loader.reset()
+        this.loading('renderer', 'Iniciando WebGPU…')
         this.guiContainer.inert = true
         this.openGUI.inert = true
         this.openGUI.hidden = true
         this.guiContainer.hidden = true
     }
-    setStartupOpacity(opacity) { this.startupCover.style.opacity = String(opacity) }
+    // Real init steps only; the bar span of each step lives in TyrellLoader.
+    loading(stage, text, fraction) { this.loader.stage(stage, text, fraction) }
+    finishLoading() { this.loader.finish() }
     setGUIVisible(visible) {
         this.guiContainer.hidden = !visible
         this.openGUI.hidden = visible
@@ -528,6 +528,7 @@ export default class TyrellUI {
         else this.progress.removeAttribute('value')
     }
     error(error, renderer = false) {
+        this.loader.fail()
         this.status(error.message)
         this.progress.hidden = true
         this.retry.hidden = false
@@ -544,7 +545,7 @@ export default class TyrellUI {
         this.transitionEasing.value = easing
     }
     ready(cameras, activeIndex) {
-        this.startupCover.hidden = true
+        this.loader.hide()
         this.guiContainer.inert = false
         this.openGUI.inert = false
         this.openGUI.hidden = false
@@ -610,5 +611,5 @@ export default class TyrellUI {
         link.href = this.outputURL; link.download = filename
         this.dialog.showModal()
     }
-    dispose() { if (this.outputURL) URL.revokeObjectURL(this.outputURL); this.startupCover.remove(); this.root.remove() }
+    dispose() { if (this.outputURL) URL.revokeObjectURL(this.outputURL); this.loader.dispose(); this.root.remove() }
 }

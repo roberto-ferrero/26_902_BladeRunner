@@ -43,6 +43,7 @@ import TyrellPyramid, { PYRAMID } from './TyrellPyramid'
 import TyrellAirTraffic from './TyrellAirTraffic'
 import TyrellNearTraffic from './TyrellNearTraffic'
 import TyrellStartup from './TyrellStartup'
+import { LOADER_LEAVE_MS } from './TyrellLoader'
 import { measureGPUCapacity } from './TyrellGPUCapacity'
 import TyrellVKDevice from './TyrellVKDevice'
 import TyrellPortfolio from './TyrellPortfolio'
@@ -133,7 +134,7 @@ export default class E26902_BladeRunner {
             atmosphere: values => { this.atmosphere?.configure(values); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             indirect: mode => { this.indirect?.setMode(mode); this.setLighting(this.lightingProfile) },
             contribution: value => { this.lighting?.setContribution(value); this.indirect?.apply(this.lighting, this.studio); this.specularEnvironment?.invalidate(); this.resetMetrics() }
-        })
+        }, { fontsHref: new URL('portfolio/fonts.css', new URL(app.pathPrefix, document.baseURI)).href })
         this.ui.setPanSettings(TYRELL.pan)
         this.ui.setTransitionSettings({ duration: this.transitionDuration, easing: this.transitionEasing })
         this.ui.setEffectSettings(TYRELL.effects)
@@ -147,7 +148,7 @@ export default class E26902_BladeRunner {
     onRendererProgress(app) { this.mount(app) }
     async measureGPUCapacity(renderer) {
         if (this.gpuCapacitySettings?.enabled === false) return
-        this.ui.status('Midiendo la capacidad de la GPU…')
+        this.ui.loading('gpu', 'Midiendo la capacidad de la GPU…')
         this.gpuCapacity = await measureGPUCapacity(renderer, () => this.disposed, this.gpuCapacitySettings)
         this.capacityChecks.initial(this.gpuCapacity)
         if (!this.disposed) { this.ui.setGPUCapacity(this.gpuCapacity); this.selectQuality(this.qualitySelection) }
@@ -218,7 +219,7 @@ export default class E26902_BladeRunner {
         this.ui.progress.hidden = false
         this.revealed = false
         this.ui.beginStartup()
-        this.ui.status('Cargando la oficina Tyrell…')
+        this.ui.loading('settings', 'Leyendo la configuración…')
         try {
             const settingsURL = new URL('config/E26902_BladeRunner/gui.initial.json', new URL(this.app.pathPrefix, document.baseURI))
             const response = await fetch(settingsURL, { signal: this.abort.signal, cache: 'no-store' })
@@ -228,29 +229,31 @@ export default class E26902_BladeRunner {
             this.cameraStates = applyCameraStateKeys(this.cameraStates, this.initialGUISettings.camera.stateKeys).map(state => ({ ...state,
                 mousePan: cameraStatePan(this.initialGUISettings.camera.mousePan, state.cameraStateId) }))
             this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
-                (received, total, parsing) => this.ui.status(parsing ? 'Preparando geometría, materiales y cámaras…' : `Cargando escenario · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, total ? received / total : undefined))
+                (received, total, parsing) => this.ui.loading('scene', parsing ? 'Preparando geometría, materiales y cámaras' : `Cargando la oficina · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, parsing ? 1 : total ? received / total * .92 : 0))
             if (this.disposed) { disposeScene(this.asset.gltf.scene); return }
             // Diagnostics: ?pyramid=old keeps the original building; ?pyramid=plain loads v3 without window shaders.
             this.pyramidMode = new URLSearchParams(location.search).get('pyramid')
             if (this.pyramidMode !== 'old') {
                 this.pyramidAsset = await loadTyrell(new URL(PYRAMID.asset, new URL(this.app.pathPrefix, document.baseURI)).href,
-                    this.abort.signal, () => this.ui.status('Cargando la pirámide Tyrell…'))
+                    this.abort.signal, (received, total, parsing) => this.ui.loading('pyramid', parsing ? 'Preparando la pirámide Tyrell' : 'Cargando la pirámide Tyrell', parsing ? 1 : total ? received / total * .9 : 0))
                 if (this.disposed) { disposeScene(this.pyramidAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             }
             if (TYRELL.scene.glassware) {
                 this.glasswareAsset = await loadTyrell(new URL(GLASSWARE_ASSET, new URL(this.app.pathPrefix, document.baseURI)).href,
-                    this.abort.signal, () => this.ui.status('Cargando la licorera y los vasos…'))
+                    this.abort.signal, (received, total, parsing) => this.ui.loading('glassware', 'Cargando la licorera y los vasos', parsing ? 1 : total ? received / total * .9 : 0))
                 if (this.disposed) { disposeScene(this.glasswareAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             }
             if (new URLSearchParams(location.search).get('vk') !== '0') {
                 this.vkAsset = await loadTyrell(new URL('glbs/E26902_BladeRunner/VK_Device.glb', new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
-                    (received, total, parsing) => this.ui.status(parsing ? 'Preparando el Voight-Kampff…' : `Cargando Voight-Kampff · ${(received / 1e6).toFixed(1)} MB`))
+                    (received, total, parsing) => this.ui.loading('vk', parsing ? 'Preparando el Voight-Kampff' : `Cargando el Voight-Kampff · ${(received / 1e6).toFixed(1)} MB`, parsing ? 1 : total ? received / total * .9 : 0))
                 if (this.disposed) { disposeScene(this.vkAsset.gltf.scene); disposeScene(this.glasswareAsset?.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             }
+            this.ui.loading('sky', 'Cargando el cielo')
             this.skyTexture = await new THREE.TextureLoader().loadAsync(new URL(TYRELL.sky.texture, new URL(this.app.pathPrefix, document.baseURI)).href)
             this.skyTexture.colorSpace = THREE.SRGBColorSpace
             this.skyTexture.wrapS = THREE.ClampToEdgeWrapping
             if (this.disposed) { this.skyTexture.dispose(); disposeScene(this.asset.gltf.scene); disposeScene(this.glasswareAsset?.gltf.scene); disposeScene(this.vkAsset?.gltf.scene); return }
+            this.ui.loading('build', 'Construyendo la ciudad, las luces y los materiales')
             this.app.emitter.emit('onProjectLoaded', {})
         } catch (error) {
             // A parse/build failure must leave retry without a duplicate scene.
@@ -395,8 +398,8 @@ export default class E26902_BladeRunner {
             this.pan.setReference(this.stageCamera.baseCamera, { target: this.stageCamera.target })
             this.syncCameraPan()
         }
-        this.startup = new TyrellStartup({ fadeMs: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1500 })
-        this.ui.status('Estabilizando la escena con los efectos activos…')
+        this.startup = new TyrellStartup({ fadeMs: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : LOADER_LEAVE_MS })
+        this.ui.loading('warmup', 'Compilando shaders y estabilizando la escena', 0)
         this.resetMetrics()
     }
     selectCameraState(cameraStateId, options = {}) {
@@ -697,8 +700,8 @@ export default class E26902_BladeRunner {
             if (document.hidden) this.startup.pause()
             else {
                 this.startup.frame(now)
-                this.ui.setStartupOpacity(this.startup.opacity)
-                if (this.startup.phase !== 'warming') this.ui.statusBox.hidden = true
+                if (this.startup.phase === 'warming') this.ui.loading('warmup', 'Compilando shaders y estabilizando la escena', this.startup.progress())
+                else { this.ui.statusBox.hidden = true; this.ui.finishLoading() }
                 if (this.startup.phase === 'ready') {
                     this.revealed = true
                     this.ui.ready(this.cameraStates, this.activeCameraIndex)

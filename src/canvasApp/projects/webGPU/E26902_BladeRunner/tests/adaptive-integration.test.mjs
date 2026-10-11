@@ -41,7 +41,7 @@ test('The initial GPU score persists through p1, visor opening and revisits with
     measuredResult = { gpuScore: 132e6, reliable: true, method: 'gpu-timestamp' }
     let updates = 0, portfolioFrames = 0
     Object.assign(app, { samples: [], warmup: 100,
-        ui: { status() {}, setGPUCapacity() {}, setVKState() {}, metrics() {} },
+        ui: { status() {}, loading() {}, setGPUCapacity() {}, setVKState() {}, metrics() {} },
         stageCamera: { update() {} },
         vk: { motion: { state: 'closed' }, update() { updates++ } },
         portfolio: { update() { portfolioFrames++ } },

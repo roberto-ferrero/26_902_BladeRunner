@@ -48,6 +48,12 @@ export default class TyrellStartup {
             this.phase = 'fading'
         }
     }
+    // Warm-up share for the loader: 60 stable samples after minMs, or the maxMs timeout.
+    progress() {
+        if (this.phase !== 'warming') return 1
+        const stable = Math.min(this.samples.length / 60, this.minMs ? this.elapsedMs / this.minMs : 1)
+        return Math.min(1, Math.max(stable * .95, this.maxMs ? this.elapsedMs / this.maxMs : 1))
+    }
     diagnostics() {
         return { phase: this.phase, reason: this.reason || null, warmupMs: this.elapsedMs,
             fadeMs: this.fadeMs, maxWaitMs: this.maxMs, frames: this.frames, frameStats: this.frameStats || null }
