@@ -90,15 +90,9 @@ const lights = new (source('TyrellBuildingLights.js').default)(scene)
 const air = new (source('TyrellAirTraffic.js').default)(scene)
 const near = new (source('TyrellNearTraffic.js').default)(scene)
 const cores = source('TyrellColumnCores.js').addColumnCores(scene)
-const flames = source('TyrellFlames.js')
 const states = source('cameraStates.generated.json').cameraStates
 const gui = JSON.parse(fs.readFileSync(path.join(repo, 'static/config/E26902_BladeRunner/gui.initial.json'), 'utf8'))
 const objects = assets[0].rows.map(row => ({ ...row }))
-for (const [i, tower] of flames.FLAME_TOWERS.entries()) {
-    const b = flames.flameBounds(tower)
-    objects.push({ name: `Llamarada ${i + 1} (envolvente por defecto)`, family: 'Llamaradas',
-        triangles: 0, primitives: 0, bounds: { min: b.min.toArray(), max: b.max.toArray() } })
-}
 function pan(state) { return { ...gui.camera.mousePan.default, ...gui.camera.mousePan.states[state.cameraStateId] } }
 function frustum(a, b, t, px, py, aspect) {
     const camera = new THREE.PerspectiveCamera(THREE.MathUtils.lerp(a.fov, b.fov, t), aspect, a.near, a.far)

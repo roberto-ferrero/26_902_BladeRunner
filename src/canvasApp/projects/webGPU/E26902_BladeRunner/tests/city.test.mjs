@@ -1,4 +1,3 @@
-import { loadFlames } from '../scripts/audit-flames.mjs'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
@@ -17,7 +16,7 @@ const roofCode = require('@babel/core').transformSync(fs.readFileSync(new URL('.
     configFile: false, babelrc: false, plugins: ['@babel/plugin-transform-modules-commonjs']
 }).code
 new Function('require', 'module', 'exports', roofCode)(() => THREE, roofModule, roofModule.exports)
-new Function('require', 'module', 'exports', code)(name => name === 'three' ? THREE : name === 'three/webgpu' ? WEBGPU : name === 'three/tsl' ? TSL : name === './TyrellCityRoof' ? roofModule.exports : name === './TyrellFlames' ? loadFlames() : utilities, module, module.exports)
+new Function('require', 'module', 'exports', code)(name => name === 'three' ? THREE : name === 'three/webgpu' ? WEBGPU : name === 'three/tsl' ? TSL : name === './TyrellCityRoof' ? roofModule.exports : utilities, module, module.exports)
 const City = module.exports.default
 const { CITY_FINISH, cityBlockSteps, yawLuminance } = module.exports
 
@@ -64,56 +63,15 @@ test('Yaw colour hits reference anchors, ignores pitch and obeys per-LOD switch'
     city.materials.forEach(material => material.dispose()); city.texture.dispose()
 })
 
-test('City keeps room and original architecture intact, shares resources and stays deterministic', () => {
+test('City adds no context buildings or industrial stacks', () => {
     const world = new THREE.Group(), original = new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshStandardMaterial())
     original.position.set(7, 3, -2); world.add(original)
-    const city = new City(world), other = new City(new THREE.Group())
+    const city = new City(world)
     assert.deepEqual(original.position.toArray(), [7, 3, -2])
-    assert.equal(city.group.children.length, 3)
-    assert.ok(city.stats.triangles < 40000, 'Limit added geometry and pass cost')
-    assert.equal(new Set(city.group.children.map(mesh => mesh.material.map)).size, 1)
-    const audit = JSON.parse(fs.readFileSync(new URL('../docs/phase9/9.0/geometry-audit.json', import.meta.url)))
-    const source = audit.cameras.find(camera => camera.name.startsWith('CAM_01'))
-    const camera = new THREE.PerspectiveCamera(source.fov, 2.4, source.near, source.far)
-    const target = new THREE.Vector3(...source.position).add(new THREE.Vector3(0, 0, -20))
-    for (let x = 0; x <= 40; x++) for (let y = 0; y <= 10; y++) {
-        camera.position.fromArray(source.position).add(new THREE.Vector3(-2 + x * .1, -.5 + y * .1, 0))
-        camera.lookAt(target); camera.updateMatrixWorld(true)
-        const frustum = new THREE.Frustum().setFromProjectionMatrix(new THREE.Matrix4()
-            .multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse))
-        for (const tower of city.stats.towers) {
-            const reserved = new THREE.Box3(new THREE.Vector3(tower.x - 20, -88, tower.z - 20),
-                new THREE.Vector3(tower.x + 20, tower.top + 25, tower.z + 20))
-            assert.equal(frustum.intersectsBox(reserved), false, 'Keep towers and reserved flame envelope outside CAM01 pan')
-        }
-    }
-    let brightenedTowerVertices = 0
-    city.group.children.forEach((mesh, i) => {
-        assert.ok(Object.keys(mesh.geometry.attributes).length <= 8, 'Stay within the default WebGPU vertex buffer limit')
-        const ramps = mesh.geometry.getAttribute('tyrellCityRamps')
-        const offsets = mesh.geometry.getAttribute('tyrellCityLightnessOffset')
-        assert.equal(ramps.itemSize, 2)
-        assert.equal(offsets.itemSize, 1)
-        for (let vertex = 0; vertex < ramps.count; vertex++) {
-            assert.ok(Number.isInteger(ramps.getX(vertex)) && ramps.getX(vertex) >= 0)
-            assert.ok(Number.isInteger(ramps.getY(vertex)) && ramps.getY(vertex) >= 0)
-            assert.equal(ramps.getX(vertex) * ramps.getY(vertex), 0, 'Left and right ramps stay independent')
-            assert.ok(offsets.getX(vertex) === 0 || Math.abs(offsets.getX(vertex) - .02) < 1e-6,
-                'Only left towers receive the two-point lightness offset')
-            if (offsets.getX(vertex) > 0) brightenedTowerVertices++
-        }
-        mesh.geometry.computeBoundingBox()
-        assert.ok(mesh.geometry.boundingBox.max.z < -100, 'No city geometry enters the room')
-        assert.equal(mesh.castShadow, false)
-        assert.equal(mesh.material.emissive.getHex(), 0, 'Lighting is reserved for 9.2')
-        assert.deepEqual(mesh.geometry.attributes.position.array, other.group.children[i].geometry.attributes.position.array)
-        assert.ok([...mesh.geometry.attributes.uv.array].every(Number.isFinite))
-    })
-    assert.ok(brightenedTowerVertices > 0, 'The two left towers receive their requested lightness offset')
+    assert.equal(city.group.children.length, 0)
+    assert.equal(city.stats.buildings, 0)
+    assert.deepEqual(city.stats.towers, [])
     city.setEnabled(false); assert.equal(city.group.visible, false); assert.equal(original.visible, true)
-    for (const instance of [city, other]) {
-        instance.group.children.forEach(mesh => mesh.geometry.dispose())
-        instance.materials.forEach(material => material.dispose()); instance.texture.dispose()
-    }
+    city.materials.forEach(material => material.dispose()); city.texture.dispose()
     original.geometry.dispose(); original.material.dispose()
 })

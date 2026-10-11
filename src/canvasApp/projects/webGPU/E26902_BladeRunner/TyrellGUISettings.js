@@ -65,11 +65,6 @@ export const GUI_BINDINGS = [
     ["city.distantTraffic.densityPercent", "Densidad de tráfico lejano"],
     ["city.nearTraffic.enabled", "Tráfico cercano"],
     ["city.nearTraffic.travelDurationSeconds", "Duración del trayecto cercano"],
-    ["city.flames.enabled", "Llamaradas"],
-    ["city.flames.intervalSeconds", "Intervalo de llamaradas"],
-    ["city.flames.sizeMultiplier", "Tamaño de llamaradas"],
-    ["city.flames.verticalGrowthMultiplier", "Crecimiento vertical de llamaradas"],
-    ["city.flames.intensity", "Intensidad de llamaradas"],
     ["voightKampff.deployOnArrival", "Desplegar al llegar a p1"],
     ["voightKampff.chassisColor", "Color del chasis"],
     ["voightKampff.reduceReflectionCapturesAtP1", "Reducir capturas de reflejos en p1"],
@@ -93,6 +88,8 @@ export function prepareGUISettings(root, settings, cameraStates) {
     for (const { key, value } of GLASSWARE_CONTROLS) {
         if (!(`glassware.${key}` in values)) values[`glassware.${key}`] = value
     }
+    // The flares were removed with the industrial stacks: ignore their saved values.
+    for (const path of Object.keys(values)) if (path.startsWith('city.flames.')) delete values[path]
     if (!('viewer.deviceMode' in values)) values['viewer.deviceMode'] = 'auto'
     for (const { path, value } of PYRAMID_CONTROLS) if (!(path in values)) values[path] = value
     for (const [added, original] of [['extraLowQualityEnabled', 'lowQualityEnabled'], ['ultraHighQualityEnabled', 'highQualityEnabled']]) {

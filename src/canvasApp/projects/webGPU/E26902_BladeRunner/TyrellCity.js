@@ -3,7 +3,6 @@ import { MeshPhysicalNodeMaterial } from 'three/webgpu'
 import { attribute, normalWorld, output, renderGroup, uniform, vec3, vec4, vertexStage, sRGBTransferEOTF } from 'three/tsl'
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js'
 import { createCityRoof, CITY_ROOF } from './TyrellCityRoof'
-import { FLAME_TOWERS } from './TyrellFlames'
 
 export const CITY_FINISH = Object.freeze({
     baseColor: '#43311d', baseHSL: [31.4, 38.9, 18.8], facadeDepth: 18,
@@ -97,7 +96,7 @@ export default class TyrellCity {
         const parts = this.materials.map(() => [])
         let seed = 902091
         const random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296 }
-        let boxes = 0, buildings = 0, towerFinish = false, buildingX, buildingSteps
+        let boxes = 0
         const box = (x, y, z, w, h, d, material = 0) => {
             const geometry = new BoxGeometry(w, h, d)
             // World-sized UVs avoid stretched panels across different building sizes.
@@ -117,80 +116,20 @@ export default class TyrellCity {
             // All modules of a building share its centre sample, including roof equipment.
             // Pack both ramps: separate buffers exceed WebGPU's default limit of eight.
             const ramps = new BufferAttribute(new Float32Array(positions.count * 2), 2)
-            const steps = buildingSteps ?? cityBlockSteps(buildingX ?? x)
+            const steps = cityBlockSteps(x)
             for (let i = 0; i < positions.count; i++)
                 ramps.setXY(i, Math.max(steps, 0), Math.max(-steps, 0))
             geometry.setAttribute('tyrellCityRamps', ramps)
-            const lightnessOffset = towerFinish && x < CITY_FINISH.gradientCenterX
-                ? CITY_FINISH.leftTowerLightnessOffset / 100 : 0
-            geometry.setAttribute('tyrellCityLightnessOffset', new BufferAttribute(
-                new Float32Array(positions.count).fill(lightnessOffset), 1))
+            geometry.setAttribute('tyrellCityLightnessOffset', new BufferAttribute(new Float32Array(positions.count), 1))
             const tint = new Color().setScalar(.84 + random() * .22)
-            if (towerFinish) tint.multiplyScalar(CITY_FINISH.towerColorMultiplier)
             geometry.setAttribute('color', new BufferAttribute(new Float32Array(positions.count * 3), 3))
             for (let i = 0; i < positions.count; i++) geometry.attributes.color.setXYZ(i, tint.r, tint.g, tint.b)
             geometry.translate(x, y, z)
             parts[material].push(geometry); boxes++
         }
-        const building = (x, z, w, d, roof, tiers = 3, spacing = 27) => {
-            buildings++
-            buildingX = x
-            buildingSteps = cityBlockSteps(x, spacing)
-            roof -= 2.5
-            const base = roof - 5 - CITY_FINISH.facadeDepth
-            box(x, (base + roof - 5) / 2, z, w, roof - 5 - base, d)
-            for (let tier = 0; tier < tiers; tier++) {
-                const tw = w - tier * 3.2, td = d - tier * 2.8, y = roof - 5 + tier * 2
-                box(x, y + .8, z, tw, 1.6, td, tier % 2)
-                box(x, y + 1.7, z, tw + .6, .25, td + .6, 1)
-                // Shallow facade ribs and a recessed horizontal service band.
-                box(x, y + .35, z + td / 2 + .08, tw * .93, .42, .16, 2)
-            }
-            const top = roof - 5 + (tiers - 1) * 2 + 1.85
-            // Set-back service houses, ducts and roof equipment provide silhouette.
-            box(x - w * .17, top + 1.2, z - d * .12, w * .32, 2.4, d * .38, 1)
-            box(x + w * .23, top + .45, z, w * .14, .9, d * .65, 2)
-            for (let i = 0; i < 4; i++) box(x - w * .3 + i * w * .17, top + .35, z + d * .26, w * .1, .7, 1.8, 2)
-            // Omit five small facade ribs (60 triangles per building). Consume
-            // their tint samples so all subsequent roofs/footprints stay fixed.
-            for (let i = 0; i < 5; i++) random()
-            buildingX = undefined
-            buildingSteps = undefined
-        }
-        // Near belt overlaps in depth, so camera movement cannot reveal a flat cutout edge.
-        for (let i = 0; i < 22; i++) {
-            const x = -300 + i * 27
-            const roof = -3 + random() * 4
-            building(x, -151 - random() * 16, 27 + random() * 8, 24 + random() * 12, roof, 3)
-        }
-        // Mid-distance city is restricted to the sides of the principal pyramid.
-        for (let side of [-1, 1]) for (let row = 0; row < 3; row++) for (let i = 0; i < 7; i++) {
-            const x = side < 0 ? -180 - i * 30 : 65 + i * 30
-            building(x, -230 - row * 68 - random() * 15, 27 + random() * 13, 35 + random() * 20,
-                -10 + random() * 8, 2 + (i % 2), 30)
-        }
-        // Low distant massing instead of a city photograph with fixed perspective.
-        for (let i = 0; i < 33; i++) building(-640 + i * 40, -640 - random() * 85,
-            38 + random() * 18, 55 + random() * 30, -32 + random() * 17, 2, 40)
-        // Sparse industrial stacks in the lateral zones reserved in 9.0 for 9.5.
-        // Their complete silhouette stays outside CAM01, including its permitted pan.
-        const towers = FLAME_TOWERS
-        towerFinish = true
-        for (const { x, z, top } of towers) {
-            box(x, -67, z, 15, 42, 15, 2)
-            box(x, -43, z, 11, 6, 11, 0)
-            box(x, (top - 8 - 40) / 2, z, 5.4, top - 8 + 40, 5.4, 2)
-            for (let y = -34; y < top - 9; y += 12) {
-                box(x, y, z, 7.4, 1, 7.4, 1)
-                // Four fine uprights join the service platforms.
-                for (const dx of [-3.2, 3.2]) for (const dz of [-3.2, 3.2])
-                    box(x + dx, y + 4, z + dz, .35, 8, .35, 2)
-            }
-            box(x, top - 7, z, 8.4, 2, 8.4, 0)
-            box(x, top - 3, z, 2.2, 6, 2.2, 2)
-            box(x + 3.2, top - 6, z, .45, 7, .45, 2)
-        }
-        towerFinish = false
+        // Context buildings (near belt, mid-distance rows, distant massing) and the
+        // industrial flare stacks were removed: only the pyramid v3 and its leaning
+        // towers remain. What is left is the roof continuity of ?pyramid=old.
         // Local continuity on the newly exposed original roof; existing buildings
         // retain all their positions, including the previous 2.5 m lowering.
         const roof = createCityRoof(world.getObjectByName('Tyrell_Corporation_Pyramid'))
@@ -218,6 +157,7 @@ export default class TyrellCity {
             }
         }
         parts.forEach((geometries, index) => {
+            if (!geometries.length) return
             const geometry = mergeGeometries(geometries, false)
             geometries.forEach(part => part.dispose())
             // Dark matte roofing on every upward face, including cornices, tower
@@ -233,9 +173,8 @@ export default class TyrellCity {
             mesh.castShadow = false; mesh.receiveShadow = false
             this.group.add(mesh)
         })
-        this.stats = { buildings, boxes, meshes: this.group.children.length, triangles: boxes * 12 + continuity.roofTriangles,
-            roofLowering: 2.5, removedFacadeRibs: buildings * 5, savedTriangles: buildings * 60,
-            towers, ...CITY_FINISH, continuity,
+        this.stats = { buildings: 0, boxes, meshes: this.group.children.length, triangles: boxes * 12 + continuity.roofTriangles,
+            towers: [], ...CITY_FINISH, continuity,
             textureSize: [256, 256], seed: 902091, cityBackdrop: 'layered geometry; no photographic background', lights: 0 }
         world.add(this.group)
     }

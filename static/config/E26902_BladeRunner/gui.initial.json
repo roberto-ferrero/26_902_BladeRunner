@@ -136,13 +136,6 @@
     "nearTraffic": {
       "enabled": true,
       "travelDurationSeconds": 40
-    },
-    "flames": {
-      "enabled": true,
-      "intervalSeconds": 4.5,
-      "sizeMultiplier": 4.25,
-      "verticalGrowthMultiplier": 2,
-      "intensity": 1.5
     }
   },
   "voightKampff": {
