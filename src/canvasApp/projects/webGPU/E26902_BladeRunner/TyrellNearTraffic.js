@@ -6,7 +6,9 @@ import { airStrobe } from './TyrellAirTraffic'
 
 export const NEAR_TRAFFIC = Object.freeze({ enabled: true, duration: 40, minDuration: 20, maxDuration: 60,
     capacity: 1, vehicleScale: .25, altitude: 10.5, maxBank: 20 * Math.PI / 180,
-    initialDelay: 2, reflectionHz: 8, environmentHz: 1 })
+    initialDelay: 2, reflectionHz: 8, environmentHz: 1,
+    // In the p1 view the light effect starts 5x larger at the left edge and shrinks to 1x at the right edge.
+    p1OpticsScale: Object.freeze({ left: 5, right: 1, smoothingSeconds: .5 }) })
 const vertical = new Vector3(0, 1, 0), forward = new Vector3(0, 0, 1)
 const smooth = value => { const t = Math.max(0, Math.min(1, value)); return t * t * (3 - 2 * t) }
 
@@ -144,14 +146,21 @@ export default class TyrellNearTraffic {
                     depthTest: true, depthWrite: false, fog: false, opacity: 0 })
                 material.name = `Near traffic / ${name}`; material.color.setRGB(...rgb)
                 const sprite = new Sprite(material)
-                sprite.scale.setScalar(size); sprite.position.set(0, .58, 0)
+                sprite.scale.setScalar(size); sprite.position.set(0, .58, 0); sprite.userData.size = size
                 sprite.renderOrder = 5; group.add(sprite); optics.push(sprite)
             }
             this.group.add(group)
             return { group, materials, positionMaterial, rearMaterial, strobeMaterial, strobe, optics,
                 age: 0, route: 0, active: false, position: new Vector3(), tangent: new Vector3(), rotation: new Quaternion() }
         })
+        this.opticsScale = 1; this.opticsTarget = 1
         world.add(this.group)
+    }
+    // Screen-dependent size of the light effect: x is the vehicle's horizontal position in the
+    // current view (-1 left edge, 1 right edge), or null outside the p1 view.
+    setOpticsView(x) {
+        const { left, right } = NEAR_TRAFFIC.p1OpticsScale
+        this.opticsTarget = x === null ? 1 : left + (right - left) * Math.max(0, Math.min(1, (x + 1) / 2))
     }
     configure(values) {
         if (typeof values.enabled === 'boolean' && values.enabled !== this.settings.enabled) {
@@ -171,6 +180,8 @@ export default class TyrellNearTraffic {
     update(delta) {
         let dt = Number.isFinite(delta) ? Math.max(0, Math.min(.1, delta)) : 0
         const flight = this.flights[0]
+        // Ease size changes (entering or leaving p1); no jump while the vehicle is on screen.
+        this.opticsScale += (this.opticsTarget - this.opticsScale) * (1 - Math.exp(-dt / NEAR_TRAFFIC.p1OpticsScale.smoothingSeconds))
         if (this.settings.enabled) {
             this.time += dt
             if (!flight.active) {
@@ -198,7 +209,10 @@ export default class TyrellNearTraffic {
                 const flash = airStrobe(this.time)
                 flight.strobeMaterial.opacity = fade * attenuation * flash * .65
                 flight.strobe.visible = flash > .005
-                for (const sprite of flight.optics) sprite.material.opacity = fade * attenuation
+                for (const sprite of flight.optics) {
+                    sprite.material.opacity = fade * attenuation
+                    sprite.scale.setScalar(sprite.userData.size * this.opticsScale)
+                }
             }
         }
         const moving = this.flights.some(flight => flight.active)
@@ -215,7 +229,7 @@ export default class TyrellNearTraffic {
         return { ...this.settings, time: this.time, passes: this.passes,
             nextPassIn: this.flights[0].active ? this.settings.duration - this.flights[0].age : this.delay,
             capacity: this.flights.length, vehicleScale: NEAR_TRAFFIC.vehicleScale, realLights: 0,
-            maxBankDegrees: NEAR_TRAFFIC.maxBank * 180 / Math.PI,
+            maxBankDegrees: NEAR_TRAFFIC.maxBank * 180 / Math.PI, opticsScale: this.opticsScale,
             trianglesPerVehicle: Object.values(this.geometries).reduce((sum, g) => sum + g.index.count / 3, 14),
             routes: ['single level arc, upper left to right; repeat after completing the route'],
             optics: 'Compact warm core, soft peripheral lens ring and subtle diagonal streak around a dark hull; secondary white strobe and existing bloom',

@@ -721,6 +721,12 @@ export default class E26902_BladeRunner {
             this.floorReflection?.updates.invalidate()
             if (this.airTraffic.environmentNeedsRefresh) this.specularEnvironment?.invalidate()
         }
+        if (this.nearTraffic) {
+            // p1 only (not in transit): where the vehicle sits on screen drives the size of its light effect.
+            const flight = this.nearTraffic.flights[0], camera = this.stageCamera?.get_camera()
+            const p1 = this.activeCameraStateId === 'p1' && !this.stageCamera?.transition && flight.active && camera
+            this.nearTraffic.setOpticsView(p1 ? _position.copy(flight.position).project(camera).x : null)
+        }
         if (this.nearTraffic?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)) {
             this.floorReflection?.updates.invalidate()
             if (this.nearTraffic.environmentNeedsRefresh) this.specularEnvironment?.invalidate()

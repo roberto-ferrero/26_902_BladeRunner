@@ -20,6 +20,10 @@ export const PYRAMID = Object.freeze({
 // window bands) are clipped exactly at the diagonal. Runs before the elevators and the beacons, so
 // neither is placed on the removed faces.
 const hiddenFacade = sum => sum < 0   // dx + dz: union of the -X and -Z quadrants
+// Kept although on the back facade: the leaning building on its right (seen from the initial camera),
+// whose top shows over the pyramid's right flank. Footprint around the pyramid axis (dx, dz), metres.
+const KEPT_HIDDEN = [{ min: [10, -140], max: [60, -45] }]
+const kept = (dx, dz) => KEPT_HIDDEN.some(({ min, max }) => dx >= min[0] && dx <= max[0] && dz >= min[1] && dz <= max[1])
 function cullHiddenFaces(scene, building) {
     const centre = building.getWorldPosition(new Vector3()), v = new Vector3()
     let removed = 0
@@ -44,17 +48,21 @@ function cullHiddenFaces(scene, building) {
         const pieces = new Map(), e1 = new Vector3(), e2 = new Vector3()
         for (let t = 0; t < index.length; t += 3) {
             const r = root(welded[index[t]])
-            if (!pieces.has(r)) pieces.set(r, { area: 0, hiddenArea: 0 })
+            if (!pieces.has(r)) pieces.set(r, { area: 0, hiddenArea: 0, min: [Infinity, Infinity], max: [-Infinity, -Infinity] })
             const piece = pieces.get(r), [i, j, k] = [index[t], index[t + 1], index[t + 2]]
             e1.set(world[j * 3] - world[i * 3], world[j * 3 + 1] - world[i * 3 + 1], world[j * 3 + 2] - world[i * 3 + 2])
             e2.set(world[k * 3] - world[i * 3], world[k * 3 + 1] - world[i * 3 + 1], world[k * 3 + 2] - world[i * 3 + 2])
             const area = e1.cross(e2).length() / 2
             piece.area += area
+            for (const n of [i, j, k]) for (const [a, o] of [[0, 0], [1, 2]]) {
+                piece.min[a] = Math.min(piece.min[a], world[n * 3 + o]); piece.max[a] = Math.max(piece.max[a], world[n * 3 + o])
+            }
             if (hiddenFacade(side(i) + side(j) + side(k))) piece.hiddenArea += area
         }
         for (const piece of pieces.values()) {
             const share = piece.area ? piece.hiddenArea / piece.area : 0
             piece.mode = share >= .8 ? 'hidden' : share <= .2 ? 'visible' : 'clip'
+            if (piece.mode === 'hidden' && kept((piece.min[0] + piece.max[0]) / 2, (piece.min[1] + piece.max[1]) / 2)) piece.mode = 'visible'
         }
         // Output vertices: an original vertex [i] or a point on a cut edge [i, j, t].
         const vertices = [], ids = new Map(), out = []
