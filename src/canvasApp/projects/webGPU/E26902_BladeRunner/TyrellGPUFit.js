@@ -30,16 +30,19 @@ export default class TyrellGPUFit {
         this.fitting = true
         this.restart()
     }
-    restart() { this.frames = 0; this.times = [] }
+    restart() { this.frames = 0; this.renders = 0; this.times = [] }
     end() {
         if (this.timestamps) this.backend.trackTimestamp = this.previousTracking
         this.fitting = false
     }
-    // Once per frame, after everything the frame draws has been submitted.
+    // Once per frame, after everything the frame draws has been submitted. While fitting, the
+    // project skips drawing until the previous probe returns, so only drawn frames are sampled.
     frame() {
         this.frames++
+        if (this.waiting) return
+        this.renders++
         const queue = this.backend?.device?.queue
-        if (queue && !this.waiting) {
+        if (queue) {
             this.waiting = true
             const start = performance.now()
             queue.onSubmittedWorkDone().then(() => {
@@ -47,7 +50,7 @@ export default class TyrellGPUFit {
                 if (this.latencies.length > 20) this.latencies.shift()
             }).finally(() => { this.waiting = false })
         }
-        if (this.fitting && this.timestamps && this.frames > this.settings.settleFrames && !this.resolving) {
+        if (this.fitting && this.timestamps && this.renders > this.settings.settleFrames && !this.resolving) {
             this.resolving = true
             this.renderer.resolveTimestampsAsync('render').then(ms => {
                 if (ms > 0 && this.fitting) this.times.push(ms)
