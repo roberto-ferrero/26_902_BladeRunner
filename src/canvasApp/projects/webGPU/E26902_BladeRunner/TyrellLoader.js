@@ -23,7 +23,7 @@ export default class TyrellLoader {
         this.root.className = 'tyrell-loader'
         this.root.innerHTML = `<div class="tyrell-loader-center">
                 <h1 class="tyrell-loader-title">ROBERTO FERRERO</h1>
-                <p class="tyrell-loader-subtitle">Creative developer</p>
+                <p class="tyrell-loader-subtitle">Creative Developer</p>
                 <div class="tyrell-loader-track" role="progressbar" aria-label="Carga de la experiencia" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="tyrell-loader-fill"></div></div>
                 <p class="tyrell-loader-status" aria-live="polite"></p>
             </div>`
