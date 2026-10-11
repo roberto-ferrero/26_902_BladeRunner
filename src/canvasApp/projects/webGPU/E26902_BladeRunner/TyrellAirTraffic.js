@@ -8,14 +8,16 @@ const forward = new Vector3(0, 0, 1)
 const smooth = value => { const t = Math.max(0, Math.min(1, value)); return t * t * (3 - 2 * t) }
 const scaleForRoute = route => AIR_TRAFFIC.vehicleScale * (route === 2 ? AIR_TRAFFIC.foregroundScale : 1)
 
-// World metres: two distant corridors and a smaller, lower right-to-left
-// crossing between the room and the nearest pyramid vertex (Z = -172.65).
+// World metres, seen from the initial camera. The pyramid v3 spans X -188..90, Y up to 42 and
+// Z -405..-124. One corridor passes just behind it (hidden by its silhouette in the middle), one
+// in front of it, and a smaller, lower right-to-left crossing just in front of its nearest towers.
+export const PYRAMID_BOUNDS = Object.freeze({ min: [-188, -72, -405], max: [90, 42, -124] })
 export function createAirRoutes() {
     const curve = points => new CatmullRomCurve3(points.map(p => new Vector3(...p)), false, 'centripetal')
     return [
-        curve([[-420, 61, -560], [-190, 58, -525], [180, 62, -550], [420, 66, -610]]),
-        curve([[520, 81, -760], [180, 74, -705], [-190, 72, -730], [-520, 78, -810]]),
-        curve([[230, 15, -159], [75, 13, -155], [-75, 12, -157], [-240, 14, -163]]
+        curve([[-420, 56, -440], [-190, 53, -425], [180, 57, -435], [420, 61, -455]]),
+        curve([[300, 30, -96], [110, 27, -92], [-110, 26, -95], [-300, 29, -100]]),
+        curve([[230, 15, -112], [75, 13, -110], [-75, 12, -111], [-240, 14, -114]]
             .map(([x, y, z]) => [x, y - AIR_TRAFFIC.foregroundLowering, z]))
     ]
 }

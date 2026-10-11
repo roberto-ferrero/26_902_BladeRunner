@@ -13,7 +13,7 @@ const module = { exports: {} }
 new Function('require', 'module', 'exports', code)(name => name === 'three' ? THREE : {
     createBeaconGlow: () => new THREE.DataTexture(new Uint8Array([255, 255, 255, 255]), 1, 1)
 }, module, module.exports)
-const { default: Traffic, createAirRoutes, airStrobe } = module.exports
+const { default: Traffic, createAirRoutes, airStrobe, PYRAMID_BOUNDS } = module.exports
 const advance = (traffic, frames, dt) => { for (let i = 0; i < frames; i++) traffic.update(dt) }
 const release = traffic => {
     const materials = new Set()
@@ -21,20 +21,21 @@ const release = traffic => {
     materials.forEach(m => m.dispose()); traffic.geometry.dispose(); traffic.glow.dispose()
 }
 
-test('Background routes clear the pyramid; the new corridor crosses in front from right to left', () => {
-    const routes = createAirRoutes(), audit = JSON.parse(fs.readFileSync(new URL('../docs/phase9/9.0/geometry-audit.json', import.meta.url)))
-    const pyramid = audit.exteriorMeshes.find(m => m.name === 'Tyrell_Corporation_Pyramid')
-    for (const route of routes.slice(0, 2)) for (let i = 0; i <= 1000; i++) {
-        const p = route.getPointAt(i / 1000)
-        assert.ok(p.y > pyramid.max[1] + 10, 'Keep the entire small hull clear of the highest original architecture')
-        assert.ok(p.z < -350, 'Never enter the near-traffic or interior zone')
+test('One corridor just behind the pyramid, one in front of it; the low crossing goes right to left', () => {
+    const routes = createAirRoutes(), pyramid = PYRAMID_BOUNDS
+    for (let i = 0; i <= 1000; i++) {
+        const behind = routes[0].getPointAt(i / 1000), ahead = routes[1].getPointAt(i / 1000)
+        assert.ok(behind.y > pyramid.max[1] + 10, 'Keep the hull clear of the apex')
+        assert.ok(behind.z < pyramid.min[2] - 15 && behind.z > pyramid.min[2] - 60, 'Just behind the pyramid')
+        assert.ok(ahead.z > pyramid.max[2] + 20 && ahead.z < -80, 'In front of the pyramid, outside the room')
+        assert.ok(ahead.y > 20, 'Above the low crossing and the nearest towers')
     }
     assert.equal(routes.length, 3, 'Only the three through-corridors remain')
     const front = routes[2]
     for (let i = 0; i <= 1000; i++) {
         const p = front.getPointAt(i / 1000)
         assert.ok(p.z > pyramid.max[2] + 6, 'Entire enlarged hull must clear the nearest pyramid vertex')
-        assert.ok(p.z < -140, 'Keep crossings well outside the office')
+        assert.ok(p.z < -105, 'Keep crossings well outside the office')
         assert.ok(p.y > 9 && p.y < 13, 'Lower frontal crossings while keeping them above the low roofs')
         assert.ok(front.getTangentAt(i / 1000).x < 0, 'Travel right to left throughout the crossing')
     }
