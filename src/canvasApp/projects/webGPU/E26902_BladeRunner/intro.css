@@ -6,11 +6,12 @@ body.tyrell-cinema .tyrell-ui header { display: none; }
 .tyrell-cinema-title, .tyrell-cinema-contact { position: fixed; right: max(5vw, 24px); left: 24px; z-index: 25; display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap;
     height: var(--tyrell-cinema-band, 10vh); font-family: Asap, system-ui, sans-serif; color: #f3eee8; opacity: 0; pointer-events: none; transition: opacity 2.2s ease-in-out; }
 .tyrell-cinema-title { top: 0; font-size: clamp(14px, 1.45vw, 24px); letter-spacing: .12em; }
-.tyrell-cinema-title strong { font-weight: 600; }
-.tyrell-cinema-title span { font-weight: 400; letter-spacing: .08em; color: #f3eee8a6; white-space: pre; }
-.tyrell-cinema-contact { bottom: 0; gap: 4px 28px; font-size: clamp(11px, .85vw, 14px); letter-spacing: .08em; transition-duration: 1.6s; }
-.tyrell-cinema-contact a { color: #f3eee8b3; text-decoration: none; }
-.tyrell-cinema-contact a:hover, .tyrell-cinema-contact a:focus-visible { color: #f07549; }
+.tyrell-cinema-title strong { font-weight: 600; color: #f07549; }
+.tyrell-cinema-title span { font-weight: 600; color: #fff; white-space: pre; }
+.tyrell-cinema-contact { bottom: 0; flex-direction: column; align-items: flex-end; justify-content: center; gap: 2px; font-size: clamp(11px, .85vw, 14px); letter-spacing: .08em; transition-duration: 1.6s; }
+.tyrell-cinema-contact a { color: #5fd3b8; text-decoration: none; }
+.tyrell-cinema-contact a + a { color: #c9c6f2; }
+.tyrell-cinema-contact a:hover, .tyrell-cinema-contact a:focus-visible { color: #fff; }
 .tyrell-cinema-title.is-visible, .tyrell-cinema-contact.is-visible { opacity: 1; }
 .tyrell-cinema-contact.is-visible a { pointer-events: auto; }
 

@@ -8,7 +8,7 @@ export const INTRO = {
     // Share of the viewport height for each black band; overridable with ?bands=0.12.
     band: .1,
     name: 'ROBERTO FERRERO', role: 'Creative Developer',
-    email: 'hola@robertoferrero.es', phone: '+34 678 552 380', phoneHref: 'tel:+34678552380'
+    email: 'hola@robertoferrero.es', phone: '+34 678 55 23 80', phoneHref: 'tel:+34678552380'
 }
 
 export function introEnabled(search = location.search) { return new URLSearchParams(search).get('intro') !== '0' }
@@ -26,7 +26,7 @@ export default class TyrellIntro {
         this.title.className = 'tyrell-cinema-title'
         this.title.innerHTML = `<strong></strong><span></span>`
         this.title.querySelector('strong').textContent = settings.name
-        this.title.querySelector('span').textContent = ` / ${settings.role}`
+        this.title.querySelector('span').textContent = ` ${settings.role}`
         this.contact = document.createElement('div')
         this.contact.className = 'tyrell-cinema-contact'
         this.contact.innerHTML = `<a></a><a></a>`
