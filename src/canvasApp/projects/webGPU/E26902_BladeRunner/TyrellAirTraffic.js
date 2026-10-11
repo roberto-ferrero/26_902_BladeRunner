@@ -2,11 +2,12 @@ import { AdditiveBlending, CatmullRomCurve3, Group, Mesh, MeshStandardMaterial, 
 import { createBeaconGlow } from './TyrellBuildingLights'
 
 export const AIR_TRAFFIC = Object.freeze({ density: .8, capacity: 10, reflectionHz: 5, environmentHz: 1,
-    vehicleScale: 1.25, foregroundScale: .25, foregroundLowering: 2.5,
+    vehicleScale: 1.25, foregroundScale: .25, frontCorridorScale: .15, foregroundLowering: 2.5,
     corridorPeriods: Object.freeze([60, 68, 40]) })
 const forward = new Vector3(0, 0, 1)
 const smooth = value => { const t = Math.max(0, Math.min(1, value)); return t * t * (3 - 2 * t) }
-const scaleForRoute = route => AIR_TRAFFIC.vehicleScale * (route === 2 ? AIR_TRAFFIC.foregroundScale : 1)
+const scaleForRoute = route => AIR_TRAFFIC.vehicleScale
+    * (route === 2 ? AIR_TRAFFIC.foregroundScale : route === 1 ? AIR_TRAFFIC.frontCorridorScale : 1)
 
 // World metres, seen from the initial camera. The pyramid v3 spans X -188..90, Y up to 42 and
 // Z -405..-124. One corridor passes just behind it (hidden by its silhouette in the middle), one
