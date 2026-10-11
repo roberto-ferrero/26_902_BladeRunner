@@ -1,6 +1,7 @@
 import './tyrell.css'
 import { QUALITY_LEVELS } from './TyrellQuality'
 import { GLASSWARE_CONTROLS } from './TyrellGlasswareSettings'
+import { PYRAMID_GROUPS } from './TyrellPyramidSettings'
 
 export default class TyrellUI {
     constructor(actions) {
@@ -377,6 +378,34 @@ export default class TyrellUI {
             glassPanel.querySelector('div').append(row)
         }
         experience.append(glassPanel)
+        const pyramidPanel = document.createElement('details')
+        pyramidPanel.className = 'tyrell-pan'
+        pyramidPanel.innerHTML = '<summary>Pirámide Tyrell</summary><p>Edificio v3: ventanas de las torres y de la pirámide (columnas y sectores), carriles y ascensores. Los colores se editan como componentes 0–1, igual que en el visor de revisión.</p>'
+        for (const { title, controls } of PYRAMID_GROUPS) {
+            const heading = document.createElement('p')
+            heading.className = 'tyrell-section-title'
+            heading.textContent = title
+            const box = document.createElement('div')
+            box.className = 'tyrell-pan-controls'
+            for (const { group, key, label, name, type, value, min, max, step, unit } of controls) {
+                const row = document.createElement('label')
+                const input = document.createElement('input'), output = document.createElement('output')
+                input.type = type
+                input.setAttribute('aria-label', label)
+                if (type === 'range') Object.assign(input, { min, max, step })
+                if (type === 'checkbox') input.checked = value
+                else input.value = value
+                const read = () => type === 'checkbox' ? input.checked : type === 'color' ? input.value : Number(input.value)
+                const refresh = () => { output.textContent = type === 'checkbox' ? '' : `${input.value}${unit ? ` ${unit}` : ''}` }
+                input[type === 'checkbox' ? 'onchange' : 'oninput'] = () => { refresh(); actions.pyramid(group, { [key]: read() }) }
+                refresh()
+                if (type === 'checkbox') row.append(input, ` ${name}`)
+                else row.append(name, input, output)
+                box.append(row)
+            }
+            pyramidPanel.append(heading, box)
+        }
+        experience.append(pyramidPanel)
         this.vkPanel = document.createElement('details')
         this.vkPanel.className = 'tyrell-pan'
         this.vkPanel.innerHTML = '<summary>Voight-Kampff</summary><div class="tyrell-pan-controls"><button type="button" data-vk-toggle disabled>Desplegar</button><label><input type="checkbox" aria-label="Desplegar al llegar a p1" checked> Desplegar al llegar a p1</label></div><p role="status" data-vk-status>Cargando dispositivo…</p>'

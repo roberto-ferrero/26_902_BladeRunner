@@ -1,4 +1,5 @@
 import { GLASSWARE_CONTROLS } from './TyrellGlasswareSettings'
+import { PYRAMID_CONTROLS } from './TyrellPyramidSettings'
 
 // Paths are the public configuration API; labels bind to the existing UI actions.
 export const GUI_BINDINGS = [
@@ -71,7 +72,8 @@ export const GUI_BINDINGS = [
     ["city.flames.intensity", "Intensidad de llamaradas"],
     ["voightKampff.deployOnArrival", "Desplegar al llegar a p1"],
     ["voightKampff.chassisColor", "Color del chasis"],
-    ["voightKampff.reduceReflectionCapturesAtP1", "Reducir capturas de reflejos en p1"]
+    ["voightKampff.reduceReflectionCapturesAtP1", "Reducir capturas de reflejos en p1"],
+    ...PYRAMID_CONTROLS.map(({ path, label }) => [path, label])
 ]
 
 export function flattenSettings(value, prefix = '', result = {}) {
@@ -92,6 +94,7 @@ export function prepareGUISettings(root, settings, cameraStates) {
         if (!(`glassware.${key}` in values)) values[`glassware.${key}`] = value
     }
     if (!('viewer.deviceMode' in values)) values['viewer.deviceMode'] = 'auto'
+    for (const { path, value } of PYRAMID_CONTROLS) if (!(path in values)) values[path] = value
     for (const [added, original] of [['extraLowQualityEnabled', 'lowQualityEnabled'], ['ultraHighQualityEnabled', 'highQualityEnabled']]) {
         const key = `city.buildings.orientationColor.${added}`
         if (!(key in values)) values[key] = values[`city.buildings.orientationColor.${original}`]

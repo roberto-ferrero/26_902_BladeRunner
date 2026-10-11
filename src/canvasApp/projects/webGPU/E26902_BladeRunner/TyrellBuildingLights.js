@@ -99,9 +99,19 @@ export default class TyrellBuildingLights {
             })
             object.material = Array.isArray(original) ? materials : materials[0]
             this.originals.push({ object, original, materials })
-            if (object.name !== 'Tyrell_Corporation_Pyramid') continue
-            // Actual upper GLB vertices, separated by footprint band, not floating markers.
-            const peaks = new Map(), point = new Vector3()
+            if (object.name === 'Tyrell_Corporation_Pyramid') this.addBeacons(world, [object])
+        }
+        // The v3 building (TyrellPyramid) keeps its own window materials and only takes the beacons.
+        // Its multi-material glTF mesh loads as a group of meshes.
+        const pyramid = world.getObjectByName('Tyrell_Pyramid_v1'), parts = []
+        pyramid?.traverse(object => { if (object.isMesh) parts.push(object) })
+        if (parts.length) this.addBeacons(world, parts)
+        this.update(0)
+    }
+    addBeacons(world, meshes) {
+        // Actual upper GLB vertices, separated by footprint band, not floating markers.
+        const peaks = new Map(), point = new Vector3()
+        for (const object of meshes) {
             const positions = object.geometry.attributes.position
             for (let i = 0; i < positions.count; i++) {
                 point.fromBufferAttribute(positions, i).applyMatrix4(object.matrixWorld)
@@ -109,20 +119,19 @@ export default class TyrellBuildingLights {
                 const key = Math.floor(point.x / 30)
                 if (!peaks.has(key) || peaks.get(key).y < point.y) peaks.set(key, point.clone())
             }
-            const glow = createBeaconGlow()
-            for (const point of peaks.values()) {
-                const material = new SpriteMaterial({ map: glow, color: 0xffffff,
-                    blending: AdditiveBlending, depthWrite: false, depthTest: true })
-                const beacon = new Sprite(material)
-                beacon.name = 'City / navigation beacon'
-                beacon.position.copy(world.worldToLocal(point.clone().add(new Vector3(0, .17, 0))))
-                beacon.scale.set(1.8, 1.8, 1)
-                world.add(beacon)
-                this.beacons.push(beacon)
-            }
-            if (!this.beacons.length) glow.dispose()
         }
-        this.update(0)
+        if (!peaks.size) return
+        const glow = createBeaconGlow()
+        for (const point of peaks.values()) {
+            const material = new SpriteMaterial({ map: glow, color: 0xffffff,
+                blending: AdditiveBlending, depthWrite: false, depthTest: true })
+            const beacon = new Sprite(material)
+            beacon.name = 'City / navigation beacon'
+            beacon.position.copy(world.worldToLocal(point.clone().add(new Vector3(0, .17, 0))))
+            beacon.scale.set(1.8, 1.8, 1)
+            world.add(beacon)
+            this.beacons.push(beacon)
+        }
     }
     configure(values) {
         for (const key of ['intensity', 'beacons']) if (Number.isFinite(values[key]))

@@ -39,6 +39,7 @@ import TyrellLensFlare from './TyrellLensFlare'
 import TyrellCity from './TyrellCity'
 import TyrellCityColorBenchmark from './TyrellCityColorBenchmark'
 import TyrellBuildingLights from './TyrellBuildingLights'
+import TyrellPyramid, { PYRAMID } from './TyrellPyramid'
 import TyrellAirTraffic from './TyrellAirTraffic'
 import TyrellNearTraffic from './TyrellNearTraffic'
 import TyrellFlames from './TyrellFlames'
@@ -123,6 +124,7 @@ export default class E26902_BladeRunner {
             cityColor: values => { this.city?.setColorHSL(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             cityColorBenchmark: () => this.measureCityColor(),
             buildingLights: values => { this.buildingLights?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
+            pyramid: (group, values) => { this.pyramid?.configure(group, values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             flames: values => { this.flames?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             nearTraffic: values => { this.nearTraffic?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             airTraffic: values => { this.airTraffic?.configure(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
@@ -229,6 +231,9 @@ export default class E26902_BladeRunner {
             this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
                 (received, total, parsing) => this.ui.status(parsing ? 'Preparando geometría, materiales y cámaras…' : `Cargando escenario · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, total ? received / total : undefined))
             if (this.disposed) { disposeScene(this.asset.gltf.scene); return }
+            this.pyramidAsset = await loadTyrell(new URL(PYRAMID.asset, new URL(this.app.pathPrefix, document.baseURI)).href,
+                this.abort.signal, () => this.ui.status('Cargando la pirámide Tyrell…'))
+            if (this.disposed) { disposeScene(this.pyramidAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             this.glasswareAsset = await loadTyrell(new URL(GLASSWARE_ASSET, new URL(this.app.pathPrefix, document.baseURI)).href,
                 this.abort.signal, () => this.ui.status('Cargando la licorera y los vasos…'))
             if (this.disposed) { disposeScene(this.glasswareAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
@@ -245,8 +250,10 @@ export default class E26902_BladeRunner {
         } catch (error) {
             // A parse/build failure must leave retry without a duplicate scene.
             if (!this.vk?.group.parent) disposeScene(this.vkAsset?.gltf.scene)
+            if (!this.pyramid) disposeScene(this.pyramidAsset?.gltf.scene)
             disposeScene(this.asset?.gltf.scene)
             disposeScene(this.glasswareAsset?.gltf.scene)
+            this.pyramidAsset = null
             this.glasswareAsset = null
             this.vkAsset = null
             this.asset = null
@@ -263,6 +270,8 @@ export default class E26902_BladeRunner {
         this.navigation.collision = new TyrellCollision(this.world3D)
         this.columnCores = addColumnCores(this.world3D)
         this.contactRepair = settleInstrumentCase(this.world3D)
+        // Replaces the original building before the city and the building lights look for it.
+        this.pyramid = new TyrellPyramid(this.world3D, this.pyramidAsset.gltf.scene)
         this.city = new TyrellCity(this.world3D)
         this.buildingLights = new TyrellBuildingLights(this.world3D)
         this.airTraffic = new TyrellAirTraffic(this.world3D)
@@ -691,6 +700,10 @@ export default class E26902_BladeRunner {
             this.floorReflection?.updates.invalidate()
             this.specularEnvironment?.invalidate()
         }
+        if (this.pyramid?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)) {
+            this.floorReflection?.updates.invalidate()
+            this.specularEnvironment?.invalidate()
+        }
         if (this.airTraffic?.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)) {
             this.floorReflection?.updates.invalidate()
             if (this.airTraffic.environmentNeedsRefresh) this.specularEnvironment?.invalidate()
@@ -799,6 +812,7 @@ export default class E26902_BladeRunner {
             city: this.city?.diagnostics() || null,
             cityColorBenchmark: this.cityColorBenchmarkResult || null,
             buildingLights: this.buildingLights?.diagnostics() || null,
+            pyramid: this.pyramid?.diagnostics() || null,
             airTraffic: this.airTraffic?.diagnostics() || null,
             nearTraffic: this.nearTraffic?.diagnostics() || null,
             flames: this.flames?.diagnostics() || null,
@@ -852,6 +866,7 @@ export default class E26902_BladeRunner {
         this.sky?.dispose()
         this.atmosphere?.dispose()
         this.buildingLights?.dispose()
+        this.pyramid?.dispose()
         this.volume?.dispose()
         this.floorReflection?.dispose()
         this.glasswareTable?.dispose()
