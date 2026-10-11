@@ -48,6 +48,8 @@ export default class TyrellPortfolio {
                 this.strip.append(card.card); this.observer.observe(card.black)
             })
             this.loaded = true; this.dirty = true
+            // Decode up front: first paint at VK open must not decode the card images.
+            this.strip.querySelectorAll('img').forEach(image => image.decode?.().catch(() => {}))
             this.status.textContent = `${this.cards.length} cards · copia local del portfolio`
         } catch (error) {
             if (error.name === 'AbortError') return

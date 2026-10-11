@@ -1,5 +1,6 @@
 .tyrell-portfolio { position: fixed; z-index: 15; overflow: hidden; pointer-events: none; color: #fff; font-family: Asap, sans-serif; }
-.tyrell-portfolio[hidden] { display: none; }
+/* Laid out while waiting (not display:none): showing it at VK open must not stall a frame. */
+.tyrell-portfolio[hidden] { display: block; visibility: hidden; }
 .tyrell-portfolio .portfolio-beams { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .tyrell-portfolio .portfolio-scroll { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scrollbar-width: none; pointer-events: auto; overflow-anchor: none; }
 .tyrell-portfolio .portfolio-scroll::-webkit-scrollbar { display: none; }

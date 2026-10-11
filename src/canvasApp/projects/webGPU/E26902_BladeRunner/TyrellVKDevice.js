@@ -88,6 +88,12 @@ export default class TyrellVKDevice {
         }
         return changed
     }
+    // Startup warm-up renders the lens pieces once (still unlit) so their pipelines
+    // compile behind the loader, not when the light switches on near full deploy.
+    prewarm(enabled) {
+        if (enabled) this.optics.visible = true
+        else this.updateOptics()
+    }
     updateOptics() {
         const light = this.motion.light
         this.coreMaterial.emissiveIntensity = 8 * light

@@ -703,8 +703,8 @@ export default class E26902_BladeRunner {
             if (document.hidden) this.startup.pause()
             else {
                 this.startup.frame(now)
-                if (this.startup.phase === 'warming') this.ui.loading('warmup', 'Compilando shaders y estabilizando la escena', this.startup.progress())
-                else { this.ui.statusBox.hidden = true; this.ui.finishLoading() }
+                if (this.startup.phase === 'warming') { this.vk?.prewarm(true); this.ui.loading('warmup', 'Compilando shaders y estabilizando la escena', this.startup.progress()) }
+                else { this.vk?.prewarm(false); this.ui.statusBox.hidden = true; this.ui.finishLoading() }
                 // The camera starts moving when the black begins to clear, not under it.
                 if (this.startup.phase === 'ready' || this.startup.fadeElapsedMs >= LOADER_REVEAL_MS) this.intro?.start()
                 if (this.startup.phase === 'ready') {
