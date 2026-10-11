@@ -7,8 +7,8 @@ import { airStrobe } from './TyrellAirTraffic'
 export const NEAR_TRAFFIC = Object.freeze({ enabled: true, duration: 40, minDuration: 20, maxDuration: 60,
     capacity: 1, vehicleScale: .25, altitude: 10.5, maxBank: 20 * Math.PI / 180,
     initialDelay: 2, reflectionHz: 8, environmentHz: 1,
-    // In the p1 view the light effect starts 5x larger at the left edge and shrinks to 1x at the right edge.
-    p1OpticsScale: Object.freeze({ left: 5, right: 1, smoothingSeconds: .5 }) })
+    // In every view the light effect starts 5x larger at the left edge and shrinks to 1x at the right edge.
+    opticsScale: Object.freeze({ left: 5, right: 1, smoothingSeconds: .5 }) })
 const vertical = new Vector3(0, 1, 0), forward = new Vector3(0, 0, 1)
 const smooth = value => { const t = Math.max(0, Math.min(1, value)); return t * t * (3 - 2 * t) }
 
@@ -157,9 +157,9 @@ export default class TyrellNearTraffic {
         world.add(this.group)
     }
     // Screen-dependent size of the light effect: x is the vehicle's horizontal position in the
-    // current view (-1 left edge, 1 right edge), or null outside the p1 view.
+    // current view (-1 left edge, 1 right edge), or null while it is not flying.
     setOpticsView(x) {
-        const { left, right } = NEAR_TRAFFIC.p1OpticsScale
+        const { left, right } = NEAR_TRAFFIC.opticsScale
         this.opticsTarget = x === null ? 1 : left + (right - left) * Math.max(0, Math.min(1, (x + 1) / 2))
     }
     configure(values) {
@@ -180,8 +180,8 @@ export default class TyrellNearTraffic {
     update(delta) {
         let dt = Number.isFinite(delta) ? Math.max(0, Math.min(.1, delta)) : 0
         const flight = this.flights[0]
-        // Ease size changes (entering or leaving p1); no jump while the vehicle is on screen.
-        this.opticsScale += (this.opticsTarget - this.opticsScale) * (1 - Math.exp(-dt / NEAR_TRAFFIC.p1OpticsScale.smoothingSeconds))
+        // Ease size changes (switching views); no jump while the vehicle is on screen.
+        this.opticsScale += (this.opticsTarget - this.opticsScale) * (1 - Math.exp(-dt / NEAR_TRAFFIC.opticsScale.smoothingSeconds))
         if (this.settings.enabled) {
             this.time += dt
             if (!flight.active) {
