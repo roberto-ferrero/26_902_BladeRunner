@@ -42,42 +42,21 @@ test('Atmosphere independently controls layers, excludes authored sky and restor
     sky.geometry.dispose(); sky.material.dispose(); floor.geometry.dispose(); floor.material.dispose()
 })
 
-test('Volumetric comparison restores depth-only and original fog without creating graphs on repeated toggles', () => {
+test('Light beams never change the material fog: only exterior and interior depth select it', () => {
     const scene = new THREE.Scene(), root = new THREE.Group(), original = TSL.vec4(1)
     scene.fogNode = original
-    const volume = { settings: { enabled: false }, node: TSL.vec4(0.1) }
+    const volume = { settings: { enabled: true }, node: () => TSL.float(0) }
     const atmosphere = new m.exports.default(scene, root, volume)
+    atmosphere.refreshVolume()
+    assert.equal(scene.fogNode, original, 'The beams are composited by the post pass')
     atmosphere.configure({ interior: true })
     const base = scene.fogNode
-    volume.settings.enabled = true; atmosphere.refreshVolume()
-    const withVolume = scene.fogNode
-    assert.notEqual(withVolume, base)
+    assert.notEqual(base, original)
     for (let i = 0; i < 5; i++) {
-        volume.settings.enabled = false; atmosphere.refreshVolume(); assert.equal(scene.fogNode, withVolume)
-        volume.settings.enabled = true; atmosphere.refreshVolume(); assert.equal(scene.fogNode, withVolume)
+        volume.settings.enabled = false; atmosphere.refreshVolume(); assert.equal(scene.fogNode, base)
+        volume.settings.enabled = true; volume.node = null; atmosphere.refreshVolume(); assert.equal(scene.fogNode, base)
     }
     atmosphere.configure({ interior: false })
-    assert.equal(scene.fogNode, withVolume)
-    volume.settings.enabled = false; atmosphere.refreshVolume()
     assert.equal(scene.fogNode, original)
-    atmosphere.dispose()
-})
-
-test('Replacing a shadow detaches the old volume graph until a new sampler is ready', () => {
-    const scene = new THREE.Scene(), volume = { settings: { enabled: true }, node: TSL.vec4(.1) }
-    const atmosphere = new m.exports.default(scene, new THREE.Group(), volume)
-    atmosphere.refreshVolume()
-    const oldGraph = scene.fogNode
-    volume.node = null
-    atmosphere.refreshVolume()
-    assert.equal(scene.fogNode, atmosphere.baseNode)
-    assert.equal(atmosphere.volumeNode, null)
-    volume.node = TSL.vec4(.2)
-    atmosphere.refreshVolume()
-    assert.notEqual(scene.fogNode, oldGraph)
-    assert.notEqual(scene.fogNode, atmosphere.baseNode)
-    const restored = scene.fogNode
-    atmosphere.refreshVolume()
-    assert.equal(scene.fogNode, restored)
     atmosphere.dispose()
 })

@@ -352,6 +352,7 @@ export default class E26902_BladeRunner {
         this.specularEnvironment = new TyrellSpecularEnvironment(this.scene, this.world3D, this.floorReflection)
         if (this.vk) this.specularEnvironment.register(this.vk.group, this.vk.materials)
         this.volume = new TyrellLightVolume(() => this.sun)
+        this.post.volume = this.volume
         this.atmosphere = new TyrellAtmosphere(this.scene, this.world3D, this.volume)
         this.sky = new TyrellSky(this.scene, this.lighting.sky, this.skyTexture, {
             ...TYRELL.sky, aspect: TYRELL.referenceAspect,

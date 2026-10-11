@@ -39,7 +39,7 @@ export default class TyrellAtmosphere {
         })
         const exteriorColor = uniform(new Color('#ae8050')).setGroup(renderGroup)
         const interiorColor = uniform(new Color('#635344')).setGroup(renderGroup)
-        this.makeNode = (includeVolume = false) => Fn(() => {
+        this.makeNode = () => Fn(() => {
             const ray = positionWorld.sub(cameraPosition)
             const distance = ray.length()
             const start = cameraPosition.z.negate().add(ATMOSPHERE.boundary)
@@ -56,15 +56,10 @@ export default class TyrellAtmosphere {
             const interiorFactor = interiorPath.mul(this.interior).negate().exp().oneMinus().min(0.065)
             const distant = exteriorFactor.mix(output.rgb, exteriorColor)
             const base = interiorFactor.mix(distant, interiorColor)
-            if (includeVolume) {
-                const scattering = this.volume.node
-                return vec4(base.mul(scattering.a.mul(0.25).oneMinus()).add(scattering.rgb), output.a)
-            }
             return vec4(base, output.a)
         })()
+        // The light beams (volume) are composited by TyrellPostProcessing, not per material.
         this.node = this.makeNode()
-        this.baseNode = this.node
-        this.volumeNode = null
         // Disabled by default, preserving the archived R01 comparison on reload.
     }
     configure(values) {
@@ -74,22 +69,9 @@ export default class TyrellAtmosphere {
         }
         this.exterior.value = this.settings.exterior ? ATMOSPHERE.exteriorDensity * this.settings.exteriorStrength : 0
         this.interior.value = this.settings.interior ? ATMOSPHERE.interiorDensity * this.settings.interiorStrength : 0
-        this.scene.fogNode = this.settings.exterior || this.settings.interior || this.volume?.settings.enabled ? this.node : this.original
+        this.scene.fogNode = this.settings.exterior || this.settings.interior ? this.node : this.original
     }
-    refreshVolume() {
-        if (this.volume?.node) {
-            if (this.volumeSource !== this.volume.node) {
-                this.volumeSource = this.volume.node
-                this.volumeNode = this.makeNode(true)
-            }
-            this.node = this.volumeNode
-        } else {
-            this.volumeSource = null
-            this.volumeNode = null
-            this.node = this.baseNode
-        }
-        this.configure({})
-    }
+    refreshVolume() { this.configure({}) }
     diagnostics() {
         return { ...this.settings, ...ATMOSPHERE, effectiveDensity: [this.exterior.value, this.interior.value], excludedMaterials: [...this.materials.keys()].map(m => m.name), method: 'Analytic split depth; no light shafts, dust or volumetric occlusion', extraRenderPasses: 0 }
     }

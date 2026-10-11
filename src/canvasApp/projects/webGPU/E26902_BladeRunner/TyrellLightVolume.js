@@ -1,8 +1,15 @@
 import { Color, Vector3 } from 'three'
-import { Fn, renderGroup, If, Loop, float, vec2, vec3, vec4, uniform, texture, cameraWorldMatrix, positionWorld } from 'three/tsl'
-const cameraPosition = cameraWorldMatrix.element(3).xyz
+import { Fn, renderGroup, If, Loop, float, vec2, vec3, vec4, uniform, texture, screenUV, getViewPosition, perspectiveDepthToViewZ } from 'three/tsl'
+
+// View-space surface position: linear depth along the pixel's view ray (stable at any distance).
+export const viewPosition = (uv, depthNode, { projectionInverse, near, far }) => {
+    const direction = getViewPosition(uv, float(.5), projectionInverse)
+    const z = perspectiveDepthToViewZ(depthNode.sample(uv).r, near, far)
+    return direction.mul(z.div(direction.z))
+}
 
 // Single scattering integrated up to the visible surface, using the existing solar depth map.
+// Evaluated once per pixel in a reduced-resolution screen pass (TyrellPostProcessing), not per material.
 export default class TyrellLightVolume {
     constructor(getSun) {
         this.getSun = getSun
@@ -14,8 +21,6 @@ export default class TyrellLightVolume {
         this.direction = uniform(new Vector3()).setGroup(renderGroup)
         this.radiance = uniform(new Color()).setGroup(renderGroup)
         this.node = null
-        this.lastReflectionTick = -1
-        this.reflectionClock = 0
     }
     configure(values) {
         for (const key of ['enabled', 'dust']) if (typeof values[key] === 'boolean') this.settings[key] = values[key]
@@ -35,13 +40,8 @@ export default class TyrellLightVolume {
         this.radiance.value.copy(sun.color).multiplyScalar(sun.visible ? sun.intensity * 0.18 : 0)
         const animated = this.settings.dust && this.settings.speed > 0
         if (animated) this.clock.value += Math.min(Math.max(dt, 0), 0.05) * this.settings.speed
-        // Density drifts very slowly: refresh its planar contribution at 10 Hz.
-        // Camera motion still invalidates the reflector independently every render.
-        this.reflectionClock += Math.min(Math.max(dt, 0), 0.05)
-        const tick = Math.floor(this.reflectionClock * 10)
-        const refresh = animated && tick !== this.lastReflectionTick
-        this.lastReflectionTick = tick
-        return refresh
+        // The beams are a camera-only screen pass: reflections and probes never contain them.
+        return false
     }
     createNode(sun) {
         const depth = texture(sun.shadow.map.depthTexture)
@@ -50,11 +50,12 @@ export default class TyrellLightVolume {
             if (map) depth.value = map.depthTexture
         })
         const matrix = uniform(sun.shadow.matrix.clone()).setGroup(renderGroup).onRenderUpdate(() => this.getSun().shadow.matrix)
-        this.node = Fn(() => {
-            const delta = positionWorld.sub(cameraPosition)
+        // Scattered fraction along the camera ray up to the visible surface, inside the room box.
+        this.scatter = (cameraPosition, surface) => {
+            const delta = surface.sub(cameraPosition)
             const distance = delta.length().max(0.0001)
             const ray = delta.div(distance)
-            // Preserve the sign for grazing rays, including reflected cameras.
+            // Preserve the sign for grazing rays.
             const safe = vec3(...['x', 'y', 'z'].map(axis => ray[axis].lessThan(0).select(-1, 1).mul(ray[axis].abs().max(0.00001))))
             const a = vec3(-9, 0.08, -14.4).sub(cameraPosition).div(safe)
             const b = vec3(9, 8, 2).sub(cameraPosition).div(safe)
@@ -81,12 +82,25 @@ export default class TyrellLightVolume {
             })
             })
             const phase = ray.dot(this.direction).max(0).pow(4).mul(0.65).add(0.35)
-            const amount = integral.mul(this.strength).mul(0.004).negate().exp().oneMinus().mul(phase).min(0.38)
-            return vec4(this.radiance.mul(amount), amount)
+            return integral.mul(this.strength).mul(0.004).negate().exp().oneMinus().mul(phase).min(0.38)
+        }
+        this.node = this.scatter
+    }
+    // Screen pass (reduced resolution): r = scattered amount, g = distance to the visible surface, for a
+    // depth-aware upsampling. The photographed sky and sun (beyond 600 m) never received the beams.
+    createScreenNode(depthNode, camera) {
+        return Fn(() => {
+            const view = viewPosition(screenUV, depthNode, camera)
+            const { cameraWorld } = camera
+            const cameraPosition = cameraWorld.element(3).xyz
+            const surface = cameraWorld.mul(vec4(view, 1)).xyz
+            const distance = view.length()
+            const amount = distance.lessThan(600).select(this.scatter(cameraPosition, surface), 0)
+            return vec4(amount, distance, 0, 1)
         })()
     }
     diagnostics() {
-        return { ...this.settings, ready: !!this.node, steps: this.steps.value, bounds: [[-9, 0.08, -14.4], [9, 8, 2]], time: this.clock.value, reflectionRefreshHz: 10, scatteringDensity: 0.004, solarRadianceScale: 0.18, sampling: 'deterministic midpoint; no temporal jitter or history', emptyIntervalSkipped: true, source: 'solar shadow depth; bounded single scattering; procedural dust density', extraRenderPasses: 0 }
+        return { ...this.settings, ready: !!this.node, steps: this.steps.value, bounds: [[-9, 0.08, -14.4], [9, 8, 2]], time: this.clock.value, reflectionRefreshHz: 0, scatteringDensity: 0.004, solarRadianceScale: 0.18, sampling: 'deterministic midpoint; no temporal jitter or history', emptyIntervalSkipped: true, source: 'solar shadow depth; bounded single scattering; procedural dust density', extraRenderPasses: 1, method: 'reduced-resolution screen pass with depth-aware upsampling; not in reflections or probes' }
     }
     dispose() { this.node = null } // Shadow texture belongs to the light; never dispose it here.
 }

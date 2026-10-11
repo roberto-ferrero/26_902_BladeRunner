@@ -12,7 +12,8 @@ function load(file,imports){
         configFile:false,babelrc:false,plugins:['@babel/plugin-transform-modules-commonjs']
     }).code
     const m={exports:{}}
-    new Function('require','module','exports',code)(key=>key === './TyrellQuality' ? Quality : imports[key],m,m.exports)
+    new Function('require','module','exports',code)(key=>key === './TyrellQuality' ? Quality
+        : key === './TyrellLightVolume' ? { viewPosition: () => TSL.vec3(0) } : key === 'three' ? THREE : imports[key],m,m.exports)
     return m.exports
 }
 const Post=load('TyrellPostProcessing.js',{'three/webgpu':THREE,'three/tsl':TSL,'three/addons/tsl/display/BloomNode.js':Bloom}).default

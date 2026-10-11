@@ -19,10 +19,12 @@ test('Volume waits for solar depth, freezes dust, follows light replacement and 
     assert.equal(volume.node, null)
     const depth = new THREE.DepthTexture(16, 16)
     sun.shadow.map = { depthTexture: depth }
-    assert.equal(volume.update(1), true)
+    // A camera-only screen pass: animated dust never asks for reflection refreshes.
+    assert.equal(volume.update(1), false)
+    assert.notEqual(volume.node, null)
     assert.equal(volume.clock.value, 0.05)
     assert.equal(volume.update(0.01), false)
-    assert.equal(volume.update(0.04), true)
+    assert.equal(volume.update(0.04), false)
     const frozenTime = volume.clock.value
     const node = volume.node
     volume.configure({ speed: 0 }); volume.update(1)
