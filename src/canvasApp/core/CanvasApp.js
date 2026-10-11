@@ -232,7 +232,7 @@ class CanvasApp{
             this._rafId = null
         }
     }
-    _update_RAF(){
+    _update_RAF(timestamp){
         // console.log("(CanvasApp._update_RAF)!")
         // console.log("this.state.ACTIVE", this.state.ACTIVE);
         // console.log("this.state.APP_READY", this.state.APP_READY);
@@ -245,6 +245,8 @@ class CanvasApp{
         //--
         // console.log("*raf: instanceId:"+this.instanceId);
         //--
+        // requestAnimationFrame's frame time, shared by everything drawn in this frame.
+        this.FRAME_TIME = timestamp
         this.DELTA_TIME = this.clock.getDelta();
         this.ELAPSED_TIME = this.clock.getElapsedTime();
         //--

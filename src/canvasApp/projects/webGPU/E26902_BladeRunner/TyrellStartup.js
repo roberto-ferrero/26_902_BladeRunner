@@ -14,7 +14,8 @@ export default class TyrellStartup {
         this.previous = undefined
         if (this.phase === 'warming') this.samples = []
     }
-    frame(now) {
+    // gpuReady: the GPU is not running behind (see TyrellGPUFit.caughtUp).
+    frame(now, gpuReady = true) {
         if (this.phase === 'ready') return
         const delta = this.previous === undefined ? 0 : Math.max(0, now - this.previous)
         this.previous = now
@@ -38,6 +39,7 @@ export default class TyrellStartup {
             // not the steady cadence of the complete scene's render passes.
             stable = Math.abs(recent - previous) / previous <= .1 && sorted[56] / sorted[29] <= 1.6 && sorted[59] / sorted[29] <= 2
         }
+        if (!gpuReady) stable = false
         if (stable || this.elapsedMs >= this.maxMs) {
             if (this.samples.length) {
                 const sorted = [...this.samples].sort((a, b) => a - b)

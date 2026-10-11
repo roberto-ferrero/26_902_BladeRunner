@@ -45,6 +45,7 @@ import TyrellNearTraffic from './TyrellNearTraffic'
 import TyrellStartup from './TyrellStartup'
 import { LOADER_LEAVE_MS, LOADER_REVEAL_MS } from './TyrellLoader'
 import TyrellIntro, { introEnabled } from './TyrellIntro'
+import TyrellGPUFit, { GPU_FIT } from './TyrellGPUFit'
 import { measureGPUCapacity } from './TyrellGPUCapacity'
 import TyrellVKDevice from './TyrellVKDevice'
 import TyrellPortfolio from './TyrellPortfolio'
@@ -402,24 +403,54 @@ export default class E26902_BladeRunner {
             this.syncCameraPan()
         }
         this.startup = new TyrellStartup({ fadeMs: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : LOADER_LEAVE_MS })
-        // Every authored view is drawn once behind the loader (reflections included), so no
-        // pipeline compiles when the intro camera reveals what initial0 does not frame.
-        this.precompile = { views: ['initial0', 'initial', 'p1', 'p2', this.intro?.initialState || this.initialGUISettings.camera.initialState]
-            .filter(id => this.cameraStates.some(state => state.cameraStateId === id)), index: 0, frames: 0 }
+        // Every authored view, and every pose along the intro travels, is drawn behind the loader
+        // (reflections included), so nothing compiles once the camera starts moving.
+        const start = this.intro?.initialState || this.initialGUISettings.camera.initialState
+        this.precompile = { index: 0, frames: 0, steps: [{ view: 'initial0' }, { view: 'initial', travel: true }, { view: 'p1', travel: true }, { view: 'p2' }, { view: start }]
+            .filter(step => this.cameraStates.some(state => state.cameraStateId === step.view)) }
         this.ui.loading('warmup', 'Compiling shaders', 0)
         this.resetMetrics()
     }
     precompileFrame() {
-        const run = this.precompile, frames = 3
+        const run = this.precompile, step = run.steps[run.index], travelFrames = 30
+        // Travels advance a fixed 1/60 s per frame (update_RAF), so a frame that stalls on
+        // compilation cannot skip the rest of the path.
         if (run.frames === 0) {
-            this.selectCameraState(run.views[run.index], { duration: 0 })
+            this.selectCameraState(step.view, { duration: step.travel ? travelFrames / 60 : 0 })
             this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate()
         }
-        this.ui.loading('warmup', `Compiling shaders · view ${run.index + 1} / ${run.views.length}`, .5 * (run.index + run.frames / frames) / run.views.length)
-        if (++run.frames < frames) return
+        run.frames++
+        this.ui.loading('warmup', `Compiling shaders · view ${run.index + 1} / ${run.steps.length}`,
+            .5 * (run.index + Math.min(1, run.frames / (step.travel ? travelFrames : 3))) / run.steps.length)
+        if (step.travel ? this.stageCamera.transition || run.frames < 3 : run.frames < 3) return
         run.frames = 0
         // The last view is the starting one; stability is measured only from here on.
-        if (++run.index === run.views.length) { this.precompile = null; this.startup.pause() }
+        if (++run.index === run.steps.length) {
+            this.precompile = null
+            this.gpuFit = new TyrellGPUFit(this.renderer)
+            this.gpuFit.begin()
+            // Fit to a moving camera's frame: fresh floor reflection every frame, no probe capture.
+            this.fitReflectionMode = this.floorReflection?.updates.mode
+            this.floorReflection?.updates.setMode('always')
+        }
+    }
+    fitFrame() {
+        const fit = this.gpuFit
+        this.ui.loading('warmup', 'Fitting the resolution to the GPU', .5 + .1 * Math.min(1, fit.times.length / fit.settings.samples))
+        const scale = fit.decide()
+        if (scale === null) return
+        if (scale !== 1) {
+            const { width, height } = this.app.size.CURRENT, ratio = this.renderer.getPixelRatio()
+            this.pixelBudget = Math.max(width * height * GPU_FIT.minRatio ** 2, width * height * ratio * ratio * scale)
+            this.updateQualityResolution()
+            this.specularEnvironment?.invalidate()
+            this.resetMetrics()
+            fit.restart()
+            return
+        }
+        fit.end()
+        if (this.fitReflectionMode) this.floorReflection?.updates.setMode(this.fitReflectionMode)
+        this.startup.pause()
     }
     selectCameraState(cameraStateId, options = {}) {
         const index = this.cameraStates.findIndex(state => state.cameraStateId === cameraStateId)
@@ -529,6 +560,8 @@ export default class E26902_BladeRunner {
         this.resetMetrics()
     }
     renderFrame(camera) {
+        // While fitting, draw each measured frame on an idle GPU (the loader hides the skipped ones).
+        if (this.gpuFit?.fitting && this.gpuFit.waiting) return
         const benchmark = this.colorBenchmark
         benchmark?.beforeFrame()
         const start = this.profileEnabled || benchmark ? performance.now() : 0
@@ -631,7 +664,10 @@ export default class E26902_BladeRunner {
         const profile = qualityBudget(this.quality, this.budgetMode, this.deviceMode)
         if (!profile || !this.renderer) return
         const { width, height } = this.app.size.CURRENT
-        this.renderer.setPixelRatio(renderPixelRatio(profile, this.deviceMode, width, height))
+        let ratio = renderPixelRatio(profile, this.deviceMode, width, height)
+        // Rendered pixels this GPU draws within budget, fitted behind the loader (TyrellGPUFit).
+        if (this.pixelBudget && width > 0 && height > 0) ratio = Math.min(ratio, Math.sqrt(this.pixelBudget / (width * height)))
+        this.renderer.setPixelRatio(ratio)
         this.app.render?.update_resize()
         this.floorReflection?.resizeTargets(this.renderer)
     }
@@ -712,16 +748,20 @@ export default class E26902_BladeRunner {
         if (run.stage === 'done') this.sustainedMeasurement = null
     }
     update_RAF() {
-        const now = performance.now()
+        // The frame's vsync time: work done before this call varies, so performance.now()
+        // here would advance the camera unevenly from one displayed frame to the next.
+        const now = this.app?.FRAME_TIME ?? performance.now()
         const wasRevealed = this.revealed
         if (document.hidden) this.colorBenchmark?.finish('la pestaña dejó de estar visible')
         if (this.startup && !this.revealed && !this.rendererError) {
             if (document.hidden) this.startup.pause()
             else {
                 if (this.precompile) this.precompileFrame()
-                else this.startup.frame(now)
-                if (this.precompile) this.vk?.prewarm(true)
-                else if (this.startup.phase === 'warming') { this.vk?.prewarm(true); this.ui.loading('warmup', 'Stabilizing the scene', .5 + .5 * this.startup.progress()) }
+                else if (this.gpuFit?.fitting) this.fitFrame()
+                // The fade may only start once the GPU is not running behind the frames.
+                else this.startup.frame(now, this.gpuFit?.caughtUp ?? true)
+                if (this.precompile || this.gpuFit?.fitting) this.vk?.prewarm(true)
+                else if (this.startup.phase === 'warming') { this.vk?.prewarm(true); this.ui.loading('warmup', 'Stabilizing the scene', .6 + .4 * this.startup.progress()) }
                 else { this.vk?.prewarm(false); this.ui.statusBox.hidden = true; this.ui.finishLoading() }
                 // The camera starts moving during the 0.5 s of full black, so the first moving
                 // frames (reflections re-rendering every frame) are already steady when it clears.
@@ -759,13 +799,16 @@ export default class E26902_BladeRunner {
             if (this.nearTraffic.environmentNeedsRefresh) this.specularEnvironment?.invalidate()
         }
         if (this.volume?.node !== volumeNode) { this.atmosphere.refreshVolume(); this.specularEnvironment.invalidate(); this.resetMetrics() }
-        if (this.sky) this.sky.withOriginalBackground(() => this.specularEnvironment?.update(this.renderer))
-        else this.specularEnvironment?.update(this.renderer)
+        // Probe captures are an occasional extra cost, kept out of the GPU fit.
+        if (!this.gpuFit?.fitting) {
+            if (this.sky) this.sky.withOriginalBackground(() => this.specularEnvironment?.update(this.renderer))
+            else this.specularEnvironment?.update(this.renderer)
+        }
         if (this.developmentControls) this.developmentControls.update()
         else if (this.navigation?.enabled) this.navigation.update(this.panTime === undefined ? 0 : (now - this.panTime) / 1000)
         else {
             const seconds = this.panTime === undefined ? 0 : (now - this.panTime) / 1000
-            this.stageCamera.update(seconds)
+            this.stageCamera.update(this.precompile ? 1 / 60 : seconds)
             this.pan?.setReference(this.stageCamera.baseCamera, { preservePointer: true, target: this.stageCamera.target })
             this.syncCameraPan()
             this.pan?.update(seconds)
@@ -790,6 +833,7 @@ export default class E26902_BladeRunner {
             }
         }
         this.previousFrame = now
+        if (!this.revealed) this.gpuFit?.frame()
         this.updateSustainedMeasurement(now)
         if (this.samples.length >= 30 && (!this.lastReport || now - this.lastReport > 1000)) {
             this.lastReport = now
@@ -847,6 +891,7 @@ export default class E26902_BladeRunner {
             floorReflection: this.floorReflection?.diagnostics() || null,
             voightKampff: this.vk?.diagnostics() || null,
             portfolio: this.portfolio?.diagnostics() || null, intro: this.intro?.diagnostics() || null,
+            gpuFit: this.gpuFit ? { ...this.gpuFit.diagnostics(), pixelBudget: this.pixelBudget || null, pixelRatio: this.renderer.getPixelRatio() } : null,
             specularEnvironment: this.specularEnvironment?.diagnostics() || null,
             atmosphere: this.atmosphere?.diagnostics() || null,
             lightVolume: this.volume?.diagnostics() || null,
