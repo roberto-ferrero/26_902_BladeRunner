@@ -5,8 +5,8 @@ import './intro.css'
 export const INTRO = {
     from: 'initial0',
     steps: [{ state: 'initial', duration: 4, easing: 'smoothstep' }, { state: 'p1', duration: 10, easing: 'smoothstep' }],
-    // Share of the viewport height for each black band; overridable with ?bands=0.12.
-    band: .1,
+    // Share of the viewport height of each black band; overridable with ?bands=0.12&bandBottom=0.05.
+    band: .1, bandBottom: .06,
     name: 'ROBERTO FERRERO', role: 'Creative Developer',
     email: 'hola@robertoferrero.es', phone: '+34 678 55 23 80', phoneHref: 'tel:+34678552380'
 }
@@ -19,8 +19,10 @@ export default class TyrellIntro {
         this.settings = settings
         this.step = -1
         this.done = false
-        const band = Number(new URLSearchParams(location.search).get('bands') ?? NaN)
-        document.documentElement.style.setProperty('--tyrell-cinema-band', `${(band >= 0 && band < .4 ? band : settings.band) * 100}vh`)
+        const search = new URLSearchParams(location.search)
+        const band = (name, fallback) => { const value = Number(search.get(name) ?? NaN); return `${(value >= 0 && value < .4 ? value : fallback) * 100}vh` }
+        document.documentElement.style.setProperty('--tyrell-cinema-band', band('bands', settings.band))
+        document.documentElement.style.setProperty('--tyrell-cinema-band-bottom', band('bandBottom', settings.bandBottom))
         document.body.classList.add('tyrell-cinema')
         this.title = document.createElement('div')
         this.title.className = 'tyrell-cinema-title'
@@ -63,5 +65,6 @@ export default class TyrellIntro {
         this.title.remove(); this.contact.remove()
         document.body.classList.remove('tyrell-cinema')
         document.documentElement.style.removeProperty('--tyrell-cinema-band')
+        document.documentElement.style.removeProperty('--tyrell-cinema-band-bottom')
     }
 }
