@@ -274,7 +274,15 @@ export default class E26902_BladeRunner {
         else removeOriginalGlassware(this.world3D)
         this.glasswareTable = new TyrellGlasswareTable(this.world3D, this.glassware?.groups || [])
         this.navigation.collision = new TyrellCollision(this.world3D)
-        this.columnCores = addColumnCores(this.world3D)
+        // Columns and floor sectors that no camera ever sees (the collision above still keeps the columns).
+        const hidden = TYRELL.scene
+        for (const object of [...this.world3D.children]) {
+            const column = object.name.match(/^Columna_(\d+)_/), sector = object.name.match(/^Pavimento_\|_sector_\((\d),_(\d)\)$/)
+            if (column && hidden.hiddenColumns.includes(Number(column[1])) || sector && hidden.hiddenFloorSectors.includes(`${sector[1]}, ${sector[2]}`)) {
+                object.removeFromParent(); object.traverse(child => child.geometry?.dispose())
+            }
+        }
+        this.columnCores = addColumnCores(this.world3D, { skip: hidden.hiddenColumns })
         this.contactRepair = settleInstrumentCase(this.world3D)
         // Replaces the original building before the city and the building lights look for it.
         if (this.pyramidAsset) this.pyramid = new TyrellPyramid(this.world3D, this.pyramidAsset.gltf.scene, { windows: this.pyramidMode !== 'plain', main: TYRELL.scene.pyramidMain, cullHidden: TYRELL.scene.cullHiddenFaces })

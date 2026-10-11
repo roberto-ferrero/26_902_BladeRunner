@@ -2,8 +2,14 @@ import { BufferGeometry, Float32BufferAttribute, Mesh, MeshBasicMaterial, Double
 import profiles from './column-cores.json'
 
 // A single recessed backing mesh closes the through-gaps between the authored stone courses.
-export function addColumnCores(root) {
-    const positions = [...profiles.positions], indices = [...profiles.indices]
+export function addColumnCores(root, { skip = [] } = {}) {
+    // The cores are stored in column order; leave out those of removed columns.
+    const positions = [...profiles.positions], indices = []
+    let first = 0
+    for (const { column, triangles } of profiles.cores) {
+        if (!skip.includes(column)) indices.push(...profiles.indices.slice(first * 3, (first + triangles) * 3))
+        first += triangles
+    }
     let returnFaces = 0
     root.updateMatrixWorld(true)
     // These two rear corner profiles have inset returns that catch the sun edge-on.
@@ -41,7 +47,7 @@ export function addColumnCores(root) {
     material.name = 'Tyrell | interior oscuro de juntas'
     const mesh = new Mesh(geometry, material)
     mesh.name = 'Tyrell | núcleos interiores de columnas'
-    mesh.userData.columnRepair = { cores: 18, addedMeshes: 1, addedTriangles: profiles.indices.length / 3,
+    mesh.userData.columnRepair = { cores: 18 - skip.length, addedMeshes: 1, addedTriangles: indices.length / 3,
         darkReturnTriangles: returnFaces, recessedPlanarScale: .97 }
     mesh.castShadow = true
     root.add(mesh)

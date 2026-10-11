@@ -11,7 +11,11 @@ export const TYRELL = {
     // Scene contents. glassware: decanter and tumblers on the table (removed).
     // pyramidMain: main body of the v3 pyramid; false hides it temporarily and keeps the leaning buildings.
     // cullHiddenFaces: drop the pyramid faces (and their leaning buildings) that no camera sees.
-    scene: { glassware: false, pyramidMain: true, cullHiddenFaces: true },
+    scene: { glassware: false, pyramidMain: true, cullHiddenFaces: true,
+        // Room parts outside every camera state, its transitions and the mouse pan (2.4:1 frame, ±2 m / ±0.5 m):
+        // the rear columns at both sides and the floor sectors behind the initial camera.
+        hiddenColumns: [5, 6, 14, 15],
+        hiddenFloorSectors: ['1, 0', '2, 0', '3, 0', '4, 0', '4, 1', '0, 2'] },
     exposure: 1.07,
     materialLook: 'tyrell-v1', // Reviewed material baseline; lighting/reflections still being calibrated.
     lightingProfile: 'tyrell-light-v2', // Accepted recovery baseline; 4.3 requires visual revision.
