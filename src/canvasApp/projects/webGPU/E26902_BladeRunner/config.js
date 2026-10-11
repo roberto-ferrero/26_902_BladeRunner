@@ -10,7 +10,7 @@ export const TYRELL = {
     initialCamera: 'CAM 01',
     // Scene contents. glassware: decanter and tumblers on the table (removed).
     // pyramidMain: main body of the v3 pyramid; false hides it temporarily and keeps the leaning buildings.
-    scene: { glassware: false, pyramidMain: false },
+    scene: { glassware: false, pyramidMain: true },
     exposure: 1.07,
     materialLook: 'tyrell-v1', // Reviewed material baseline; lighting/reflections still being calibrated.
     lightingProfile: 'tyrell-light-v2', // Accepted recovery baseline; 4.3 requires visual revision.
