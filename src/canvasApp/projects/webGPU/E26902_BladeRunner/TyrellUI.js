@@ -457,7 +457,7 @@ export default class TyrellUI {
     }
     beginStartup() {
         this.loader.reset()
-        this.loading('renderer', 'Iniciando WebGPU…')
+        this.loading('renderer', 'Starting WebGPU')
         this.guiContainer.inert = true
         this.openGUI.inert = true
         this.openGUI.hidden = true

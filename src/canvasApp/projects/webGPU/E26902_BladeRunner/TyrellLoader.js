@@ -59,7 +59,7 @@ export default class TyrellLoader {
     finish() {
         if (this.finished) return
         this.value = 1
-        this.render('Listo')
+        this.render('Ready')
         this.finished = true
         this.root.classList.add('is-leaving')
     }

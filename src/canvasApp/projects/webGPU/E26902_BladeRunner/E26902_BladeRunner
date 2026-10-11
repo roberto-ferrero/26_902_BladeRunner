@@ -151,7 +151,7 @@ export default class E26902_BladeRunner {
     onRendererProgress(app) { this.mount(app) }
     async measureGPUCapacity(renderer) {
         if (this.gpuCapacitySettings?.enabled === false) return
-        this.ui.loading('gpu', 'Midiendo la capacidad de la GPU…')
+        this.ui.loading('gpu', 'Measuring GPU capacity')
         this.gpuCapacity = await measureGPUCapacity(renderer, () => this.disposed, this.gpuCapacitySettings)
         this.capacityChecks.initial(this.gpuCapacity)
         if (!this.disposed) { this.ui.setGPUCapacity(this.gpuCapacity); this.selectQuality(this.qualitySelection) }
@@ -222,7 +222,7 @@ export default class E26902_BladeRunner {
         this.ui.progress.hidden = false
         this.revealed = false
         this.ui.beginStartup()
-        this.ui.loading('settings', 'Leyendo la configuración…')
+        this.ui.loading('settings', 'Reading settings')
         try {
             const settingsURL = new URL('config/E26902_BladeRunner/gui.initial.json', new URL(this.app.pathPrefix, document.baseURI))
             const response = await fetch(settingsURL, { signal: this.abort.signal, cache: 'no-store' })
@@ -232,31 +232,31 @@ export default class E26902_BladeRunner {
             this.cameraStates = applyCameraStateKeys(this.cameraStates, this.initialGUISettings.camera.stateKeys).map(state => ({ ...state,
                 mousePan: cameraStatePan(this.initialGUISettings.camera.mousePan, state.cameraStateId) }))
             this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
-                (received, total, parsing) => this.ui.loading('scene', parsing ? 'Preparando geometría, materiales y cámaras' : `Cargando la oficina · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, parsing ? 1 : total ? received / total * .92 : 0))
+                (received, total, parsing) => this.ui.loading('scene', parsing ? 'Preparing geometry, materials and cameras' : `Loading the office · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, parsing ? 1 : total ? received / total * .92 : 0))
             if (this.disposed) { disposeScene(this.asset.gltf.scene); return }
             // Diagnostics: ?pyramid=old keeps the original building; ?pyramid=plain loads v3 without window shaders.
             this.pyramidMode = new URLSearchParams(location.search).get('pyramid')
             if (this.pyramidMode !== 'old') {
                 this.pyramidAsset = await loadTyrell(new URL(PYRAMID.asset, new URL(this.app.pathPrefix, document.baseURI)).href,
-                    this.abort.signal, (received, total, parsing) => this.ui.loading('pyramid', parsing ? 'Preparando la pirámide Tyrell' : 'Cargando la pirámide Tyrell', parsing ? 1 : total ? received / total * .9 : 0))
+                    this.abort.signal, (received, total, parsing) => this.ui.loading('pyramid', parsing ? 'Preparing the Tyrell pyramid' : 'Loading the Tyrell pyramid', parsing ? 1 : total ? received / total * .9 : 0))
                 if (this.disposed) { disposeScene(this.pyramidAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             }
             if (TYRELL.scene.glassware) {
                 this.glasswareAsset = await loadTyrell(new URL(GLASSWARE_ASSET, new URL(this.app.pathPrefix, document.baseURI)).href,
-                    this.abort.signal, (received, total, parsing) => this.ui.loading('glassware', 'Cargando la licorera y los vasos', parsing ? 1 : total ? received / total * .9 : 0))
+                    this.abort.signal, (received, total, parsing) => this.ui.loading('glassware', 'Loading the decanter and glasses', parsing ? 1 : total ? received / total * .9 : 0))
                 if (this.disposed) { disposeScene(this.glasswareAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             }
             if (new URLSearchParams(location.search).get('vk') !== '0') {
                 this.vkAsset = await loadTyrell(new URL('glbs/E26902_BladeRunner/VK_Device.glb', new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
-                    (received, total, parsing) => this.ui.loading('vk', parsing ? 'Preparando el Voight-Kampff' : `Cargando el Voight-Kampff · ${(received / 1e6).toFixed(1)} MB`, parsing ? 1 : total ? received / total * .9 : 0))
+                    (received, total, parsing) => this.ui.loading('vk', parsing ? 'Preparing the Voight-Kampff' : `Loading the Voight-Kampff · ${(received / 1e6).toFixed(1)} MB`, parsing ? 1 : total ? received / total * .9 : 0))
                 if (this.disposed) { disposeScene(this.vkAsset.gltf.scene); disposeScene(this.glasswareAsset?.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             }
-            this.ui.loading('sky', 'Cargando el cielo')
+            this.ui.loading('sky', 'Loading the sky')
             this.skyTexture = await new THREE.TextureLoader().loadAsync(new URL(TYRELL.sky.texture, new URL(this.app.pathPrefix, document.baseURI)).href)
             this.skyTexture.colorSpace = THREE.SRGBColorSpace
             this.skyTexture.wrapS = THREE.ClampToEdgeWrapping
             if (this.disposed) { this.skyTexture.dispose(); disposeScene(this.asset.gltf.scene); disposeScene(this.glasswareAsset?.gltf.scene); disposeScene(this.vkAsset?.gltf.scene); return }
-            this.ui.loading('build', 'Construyendo la ciudad, las luces y los materiales')
+            this.ui.loading('build', 'Building the city, lights and materials')
             this.app.emitter.emit('onProjectLoaded', {})
         } catch (error) {
             // A parse/build failure must leave retry without a duplicate scene.
@@ -402,8 +402,24 @@ export default class E26902_BladeRunner {
             this.syncCameraPan()
         }
         this.startup = new TyrellStartup({ fadeMs: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : LOADER_LEAVE_MS })
-        this.ui.loading('warmup', 'Compilando shaders y estabilizando la escena', 0)
+        // Every authored view is drawn once behind the loader (reflections included), so no
+        // pipeline compiles when the intro camera reveals what initial0 does not frame.
+        this.precompile = { views: ['initial0', 'initial', 'p1', 'p2', this.intro?.initialState || this.initialGUISettings.camera.initialState]
+            .filter(id => this.cameraStates.some(state => state.cameraStateId === id)), index: 0, frames: 0 }
+        this.ui.loading('warmup', 'Compiling shaders', 0)
         this.resetMetrics()
+    }
+    precompileFrame() {
+        const run = this.precompile, frames = 3
+        if (run.frames === 0) {
+            this.selectCameraState(run.views[run.index], { duration: 0 })
+            this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate()
+        }
+        this.ui.loading('warmup', `Compiling shaders · view ${run.index + 1} / ${run.views.length}`, .5 * (run.index + run.frames / frames) / run.views.length)
+        if (++run.frames < frames) return
+        run.frames = 0
+        // The last view is the starting one; stability is measured only from here on.
+        if (++run.index === run.views.length) { this.precompile = null; this.startup.pause() }
     }
     selectCameraState(cameraStateId, options = {}) {
         const index = this.cameraStates.findIndex(state => state.cameraStateId === cameraStateId)
@@ -702,11 +718,14 @@ export default class E26902_BladeRunner {
         if (this.startup && !this.revealed && !this.rendererError) {
             if (document.hidden) this.startup.pause()
             else {
-                this.startup.frame(now)
-                if (this.startup.phase === 'warming') { this.vk?.prewarm(true); this.ui.loading('warmup', 'Compilando shaders y estabilizando la escena', this.startup.progress()) }
+                if (this.precompile) this.precompileFrame()
+                else this.startup.frame(now)
+                if (this.precompile) this.vk?.prewarm(true)
+                else if (this.startup.phase === 'warming') { this.vk?.prewarm(true); this.ui.loading('warmup', 'Stabilizing the scene', .5 + .5 * this.startup.progress()) }
                 else { this.vk?.prewarm(false); this.ui.statusBox.hidden = true; this.ui.finishLoading() }
-                // The camera starts moving when the black begins to clear, not under it.
-                if (this.startup.phase === 'ready' || this.startup.fadeElapsedMs >= LOADER_REVEAL_MS) this.intro?.start()
+                // The camera starts moving during the 0.5 s of full black, so the first moving
+                // frames (reflections re-rendering every frame) are already steady when it clears.
+                if (this.startup.phase === 'ready' || this.startup.fadeElapsedMs >= LOADER_REVEAL_MS - 500) this.intro?.start()
                 if (this.startup.phase === 'ready') {
                     this.revealed = true
                     this.ui.ready(this.cameraStates, this.activeCameraIndex)
