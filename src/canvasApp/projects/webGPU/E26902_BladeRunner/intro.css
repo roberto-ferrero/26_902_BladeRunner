@@ -15,8 +15,7 @@ body.tyrell-cinema .tyrell-ui header { display: none; }
 .tyrell-cinema-contact a:hover, .tyrell-cinema-contact a:focus-visible { color: #fff; }
 .tyrell-cinema-title.is-visible, .tyrell-cinema-contact.is-visible { opacity: 1; }
 .tyrell-cinema-contact.is-visible a { pointer-events: auto; }
-/* Portfolio mode: "Abrir GUI" (temporarily back) on the right of the top band; no FPS line. */
-body.tyrell-cinema .tyrell-hud { top: 0; bottom: auto; left: auto; right: max(6.3vw, 24px); height: var(--tyrell-cinema-band, 10vh); justify-content: center; align-items: flex-end; }
-body.tyrell-cinema .tyrell-hud .tyrell-metrics { display: none; }
+/* Portfolio mode: no viewer HUD ("Abrir GUI", FPS line); ?intro=0 keeps it. */
+body.tyrell-cinema .tyrell-hud { display: none; }
 
 @media (prefers-reduced-motion: reduce) { .tyrell-cinema-title, .tyrell-cinema-contact { transition: none; } }
