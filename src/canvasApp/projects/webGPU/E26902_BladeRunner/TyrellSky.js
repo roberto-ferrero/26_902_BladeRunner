@@ -1,6 +1,6 @@
 import { BackSide, Color, CylinderGeometry, Mesh, Vector3 } from 'three'
 import { MeshBasicNodeMaterial } from 'three/webgpu'
-import { Fn, texture, uniform, positionWorld, cameraWorldMatrix, vec4, renderGroup } from 'three/tsl'
+import { Fn, texture, uniform, positionWorld, cameraWorldMatrix, vec2, vec4, renderGroup, atan, select, mix } from 'three/tsl'
 
 export function cylinderCoverage(source, { radius = 1200, centerY = 80, aspect = 2.4, marginDegrees = 3 } = {}, imageAspect = 2) {
     if (!source) throw new Error('Falta Camera_D para calcular el cielo cilíndrico.')
@@ -45,6 +45,19 @@ export default class TyrellSky {
         this.coverage = cylinderCoverage(options.camera, options, panorama.image.width / panorama.image.height)
         const radiance = uniform(new Color()).setGroup(renderGroup).onRenderUpdate(() => originalSky.material.emissive)
         const sky = texture(panorama)
+        this.cityFusion = uniform(0)
+        this.setCityFusion(options.city?.fusionDegrees ?? 4.7)
+        const cityColor = ray => {
+            // Distant city photo by viewing angle: its own alpha ramp (rows fadeStart..horizon) spans from the
+            // horizon up to the fusion height, the lit city below keeps the photo's pixel aspect.
+            const { rows, depthDegrees } = options.city, image = options.cityTexture.image
+            const radiansPerRow = depthDegrees * Math.PI / 180 / (rows.height - rows.horizon)
+            const elevation = ray.y.clamp(-1, 1).asin()
+            const above = elevation.div(this.cityFusion.max(1e-4)).mul(rows.horizon - rows.fadeStart)
+            const row = select(elevation.greaterThanEqual(0), above.negate(), elevation.negate().div(radiansPerRow)).add(rows.horizon)
+            const u = atan(ray.x, ray.z.negate()).div(radiansPerRow * image.width).add(.5)
+            return texture(options.cityTexture, vec2(u, row.div(rows.height).oneMinus().clamp(0, 1)))
+        }
         this.node = Fn(() => {
             const ray = positionWorld.sub(cameraWorldMatrix.element(3).xyz).normalize()
             // Angular distance in world space keeps the gradient fixed when the viewer turns.
@@ -52,7 +65,9 @@ export default class TyrellSky {
             const darkening = distance.smoothstep(this.radialStart, this.radialEnd).mul(this.radialStrength)
             const extraDarkening = distance.smoothstep(this.radialStart, this.radialBoostEnd).mul(this.radialBoost)
             const attenuation = darkening.oneMinus().mul(extraDarkening.oneMinus()).pow(this.radialIntensity)
-            return vec4(sky.rgb.mul(radiance).mul(attenuation), 1)
+            let rgb = sky.rgb
+            if (options.cityTexture) { const city = cityColor(ray); rgb = mix(rgb, city.rgb, city.a) }
+            return vec4(rgb.mul(radiance).mul(attenuation), 1)
         })()
         const { radius, height, halfArc, arc, centerY } = this.coverage
         const geometry = new CylinderGeometry(radius, radius, height, options.segments || 192, 1, true, Math.PI - halfArc, arc)
@@ -112,6 +127,12 @@ export default class TyrellSky {
         this.mesh.scale.y = this.heightScale
         this.mesh.updateMatrixWorld(true)
     }
+    // Height above the horizon (degrees) where the city photo has faded completely into the sky.
+    setCityFusion(degrees) {
+        if (!Number.isFinite(degrees)) return
+        this.cityFusionDegrees = Math.max(.5, Math.min(20, degrees))
+        this.cityFusion.value = this.cityFusionDegrees * Math.PI / 180
+    }
     setRadialIntensity(value) {
         if (Number.isFinite(value)) this.radialIntensity.value = Math.max(0, Math.min(3, value))
     }
@@ -129,6 +150,6 @@ export default class TyrellSky {
         this.originalSky.visible = this.originalVisible && !this.studio
         try { return callback() } finally { this.scene.backgroundNode = current; this.originalSky.visible = visible; this.mesh.visible = cylinderVisible }
     }
-    diagnostics() { return { enabled: this.enabled, studio: this.studio, projection: 'cylinder', version: 5, ...this.coverage, heightScale: this.heightScale, effectiveHeight: this.coverage.height * this.heightScale, arcDegrees: this.coverage.arc * 180 / Math.PI, originalProjection: false, originalPlaneVisible: this.originalSky.visible, source: this.options.texture, size: [this.panorama.image.width, this.panorama.image.height], visualOnly: true, probeUsesOriginalBackground: true } }
+    diagnostics() { return { enabled: this.enabled, studio: this.studio, projection: 'cylinder', version: 5, ...this.coverage, heightScale: this.heightScale, cityFusionDegrees: this.cityFusionDegrees, city: this.options.city?.texture || null, effectiveHeight: this.coverage.height * this.heightScale, arcDegrees: this.coverage.arc * 180 / Math.PI, originalProjection: false, originalPlaneVisible: this.originalSky.visible, source: this.options.texture, size: [this.panorama.image.width, this.panorama.image.height], visualOnly: true, probeUsesOriginalBackground: true } }
     dispose() { this.scene.backgroundNode = this.previous; this.originalSky.visible = this.originalVisible; this.mesh.removeFromParent(); this.mesh.geometry.dispose(); this.mesh.material.dispose(); this.node.dispose(); this.panorama.dispose() }
 }

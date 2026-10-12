@@ -37,6 +37,7 @@ export const GUI_BINDINGS = [
     ["sky.enabled", "Cielo panorámico"],
     ["sky.heightPercent", "Altura del cielo"],
     ["sky.radialDarkeningPercent", "Oscurecimiento radial"],
+    ["sky.cityFusionDegrees", "Fusión ciudad-cielo"],
     ["postProcessing.bloom.enabled", "Bloom"],
     ["postProcessing.bloom.strength", "Intensidad del bloom"],
     ["postProcessing.bloom.radius", "Radio del bloom"],
@@ -91,6 +92,7 @@ export function prepareGUISettings(root, settings, cameraStates) {
     // The flares were removed with the industrial stacks: ignore their saved values.
     for (const path of Object.keys(values)) if (path.startsWith('city.flames.')) delete values[path]
     if (!('viewer.deviceMode' in values)) values['viewer.deviceMode'] = 'auto'
+    if (!('sky.cityFusionDegrees' in values)) values['sky.cityFusionDegrees'] = 4.7
     for (const { path, value } of PYRAMID_CONTROLS) if (!(path in values)) values[path] = value
     for (const [added, original] of [['extraLowQualityEnabled', 'lowQualityEnabled'], ['ultraHighQualityEnabled', 'highQualityEnabled']]) {
         const key = `city.buildings.orientationColor.${added}`

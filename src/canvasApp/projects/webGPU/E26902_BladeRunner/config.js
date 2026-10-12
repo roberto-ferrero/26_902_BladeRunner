@@ -5,7 +5,11 @@ export const TYRELL = {
     referenceAspect: 2.4,
     sky: {
         texture: 'textures/E26902_BladeRunner/sky-panorama-v2.png',
-        radius: 1200, centerY: 80, marginDegrees: 3, segments: 192, heightScale: 0.5, radialIntensity: 1
+        radius: 1200, centerY: 80, marginDegrees: 3, segments: 192, heightScale: 0.5, radialIntensity: 1,
+        // Distant city photo under the horizon, faded into the sky (TyrellSky). cityFusionDegrees: how high
+        // above the horizon the fade ends (GUI); cityDepthDegrees: angular depth of the lit city below it.
+        city: { texture: 'textures/E26902_BladeRunner/city-horizon.png', fusionDegrees: 4.7, depthDegrees: 8,
+            rows: { fadeStart: 338, horizon: 480, height: 724 } }
     },
     initialCamera: 'CAM 01',
     // Scene contents. glassware: decanter and tumblers on the table (removed).

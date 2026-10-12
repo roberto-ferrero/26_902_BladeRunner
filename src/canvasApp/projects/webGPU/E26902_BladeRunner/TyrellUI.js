@@ -136,6 +136,14 @@ export default class TyrellUI {
             actions.skyRadial(Number(this.skyRadial.value) / 100)
         }
         volumeControls.append(skyRadialLabel)
+        const cityFusionLabel = document.createElement('label')
+        cityFusionLabel.innerHTML = 'Fusión ciudad-cielo<input type="range" aria-label="Fusión ciudad-cielo" min="0.5" max="20" step="0.1" value="4.7"><output>4.7°</output>'
+        this.skyCityFusion = cityFusionLabel.querySelector('input')
+        this.skyCityFusion.oninput = () => {
+            this.skyCityFusion.nextElementSibling.value = `${Number(this.skyCityFusion.value).toFixed(1)}°`
+            actions.skyCityFusion(Number(this.skyCityFusion.value))
+        }
+        volumeControls.append(cityFusionLabel)
         this.atmospherePanel.querySelector('p').textContent = 'Haces solares y polvo volumétrico dentro de la sala. Movimiento 0 congela el polvo para comparar; desactivar Haces vuelve a la profundidad de 6.1.'
         this.panPanel = document.createElement('details')
         this.panPanel.className = 'tyrell-pan'
@@ -583,6 +591,10 @@ export default class TyrellUI {
     setSkyHeight(value) {
         this.skyHeight.value = Math.round(value * 100)
         this.skyHeight.nextElementSibling.value = `${this.skyHeight.value} %`
+    }
+    setSkyCityFusion(degrees) {
+        this.skyCityFusion.value = degrees
+        this.skyCityFusion.nextElementSibling.value = `${Number(degrees).toFixed(1)}°`
     }
     setSkyRadial(value) {
         this.skyRadial.value = Math.round(value * 100)

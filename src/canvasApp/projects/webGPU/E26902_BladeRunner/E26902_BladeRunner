@@ -130,6 +130,7 @@ export default class E26902_BladeRunner {
             flare: values => { this.post?.configureFlare(values); this.resetMetrics() },
             sky: enabled => { this.sky?.setEnabled(enabled); this.resetMetrics() },
             skyHeight: value => { this.sky?.setHeightScale(value); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
+            skyCityFusion: degrees => { this.sky?.setCityFusion(degrees); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             skyRadial: value => { this.sky?.setRadialIntensity(value); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             city: enabled => { this.city?.setEnabled(enabled); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
             cityColor: values => { this.city?.setColorHSL(values); this.floorReflection?.updates.invalidate(); this.specularEnvironment?.invalidate(); this.resetMetrics() },
@@ -153,6 +154,7 @@ export default class E26902_BladeRunner {
         this.ui.setEffectSettings(TYRELL.effects)
         this.ui.setSkyHeight(TYRELL.sky.heightScale)
         this.ui.setSkyRadial(TYRELL.sky.radialIntensity)
+        this.ui.setSkyCityFusion(TYRELL.sky.city.fusionDegrees)
         this.ui.lightingSelect.value = this.lightingProfile
         this.ui.setLookSettings({ profile: this.lookProfile, ev: this.exposureEV, studio: this.studio })
         app.size.update()
@@ -265,7 +267,13 @@ export default class E26902_BladeRunner {
             this.skyTexture = await new THREE.TextureLoader().loadAsync(new URL(TYRELL.sky.texture, new URL(this.app.pathPrefix, document.baseURI)).href)
             this.skyTexture.colorSpace = THREE.SRGBColorSpace
             this.skyTexture.wrapS = THREE.ClampToEdgeWrapping
-            if (this.disposed) { this.skyTexture.dispose(); disposeScene(this.asset.gltf.scene); disposeScene(this.glasswareAsset?.gltf.scene); disposeScene(this.vkAsset?.gltf.scene); return }
+            this.ui.loading('sky', 'Loading the city', .5)
+            this.cityTexture = await new THREE.TextureLoader().loadAsync(new URL(TYRELL.sky.city.texture, new URL(this.app.pathPrefix, document.baseURI)).href)
+            this.cityTexture.colorSpace = THREE.SRGBColorSpace
+            // Mirrored tiles around the horizon hide the seam of a non-tiling photo.
+            this.cityTexture.wrapS = THREE.MirroredRepeatWrapping
+            this.cityTexture.wrapT = THREE.ClampToEdgeWrapping
+            if (this.disposed) { this.skyTexture.dispose(); this.cityTexture?.dispose(); disposeScene(this.asset.gltf.scene); disposeScene(this.glasswareAsset?.gltf.scene); disposeScene(this.vkAsset?.gltf.scene); return }
             this.ui.loading('build', 'Building the city, lights and materials')
             this.app.emitter.emit('onProjectLoaded', {})
         } catch (error) {
@@ -372,7 +380,7 @@ export default class E26902_BladeRunner {
         this.post.volume = this.volume
         this.atmosphere = new TyrellAtmosphere(this.scene, this.world3D, this.volume)
         this.sky = new TyrellSky(this.scene, this.lighting.sky, this.skyTexture, {
-            ...TYRELL.sky, aspect: TYRELL.referenceAspect,
+            ...TYRELL.sky, aspect: TYRELL.referenceAspect, cityTexture: this.cityTexture,
             camera: this.cameras.find(camera => /^(?:Camera|CAM)[ _]D(?:\W|$)/i.test(camera.name))
         })
         this.setLighting(this.lightingProfile)
