@@ -34,7 +34,8 @@ class Platform{
             project: new E26902_BladeRunner(),
             $container: $webglContainer,
             $mouseEvents: $mouseEvents,
-            pathPrefix:"./",
+            // './portfolio/' in the production build (bundler/webpack.prod.js), './' in development.
+            pathPrefix: typeof __ASSET_PREFIX__ !== 'undefined' ? __ASSET_PREFIX__ : "./",
             initData: {},
             debug_mode: false,
             gui_mode: false,

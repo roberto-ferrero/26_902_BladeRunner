@@ -18,12 +18,13 @@ const getBuildVersion = () =>
     ].join('')
 }
 
-module.exports = {
+// assetDir: folder (relative to the output) for everything except index.html, e.g. 'portfolio/'.
+module.exports = (assetDir = '') => ({
     entry: path.resolve(__dirname, '../src/script.js'),
     output:
     {
         hashFunction: 'xxhash64',
-        filename: 'bundle.[contenthash].js',
+        filename: `${assetDir}bundle.[contenthash].js`,
         path: path.resolve(__dirname, '../dist')
     },
     devtool: 'source-map',
@@ -31,15 +32,17 @@ module.exports = {
     [
         new CopyWebpackPlugin({
             patterns: [
-                { from: path.resolve(__dirname, '../static') }
+                { from: path.resolve(__dirname, '../static'), to: assetDir || '.' }
             ]
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../src/index.html'),
             minify: true
         }),
-        new MiniCSSExtractPlugin(),
+        new MiniCSSExtractPlugin({ filename: `${assetDir}[name].css` }),
         new webpack.DefinePlugin({
+            // Base URL of the copied static files, as seen from index.html.
+            __ASSET_PREFIX__: JSON.stringify(`./${assetDir}`),
             __APP_BUILD_VER__: webpack.DefinePlugin.runtimeValue(
                 () => JSON.stringify(getBuildVersion()),
                 true
@@ -85,7 +88,7 @@ module.exports = {
                 type: 'asset/resource',
                 generator:
                 {
-                    filename: 'assets/images/[hash][ext]'
+                    filename: `${assetDir}assets/images/[hash][ext]`
                 }
             },
 
@@ -95,7 +98,7 @@ module.exports = {
                 type: 'asset/resource',
                 generator:
                 {
-                    filename: 'assets/fonts/[hash][ext]'
+                    filename: `${assetDir}assets/fonts/[hash][ext]`
                 }
             },
 
@@ -105,9 +108,9 @@ module.exports = {
                 type: 'asset/source',
                 generator:
                 {
-                    filename: 'assets/images/[hash][ext]'
+                    filename: `${assetDir}assets/images/[hash][ext]`
                 }
             }
         ]
     }
-}
+})

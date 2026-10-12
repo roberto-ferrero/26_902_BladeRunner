@@ -9,7 +9,7 @@ const infoColor = (_message) =>
 }
 
 module.exports = (env = {}) => merge(
-    commonConfiguration,
+    commonConfiguration(),
     {
         stats: 'errors-warnings',
         mode: 'development',
