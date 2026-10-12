@@ -1,4 +1,4 @@
-import { PerspectiveCamera, Vector3 } from 'three'
+import { CatmullRomCurve3, PerspectiveCamera, Vector3 } from 'three'
 import { TYRELL } from './config'
 import { CAMERA_EASINGS, cameraTransition } from './TyrellCameraStates'
 
@@ -36,17 +36,40 @@ export default class TyrellCameraRig {
         this.cameraStateId = state.cameraStateId
         this.baseCamera.name = state.cameraStateId
         this.baseCamera.userData.cameraStateId = state.cameraStateId
-        this.transition = { start, end, duration, elapsed: 0, easing, type: 'state' }
+        this.transition = { start, end, duration, elapsed: 0, easing, type: 'state',
+            path: duration > 0 && options.via?.length ? this.createPath(start, options.via, end) : null }
         this.applyStateTransition(duration > 0 ? 0 : 1)
         if (duration === 0) this.transition = null
     }
+    // Through intermediate states without stopping: Catmull-Rom curves for position, target and lens,
+    // one easing over the whole route, advanced by arc length so the camera's speed never jumps.
+    createPath(start, via, end) {
+        const knots = [start, ...via.map(state => ({ position: new Vector3(...state.position), target: new Vector3(...state.target),
+            fov: state.fov, viewOffset: { x: 0, y: 0, ...state.viewOffset } })), end]
+        const curve = values => new CatmullRomCurve3(values, false, 'centripetal')
+        const position = curve(knots.map(knot => knot.position.clone()))
+        position.arcLengthDivisions = 2000
+        return { position, target: curve(knots.map(knot => knot.target.clone())),
+            lens: curve(knots.map(knot => new Vector3(knot.fov, knot.viewOffset.x, knot.viewOffset.y))), lensValue: new Vector3() }
+    }
     applyStateTransition(t) {
-        const { start, end, easing } = this.transition
+        const { start, end, easing, path } = this.transition
         const eased = CAMERA_EASINGS[easing](t)
-        this.baseCamera.position.lerpVectors(start.position, end.position, eased)
-        this.target.lerpVectors(start.target, end.target, eased)
-        for (const key of ['fov', 'near', 'far']) this.baseCamera[key] = start[key] + (end[key] - start[key]) * eased
-        for (const key of ['x', 'y']) this.viewOffset[key] = start.viewOffset[key] + (end.viewOffset[key] - start.viewOffset[key]) * eased
+        if (path) {
+            // The same curve parameter on every curve keeps target and lens in step at each waypoint.
+            const u = path.position.getUtoTmapping(Math.min(1, Math.max(0, eased)))
+            path.position.getPoint(u, this.baseCamera.position)
+            path.target.getPoint(u, this.target)
+            path.lens.getPoint(u, path.lensValue)
+            this.baseCamera.fov = path.lensValue.x
+            this.viewOffset.x = path.lensValue.y; this.viewOffset.y = path.lensValue.z
+            for (const key of ['near', 'far']) this.baseCamera[key] = start[key] + (end[key] - start[key]) * eased
+        } else {
+            this.baseCamera.position.lerpVectors(start.position, end.position, eased)
+            this.target.lerpVectors(start.target, end.target, eased)
+            for (const key of ['fov', 'near', 'far']) this.baseCamera[key] = start[key] + (end[key] - start[key]) * eased
+            for (const key of ['x', 'y']) this.viewOffset[key] = start.viewOffset[key] + (end.viewOffset[key] - start.viewOffset[key]) * eased
+        }
         for (const key of ['horizontal', 'vertical', 'smoothness']) {
             // Disabled pan has an effective range of zero, so enable/disable transitions also fade smoothly.
             const from = key !== 'smoothness' && !start.mousePan.enabled ? 0 : start.mousePan[key]

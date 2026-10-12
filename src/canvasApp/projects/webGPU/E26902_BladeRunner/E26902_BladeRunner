@@ -47,6 +47,14 @@ import { LOADER_LEAVE_MS, LOADER_REVEAL_MS } from './TyrellLoader'
 import TyrellIntro, { introEnabled } from './TyrellIntro'
 import TyrellGPUFit, { GPU_FIT } from './TyrellGPUFit'
 import TyrellVKSwitch from './TyrellVKSwitch'
+
+// Travels that pass through intermediate camera states without stopping (TyrellCameraRig.createPath).
+// duration is the default for the whole route; an explicit duration (the intro's 10 s) still wins.
+export const CAMERA_ROUTES = {
+    'initial->p1': { via: ['p1b'] },
+    'p1->p2': { via: ['p1b'], duration: 6 },
+    'p2->p1': { via: ['p1b'], duration: 6 }
+}
 import { measureGPUCapacity } from './TyrellGPUCapacity'
 import TyrellVKDevice from './TyrellVKDevice'
 import TyrellPortfolio from './TyrellPortfolio'
@@ -411,7 +419,20 @@ export default class E26902_BladeRunner {
         this.precompile = { index: 0, frames: 0, steps: [{ view: 'initial0' }, { view: 'initial', travel: true }, { view: 'p1', travel: true }, { view: 'p2', travel: true }, { view: 'p3' }, { view: start }]
             .filter(step => this.cameraStates.some(state => state.cameraStateId === step.view)) }
         this.ui.loading('warmup', 'Compiling shaders', 0)
+        this.revealNearTraffic(true)
         this.resetMetrics()
+    }
+    // The near spinner appears only now and then: draw it (unculled, faded out) while precompiling,
+    // so its first pass by the window does not build materials mid-travel.
+    revealNearTraffic(enabled) {
+        for (const flight of this.nearTraffic?.flights || []) {
+            flight.group.visible = enabled || flight.active
+            flight.group.traverse(object => {
+                if (!object.isMesh && !object.isSprite) return
+                if (enabled) { object.userData.precompileCulled ??= object.frustumCulled; object.frustumCulled = false; if (object === flight.strobe) object.visible = true }
+                else if (object.userData.precompileCulled !== undefined) { object.frustumCulled = object.userData.precompileCulled; delete object.userData.precompileCulled }
+            })
+        }
     }
     precompileFrame() {
         const run = this.precompile, step = run.steps[run.index], travelFrames = 30
@@ -429,6 +450,7 @@ export default class E26902_BladeRunner {
         // The last view is the starting one; stability is measured only from here on.
         if (++run.index === run.steps.length) {
             this.precompile = null
+            this.revealNearTraffic(false)
             this.gpuFit = new TyrellGPUFit(this.renderer)
             this.gpuFit.begin()
             // Fit to a moving camera's frame: fresh floor reflection every frame, no probe capture.
@@ -485,11 +507,13 @@ export default class E26902_BladeRunner {
     selectCamera(index, options = {}) {
         const state = this.cameraStates?.[index]
         if (!state) return false
-        const transition = cameraTransition({ duration: this.transitionDuration, easing: this.transitionEasing }, {
-            ...CAMERA_STATES.transitions[`${this.activeCameraStateId}->${state.cameraStateId}`], ...options
+        const key = `${this.activeCameraStateId}->${state.cameraStateId}`, route = CAMERA_ROUTES[key]
+        const transition = cameraTransition({ duration: route?.duration ?? this.transitionDuration, easing: this.transitionEasing }, {
+            ...CAMERA_STATES.transitions[key], ...options
         })
         if (!this.built || window.matchMedia('(prefers-reduced-motion: reduce)').matches) transition.duration = 0
         const wasExploring = this.developmentControls || this.navigation?.enabled
+        if (route && !wasExploring) transition.via = route.via.map(id => this.cameraStates.find(item => item.cameraStateId === id)).filter(Boolean)
         if (wasExploring) this.stageCamera.adoptCurrentView(this.pan.settings.targetDistance)
         this.stopDevelopmentCamera()
         this.navigation?.setEnabled(false)
