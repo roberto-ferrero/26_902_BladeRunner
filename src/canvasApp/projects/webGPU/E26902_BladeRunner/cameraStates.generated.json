@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "20260914_BladeRunner_AUXILIAR.blend",
-  "sourceSha256": "503efdff1649d023163293442027d0aaf028aa10923001c228949cda313672eb",
+  "sourceSha256": "6d62d8266ba23a11f36c11ecb8fe3d09edf2b00693d67949a46e74071b42eefd",
   "coordinates": "metres, Y up; Blender (x, y, z) -> (x, z, -y)",
   "fovUnits": "vertical degrees",
   "warnings": [],
@@ -85,14 +85,14 @@
       "position": [
         -0.03014087677001953,
         1.285914659500122,
-        -3.3539628982543945
+        -1.9678622484207153
       ],
       "target": [
         -0.005195602774620056,
         1.0849730968475342,
         -11.688535690307617
       ],
-      "fov": 33.000002206351546,
+      "fov": 21.999999490119126,
       "near": 0.029999999329447746,
       "far": 2500.0
     },
