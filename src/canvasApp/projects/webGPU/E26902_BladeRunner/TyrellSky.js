@@ -46,7 +46,7 @@ export default class TyrellSky {
         const radiance = uniform(new Color()).setGroup(renderGroup).onRenderUpdate(() => originalSky.material.emissive)
         const sky = texture(panorama)
         this.cityFusion = uniform(0)
-        this.setCityFusion(options.city?.fusionDegrees ?? 4.7)
+        this.setCityFusion(options.city?.fusionDegrees ?? 1.6)
         const cityColor = ray => {
             // Distant city photo by viewing angle: its own alpha ramp (rows fadeStart..horizon) spans from the
             // horizon up to the fusion height, the lit city below keeps the photo's pixel aspect.

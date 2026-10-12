@@ -8,7 +8,7 @@ export const TYRELL = {
         radius: 1200, centerY: 80, marginDegrees: 3, segments: 192, heightScale: 0.5, radialIntensity: 1,
         // Distant city photo under the horizon, faded into the sky (TyrellSky). cityFusionDegrees: how high
         // above the horizon the fade ends (GUI); cityDepthDegrees: angular depth of the lit city below it.
-        city: { texture: 'textures/E26902_BladeRunner/city-horizon.png', fusionDegrees: 4.7, depthDegrees: 8,
+        city: { texture: 'textures/E26902_BladeRunner/city-horizon.png', fusionDegrees: 1.6, depthDegrees: 8,
             rows: { fadeStart: 338, horizon: 480, height: 724 } }
     },
     initialCamera: 'CAM 01',

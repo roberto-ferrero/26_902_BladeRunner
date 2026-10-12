@@ -137,7 +137,7 @@ export default class TyrellUI {
         }
         volumeControls.append(skyRadialLabel)
         const cityFusionLabel = document.createElement('label')
-        cityFusionLabel.innerHTML = 'Fusión ciudad-cielo<input type="range" aria-label="Fusión ciudad-cielo" min="0.5" max="20" step="0.1" value="4.7"><output>4.7°</output>'
+        cityFusionLabel.innerHTML = 'Fusión ciudad-cielo<input type="range" aria-label="Fusión ciudad-cielo" min="0.5" max="20" step="0.1" value="1.6"><output>1.6°</output>'
         this.skyCityFusion = cityFusionLabel.querySelector('input')
         this.skyCityFusion.oninput = () => {
             this.skyCityFusion.nextElementSibling.value = `${Number(this.skyCityFusion.value).toFixed(1)}°`

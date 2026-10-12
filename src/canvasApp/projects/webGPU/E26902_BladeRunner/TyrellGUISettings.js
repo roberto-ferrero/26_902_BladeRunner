@@ -92,7 +92,7 @@ export function prepareGUISettings(root, settings, cameraStates) {
     // The flares were removed with the industrial stacks: ignore their saved values.
     for (const path of Object.keys(values)) if (path.startsWith('city.flames.')) delete values[path]
     if (!('viewer.deviceMode' in values)) values['viewer.deviceMode'] = 'auto'
-    if (!('sky.cityFusionDegrees' in values)) values['sky.cityFusionDegrees'] = 4.7
+    if (!('sky.cityFusionDegrees' in values)) values['sky.cityFusionDegrees'] = 1.6
     for (const { path, value } of PYRAMID_CONTROLS) if (!(path in values)) values[path] = value
     for (const [added, original] of [['extraLowQualityEnabled', 'lowQualityEnabled'], ['ultraHighQualityEnabled', 'highQualityEnabled']]) {
         const key = `city.buildings.orientationColor.${added}`

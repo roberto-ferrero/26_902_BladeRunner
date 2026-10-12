@@ -87,7 +87,7 @@
     "enabled": true,
     "heightPercent": 50,
     "radialDarkeningPercent": 100,
-    "cityFusionDegrees": 4.7
+    "cityFusionDegrees": 1.6
   },
   "postProcessing": {
     "bloom": {
