@@ -108,8 +108,19 @@ export default class TyrellPortfolio {
         const step = steps[event.key]
         this.scroller.scrollTop = Number.isFinite(step) ? this.scroller.scrollTop + step : step < 0 ? 0 : this.scroller.scrollHeight
     }
+    // Cards slide out to the right (and the beams fade) before the visor switches off.
+    leave(done) {
+        if (!this.active || matchMedia('(prefers-reduced-motion: reduce)').matches) { done(); return }
+        this.leaving = { elapsed: 0, done }
+    }
+    finishLeave() {
+        const leaving = this.leaving
+        this.leaving = null
+        leaving?.done()
+    }
     setActive(active) {
         if (this.active === active) return
+        if (!active) this.finishLeave()
         this.active = active
         if (active) {
             this.root.hidden = false; this.root.inert = false; this.elapsed = 0
@@ -155,8 +166,14 @@ export default class TyrellPortfolio {
         this.elapsed += dt; this.time += dt * this.settings.dustSpeed
         const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
         // Hold offscreen briefly: beams become visible before the cards enter.
-        const progress = reduced ? 1 : easeOut((this.elapsed - .18) / this.settings.entryDuration)
-        this.entryComplete = progress === 1
+        let progress = reduced ? 1 : easeOut((this.elapsed - .18) / this.settings.entryDuration)
+        this.entryComplete = progress === 1 && !this.leaving
+        if (this.leaving) {
+            this.leaving.elapsed += dt
+            const t = Math.min(1, this.leaving.elapsed / this.settings.leaveDuration)
+            progress = Math.min(progress, 1 - t * t)
+            if (t === 1) queueMicrotask(() => this.finishLeave())
+        }
         const shift = (1 - progress) * (this.rect.width + 40)
         this.strip.style.transform = `translate3d(${shift}px,0,0)`
         if (this.dirty) this.measure()
@@ -172,7 +189,7 @@ export default class TyrellPortfolio {
         if (projected.visible) for (const index of indices) {
             const card = this.cards[index], rect = card.black.getBoundingClientRect()
             const opacity = cardBeamOpacity({ top: rect.top - this.rect.top, bottom: rect.bottom - this.rect.top },
-                this.rect.height, this.settings.fadeAbove, this.settings.fadeBelow) * Math.min(1, this.elapsed / .18)
+                this.rect.height, this.settings.fadeAbove, this.settings.fadeBelow) * Math.min(1, this.elapsed / .18) * (this.leaving ? progress : 1)
             if (opacity <= 0) continue
             const corners = rectCorners(rect, this.rect.left, this.rect.top)
             if (card.main) corners.push(...rectCorners(card.main.getBoundingClientRect(), this.rect.left, this.rect.top))

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "source": "20260914_BladeRunner_AUXILIAR.blend",
-  "sourceSha256": "cd03bc271f0d1da01dbd6e58705a19df48e291817b9a036611b78ecbb89e890b",
+  "sourceSha256": "cee6afb534475a4ab592882d14ba93663fe2de6bc9fe318271d6ce1eeadb2807",
   "object": "VK_Referencia",
   "coordinates": "metres, Y up; Blender (x, y, z) -> (x, z, -y)",
   "matrix": [

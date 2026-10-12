@@ -46,6 +46,7 @@ import TyrellStartup from './TyrellStartup'
 import { LOADER_LEAVE_MS, LOADER_REVEAL_MS } from './TyrellLoader'
 import TyrellIntro, { introEnabled } from './TyrellIntro'
 import TyrellGPUFit, { GPU_FIT } from './TyrellGPUFit'
+import TyrellVKSwitch from './TyrellVKSwitch'
 import { measureGPUCapacity } from './TyrellGPUCapacity'
 import TyrellVKDevice from './TyrellVKDevice'
 import TyrellPortfolio from './TyrellPortfolio'
@@ -352,6 +353,7 @@ export default class E26902_BladeRunner {
         if (this.vkAsset) {
             this.vk = new TyrellVKDevice(this.vkAsset.gltf.scene)
             this.world3D.add(this.vk.group)
+            this.vkSwitch = new TyrellVKSwitch(this)
             this.ui.setVKState(this.vk.motion.state)
         } else this.ui.setVKState('disabled')
         this.post.flare = new TyrellLensFlare(this.lighting.disc, () => !this.studio && this.sun.visible && this.sun.intensity > 0)
@@ -406,7 +408,7 @@ export default class E26902_BladeRunner {
         // Every authored view, and every pose along the intro travels, is drawn behind the loader
         // (reflections included), so nothing compiles once the camera starts moving.
         const start = this.intro?.initialState || this.initialGUISettings.camera.initialState
-        this.precompile = { index: 0, frames: 0, steps: [{ view: 'initial0' }, { view: 'initial', travel: true }, { view: 'p1', travel: true }, { view: 'p2' }, { view: start }]
+        this.precompile = { index: 0, frames: 0, steps: [{ view: 'initial0' }, { view: 'initial', travel: true }, { view: 'p1', travel: true }, { view: 'p2', travel: true }, { view: 'p3' }, { view: start }]
             .filter(step => this.cameraStates.some(state => state.cameraStateId === step.view)) }
         this.ui.loading('warmup', 'Compiling shaders', 0)
         this.resetMetrics()
@@ -817,6 +819,7 @@ export default class E26902_BladeRunner {
         if (this.vk && !document.hidden && !this.colorBenchmark) {
             const seconds = this.panTime === undefined ? 0 : (now - this.panTime) / 1000
             const settledP1 = this.revealed && this.activeCameraStateId === 'p1' && !this.stageCamera.transition && !this.navigation?.enabled && !this.developmentControls
+            this.vkSwitch?.update(seconds)
             // Do not count the last fade frame toward the one-second opening delay.
             this.vk.update(wasRevealed ? seconds : 0, settledP1)
             if (this.vk.reflectionNeedsRefresh) this.floorReflection?.updates.invalidate()
@@ -890,7 +893,7 @@ export default class E26902_BladeRunner {
             contactRepair: this.contactRepair || null,
             floorReflection: this.floorReflection?.diagnostics() || null,
             voightKampff: this.vk?.diagnostics() || null,
-            portfolio: this.portfolio?.diagnostics() || null, intro: this.intro?.diagnostics() || null,
+            portfolio: this.portfolio?.diagnostics() || null, intro: this.intro?.diagnostics() || null, vkSwitch: this.vkSwitch?.diagnostics() || null,
             gpuFit: this.gpuFit ? { ...this.gpuFit.diagnostics(), pixelBudget: this.pixelBudget || null, pixelRatio: this.renderer.getPixelRatio() } : null,
             specularEnvironment: this.specularEnvironment?.diagnostics() || null,
             atmosphere: this.atmosphere?.diagnostics() || null,
@@ -938,6 +941,7 @@ export default class E26902_BladeRunner {
         window.removeEventListener('keydown', this.cameraKeyDown)
         this.portfolio?.dispose()
         this.intro?.dispose()
+        this.vkSwitch?.dispose()
         window.removeEventListener('pointermove', this.pointerMove)
         document.documentElement.removeEventListener('pointerleave', this.pointerLeave)
         this.performanceProbe?.dispose()

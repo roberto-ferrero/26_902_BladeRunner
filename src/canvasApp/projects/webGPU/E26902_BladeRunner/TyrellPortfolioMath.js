@@ -1,6 +1,6 @@
 export const PORTFOLIO_DEFAULTS = Object.freeze({
     enabled: true, opacity: .95, density: .65, segmentLength: 7, dustSpeed: .65,
-    fadeAbove: 280, fadeBelow: 280, blend: 'normal', entryDuration: 1.5
+    fadeAbove: 280, fadeBelow: 280, blend: 'normal', entryDuration: 1.5, leaveDuration: 1
 })
 const clamp = value => Math.max(0, Math.min(1, value))
 export const easeOut = value => 1 - (1 - clamp(value)) ** 3
