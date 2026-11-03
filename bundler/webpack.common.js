@@ -24,7 +24,8 @@ module.exports = (assetDir = '') => ({
     output:
     {
         hashFunction: 'xxhash64',
-        filename: `${assetDir}bundle.[contenthash].js`,
+        // Fixed names keep index.html identical between versions; static/.htaccess makes browsers revalidate them.
+        filename: `${assetDir}bundle.js`,
         path: path.resolve(__dirname, '../dist')
     },
     devtool: 'source-map',

@@ -1,0 +1,6 @@
+# bundle.js and main.css keep their names between versions: always revalidate them.
+<IfModule mod_headers.c>
+    <FilesMatch "^(bundle\.js|main\.css)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>

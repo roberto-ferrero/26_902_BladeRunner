@@ -1,4 +1,5 @@
-// npm run deploy            builds, uploads what differs from the live site and verifies it.
+// npm run deploy            builds, uploads what differs in dist/portfolio/ and verifies it.
+// index.html is uploaded by hand: with fixed bundle names it does not change between versions.
 // npm run deploy -- --dry-run   only lists what would be uploaded; needs no access.
 // The FTP access lives outside the repo, in a netrc file only curl reads (~/.robertoferrero-ftp.netrc).
 import { spawnSync } from 'node:child_process'
@@ -9,7 +10,7 @@ import { dirname, extname, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const SITE = 'https://www.robertoferrero.es/'
-const FTP = 'ftp://ftp.robertoferrero.es/www.robertoferrero.es/'
+const FTP = 'ftp://ftp.robertoferrero.es/'
 const NETRC = join(homedir(), '.robertoferrero-ftp.netrc')
 const TEXT = new Set(['.html', '.css', '.json', '.txt', '.map'])
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '..')
@@ -30,6 +31,8 @@ function walk(directory, files = []) {
 }
 
 async function differs(path, rel) {
+    // The web server does not serve .htaccess: it cannot be compared, it is handled apart.
+    if (rel.endsWith('/.htaccess')) return false
     if (TEXT.has(extname(path))) {
         const response = await fetch(url(rel), { cache: 'no-store' })
         if (response.status === 404) return true
@@ -43,7 +46,7 @@ async function differs(path, rel) {
 }
 
 async function changedFiles() {
-    const files = walk(dist), changed = []
+    const files = walk(join(dist, 'portfolio')), changed = []
     let next = 0
     await Promise.all(Array.from({ length: 8 }, async () => {
         while (next < files.length) {
@@ -51,8 +54,7 @@ async function changedFiles() {
             if (await differs(path, rel)) changed.push({ path, rel, size: statSync(path).size })
         }
     }))
-    // index.html last: it must never point at a bundle that is not on the server yet.
-    return changed.sort((a, b) => (a.rel === 'index.html') - (b.rel === 'index.html') || a.rel.localeCompare(b.rel))
+    return changed.sort((a, b) => a.rel.localeCompare(b.rel))
 }
 
 function curl(args) {
@@ -61,27 +63,38 @@ function curl(args) {
     if (result.status !== 0) throw new Error(`curl (${result.status}): ${result.stderr.trim()}`)
 }
 
-const liveBundle = name => name?.match(/bundle\.[0-9a-f]+\.js/)?.[0]
-
 if (!dryRun && !existsSync(NETRC)) throw new Error(`Falta el acceso FTP en ${NETRC}`)
 const build = spawnSync(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'build'], { cwd: repo, stdio: 'inherit', shell: process.platform === 'win32' })
 if (build.status !== 0) throw new Error('El build ha fallado: no se sube nada.')
-const previous = liveBundle(await (await fetch(url('index.html'), { cache: 'no-store' })).text())
 const changed = await changedFiles()
-console.log(changed.length ? `Por subir (${(changed.reduce((n, file) => n + file.size, 0) / 1e6).toFixed(1)} MB):` : 'La web ya está al día.')
+console.log(changed.length ? `Por subir (${(changed.reduce((n, file) => n + file.size, 0) / 1e6).toFixed(1)} MB):` : 'dist/portfolio ya está al día en la web.')
 for (const file of changed) console.log(`  ${file.rel}`)
-if (dryRun || !changed.length) process.exit(0)
+const liveIndex = await (await fetch(url('index.html'), { cache: 'no-store' })).text()
+const indexChanged = normalized(Buffer.from(liveIndex)).toString() !== normalized(readFileSync(join(dist, 'index.html'))).toString()
+const warnIndex = () => { if (indexChanged) console.log('AVISO: index.html ha cambiado. Súbelo a mano desde dist/index.html.') }
+if (dryRun) { warnIndex(); process.exit(0) }
+// Find the web portfolio folder on the account: its root, or a folder called portfolio inside it.
+function listing(path) {
+    const result = spawnSync('curl.exe', ['--ssl', '--netrc-file', NETRC, '--silent', '--show-error', '--list-only', FTP + path], { encoding: 'utf8' })
+    if (result.status !== 0) throw new Error(`No se pudo listar el FTP: ${result.stderr.trim()}`)
+    return result.stdout.split(String.fromCharCode(10)).map(line => line.trim())
+}
+const prefix = listing('').includes('glbs') ? '' : listing('portfolio/').includes('glbs') ? 'portfolio/' : null
+if (prefix === null) throw new Error('No encuentro la carpeta del portfolio en el FTP: no se sube nada.')
+const remote = rel => FTP + prefix + rel.slice('portfolio/'.length).split('/').map(encodeURIComponent).join('/')
 for (const file of changed) {
     console.log(`Subiendo ${file.rel}`)
-    curl(['--ftp-create-dirs', '-T', file.path, FTP + file.rel.split('/').map(encodeURIComponent).join('/')])
+    curl(['--ftp-create-dirs', '-T', file.path, remote(file.rel)])
 }
 const pending = await changedFiles()
 if (pending.length) throw new Error(`Subido, pero la web aún no coincide en: ${pending.map(file => file.rel).join(', ')}`)
-const current = liveBundle(readFileSync(join(dist, 'index.html'), 'utf8'))
-if (previous && previous !== current) {
-    for (const name of [previous, `${previous}.map`, `${previous}.LICENSE.txt`]) {
-        try { curl(['-o', process.platform === 'win32' ? 'NUL' : '/dev/null', FTP, '-Q', `DELE www.robertoferrero.es/portfolio/${name}`]) }
-        catch (error) { console.warn(`No se pudo borrar ${name}: ${error.message}`) }
-    }
+// .htaccess last and checked: a host that forbids these directives answers 500 and it is removed at once.
+curl(['--ftp-create-dirs', '-T', join(dist, 'portfolio', '.htaccess'), remote('portfolio/.htaccess')])
+const check = await fetch(url('portfolio/main.css'), { method: 'HEAD', cache: 'no-store' })
+if (!check.ok) {
+    curl(['-o', 'NUL', FTP + prefix, '-Q', `DELE ${prefix}.htaccess`])
+    throw new Error(`.htaccess rechazado por el servidor (HTTP ${check.status}): retirado. Sin él, el navegador puede tardar en ver cada versión.`)
 }
+console.log(`Caché: ${check.headers.get('cache-control') || 'sin Cache-Control (mod_headers no activo)'}`)
+warnIndex()
 console.log('Publicado y comprobado:', SITE)
