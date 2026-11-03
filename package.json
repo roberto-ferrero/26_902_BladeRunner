@@ -3,6 +3,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "webpack --config ./bundler/webpack.prod.js",
+    "deploy": "node bundler/deploy.mjs",
     "test:tyrell": "node --test --test-isolation=none src/canvasApp/projects/webGPU/E26902_BladeRunner/tests/*.test.mjs",
     "export:camera-states": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/scripts/export-camera-states.mjs",
     "export:vk-placement": "node src/canvasApp/projects/webGPU/E26902_BladeRunner/scripts/export-vk-placement.mjs",
