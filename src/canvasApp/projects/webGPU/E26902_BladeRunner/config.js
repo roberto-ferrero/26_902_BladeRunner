@@ -62,6 +62,9 @@ export const TYRELL = {
     sunIntensity: 2.25,
     hemisphereIntensity: 0.35,
     // Provisional fills in glTF coordinates (metres, Y up). Calibrate in phase 4.
+    // Each area light adds its LTC evaluation to every lit shader. Only the window one (first) is on:
+    // the other three change the image by under 1/255 and cost about 4 s of shader compilation and 5 ms per frame.
+    activeAreaFills: 1,
     areaFills: [
         { position: [0, 4.2, -13.8], target: [0, 1, -3], color: 0xffc184, intensity: 2.4, size: 6 },
         { position: [0, 4.5, 7], target: [0, 2.7, -7], color: 0x91a7ac, intensity: 0.7, size: 7 },

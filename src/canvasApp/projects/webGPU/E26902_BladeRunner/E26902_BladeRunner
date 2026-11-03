@@ -357,7 +357,7 @@ export default class E26902_BladeRunner {
         this.scene.add(this.fill)
         if (ltcUsers++ === 0) RectAreaLightNode.setLTC(RectAreaLightTexturesLib.init())
         this.usesLTC = true
-        this.areaLights = TYRELL.areaFills.map(({ position, target, color, intensity, size }) => {
+        this.areaLights = TYRELL.areaFills.slice(0, TYRELL.activeAreaFills).map(({ position, target, color, intensity, size }) => {
             const light = new THREE.RectAreaLight(color, intensity, size, size)
             light.name = 'Tyrell / área provisional'
             light.position.set(...position)
