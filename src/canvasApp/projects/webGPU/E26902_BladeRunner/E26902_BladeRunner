@@ -244,13 +244,13 @@ export default class E26902_BladeRunner {
             this.cameraStates = applyCameraStateKeys(this.cameraStates, this.initialGUISettings.camera.stateKeys).map(state => ({ ...state,
                 mousePan: cameraStatePan(this.initialGUISettings.camera.mousePan, state.cameraStateId) }))
             this.asset = await loadTyrell(new URL(TYRELL.asset, new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
-                (received, total, parsing) => this.ui.loading('scene', parsing ? 'Preparing geometry, materials and cameras' : `Loading the office · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, parsing ? 1 : total ? received / total * .92 : 0))
+                (received, total, parsing) => this.ui.loading('scene', parsing ? 'Preparing geometry, materials and cameras' : `Loading the office · ${(received / 1e6).toFixed(1)}${total ? ' / ' + (total / 1e6).toFixed(1) : ''} MB`, parsing ? 1 : total ? received / total * .92 : 0), TYRELL.assetBytes)
             if (this.disposed) { disposeScene(this.asset.gltf.scene); return }
             // Diagnostics: ?pyramid=old keeps the original building; ?pyramid=plain loads v3 without window shaders.
             this.pyramidMode = new URLSearchParams(location.search).get('pyramid')
             if (this.pyramidMode !== 'old') {
                 this.pyramidAsset = await loadTyrell(new URL(PYRAMID.asset, new URL(this.app.pathPrefix, document.baseURI)).href,
-                    this.abort.signal, (received, total, parsing) => this.ui.loading('pyramid', parsing ? 'Preparing the Tyrell pyramid' : 'Loading the Tyrell pyramid', parsing ? 1 : total ? received / total * .9 : 0))
+                    this.abort.signal, (received, total, parsing) => this.ui.loading('pyramid', parsing ? 'Preparing the Tyrell pyramid' : 'Loading the Tyrell pyramid', parsing ? 1 : total ? received / total * .9 : 0), 5321256)
                 if (this.disposed) { disposeScene(this.pyramidAsset.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             }
             if (TYRELL.scene.glassware) {
@@ -260,7 +260,7 @@ export default class E26902_BladeRunner {
             }
             if (new URLSearchParams(location.search).get('vk') !== '0') {
                 this.vkAsset = await loadTyrell(new URL('glbs/E26902_BladeRunner/VK_Device.glb', new URL(this.app.pathPrefix, document.baseURI)).href, this.abort.signal,
-                    (received, total, parsing) => this.ui.loading('vk', parsing ? 'Preparing the Voight-Kampff' : `Loading the Voight-Kampff · ${(received / 1e6).toFixed(1)} MB`, parsing ? 1 : total ? received / total * .9 : 0))
+                    (received, total, parsing) => this.ui.loading('vk', parsing ? 'Preparing the Voight-Kampff' : `Loading the Voight-Kampff · ${(received / 1e6).toFixed(1)} MB`, parsing ? 1 : total ? received / total * .9 : 0), 7298380)
                 if (this.disposed) { disposeScene(this.vkAsset.gltf.scene); disposeScene(this.glasswareAsset?.gltf.scene); disposeScene(this.asset.gltf.scene); return }
             }
             this.ui.loading('sky', 'Loading the sky')

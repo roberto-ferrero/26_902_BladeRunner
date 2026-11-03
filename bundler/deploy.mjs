@@ -39,7 +39,7 @@ async function differs(path, rel) {
         if (!response.ok) throw new Error(`${rel}: HTTP ${response.status}`)
         return md5(normalized(Buffer.from(await response.arrayBuffer()))) !== md5(normalized(readFileSync(path)))
     }
-    const response = await fetch(url(rel), { method: 'HEAD', cache: 'no-store' })
+    const response = await fetch(url(rel), { method: 'HEAD', cache: 'no-store', headers: { 'Accept-Encoding': 'identity' } })
     if (response.status === 404) return true
     if (!response.ok) throw new Error(`${rel}: HTTP ${response.status}`)
     return Number(response.headers.get('content-length')) !== statSync(path).size

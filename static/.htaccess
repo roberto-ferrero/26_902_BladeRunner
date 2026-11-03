@@ -4,3 +4,9 @@
         Header set Cache-Control "no-cache"
     </FilesMatch>
 </IfModule>
+
+# On-the-fly gzip: the models and the bundle travel in about 60 % of their size.
+<IfModule mod_deflate.c>
+    AddType model/gltf-binary .glb
+    AddOutputFilterByType DEFLATE model/gltf-binary text/javascript application/javascript text/css application/json text/html
+</IfModule>

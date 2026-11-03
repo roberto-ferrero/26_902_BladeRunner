@@ -1,10 +1,12 @@
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
-export async function loadTyrell(url, signal, onProgress) {
+// expectedBytes: real size of the file, for the progress bar when the server compresses it
+// (Content-Length then counts compressed bytes, or is absent, while the body arrives decompressed).
+export async function loadTyrell(url, signal, onProgress, expectedBytes = 0) {
     const start = performance.now()
     const response = await fetch(url, { signal })
     if (!response.ok) throw new Error(`No se pudo cargar el GLB (HTTP ${response.status}).`)
-    const total = Number(response.headers.get('content-length')) || 0
+    const total = response.headers.get('content-encoding') ? expectedBytes : Number(response.headers.get('content-length')) || expectedBytes
     let buffer
     if (response.body) {
         const reader = response.body.getReader()
