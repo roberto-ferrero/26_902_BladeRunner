@@ -420,7 +420,7 @@ export default class E26902_BladeRunner {
             this.pan.setReference(this.stageCamera.baseCamera, { target: this.stageCamera.target })
             this.syncCameraPan()
         }
-        this.startup = new TyrellStartup({ fadeMs: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : LOADER_LEAVE_MS })
+        this.startup = new TyrellStartup({ minMs: 1000, fadeMs: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : LOADER_LEAVE_MS })
         // Every authored view, and every pose along the intro travels, is drawn behind the loader
         // (reflections included), so nothing compiles once the camera starts moving.
         const start = this.intro?.initialState || this.initialGUISettings.camera.initialState

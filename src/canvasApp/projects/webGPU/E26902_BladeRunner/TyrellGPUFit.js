@@ -2,7 +2,7 @@
 // and reports whether the GPU has caught up, so the fade never starts on a backlog.
 // Render cost here is proportional to rendered pixels (GTX 1650, moving camera:
 // 11.1 / 14.8 / 20.3 ms at 1.67 / 2.15 / 2.97 MP), so one correction usually fits.
-export const GPU_FIT = { targetMs: 12.5, tolerance: 1.08, growBelow: .8, minRatio: .5, rounds: 4, settleFrames: 8, samples: 18, maxFrames: 150, caughtUpMs: 40 }
+export const GPU_FIT = { targetMs: 12.5, tolerance: 1.08, growBelow: .8, minRatio: .5, rounds: 4, settleFrames: 4, samples: 10, maxFrames: 150, caughtUpMs: 40 }
 
 // Below 1 shrinks the rendered pixels; above 1 (only after a shrink overshot) gives some back.
 export function fitPixelScale(gpuMs, settings = GPU_FIT, shrunk = false) {
