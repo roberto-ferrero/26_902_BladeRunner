@@ -51,8 +51,6 @@ export default class TyrellIntro {
     }
     update() {
         const p = this.project
-        const vk = p.vk?.motion.state
-        if (vk === 'deploying' || vk === 'open') this.contact.classList.add('is-visible')
         if (this.step < 0 || this.done) return
         if (p.activeCameraStateId !== this.expected || p.navigation?.enabled || p.developmentControls) {
             // The visitor took over: show the name anyway and stop driving the camera.

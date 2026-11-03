@@ -9,13 +9,14 @@ body.tyrell-cinema .tyrell-ui header { display: none; }
 .tyrell-cinema-title { top: 0; font-size: var(--band-font); }
 .tyrell-cinema-title strong { font-weight: 400; color: #f07549; }
 .tyrell-cinema-title span { font-size: .87em; color: #fff; white-space: pre; }
-.tyrell-cinema-contact { bottom: 0; height: var(--tyrell-cinema-band-bottom, 7vh); flex-direction: column; align-items: flex-start; justify-content: center; font-size: max(13px, calc(var(--band-font) * .55)); transition-duration: 1.6s; }
-.tyrell-cinema-contact a { color: #139ea0; text-decoration: none; }
+/* Above the loader's black, from just after the name and the progress line have appeared (loader.css). */
+.tyrell-cinema-contact { bottom: 0; z-index: 31; height: var(--tyrell-cinema-band-bottom, 7vh); flex-direction: column; align-items: flex-start; justify-content: center; font-size: max(13px, calc(var(--band-font) * .55)); opacity: 1; transition: none; animation: tyrell-contact-in .9s 1.5s ease-out backwards; }
+.tyrell-cinema-contact a { color: #139ea0; text-decoration: none; pointer-events: auto; }
 .tyrell-cinema-contact a + a { color: #bcc2df; }
 .tyrell-cinema-contact a:hover, .tyrell-cinema-contact a:focus-visible { color: #fff; }
-.tyrell-cinema-title.is-visible, .tyrell-cinema-contact.is-visible { opacity: 1; }
-.tyrell-cinema-contact.is-visible a { pointer-events: auto; }
+.tyrell-cinema-title.is-visible { opacity: 1; }
 /* Portfolio mode: no viewer HUD ("Abrir GUI", FPS line); ?intro=0 keeps it. */
 body.tyrell-cinema .tyrell-hud { display: none; }
 
-@media (prefers-reduced-motion: reduce) { .tyrell-cinema-title, .tyrell-cinema-contact { transition: none; } }
+@keyframes tyrell-contact-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .tyrell-cinema-title { transition: none; } .tyrell-cinema-contact { animation: none; } }
